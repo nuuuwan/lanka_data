@@ -4,7 +4,7 @@ import setuptools
 
 REPO_NAME = 'lanka_data'
 DIST_NAME = REPO_NAME.replace('_', '-')
-VERSION = "0.0.1"
+VERSION = "1.0.0"
 DESCRIPTION = (
     "A collection of utility functions"
     + " for interacting with Public Data about Sri Lanka."
