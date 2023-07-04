@@ -31,6 +31,9 @@ class Dataset:
     footnotes: dict
     summary_statistics: dict
 
+    def __str__(self):
+        return f'Dataset({self.sub_category})'
+
     @property
     def id(self) -> str:
         return f'{self.source_id}.{self.sub_category}.{self.frequency_name}'
@@ -45,7 +48,6 @@ class Dataset:
 
     @cached_property
     def detailed_data(self) -> dict:
-        print(self.url_detailed_data)
         return WWW(self.url_detailed_data).readJSON()
 
     @cached_property
