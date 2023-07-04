@@ -44,6 +44,10 @@ class Dataset:
         return self.cleaned_data
 
     @cached_property
+    def xy(self):
+        x = list(self.data.keys())
+        y = list(self.data.values())
+        return x, y
 
     @staticmethod
     def load_from_dict(d):
