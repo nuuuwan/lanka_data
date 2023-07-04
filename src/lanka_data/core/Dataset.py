@@ -1,9 +1,22 @@
 from dataclasses import dataclass
 from functools import cached_property
 
-from utils import WWW
+from utils import WWW, hashx
 
 from lanka_data.core.common import URL_DATA_REPO
+
+
+def normalize_t(t: str) -> str:
+    t = str(t)
+    if len(t) == 4:
+        return t + '-01-01'
+    if len(t) == 7:
+        return t + '-01'
+    return t
+
+
+def normalize(data: dict) -> dict:
+    return dict([(normalize_t(t), v) for t, v in data.items()])
 
 
 @dataclass
@@ -23,6 +36,10 @@ class Dataset:
         return f'{self.source_id}.{self.sub_category}.{self.frequency_name}'
 
     @property
+    def short_name(self) -> str:
+        return self.sub_category.split()[0] + '-' + hashx.md5(self.id)[:4]
+
+    @property
     def url_detailed_data(self) -> str:
         return f'{URL_DATA_REPO}/sources/{self.source_id}/{self.id}.json'
 
@@ -33,7 +50,7 @@ class Dataset:
 
     @cached_property
     def cleaned_data(self) -> dict:
-        return self.detailed_data['cleaned_data']
+        return normalize(self.detailed_data['cleaned_data'])
 
     @cached_property
     def raw_data(self) -> dict:
