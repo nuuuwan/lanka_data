@@ -14,7 +14,7 @@ INSTALL_REQUIRES = [
 ]
 
 setuptools.setup(
-    name="{DIST_NAME}-nuuuwan",
+    name=f"{DIST_NAME}-nuuuwan",
     version=VERSION,
     author="Nuwan I. Senaratna",
     author_email="nuuuwan@gmail.com",
