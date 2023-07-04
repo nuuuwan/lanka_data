@@ -19,29 +19,31 @@ class Dataset:
     summary_statistics: dict
 
     @property
-    def id(self):
+    def id(self) -> str:
         return f'{self.source_id}.{self.sub_category}.{self.frequency_name}'
 
     @property
-    def url_detailed_data(self):
+    def url_detailed_data(self) -> str:
         return f'{URL_DATA_REPO}/sources/{self.source_id}/{self.id}.json'
 
     @cached_property
-    def detailed_data(self):
+    def detailed_data(self) -> dict:
         print(self.url_detailed_data)
         return WWW(self.url_detailed_data).readJSON()
 
     @cached_property
-    def cleaned_data(self):
+    def cleaned_data(self) -> dict:
         return self.detailed_data['cleaned_data']
 
     @cached_property
-    def raw_data(self):
+    def raw_data(self) -> dict:
         return self.detailed_data['raw_data']
 
     @cached_property
-    def data(self):
+    def data(self) -> dict:
         return self.cleaned_data
+
+    @cached_property
 
     @staticmethod
     def load_from_dict(d):
@@ -68,7 +70,7 @@ class Dataset:
         )
         return sorted_list
 
-    def isMatch(self, keywords: str):
+    def isMatch(self, keywords: str) -> bool:
         keyword_list = keywords.lower().split()
         for keyword in keyword_list:
             keyword_is_in_something = False
@@ -85,7 +87,7 @@ class Dataset:
         return True
 
     @staticmethod
-    def find(keywords: str, limit=10):
+    def find(keywords: str, limit=10) -> list:
         dataset_list = Dataset.load_list()
         dataset_list = [
             dataset for dataset in dataset_list if dataset.isMatch(keywords)
