@@ -11,6 +11,7 @@ DESCRIPTION = (
 )
 INSTALL_REQUIRES = [
     'utils-nuuuwan',
+    'scikit-learn',
 ]
 
 setuptools.setup(
