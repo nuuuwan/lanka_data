@@ -33,4 +33,4 @@ class TestCase(unittest.TestCase):
                 'BALANCE International investment position'
             )
         )
-        self.assertEqual(first_dataset.cleaned_data['2000'], 33.03425)
+        self.assertEqual(first_dataset.data['2000'], 33.03425)
