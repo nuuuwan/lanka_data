@@ -34,3 +34,6 @@ class TestCase(unittest.TestCase):
             )
         )
         self.assertEqual(first_dataset.data['2000'], 33.03425)
+        x, y = first_dataset.xy
+        self.assertEqual(x[0], '2000')
+        self.assertEqual(y[0], 33.03425)
