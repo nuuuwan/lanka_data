@@ -2,7 +2,8 @@
 
 import setuptools
 
-DIST_NAME = 'lanka_data'
+REPO_NAME = 'lanka_data'
+DIST_NAME = REPO_NAME.replace('_', '-')
 VERSION = "0.0.1"
 DESCRIPTION = (
     "A collection of utility functions"
@@ -20,9 +21,9 @@ setuptools.setup(
     description=DESCRIPTION,
     long_description="",
     long_description_content_type="text/markdown",
-    url=f"https://github.com/nuuuwan/{DIST_NAME}",
+    url=f"https://github.com/nuuuwan/{REPO_NAME}",
     project_urls={
-        "Bug Tracker": f"https://github.com/nuuuwan/{DIST_NAME}/issues",
+        "Bug Tracker": f"https://github.com/nuuuwan/{REPO_NAME}/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",
