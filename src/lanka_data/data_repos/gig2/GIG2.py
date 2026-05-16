@@ -22,6 +22,39 @@ class GIG2:
         }
     )
 
+    _LABELS: dict[str, str] = {
+        "economyeconomicactivity": "Economy",
+        "educationeducationalattainment": "Education",
+        "governmentelectionslocalgovernment": "Election:LocalGovernment",
+        "governmentelectionsparliamentary": "Election:Parliamentary",
+        "governmentelectionspresidential": "Election:Presidential",
+        "populationagegroup": "Population:AgeGroup",
+        "populationethnicity": "Population:Ethnicity",
+        "populationgender": "Population:Gender",
+        "populationmaritalstatus": "Population:MaritalStatus",
+        "populationreligion": "Population:Religion",
+        "populationtotal": "Population",
+        "socialhouseholdcommunicationitems": "Social:Communication",
+        "socialhouseholdcookingfuel": "Social:CookingFuel",
+        "socialhouseholdfloortype": "Social:Floor",
+        "socialhouseholdlighting": "Social:Lighting",
+        "socialhouseholdlivingquarters": "Social:LivingQuarters",
+        "socialhouseholdnumberofhouseholds": "Social:Households",
+        "socialhouseholdnumberofpersons": "Social:Persons",
+        "socialhouseholdnumberofrooms": "Social:Rooms",
+        "socialhouseholdoccupationstatus": "Social:Occupation",
+        "socialhouseholdownershipstatus": "Social:Ownership",
+        "socialhouseholdrelationshiptohead": "Social:HeadRelationship",
+        "socialhouseholdrooftype": "Social:Roof",
+        "socialhouseholdsolidwastedisposal": "Social:SolidWaste",
+        "socialhouseholdsourceofdrinkingwater": "Social:DrinkingWater",
+        "socialhouseholdstructure": "Social:Structure",
+        "socialhouseholdtoiletfacilities": "Social:Toilet",
+        "socialhouseholdtypeofunit": "Social:UnitType",
+        "socialhouseholdwalltype": "Social:Wall",
+        "socialhouseholdyearofconstruction": "Social:YearBuilt",
+    }
+
     _index: dict | None = None
     _tsv_cache: dict[str, list] = {}
 
@@ -170,12 +203,13 @@ class GIG2:
     def _query_catalog(cls, q: Query, index: dict) -> dict:
         year = q.year
         where = Where(q.where_raw)
-        catalog = [
+        keys = [
             key
             for key, entries in sorted(index.items())
             if cls._key_matches(entries, year, where)
         ]
-        return {"measurements": sorted(set(catalog))}
+        labels = [cls._LABELS.get(k, k) for k in keys]
+        return {"measurements": sorted(set(labels))}
 
     # ------------------------------------------------------------------
     # Time-scoped queries

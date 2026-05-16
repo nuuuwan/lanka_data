@@ -92,7 +92,7 @@ class TestWildcardWhat(unittest.TestCase):
         self.assertTrue(self.result["measurements"])
 
     def test_measurements_contains_population(self):
-        self.assertIn("populationtotal", self.result["measurements"])
+        self.assertIn("Population", self.result["measurements"])
 
 
 if __name__ == "__main__":
