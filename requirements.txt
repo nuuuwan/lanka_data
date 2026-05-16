@@ -1,2 +1,4 @@
 utils-nuuuwan
 rich
+fastapi
+uvicorn
