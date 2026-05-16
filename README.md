@@ -4,13 +4,29 @@ A unified way to access Sri Lankan public data — population, elections, econom
 
 Every piece of data answers three questions: **What** is being measured, **When** was it measured, and **Where**. This is the **3W** taxonomy, and it maps directly onto a three-segment URL:
 
-```
+```bash
 
 /<what>/<when>/<where>
 
 ```
 
-A query expressed this way works identically whether issued as an HTTP request or a Python call.
+A query expressed this way works identically whether issued as an HTTP request.
+
+```bash
+
+https://nuuuwan.github.io/lanka_data/<what>/<when>/<where>
+
+```
+
+Or a Python call.
+
+```python
+
+from lanka_data import db
+
+print(db('/<what>/<when>/<where>'))
+
+```
 
 The underlying data is stored in different formats in multople data repositories. See [DataRepos.md](DataRepos.md) for details.
 
