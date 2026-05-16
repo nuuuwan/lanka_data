@@ -251,15 +251,38 @@ class GIG2:
     # ------------------------------------------------------------------
 
     @classmethod
-    def _query_all_years(
-        cls, entries: list, where: Where, sub_component: str | None
-    ) -> dict:
-        result: dict = {}
+    def _years_available(cls, entries: list) -> dict:
+        return {"years": sorted({e["year"] for e in entries})}
+
+    @classmethod
+    def _years_with_entity(cls, entries: list, where: Where) -> dict:
+        years = []
         for entry in sorted(entries, key=lambda e: e["year"]):
-            data = cls._query_entry(entry, where, sub_component)
-            if data:
-                result[entry["year"]] = data
-        return result
+            rows = cls._fetch_tsv(entry["url"])
+            for row in rows:
+                if where.matches(row.get("entity_id", "")):
+                    years.append(entry["year"])
+                    break
+        return {"years": years}
+
+    @staticmethod
+    def _extract_entities(rows: list) -> list:
+        return sorted(r["entity_id"] for r in rows if r.get("entity_id"))
+
+    @classmethod
+    def _entities_in_year(cls, q: Query, entries: list) -> dict:
+        year_entries = [e for e in entries if e["year"] == q.year]
+        if not year_entries:
+            return {}
+        entry = cls._pick_entry(year_entries, q.where_raw)
+        rows = cls._fetch_tsv(entry["url"])
+        return {"entities": cls._extract_entities(rows)}
+
+    @classmethod
+    def _query_wildcard_when(cls, q: Query, entries: list) -> dict:
+        if q.is_wildcard_where:
+            return cls._years_available(entries)
+        return cls._years_with_entity(entries, Where(q.where_raw))
 
     @classmethod
     def _query_single_year(
@@ -281,9 +304,10 @@ class GIG2:
     def _query_by_time(
         cls, q: Query, entries: list, sub_component: str | None
     ) -> dict:
-        where = Where(q.where_raw)
         if q.is_wildcard_when:
-            return cls._query_all_years(entries, where, sub_component)
+            return cls._query_wildcard_when(q, entries)
+        if q.is_wildcard_where:
+            return cls._entities_in_year(q, entries)
         return cls._query_single_year(q, entries, sub_component)
 
     # ------------------------------------------------------------------
@@ -315,7 +339,7 @@ class GIG2:
     @classmethod
     def query(cls, q: Query) -> dict:
         key = f"{q.what_raw}_{q.when_raw}_{q.where_raw}"
-        safe = key.replace(":", "-").replace(" ", "_")
+        safe = key.replace(":", "-").replace(" ", "_").replace("*", "X")
         cache_file = cls._CACHE_DIR / "query" / f"{safe}.json"
         if cache_file.exists():
             with cache_file.open() as f:

@@ -27,51 +27,52 @@ _KNOWN_PRESIDENTIAL_YEARS = {
 
 
 class TestWildcardWhen(unittest.TestCase):
-    """README: /Election:Presidential/*/LK — all presidential election years."""
+    """README: /Election:Presidential/*/EC-01 — list of election years."""
 
     def setUp(self):
-        # Use EC-01 because the TSV has no 'LK' aggregate row
         self.result = db("/Election:Presidential/*/EC-01")
 
-    def test_returns_dict(self):
-        self.assertIsInstance(self.result, dict)
+    def test_has_years_key(self):
+        self.assertIn("years", self.result)
 
-    def test_keys_are_years(self):
-        for key in self.result:
-            self.assertRegex(
-                key, r"^\d{4}$", f"Expected 4-digit year, got {key!r}"
-            )
+    def test_years_is_list(self):
+        self.assertIsInstance(self.result["years"], list)
 
     def test_contains_known_presidential_years(self):
-        result_years = set(self.result.keys())
+        result_years = set(self.result["years"])
         self.assertTrue(
             _KNOWN_PRESIDENTIAL_YEARS.issubset(result_years),
-            f"Missing years: {_KNOWN_PRESIDENTIAL_YEARS - result_years}",
+            f"Missing: {_KNOWN_PRESIDENTIAL_YEARS - result_years}",
         )
 
-    def test_each_year_value_is_dict(self):
-        for year, data in self.result.items():
-            self.assertIsInstance(
-                data, dict, f"Value for {year} should be a dict"
-            )
 
-
-class TestWildcardWhenByPDs(unittest.TestCase):
-    """All presidential elections broken down by polling division."""
+class TestWildcardWhere(unittest.TestCase):
+    """/Election:Presidential/2024/* → list of entity IDs."""
 
     def setUp(self):
-        self.result = db("/Election:Presidential/*/EC-01:PDs")
+        self.result = db("/Election:Presidential/2024/*")
 
-    def test_returns_dict(self):
-        self.assertIsInstance(self.result, dict)
+    def test_has_entities_key(self):
+        self.assertIn("entities", self.result)
+
+    def test_entities_is_list(self):
+        self.assertIsInstance(self.result["entities"], list)
+
+    def test_contains_ec01(self):
+        self.assertIn("EC-01", self.result["entities"])
+
+
+class TestWildcardWhenAndWhere(unittest.TestCase):
+    """/Election:Presidential/*/* → years list from index metadata."""
+
+    def setUp(self):
+        self.result = db("/Election:Presidential/*/*")
+
+    def test_has_years_key(self):
+        self.assertIn("years", self.result)
 
     def test_contains_2024(self):
-        self.assertIn("2024", self.result)
-
-    def test_2024_is_nested_dict(self):
-        pd_data = self.result["2024"]
-        self.assertIsInstance(pd_data, dict)
-        self.assertTrue(pd_data, "Expected polling divisions under 2024")
+        self.assertIn("2024", self.result["years"])
 
 
 class TestWildcardWhat(unittest.TestCase):
