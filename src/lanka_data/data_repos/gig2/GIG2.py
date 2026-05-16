@@ -1,4 +1,6 @@
+import functools
 import json
+import pathlib
 import sys
 import urllib.request
 
@@ -55,6 +57,8 @@ class GIG2:
         "socialhouseholdyearofconstruction": "Social:YearBuilt",
     }
 
+    _CACHE_DIR = pathlib.Path("/tmp/lanka_data")
+
     _index: dict | None = None
     _tsv_cache: dict[str, list] = {}
 
@@ -63,15 +67,7 @@ class GIG2:
     # ------------------------------------------------------------------
 
     @classmethod
-    def _build_index(cls) -> dict:
-        if cls._index is not None:
-            return cls._index
-        req = urllib.request.Request(
-            cls._API_URL,
-            headers={"Accept": "application/vnd.github.v3+json"},
-        )
-        with urllib.request.urlopen(req) as resp:
-            files: list[dict] = json.loads(resp.read())
+    def _parse_index(cls, files: list[dict]) -> dict:
         index: dict[str, list[dict]] = {}
         for f in files:
             name: str = f.get("name", "")
@@ -90,7 +86,31 @@ class GIG2:
                     "url": f["download_url"],
                 }
             )
-        cls._index = index
+        return index
+
+    @classmethod
+    def _fetch_index(cls) -> dict:
+        req = urllib.request.Request(
+            cls._API_URL,
+            headers={"Accept": "application/vnd.github.v3+json"},
+        )
+        with urllib.request.urlopen(req) as resp:
+            files: list[dict] = json.loads(resp.read())
+        return cls._parse_index(files)
+
+    @classmethod
+    def _build_index(cls) -> dict:
+        if cls._index is not None:
+            return cls._index
+        cache_file = cls._CACHE_DIR / "data_repo" / "index.json"
+        if cache_file.exists():
+            with cache_file.open() as f:
+                cls._index = json.load(f)
+            return cls._index
+        cache_file.parent.mkdir(parents=True, exist_ok=True)
+        cls._index = cls._fetch_index()
+        with cache_file.open("w") as f:
+            json.dump(cls._index, f)
         return cls._index
 
     # ------------------------------------------------------------------
@@ -98,9 +118,7 @@ class GIG2:
     # ------------------------------------------------------------------
 
     @classmethod
-    def _fetch_tsv(cls, url: str) -> list[dict[str, str]]:
-        if url in cls._tsv_cache:
-            return cls._tsv_cache[url]
+    def _download_tsv(cls, url: str) -> list[dict[str, str]]:
         with urllib.request.urlopen(url) as resp:
             content = resp.read().decode("utf-8")
         lines = content.splitlines()
@@ -110,6 +128,22 @@ class GIG2:
             for line in lines[1:]:
                 if line.strip():
                     rows.append(dict(zip(headers, line.split("\t"))))
+        return rows
+
+    @classmethod
+    def _fetch_tsv(cls, url: str) -> list[dict[str, str]]:
+        if url in cls._tsv_cache:
+            return cls._tsv_cache[url]
+        fname = url.split("/")[-1]
+        cache_file = cls._CACHE_DIR / "data_repo" / fname
+        if cache_file.exists():
+            with cache_file.open() as f:
+                rows = json.load(f)
+        else:
+            cache_file.parent.mkdir(parents=True, exist_ok=True)
+            rows = cls._download_tsv(url)
+            with cache_file.open("w") as f:
+                json.dump(rows, f)
         cls._tsv_cache[url] = rows
         return rows
 
@@ -118,6 +152,7 @@ class GIG2:
     # ------------------------------------------------------------------
 
     @staticmethod
+    @functools.cache
     def _coerce(v: str):
         try:
             f = float(v)
@@ -269,11 +304,26 @@ class GIG2:
         return entries, sub_component
 
     @classmethod
-    def query(cls, q: Query) -> dict:
-        index = cls._build_index()
+    def _run_query(cls, q: Query, index: dict) -> dict:
         if q.is_wildcard_what:
             return cls._query_catalog(q, index)
         entries, sub_component = cls._get_entries(q, index)
         if entries is None:
             return {}
         return cls._query_by_time(q, entries, sub_component)
+
+    @classmethod
+    def query(cls, q: Query) -> dict:
+        key = f"{q.what_raw}_{q.when_raw}_{q.where_raw}"
+        safe = key.replace(":", "-").replace(" ", "_")
+        cache_file = cls._CACHE_DIR / "query" / f"{safe}.json"
+        if cache_file.exists():
+            with cache_file.open() as f:
+                return json.load(f)
+        index = cls._build_index()
+        result = cls._run_query(q, index)
+        if result:
+            cache_file.parent.mkdir(parents=True, exist_ok=True)
+            with cache_file.open("w") as f:
+                json.dump(result, f)
+        return result
