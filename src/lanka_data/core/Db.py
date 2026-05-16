@@ -21,7 +21,7 @@ def _merge_results(a: dict, b: dict) -> dict:
     return {**a, **b}
 
 
-def _check_empty(result: dict, q: Query, path: str) -> None:
+def _check_empty(result, q: Query, path: str) -> None:
     if result or q.is_wildcard_when or q.is_wildcard_where:
         return
     print(f"Warning: No data for {path!r}.", file=sys.stderr)
@@ -33,7 +33,9 @@ class Db:
         if q.is_wildcard_what:
             return _merge_catalogs(GIG2.query(q), Census2024.query(q))
         if Census2024.handles(q):
-            result = _merge_results(GIG2.query(q), Census2024.query(q))
+            gig2_r = GIG2.query(q)
+            c24_r = Census2024.query(q)
+            result = _merge_results(gig2_r, c24_r) if gig2_r else c24_r
         else:
             result = GIG2.query(q)
         _check_empty(result, q, path)

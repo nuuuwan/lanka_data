@@ -40,6 +40,11 @@ class Census2024:
         "Toilet": ("HH_GND_excel/Toilet-Facilities/data.tsv"),
     }
 
+    _COL_RENAMES: dict[str, dict[str, str]] = {
+        "AgeGroup": {"total": "total_population"},
+        "Gender": {"total": "total_population"},
+    }
+
     _CACHE_DIR = pathlib.Path("/tmp/lanka_data")
     _tsv_cache: dict[str, list] = {}
 
@@ -98,17 +103,20 @@ class Census2024:
 
     @classmethod
     def _query_label(cls, label: str, where: Where) -> dict:
+        renames = cls._COL_RENAMES.get(label, {})
         result = {}
         for row in cls._fetch_tsv(label):
             eid = row.get("region_id", "")
             if not where.matches(eid):
                 continue
-            data = cls._row_data(row)
-            if len(data) == 1:
-                result[eid] = next(iter(data.values()))
-            else:
-                result[eid] = data
-        return result
+            raw = cls._row_data(row)
+            data = {renames.get(k, k): v for k, v in raw.items()}
+            result[eid] = (
+                next(iter(data.values())) if len(data) == 1 else data
+            )
+        if where.level is not None:
+            return result
+        return next(iter(result.values()), result)
 
     @classmethod
     def _entities(cls, label: str) -> dict:

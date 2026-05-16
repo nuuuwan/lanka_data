@@ -6,7 +6,7 @@ from lanka_data import db
 
 
 class TestCensusPopulationGender(unittest.TestCase):
-    """Full query: returns entity → value dict."""
+    """Specific entity: returns flat dict (no entity wrapper)."""
 
     def setUp(self):
         self.result = db("/Gender/2024/LK")
@@ -14,27 +14,27 @@ class TestCensusPopulationGender(unittest.TestCase):
     def test_returns_dict(self):
         self.assertIsInstance(self.result, dict)
 
-    def test_has_lk(self):
-        self.assertIn("LK", self.result)
+    def test_has_male_key(self):
+        self.assertIn("male", self.result)
 
-    def test_lk_value_is_dict(self):
-        self.assertIsInstance(self.result["LK"], dict)
+    def test_has_total_population_key(self):
+        self.assertIn("total_population", self.result)
 
     def test_total_population(self):
-        self.assertEqual(self.result["LK"]["total"], 21781800)
+        self.assertEqual(self.result["total_population"], 21781800)
 
 
 class TestCensusHousing(unittest.TestCase):
-    """Single-column dataset (Census-only): returns scalar value."""
+    """Single-column dataset: returns scalar for specific entity."""
 
     def setUp(self):
         self.result = db("/Housing/2024/LK")
 
-    def test_has_lk(self):
-        self.assertIn("LK", self.result)
+    def test_returns_int(self):
+        self.assertIsInstance(self.result, int)
 
-    def test_lk_value_is_int(self):
-        self.assertIsInstance(self.result["LK"], int)
+    def test_positive_value(self):
+        self.assertGreater(self.result, 0)
 
 
 class TestCensusWrongYear(unittest.TestCase):
