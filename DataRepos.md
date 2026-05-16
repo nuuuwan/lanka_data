@@ -18,6 +18,8 @@ File name has three parts.
 
 The first column "entity_id" represents the region (e.g. LK-11). The remaining columns represent fields.
 
+Election data is sourced from the Election Commision of Sri Lanka. All the other data is from the 2012 Census by the Department of Census and Statistics Sri Lanka.
+
 ## <https://github.com/nuuuwan/lk_census_2024>
 
 Stores data from the 2024 Sri Lanka census.
@@ -29,3 +31,5 @@ Stores data from the 2024 Sri Lanka census.
 - <https://github.com/nuuuwan/lk_census_2024/blob/main/data/GN_population_excel/Population-by-Sex/data.tsv> - Population by Sex
 
 - <https://github.com/nuuuwan/lk_census_2024/tree/main/data/HH_GND_excel> - various household related info
+
+All the other data is from the 2024 Census by the Department of Census and Statistics Sri Lanka.
