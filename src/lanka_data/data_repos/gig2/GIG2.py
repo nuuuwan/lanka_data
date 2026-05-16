@@ -291,11 +291,6 @@ class GIG2:
         year = q.year
         year_entries = [e for e in entries if e["year"] == year]
         if not year_entries:
-            available = sorted(e["year"] for e in entries)
-            cls._warn(
-                f"No data for {q.what_raw!r} in year {year!r}. "
-                f"Available years: {available}."
-            )
             return {}
         entry = cls._pick_entry(year_entries, q.where_raw)
         return cls._query_entry(entry, Where(q.where_raw), sub_component)

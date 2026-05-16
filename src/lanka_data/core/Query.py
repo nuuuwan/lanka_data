@@ -84,12 +84,8 @@ class Query:
         return f"{prefix}-{default}" if default else prefix
 
     @classmethod
-    def _resolve_gig2_key(
-        cls, parts: list
-    ) -> tuple[str | None, str | None]:
-        direct = (
-            cls._SHORT_LABELS.get(parts[0]) if len(parts) == 1 else None
-        )
+    def _resolve_gig2_key(cls, parts: list) -> tuple[str | None, str | None]:
+        direct = cls._SHORT_LABELS.get(parts[0]) if len(parts) == 1 else None
         if direct is not None:
             return direct, None
         prefix = cls._DOMAIN_GIG2_PREFIX.get(parts[0])
