@@ -9,7 +9,7 @@ class TestCensusPopulationGender(unittest.TestCase):
     """Full query: returns entity → value dict."""
 
     def setUp(self):
-        self.result = db("/Census:Population:Gender/2024/LK")
+        self.result = db("/Gender/2024/LK")
 
     def test_returns_dict(self):
         self.assertIsInstance(self.result, dict)
@@ -25,10 +25,10 @@ class TestCensusPopulationGender(unittest.TestCase):
 
 
 class TestCensusHousing(unittest.TestCase):
-    """Single-column dataset: returns scalar value."""
+    """Single-column dataset (Census-only): returns scalar value."""
 
     def setUp(self):
-        self.result = db("/Census:Housing/2024/LK")
+        self.result = db("/Housing/2024/LK")
 
     def test_has_lk(self):
         self.assertIn("LK", self.result)
@@ -39,14 +39,15 @@ class TestCensusHousing(unittest.TestCase):
 
 class TestCensusWrongYear(unittest.TestCase):
     def test_returns_empty_for_non_census_year(self):
-        self.assertEqual(db("/Census:Population:Gender/2012/LK"), {})
+        # Housing is Census-only; 2012 exists in neither repo
+        self.assertEqual(db("/Housing/2012/LK"), {})
 
 
 class TestCensusWildcardWhen(unittest.TestCase):
-    """/Census:.../*/<where> → {"years": ["2024"]}."""
+    """/Housing/*/<where> — Census-only label, only 2024 exists."""
 
     def setUp(self):
-        self.result = db("/Census:Population:Gender/*/LK")
+        self.result = db("/Housing/*/LK")
 
     def test_has_years_key(self):
         self.assertIn("years", self.result)
@@ -58,11 +59,27 @@ class TestCensusWildcardWhen(unittest.TestCase):
         self.assertEqual(self.result["years"], ["2024"])
 
 
-class TestCensusWildcardWhere(unittest.TestCase):
-    """/Census:.../2024/* → {"entities": [...]}."""
+class TestCensusOverlapWildcardWhen(unittest.TestCase):
+    """/Gender/*/LK — both repos contribute years."""
 
     def setUp(self):
-        self.result = db("/Census:Population:Gender/2024/*")
+        self.result = db("/Gender/*/LK")
+
+    def test_has_years_key(self):
+        self.assertIn("years", self.result)
+
+    def test_includes_2024(self):
+        self.assertIn("2024", self.result["years"])
+
+    def test_includes_gig2_year(self):
+        self.assertIn("2012", self.result["years"])
+
+
+class TestCensusWildcardWhere(unittest.TestCase):
+    """/Housing/2024/* → {"entities": [...]}."""
+
+    def setUp(self):
+        self.result = db("/Housing/2024/*")
 
     def test_has_entities_key(self):
         self.assertIn("entities", self.result)
@@ -75,10 +92,10 @@ class TestCensusWildcardWhere(unittest.TestCase):
 
 
 class TestCensusWildcardWhenAndWhere(unittest.TestCase):
-    """/Census:.../*/* → {"years": ["2024"]} (no TSV needed)."""
+    """/Housing/*/* → {"years": ["2024"]} (no TSV needed)."""
 
     def setUp(self):
-        self.result = db("/Census:Population:Gender/*/*")
+        self.result = db("/Housing/*/*")
 
     def test_has_years_key(self):
         self.assertIn("years", self.result)
@@ -99,11 +116,11 @@ class TestCensusCatalogMerge(unittest.TestCase):
     def test_contains_gig2_measurement(self):
         self.assertIn("Election:Presidential", self.result["measurements"])
 
-    def test_contains_census_measurement(self):
-        self.assertIn(
-            "Census:Population:Gender",
-            self.result["measurements"],
-        )
+    def test_contains_census_only_measurement(self):
+        self.assertIn("Housing", self.result["measurements"])
+
+    def test_contains_shared_measurement(self):
+        self.assertIn("Gender", self.result["measurements"])
 
     def test_measurements_sorted(self):
         m = self.result["measurements"]

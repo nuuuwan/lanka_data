@@ -22,26 +22,30 @@ class Census2024:
     _YEAR = "2024"
 
     _DATASETS: dict[str, str] = {
-        "Census:Housing": (
+        "Housing": (
             "GN_housing_excel" "/Occupied-Housing-Units/data.tsv"
         ),
-        "Census:Population:AgeGroup": (
+        "AgeGroup": (
             "GN_population_excel" "/Population-by-Age-Group/data.tsv"
         ),
-        "Census:Population:Gender": (
+        "Gender": (
             "GN_population_excel" "/Population-by-Sex/data.tsv"
         ),
-        "Census:Households": ("HH_GND_excel/Number-of-Households/data.tsv"),
-        "Census:DrinkingWater": (
+        "Households": (
+            "HH_GND_excel/Number-of-Households/data.tsv"
+        ),
+        "DrinkingWater": (
             "HH_GND_excel" "/Main-Source-of-Drinking-Water/data.tsv"
         ),
-        "Census:CookingFuel": (
+        "CookingFuel": (
             "HH_GND_excel"
             "/Main-Source-of-EnergyFuel-Used-for-Cooking"
             "/data.tsv"
         ),
-        "Census:Lighting": ("HH_GND_excel/Main-Source-of-Lighting/data.tsv"),
-        "Census:Toilet": ("HH_GND_excel/Toilet-Facilities/data.tsv"),
+        "Lighting": (
+            "HH_GND_excel/Main-Source-of-Lighting/data.tsv"
+        ),
+        "Toilet": ("HH_GND_excel/Toilet-Facilities/data.tsv"),
     }
 
     _CACHE_DIR = pathlib.Path("/tmp/lanka_data")
@@ -163,6 +167,6 @@ class Census2024:
             return {}
         return cls._query_for_time(q)
 
-    @staticmethod
-    def handles(q: Query) -> bool:
-        return q.what_raw.startswith("Census:")
+    @classmethod
+    def handles(cls, q: Query) -> bool:
+        return q.what_raw in cls._DATASETS
