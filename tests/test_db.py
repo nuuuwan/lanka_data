@@ -104,6 +104,7 @@ def test_malformed_path_raises():
 
 # --- how segment ---
 
+
 def test_how_json_explicit():
     # /path/JSON and /path are equivalent
     assert Db("/Gender/2024/LK/JSON") == Db("/Gender/2024/LK")

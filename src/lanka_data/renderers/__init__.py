@@ -1,5 +1,6 @@
-from .bar import render_bar
-from .pie import render_pie
-from .map_ import render_map
+from .Bar import Bar
+from .Map import Map
+from .Palette import Palette
+from .Pie import Pie
 
-__all__ = ["render_bar", "render_pie", "render_map"]
+__all__ = ["Bar", "Map", "Palette", "Pie"]

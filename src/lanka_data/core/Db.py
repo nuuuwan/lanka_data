@@ -51,11 +51,11 @@ class Db:
 
         # Visual renderers — imported lazily to avoid circular imports
         from ..console.ConsoleMetaMixin import resolve_meta
-        from ..renderers import render_bar, render_map, render_pie
+        from ..renderers import Bar, Map, Pie
 
         meta = resolve_meta(path)
         if q.how == "Bar":
-            return render_bar(path, result, meta)
+            return Bar.render(path, result, meta)
         if q.how == "Pie":
-            return render_pie(path, result, meta)
-        return render_map(path, result, meta)
+            return Pie.render(path, result, meta)
+        return Map.render(path, result, meta)

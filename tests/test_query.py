@@ -66,6 +66,7 @@ def test_gig2_key_wildcard_what():
 
 # --- how ---
 
+
 def test_how_default_json():
     assert Query("/Population/2012/LK").how == "JSON"
 

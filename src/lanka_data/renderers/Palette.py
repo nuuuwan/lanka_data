@@ -1,4 +1,5 @@
 """Color palette and shared SVG utilities."""
+
 from datetime import datetime, timezone
 
 
