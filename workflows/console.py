@@ -211,6 +211,17 @@ def _enter_accepts_completion(event):
     buf.apply_completion(buf.complete_state.current_completion)
 
 
+def _sort_by_val(d: dict) -> dict:
+    """Sort a dict by numeric value descending."""
+    return dict(
+        sorted(
+            d.items(),
+            key=lambda kv: kv[1] if isinstance(kv[1], (int, float)) else -1,
+            reverse=True,
+        )
+    )
+
+
 def _pct_flat(d: dict) -> dict | None:
     """Percentages for a flat {field: numeric} dict, excluding 'Total'."""
     nums = {
@@ -231,7 +242,7 @@ def _pct_flat(d: dict) -> dict | None:
         pct = v / total * 100
         if pct >= 0.005:
             out[k] = round(pct, 2)
-    return out or None
+    return _sort_by_val(out) or None
 
 
 def _compute_p_values(result) -> dict | None:
@@ -271,7 +282,7 @@ def _total_and_strip(result) -> tuple:
     if isinstance(first, dict):
         total_value = {eid: _entity_total(sub) for eid, sub in result.items()}
         values = {
-            eid: {k: v for k, v in sub.items() if k != "Total"}
+            eid: _sort_by_val({k: v for k, v in sub.items() if k != "Total"})
             for eid, sub in result.items()
         }
         return values, total_value, len(next(iter(values.values()), {}))
@@ -287,7 +298,7 @@ def _total_and_strip(result) -> tuple:
         total_v = sum(nums)
     else:
         total_v = None
-    values = {k: v for k, v in result.items() if k != "Total"}
+    values = _sort_by_val({k: v for k, v in result.items() if k != "Total"})
     return values, total_v, len(values)
 
 
