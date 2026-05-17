@@ -14,7 +14,7 @@ A query expressed this way works identically whether issued as an HTTP request.
 
 ```bash
 
-https://nuuuwan.github.io/lanka_data/<what>/<when>/<where>
+https://localhost:8000/<what>/<when>/<where>
 
 ```
 

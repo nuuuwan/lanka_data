@@ -8,13 +8,17 @@ def _sort_by_val(d: dict) -> dict:
     )
 
 
+def _is_total(k: str) -> bool:
+    return k.lower().startswith("total")
+
+
 def _pct_flat(d: dict) -> dict | None:
     nums = {
         k: v
         for k, v in d.items()
-        if k != "Total" and isinstance(v, (int, float))
+        if not _is_total(k) and isinstance(v, (int, float))
     }
-    raw_total = d.get("Total")
+    raw_total = next((v for k, v in d.items() if _is_total(k)), None)
     total = (
         raw_total
         if isinstance(raw_total, (int, float))
@@ -31,13 +35,13 @@ def _pct_flat(d: dict) -> dict | None:
 
 
 def _entity_total(sub: dict):
-    raw = sub.get("Total")
+    raw = next((v for k, v in sub.items() if _is_total(k)), None)
     if isinstance(raw, (int, float)):
         return raw
     nums = [
         v
         for k, v in sub.items()
-        if k != "Total" and isinstance(v, (int, float))
+        if not _is_total(k) and isinstance(v, (int, float))
     ]
     return sum(nums) if nums else None
 
@@ -70,16 +74,16 @@ class ConsoleFormatMixin:
             }
             values = {
                 eid: _sort_by_val(
-                    {k: v for k, v in sub.items() if k != "Total"}
+                    {k: v for k, v in sub.items() if not _is_total(k)}
                 )
                 for eid, sub in result.items()
             }
             return values, total_value, len(next(iter(values.values()), {}))
-        raw = result.get("Total")
+        raw = next((v for k, v in result.items() if _is_total(k)), None)
         nums = [
             v
             for k, v in result.items()
-            if k != "Total" and isinstance(v, (int, float))
+            if not _is_total(k) and isinstance(v, (int, float))
         ]
         if isinstance(raw, (int, float)):
             total_v = raw
@@ -88,6 +92,6 @@ class ConsoleFormatMixin:
         else:
             total_v = None
         values = _sort_by_val(
-            {k: v for k, v in result.items() if k != "Total"}
+            {k: v for k, v in result.items() if not _is_total(k)}
         )
         return values, total_v, len(values)
