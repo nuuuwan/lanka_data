@@ -1,100 +1,98 @@
-"""Choropleth tile-grid map SVG renderer for Sri Lanka regions."""
+"""Choropleth map SVG renderer using real geographic boundaries."""
+
+import json
+import math
+import os
 
 from .Palette import Palette
 
-# ---------------------------------------------------------------------------
-# Tile-grid positions  (row, col) for each LK district / province code
-# ---------------------------------------------------------------------------
-
-_DISTRICT_GRID: dict[str, tuple[int, int]] = {
-    "LK-81": (0, 2),  # Jaffna
-    "LK-83": (1, 1),  # Mannar
-    "LK-82": (1, 2),  # Kilinochchi
-    "LK-85": (1, 3),  # Mullaitivu
-    "LK-84": (2, 2),  # Vavuniya
-    "LK-42": (3, 0),  # Puttalam
-    "LK-41": (3, 1),  # Kurunegala
-    "LK-51": (3, 2),  # Anuradhapura
-    "LK-92": (3, 3),  # Trincomalee
-    "LK-12": (4, 1),  # Gampaha
-    "LK-52": (4, 2),  # Polonnaruwa
-    "LK-93": (4, 3),  # Batticaloa
-    "LK-11": (5, 1),  # Colombo
-    "LK-21": (5, 2),  # Kandy
-    "LK-13": (6, 1),  # Kalutara
-    "LK-22": (6, 2),  # Matale
-    "LK-91": (6, 3),  # Ampara
-    "LK-72": (7, 1),  # Kegalle
-    "LK-23": (7, 2),  # Nuwara Eliya
-    "LK-61": (7, 3),  # Badulla
-    "LK-71": (8, 2),  # Ratnapura
-    "LK-62": (8, 3),  # Moneragala
-    "LK-31": (9, 2),  # Galle
-    "LK-32": (10, 2),  # Matara
-    "LK-33": (11, 2),  # Hambantota
-}
-
-_PROVINCE_GRID: dict[str, tuple[int, int]] = {
-    "LK-7": (0, 1),  # Northern
-    "LK-4": (1, 0),  # North Western
-    "LK-5": (1, 1),  # North Central
-    "LK-8": (1, 2),  # Eastern
-    "LK-1": (2, 0),  # Western
-    "LK-2": (2, 1),  # Central
-    "LK-9": (2, 2),  # Uva
-    "LK-6": (3, 0),  # Sabaragamuwa
-    "LK-3": (3, 1),  # Southern
-}
-
-_DISTRICT_NAMES: dict[str, str] = {
-    "LK-11": "Colombo",
-    "LK-12": "Gampaha",
-    "LK-13": "Kalutara",
-    "LK-21": "Kandy",
-    "LK-22": "Matale",
-    "LK-23": "Nuwara Eliya",
-    "LK-31": "Galle",
-    "LK-32": "Matara",
-    "LK-33": "Hambantota",
-    "LK-41": "Kurunegala",
-    "LK-42": "Puttalam",
-    "LK-51": "Anuradhapura",
-    "LK-52": "Polonnaruwa",
-    "LK-61": "Badulla",
-    "LK-62": "Moneragala",
-    "LK-71": "Ratnapura",
-    "LK-72": "Kegalle",
-    "LK-81": "Jaffna",
-    "LK-82": "Kilinochchi",
-    "LK-83": "Mannar",
-    "LK-84": "Vavuniya",
-    "LK-85": "Mullaitivu",
-    "LK-91": "Ampara",
-    "LK-92": "Trincomalee",
-    "LK-93": "Batticaloa",
-}
-
-_PROVINCE_NAMES: dict[str, str] = {
-    "LK-1": "Western",
-    "LK-2": "Central",
-    "LK-3": "Southern",
-    "LK-4": "N.Western",
-    "LK-5": "N.Central",
-    "LK-6": "Sabaragamuwa",
-    "LK-7": "Northern",
-    "LK-8": "Eastern",
-    "LK-9": "Uva",
-}
-
-# Cell geometry
-_CELL_W = 74
-_CELL_H = 44
-_GAP = 4
-_STEP_X = _CELL_W + _GAP
-_STEP_Y = _CELL_H + _GAP
+_DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
 
 class Map:
+
+    @staticmethod
+    def _load_topo(name: str) -> dict:
+        with open(os.path.join(_DATA_DIR, name), encoding="utf-8") as f:
+            return json.load(f)
+
+    @staticmethod
+    def _normalize_pcode(raw: str) -> str:
+        """Convert 'LK11' → 'LK-11', 'LK2' → 'LK-2'."""
+        if raw and raw.startswith("LK") and "-" not in raw:
+            return "LK-" + raw[2:]
+        return raw
+
+    @staticmethod
+    def _decode_arcs(topo: dict) -> list:
+        sx, sy = topo["transform"]["scale"]
+        tx, ty = topo["transform"]["translate"]
+        result = []
+        for arc in topo["arcs"]:
+            x = y = 0
+            pts = []
+            for point in arc:
+                x += point[0]
+                y += point[1]
+                pts.append((x * sx + tx, y * sy + ty))
+            result.append(pts)
+        return result
+
+    @staticmethod
+    def _ring_coords(ring: list, decoded: list) -> list:
+        coords = []
+        for idx in ring:
+            if idx >= 0:
+                arc = decoded[idx]
+                coords.extend(arc if not coords else arc[1:])
+            else:
+                arc = list(reversed(decoded[~idx]))
+                coords.extend(arc if not coords else arc[1:])
+        return coords
+
+    @staticmethod
+    def _feature_rings(geom: dict, decoded: list) -> list:
+        if geom["type"] == "Polygon":
+            return [Map._ring_coords(r, decoded) for r in geom["arcs"]]
+        if geom["type"] == "MultiPolygon":
+            rings = []
+            for polygon in geom["arcs"]:
+                rings.extend(Map._ring_coords(r, decoded) for r in polygon)
+            return rings
+        return []
+
+    @staticmethod
+    def _make_projector(bbox, mx, my, mw, mh):
+        lon_min, lat_min, lon_max, lat_max = bbox
+        cos_c = math.cos(math.radians((lat_min + lat_max) / 2))
+        nat_w = (lon_max - lon_min) * cos_c
+        nat_h = lat_max - lat_min
+        scale = min(mw / nat_w, mh / nat_h)
+        ox = mx + (mw - nat_w * scale) / 2
+        oy = my + (mh - nat_h * scale) / 2
+
+        def project(lon: float, lat: float):
+            return (
+                (lon - lon_min) * cos_c * scale + ox,
+                (lat_max - lat) * scale + oy,
+            )
+
+        return project
+
+    @staticmethod
+    def _rings_to_d(rings, project) -> str:
+        parts = []
+        for ring in rings:
+            if len(ring) < 2:
+                continue
+            px, py = project(*ring[0])
+            pts = [f"M{px:.1f},{py:.1f}"]
+            for lon, lat in ring[1:]:
+                px, py = project(lon, lat)
+                pts.append(f"L{px:.1f},{py:.1f}")
+            pts.append("Z")
+            parts.append("".join(pts))
+        return " ".join(parts)
 
     @staticmethod
     def render(path: str, result: dict, meta: dict) -> str:
@@ -112,8 +110,7 @@ class Map:
                 "For single-region breakdown use Bar or Pie instead."
             )
 
-        # Strip total keys; keep non-total numeric breakdown per region
-        stripped: dict[str, dict] = {
+        stripped = {
             code: {
                 k: v
                 for k, v in sub.items()
@@ -121,136 +118,133 @@ class Map:
             }
             for code, sub in result.items()
         }
-
-        # Dominant category per region
-        dominant: dict[str, str] = {
+        dominant = {
             code: max(vals, key=vals.__getitem__)
             for code, vals in stripped.items()
             if vals
         }
-
-        # Stable color assignment sorted by category name
         categories = sorted(set(dominant.values()))
         cat_color = {
             cat: Palette.COLORS[i % len(Palette.COLORS)]
             for i, cat in enumerate(categories)
         }
 
-        grid = Map._pick_grid(list(result.keys()))
-        if grid is not None:
-            return Map._tile_svg(
-                path, result, dominant, cat_color, categories, grid, meta
+        codes = list(result.keys())
+        topo, pcode_field = Map._pick_topo(codes)
+        if topo is not None:
+            return Map._geo_svg(
+                path, dominant, cat_color, categories, topo, pcode_field, meta
             )
-        return Map._list_svg(
-            path, result, dominant, cat_color, categories, meta
-        )
+        return Map._list_svg(path, result, dominant, cat_color, categories, meta)
 
     @staticmethod
-    def _pick_grid(codes: list[str]) -> dict[str, tuple[int, int]] | None:
-        if all(c in _DISTRICT_GRID for c in codes):
-            return _DISTRICT_GRID
-        if all(c in _PROVINCE_GRID for c in codes):
-            return _PROVINCE_GRID
-        return None
+    def _pick_topo(codes: list):
+        for topo_name, pfield in [
+            ("districts.topojson", "adm2_pcode"),
+            ("provinces.topojson", "adm1_pcode"),
+        ]:
+            try:
+                topo = Map._load_topo(topo_name)
+            except FileNotFoundError:
+                continue
+            obj = next(iter(topo["objects"].values()))
+            topo_codes = {
+                Map._normalize_pcode(f["properties"].get(pfield, ""))
+                for f in obj["geometries"]
+            }
+            if any(c in topo_codes for c in codes):
+                return topo, pfield
+        return None, None
 
     @staticmethod
-    def _get_name(code: str) -> str:
-        return _DISTRICT_NAMES.get(code) or _PROVINCE_NAMES.get(code) or code
-
-    @staticmethod
-    def _cell_svg(
-        x: int, y: int, code: str, name: str, dom: str, color: str
-    ) -> str:
-        short_dom = dom[:11] + ("…" if len(dom) > 11 else "")
-        return (
-            f'  <rect x="{x}" y="{y}" width="{_CELL_W}" height="{_CELL_H}" '
-            f'fill="{color}" rx="4" opacity="0.88"/>\n'
-            f'  <text x="{x + _CELL_W // 2}" y="{y + 12}" text-anchor="middle" '
-            f'font-size="8" fill="#ffffffcc">{Palette.escape(code)}</text>\n'
-            f'  <text x="{x + _CELL_W // 2}" y="{y + 27}" text-anchor="middle" '
-            f'font-size="11" font-weight="bold" fill="#ffffff">{Palette.escape(name)}</text>\n'
-            f'  <text x="{x + _CELL_W // 2}" y="{y + 40}" text-anchor="middle" '
-            f'font-size="8" fill="#ffffffcc">{Palette.escape(short_dom)}</text>'
-        )
-
-    @staticmethod
-    def _tile_svg(
-        path, result, dominant, cat_color, categories, grid, meta
+    def _geo_svg(
+        path: str,
+        dominant: dict,
+        cat_color: dict,
+        categories: list,
+        topo: dict,
+        pcode_field: str,
+        meta: dict,
     ) -> str:
         P = Palette
-        codes = list(result.keys())
-        max_row = max(grid[c][0] for c in codes if c in grid)
-        max_col = max(grid[c][1] for c in codes if c in grid)
+        PAD_L, PAD_R, PAD_TOP, PAD_BOT = 20, 20, 62, 44
+        MAP_W, MAP_H = 360, 600
+        LEG_W, LEG_GAP = 220, 24
+        SVG_W = PAD_L + MAP_W + LEG_GAP + LEG_W + PAD_R
+        SVG_H = PAD_TOP + MAP_H + PAD_BOT
 
-        grid_w = (max_col + 1) * _STEP_X - _GAP
-        grid_h = (max_row + 1) * _STEP_Y - _GAP
+        bbox = topo["bbox"]
+        project = Map._make_projector(bbox, PAD_L, PAD_TOP, MAP_W, MAP_H)
+        decoded = Map._decode_arcs(topo)
+        obj = next(iter(topo["objects"].values()))
+        name_field = "adm2_name" if pcode_field == "adm2_pcode" else "adm1_name"
 
-        LEG_W = 220
-        PAD_L, PAD_R = 40, 20
-        PAD_GAP = 30
-        PAD_TOP, PAD_BOT = 62, 44
+        paths_svg = []
+        for feat in obj["geometries"]:
+            raw_code = feat["properties"].get(pcode_field, "")
+            code = Map._normalize_pcode(raw_code)
+            color = cat_color.get(dominant.get(code, ""), "#e5e7eb")
+            rings = Map._feature_rings(feat, decoded)
+            d = Map._rings_to_d(rings, project)
+            if d:
+                name = feat["properties"].get(name_field, "")
+                dom = dominant.get(code, "")
+                paths_svg.append(
+                    f'  <path d="{d}" fill="{color}" stroke="white" '
+                    f'stroke-width="0.7" opacity="0.88">'
+                    f"<title>{P.escape(name)}: {P.escape(dom)}</title>"
+                    f"</path>"
+                )
 
-        svg_w = PAD_L + grid_w + PAD_GAP + LEG_W + PAD_R
-        svg_h = PAD_TOP + grid_h + PAD_BOT
-
-        cells = []
-        for code in codes:
-            pos = grid.get(code)
-            if pos is None:
-                continue
-            row, col = pos
-            x = PAD_L + col * _STEP_X
-            y = PAD_TOP + row * _STEP_Y
-            dom = dominant.get(code, "")
-            color = cat_color.get(dom, "#94a3b8")
-            cells.append(
-                Map._cell_svg(x, y, code, Map._get_name(code), dom, color)
+        leg_x = PAD_L + MAP_W + LEG_GAP
+        leg_y = PAD_TOP + 10
+        leg_items = []
+        for cat in categories:
+            color = cat_color[cat]
+            label = P.escape(cat[:28] + ("\u2026" if len(cat) > 28 else ""))
+            leg_items.append(
+                f'  <rect x="{leg_x}" y="{leg_y}" width="14" height="14" '
+                f'fill="{color}" rx="2"/>\n'
+                f'  <text x="{leg_x + 20}" y="{leg_y + 11}" font-size="12" '
+                f'fill="{P.LABEL_COLOR}">{label}</text>'
             )
-
-        leg_x = PAD_L + grid_w + PAD_GAP
-        leg_y0 = PAD_TOP
-        legend = [
-            f'  <rect x="{leg_x}" y="{leg_y0 + i * 28}" width="14" height="14" '
-            f'fill="{cat_color[cat]}" rx="2"/>\n'
-            f'  <text x="{leg_x + 20}" y="{leg_y0 + i * 28 + 12}" font-size="12" '
-            f'fill="{P.LABEL_COLOR}">{P.escape(cat)}</text>'
-            for i, cat in enumerate(categories)
-        ]
+            leg_y += 22
 
         title = P.escape(P.title_from_path(path))
         footer = P.escape(P.footer_from_meta(meta))
-        meta_block = P.svg_meta(path, meta)
 
-        return (
-            f'<svg xmlns="http://www.w3.org/2000/svg" width="{svg_w}" height="{svg_h}" '
-            f'font-family="system-ui,sans-serif">\n'
-            f"{meta_block}\n"
-            f'  <rect width="{svg_w}" height="{svg_h}" fill="{P.BG}"/>\n'
-            f'  <text x="{svg_w // 2}" y="42" text-anchor="middle" font-size="16" '
-            f'font-weight="bold" fill="{P.TITLE_COLOR}">{title}</text>\n'
-            f'{"".join(cells)}\n'
-            f'{"".join(legend)}\n'
-            f'  <text x="{svg_w // 2}" y="{svg_h - 16}" text-anchor="middle" '
-            f'font-size="11" fill="{P.FOOTER_COLOR}">{footer}</text>\n'
-            f"</svg>"
+        lines = [
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{SVG_W}" height="{SVG_H}" '
+            f'font-family="system-ui,sans-serif">',
+            P.svg_meta(path, meta),
+            f'  <rect width="{SVG_W}" height="{SVG_H}" fill="{P.BG}"/>',
+            f'  <text x="{PAD_L}" y="34" font-size="18" font-weight="bold" '
+            f'fill="{P.TITLE_COLOR}">{title}</text>',
+            f'  <rect x="{PAD_L}" y="{PAD_TOP}" width="{MAP_W}" height="{MAP_H}" '
+            f'fill="#dbeafe" rx="4"/>',
+        ]
+        lines.extend(paths_svg)
+        lines.extend(leg_items)
+        lines.append(
+            f'  <text x="{SVG_W // 2}" y="{SVG_H - 12}" text-anchor="middle" '
+            f'font-size="11" fill="{P.FOOTER_COLOR}">{footer}</text>'
         )
+        lines.append("</svg>")
+        return "\n".join(lines)
 
     @staticmethod
     def _list_svg(path, result, dominant, cat_color, categories, meta) -> str:
         P = Palette
         items = sorted(result.keys(), key=lambda c: dominant.get(c, ""))
-
         N_COLS = min(4, max(1, len(items) // 8 + 1))
         COL_W = 160
         CELL_H = 30
-        n_rows = -(-len(items) // N_COLS)  # ceiling division
-
+        n_rows = -(-len(items) // N_COLS)
         PAD_TOP = 62
         legend_h = (-(-len(categories) // 5)) * 28
         PAD_BOT = 44 + 30 + legend_h
         svg_w = max(700, N_COLS * COL_W + 80)
         svg_h = PAD_TOP + n_rows * CELL_H + PAD_BOT
-
         cells = [
             f'  <rect x="{40 + (i // n_rows) * COL_W}" y="{PAD_TOP + (i % n_rows) * CELL_H}" '
             f'width="{COL_W - 6}" height="24" fill="{cat_color.get(dominant.get(code, ""), "#94a3b8")}" '
@@ -260,7 +254,6 @@ class Map:
             f'font-size="11" fill="#ffffff" font-weight="bold">{P.escape(code)}</text>'
             for i, code in enumerate(items)
         ]
-
         leg_y0 = PAD_TOP + n_rows * CELL_H + 20
         legend = [
             f'  <rect x="{40 + (i % 5) * 130}" y="{leg_y0 + (i // 5) * 28}" '
@@ -269,11 +262,9 @@ class Map:
             f'font-size="11" fill="{P.LABEL_COLOR}">{P.escape(cat[:14])}</text>'
             for i, cat in enumerate(categories)
         ]
-
         title = P.escape(P.title_from_path(path))
         footer = P.escape(P.footer_from_meta(meta))
         meta_block = P.svg_meta(path, meta)
-
         return (
             f'<svg xmlns="http://www.w3.org/2000/svg" width="{svg_w}" height="{svg_h}" '
             f'font-family="system-ui,sans-serif">\n'
@@ -287,3 +278,4 @@ class Map:
             f'font-size="11" fill="{P.FOOTER_COLOR}">{footer}</text>\n'
             f"</svg>"
         )
+
