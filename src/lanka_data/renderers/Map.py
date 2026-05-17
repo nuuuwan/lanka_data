@@ -135,7 +135,9 @@ class Map:
             return Map._geo_svg(
                 path, dominant, cat_color, categories, topo, pcode_field, meta
             )
-        return Map._list_svg(path, result, dominant, cat_color, categories, meta)
+        return Map._list_svg(
+            path, result, dominant, cat_color, categories, meta
+        )
 
     @staticmethod
     def _pick_topo(codes: list):
@@ -177,7 +179,9 @@ class Map:
         project = Map._make_projector(bbox, PAD_L, PAD_TOP, MAP_W, MAP_H)
         decoded = Map._decode_arcs(topo)
         obj = next(iter(topo["objects"].values()))
-        name_field = "adm2_name" if pcode_field == "adm2_pcode" else "adm1_name"
+        name_field = (
+            "adm2_name" if pcode_field == "adm2_pcode" else "adm1_name"
+        )
 
         paths_svg = []
         for feat in obj["geometries"]:
@@ -278,4 +282,3 @@ class Map:
             f'font-size="11" fill="{P.FOOTER_COLOR}">{footer}</text>\n'
             f"</svg>"
         )
-

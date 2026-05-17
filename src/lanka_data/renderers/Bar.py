@@ -31,9 +31,20 @@ class Bar:
 
     @staticmethod
     def render(path: str, result: dict, meta: dict) -> str:
-        from ..console.ConsoleFormatMixin import _is_total, _sort_by_val
+        if not isinstance(result, dict):
+            raise ValueError("Bar requires a breakdown response.")
+        for k in ("years", "entities", "measurements"):
+            if k in result:
+                raise ValueError("Bar requires a breakdown response.")
 
-        Bar.validate_flat(result, "Bar")
+        first = next(iter(result.values()), None)
+        if isinstance(first, dict):
+            return Bar._stacked_svg(path, result, meta)
+        return Bar._flat_svg(path, result, meta)
+
+    @staticmethod
+    def _flat_svg(path: str, result: dict, meta: dict) -> str:
+        from ..console.ConsoleFormatMixin import _is_total, _sort_by_val
 
         values = _sort_by_val(
             {
@@ -84,6 +95,106 @@ class Bar:
             f'font-weight="bold" fill="{P.TITLE_COLOR}">{title}</text>\n'
             f"{rows_svg}\n"
             f'  <text x="{_WIDTH // 2}" y="{height - 16}" text-anchor="middle" '
+            f'font-size="11" fill="{P.FOOTER_COLOR}">{footer}</text>\n'
+            f"</svg>"
+        )
+
+    @staticmethod
+    def _stacked_svg(path: str, result: dict, meta: dict) -> str:
+        from ..console.ConsoleFormatMixin import _is_total
+
+        P = Palette
+        _SLABEL_W = 100
+        _SBAR_W = 560
+        _SROW_H = 26
+        _SPAD_L = 16
+        _SPAD_R = 16
+        _SCOLS = 5
+
+        # Strip totals per region
+        regions_data = {
+            region: {
+                k: v
+                for k, v in sub.items()
+                if not _is_total(k) and isinstance(v, (int, float)) and v > 0
+            }
+            for region, sub in result.items()
+            if isinstance(sub, dict)
+        }
+        regions_data = {r: v for r, v in regions_data.items() if v}
+        if not regions_data:
+            raise ValueError("No numeric values to render as a bar chart.")
+
+        # Stable category → color assignment
+        all_cats = sorted({c for vals in regions_data.values() for c in vals})
+        cat_color = {
+            cat: P.COLORS[i % len(P.COLORS)] for i, cat in enumerate(all_cats)
+        }
+
+        # Sort regions by total descending
+        regions_sorted = sorted(
+            regions_data.items(),
+            key=lambda kv: sum(kv[1].values()),
+            reverse=True,
+        )
+
+        leg_rows = -(-len(all_cats) // _SCOLS)
+        svg_w = _SPAD_L + _SLABEL_W + _SBAR_W + _SPAD_R
+        svg_h = _PAD_TOP + len(regions_sorted) * _SROW_H + 30 + leg_rows * 24 + _PAD_BOT
+
+        rows = []
+        for i, (region, vals) in enumerate(regions_sorted):
+            y = _PAD_TOP + i * _SROW_H
+            total = sum(vals.values()) or 1
+            x = _SPAD_L + _SLABEL_W
+            rows.append(
+                f'  <text x="{_SPAD_L + _SLABEL_W - 6}" y="{y + _SROW_H // 2 + 4}" '
+                f'text-anchor="end" font-size="11" fill="{P.LABEL_COLOR}">'
+                f"{P.escape(region)}</text>"
+            )
+            for cat in all_cats:
+                val = vals.get(cat, 0)
+                if val <= 0:
+                    continue
+                seg_w = max(1, round(val / total * _SBAR_W))
+                color = cat_color[cat]
+                pct = val / total * 100
+                rows.append(
+                    f'  <rect x="{x}" y="{y + 4}" width="{seg_w}" height="{_SROW_H - 8}" '
+                    f'fill="{color}" opacity="0.88">'
+                    f"<title>{P.escape(region)} \u2014 {P.escape(cat)}: "
+                    f"{P.fmt_num(val)} ({pct:.1f}%)</title>"
+                    f"</rect>"
+                )
+                x += seg_w
+
+        leg_y0 = _PAD_TOP + len(regions_sorted) * _SROW_H + 30
+        col_w = (_SLABEL_W + _SBAR_W) // _SCOLS
+        legend = []
+        for i, cat in enumerate(all_cats):
+            lx = _SPAD_L + (i % _SCOLS) * col_w
+            ly = leg_y0 + (i // _SCOLS) * 24
+            legend.append(
+                f'  <rect x="{lx}" y="{ly}" width="12" height="12" '
+                f'fill="{cat_color[cat]}" rx="2"/>\n'
+                f'  <text x="{lx + 16}" y="{ly + 10}" font-size="11" '
+                f'fill="{P.LABEL_COLOR}">{P.escape(cat[:20])}</text>'
+            )
+
+        title = P.escape(P.title_from_path(path))
+        footer = P.escape(P.footer_from_meta(meta))
+        meta_block = P.svg_meta(path, meta)
+
+        return (
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{svg_w}" height="{svg_h}" '
+            f'font-family="system-ui,sans-serif">\n'
+            f"{meta_block}\n"
+            f'  <rect width="{svg_w}" height="{svg_h}" fill="{P.BG}"/>\n'
+            f'  <text x="{svg_w // 2}" y="46" text-anchor="middle" font-size="16" '
+            f'font-weight="bold" fill="{P.TITLE_COLOR}">{title}</text>\n'
+            f'{"".join(rows)}\n'
+            f'{"".join(legend)}\n'
+            f'  <text x="{svg_w // 2}" y="{svg_h - 16}" text-anchor="middle" '
             f'font-size="11" fill="{P.FOOTER_COLOR}">{footer}</text>\n'
             f"</svg>"
         )

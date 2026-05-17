@@ -7,6 +7,13 @@ from .Census2024DatasetsMixin import Census2024DatasetsMixin
 from .Census2024FetchMixin import Census2024FetchMixin
 
 
+def _pascal(name: str) -> str:
+    """Convert snake_case to PascalCase; leaves already-PascalCase unchanged."""
+    if "_" not in name:
+        return name[0].upper() + name[1:] if name else name
+    return "".join(word.capitalize() for word in name.split("_"))
+
+
 class Census2024(
     Census2024DatasetsMixin,
     Census2024ColRenamesMixin,
@@ -34,10 +41,8 @@ class Census2024(
             if not where.matches(eid):
                 continue
             raw = cls._row_data(row)
-            data = {renames.get(k, k): v for k, v in raw.items()}
-            result[eid] = (
-                next(iter(data.values())) if len(data) == 1 else data
-            )
+            data = {_pascal(renames.get(k, k)): v for k, v in raw.items()}
+            result[eid] = next(iter(data.values())) if len(data) == 1 else data
         if where.level is not None:
             return result
         return next(iter(result.values()), result)

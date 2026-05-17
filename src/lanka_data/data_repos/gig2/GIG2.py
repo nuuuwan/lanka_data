@@ -57,7 +57,14 @@ class GIG2:
         "socialhouseholdyearofconstruction": "YearBuilt",
     }
 
-    _COL_RENAMES: dict[str, dict[str, str]] = {}
+    _FIELD_RENAMES: dict[str, str] = {
+        "total_population": "TotalPopulation",
+        "sl_tamil": "SriLankanTamil",
+        "ind_tamil": "IndianTamil",
+        "sl_moor": "SriLankanMoor",
+        "sl_chetty": "SriLankanChetty",
+        "other_eth": "Other",
+    }
 
     _CACHE_DIR = pathlib.Path("/tmp/lanka_data")
 
@@ -161,6 +168,16 @@ class GIG2:
             return int(f) if f == int(f) else f
         except (ValueError, OverflowError):
             return v
+
+    @classmethod
+    def _norm_col(cls, key: str) -> str:
+        if key in cls._FIELD_RENAMES:
+            return cls._FIELD_RENAMES[key]
+        if "_" not in key:
+            if key.isupper():
+                return key  # Party abbreviations (NPP, SJB) stay unchanged
+            return key[0].upper() + key[1:] if key else key
+        return "".join(word.capitalize() for word in key.split("_"))
 
     @classmethod
     def _format_row(
@@ -335,27 +352,19 @@ class GIG2:
 
     @classmethod
     def _rename_fields(cls, q: Query, result: dict) -> dict:
-        """Rename result keys to PascalCase using _COL_RENAMES."""
-        norm_key, _ = q.gig2_key()
-        renames = cls._COL_RENAMES.get(norm_key or "", {})
-        skip = (
-            not result
-            or not renames
-            or any(k in result for k in ("years", "entities", "measurements"))
-        )
-        if skip:
+        """Normalize result field names to PascalCase."""
+        if not result or any(
+            k in result for k in ("years", "entities", "measurements")
+        ):
             return result
 
         def _apply(d: dict) -> dict:
-            return {renames.get(k, k): v for k, v in d.items()}
+            return {cls._norm_col(k): v for k, v in d.items()}
 
         first = next(iter(result.values()), None)
-        renamed = (
-            {eid: _apply(v) for eid, v in result.items()}
-            if isinstance(first, dict)
-            else _apply(result)
-        )
-        return renamed
+        if isinstance(first, dict):
+            return {eid: _apply(v) for eid, v in result.items()}
+        return _apply(result)
 
     @classmethod
     def query(cls, q: Query) -> dict:

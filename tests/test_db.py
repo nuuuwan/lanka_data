@@ -9,13 +9,13 @@ from lanka_data import Db
 
 def test_population_national():
     r = Db("/Population/2012/LK")
-    assert r["total_population"] == 20_357_776
+    assert r["TotalPopulation"] == 20_357_776
 
 
 def test_population_districts():
     r = Db("/Population/2012/LK:Districts")
     assert len(r) == 25
-    assert r["LK-11"]["total_population"] == 2_323_964
+    assert r["LK-11"]["TotalPopulation"] == 2_323_964
 
 
 # --- Census 2024 ---
@@ -23,22 +23,22 @@ def test_population_districts():
 
 def test_ethnicity_keys():
     r = Db("/Ethnicity/2024/LK")
-    assert r["total_population"] == 21_781_800
-    for key in ("sinhalese", "sl_tamil", "sl_moor", "indian_tamil"):
+    assert r["TotalPopulation"] == 21_781_800
+    for key in ("Sinhalese", "SriLankanTamil", "SriLankanMoor", "IndianTamil"):
         assert key in r
 
 
 def test_gender():
     r = Db("/Gender/2024/LK")
-    assert r["total_population"] == 21_781_800
-    assert r["male"] == 10_512_344
-    assert r["female"] == 11_269_456
+    assert r["TotalPopulation"] == 21_781_800
+    assert r["Male"] == 10_512_344
+    assert r["Female"] == 11_269_456
 
 
 def test_religion():
     r = Db("/Religion/2024/LK")
-    assert r["total_population"] == 21_781_800
-    assert "buddhist" in r
+    assert r["TotalPopulation"] == 21_781_800
+    assert "Buddhist" in r
 
 
 def test_what_case_insensitive():
@@ -51,14 +51,14 @@ def test_what_case_insensitive():
 
 def test_election_national():
     r = Db("/Election:Presidential/2024/LK")
-    for field in ("valid", "rejected", "polled", "electors", "NPP", "SJB"):
+    for field in ("Valid", "Rejected", "Polled", "Electors", "NPP", "SJB"):
         assert field in r
 
 
 def test_election_summary_pds():
     r = Db("/Election:Presidential:Summary/2024/EC-01:PDs")
     assert "EC-01A" in r
-    for field in ("valid", "rejected", "polled", "electors"):
+    for field in ("Valid", "Rejected", "Polled", "Electors"):
         assert field in r["EC-01A"]
 
 

@@ -2,7 +2,6 @@ import json
 import os
 import pathlib
 import subprocess
-import tempfile
 
 from prompt_toolkit import PromptSession
 from prompt_toolkit.history import FileHistory
@@ -26,19 +25,27 @@ class Console(
     def __init__(self) -> None:
         self.console = _RichConsole()
 
+    @staticmethod
+    def _svg_path(path: str) -> pathlib.Path:
+        """Derive a filesystem path from a query path.
+
+        '/Religion/2024/LK/Pie' → /tmp/lanka_data/images/Religion.2024.LK.Pie.svg
+        """
+        name = path.strip("/").replace("/", ".")
+        out_dir = pathlib.Path("/tmp/lanka_data/images")
+        out_dir.mkdir(parents=True, exist_ok=True)
+        return out_dir / f"{name}.svg"
+
     def _query_and_print(self, path: str) -> None:
         try:
             result = Db(path)
             if isinstance(result, str):
-                # SVG output — write to a temp file and open with the default app
-                with tempfile.NamedTemporaryFile(
-                    suffix=".svg", delete=False, mode="w", encoding="utf-8"
-                ) as f:
-                    f.write(result)
-                    svg_path = f.name
-                subprocess.run(["open", svg_path], check=False)
+                # SVG output — write to a named file and open with the default app
+                svg_path = self._svg_path(path)
+                svg_path.write_text(result, encoding="utf-8")
+                subprocess.run(["open", str(svg_path)], check=False)
                 self.console.print(
-                    f"[bold green]SVG opened:[/bold green] {svg_path}"
+                    f"[bold green]SVG saved:[/bold green] {svg_path}"
                 )
                 return
             meta = self._meta_for(path)
