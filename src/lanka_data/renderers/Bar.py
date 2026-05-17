@@ -1,4 +1,5 @@
 """Horizontal bar chart SVG renderer."""
+
 from .Palette import Palette
 
 _MAX_BARS = 20
@@ -44,9 +45,7 @@ class Bar:
         if not values:
             raise ValueError("No numeric values to render as a bar chart.")
 
-        total_raw = next(
-            (v for k, v in result.items() if _is_total(k)), None
-        )
+        total_raw = next((v for k, v in result.items() if _is_total(k)), None)
         if not isinstance(total_raw, (int, float)):
             total_raw = sum(values.values()) or 1
 
