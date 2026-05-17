@@ -1,10 +1,11 @@
 """Tests for Where — region code matching and level resolution."""
 
 import pytest
+
 from lanka_data.core import Where
 
-
 # --- Exact match ---
+
 
 def test_exact_match():
     assert Where("LK").matches("LK")
@@ -16,6 +17,7 @@ def test_exact_no_match():
 
 
 # --- Administrative levels ---
+
 
 def test_provinces():
     w = Where("LK:Provinces")
@@ -42,6 +44,7 @@ def test_districts_under_province():
 
 # --- Electoral levels ---
 
+
 def test_eds_alias():
     w = Where("LK:EDs")
     assert w.level == "ElectoralDistricts"
@@ -59,6 +62,7 @@ def test_pds_alias():
 
 
 # --- Unknown level raises ---
+
 
 def test_unknown_level_raises():
     with pytest.raises(ValueError):

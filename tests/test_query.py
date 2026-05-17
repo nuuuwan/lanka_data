@@ -1,10 +1,11 @@
 """Tests for Query — path parsing and gig2 key resolution."""
 
 import pytest
+
 from lanka_data.core import Query
 
-
 # --- Parsing ---
+
 
 def test_basic_parse():
     q = Query("/Population/2012/LK")
@@ -37,6 +38,7 @@ def test_malformed_raises():
 
 
 # --- gig2_key ---
+
 
 def test_gig2_key_population():
     key, sub = Query("/Population/2012/LK").gig2_key()

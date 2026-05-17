@@ -35,7 +35,9 @@ class Census2024(
                 continue
             raw = cls._row_data(row)
             data = {renames.get(k, k): v for k, v in raw.items()}
-            result[eid] = next(iter(data.values())) if len(data) == 1 else data
+            result[eid] = (
+                next(iter(data.values())) if len(data) == 1 else data
+            )
         if where.level is not None:
             return result
         return next(iter(result.values()), result)

@@ -1,10 +1,11 @@
 """Integration tests for Db — the main query entry point."""
 
 import pytest
+
 from lanka_data import Db
 
-
 # --- Population (GIG2 2012) ---
+
 
 def test_population_national():
     r = Db("/Population/2012/LK")
@@ -18,6 +19,7 @@ def test_population_districts():
 
 
 # --- Census 2024 ---
+
 
 def test_ethnicity_keys():
     r = Db("/Ethnicity/2024/LK")
@@ -46,6 +48,7 @@ def test_what_case_insensitive():
 
 # --- Elections ---
 
+
 def test_election_national():
     r = Db("/Election:Presidential/2024/LK")
     for field in ("valid", "rejected", "polled", "electors", "NPP", "SJB"):
@@ -71,6 +74,7 @@ def test_election_parties_only():
 
 # --- Wildcards ---
 
+
 def test_wildcard_what():
     r = Db("/*/2024/LK")
     assert "measurements" in r
@@ -86,6 +90,7 @@ def test_wildcard_when():
 
 
 # --- Empty / error handling ---
+
 
 def test_empty_result_bad_year():
     r = Db("/Election:Presidential/2023/LK")
