@@ -36,7 +36,11 @@ def _meta_for(path: str) -> dict:
         return {"source": None, "source_url": None, "repo_file": None}
 
     if q.is_wildcard_what:
-        return {"source": "multiple", "source_url": None, "repo_file": "multiple"}
+        return {
+            "source": "multiple",
+            "source_url": None,
+            "repo_file": "multiple",
+        }
 
     if Census2024.handles(q):
         file_path = Census2024._DATASETS.get(q.what_raw, "")
@@ -77,7 +81,11 @@ def _meta_for(path: str) -> dict:
     except Exception:  # noqa: BLE001
         pass
 
-    return {"source": _SOURCE_CENSUS, "source_url": _SOURCE_CENSUS_URL, "repo_file": None}
+    return {
+        "source": _SOURCE_CENSUS,
+        "source_url": _SOURCE_CENSUS_URL,
+        "repo_file": None,
+    }
 
 
 _WHAT_COMPLETIONS = [

@@ -57,6 +57,51 @@ class GIG2:
         "socialhouseholdyearofconstruction": "YearBuilt",
     }
 
+    _COL_RENAMES: dict[str, dict[str, str]] = {
+        "populationethnicity": {
+            "total_population": "Total",
+            "sinhalese": "Sinhalese",
+            "sl_tamil": "SriLankaTamil",
+            "ind_tamil": "IndianTamil",
+            "sl_moor": "SriLankaMoor",
+            "burgher": "Burgher",
+            "malay": "Malay",
+            "sl_chetty": "SriLankaChetty",
+            "bharatha": "Bharatha",
+            "other_eth": "Other",
+        },
+        "populationreligion": {
+            "total_population": "Total",
+            "buddhist": "Buddhist",
+            "hindu": "Hindu",
+            "islam": "Islam",
+            "roman_catholic": "RomanCatholic",
+            "other_christian": "OtherChristian",
+            "other": "Other",
+        },
+        "populationtotal": {
+            "total_population": "Total",
+        },
+        "populationagegroup": {
+            "total_population": "Total",
+            "less_than_10": "AgeLessThan10",
+            "10_~_19": "Age10To19",
+            "20_~_29": "Age20To29",
+            "30_~_39": "Age30To39",
+            "40_~_49": "Age40To49",
+            "50_~_59": "Age50To59",
+            "60_~_69": "Age60To69",
+            "70_~_79": "Age70To79",
+            "80_~_89": "Age80To89",
+            "90_and_above": "Age90AndAbove",
+        },
+        "populationgender": {
+            "total_population": "Total",
+            "male": "Male",
+            "female": "Female",
+        },
+    }
+
     _CACHE_DIR = pathlib.Path("/tmp/lanka_data")
 
     _index: dict | None = None
@@ -332,17 +377,44 @@ class GIG2:
         return cls._query_by_time(q, entries, sub_component)
 
     @classmethod
+    def _rename_fields(cls, q: Query, result: dict) -> dict:
+        """Rename result keys to PascalCase using _COL_RENAMES."""
+        norm_key, _ = q.gig2_key()
+        renames = cls._COL_RENAMES.get(norm_key or "", {})
+        skip = (
+            not result
+            or not renames
+            or any(
+                k in result
+                for k in ("years", "entities", "measurements")
+            )
+        )
+        if skip:
+            return result
+
+        def _apply(d: dict) -> dict:
+            return {renames.get(k, k): v for k, v in d.items()}
+
+        first = next(iter(result.values()), None)
+        renamed = (
+            {eid: _apply(v) for eid, v in result.items()}
+            if isinstance(first, dict)
+            else _apply(result)
+        )
+        return renamed
+
+    @classmethod
     def query(cls, q: Query) -> dict:
         key = f"{q.what_raw}_{q.when_raw}_{q.where_raw}"
         safe = key.replace(":", "-").replace(" ", "_").replace("*", "X")
         cache_file = cls._CACHE_DIR / "query" / f"{safe}.json"
         if cache_file.exists():
             with cache_file.open() as f:
-                return json.load(f)
+                return cls._rename_fields(q, json.load(f))
         index = cls._build_index()
         result = cls._run_query(q, index)
         if result:
             cache_file.parent.mkdir(parents=True, exist_ok=True)
             with cache_file.open("w") as f:
                 json.dump(result, f)
-        return result
+        return cls._rename_fields(q, result)
