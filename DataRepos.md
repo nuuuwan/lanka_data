@@ -32,4 +32,8 @@ Stores data from the 2024 Sri Lanka census.
 
 - <https://github.com/nuuuwan/lk_census_2024/tree/main/data/HH_GND_excel> - various household related info
 
+- <https://github.com/nuuuwan/lk_census_2024/blob/main/data/Population-Preliminary-Report/Population-by-ethnicity/data.tsv> - population by ethnicity
+
+- <https://github.com/nuuuwan/lk_census_2024/blob/main/data/Population-Preliminary-Report/Population-by-religion/data.tsv> - population by religion
+
 All the other data is from the 2024 Census by the Department of Census and Statistics Sri Lanka.
