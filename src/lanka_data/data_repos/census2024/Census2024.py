@@ -38,6 +38,12 @@ class Census2024:
         ),
         "Lighting": ("HH_GND_excel/Main-Source-of-Lighting/data.tsv"),
         "Toilet": ("HH_GND_excel/Toilet-Facilities/data.tsv"),
+        "Ethnicity": (
+            "Population-Preliminary-Report" "/Population-by-ethnicity/data.tsv"
+        ),
+        "Religion": (
+            "Population-Preliminary-Report" "/Population-by-religion/data.tsv"
+        ),
     }
 
     _COL_RENAMES: dict[str, dict[str, str]] = {
