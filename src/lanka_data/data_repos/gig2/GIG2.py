@@ -384,10 +384,7 @@ class GIG2:
         skip = (
             not result
             or not renames
-            or any(
-                k in result
-                for k in ("years", "entities", "measurements")
-            )
+            or any(k in result for k in ("years", "entities", "measurements"))
         )
         if skip:
             return result
