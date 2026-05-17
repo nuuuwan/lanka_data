@@ -6,6 +6,7 @@ Usage:
 
 import json
 import pathlib
+import shutil
 
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import Completer, Completion
@@ -33,9 +34,7 @@ _SOURCE_ELECTION_URL = "https://elections.gov.lk/"
 
 def _meta_census2024(q) -> dict:
     file_path = Census2024._DATASETS.get(q.what_raw, "")
-    repo_file = (
-        f"{_CENSUS2024_RAW_BASE}/{file_path}" if file_path else None
-    )
+    repo_file = f"{_CENSUS2024_RAW_BASE}/{file_path}" if file_path else None
     return {
         "source": _SOURCE_CENSUS,
         "source_url": _SOURCE_CENSUS_URL,
@@ -50,17 +49,17 @@ def _meta_gig2(q) -> dict | None:
         return None
     is_election = norm_key.startswith("governmentelections")
     source = _SOURCE_ELECTION if is_election else _SOURCE_CENSUS
-    source_url = (
-        _SOURCE_ELECTION_URL if is_election else _SOURCE_CENSUS_URL
-    )
+    source_url = _SOURCE_ELECTION_URL if is_election else _SOURCE_CENSUS_URL
     if q.is_wildcard_when:
         repo_file = "multiple"
     else:
-        entry = next(
-            (e for e in entries if e["year"] == q.year), entries[0]
-        )
+        entry = next((e for e in entries if e["year"] == q.year), entries[0])
         repo_file = entry["url"]
-    return {"source": source, "source_url": source_url, "repo_file": repo_file}
+    return {
+        "source": source,
+        "source_url": source_url,
+        "repo_file": repo_file,
+    }
 
 
 def _resolve_meta(q) -> dict:
@@ -167,6 +166,13 @@ class _PathCompleter(Completer):
                 start_position=-len(raw),
                 display="/exit",
                 display_meta="quit console",
+            )
+        if "clear-cache".startswith(prefix.lower()):
+            yield Completion(
+                "clear-cache",
+                start_position=-len(raw),
+                display="clear-cache",
+                display_meta="delete all cached data",
             )
 
     def _complete_segment(self, parts: list, seg: int, prefix: str):
@@ -364,11 +370,22 @@ def _query_and_print(path: str) -> None:
         console.print(f"[bold red]Error:[/bold red] {exc}")
 
 
+def _clear_cache() -> None:
+    cache_dir = GIG2._CACHE_DIR
+    if cache_dir.exists():
+        shutil.rmtree(cache_dir)
+        console.print(f"[green]Cache cleared:[/green] {cache_dir}")
+    else:
+        console.print("[yellow]No cache found.[/yellow]")
+
+
 def _handle_prompt_input(path: str) -> bool:
     """Process one prompt line; return False to exit the loop."""
     if path.lower() in {"exit", "/exit", "quit", "q"}:
         return False
-    if path:
+    if path.lower() == "clear-cache":
+        _clear_cache()
+    elif path:
         _query_and_print(path)
     return True
 
