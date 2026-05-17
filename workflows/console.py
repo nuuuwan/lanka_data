@@ -31,63 +31,65 @@ _SOURCE_ELECTION = "Election Commission of Sri Lanka"
 _SOURCE_ELECTION_URL = "https://elections.gov.lk/"
 
 
-def _meta_for(path: str) -> dict:
-    try:
-        q = Query(path)
-    except ValueError:
-        return {"source": None, "source_url": None, "repo_file": None}
+def _meta_census2024(q) -> dict:
+    file_path = Census2024._DATASETS.get(q.what_raw, "")
+    repo_file = (
+        f"{_CENSUS2024_RAW_BASE}/{file_path}" if file_path else None
+    )
+    return {
+        "source": _SOURCE_CENSUS,
+        "source_url": _SOURCE_CENSUS_URL,
+        "repo_file": repo_file,
+    }
 
+
+def _meta_gig2(q) -> dict | None:
+    norm_key, _ = q.gig2_key()
+    entries = GIG2._build_index().get(norm_key or "", [])
+    if not norm_key or not entries:
+        return None
+    is_election = norm_key.startswith("governmentelections")
+    source = _SOURCE_ELECTION if is_election else _SOURCE_CENSUS
+    source_url = (
+        _SOURCE_ELECTION_URL if is_election else _SOURCE_CENSUS_URL
+    )
+    if q.is_wildcard_when:
+        repo_file = "multiple"
+    else:
+        entry = next(
+            (e for e in entries if e["year"] == q.year), entries[0]
+        )
+        repo_file = entry["url"]
+    return {"source": source, "source_url": source_url, "repo_file": repo_file}
+
+
+def _resolve_meta(q) -> dict:
+    fallback = {
+        "source": _SOURCE_CENSUS,
+        "source_url": _SOURCE_CENSUS_URL,
+        "repo_file": None,
+    }
     if q.is_wildcard_what:
         return {
             "source": "multiple",
             "source_url": None,
             "repo_file": "multiple",
         }
-
     if Census2024.handles(q):
-        file_path = Census2024._DATASETS.get(q.what_raw, "")
-        repo_file = (
-            f"{_CENSUS2024_RAW_BASE}/{file_path}" if file_path else None
-        )
-        return {
-            "source": _SOURCE_CENSUS,
-            "source_url": _SOURCE_CENSUS_URL,
-            "repo_file": repo_file,
-        }
-
+        return _meta_census2024(q)
     try:
-        norm_key, _ = q.gig2_key()
-        if norm_key:
-            is_election = norm_key.startswith("governmentelections")
-            source = _SOURCE_ELECTION if is_election else _SOURCE_CENSUS
-            source_url = (
-                _SOURCE_ELECTION_URL if is_election else _SOURCE_CENSUS_URL
-            )
-            index = GIG2._build_index()
-            entries = index.get(norm_key, [])
-            if entries:
-                if q.is_wildcard_when:
-                    return {
-                        "source": source,
-                        "source_url": source_url,
-                        "repo_file": "multiple",
-                    }
-                entry = next(
-                    (e for e in entries if e["year"] == q.year), entries[0]
-                )
-                return {
-                    "source": source,
-                    "source_url": source_url,
-                    "repo_file": entry["url"],
-                }
+        meta = _meta_gig2(q)
     except Exception:  # noqa: BLE001
-        pass
+        meta = None
+    return meta or fallback
 
-    return {
-        "source": _SOURCE_CENSUS,
-        "source_url": _SOURCE_CENSUS_URL,
-        "repo_file": None,
-    }
+
+def _meta_for(path: str) -> dict:
+    try:
+        q = Query(path)
+    except ValueError:
+        return {"source": None, "source_url": None, "repo_file": None}
+    return _resolve_meta(q)
 
 
 _WHAT_COMPLETIONS = [
@@ -151,35 +153,23 @@ class _PathCompleter(Completer):
             self._years_cache[what] = ["*"] + years
         return self._years_cache[what]
 
-    def get_completions(self, document, complete_event):
-        raw = document.text_before_cursor
-        text = raw.lstrip("/")
-        parts = text.split("/")
-        seg = len(parts) - 1  # 0 = what, 1 = when, 2 = where
-        prefix = parts[-1]
-
-        if seg == 0:
-            # For the first segment the user may have typed nothing, "/", or
-            # "/El".  We replace the entire raw input so the inserted text
-            # includes the leading slash.
-            raw_prefix = raw
-            candidates = _WHAT_COMPLETIONS
-            for token in candidates:
-                if token.lower().startswith(prefix.lower()):
-                    yield Completion(
-                        "/" + token + "/",
-                        start_position=-len(raw_prefix),
-                        display="/" + token,
-                    )
-            if "exit".startswith(prefix.lower()):
+    def _complete_what(self, raw: str, prefix: str):
+        for token in _WHAT_COMPLETIONS:
+            if token.lower().startswith(prefix.lower()):
                 yield Completion(
-                    "exit",
-                    start_position=-len(raw_prefix),
-                    display="/exit",
-                    display_meta="quit console",
+                    "/" + token + "/",
+                    start_position=-len(raw),
+                    display="/" + token,
                 )
-            return
+        if "exit".startswith(prefix.lower()):
+            yield Completion(
+                "exit",
+                start_position=-len(raw),
+                display="/exit",
+                display_meta="quit console",
+            )
 
+    def _complete_segment(self, parts: list, seg: int, prefix: str):
         if seg == 1:
             what = parts[0]
             candidates = (
@@ -191,7 +181,6 @@ class _PathCompleter(Completer):
             suffix = ""
         else:
             return
-
         for token in candidates:
             if token.lower().startswith(prefix.lower()):
                 yield Completion(
@@ -199,6 +188,16 @@ class _PathCompleter(Completer):
                     start_position=-len(prefix),
                     display=token,
                 )
+
+    def get_completions(self, document, complete_event):
+        raw = document.text_before_cursor
+        parts = raw.lstrip("/").split("/")
+        seg = len(parts) - 1
+        prefix = parts[-1]
+        if seg == 0:
+            yield from self._complete_what(raw, prefix)
+        else:
+            yield from self._complete_segment(parts, seg, prefix)
 
 
 _kb = KeyBindings()
@@ -365,6 +364,15 @@ def _query_and_print(path: str) -> None:
         console.print(f"[bold red]Error:[/bold red] {exc}")
 
 
+def _handle_prompt_input(path: str) -> bool:
+    """Process one prompt line; return False to exit the loop."""
+    if path.lower() in {"exit", "/exit", "quit", "q"}:
+        return False
+    if path:
+        _query_and_print(path)
+    return True
+
+
 def run() -> None:
     console.print(
         "[bold cyan]lanka_data console[/bold cyan]  "
@@ -382,11 +390,8 @@ def run() -> None:
             path = session.prompt("> ").strip()
         except (EOFError, KeyboardInterrupt):
             break
-        if path.lower() in {"exit", "/exit", "quit", "q"}:
+        if not _handle_prompt_input(path):
             break
-        if not path:
-            continue
-        _query_and_print(path)
 
 
 if __name__ == "__main__":
