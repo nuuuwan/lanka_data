@@ -53,6 +53,9 @@ class PathCompleter(Completer):
             suffix = "/"
         elif seg == 2:
             candidates = CompletionsData._WHERE_COMPLETIONS
+            suffix = "/"
+        elif seg == 3:
+            candidates = CompletionsData._HOW_COMPLETIONS
             suffix = ""
         else:
             return

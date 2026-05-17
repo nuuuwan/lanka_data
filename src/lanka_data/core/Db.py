@@ -34,15 +34,28 @@ class Db:
             return instance(path)
         return instance
 
-    def __call__(self, path: str) -> dict:
+    def __call__(self, path: str) -> dict | str:
         q = Query(path)
         if q.is_wildcard_what:
-            return _merge_catalogs(GIG2.query(q), Census2024.query(q))
-        if Census2024.handles(q):
+            result = _merge_catalogs(GIG2.query(q), Census2024.query(q))
+        elif Census2024.handles(q):
             gig2_r = GIG2.query(q)
             c24_r = Census2024.query(q)
             result = _merge_results(gig2_r, c24_r) if gig2_r else c24_r
         else:
             result = GIG2.query(q)
         _check_empty(result, q, path)
-        return result
+
+        if q.how == "JSON":
+            return result
+
+        # Visual renderers — imported lazily to avoid circular imports
+        from ..console.ConsoleMetaMixin import resolve_meta
+        from ..renderers import render_bar, render_map, render_pie
+
+        meta = resolve_meta(path)
+        if q.how == "Bar":
+            return render_bar(path, result, meta)
+        if q.how == "Pie":
+            return render_pie(path, result, meta)
+        return render_map(path, result, meta)

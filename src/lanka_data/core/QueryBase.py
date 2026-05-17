@@ -3,16 +3,34 @@ import re
 
 class QueryBase:
 
+    _HOW_CANONICAL: dict[str, str] = {
+        "json": "JSON",
+        "bar": "Bar",
+        "pie": "Pie",
+        "map": "Map",
+    }
+
     def __init__(self, path: str) -> None:
         parts = path.strip("/").split("/")
-        if len(parts) != 3:
+        if len(parts) == 3:
+            self.what_raw, self.when_raw, self.where_raw = parts
+            self.how_raw = "JSON"
+        elif len(parts) == 4:
+            self.what_raw, self.when_raw, self.where_raw, self.how_raw = parts
+            if self.how_raw.lower() not in self._HOW_CANONICAL:
+                raise ValueError(
+                    f"Unknown <how>: {self.how_raw!r}."
+                    f" Must be one of: {', '.join(self._HOW_CANONICAL.values())}."
+                )
+        else:
             raise ValueError(
-                "Query must have exactly 3 segments"
-                f" (/<what>/<when>/<where>), got: {path!r}"
+                "Query must have 3 or 4 segments"
+                f" (/<what>/<when>/<where>[/<how>]), got: {path!r}"
             )
-        self.what_raw = parts[0]
-        self.when_raw = parts[1]
-        self.where_raw = parts[2]
+
+    @property
+    def how(self) -> str:
+        return self._HOW_CANONICAL[self.how_raw.lower()]
 
     @staticmethod
     def normalize(s: str) -> str:

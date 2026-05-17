@@ -62,3 +62,25 @@ def test_gig2_key_wildcard_what():
     key, sub = Query("/*/2024/LK").gig2_key()
     assert key is None
     assert sub is None
+
+
+# --- how ---
+
+def test_how_default_json():
+    assert Query("/Population/2012/LK").how == "JSON"
+
+
+def test_how_explicit():
+    assert Query("/Ethnicity/2024/LK/Bar").how == "Bar"
+    assert Query("/Ethnicity/2024/LK/Pie").how == "Pie"
+    assert Query("/Ethnicity/2024/LK/Map").how == "Map"
+
+
+def test_how_case_insensitive():
+    assert Query("/Ethnicity/2024/LK/bar").how == "Bar"
+    assert Query("/Ethnicity/2024/LK/JSON").how == "JSON"
+
+
+def test_how_unknown_raises():
+    with pytest.raises(ValueError):
+        Query("/Ethnicity/2024/LK/XLSX")

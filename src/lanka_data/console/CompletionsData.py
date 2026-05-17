@@ -41,3 +41,5 @@ class CompletionsData:
         "LK-9",
         "*",
     ]
+
+    _HOW_COMPLETIONS = ["JSON", "Bar", "Pie", "Map"]

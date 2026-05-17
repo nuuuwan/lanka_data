@@ -1,5 +1,8 @@
 import json
+import os
 import pathlib
+import subprocess
+import tempfile
 
 from prompt_toolkit import PromptSession
 from prompt_toolkit.history import FileHistory
@@ -26,6 +29,18 @@ class Console(
     def _query_and_print(self, path: str) -> None:
         try:
             result = Db(path)
+            if isinstance(result, str):
+                # SVG output — write to a temp file and open with the default app
+                with tempfile.NamedTemporaryFile(
+                    suffix=".svg", delete=False, mode="w", encoding="utf-8"
+                ) as f:
+                    f.write(result)
+                    svg_path = f.name
+                subprocess.run(["open", svg_path], check=False)
+                self.console.print(
+                    f"[bold green]SVG opened:[/bold green] {svg_path}"
+                )
+                return
             meta = self._meta_for(path)
             base = {
                 "query": path,

@@ -100,3 +100,33 @@ def test_empty_result_bad_year():
 def test_malformed_path_raises():
     with pytest.raises(ValueError):
         Db("/only/two")
+
+
+# --- how segment ---
+
+def test_how_json_explicit():
+    # /path/JSON and /path are equivalent
+    assert Db("/Gender/2024/LK/JSON") == Db("/Gender/2024/LK")
+
+
+def test_how_json_case_insensitive():
+    assert Db("/Gender/2024/LK/json") == Db("/Gender/2024/LK/JSON")
+
+
+def test_how_visual_returns_svg():
+    for how in ("Bar", "Pie"):
+        result = Db(f"/Ethnicity/2024/LK/{how}")
+        assert isinstance(result, str)
+        assert result.startswith("<svg")
+        assert "<metadata>" in result
+
+    # Map requires a sub-region breakdown
+    result = Db("/Ethnicity/2024/LK:Districts/Map")
+    assert isinstance(result, str)
+    assert result.startswith("<svg")
+    assert "<metadata>" in result
+
+
+def test_how_unknown_raises():
+    with pytest.raises(ValueError):
+        Db("/Ethnicity/2024/LK/XLSX")

@@ -74,3 +74,8 @@ class ConsoleMetaMixin:
         except ValueError:
             return {"source": None, "source_url": None, "repo_file": None}
         return self._resolve_meta(q)
+
+
+def resolve_meta(path: str) -> dict:
+    """Module-level helper: resolve source metadata for a query path."""
+    return ConsoleMetaMixin()._meta_for(path)
