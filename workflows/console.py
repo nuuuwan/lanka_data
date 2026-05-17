@@ -5,10 +5,12 @@ Usage:
 """
 
 import json
+import pathlib
 
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.filters import completion_is_selected
+from prompt_toolkit.history import FileHistory
 from prompt_toolkit.key_binding import KeyBindings
 from rich.console import Console
 
@@ -209,17 +211,144 @@ def _enter_accepts_completion(event):
     buf.apply_completion(buf.complete_state.current_completion)
 
 
+def _pct_flat(d: dict) -> dict | None:
+    """Percentages for a flat {field: numeric} dict, excluding 'Total'."""
+    nums = {
+        k: v
+        for k, v in d.items()
+        if k != "Total" and isinstance(v, (int, float))
+    }
+    raw_total = d.get("Total")
+    total = (
+        raw_total
+        if isinstance(raw_total, (int, float))
+        else sum(nums.values())
+    )
+    if not nums or not total:
+        return None
+    out = {}
+    for k, v in nums.items():
+        pct = v / total * 100
+        if pct >= 0.005:
+            out[k] = round(pct, 2)
+    return out or None
+
+
+def _compute_p_values(result) -> dict | None:
+    """Derive percentage breakdown from a query result."""
+    special = ("years", "entities", "measurements")
+    skip = not isinstance(result, dict) or any(k in result for k in special)
+    if skip:
+        return None
+    first = next(iter(result.values()), None)
+    if isinstance(first, dict):
+        out = {k: _pct_flat(v) for k, v in result.items()}
+        out = {k: v for k, v in out.items() if v is not None}
+    else:
+        out = _pct_flat(result)
+    return out or None
+
+
+def _entity_total(sub: dict):
+    """Extract or compute the total for one entity sub-dict."""
+    raw = sub.get("Total")
+    if isinstance(raw, (int, float)):
+        return raw
+    nums = [
+        v
+        for k, v in sub.items()
+        if k != "Total" and isinstance(v, (int, float))
+    ]
+    return sum(nums) if nums else None
+
+
+def _total_and_strip(result) -> tuple:
+    """Strip Total key; return (values, total_value, n_values)."""
+    special = ("years", "entities", "measurements")
+    if not isinstance(result, dict) or any(k in result for k in special):
+        return result, None, None
+    first = next(iter(result.values()), None)
+    if isinstance(first, dict):
+        total_value = {eid: _entity_total(sub) for eid, sub in result.items()}
+        values = {
+            eid: {k: v for k, v in sub.items() if k != "Total"}
+            for eid, sub in result.items()
+        }
+        return values, total_value, len(next(iter(values.values()), {}))
+    raw = result.get("Total")
+    nums = [
+        v
+        for k, v in result.items()
+        if k != "Total" and isinstance(v, (int, float))
+    ]
+    if isinstance(raw, (int, float)):
+        total_v = raw
+    elif nums:
+        total_v = sum(nums)
+    else:
+        total_v = None
+    values = {k: v for k, v in result.items() if k != "Total"}
+    return values, total_v, len(values)
+
+
+def _is_election(path: str) -> bool:
+    """Return True if path resolves to an election dataset."""
+    try:
+        norm_key, _ = Query(path).gig2_key()
+        return bool(norm_key and norm_key.startswith("governmentelections"))
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def _split_election(result: dict) -> tuple[dict, dict]:
+    """Split an election result into (summary, party) dicts."""
+    cols = GIG2._SUMMARY_COLS
+    first = next(iter(result.values()), None)
+    if isinstance(first, dict):
+        summary = {
+            eid: {k: v for k, v in sub.items() if k in cols}
+            for eid, sub in result.items()
+        }
+        party = {
+            eid: {k: v for k, v in sub.items() if k not in cols}
+            for eid, sub in result.items()
+        }
+    else:
+        summary = {k: v for k, v in result.items() if k in cols}
+        party = {k: v for k, v in result.items() if k not in cols}
+    return summary, party
+
+
 def _query_and_print(path: str) -> None:
     try:
         result = db(path)
         meta = _meta_for(path)
-        output = {
+        base = {
             "query": path,
             "source": meta["source"],
             "source_url": meta["source_url"],
             "repo_file": meta["repo_file"],
-            "results": result,
         }
+        if _is_election(path):
+            summary, party = _split_election(result)
+            _, total_value, n_values = _total_and_strip(party)
+            output = {
+                **base,
+                "summary": summary,
+                "total_value": total_value,
+                "n_values": n_values,
+                "party": party,
+                "p_party": _compute_p_values(party),
+            }
+        else:
+            values, total_value, n_values = _total_and_strip(result)
+            output = {
+                **base,
+                "total_value": total_value,
+                "n_values": n_values,
+                "values": values,
+                "p_values": _compute_p_values(result),
+            }
         console.print_json(json.dumps(output))
     except Exception as exc:  # noqa: BLE001
         console.print(f"[bold red]Error:[/bold red] {exc}")
@@ -230,10 +359,12 @@ def run() -> None:
         "[bold cyan]lanka_data console[/bold cyan]  "
         "(type [bold]exit[/bold] to quit, Tab to autocomplete)\n"
     )
+    history_path = pathlib.Path.home() / ".lanka_data_history"
     session = PromptSession(
         completer=_PathCompleter(),
         complete_while_typing=True,
         key_bindings=_kb,
+        history=FileHistory(str(history_path)),
     )
     while True:
         try:
