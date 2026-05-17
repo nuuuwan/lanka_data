@@ -1,4 +1,5 @@
 """Choropleth tile-grid map SVG renderer for Sri Lanka regions."""
+
 from .Palette import Palette
 
 # ---------------------------------------------------------------------------
@@ -6,62 +7,83 @@ from .Palette import Palette
 # ---------------------------------------------------------------------------
 
 _DISTRICT_GRID: dict[str, tuple[int, int]] = {
-    "LK-81": (0, 2),   # Jaffna
-    "LK-83": (1, 1),   # Mannar
-    "LK-82": (1, 2),   # Kilinochchi
-    "LK-85": (1, 3),   # Mullaitivu
-    "LK-84": (2, 2),   # Vavuniya
-    "LK-42": (3, 0),   # Puttalam
-    "LK-41": (3, 1),   # Kurunegala
-    "LK-51": (3, 2),   # Anuradhapura
-    "LK-92": (3, 3),   # Trincomalee
-    "LK-12": (4, 1),   # Gampaha
-    "LK-52": (4, 2),   # Polonnaruwa
-    "LK-93": (4, 3),   # Batticaloa
-    "LK-11": (5, 1),   # Colombo
-    "LK-21": (5, 2),   # Kandy
-    "LK-13": (6, 1),   # Kalutara
-    "LK-22": (6, 2),   # Matale
-    "LK-91": (6, 3),   # Ampara
-    "LK-72": (7, 1),   # Kegalle
-    "LK-23": (7, 2),   # Nuwara Eliya
-    "LK-61": (7, 3),   # Badulla
-    "LK-71": (8, 2),   # Ratnapura
-    "LK-62": (8, 3),   # Moneragala
-    "LK-31": (9, 2),   # Galle
+    "LK-81": (0, 2),  # Jaffna
+    "LK-83": (1, 1),  # Mannar
+    "LK-82": (1, 2),  # Kilinochchi
+    "LK-85": (1, 3),  # Mullaitivu
+    "LK-84": (2, 2),  # Vavuniya
+    "LK-42": (3, 0),  # Puttalam
+    "LK-41": (3, 1),  # Kurunegala
+    "LK-51": (3, 2),  # Anuradhapura
+    "LK-92": (3, 3),  # Trincomalee
+    "LK-12": (4, 1),  # Gampaha
+    "LK-52": (4, 2),  # Polonnaruwa
+    "LK-93": (4, 3),  # Batticaloa
+    "LK-11": (5, 1),  # Colombo
+    "LK-21": (5, 2),  # Kandy
+    "LK-13": (6, 1),  # Kalutara
+    "LK-22": (6, 2),  # Matale
+    "LK-91": (6, 3),  # Ampara
+    "LK-72": (7, 1),  # Kegalle
+    "LK-23": (7, 2),  # Nuwara Eliya
+    "LK-61": (7, 3),  # Badulla
+    "LK-71": (8, 2),  # Ratnapura
+    "LK-62": (8, 3),  # Moneragala
+    "LK-31": (9, 2),  # Galle
     "LK-32": (10, 2),  # Matara
     "LK-33": (11, 2),  # Hambantota
 }
 
 _PROVINCE_GRID: dict[str, tuple[int, int]] = {
-    "LK-7": (0, 1),   # Northern
-    "LK-4": (1, 0),   # North Western
-    "LK-5": (1, 1),   # North Central
-    "LK-8": (1, 2),   # Eastern
-    "LK-1": (2, 0),   # Western
-    "LK-2": (2, 1),   # Central
-    "LK-9": (2, 2),   # Uva
-    "LK-6": (3, 0),   # Sabaragamuwa
-    "LK-3": (3, 1),   # Southern
+    "LK-7": (0, 1),  # Northern
+    "LK-4": (1, 0),  # North Western
+    "LK-5": (1, 1),  # North Central
+    "LK-8": (1, 2),  # Eastern
+    "LK-1": (2, 0),  # Western
+    "LK-2": (2, 1),  # Central
+    "LK-9": (2, 2),  # Uva
+    "LK-6": (3, 0),  # Sabaragamuwa
+    "LK-3": (3, 1),  # Southern
 }
 
 _DISTRICT_NAMES: dict[str, str] = {
-    "LK-11": "Colombo",      "LK-12": "Gampaha",       "LK-13": "Kalutara",
-    "LK-21": "Kandy",        "LK-22": "Matale",        "LK-23": "Nuwara Eliya",
-    "LK-31": "Galle",        "LK-32": "Matara",        "LK-33": "Hambantota",
-    "LK-41": "Kurunegala",   "LK-42": "Puttalam",
-    "LK-51": "Anuradhapura", "LK-52": "Polonnaruwa",
-    "LK-61": "Badulla",      "LK-62": "Moneragala",
-    "LK-71": "Ratnapura",    "LK-72": "Kegalle",
-    "LK-81": "Jaffna",       "LK-82": "Kilinochchi",   "LK-83": "Mannar",
-    "LK-84": "Vavuniya",     "LK-85": "Mullaitivu",
-    "LK-91": "Ampara",       "LK-92": "Trincomalee",   "LK-93": "Batticaloa",
+    "LK-11": "Colombo",
+    "LK-12": "Gampaha",
+    "LK-13": "Kalutara",
+    "LK-21": "Kandy",
+    "LK-22": "Matale",
+    "LK-23": "Nuwara Eliya",
+    "LK-31": "Galle",
+    "LK-32": "Matara",
+    "LK-33": "Hambantota",
+    "LK-41": "Kurunegala",
+    "LK-42": "Puttalam",
+    "LK-51": "Anuradhapura",
+    "LK-52": "Polonnaruwa",
+    "LK-61": "Badulla",
+    "LK-62": "Moneragala",
+    "LK-71": "Ratnapura",
+    "LK-72": "Kegalle",
+    "LK-81": "Jaffna",
+    "LK-82": "Kilinochchi",
+    "LK-83": "Mannar",
+    "LK-84": "Vavuniya",
+    "LK-85": "Mullaitivu",
+    "LK-91": "Ampara",
+    "LK-92": "Trincomalee",
+    "LK-93": "Batticaloa",
 }
 
 _PROVINCE_NAMES: dict[str, str] = {
-    "LK-1": "Western",    "LK-2": "Central",    "LK-3": "Southern",
-    "LK-4": "N.Western",  "LK-5": "N.Central",  "LK-6": "Sabaragamuwa",
-    "LK-7": "Northern",   "LK-8": "Eastern",    "LK-9": "Uva",
+    "LK-1": "Western",
+    "LK-2": "Central",
+    "LK-3": "Southern",
+    "LK-4": "N.Western",
+    "LK-5": "N.Central",
+    "LK-6": "Sabaragamuwa",
+    "LK-7": "Northern",
+    "LK-8": "Eastern",
+    "LK-9": "Uva",
 }
 
 # Cell geometry
@@ -116,8 +138,12 @@ class Map:
 
         grid = Map._pick_grid(list(result.keys()))
         if grid is not None:
-            return Map._tile_svg(path, result, dominant, cat_color, categories, grid, meta)
-        return Map._list_svg(path, result, dominant, cat_color, categories, meta)
+            return Map._tile_svg(
+                path, result, dominant, cat_color, categories, grid, meta
+            )
+        return Map._list_svg(
+            path, result, dominant, cat_color, categories, meta
+        )
 
     @staticmethod
     def _pick_grid(codes: list[str]) -> dict[str, tuple[int, int]] | None:
@@ -132,7 +158,9 @@ class Map:
         return _DISTRICT_NAMES.get(code) or _PROVINCE_NAMES.get(code) or code
 
     @staticmethod
-    def _cell_svg(x: int, y: int, code: str, name: str, dom: str, color: str) -> str:
+    def _cell_svg(
+        x: int, y: int, code: str, name: str, dom: str, color: str
+    ) -> str:
         short_dom = dom[:11] + ("…" if len(dom) > 11 else "")
         return (
             f'  <rect x="{x}" y="{y}" width="{_CELL_W}" height="{_CELL_H}" '
@@ -146,7 +174,9 @@ class Map:
         )
 
     @staticmethod
-    def _tile_svg(path, result, dominant, cat_color, categories, grid, meta) -> str:
+    def _tile_svg(
+        path, result, dominant, cat_color, categories, grid, meta
+    ) -> str:
         P = Palette
         codes = list(result.keys())
         max_row = max(grid[c][0] for c in codes if c in grid)
@@ -173,7 +203,9 @@ class Map:
             y = PAD_TOP + row * _STEP_Y
             dom = dominant.get(code, "")
             color = cat_color.get(dom, "#94a3b8")
-            cells.append(Map._cell_svg(x, y, code, Map._get_name(code), dom, color))
+            cells.append(
+                Map._cell_svg(x, y, code, Map._get_name(code), dom, color)
+            )
 
         leg_x = PAD_L + grid_w + PAD_GAP
         leg_y0 = PAD_TOP
