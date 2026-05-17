@@ -35,9 +35,7 @@ class Census2024(
                 continue
             raw = cls._row_data(row)
             data = {renames.get(k, k): v for k, v in raw.items()}
-            result[eid] = (
-                next(iter(data.values())) if len(data) == 1 else data
-            )
+            result[eid] = next(iter(data.values())) if len(data) == 1 else data
         if where.level is not None:
             return result
         return next(iter(result.values()), result)
@@ -87,10 +85,12 @@ class Census2024(
     def query(cls, q: Query) -> dict:
         if q.is_wildcard_what:
             return cls._catalog(q)
-        if q.what_raw not in cls._DATASETS:
+        label = cls._resolve_label(q.what_raw)
+        if label is None:
             return {}
+        q.what_raw = label
         return cls._query_for_time(q)
 
     @classmethod
     def handles(cls, q: Query) -> bool:
-        return q.what_raw in cls._DATASETS
+        return cls._resolve_label(q.what_raw) is not None

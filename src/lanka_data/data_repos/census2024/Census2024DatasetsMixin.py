@@ -14,10 +14,14 @@ class Census2024DatasetsMixin:
         "Lighting": ("HH_GND_excel/Main-Source-of-Lighting/data.tsv"),
         "Toilet": ("HH_GND_excel/Toilet-Facilities/data.tsv"),
         "Ethnicity": (
-            "Population-Preliminary-Report"
-            "/Population-by-ethnicity/data.tsv"
+            "Population-Preliminary-Report" "/Population-by-ethnicity/data.tsv"
         ),
         "Religion": (
             "Population-Preliminary-Report" "/Population-by-religion/data.tsv"
         ),
     }
+
+    @classmethod
+    def _resolve_label(cls, what_raw: str) -> str | None:
+        lw = what_raw.lower()
+        return next((k for k in cls._DATASETS if k.lower() == lw), None)
