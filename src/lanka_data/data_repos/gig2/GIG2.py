@@ -57,50 +57,7 @@ class GIG2:
         "socialhouseholdyearofconstruction": "YearBuilt",
     }
 
-    _COL_RENAMES: dict[str, dict[str, str]] = {
-        "populationethnicity": {
-            "total_population": "Total",
-            "sinhalese": "Sinhalese",
-            "sl_tamil": "SriLankaTamil",
-            "ind_tamil": "IndianTamil",
-            "sl_moor": "SriLankaMoor",
-            "burgher": "Burgher",
-            "malay": "Malay",
-            "sl_chetty": "SriLankaChetty",
-            "bharatha": "Bharatha",
-            "other_eth": "Other",
-        },
-        "populationreligion": {
-            "total_population": "Total",
-            "buddhist": "Buddhist",
-            "hindu": "Hindu",
-            "islam": "Islam",
-            "roman_catholic": "RomanCatholic",
-            "other_christian": "OtherChristian",
-            "other": "Other",
-        },
-        "populationtotal": {
-            "total_population": "Total",
-        },
-        "populationagegroup": {
-            "total_population": "Total",
-            "less_than_10": "AgeLessThan10",
-            "10_~_19": "Age10To19",
-            "20_~_29": "Age20To29",
-            "30_~_39": "Age30To39",
-            "40_~_49": "Age40To49",
-            "50_~_59": "Age50To59",
-            "60_~_69": "Age60To69",
-            "70_~_79": "Age70To79",
-            "80_~_89": "Age80To89",
-            "90_and_above": "Age90AndAbove",
-        },
-        "populationgender": {
-            "total_population": "Total",
-            "male": "Male",
-            "female": "Female",
-        },
-    }
+    _COL_RENAMES: dict[str, dict[str, str]] = {}
 
     _CACHE_DIR = pathlib.Path("/tmp/lanka_data")
 
