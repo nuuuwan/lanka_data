@@ -28,6 +28,12 @@ def _check_empty(result, q: Query, path: str) -> None:
 
 
 class Db:
+    def __new__(cls, path: str = None):
+        instance = object.__new__(cls)
+        if path is not None:
+            return instance(path)
+        return instance
+
     def __call__(self, path: str) -> dict:
         q = Query(path)
         if q.is_wildcard_what:
