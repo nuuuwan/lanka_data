@@ -7,7 +7,7 @@ README spec:
 
 import unittest
 
-from lanka_data import db
+from lanka_data import Db
 
 _SUMMARY_COLS = {
     "valid",
@@ -24,7 +24,7 @@ class TestElectionPresidentialPartiesOnly(unittest.TestCase):
     """README: /Election:Presidential:Parties/2024/LK → just parties."""
 
     def setUp(self):
-        self.result = db("/Election:Presidential:Parties/2024/EC-01")
+        self.result = Db("/Election:Presidential:Parties/2024/EC-01")
 
     def test_returns_dict(self):
         self.assertIsInstance(self.result, dict)
@@ -43,9 +43,9 @@ class TestCompositeSubComponentSumDoesNotOverlap(unittest.TestCase):
     """Parties + Summary cols should together equal the full result cols."""
 
     def test_parties_and_summary_partition_full_result(self):
-        full = set(db("/Election:Presidential/2024/EC-01").keys())
-        summary = set(db("/Election:Presidential:Summary/2024/EC-01").keys())
-        parties = set(db("/Election:Presidential:Parties/2024/EC-01").keys())
+        full = set(Db("/Election:Presidential/2024/EC-01").keys())
+        summary = set(Db("/Election:Presidential:Summary/2024/EC-01").keys())
+        parties = set(Db("/Election:Presidential:Parties/2024/EC-01").keys())
         self.assertEqual(full, summary | parties)
         self.assertFalse(
             summary & parties,

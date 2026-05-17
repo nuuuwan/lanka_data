@@ -2,14 +2,14 @@
 
 import unittest
 
-from lanka_data import db
+from lanka_data import Db
 
 
 class TestCensusWildcardWhen(unittest.TestCase):
     """/Housing/*/<where> — Census-only label, only 2024 exists."""
 
     def setUp(self):
-        self.result = db("/Housing/*/LK")
+        self.result = Db("/Housing/*/LK")
 
     def test_has_years_key(self):
         self.assertIn("years", self.result)
@@ -25,7 +25,7 @@ class TestCensusOverlapWildcardWhen(unittest.TestCase):
     """/Gender/*/LK — both repos contribute years."""
 
     def setUp(self):
-        self.result = db("/Gender/*/LK")
+        self.result = Db("/Gender/*/LK")
 
     def test_has_years_key(self):
         self.assertIn("years", self.result)
@@ -41,7 +41,7 @@ class TestCensusWildcardWhere(unittest.TestCase):
     """/Housing/2024/* → {"entities": [...]}."""
 
     def setUp(self):
-        self.result = db("/Housing/2024/*")
+        self.result = Db("/Housing/2024/*")
 
     def test_has_entities_key(self):
         self.assertIn("entities", self.result)
@@ -57,7 +57,7 @@ class TestCensusWildcardWhenAndWhere(unittest.TestCase):
     """/Housing/*/* → {"years": ["2024"]} (no TSV needed)."""
 
     def setUp(self):
-        self.result = db("/Housing/*/*")
+        self.result = Db("/Housing/*/*")
 
     def test_has_years_key(self):
         self.assertIn("years", self.result)
@@ -70,7 +70,7 @@ class TestCensusCatalogMerge(unittest.TestCase):
     """/*/2024/LK catalog includes both GIG2 and Census data."""
 
     def setUp(self):
-        self.result = db("/*/2024/LK")
+        self.result = Db("/*/2024/LK")
 
     def test_has_measurements_key(self):
         self.assertIn("measurements", self.result)

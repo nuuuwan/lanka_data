@@ -2,9 +2,8 @@ from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.filters import completion_is_selected
 from prompt_toolkit.key_binding import KeyBindings
 
-from lanka_data import db
-
-from ._completions_data import _WHAT_COMPLETIONS, _WHERE_COMPLETIONS
+from lanka_data.console.CompletionsData import CompletionsData
+from lanka_data.core import Db
 
 
 class PathCompleter(Completer):
@@ -15,7 +14,7 @@ class PathCompleter(Completer):
     def _years_for(self, what: str) -> list[str]:
         if what not in self._years_cache:
             try:
-                result = db(f"/{what}/*/LK")
+                result = Db(f"/{what}/*/LK")
                 years = sorted(result.get("years", []))
             except Exception:  # noqa: BLE001
                 years = []
@@ -23,7 +22,7 @@ class PathCompleter(Completer):
         return self._years_cache[what]
 
     def _complete_what(self, raw: str, prefix: str):
-        for token in _WHAT_COMPLETIONS:
+        for token in CompletionsData._WHAT_COMPLETIONS:
             if token.lower().startswith(prefix.lower()):
                 yield Completion(
                     "/" + token + "/",
@@ -53,7 +52,7 @@ class PathCompleter(Completer):
             )
             suffix = "/"
         elif seg == 2:
-            candidates = _WHERE_COMPLETIONS
+            candidates = CompletionsData._WHERE_COMPLETIONS
             suffix = ""
         else:
             return

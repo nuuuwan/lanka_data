@@ -6,7 +6,7 @@ Network access required.
 import re
 import unittest
 
-from lanka_data import db
+from lanka_data import Db
 
 _SUMMARY_COLS = {
     "valid",
@@ -24,7 +24,7 @@ class TestElectionPresidentialNational(unittest.TestCase):
     full results at national level."""
 
     def setUp(self):
-        self.result = db("/Election:Presidential/2024/LK")
+        self.result = Db("/Election:Presidential/2024/LK")
 
     def test_returns_dict(self):
         self.assertIsInstance(self.result, dict)
@@ -48,7 +48,7 @@ class TestElectionPresidentialSummaryByPDs(unittest.TestCase):
     """
 
     def setUp(self):
-        self.result = db("/Election:Presidential:Summary/2024/EC-01:PDs")
+        self.result = Db("/Election:Presidential:Summary/2024/EC-01:PDs")
 
     def test_returns_dict(self):
         self.assertIsInstance(self.result, dict)

@@ -9,7 +9,7 @@ Network access required.
 
 import unittest
 
-from lanka_data import db
+from lanka_data import Db
 
 
 class TestWildcardWhat(unittest.TestCase):
@@ -17,7 +17,7 @@ class TestWildcardWhat(unittest.TestCase):
 
     def setUp(self):
         # Use 2012 where population data actually exists
-        self.result = db("/*/2012/LK")
+        self.result = Db("/*/2012/LK")
 
     def test_returns_dict_with_measurements_key(self):
         self.assertIsInstance(self.result, dict)

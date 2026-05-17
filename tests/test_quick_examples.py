@@ -5,14 +5,14 @@ Network access required.
 
 import unittest
 
-from lanka_data import db
+from lanka_data import Db
 
 
 class TestPopulationNational(unittest.TestCase):
     """README: /Population/2024/LK — Sri Lanka's total population."""
 
     def setUp(self):
-        self.result = db("/Population/2012/LK")
+        self.result = Db("/Population/2012/LK")
 
     def test_returns_dict(self):
         self.assertIsInstance(self.result, dict)
@@ -31,7 +31,7 @@ class TestPopulationByDistricts(unittest.TestCase):
     """README: /Population/2024/LK:Districts — breakdown by district."""
 
     def setUp(self):
-        self.result = db("/Population/2012/LK:Districts")
+        self.result = Db("/Population/2012/LK:Districts")
 
     def test_returns_dict(self):
         self.assertIsInstance(self.result, dict)
@@ -57,7 +57,7 @@ class TestPopulationEthnicityByDistricts(unittest.TestCase):
     """
 
     def setUp(self):
-        self.result = db("/Population:Ethnicity/2012/LK:Districts")
+        self.result = Db("/Population:Ethnicity/2012/LK:Districts")
 
     def test_returns_dict(self):
         self.assertIsInstance(self.result, dict)

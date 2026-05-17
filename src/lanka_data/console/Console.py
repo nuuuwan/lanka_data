@@ -5,7 +5,7 @@ from prompt_toolkit import PromptSession
 from prompt_toolkit.history import FileHistory
 from rich.console import Console as _RichConsole
 
-from lanka_data import db
+from lanka_data.core import Db
 
 from .ConsoleCacheMixin import ConsoleCacheMixin
 from .ConsoleElectionMixin import ConsoleElectionMixin
@@ -25,7 +25,7 @@ class Console(
 
     def _query_and_print(self, path: str) -> None:
         try:
-            result = db(path)
+            result = Db(path)
             meta = self._meta_for(path)
             base = {
                 "query": path,

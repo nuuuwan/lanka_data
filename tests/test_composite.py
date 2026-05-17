@@ -10,7 +10,7 @@ Network access required.
 
 import unittest
 
-from lanka_data import db
+from lanka_data import Db
 
 _SUMMARY_COLS = {
     "valid",
@@ -27,7 +27,7 @@ class TestElectionPresidentialFull(unittest.TestCase):
     """No sub-component → returns both party columns and summary columns."""
 
     def setUp(self):
-        self.result = db("/Election:Presidential/2024/EC-01")
+        self.result = Db("/Election:Presidential/2024/EC-01")
 
     def test_returns_dict(self):
         self.assertIsInstance(self.result, dict)
@@ -45,7 +45,7 @@ class TestElectionPresidentialSummaryOnly(unittest.TestCase):
     """README: /Election:Presidential:Summary/2024/LK → just summary."""
 
     def setUp(self):
-        self.result = db("/Election:Presidential:Summary/2024/EC-01")
+        self.result = Db("/Election:Presidential:Summary/2024/EC-01")
 
     def test_returns_dict(self):
         self.assertIsInstance(self.result, dict)

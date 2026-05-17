@@ -11,7 +11,7 @@ Network access required for the data-miss tests.
 
 import unittest
 
-from lanka_data import db
+from lanka_data import Db
 from lanka_data.core.Query import Query
 
 
@@ -20,12 +20,12 @@ class TestMissingYear(unittest.TestCase):
 
     def test_presidential_2023_returns_empty(self):
         # README example: /Election:Presidential/2023/LK → {} with warning
-        result = db("/Election:Presidential/2023/LK")
+        result = Db("/Election:Presidential/2023/LK")
         self.assertEqual(result, {})
 
     def test_population_2024_returns_empty(self):
         # Population census data is only available for 2012
-        result = db("/Population/2024/LK")
+        result = Db("/Population/2024/LK")
         self.assertEqual(result, {})
 
 
@@ -34,11 +34,11 @@ class TestMalformedQuery(unittest.TestCase):
 
     def test_too_few_segments(self):
         with self.assertRaises(ValueError):
-            db("/Population/2012")
+            Db("/Population/2012")
 
     def test_too_many_segments(self):
         with self.assertRaises(ValueError):
-            db("/Population/2012/LK/extra")
+            Db("/Population/2012/LK/extra")
 
     def test_empty_path(self):
         with self.assertRaises(ValueError):

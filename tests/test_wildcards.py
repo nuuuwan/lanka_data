@@ -11,7 +11,7 @@ Network access required.
 
 import unittest
 
-from lanka_data import db
+from lanka_data import Db
 
 _KNOWN_PRESIDENTIAL_YEARS = {
     "1982",
@@ -30,7 +30,7 @@ class TestWildcardWhen(unittest.TestCase):
     """README: /Election:Presidential/*/EC-01 — list of election years."""
 
     def setUp(self):
-        self.result = db("/Election:Presidential/*/EC-01")
+        self.result = Db("/Election:Presidential/*/EC-01")
 
     def test_has_years_key(self):
         self.assertIn("years", self.result)
@@ -50,7 +50,7 @@ class TestWildcardWhere(unittest.TestCase):
     """/Election:Presidential/2024/* → list of entity IDs."""
 
     def setUp(self):
-        self.result = db("/Election:Presidential/2024/*")
+        self.result = Db("/Election:Presidential/2024/*")
 
     def test_has_entities_key(self):
         self.assertIn("entities", self.result)
@@ -66,7 +66,7 @@ class TestWildcardWhenAndWhere(unittest.TestCase):
     """/Election:Presidential/*/* → years list from index metadata."""
 
     def setUp(self):
-        self.result = db("/Election:Presidential/*/*")
+        self.result = Db("/Election:Presidential/*/*")
 
     def test_has_years_key(self):
         self.assertIn("years", self.result)

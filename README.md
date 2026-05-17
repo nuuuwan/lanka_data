@@ -22,9 +22,9 @@ Or a Python call.
 
 ```python
 
-from lanka_data import db
+from lanka_data import Db
 
-print(db('/<what>/<when>/<where>'))
+print(Db('/<what>/<when>/<where>'))
 
 ```
 

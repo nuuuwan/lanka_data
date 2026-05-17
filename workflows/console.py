@@ -4,7 +4,7 @@ Usage:
     python workflows/console.py
 """
 
-from console.Console import Console
+from lanka_data import Console
 
 
 def run() -> None:

@@ -11,7 +11,7 @@ Then query:
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 
-from lanka_data import db
+from lanka_data import Db
 
 app = FastAPI(title="lanka_data API", version="1.0.0")
 
@@ -20,7 +20,7 @@ app = FastAPI(title="lanka_data API", version="1.0.0")
 def query(what: str, when: str, where: str):
     path = f"/{what}/{when}/{where}"
     try:
-        result = db(path)
+        result = Db(path)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
     return JSONResponse(content=result)
