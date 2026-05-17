@@ -13,8 +13,72 @@ from prompt_toolkit.key_binding import KeyBindings
 from rich.console import Console
 
 from lanka_data import db
+from lanka_data.core.Query import Query
+from lanka_data.data_repos.census2024 import Census2024
+from lanka_data.data_repos.gig2 import GIG2
 
 console = Console()
+
+_CENSUS2024_RAW_BASE = (
+    "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/main/data"
+)
+
+_SOURCE_CENSUS = "Department of Census and Statistics Sri Lanka"
+_SOURCE_CENSUS_URL = "http://www.statistics.gov.lk/"
+_SOURCE_ELECTION = "Election Commission of Sri Lanka"
+_SOURCE_ELECTION_URL = "https://elections.gov.lk/"
+
+
+def _meta_for(path: str) -> dict:
+    try:
+        q = Query(path)
+    except ValueError:
+        return {"source": None, "source_url": None, "repo_file": None}
+
+    if q.is_wildcard_what:
+        return {"source": "multiple", "source_url": None, "repo_file": "multiple"}
+
+    if Census2024.handles(q):
+        file_path = Census2024._DATASETS.get(q.what_raw, "")
+        repo_file = (
+            f"{_CENSUS2024_RAW_BASE}/{file_path}" if file_path else None
+        )
+        return {
+            "source": _SOURCE_CENSUS,
+            "source_url": _SOURCE_CENSUS_URL,
+            "repo_file": repo_file,
+        }
+
+    try:
+        norm_key, _ = q.gig2_key()
+        if norm_key:
+            is_election = norm_key.startswith("governmentelections")
+            source = _SOURCE_ELECTION if is_election else _SOURCE_CENSUS
+            source_url = (
+                _SOURCE_ELECTION_URL if is_election else _SOURCE_CENSUS_URL
+            )
+            index = GIG2._build_index()
+            entries = index.get(norm_key, [])
+            if entries:
+                if q.is_wildcard_when:
+                    return {
+                        "source": source,
+                        "source_url": source_url,
+                        "repo_file": "multiple",
+                    }
+                entry = next(
+                    (e for e in entries if e["year"] == q.year), entries[0]
+                )
+                return {
+                    "source": source,
+                    "source_url": source_url,
+                    "repo_file": entry["url"],
+                }
+    except Exception:  # noqa: BLE001
+        pass
+
+    return {"source": _SOURCE_CENSUS, "source_url": _SOURCE_CENSUS_URL, "repo_file": None}
+
 
 _WHAT_COMPLETIONS = [
     # Census 2024
@@ -78,22 +142,46 @@ class _PathCompleter(Completer):
         return self._years_cache[what]
 
     def get_completions(self, document, complete_event):
-        text = document.text_before_cursor.lstrip("/")
+        raw = document.text_before_cursor
+        text = raw.lstrip("/")
         parts = text.split("/")
         seg = len(parts) - 1  # 0 = what, 1 = when, 2 = where
         prefix = parts[-1]
 
         if seg == 0:
+            # For the first segment the user may have typed nothing, "/", or
+            # "/El".  We replace the entire raw input so the inserted text
+            # includes the leading slash.
+            raw_prefix = raw
             candidates = _WHAT_COMPLETIONS
-        elif seg == 1:
+            for token in candidates:
+                if token.lower().startswith(prefix.lower()):
+                    yield Completion(
+                        "/" + token + "/",
+                        start_position=-len(raw_prefix),
+                        display="/" + token,
+                    )
+            if "exit".startswith(prefix.lower()):
+                yield Completion(
+                    "exit",
+                    start_position=-len(raw_prefix),
+                    display="/exit",
+                    display_meta="quit console",
+                )
+            return
+
+        if seg == 1:
             what = parts[0]
-            candidates = self._years_for(what) if what and what != "*" else ["*"]
+            candidates = (
+                self._years_for(what) if what and what != "*" else ["*"]
+            )
+            suffix = "/"
         elif seg == 2:
             candidates = _WHERE_COMPLETIONS
+            suffix = ""
         else:
             return
 
-        suffix = "/" if seg in (0, 1) else ""
         for token in candidates:
             if token.lower().startswith(prefix.lower()):
                 yield Completion(
@@ -116,7 +204,15 @@ def _enter_accepts_completion(event):
 def _query_and_print(path: str) -> None:
     try:
         result = db(path)
-        console.print_json(json.dumps(result))
+        meta = _meta_for(path)
+        output = {
+            "query": path,
+            "source": meta["source"],
+            "source_url": meta["source_url"],
+            "repo_file": meta["repo_file"],
+            "results": result,
+        }
+        console.print_json(json.dumps(output))
     except Exception as exc:  # noqa: BLE001
         console.print(f"[bold red]Error:[/bold red] {exc}")
 
@@ -136,7 +232,7 @@ def run() -> None:
             path = session.prompt("> ").strip()
         except (EOFError, KeyboardInterrupt):
             break
-        if path.lower() in {"exit", "quit", "q"}:
+        if path.lower() in {"exit", "/exit", "quit", "q"}:
             break
         if not path:
             continue
