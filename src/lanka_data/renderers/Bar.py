@@ -1,5 +1,6 @@
 """Horizontal bar chart SVG renderer."""
 
+from ..data_repos.RegionNames import RegionNames
 from .Palette import Palette
 
 _MAX_BARS = 20
@@ -175,7 +176,7 @@ class Bar:
                     2 +
                     4}" '
                 f'text-anchor="end" font-size="11" fill="{P.LABEL_COLOR}">'
-                f"{P.escape(region)}</text>"
+                f"{P.escape(RegionNames.name_for(region))}</text>"
             )
             for cat in all_cats:
                 val = vals.get(cat, 0)
