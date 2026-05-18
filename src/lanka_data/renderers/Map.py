@@ -238,8 +238,10 @@ class Map:
         lon_pad = (max(lons) - min(lons)) * 0.05 or 0.01
         lat_pad = (max(lats) - min(lats)) * 0.05 or 0.01
         bbox = (
-            min(lons) - lon_pad, min(lats) - lat_pad,
-            max(lons) + lon_pad, max(lats) + lat_pad,
+            min(lons) - lon_pad,
+            min(lats) - lat_pad,
+            max(lons) + lon_pad,
+            max(lats) + lat_pad,
         )
         project = Map._make_projector(bbox, PAD_L, PAD_TOP, MAP_W, MAP_H)
 
