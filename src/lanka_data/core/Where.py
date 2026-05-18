@@ -91,8 +91,7 @@ class Where:
                     pat = rf"^{ec}$"
                 elif region_code in _LK_PROVINCE_TO_ECS:
                     ecs = "|".join(
-                        re.escape(e)
-                        for e in _LK_PROVINCE_TO_ECS[region_code]
+                        re.escape(e) for e in _LK_PROVINCE_TO_ECS[region_code]
                     )
                     pat = rf"^({ecs})$"
                 else:
@@ -105,8 +104,7 @@ class Where:
                     pat = rf"^{ec}[A-Z]$"
                 elif region_code in _LK_PROVINCE_TO_ECS:
                     ecs = "|".join(
-                        re.escape(e)
-                        for e in _LK_PROVINCE_TO_ECS[region_code]
+                        re.escape(e) for e in _LK_PROVINCE_TO_ECS[region_code]
                     )
                     pat = rf"^({ecs})[A-Z]$"
                 else:
