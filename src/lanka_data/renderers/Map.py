@@ -184,10 +184,10 @@ class Map:
 
         # Only render features that appear in the query result.
         relevant_feats = [
-            feat for feat in obj["geometries"]
-            if Map._normalize_pcode(
-                feat["properties"].get(pcode_field, "")
-            ) in dominant
+            feat
+            for feat in obj["geometries"]
+            if Map._normalize_pcode(feat["properties"].get(pcode_field, ""))
+            in dominant
         ]
 
         # Compute a tight bbox from only the relevant features so the

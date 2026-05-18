@@ -28,6 +28,7 @@ class PathCompleter(Completer):
                     "/" + token + "/",
                     start_position=-len(raw),
                     display="/" + token,
+                    display_meta="<what>",
                 )
         if "exit".startswith(prefix.lower()):
             yield Completion(
@@ -51,12 +52,15 @@ class PathCompleter(Completer):
                 self._years_for(what) if what and what != "*" else ["*"]
             )
             suffix = "/"
+            meta = "<when>"
         elif seg == 2:
             candidates = CompletionsData._WHERE_COMPLETIONS
             suffix = "/"
+            meta = "<where>"
         elif seg == 3:
             candidates = CompletionsData._HOW_COMPLETIONS
             suffix = ""
+            meta = "<how>"
         else:
             return
         for token in candidates:
@@ -65,6 +69,7 @@ class PathCompleter(Completer):
                     token + suffix,
                     start_position=-len(prefix),
                     display=token,
+                    display_meta=meta,
                 )
 
     def get_completions(self, document, complete_event):
