@@ -1,5 +1,6 @@
 from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.filters import completion_is_selected
+from prompt_toolkit.formatted_text import HTML
 from prompt_toolkit.key_binding import KeyBindings
 
 from lanka_data.console.CompletionsData import CompletionsData
@@ -21,7 +22,18 @@ class PathCompleter(Completer):
             self._years_cache[what] = ["*"] + years
         return self._years_cache[what]
 
+    @staticmethod
+    def _heading(label: str, noop_text: str, start: int) -> Completion:
+        """Return a non-functional heading entry styled as a group title."""
+        return Completion(
+            noop_text,
+            start_position=start,
+            display=HTML(f"<b><ansibrightblack>── {label} ──</ansibrightblack></b>"),
+            display_meta="",
+        )
+
     def _complete_what(self, raw: str, prefix: str):
+        yield self._heading("‹what›", raw, -len(raw))
         for token in CompletionsData._WHAT_COMPLETIONS:
             if token.lower().startswith(prefix.lower()):
                 yield Completion(
@@ -63,6 +75,7 @@ class PathCompleter(Completer):
             meta = "<how>"
         else:
             return
+        yield self._heading(f"‹{meta.strip('<>')}›", prefix, -len(prefix))
         for token in candidates:
             if token.lower().startswith(prefix.lower()):
                 yield Completion(
