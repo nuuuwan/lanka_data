@@ -28,6 +28,8 @@ class Palette:
         "sinhalese": "#8D153A",  # maroon      – Sinhalese majority
         "srilankatamil": "#FF7000",  # saffron     – Sri Lankan Tamils
         "srilankatamils": "#FF7000",
+        "srilankantamil": "#FF7000",  # alias: data uses "SriLankanTamil"
+        "srilankantamils": "#FF7000",
         "indiantamil": "#C85000",  # deep saffron – Indian Tamils
         "indiantamils": "#C85000",
         "srilankanmoor": "#00534E",  # green       – Sri Lankan Moors
@@ -59,10 +61,18 @@ class Palette:
     }
 
     @classmethod
-    def color_for(cls, label: str, index: int) -> str:
-        """Return a semantic color for *label* if known, else COLORS[index]."""
+    def color_for(cls, label: str, index: int = 0) -> str:
+        """Return a semantic color for *label* if known, else a stable fallback.
+
+        The fallback index is derived from the label text itself so the same
+        category always gets the same color regardless of which other categories
+        happen to appear in the same dataset.
+        """
         key = label.lower().replace(" ", "").replace("-", "").replace("_", "")
-        return cls.COLOR_MAP.get(key, cls.COLORS[index % len(cls.COLORS)])
+        if key in cls.COLOR_MAP:
+            return cls.COLOR_MAP[key]
+        stable = sum(ord(c) for c in key)
+        return cls.COLORS[stable % len(cls.COLORS)]
 
     BG = "#f9fafb"
     TITLE_COLOR = "#111827"
