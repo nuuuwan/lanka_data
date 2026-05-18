@@ -117,7 +117,9 @@ class Palette:
 
         if ":" in where_raw:
             code, level = where_raw.split(":", 1)
-            region = RegionNames.name_for(code) if code not in ("*", "") else "All"
+            region = (
+                RegionNames.name_for(code) if code not in ("*", "") else "All"
+            )
             level_label = cls._LEVEL_SINGULAR.get(level.lower(), level)
             return f"{region} by {level_label}"
         return RegionNames.name_for(where_raw)
