@@ -9,7 +9,9 @@ _BASE_LK = (
     "https://raw.githubusercontent.com/"
     "nuuuwan/lk_admin_regions/main/data/ents"
 )
-_BASE_GIG = "https://raw.githubusercontent.com/" "nuuuwan/gig-data/master/ents"
+_BASE_GIG = (
+    "https://raw.githubusercontent.com/" "nuuuwan/gig-data/master/ents"
+)
 
 # Ordered from most-specific to least-specific pattern.
 _URL_PATTERNS: list[tuple[str, str]] = [

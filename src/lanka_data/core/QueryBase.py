@@ -28,7 +28,8 @@ class QueryBase:
             self.what_raw, self.when_raw, self.where_raw, self.how_raw = parts
             if self.how_raw.lower() not in self._HOW_CANONICAL:
                 raise ValueError(
-                    f"Unknown <how>: {self.how_raw!r}." f" Must be one of: {
+                    f"Unknown <how>: {self.how_raw!r}."
+                    f" Must be one of: {
                         ', '.join(
                             self._HOW_CANONICAL.values())}."
                 )

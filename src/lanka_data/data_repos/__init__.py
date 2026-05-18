@@ -6,3 +6,4 @@ from lanka_data.data_repos.census2024 import (Census2024,
                                               Census2024DatasetsMixin,
                                               Census2024FetchMixin)
 from lanka_data.data_repos.gig2 import GIG2
+from lanka_data.data_repos.RegionNames import RegionNames

@@ -14,7 +14,9 @@ _HEIGHT = 460
 class Pie:
 
     @staticmethod
-    def _arc_path(cx: float, cy: float, r: float, a1: float, a2: float) -> str:
+    def _arc_path(
+        cx: float, cy: float, r: float, a1: float, a2: float
+    ) -> str:
         sweep = a2 - a1
         if sweep >= 2 * math.pi - 1e-4:
             # Full circle: draw two semicircles

@@ -11,7 +11,9 @@ from ..data_repos.RegionNames import RegionNames
 from .Palette import Palette
 
 _DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
-_GIG_GEO_BASE = "https://raw.githubusercontent.com/nuuuwan/gig-data/master/geo"
+_GIG_GEO_BASE = (
+    "https://raw.githubusercontent.com/nuuuwan/gig-data/master/geo"
+)
 
 
 class Map:
@@ -419,14 +421,19 @@ class Map:
                           COL_W}" y="{PAD_TOP +
                                       (i %
                                        n_rows) *
-                                      CELL_H}" ' f'width="{
+                                      CELL_H}" '
+            f'width="{
                 COL_W -
                 6}" height="24" fill="{
                 cat_color.get(
                     dominant.get(
                         code,
                         ""),
-                    "#94a3b8")}" ' f'rx="3" opacity="0.85"/>\n' f'  <text x="{40 + (i // n_rows) * COL_W + 6}" ' f'y="{PAD_TOP + (i % n_rows) * CELL_H + 16}" ' f'font-size="11" fill="#ffffff" font-weight="bold">{
+                    "#94a3b8")}" '
+            f'rx="3" opacity="0.85"/>\n'
+            f'  <text x="{40 + (i // n_rows) * COL_W + 6}" '
+            f'y="{PAD_TOP + (i % n_rows) * CELL_H + 16}" '
+            f'font-size="11" fill="#ffffff" font-weight="bold">{
                 P.escape(RegionNames.name_for(code))}</text>'
             for i, code in enumerate(items)
         ]
