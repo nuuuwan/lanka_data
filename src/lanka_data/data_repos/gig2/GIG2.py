@@ -367,6 +367,25 @@ class GIG2:
         return _apply(result)
 
     @classmethod
+    def party_only(cls, result: dict) -> dict:
+        """Return result with summary columns removed."""
+        first = next(iter(result.values()), None)
+        if isinstance(first, dict):
+            return {
+                eid: {
+                    k: v
+                    for k, v in sub.items()
+                    if k.lower() not in cls._SUMMARY_COLS
+                }
+                for eid, sub in result.items()
+            }
+        return {
+            k: v
+            for k, v in result.items()
+            if k.lower() not in cls._SUMMARY_COLS
+        }
+
+    @classmethod
     def query(cls, q: Query) -> dict:
         key = f"{q.what_raw}_{q.when_raw}_{q.where_raw}"
         safe = key.replace(":", "-").replace(" ", "_").replace("*", "X")

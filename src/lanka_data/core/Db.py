@@ -49,6 +49,11 @@ class Db:
         if q.how == "JSON":
             return result
 
+        # For visual renderers, election results show party data only.
+        norm_key, _ = q.gig2_key()
+        if norm_key and norm_key.startswith("governmentelections"):
+            result = GIG2.party_only(result)
+
         # Visual renderers — imported lazily to avoid circular imports
         from ..console.ConsoleMetaMixin import resolve_meta
         from ..renderers import Bar, Map, Pie
