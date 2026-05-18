@@ -1,4 +1,5 @@
 import pathlib
+import re
 import shutil
 
 from rich.progress import (
@@ -91,7 +92,19 @@ class ConsoleCacheMixin:
             RegionNames._fetch_and_cache(url)
         self.console.print("[dim] done.[/dim]")
 
-        # 3. Geo rings for provinces, admin districts, electoral districts
+        # 3. Geo rings for all known regions:
+        #    static list (provinces/districts/EDs) + every PD and DSD
+        #    that RegionNames just loaded from its TSVs.
+        pd_codes = sorted(
+            c
+            for c in RegionNames._cache
+            if re.fullmatch(r"EC-\d{2}[A-Za-z]", c)
+        )
+        dsd_codes = sorted(
+            c for c in RegionNames._cache if re.fullmatch(r"LK-\d{4}", c)
+        )
+        all_codes = _PRELOAD_CODES + pd_codes + dsd_codes
+
         with Progress(
             SpinnerColumn(),
             TextColumn("[progress.description]{task.description}"),
@@ -100,16 +113,16 @@ class ConsoleCacheMixin:
             console=self.console,
             transient=True,
         ) as prog:
-            n = len(_PRELOAD_CODES)
+            n = len(all_codes)
             task = prog.add_task(
                 f"[dim]  Loading geo data ({n} regions)...[/dim]",
                 total=n,
             )
-            for code in _PRELOAD_CODES:
+            for code in all_codes:
                 Map._fetch_geo_rings(code)
                 prog.advance(task)
 
         self.console.print(
             f"[green]Pre-load complete.[/green] "
-            f"[dim]({len(_PRELOAD_CODES)} regions cached)[/dim]"
+            f"[dim]({len(all_codes)} regions cached)[/dim]"
         )
