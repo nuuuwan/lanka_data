@@ -100,10 +100,33 @@ class Palette:
             return f"{v:,.2f}"
         return f"{v:,}"
 
-    @staticmethod
-    def title_from_path(path: str) -> str:
+    _LEVEL_SINGULAR: dict[str, str] = {
+        "provinces": "Province",
+        "districts": "District",
+        "dsds": "DSD",
+        "gnds": "GND",
+        "electoraldistricts": "Electoral District",
+        "eds": "Electoral District",
+        "pollingdivisions": "Polling Division",
+        "pds": "Polling Division",
+    }
+
+    @classmethod
+    def _format_where(cls, where_raw: str) -> str:
+        from ..data_repos.RegionNames import RegionNames
+
+        if ":" in where_raw:
+            code, level = where_raw.split(":", 1)
+            region = RegionNames.name_for(code) if code not in ("*", "") else "All"
+            level_label = cls._LEVEL_SINGULAR.get(level.lower(), level)
+            return f"{region} by {level_label}"
+        return RegionNames.name_for(where_raw)
+
+    @classmethod
+    def title_from_path(cls, path: str) -> str:
         parts = path.strip("/").split("/")
-        return "  ·  ".join(parts[:3])
+        what, when, where = parts[0], parts[1], parts[2]
+        return "  ·  ".join([what, when, cls._format_where(where)])
 
     @staticmethod
     def footer_from_meta(meta: dict) -> str:
