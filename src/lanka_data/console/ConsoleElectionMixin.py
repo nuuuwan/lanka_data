@@ -18,30 +18,14 @@ class ConsoleElectionMixin:
         first = next(iter(result.values()), None)
         if isinstance(first, dict):
             summary = {
-                eid: {
-                    k: v
-                    for k, v in sub.items()
-                    if k.lower() in cols
-                }
+                eid: {k: v for k, v in sub.items() if k.lower() in cols}
                 for eid, sub in result.items()
             }
             party = {
-                eid: {
-                    k: v
-                    for k, v in sub.items()
-                    if k.lower() not in cols
-                }
+                eid: {k: v for k, v in sub.items() if k.lower() not in cols}
                 for eid, sub in result.items()
             }
         else:
-            summary = {
-                k: v
-                for k, v in result.items()
-                if k.lower() in cols
-            }
-            party = {
-                k: v
-                for k, v in result.items()
-                if k.lower() not in cols
-            }
+            summary = {k: v for k, v in result.items() if k.lower() in cols}
+            party = {k: v for k, v in result.items() if k.lower() not in cols}
         return summary, party
