@@ -20,7 +20,9 @@ class QueryBase:
             if self.how_raw.lower() not in self._HOW_CANONICAL:
                 raise ValueError(
                     f"Unknown <how>: {self.how_raw!r}."
-                    f" Must be one of: {', '.join(self._HOW_CANONICAL.values())}."
+                    f" Must be one of: {
+                        ', '.join(
+                            self._HOW_CANONICAL.values())}."
                 )
         else:
             raise ValueError(

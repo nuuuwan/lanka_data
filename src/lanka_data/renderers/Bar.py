@@ -68,14 +68,20 @@ class Bar:
         rows = []
         for i, (label, val) in enumerate(items):
             y = _PAD_TOP + i * _ROW_H
-            color = P.COLORS[i % len(P.COLORS)]
+            color = P.color_for(label, i)
             bar_w = max(2, int(val / max_val * _BAR_MAX_W))
             pct = val / total_raw * 100 if total_raw else 0
             num_txt = P.escape(f"{P.fmt_num(val)} ({pct:.1f}%)")
             rows.append(
                 f'  <text x="{_LABEL_W}" y="{y + 20}" text-anchor="end" '
-                f'font-size="13" fill="{P.LABEL_COLOR}">{P.escape(label)}</text>\n'
-                f'  <rect x="{_LABEL_W + 10}" y="{y + 6}" width="{bar_w}" height="18" '
+                f'font-size="13" fill="{
+                    P.LABEL_COLOR}">{
+                    P.escape(label)}</text>\n'
+                f'  <rect x="{
+                    _LABEL_W +
+                    10}" y="{
+                    y +
+                    6}" width="{bar_w}" height="18" '
                 f'fill="{color}" rx="2"/>\n'
                 f'  <text x="{_LABEL_W + 10 + bar_w + 6}" y="{y + 20}" '
                 f'font-size="12" fill="{P.MUTED_COLOR}">{num_txt}</text>'
@@ -91,10 +97,16 @@ class Bar:
             f'font-family="system-ui,sans-serif">\n'
             f"{meta_block}\n"
             f'  <rect width="{_WIDTH}" height="{height}" fill="{P.BG}"/>\n'
-            f'  <text x="{_WIDTH // 2}" y="46" text-anchor="middle" font-size="16" '
+            f'  <text x="{
+                _WIDTH //
+                2}" y="46" text-anchor="middle" font-size="16" '
             f'font-weight="bold" fill="{P.TITLE_COLOR}">{title}</text>\n'
             f"{rows_svg}\n"
-            f'  <text x="{_WIDTH // 2}" y="{height - 16}" text-anchor="middle" '
+            f'  <text x="{
+                _WIDTH //
+                2}" y="{
+                height -
+                16}" text-anchor="middle" '
             f'font-size="11" fill="{P.FOOTER_COLOR}">{footer}</text>\n'
             f"</svg>"
         )
@@ -128,7 +140,7 @@ class Bar:
         # Stable category → color assignment
         all_cats = sorted({c for vals in regions_data.values() for c in vals})
         cat_color = {
-            cat: P.COLORS[i % len(P.COLORS)] for i, cat in enumerate(all_cats)
+            cat: P.color_for(cat, i) for i, cat in enumerate(all_cats)
         }
 
         # Sort regions by total descending
@@ -140,7 +152,13 @@ class Bar:
 
         leg_rows = -(-len(all_cats) // _SCOLS)
         svg_w = _SPAD_L + _SLABEL_W + _SBAR_W + _SPAD_R
-        svg_h = _PAD_TOP + len(regions_sorted) * _SROW_H + 30 + leg_rows * 24 + _PAD_BOT
+        svg_h = (
+            _PAD_TOP
+            + len(regions_sorted) * _SROW_H
+            + 30
+            + leg_rows * 24
+            + _PAD_BOT
+        )
 
         rows = []
         for i, (region, vals) in enumerate(regions_sorted):
@@ -148,7 +166,14 @@ class Bar:
             total = sum(vals.values()) or 1
             x = _SPAD_L + _SLABEL_W
             rows.append(
-                f'  <text x="{_SPAD_L + _SLABEL_W - 6}" y="{y + _SROW_H // 2 + 4}" '
+                f'  <text x="{
+                    _SPAD_L +
+                    _SLABEL_W -
+                    6}" y="{
+                    y +
+                    _SROW_H //
+                    2 +
+                    4}" '
                 f'text-anchor="end" font-size="11" fill="{P.LABEL_COLOR}">'
                 f"{P.escape(region)}</text>"
             )
@@ -160,7 +185,11 @@ class Bar:
                 color = cat_color[cat]
                 pct = val / total * 100
                 rows.append(
-                    f'  <rect x="{x}" y="{y + 4}" width="{seg_w}" height="{_SROW_H - 8}" '
+                    f'  <rect x="{x}" y="{
+                        y +
+                        4}" width="{seg_w}" height="{
+                        _SROW_H -
+                        8}" '
                     f'fill="{color}" opacity="0.88">'
                     f"<title>{P.escape(region)} \u2014 {P.escape(cat)}: "
                     f"{P.fmt_num(val)} ({pct:.1f}%)</title>"
@@ -190,7 +219,8 @@ class Bar:
             f'font-family="system-ui,sans-serif">\n'
             f"{meta_block}\n"
             f'  <rect width="{svg_w}" height="{svg_h}" fill="{P.BG}"/>\n'
-            f'  <text x="{svg_w // 2}" y="46" text-anchor="middle" font-size="16" '
+            f'  <text x="{
+                svg_w // 2}" y="46" text-anchor="middle" font-size="16" '
             f'font-weight="bold" fill="{P.TITLE_COLOR}">{title}</text>\n'
             f'{"".join(rows)}\n'
             f'{"".join(legend)}\n'

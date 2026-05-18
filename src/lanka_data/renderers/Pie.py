@@ -1,4 +1,5 @@
 """Pie chart SVG renderer."""
+
 import math
 
 from .Bar import Bar
@@ -13,7 +14,9 @@ _HEIGHT = 460
 class Pie:
 
     @staticmethod
-    def _arc_path(cx: float, cy: float, r: float, a1: float, a2: float) -> str:
+    def _arc_path(
+        cx: float, cy: float, r: float, a1: float, a2: float
+    ) -> str:
         sweep = a2 - a1
         if sweep >= 2 * math.pi - 1e-4:
             # Full circle: draw two semicircles
@@ -49,9 +52,7 @@ class Pie:
         if not values:
             raise ValueError("No numeric values to render as a pie chart.")
 
-        total_raw = next(
-            (v for k, v in result.items() if _is_total(k)), None
-        )
+        total_raw = next((v for k, v in result.items() if _is_total(k)), None)
         if not isinstance(total_raw, (int, float)):
             total_raw = sum(values.values()) or 1
 
@@ -69,12 +70,18 @@ class Pie:
         angle = -math.pi / 2
         for i, (label, val) in enumerate(items):
             sweep = val / total_items * 2 * math.pi
-            color = Palette.COLORS[i % len(Palette.COLORS)]
+            color = Palette.color_for(label, i)
             slices.append((label, val, angle, angle + sweep, color))
             angle += sweep
 
         paths_svg = "\n".join(
-            f'  <path d="{Pie._arc_path(_CX, _CY, _R, a1, a2)}" fill="{color}" '
+            f'  <path d="{
+                Pie._arc_path(
+                    _CX,
+                    _CY,
+                    _R,
+                    a1,
+                    a2)}" fill="{color}" '
             f'stroke="white" stroke-width="1.5"/>'
             for _, _, a1, a2, color in slices
         )
@@ -106,11 +113,17 @@ class Pie:
             f'font-family="system-ui,sans-serif">\n'
             f"{meta_block}\n"
             f'  <rect width="{_WIDTH}" height="{_HEIGHT}" fill="{P.BG}"/>\n'
-            f'  <text x="{_WIDTH // 2}" y="44" text-anchor="middle" font-size="16" '
+            f'  <text x="{
+                _WIDTH //
+                2}" y="44" text-anchor="middle" font-size="16" '
             f'font-weight="bold" fill="{P.TITLE_COLOR}">{title}</text>\n'
             f"{paths_svg}\n"
             f"{legend_svg}\n"
-            f'  <text x="{_WIDTH // 2}" y="{_HEIGHT - 16}" text-anchor="middle" '
+            f'  <text x="{
+                _WIDTH //
+                2}" y="{
+                _HEIGHT -
+                16}" text-anchor="middle" '
             f'font-size="11" fill="{P.FOOTER_COLOR}">{footer}</text>\n'
             f"</svg>"
         )

@@ -24,7 +24,12 @@ def test_population_districts():
 def test_ethnicity_keys():
     r = Db("/Ethnicity/2024/LK")
     assert r["TotalPopulation"] == 21_781_800
-    for key in ("Sinhalese", "SriLankanTamil", "SriLankanMoor", "IndianTamil"):
+    for key in (
+        "Sinhalese",
+        "SriLankanTamil",
+        "SriLankanMoor",
+        "IndianTamil",
+    ):
         assert key in r
 
 

@@ -125,7 +125,7 @@ class Map:
         }
         categories = sorted(set(dominant.values()))
         cat_color = {
-            cat: Palette.COLORS[i % len(Palette.COLORS)]
+            cat: Palette.color_for(cat, i)
             for i, cat in enumerate(categories)
         }
 
@@ -250,19 +250,34 @@ class Map:
         svg_w = max(700, N_COLS * COL_W + 80)
         svg_h = PAD_TOP + n_rows * CELL_H + PAD_BOT
         cells = [
-            f'  <rect x="{40 + (i // n_rows) * COL_W}" y="{PAD_TOP + (i % n_rows) * CELL_H}" '
-            f'width="{COL_W - 6}" height="24" fill="{cat_color.get(dominant.get(code, ""), "#94a3b8")}" '
+            f'  <rect x="{40 +
+                          (i //
+                           n_rows) *
+                          COL_W}" y="{PAD_TOP +
+                                      (i %
+                                       n_rows) *
+                                      CELL_H}" '
+            f'width="{
+                COL_W -
+                6}" height="24" fill="{
+                cat_color.get(
+                    dominant.get(
+                        code,
+                        ""),
+                    "#94a3b8")}" '
             f'rx="3" opacity="0.85"/>\n'
             f'  <text x="{40 + (i // n_rows) * COL_W + 6}" '
             f'y="{PAD_TOP + (i % n_rows) * CELL_H + 16}" '
-            f'font-size="11" fill="#ffffff" font-weight="bold">{P.escape(code)}</text>'
+            f'font-size="11" fill="#ffffff" font-weight="bold">{
+                P.escape(code)}</text>'
             for i, code in enumerate(items)
         ]
         leg_y0 = PAD_TOP + n_rows * CELL_H + 20
         legend = [
             f'  <rect x="{40 + (i % 5) * 130}" y="{leg_y0 + (i // 5) * 28}" '
             f'width="12" height="12" fill="{cat_color[cat]}" rx="2"/>\n'
-            f'  <text x="{40 + (i % 5) * 130 + 16}" y="{leg_y0 + (i // 5) * 28 + 10}" '
+            f'  <text x="{40 + (i %
+                                5) * 130 + 16}" y="{leg_y0 + (i // 5) * 28 + 10}" '
             f'font-size="11" fill="{P.LABEL_COLOR}">{P.escape(cat[:14])}</text>'
             for i, cat in enumerate(categories)
         ]
@@ -274,7 +289,8 @@ class Map:
             f'font-family="system-ui,sans-serif">\n'
             f"{meta_block}\n"
             f'  <rect width="{svg_w}" height="{svg_h}" fill="{P.BG}"/>\n'
-            f'  <text x="{svg_w // 2}" y="42" text-anchor="middle" font-size="16" '
+            f'  <text x="{
+                svg_w // 2}" y="42" text-anchor="middle" font-size="16" '
             f'font-weight="bold" fill="{P.TITLE_COLOR}">{title}</text>\n'
             f'{"".join(cells)}\n'
             f'{"".join(legend)}\n'

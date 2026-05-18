@@ -1,5 +1,4 @@
 import json
-import os
 import pathlib
 import subprocess
 
@@ -40,7 +39,8 @@ class Console(
         try:
             result = Db(path)
             if isinstance(result, str):
-                # SVG output — write to a named file and open with the default app
+                # SVG output — write to a named file and open with the default
+                # app
                 svg_path = self._svg_path(path)
                 svg_path.write_text(result, encoding="utf-8")
                 subprocess.run(["open", str(svg_path)], check=False)
