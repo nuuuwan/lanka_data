@@ -55,6 +55,9 @@ class RegionNames:
                 cls._cache.update(json.load(f))
             return
 
+        import sys
+        fname_short = url.rsplit("/", 1)[-1]
+        print(f"  Downloading {fname_short}...", end="", flush=True, file=sys.stderr)
         try:
             req = urllib.request.Request(
                 url,
@@ -63,7 +66,9 @@ class RegionNames:
             with urllib.request.urlopen(req, timeout=10) as resp:
                 content = resp.read().decode("utf-8")
         except Exception:  # noqa: BLE001
+            print(" failed.", file=sys.stderr)
             return
+        print(" done.", file=sys.stderr)
 
         lines = [ln for ln in content.splitlines() if ln.strip()]
         if not lines:

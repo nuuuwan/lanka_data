@@ -144,11 +144,45 @@ class Map:
                 path, dominant, cat_color, categories, topo, pcode_field, meta
             )
         # Try fetching individual boundary files from gig-data.
+        _uncached = [
+            c for c in dominant
+            if Map._geo_dir_for(c) is not None
+            and not (Map._GEO_CACHE_DIR / f"{c}.json").exists()
+        ]
+        _prog = None
+        if _uncached:
+            from rich.console import Console as _RC
+            from rich.progress import (
+                BarColumn,
+                MofNCompleteColumn,
+                Progress,
+                SpinnerColumn,
+                TextColumn,
+            )
+            _prog = Progress(
+                SpinnerColumn(),
+                TextColumn("[progress.description]{task.description}"),
+                BarColumn(),
+                MofNCompleteColumn(),
+                console=_RC(stderr=True),
+                transient=True,
+            )
+            _prog.start()
+            _task = _prog.add_task(
+                f"Downloading geo data ({len(_uncached)} regions)...",
+                total=len(dominant),
+            )
         geo_rings = {}
-        for code in dominant:
-            rings = Map._fetch_geo_rings(code)
-            if rings:
-                geo_rings[code] = rings
+        try:
+            for code in dominant:
+                rings = Map._fetch_geo_rings(code)
+                if rings:
+                    geo_rings[code] = rings
+                if _prog is not None:
+                    _prog.advance(_task)
+        finally:
+            if _prog is not None:
+                _prog.stop()
         if geo_rings:
             return Map._geo_svg_from_rings(
                 path, dominant, cat_color, categories, geo_rings, meta
