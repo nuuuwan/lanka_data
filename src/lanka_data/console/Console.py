@@ -1,6 +1,7 @@
 import json
 import pathlib
 import subprocess
+import time
 
 from prompt_toolkit import PromptSession
 from prompt_toolkit.history import FileHistory
@@ -36,12 +37,21 @@ class Console(
         return out_dir / f"{name}.svg"
 
     def _query_and_print(self, path: str) -> None:
+        t0 = time.perf_counter()
         try:
             svg_path = self._svg_path(path)
             if svg_path.exists():
                 subprocess.run(["open", str(svg_path)], check=False)
-                self.console.print(
-                    f"[bold green]SVG (cached):[/bold green] {svg_path}"
+                self.console.print_json(
+                    json.dumps(
+                        {
+                            "query": path,
+                            "image": str(svg_path),
+                            "size_bytes": svg_path.stat().st_size,
+                            "cached": True,
+                            "time_s": round(time.perf_counter() - t0, 3),
+                        }
+                    )
                 )
                 return
             result = Db(path)
@@ -50,8 +60,16 @@ class Console(
                 # app
                 svg_path.write_text(result, encoding="utf-8")
                 subprocess.run(["open", str(svg_path)], check=False)
-                self.console.print(
-                    f"[bold green]SVG saved:[/bold green] {svg_path}"
+                self.console.print_json(
+                    json.dumps(
+                        {
+                            "query": path,
+                            "image": str(svg_path),
+                            "size_bytes": svg_path.stat().st_size,
+                            "cached": False,
+                            "time_s": round(time.perf_counter() - t0, 3),
+                        }
+                    )
                 )
                 return
             meta = self._meta_for(path)
@@ -71,6 +89,7 @@ class Console(
                     "n_values": n_values,
                     "party": party,
                     "p_party": self._compute_p_values(party),
+                    "time_s": round(time.perf_counter() - t0, 3),
                 }
             else:
                 values, total_value, n_values = self._total_and_strip(result)
@@ -80,6 +99,7 @@ class Console(
                     "n_values": n_values,
                     "values": values,
                     "p_values": self._compute_p_values(result),
+                    "time_s": round(time.perf_counter() - t0, 3),
                 }
             self.console.print_json(json.dumps(output))
         except Exception as exc:  # noqa: BLE001

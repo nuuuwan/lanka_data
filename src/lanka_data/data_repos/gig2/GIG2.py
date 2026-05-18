@@ -1,8 +1,11 @@
 import functools
 import json
 import pathlib
-import sys
 import urllib.request
+
+from rich.console import Console as _RichConsole
+
+_stderr = _RichConsole(stderr=True)
 
 from ...core.Query import Query
 from ...core.Where import Where
@@ -116,15 +119,10 @@ class GIG2:
             with cache_file.open() as f:
                 cls._index = json.load(f)
             return cls._index
-        print(
-            "  Downloading GIG2 data index...",
-            end="",
-            flush=True,
-            file=sys.stderr,
-        )
+        _stderr.print("[dim]  Downloading GIG2 data index...[/dim]", end="")
         cache_file.parent.mkdir(parents=True, exist_ok=True)
         cls._index = cls._fetch_index()
-        print(" done.", file=sys.stderr)
+        _stderr.print("[dim] done.[/dim]")
         with cache_file.open("w") as f:
             json.dump(cls._index, f)
         return cls._index
@@ -156,15 +154,10 @@ class GIG2:
             with cache_file.open() as f:
                 rows = json.load(f)
         else:
-            print(
-                f"  Downloading {fname}...",
-                end="",
-                flush=True,
-                file=sys.stderr,
-            )
+            _stderr.print(f"[dim]  Downloading {fname}...[/dim]", end="")
             cache_file.parent.mkdir(parents=True, exist_ok=True)
             rows = cls._download_tsv(url)
-            print(" done.", file=sys.stderr)
+            _stderr.print("[dim] done.[/dim]")
             with cache_file.open("w") as f:
                 json.dump(rows, f)
         cls._tsv_cache[url] = rows
@@ -247,7 +240,7 @@ class GIG2:
 
     @staticmethod
     def _warn(msg: str) -> None:
-        print(f"Warning: {msg}", file=sys.stderr)
+        _stderr.print(f"[yellow]Warning: {msg}[/yellow]")
 
     # ------------------------------------------------------------------
     # Catalog query (wildcard what)

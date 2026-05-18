@@ -17,6 +17,7 @@ _GIG_GEO_BASE = "https://raw.githubusercontent.com/nuuuwan/gig-data/master/geo"
 class Map:
 
     _GEO_CACHE_DIR = pathlib.Path("/tmp/lanka_data/geo")
+    _geo_rings_cache: dict[str, list] = {}
 
     @staticmethod
     def _load_topo(name: str) -> dict:
@@ -169,7 +170,7 @@ class Map:
             )
             _prog.start()
             _task = _prog.add_task(
-                f"Downloading geo data ({len(_uncached)} regions)...",
+                f"[dim]Downloading geo data ({len(_uncached)} regions)...[/dim]",
                 total=len(dominant),
             )
         geo_rings = {}
@@ -228,13 +229,17 @@ class Map:
     @classmethod
     def _fetch_geo_rings(cls, code: str) -> list:
         """Fetch and cache polygon rings [[lon,lat],...] for one region."""
+        if code in cls._geo_rings_cache:
+            return cls._geo_rings_cache[code]
         geo_dir = cls._geo_dir_for(code)
         if geo_dir is None:
             return []
         cache_file = cls._GEO_CACHE_DIR / f"{code}.json"
         if cache_file.exists():
             with cache_file.open() as f:
-                return json.load(f)
+                rings = json.load(f)
+            cls._geo_rings_cache[code] = rings
+            return rings
         url = f"{_GIG_GEO_BASE}/{geo_dir}/{code}.json"
         try:
             with urllib.request.urlopen(url) as resp:
@@ -244,6 +249,7 @@ class Map:
         cls._GEO_CACHE_DIR.mkdir(parents=True, exist_ok=True)
         with cache_file.open("w") as f:
             json.dump(rings, f)
+        cls._geo_rings_cache[code] = rings
         return rings
 
     @staticmethod

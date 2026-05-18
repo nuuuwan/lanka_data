@@ -102,3 +102,45 @@ def test_gnds_national():
 def test_unknown_level_raises():
     with pytest.raises(ValueError):
         Where("LK:Municipalities")
+
+
+# --- LK district → EC mapping for election levels ---
+
+
+def test_pds_under_lk_district():
+    """LK-11 (Colombo admin district) should map to EC-01 polling divisions."""
+    w = Where("LK-11:PDs")
+    assert w.matches("EC-01A")
+    assert w.matches("EC-01P")
+    assert not w.matches("EC-02A")  # Gampaha PDs must not match
+    assert not w.matches("EC-22A")  # Other district PDs must not match
+
+
+def test_pds_under_lk_district_vanni():
+    """LK-42 (Mannar) maps to Vanni electoral district EC-11."""
+    w = Where("LK-42:PDs")
+    assert w.matches("EC-11A")
+    assert not w.matches("EC-10A")
+    assert not w.matches("EC-12A")
+
+
+def test_eds_under_lk_district():
+    """LK-11 (Colombo admin district) should return only EC-01."""
+    w = Where("LK-11:EDs")
+    assert w.matches("EC-01")
+    assert not w.matches("EC-02")
+    assert not w.matches("EC-01A")  # PD, not ED
+
+
+def test_eds_national_unchanged():
+    """LK:EDs should still return all electoral districts."""
+    w = Where("LK:EDs")
+    assert w.matches("EC-01")
+    assert w.matches("EC-22")
+
+
+def test_pds_national_unchanged():
+    """LK:PDs should still return all polling divisions."""
+    w = Where("LK:PDs")
+    assert w.matches("EC-01A")
+    assert w.matches("EC-22Z")

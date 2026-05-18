@@ -5,6 +5,10 @@ import pathlib
 import re
 import urllib.request
 
+from rich.console import Console as _RichConsole
+
+_stderr = _RichConsole(stderr=True)
+
 _BASE_LK = (
     "https://raw.githubusercontent.com/"
     "nuuuwan/lk_admin_regions/main/data/ents"
@@ -53,15 +57,8 @@ class RegionNames:
                 cls._cache.update(json.load(f))
             return
 
-        import sys
-
         fname_short = url.rsplit("/", 1)[-1]
-        print(
-            f"  Downloading {fname_short}...",
-            end="",
-            flush=True,
-            file=sys.stderr,
-        )
+        _stderr.print(f"[dim]  Downloading {fname_short}...[/dim]", end="")
         try:
             req = urllib.request.Request(
                 url,
@@ -70,9 +67,9 @@ class RegionNames:
             with urllib.request.urlopen(req, timeout=10) as resp:
                 content = resp.read().decode("utf-8")
         except Exception:  # noqa: BLE001
-            print(" failed.", file=sys.stderr)
+            _stderr.print("[dim] failed.[/dim]")
             return
-        print(" done.", file=sys.stderr)
+        _stderr.print("[dim] done.[/dim]")
 
         lines = [ln for ln in content.splitlines() if ln.strip()]
         if not lines:

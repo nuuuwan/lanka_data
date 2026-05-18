@@ -1,5 +1,8 @@
-import sys
 import urllib.request
+
+from rich.console import Console as _RichConsole
+
+_stderr = _RichConsole(stderr=True)
 
 _BASE_URL = (
     "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/main/data"
@@ -35,15 +38,12 @@ class Census2024FetchMixin:
         if cache_file.exists():
             return cache_file.read_text()
         url = f"{_BASE_URL}/{cls._DATASETS[label]}"
-        print(
-            f"  Downloading Census 2024 {label}...",
-            end="",
-            flush=True,
-            file=sys.stderr,
+        _stderr.print(
+            f"[dim]  Downloading Census 2024 {label}...[/dim]", end=""
         )
         with urllib.request.urlopen(url) as r:
             text = r.read().decode()
-        print(" done.", file=sys.stderr)
+        _stderr.print("[dim] done.[/dim]")
         cache_file.parent.mkdir(parents=True, exist_ok=True)
         cache_file.write_text(text)
         return text
