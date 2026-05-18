@@ -110,6 +110,8 @@ class Console(
             return False
         if path.lower() == "clear-cache":
             self._clear_cache()
+        elif path.lower() == "pre-load":
+            self._pre_load()
         elif path:
             self._query_and_print(path)
         return True
