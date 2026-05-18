@@ -144,3 +144,35 @@ def test_pds_national_unchanged():
     w = Where("LK:PDs")
     assert w.matches("EC-01A")
     assert w.matches("EC-22Z")
+
+
+# --- LK province → EC mapping for election levels ---
+
+
+def test_pds_under_province():
+    """LK-1 (Western Province) should match only its three EDs' PDs."""
+    w = Where("LK-1:PDs")
+    assert w.matches("EC-01A")  # Colombo PD
+    assert w.matches("EC-02B")  # Gampaha PD
+    assert w.matches("EC-03C")  # Kalutara PD
+    assert not w.matches("EC-04A")  # Central Province PD
+    assert not w.matches("EC-22Z")  # Other province PD
+
+
+def test_eds_under_province():
+    """LK-1 (Western Province) should match only its three EDs."""
+    w = Where("LK-1:EDs")
+    assert w.matches("EC-01")
+    assert w.matches("EC-02")
+    assert w.matches("EC-03")
+    assert not w.matches("EC-04")  # Central Province ED
+    assert not w.matches("EC-01A")  # PD, not ED
+
+
+def test_pds_under_northern_province():
+    """LK-4 (Northern Province) covers Jaffna (EC-10) and Vanni (EC-11)."""
+    w = Where("LK-4:PDs")
+    assert w.matches("EC-10A")  # Jaffna PD
+    assert w.matches("EC-11A")  # Vanni PD
+    assert not w.matches("EC-09A")  # Southern PD
+    assert not w.matches("EC-12A")  # Eastern PD

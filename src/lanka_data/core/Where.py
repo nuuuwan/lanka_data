@@ -30,6 +30,19 @@ _LK_TO_EC: dict[str, str] = {
     "LK-92": "EC-22",
 }
 
+# Mapping from LK province codes to their constituent EC electoral district codes.
+_LK_PROVINCE_TO_ECS: dict[str, list[str]] = {
+    "LK-1": ["EC-01", "EC-02", "EC-03"],
+    "LK-2": ["EC-04", "EC-05", "EC-06"],
+    "LK-3": ["EC-07", "EC-08", "EC-09"],
+    "LK-4": ["EC-10", "EC-11"],
+    "LK-5": ["EC-12", "EC-13", "EC-14"],
+    "LK-6": ["EC-15", "EC-16"],
+    "LK-7": ["EC-17", "EC-18"],
+    "LK-8": ["EC-19", "EC-20"],
+    "LK-9": ["EC-21", "EC-22"],
+}
+
 
 class Where:
 
@@ -76,6 +89,12 @@ class Where:
                 if region_code in _LK_TO_EC:
                     ec = re.escape(_LK_TO_EC[region_code])
                     pat = rf"^{ec}$"
+                elif region_code in _LK_PROVINCE_TO_ECS:
+                    ecs = "|".join(
+                        re.escape(e)
+                        for e in _LK_PROVINCE_TO_ECS[region_code]
+                    )
+                    pat = rf"^({ecs})$"
                 else:
                     pat = r"^EC-\d{2}$"
             case "PollingDivisions":
@@ -84,6 +103,12 @@ class Where:
                 elif region_code in _LK_TO_EC:
                     ec = re.escape(_LK_TO_EC[region_code])
                     pat = rf"^{ec}[A-Z]$"
+                elif region_code in _LK_PROVINCE_TO_ECS:
+                    ecs = "|".join(
+                        re.escape(e)
+                        for e in _LK_PROVINCE_TO_ECS[region_code]
+                    )
+                    pat = rf"^({ecs})[A-Z]$"
                 else:
                     pat = r"^EC-\d{2}[A-Z]$"
             case "DSDs":
