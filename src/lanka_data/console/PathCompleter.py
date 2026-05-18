@@ -49,12 +49,17 @@ class PathCompleter(Completer):
                 start_position=-len(raw),
                 display="/exit",
             )
-        if "clear-cache".startswith(prefix.lower()):
-            yield Completion(
-                "clear-cache",
-                start_position=-len(raw),
-                display="clear-cache",
-            )
+        for cmd, meta in [
+            ("clear-cache", "clear temp cache (images)"),
+            ("pre-load", "pre-download permanent reference data"),
+        ]:
+            if cmd.startswith(prefix.lower()):
+                yield Completion(
+                    cmd,
+                    start_position=-len(raw),
+                    display=HTML(f"{cmd}"),
+                    display_meta=meta,
+                )
 
     def _complete_segment(self, parts: list, seg: int, prefix: str):
         if seg == 1:
