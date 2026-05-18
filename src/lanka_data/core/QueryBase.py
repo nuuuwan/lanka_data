@@ -15,6 +15,15 @@ class QueryBase:
         if len(parts) == 3:
             self.what_raw, self.when_raw, self.where_raw = parts
             self.how_raw = "JSON"
+            if self.where_raw.lower() in self._HOW_CANONICAL:
+                raise ValueError(
+                    f"{self.where_raw!r} looks like a <how> format,"
+                    " not a <where> region code."
+                    " Query must follow"
+                    " /<what>/<when>/<where>[/<how>],"
+                    f" e.g. add a region before"
+                    f" /{self.where_raw}."
+                )
         elif len(parts) == 4:
             self.what_raw, self.when_raw, self.where_raw, self.how_raw = parts
             if self.how_raw.lower() not in self._HOW_CANONICAL:
