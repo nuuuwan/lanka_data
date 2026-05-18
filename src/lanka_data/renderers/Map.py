@@ -182,8 +182,35 @@ class Map:
             "adm2_name" if pcode_field == "adm2_pcode" else "adm1_name"
         )
 
+        # Only render features that appear in the query result.
+        relevant_feats = [
+            feat for feat in obj["geometries"]
+            if Map._normalize_pcode(
+                feat["properties"].get(pcode_field, "")
+            ) in dominant
+        ]
+
+        # Compute a tight bbox from only the relevant features so the
+        # projection zooms in to the requested region.
+        if relevant_feats:
+            lons, lats = [], []
+            for feat in relevant_feats:
+                for ring in Map._feature_rings(feat, decoded):
+                    for lon, lat in ring:
+                        lons.append(lon)
+                        lats.append(lat)
+            lon_pad = (max(lons) - min(lons)) * 0.05 or 0.01
+            lat_pad = (max(lats) - min(lats)) * 0.05 or 0.01
+            bbox = (
+                min(lons) - lon_pad,
+                min(lats) - lat_pad,
+                max(lons) + lon_pad,
+                max(lats) + lat_pad,
+            )
+        project = Map._make_projector(bbox, PAD_L, PAD_TOP, MAP_W, MAP_H)
+
         paths_svg = []
-        for feat in obj["geometries"]:
+        for feat in relevant_feats:
             raw_code = feat["properties"].get(pcode_field, "")
             code = Map._normalize_pcode(raw_code)
             color = cat_color.get(dominant.get(code, ""), "#e5e7eb")
