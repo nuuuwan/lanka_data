@@ -28,7 +28,9 @@ class PathCompleter(Completer):
         return Completion(
             noop_text,
             start_position=start,
-            display=HTML(f"<b><ansibrightblack>── {label} ──</ansibrightblack></b>"),
+            display=HTML(
+                f"<b><ansibrightblack>── {label} ──</ansibrightblack></b>"
+            ),
             display_meta="",
         )
 
@@ -40,21 +42,18 @@ class PathCompleter(Completer):
                     "/" + token + "/",
                     start_position=-len(raw),
                     display="/" + token,
-                    display_meta="<what>",
                 )
         if "exit".startswith(prefix.lower()):
             yield Completion(
                 "exit",
                 start_position=-len(raw),
                 display="/exit",
-                display_meta="quit console",
             )
         if "clear-cache".startswith(prefix.lower()):
             yield Completion(
                 "clear-cache",
                 start_position=-len(raw),
                 display="clear-cache",
-                display_meta="delete all cached data",
             )
 
     def _complete_segment(self, parts: list, seg: int, prefix: str):
@@ -82,7 +81,6 @@ class PathCompleter(Completer):
                     token + suffix,
                     start_position=-len(prefix),
                     display=token,
-                    display_meta=meta,
                 )
 
     def get_completions(self, document, complete_event):
