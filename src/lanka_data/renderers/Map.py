@@ -125,8 +125,7 @@ class Map:
         }
         categories = sorted(set(dominant.values()))
         cat_color = {
-            cat: Palette.color_for(cat, i)
-            for i, cat in enumerate(categories)
+            cat: Palette.color_for(cat, i) for i, cat in enumerate(categories)
         }
 
         codes = list(result.keys())
@@ -249,29 +248,21 @@ class Map:
         PAD_BOT = 44 + 30 + legend_h
         svg_w = max(700, N_COLS * COL_W + 80)
         svg_h = PAD_TOP + n_rows * CELL_H + PAD_BOT
-        cells = [
-            f'  <rect x="{40 +
+        cells = [f'  <rect x="{40 +
                           (i //
                            n_rows) *
                           COL_W}" y="{PAD_TOP +
                                       (i %
                                        n_rows) *
-                                      CELL_H}" '
-            f'width="{
+                                      CELL_H}" ' f'width="{
                 COL_W -
                 6}" height="24" fill="{
                 cat_color.get(
                     dominant.get(
                         code,
                         ""),
-                    "#94a3b8")}" '
-            f'rx="3" opacity="0.85"/>\n'
-            f'  <text x="{40 + (i // n_rows) * COL_W + 6}" '
-            f'y="{PAD_TOP + (i % n_rows) * CELL_H + 16}" '
-            f'font-size="11" fill="#ffffff" font-weight="bold">{
-                P.escape(code)}</text>'
-            for i, code in enumerate(items)
-        ]
+                    "#94a3b8")}" ' f'rx="3" opacity="0.85"/>\n' f'  <text x="{40 + (i // n_rows) * COL_W + 6}" ' f'y="{PAD_TOP + (i % n_rows) * CELL_H + 16}" ' f'font-size="11" fill="#ffffff" font-weight="bold">{
+                P.escape(code)}</text>' for i, code in enumerate(items)]
         leg_y0 = PAD_TOP + n_rows * CELL_H + 20
         legend = [
             f'  <rect x="{40 + (i % 5) * 130}" y="{leg_y0 + (i // 5) * 28}" '

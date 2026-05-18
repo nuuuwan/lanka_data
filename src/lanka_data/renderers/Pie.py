@@ -14,9 +14,7 @@ _HEIGHT = 460
 class Pie:
 
     @staticmethod
-    def _arc_path(
-        cx: float, cy: float, r: float, a1: float, a2: float
-    ) -> str:
+    def _arc_path(cx: float, cy: float, r: float, a1: float, a2: float) -> str:
         sweep = a2 - a1
         if sweep >= 2 * math.pi - 1e-4:
             # Full circle: draw two semicircles
@@ -100,7 +98,7 @@ class Pie:
                 f'fill="{P.LABEL_COLOR}">{P.escape(label)}</text>\n'
                 f'  <text x="{leg_x + 20}" y="{y + 27}" font-size="11" '
                 f'fill="{P.MUTED_COLOR}">'
-                f'{P.escape(P.fmt_num(val))} ({pct:.1f}%)</text>'
+                f"{P.escape(P.fmt_num(val))} ({pct:.1f}%)</text>"
             )
         legend_svg = "\n".join(legend_rows)
 
