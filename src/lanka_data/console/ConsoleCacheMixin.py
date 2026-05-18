@@ -15,7 +15,11 @@ from lanka_data.data_repos.RegionNames import _URL_PATTERNS, RegionNames
 from lanka_data.renderers.Map import Map
 
 # Temporary cache: generated outputs that can be re-created on demand.
-_TEMP_DIRS = [pathlib.Path("/tmp/lanka_data/images")]
+# Includes query results (depend on WHERE logic) and rendered images.
+_TEMP_DIRS = [
+    pathlib.Path("/tmp/lanka_data/query"),
+    pathlib.Path("/tmp/lanka_data/images"),
+]
 
 # Permanent cache: static reference data downloaded from remote sources.
 _PERM_DIRS = [
