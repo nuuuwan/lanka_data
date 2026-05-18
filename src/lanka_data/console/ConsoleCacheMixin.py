@@ -1,14 +1,21 @@
+import pathlib
 import shutil
 
 from lanka_data.data_repos.gig2 import GIG2
+
+_IMAGES_DIR = pathlib.Path("/tmp/lanka_data/images")
 
 
 class ConsoleCacheMixin:
 
     def _clear_cache(self) -> None:
-        cache_dir = GIG2._CACHE_DIR
-        if cache_dir.exists():
-            shutil.rmtree(cache_dir)
-            self.console.print(f"[green]Cache cleared:[/green] {cache_dir}")
+        cleared = []
+        for d in [GIG2._CACHE_DIR, _IMAGES_DIR]:
+            if d.exists():
+                shutil.rmtree(d)
+                cleared.append(str(d))
+        if cleared:
+            for d in cleared:
+                self.console.print(f"[green]Cache cleared:[/green] {d}")
         else:
             self.console.print("[yellow]No cache found.[/yellow]")

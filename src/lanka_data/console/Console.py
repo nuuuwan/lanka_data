@@ -37,11 +37,17 @@ class Console(
 
     def _query_and_print(self, path: str) -> None:
         try:
+            svg_path = self._svg_path(path)
+            if svg_path.exists():
+                subprocess.run(["open", str(svg_path)], check=False)
+                self.console.print(
+                    f"[bold green]SVG (cached):[/bold green] {svg_path}"
+                )
+                return
             result = Db(path)
             if isinstance(result, str):
                 # SVG output — write to a named file and open with the default
                 # app
-                svg_path = self._svg_path(path)
                 svg_path.write_text(result, encoding="utf-8")
                 subprocess.run(["open", str(svg_path)], check=False)
                 self.console.print(
