@@ -3,14 +3,20 @@
 import json
 import math
 import os
+import pathlib
+import re
+import urllib.request
 
 from ..data_repos.RegionNames import RegionNames
 from .Palette import Palette
 
 _DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+_GIG_GEO_BASE = "https://raw.githubusercontent.com/nuuuwan/gig-data/master/geo"
 
 
 class Map:
+
+    _GEO_CACHE_DIR = pathlib.Path("/tmp/lanka_data/geo")
 
     @staticmethod
     def _load_topo(name: str) -> dict:
@@ -135,6 +141,16 @@ class Map:
             return Map._geo_svg(
                 path, dominant, cat_color, categories, topo, pcode_field, meta
             )
+        # Try fetching individual boundary files from gig-data.
+        geo_rings = {}
+        for code in dominant:
+            rings = Map._fetch_geo_rings(code)
+            if rings:
+                geo_rings[code] = rings
+        if geo_rings:
+            return Map._geo_svg_from_rings(
+                path, dominant, cat_color, categories, geo_rings, meta
+            )
         return Map._list_svg(
             path, result, dominant, cat_color, categories, meta
         )
@@ -157,6 +173,124 @@ class Map:
             if any(c in topo_codes for c in codes):
                 return topo, pfield
         return None, None
+
+    @staticmethod
+    def _geo_dir_for(code: str) -> str | None:
+        """Return the gig-data geo sub-directory name for a region code."""
+        if re.fullmatch(r"EC-\d{2}[A-Za-z]", code):
+            return "pd"
+        if re.fullmatch(r"EC-\d{2}", code):
+            return "ed"
+        if re.fullmatch(r"LK-\d{4}", code):
+            return "dsd"
+        if re.fullmatch(r"LK-\d{2}", code):
+            return "district"
+        if re.fullmatch(r"LK-\d$", code):
+            return "province"
+        return None
+
+    @classmethod
+    def _fetch_geo_rings(cls, code: str) -> list:
+        """Fetch and cache polygon rings [[lon,lat],...] for one region."""
+        geo_dir = cls._geo_dir_for(code)
+        if geo_dir is None:
+            return []
+        cache_file = cls._GEO_CACHE_DIR / f"{code}.json"
+        if cache_file.exists():
+            with cache_file.open() as f:
+                return json.load(f)
+        url = f"{_GIG_GEO_BASE}/{geo_dir}/{code}.json"
+        try:
+            with urllib.request.urlopen(url) as resp:
+                rings = json.loads(resp.read())
+        except Exception:  # noqa: BLE001
+            return []
+        cls._GEO_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        with cache_file.open("w") as f:
+            json.dump(rings, f)
+        return rings
+
+    @staticmethod
+    def _geo_svg_from_rings(
+        path: str,
+        dominant: dict,
+        cat_color: dict,
+        categories: list,
+        geo_rings: dict,
+        meta: dict,
+    ) -> str:
+        """Render choropleth SVG from {code: [ring,...]} geo data."""
+        P = Palette
+        PAD_L, PAD_R, PAD_TOP, PAD_BOT = 20, 20, 62, 44
+        MAP_W, MAP_H = 360, 600
+        LEG_W, LEG_GAP = 220, 24
+        SVG_W = PAD_L + MAP_W + LEG_GAP + LEG_W + PAD_R
+        SVG_H = PAD_TOP + MAP_H + PAD_BOT
+
+        lons, lats = [], []
+        for code in dominant:
+            for ring in geo_rings.get(code, []):
+                for lon, lat in ring:
+                    lons.append(lon)
+                    lats.append(lat)
+        if not lons:
+            return ""
+        lon_pad = (max(lons) - min(lons)) * 0.05 or 0.01
+        lat_pad = (max(lats) - min(lats)) * 0.05 or 0.01
+        bbox = (
+            min(lons) - lon_pad, min(lats) - lat_pad,
+            max(lons) + lon_pad, max(lats) + lat_pad,
+        )
+        project = Map._make_projector(bbox, PAD_L, PAD_TOP, MAP_W, MAP_H)
+
+        paths_svg = []
+        for code, rings in geo_rings.items():
+            color = cat_color.get(dominant.get(code, ""), "#e5e7eb")
+            d = Map._rings_to_d(rings, project)
+            if d:
+                name = RegionNames.name_for(code)
+                dom = dominant.get(code, "")
+                paths_svg.append(
+                    f'  <path d="{d}" fill="{color}" stroke="white" '
+                    f'stroke-width="0.7" opacity="0.88">'
+                    f"<title>{P.escape(name)}: {P.escape(dom)}</title>"
+                    f"</path>"
+                )
+
+        leg_x = PAD_L + MAP_W + LEG_GAP
+        leg_y = PAD_TOP + 10
+        leg_items = []
+        for cat in categories:
+            color = cat_color[cat]
+            label = P.escape(cat[:28] + ("\u2026" if len(cat) > 28 else ""))
+            leg_items.append(
+                f'  <rect x="{leg_x}" y="{leg_y}" width="14" height="14" '
+                f'fill="{color}" rx="2"/>\n'
+                f'  <text x="{leg_x + 20}" y="{leg_y + 11}" font-size="12" '
+                f'fill="{P.LABEL_COLOR}">{label}</text>'
+            )
+            leg_y += 22
+
+        title = P.escape(P.title_from_path(path))
+        footer = P.escape(P.footer_from_meta(meta))
+        lines = [
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{SVG_W}" height="{SVG_H}" '
+            f'font-family="system-ui,sans-serif">',
+            P.svg_meta(path, meta),
+            f'  <rect width="{SVG_W}" height="{SVG_H}" fill="{P.BG}"/>',
+            f'  <text x="{PAD_L}" y="34" font-size="18" font-weight="bold" '
+            f'fill="{P.TITLE_COLOR}">{title}</text>',
+            f'  <rect x="{PAD_L}" y="{PAD_TOP}" width="{MAP_W}" height="{MAP_H}" '
+            f'fill="#dbeafe" rx="4"/>',
+        ]
+        lines.extend(paths_svg)
+        lines.extend(leg_items)
+        lines.append(
+            f'  <text x="{SVG_W // 2}" y="{SVG_H - 12}" text-anchor="middle" '
+            f'font-size="11" fill="{P.FOOTER_COLOR}">{footer}</text>'
+        )
+        lines.append("</svg>")
+        return "\n".join(lines)
 
     @staticmethod
     def _geo_svg(
