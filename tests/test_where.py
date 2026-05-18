@@ -61,6 +61,41 @@ def test_pds_alias():
     assert not w.matches("EC-02A")
 
 
+# --- DSDs ---
+
+
+def test_dsds_national():
+    w = Where("LK:DSDs")
+    assert w.matches("LK-1101")
+    assert w.matches("LK-9101")
+    assert not w.matches("LK-11")
+    assert not w.matches("LK1101")  # old no-dash format must not match
+
+
+def test_dsds_under_district():
+    w = Where("LK-11:DSDs")
+    assert w.matches("LK-1101")
+    assert w.matches("LK-1109")
+    assert not w.matches("LK-1201")
+
+
+def test_dsds_under_province():
+    w = Where("LK-1:DSDs")
+    assert w.matches("LK-1101")
+    assert w.matches("LK-1201")
+    assert not w.matches("LK-2101")
+
+
+# --- GNDs ---
+
+
+def test_gnds_national():
+    w = Where("LK:GNDs")
+    assert w.matches("LK-1101001")
+    assert w.matches("LK-9101099")
+    assert not w.matches("LK-1101")  # DSD code, not GND
+
+
 # --- Unknown level raises ---
 
 

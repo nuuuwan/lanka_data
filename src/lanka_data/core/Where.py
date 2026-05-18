@@ -50,9 +50,17 @@ class Where:
                 else:
                     pat = r"^EC-\d{2}[A-Z]$"
             case "DSDs":
-                pat = r"^LK\d{4}$"
+                if region_code == "LK":
+                    pat = r"^LK-\d{4}$"
+                else:
+                    n = len(re.sub(r"\D", "", region_code))
+                    pat = rf"^{rc}\d{{{4 - n}}}$"
             case "GNDs":
-                pat = r"^LK\d{7}$"
+                if region_code == "LK":
+                    pat = r"^LK-\d{7}$"
+                else:
+                    n = len(re.sub(r"\D", "", region_code))
+                    pat = rf"^{rc}\d{{{7 - n}}}$"
             case _:
                 raise ValueError(f"Unknown level: {level_canon!r}")
         return re.compile(pat)
