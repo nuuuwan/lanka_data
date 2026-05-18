@@ -1,5 +1,20 @@
 import re
 
+# Mapping from LK administrative district codes to EC electoral district codes.
+# Vanni ED (EC-11) covers 4 northern districts.
+_LK_TO_EC: dict[str, str] = {
+    "LK-11": "EC-01", "LK-12": "EC-02", "LK-13": "EC-03",
+    "LK-21": "EC-04", "LK-22": "EC-05", "LK-23": "EC-06",
+    "LK-31": "EC-07", "LK-32": "EC-08", "LK-33": "EC-09",
+    "LK-41": "EC-10",
+    "LK-42": "EC-11", "LK-43": "EC-11", "LK-44": "EC-11", "LK-45": "EC-11",
+    "LK-51": "EC-12", "LK-52": "EC-13", "LK-53": "EC-14",
+    "LK-61": "EC-15", "LK-62": "EC-16",
+    "LK-71": "EC-17", "LK-72": "EC-18",
+    "LK-81": "EC-19", "LK-82": "EC-20",
+    "LK-91": "EC-21", "LK-92": "EC-22",
+}
+
 
 class Where:
 
@@ -43,10 +58,17 @@ class Where:
                 else:
                     pat = rf"^{rc}\d$"
             case "ElectoralDistricts":
-                pat = r"^EC-\d{2}$"
+                if region_code in _LK_TO_EC:
+                    ec = re.escape(_LK_TO_EC[region_code])
+                    pat = rf"^{ec}$"
+                else:
+                    pat = r"^EC-\d{2}$"
             case "PollingDivisions":
                 if re.fullmatch(r"EC-\d{2}", region_code):
                     pat = rf"^{rc}[A-Z]$"
+                elif region_code in _LK_TO_EC:
+                    ec = re.escape(_LK_TO_EC[region_code])
+                    pat = rf"^{ec}[A-Z]$"
                 else:
                     pat = r"^EC-\d{2}[A-Z]$"
             case "DSDs":

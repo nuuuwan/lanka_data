@@ -35,7 +35,12 @@ class Census2024FetchMixin:
         if cache_file.exists():
             return cache_file.read_text()
         url = f"{_BASE_URL}/{cls._DATASETS[label]}"
-        print(f"  Downloading Census 2024 {label}...", end="", flush=True, file=sys.stderr)
+        print(
+            f"  Downloading Census 2024 {label}...",
+            end="",
+            flush=True,
+            file=sys.stderr,
+        )
         with urllib.request.urlopen(url) as r:
             text = r.read().decode()
         print(" done.", file=sys.stderr)

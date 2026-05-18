@@ -116,7 +116,12 @@ class GIG2:
             with cache_file.open() as f:
                 cls._index = json.load(f)
             return cls._index
-        print("  Downloading GIG2 data index...", end="", flush=True, file=sys.stderr)
+        print(
+            "  Downloading GIG2 data index...",
+            end="",
+            flush=True,
+            file=sys.stderr,
+        )
         cache_file.parent.mkdir(parents=True, exist_ok=True)
         cls._index = cls._fetch_index()
         print(" done.", file=sys.stderr)
@@ -151,7 +156,12 @@ class GIG2:
             with cache_file.open() as f:
                 rows = json.load(f)
         else:
-            print(f"  Downloading {fname}...", end="", flush=True, file=sys.stderr)
+            print(
+                f"  Downloading {fname}...",
+                end="",
+                flush=True,
+                file=sys.stderr,
+            )
             cache_file.parent.mkdir(parents=True, exist_ok=True)
             rows = cls._download_tsv(url)
             print(" done.", file=sys.stderr)
