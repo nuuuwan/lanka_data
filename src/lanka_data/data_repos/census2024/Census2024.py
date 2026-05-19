@@ -1,10 +1,12 @@
-import pathlib
-
 from ...core.Query import Query
 from ...core.Where import Where
+from ..AbstractDataRepo import AbstractDataRepo
 from .Census2024ColRenamesMixin import Census2024ColRenamesMixin
 from .Census2024DatasetsMixin import Census2024DatasetsMixin
 from .Census2024FetchMixin import Census2024FetchMixin
+
+_SOURCE = "Department of Census and Statistics Sri Lanka"
+_SOURCE_URL = "http://www.statistics.gov.lk/"
 
 
 def _pascal(name: str) -> str:
@@ -18,9 +20,9 @@ class Census2024(
     Census2024DatasetsMixin,
     Census2024ColRenamesMixin,
     Census2024FetchMixin,
+    AbstractDataRepo,
 ):
     _YEAR = "2024"
-    _CACHE_DIR = pathlib.Path("/tmp/lanka_data")
     _tsv_cache: dict[str, list] = {}
 
     @classmethod
@@ -91,7 +93,7 @@ class Census2024(
         return cls._query_for_where(q)
 
     @classmethod
-    def query(cls, q: Query) -> dict:
+    def _data_query(cls, q: Query) -> dict:
         if q.is_wildcard_what:
             return cls._catalog(q)
         label = cls._resolve_label(q.what_raw)
@@ -103,3 +105,13 @@ class Census2024(
     @classmethod
     def handles(cls, q: Query) -> bool:
         return cls._resolve_label(q.what_raw) is not None
+
+    @classmethod
+    def _meta(cls, q: Query) -> dict:
+        file_path = cls._DATASETS.get(q.what_raw, "")
+        repo_file = f"{cls._BASE_DATA_URL}/{file_path}" if file_path else None
+        return {
+            "source": _SOURCE,
+            "source_url": _SOURCE_URL,
+            "repo_file": repo_file,
+        }

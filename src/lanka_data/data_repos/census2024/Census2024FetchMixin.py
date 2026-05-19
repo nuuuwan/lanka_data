@@ -4,10 +4,6 @@ from rich.console import Console as _RichConsole
 
 _stderr = _RichConsole(stderr=True)
 
-_BASE_URL = (
-    "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/main/data"
-)
-
 _META_COLS: frozenset[str] = frozenset(
     {
         "region_id",
@@ -19,6 +15,10 @@ _META_COLS: frozenset[str] = frozenset(
 
 
 class Census2024FetchMixin:
+
+    _BASE_DATA_URL = (
+        "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/main/data"
+    )
 
     @staticmethod
     def _coerce(v: str):
@@ -37,7 +37,7 @@ class Census2024FetchMixin:
         cache_file = cls._CACHE_DIR / "census2024" / f"{safe}.tsv"
         if cache_file.exists():
             return cache_file.read_text()
-        url = f"{_BASE_URL}/{cls._DATASETS[label]}"
+        url = f"{cls._BASE_DATA_URL}/{cls._DATASETS[label]}"
         _stderr.print(
             f"[dim]  Downloading Census 2024 {label}...[/dim]", end=""
         )

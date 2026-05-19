@@ -1,17 +1,23 @@
 import functools
 import json
-import pathlib
 import urllib.request
 
 from rich.console import Console as _RichConsole
 
-_stderr = _RichConsole(stderr=True)
-
 from ...core.Query import Query
 from ...core.Where import Where
+from ..AbstractDataRepo import AbstractDataRepo
+
+_stderr = _RichConsole(stderr=True)
 
 
-class GIG2:
+_SOURCE_CENSUS = "Department of Census and Statistics Sri Lanka"
+_SOURCE_CENSUS_URL = "http://www.statistics.gov.lk/"
+_SOURCE_ELECTION = "Election Commission of Sri Lanka"
+_SOURCE_ELECTION_URL = "https://elections.gov.lk/"
+
+
+class GIG2(AbstractDataRepo):
 
     _API_URL = "https://api.github.com/repos/nuuuwan/gig-data/contents/gig2"
 
@@ -68,8 +74,6 @@ class GIG2:
         "sl_chetty": "SriLankanChetty",
         "other_eth": "Other",
     }
-
-    _CACHE_DIR = pathlib.Path("/tmp/lanka_data")
 
     _index: dict | None = None
     _tsv_cache: dict[str, list] = {}
@@ -393,7 +397,44 @@ class GIG2:
         }
 
     @classmethod
-    def query(cls, q: Query) -> dict:
+    def handles(cls, q: Query) -> bool:
+        if q.is_wildcard_what:
+            return True
+        return q.gig2_key()[0] is not None
+
+    @classmethod
+    def _meta(cls, q: Query) -> dict:
+        norm_key, _ = q.gig2_key()
+        entries = cls._build_index().get(norm_key or "", [])
+        is_election = bool(
+            norm_key and norm_key.startswith("governmentelections")
+        )
+        source = _SOURCE_ELECTION if is_election else _SOURCE_CENSUS
+        source_url = (
+            _SOURCE_ELECTION_URL if is_election else _SOURCE_CENSUS_URL
+        )
+        if q.is_wildcard_when or not entries:
+            repo_file = "multiple"
+        else:
+            entry = next(
+                (e for e in entries if e["year"] == q.year), entries[0]
+            )
+            repo_file = entry["url"]
+        return {
+            "source": source,
+            "source_url": source_url,
+            "repo_file": repo_file,
+        }
+
+    @classmethod
+    def _prerender_data(cls, q: Query, data: dict) -> dict:
+        norm_key, _ = q.gig2_key()
+        if norm_key and norm_key.startswith("governmentelections"):
+            return cls.party_only(data)
+        return data
+
+    @classmethod
+    def _data_query(cls, q: Query) -> dict:
         key = f"{q.what_raw}_{q.when_raw}_{q.where_raw}"
         safe = key.replace(":", "-").replace(" ", "_").replace("*", "X")
         cache_file = cls._CACHE_DIR / "query" / f"{safe}.json"

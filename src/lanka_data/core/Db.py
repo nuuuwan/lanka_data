@@ -36,14 +36,18 @@ class Db:
 
     def __call__(self, path: str) -> dict | str:
         q = Query(path)
+        where, what, when = q.where_raw, q.what_raw, q.when_raw
         if q.is_wildcard_what:
-            result = _merge_catalogs(GIG2.query(q), Census2024.query(q))
+            result = _merge_catalogs(
+                GIG2.data_query(where, what, when),
+                Census2024.data_query(where, what, when),
+            )
         elif Census2024.handles(q):
-            gig2_r = GIG2.query(q)
-            c24_r = Census2024.query(q)
+            gig2_r = GIG2.data_query(where, what, when)
+            c24_r = Census2024.data_query(where, what, when)
             result = _merge_results(gig2_r, c24_r) if gig2_r else c24_r
         else:
-            result = GIG2.query(q)
+            result = GIG2.data_query(where, what, when)
         _check_empty(result, q, path)
 
         if q.how == "JSON":

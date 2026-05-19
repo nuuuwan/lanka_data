@@ -30,7 +30,8 @@ _LK_TO_EC: dict[str, str] = {
     "LK-92": "EC-22",
 }
 
-# Mapping from LK province codes to their constituent EC electoral district codes.
+# Mapping from LK province codes to their constituent EC electoral
+# district codes.
 _LK_PROVINCE_TO_ECS: dict[str, list[str]] = {
     "LK-1": ["EC-01", "EC-02", "EC-03"],
     "LK-2": ["EC-04", "EC-05", "EC-06"],
