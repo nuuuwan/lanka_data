@@ -25,6 +25,12 @@ class Query(QueryBase):
         "gender": "populationgender",
         "maritalstatus": "populationmaritalstatus",
         "religion": "populationreligion",
+        # social/household short labels (also present in Census2024 datasets)
+        "cookingfuel": "socialhouseholdcookingfuel",
+        "drinkingwater": "socialhouseholdsourceofdrinkingwater",
+        "households": "socialhouseholdnumberofhouseholds",
+        "lighting": "socialhouseholdlighting",
+        "toilet": "socialhouseholdtoiletfacilities",
     }
 
     @staticmethod
