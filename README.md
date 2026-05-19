@@ -2,16 +2,16 @@
 
 A unified way to access Sri Lankan public data — population, elections, economy, geography, and more — through a single, predictable address scheme.
 
-Every piece of data answers four questions: **What** is being measured, **When** was it measured, **Where**, and **How** it should be rendered. This is the **WWWH** taxonomy, and it maps directly onto a four-segment URL:
+Every piece of data answers four questions: **Where** it was measured, **What** is being measured, **When** was it measured, and **How** it should be rendered. This is the **WWWH** taxonomy, and it maps directly onto a four-segment URL:
 
 ```bash
-/<what>/<when>/<where>/<how>
+/<where>/<what>/<when>/<how>
 ```
 
 A query expressed this way works identically whether issued as an HTTP request.
 
 ```bash
-https://localhost:8000/<what>/<when>/<where>/<how>
+https://localhost:8000/<where>/<what>/<when>/<how>
 ```
 
 Or a Python call.
@@ -19,7 +19,7 @@ Or a Python call.
 ```python
 from lanka_data import Db
 
-print(Db('/<what>/<when>/<where>/<how>'))
+print(Db('/<where>/<what>/<when>/<how>'))
 ```
 
 The underlying data is stored in different formats in multiple data repositories. See [DataRepos.md](DataRepos.md) for details.
@@ -29,12 +29,12 @@ The underlying data is stored in different formats in multiple data repositories
 **National population (2012) as JSON:**
 
 ```
-/Population/2012/LK/JSON
+/LK/Population/2012/JSON
 ```
 
 ```json
 {
-  "query": "/Population/2012/LK/JSON",
+  "query": "/LK/Population/2012/JSON",
   "source": "Department of Census and Statistics Sri Lanka",
   "source_url": "http://www.statistics.gov.lk/",
   "repo_file": "https://raw.githubusercontent.com/nuuuwan/gig-data/master/gig2/population-total.regions.2012.tsv",
@@ -48,12 +48,12 @@ The underlying data is stored in different formats in multiple data repositories
 **Ethnic composition of Sri Lanka (2024) as JSON:**
 
 ```
-/Ethnicity/2024/LK/JSON
+/LK/Ethnicity/2024/JSON
 ```
 
 ```json
 {
-  "query": "/Ethnicity/2024/LK/JSON",
+  "query": "/LK/Ethnicity/2024/JSON",
   "source": "Department of Census and Statistics Sri Lanka",
   "source_url": "http://www.statistics.gov.lk/",
   "repo_file": "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/main/data/Population-Preliminary-Report/Population-by-ethnicity/data.tsv",
@@ -78,7 +78,7 @@ The underlying data is stored in different formats in multiple data repositories
 **Same data, rendered as a pie infographic:**
 
 ```
-/Ethnicity/2024/LK/Pie
+/LK/Ethnicity/2024/Pie
 ```
 
 Returns an SVG.
@@ -86,24 +86,24 @@ Returns an SVG.
 **Ethnic composition per district (2024) as a choropleth map:**
 
 ```
-/Ethnicity/2024/LK:Districts/Map
+/LK:Districts/Ethnicity/2024/Map
 ```
 
 **2024 presidential election — national totals as bars:**
 
 ```
-/Election:Presidential/2024/LK/Bar
+/LK/Election:Presidential/2024/Bar
 ```
 
 **Catalog — every measurement available for Sri Lanka in 2024:**
 
 ```
-/*/2024/LK/JSON
+/LK/*/2024/JSON
 ```
 
 ```json
 {
-  "query": "/*/2024/LK/JSON",
+  "query": "/LK/*/2024/JSON",
   "source": "multiple",
   "source_url": null,
   "repo_file": "multiple",
@@ -127,9 +127,9 @@ Returns an SVG.
 
 Every query has exactly four positional segments, separated by `/`:
 
-1. **What** — the measurement. A single concept (`Population`, `Election`) or a hierarchical path within it, separated by `:` (`Population:Ethnicity`, `Election:Presidential:Summary`).
-2. **When** — the time. Accepts year (`2024`), year-month (`2024-09`), or year-month-day (`2024-09-21`). Coarser precision matches all finer-grained values that fall within it.
-3. **Where** — the space. Either a specific region by its code, or a region followed by `:` and a level name to enumerate its sub-regions (`LK:Districts`, `EC-01:PollingDivisions`).
+1. **Where** — the space. Either a specific region by its code, or a region followed by `:` and a level name to enumerate its sub-regions (`LK:Districts`, `EC-01:PollingDivisions`).
+2. **What** — the measurement. A single concept (`Population`, `Election`) or a hierarchical path within it, separated by `:` (`Population:Ethnicity`, `Election:Presidential:Summary`).
+3. **When** — the time. Accepts year (`2024`), year-month (`2024-09`), or year-month-day (`2024-09-21`). Coarser precision matches all finer-grained values that fall within it.
 4. **How** — the rendering. One of `JSON`, `Bar`, `Pie`, or `Map`.
 
 ### Region codes
@@ -186,10 +186,10 @@ Invalid combinations (e.g. `Pie` on a scalar, `Map` on a single region) return a
 A `*` in any of the first three positions turns the query into a catalog query. The response is the distinct values for the leftmost wildcarded position, filtered by the non-wildcarded positions. Catalog queries are always returned as JSON regardless of `<how>`.
 
 ```
-/*/2024/LK/JSON                       → measurements available for LK in 2024
-/Election:Presidential/*/LK/JSON      → dates of presidential elections in LK
-/Election/*/LK/JSON                   → dates of all elections in LK
-/*/*/LK/JSON                          → all measurements available for LK
+/LK/*/2024/JSON                       → measurements available for LK in 2024
+/LK/Election:Presidential/*/JSON      → dates of presidential elections in LK
+/LK/Election/*/JSON                   → dates of all elections in LK
+/LK/*/*/JSON                          → all measurements available for LK
 /*/*/*/JSON                           → all measurements in the system
 ```
 
@@ -200,9 +200,9 @@ Some measurements are composites of several sub-measurements. An election, for e
 When no sub-component is specified, the query returns all components together:
 
 ```
-/Election:Presidential/2024/LK/JSON              → Parties + Summary
-/Election:Presidential:Parties/2024/LK/JSON      → just parties
-/Election:Presidential:Summary/2024/LK/JSON      → just summary
+/LK/Election:Presidential/2024/JSON              → Parties + Summary
+/LK/Election:Presidential:Parties/2024/JSON      → just parties
+/LK/Election:Presidential:Summary/2024/JSON      → just summary
 ```
 
 ### JSON response format
@@ -239,8 +239,8 @@ Aliases are recognized for level names (`PDs` ↔ `PollingDivisions`) and may be
 A valid query that matches no data returns an empty dict (for `JSON`) or a blank-state placeholder card (for visual modes), with a warning printed to stderr — not an error. Errors are reserved for malformed queries (unknown region codes, syntactically invalid paths, unknown measurements, unknown rendering modes, or invalid `<how>` combinations).
 
 ```
-/Election:Presidential/2023/LK/JSON
-→ {} with warning: "No data for '/Election:Presidential/2023/LK/JSON'."
+/LK/Election:Presidential/2023/JSON
+→ {} with warning: "No data for '/LK/Election:Presidential/2023/JSON'."
 ```
 
 ### Ambiguous time matches
@@ -248,7 +248,7 @@ A valid query that matches no data returns an empty dict (for `JSON`) or a blank
 When a coarse time query matches multiple events, all are returned, keyed by their precise dates:
 
 ```
-/Election:General/1960/LK/JSON
+/LK/Election:General/1960/JSON
 → {
     "1960-03-19": { ... },
     "1960-07-20": { ... }

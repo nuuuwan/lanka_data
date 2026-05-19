@@ -4,8 +4,8 @@ Usage:
     uvicorn workflows.server:app --reload
 
 Then query:
-    GET /query/{what}/{when}/{where}
-    e.g. http://localhost:8000/query/population/2012/LK
+    GET /query/{where}/{what}/{when}
+    e.g. http://localhost:8000/query/LK/population/2012
 """
 
 from fastapi import FastAPI, HTTPException
@@ -16,9 +16,9 @@ from lanka_data import Db
 app = FastAPI(title="lanka_data API", version="1.0.0")
 
 
-@app.get("/query/{what}/{when}/{where}")
-def query(what: str, when: str, where: str):
-    path = f"/{what}/{when}/{where}"
+@app.get("/query/{where}/{what}/{when}")
+def query(where: str, what: str, when: str):
+    path = f"/{where}/{what}/{when}"
     try:
         result = Db(path)
     except ValueError as exc:

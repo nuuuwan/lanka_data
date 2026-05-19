@@ -29,7 +29,7 @@ class Console(
     def _svg_path(path: str) -> pathlib.Path:
         """Derive a filesystem path from a query path.
 
-        '/Religion/2024/LK/Pie' → /tmp/lanka_data/images/Religion.2024.LK.Pie.svg
+        '/LK/Religion/2024/Pie' → /tmp/lanka_data/images/LK.Religion.2024.Pie.svg
         """
         name = path.strip("/").replace("/", ".")
         out_dir = pathlib.Path("/tmp/lanka_data/images")

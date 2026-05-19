@@ -8,14 +8,14 @@ from lanka_data.core import Db
 
 
 class PathCompleter(Completer):
-    """Completes /<what>/<when>/<where> paths segment by segment."""
+    """Completes /<where>/<what>/<when> paths segment by segment."""
 
     _years_cache: dict[str, list[str]] = {}
 
     def _years_for(self, what: str) -> list[str]:
         if what not in self._years_cache:
             try:
-                result = Db(f"/{what}/*/LK")
+                result = Db(f"/LK/{what}/*")
                 years = sorted(result.get("years", []))
             except Exception:  # noqa: BLE001
                 years = []
@@ -34,9 +34,9 @@ class PathCompleter(Completer):
             display_meta="",
         )
 
-    def _complete_what(self, raw: str, prefix: str):
-        yield self._heading("‹what›", raw, -len(raw))
-        for token in CompletionsData._WHAT_COMPLETIONS:
+    def _complete_where(self, raw: str, prefix: str):
+        yield self._heading("‹where›", raw, -len(raw))
+        for token in CompletionsData._WHERE_COMPLETIONS:
             if token.lower().startswith(prefix.lower()):
                 yield Completion(
                     "/" + token + "/",
@@ -63,16 +63,16 @@ class PathCompleter(Completer):
 
     def _complete_segment(self, parts: list, seg: int, prefix: str):
         if seg == 1:
-            what = parts[0]
+            candidates = CompletionsData._WHAT_COMPLETIONS
+            suffix = "/"
+            meta = "<what>"
+        elif seg == 2:
+            what = parts[1]
             candidates = (
                 self._years_for(what) if what and what != "*" else ["*"]
             )
             suffix = "/"
             meta = "<when>"
-        elif seg == 2:
-            candidates = CompletionsData._WHERE_COMPLETIONS
-            suffix = "/"
-            meta = "<where>"
         elif seg == 3:
             candidates = CompletionsData._HOW_COMPLETIONS
             suffix = ""
@@ -94,7 +94,7 @@ class PathCompleter(Completer):
         seg = len(parts) - 1
         prefix = parts[-1]
         if seg == 0:
-            yield from self._complete_what(raw, prefix)
+            yield from self._complete_where(raw, prefix)
         else:
             yield from self._complete_segment(parts, seg, prefix)
 

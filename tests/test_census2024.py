@@ -9,7 +9,7 @@ class TestCensusPopulationGender(unittest.TestCase):
     """Specific entity: returns flat dict (no entity wrapper)."""
 
     def setUp(self):
-        self.result = Db("/Gender/2024/LK")
+        self.result = Db("/LK/Gender/2024")
 
     def test_returns_dict(self):
         self.assertIsInstance(self.result, dict)
@@ -28,7 +28,7 @@ class TestCensusHousing(unittest.TestCase):
     """Single-column dataset: returns scalar for specific entity."""
 
     def setUp(self):
-        self.result = Db("/Housing/2024/LK")
+        self.result = Db("/LK/Housing/2024")
 
     def test_returns_int(self):
         self.assertIsInstance(self.result, int)
@@ -40,7 +40,7 @@ class TestCensusHousing(unittest.TestCase):
 class TestCensusWrongYear(unittest.TestCase):
     def test_returns_empty_for_non_census_year(self):
         # Housing is Census-only; 2012 exists in neither repo
-        self.assertEqual(Db("/Housing/2012/LK"), {})
+        self.assertEqual(Db("/LK/Housing/2012"), {})
 
 
 if __name__ == "__main__":

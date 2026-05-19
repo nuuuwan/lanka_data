@@ -13,19 +13,19 @@ class QueryBase:
     def __init__(self, path: str) -> None:
         parts = path.strip("/").split("/")
         if len(parts) == 3:
-            self.what_raw, self.when_raw, self.where_raw = parts
+            self.where_raw, self.what_raw, self.when_raw = parts
             self.how_raw = "JSON"
-            if self.where_raw.lower() in self._HOW_CANONICAL:
+            if self.when_raw.lower() in self._HOW_CANONICAL:
                 raise ValueError(
-                    f"{self.where_raw!r} looks like a <how> format,"
-                    " not a <where> region code."
+                    f"{self.when_raw!r} looks like a <how> format,"
+                    " not a <when> time period."
                     " Query must follow"
-                    " /<what>/<when>/<where>[/<how>],"
-                    f" e.g. add a region before"
-                    f" /{self.where_raw}."
+                    " /<where>/<what>/<when>[/<how>],"
+                    f" e.g. add a time period before"
+                    f" /{self.when_raw}."
                 )
         elif len(parts) == 4:
-            self.what_raw, self.when_raw, self.where_raw, self.how_raw = parts
+            self.where_raw, self.what_raw, self.when_raw, self.how_raw = parts
             if self.how_raw.lower() not in self._HOW_CANONICAL:
                 raise ValueError(
                     f"Unknown <how>: {self.how_raw!r}."
@@ -36,7 +36,7 @@ class QueryBase:
         else:
             raise ValueError(
                 "Query must have 3 or 4 segments"
-                f" (/<what>/<when>/<where>[/<how>]), got: {path!r}"
+                f" (/<where>/<what>/<when>[/<how>]), got: {path!r}"
             )
 
     @property
