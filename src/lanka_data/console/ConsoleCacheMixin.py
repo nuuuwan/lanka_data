@@ -10,6 +10,7 @@ from rich.progress import (
     TextColumn,
 )
 
+from lanka_data.data_repos.census2024 import Census2024
 from lanka_data.data_repos.gig2 import GIG2
 from lanka_data.data_repos.RegionNames import _URL_PATTERNS, RegionNames
 from lanka_data.renderers.Map import Map
@@ -83,10 +84,52 @@ class ConsoleCacheMixin:
         """Pre-download all permanent (static) reference data."""
         # 1. GIG2 data index
         self.console.print("[dim]  Loading GIG2 data index...[/dim]", end="")
-        GIG2._build_index()
+        index = GIG2._build_index()
         self.console.print("[dim] done.[/dim]")
 
-        # 2. Region names TSVs (one per URL pattern)
+        # 2. All GIG2 TSV files
+        all_urls = [
+            entry["url"] for entries in index.values() for entry in entries
+        ]
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            BarColumn(),
+            MofNCompleteColumn(),
+            console=self.console,
+            transient=True,
+        ) as prog:
+            n = len(all_urls)
+            task = prog.add_task(
+                f"[dim]  Loading GIG2 TSV files ({n} files)...[/dim]",
+                total=n,
+            )
+            for url in all_urls:
+                GIG2._fetch_tsv(url)
+                prog.advance(task)
+        self.console.print(f"[dim]  GIG2 TSV files loaded ({n}).[/dim]")
+
+        # 3. All Census2024 TSV files
+        census_labels = list(Census2024._DATASETS.keys())
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            BarColumn(),
+            MofNCompleteColumn(),
+            console=self.console,
+            transient=True,
+        ) as prog:
+            nc = len(census_labels)
+            task = prog.add_task(
+                f"[dim]  Loading Census 2024 files ({nc} datasets)...[/dim]",
+                total=nc,
+            )
+            for label in census_labels:
+                Census2024._load_tsv_text(label)
+                prog.advance(task)
+        self.console.print(f"[dim]  Census 2024 files loaded ({nc}).[/dim]")
+
+        # 4. Region names TSVs (one per URL pattern)
         self.console.print(
             "[dim]  Loading region names "
             f"({len(_URL_PATTERNS)} files)...[/dim]",
@@ -96,7 +139,7 @@ class ConsoleCacheMixin:
             RegionNames._fetch_and_cache(url)
         self.console.print("[dim] done.[/dim]")
 
-        # 3. Geo rings for all known regions:
+        # 5. Geo rings for all known regions:
         #    static list (provinces/districts/EDs) + every PD and DSD
         #    that RegionNames just loaded from its TSVs.
         pd_codes = sorted(
