@@ -1,5 +1,1 @@
-utils-nuuuwan
-rich
-prompt_toolkit
-fastapi
-uvicorn
+requests
