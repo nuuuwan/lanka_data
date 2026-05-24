@@ -1,4 +1,3 @@
-import json
 from functools import cache, cached_property
 
 import requests
@@ -7,7 +6,9 @@ import requests
 class Where:
     def __init__(self, region_id: str):
         self.region_id = region_id
-        print(json.dumps(self.region, indent=2))
+
+    def run(self):
+        return self.region
 
     @cached_property
     def region_type(self) -> str:
@@ -57,4 +58,4 @@ class Where:
         data_idx = self.get_data_idx_for_region_type(region_type)
         if self.region_id not in data_idx:
             raise ValueError(f"Region ID {self.region_id} not found in data")
-        return data_idx[self.region_id]
+        return dict(region_type=region_type) | data_idx[self.region_id]
