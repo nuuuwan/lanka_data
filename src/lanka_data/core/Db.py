@@ -157,7 +157,7 @@ class Db:
             linewidth=0.2,
         )
 
-        if n <= 30:
+        if n <= 100:
             for _, row in gdf_region.iterrows():
                 centroid = row.geometry.centroid
                 ax.annotate(
@@ -165,7 +165,7 @@ class Db:
                     xy=(centroid.x, centroid.y),
                     ha="center",
                     va="center",
-                    fontsize=6,
+                    fontsize=5,
                     color="black",
                 )
 
