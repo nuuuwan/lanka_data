@@ -157,16 +157,17 @@ class Db:
             linewidth=0.2,
         )
 
-        for _, row in gdf_region.iterrows():
-            centroid = row.geometry.centroid
-            ax.annotate(
-                row["id"],
-                xy=(centroid.x, centroid.y),
-                ha="center",
-                va="center",
-                fontsize=6,
-                color="black",
-            )
+        if n <= 30:
+            for _, row in gdf_region.iterrows():
+                centroid = row.geometry.centroid
+                ax.annotate(
+                    row["id"],
+                    xy=(centroid.x, centroid.y),
+                    ha="center",
+                    va="center",
+                    fontsize=6,
+                    color="black",
+                )
 
         ax.set_axis_off()
 
