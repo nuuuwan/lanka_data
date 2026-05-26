@@ -1,26 +1,30 @@
-import json
 import os
 import unittest
 
 from lanka_data import Db
+from utils_future import JSONFile
+
+
+def load_test_data():
+    return JSONFile(os.path.join("tests", "test_db.data.json")).read()
 
 
 class TestCase(unittest.TestCase):
-    def test_db(self):
-        test_data = None
-        with open(
-            os.path.join("tests", "test_db.data.json"), "r", encoding="utf-8"
-        ) as f:
-            test_data = json.load(f)
+    pass
 
-        for cmd, expected_output_or_results in test_data.items():
-            db = Db(cmd)
-            actual_output = db.run(do_open_images=False, do_use_cache=False)
-            if "results" in actual_output:
-                print(json.dumps(actual_output, indent=2))
-                actual_results = actual_output["results"]
-                self.assertEqual(expected_output_or_results, actual_results)
 
-            else:
-                print(json.dumps(actual_output, indent=2))
-                self.assertEqual(expected_output_or_results, actual_output)
+def make_test(cmd, expected):
+    def test(self):
+        db = Db(cmd)
+        actual_output = db.run(do_open_images=False, do_use_cache=False)
+        if "results" in actual_output:
+            self.assertEqual(expected, actual_output["results"])
+        else:
+            self.assertEqual(expected, actual_output)
+
+    return test
+
+
+for i, (cmd, expected) in enumerate(load_test_data().items()):
+    name = f"test_db_{i:03d}_{cmd}"
+    setattr(TestCase, name, make_test(cmd, expected))
