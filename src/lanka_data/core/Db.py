@@ -53,9 +53,16 @@ class Db:
         t_run = time.perf_counter() - t_start
         return {"results": results, "time": t_run}
 
-    def run(self):
+    def run(self, open_images=False):
         try:
-            return self.run_unsafe()
+            output = self.run_unsafe()
+            if open_images:
+                if "results" in output:
+                    results = output["results"]
+                    if "image_path" in results:
+                        image_path = results["image_path"]
+                        os.system(f"open {image_path}")
+            return output
         except Exception as e:
             log.error(f"Error running command '{self.cmd}': {e}")
             return {"error": str(e)}

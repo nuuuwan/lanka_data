@@ -32,5 +32,9 @@
       "center_lng": 80.127744
     }
   ],
-  "LK-11/Map": { "image": "/tmp/lanka_data/lk-11-map.png" }
+  "LK-11/Map": { "image_path": "/tmp/lanka_data/lk-11-map.png" },
+  "LK-1:district/Map": {
+    "image_path": "/tmp/lanka_data/lk-1:district-map.png"
+  },
+  "LK-1:pd": { "error": "No regions found for parent ID: LK-1" }
 }

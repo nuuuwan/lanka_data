@@ -6,7 +6,7 @@ from lanka_data import Db
 
 def main(cmd):
     db = Db(cmd)
-    result = db.run_unsafe()
+    result = db.run(open_images=True)
     print(json.dumps(result, indent=2))
 
 

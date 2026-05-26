@@ -1,5 +1,4 @@
 import logging
-import os
 from functools import cache, cached_property
 
 import geopandas
@@ -137,7 +136,6 @@ class Regions(Where):
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
         log.info(f"Wrote {image_path}")
         plt.close(fig)
-        os.system(f"open {image_path}")
         return {
-            "image": image_path,
+            "image_path": image_path,
         }
