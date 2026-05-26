@@ -2,4 +2,5 @@
 # flake8: noqa: F408
 
 from lanka_data.core.Db import Db
+from lanka_data.core.Regions import Regions
 from lanka_data.core.Where import Where
