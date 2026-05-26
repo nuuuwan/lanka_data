@@ -1,0 +1,36 @@
+{
+  "LK": [
+    {
+      "id": "LK",
+      "name": "Sri Lanka",
+      "area_sqkm": 65983.58,
+      "center_lat": 7.621863,
+      "center_lng": 80.698448
+    }
+  ],
+  "LK-99": { "error": "Region ID not found: LK-99" },
+  "LK-1:district": [
+    {
+      "id": "LK-11",
+      "name": "Colombo",
+      "area_sqkm": 688.17,
+      "center_lat": 6.869822,
+      "center_lng": 80.018487
+    },
+    {
+      "id": "LK-12",
+      "name": "Gampaha",
+      "area_sqkm": 1385.23,
+      "center_lat": 7.123406,
+      "center_lng": 80.018206
+    },
+    {
+      "id": "LK-13",
+      "name": "Kalutara",
+      "area_sqkm": 1646.99,
+      "center_lat": 6.577185,
+      "center_lng": 80.127744
+    }
+  ],
+  "LK-11/Map": { "image": "/tmp/lanka_data/lk-11-map.png" }
+}
