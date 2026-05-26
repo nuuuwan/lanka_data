@@ -50,14 +50,14 @@ class Db:
     def run_unsafe(self, open_images):
         t_start = time.perf_counter()
         results = self._run()
-        t_run = time.perf_counter() - t_start
+        query_time_ms = int((time.perf_counter() - t_start) * 1_000)
 
         if open_images:
             if "image_path" in results:
                 image_path = results["image_path"]
                 os.system(f"open {image_path}")
 
-        return {"results": results, "time": t_run}
+        return {"results": results, "query_time_ms": query_time_ms}
 
     def run(self, open_images):
         try:
