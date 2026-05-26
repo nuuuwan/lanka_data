@@ -28,6 +28,8 @@ class Regions(Where):
                 5: "district",
                 7: "dsd",
                 10: "gnd",
+                #
+                9: "lg",
             }.get(id_len)
 
         if region_id.startswith("EC-"):
