@@ -70,14 +70,30 @@ class Regions(Where):
         return cls(regions)
 
     @classmethod
+    def is_parent(cls, region, parent_region_id) -> bool:
+        if parent_region_id == "LK":
+            return True
+
+        region_id = region["id"]
+        if parent_region_id in region_id:
+            return True
+
+        parent_region_type = cls.get_region_type(parent_region_id)
+        parent_region_id_key = f"{parent_region_type}_id"
+        if region.get(parent_region_id_key) == parent_region_id:
+            return True
+
+        return False
+
+    @classmethod
     def from_parent_region_id_and_region_type(
         cls, region_type, parent_region_id
     ):
         regions = cls._get_data_list_for_region_type(region_type)
         regions = [
-            d
-            for d in regions
-            if parent_region_id in d["id"] or parent_region_id == "LK"
+            region
+            for region in regions
+            if cls.is_parent(region, parent_region_id)
         ]
         if not regions:
             raise ValueError(

@@ -52,6 +52,6 @@
     "image_path": "/tmp/lanka_data/lk:pd-map.png"
   },
   "LK-1:pd/Map": {
-    "error": "No regions found for parent ID: LK-1"
+    "image_path": "/tmp/lanka_data/lk-1:pd-map.png"
   }
 }
