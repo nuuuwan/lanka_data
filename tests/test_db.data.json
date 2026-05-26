@@ -42,16 +42,16 @@
     }
   ],
   "LK/Map": {
-    "image_path": "/tmp/lanka_data/lk-map.png"
+    "image_path": "/tmp/lanka_data/cache/lk-map.png"
   },
-  "LK-11/Map": { "image_path": "/tmp/lanka_data/lk-11-map.png" },
+  "LK-11/Map": { "image_path": "/tmp/lanka_data/cache/lk-11-map.png" },
   "LK-1:district/Map": {
-    "image_path": "/tmp/lanka_data/lk-1:district-map.png"
+    "image_path": "/tmp/lanka_data/cache/lk-1:district-map.png"
   },
   "LK:pd/Map": {
-    "image_path": "/tmp/lanka_data/lk:pd-map.png"
+    "image_path": "/tmp/lanka_data/cache/lk:pd-map.png"
   },
   "LK-1:pd/Map": {
-    "image_path": "/tmp/lanka_data/lk-1:pd-map.png"
+    "image_path": "/tmp/lanka_data/cache/lk-1:pd-map.png"
   }
 }
