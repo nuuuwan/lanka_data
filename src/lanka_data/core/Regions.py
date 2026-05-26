@@ -3,9 +3,9 @@ from functools import cache, cached_property
 
 import geopandas
 import matplotlib.pyplot as plt
-import requests
 
 from lanka_data.core.Where import Where
+from utils_future import WWW
 
 log = logging.getLogger(__name__)
 
@@ -53,12 +53,7 @@ class Regions(Where):
             + "/nuuuwan/lk_admin_regions/refs/heads/main"
             + f"/data/ents/{region_type}s.json"
         )
-        log.debug(f"🌐 {url}")
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
-
-        data_list = response.json()
-        return data_list
+        return WWW(url).read_json()
 
     @classmethod
     def from_region_id(cls, region_id):
@@ -109,8 +104,8 @@ class Regions(Where):
             + "/nuuuwan/lk_admin_regions/refs/heads/main"
             + f"/data/geo/topojson/{precision_label}/{region_type}s.topojson"
         )
-        log.debug(f"🌐 {url}")
-        gdf_region = geopandas.read_file(url)
+        temp_topojson_file_path = WWW(url).download()
+        gdf_region = geopandas.read_file(temp_topojson_file_path)
 
         region_ids = [d["id"] for d in self.regions]
         gdf_region = gdf_region[gdf_region["id"].isin(region_ids)]

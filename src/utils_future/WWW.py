@@ -42,9 +42,7 @@ class WWW:
         return data
 
     def download(self, do_use_cache=True) -> str:
-        cache_file = File(
-            self.cache_file_base + "." + self.url.split("/")[-1]
-        )
+        cache_file = File(self.cache_file_base + "." + self.url.split("/")[-1])
 
         if cache_file.exists() and do_use_cache:
             return cache_file.path
