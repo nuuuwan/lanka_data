@@ -6,7 +6,7 @@ from functools import cached_property
 
 import requests
 
-from utils_future.File import File
+from utils_future.BinaryFile import BinaryFile
 from utils_future.JSONFile import JSONFile
 
 log = logging.getLogger(__name__)
@@ -42,7 +42,8 @@ class WWW:
         return data
 
     def download(self, do_use_cache=True) -> str:
-        cache_file = File(self.cache_file_base + "." + self.url.split("/")[-1])
+        cache_file_path = self.cache_file_base + "." + self.url.split("/")[-1]
+        cache_file = BinaryFile(cache_file_path)
 
         if cache_file.exists() and do_use_cache:
             return cache_file.path
