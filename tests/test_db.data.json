@@ -42,7 +42,7 @@
     }
   ],
   "LK/Map": {
-    "error": "HTTP Error 404: Not Found"
+    "image_path": "/tmp/lanka_data/lk-map.png"
   },
   "LK-11/Map": { "image_path": "/tmp/lanka_data/lk-11-map.png" },
   "LK-1:district/Map": {
