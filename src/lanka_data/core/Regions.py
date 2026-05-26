@@ -125,7 +125,6 @@ class Regions(Where):
         fig, ax = plt.subplots(figsize=(10, 8))
         gdf_region.plot(
             ax=ax,
-            column="id",
             categorical=True,
             color=gdf_region["color"],
             edgecolor="white",
