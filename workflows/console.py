@@ -16,7 +16,7 @@ def main():
         if cmd in ["x", "q"]:
             break
 
-        output = Db(cmd).run(open_images=True)
+        output = Db(cmd).run(do_open_images=True)
         print(json.dumps(output, indent=2))
 
 

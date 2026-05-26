@@ -47,21 +47,21 @@ class Db:
 
         raise ValueError(f"Invalid command: {self.cmd}")
 
-    def run_unsafe(self, open_images):
+    def run_unsafe(self, do_open_images):
         t_start = time.perf_counter()
         results = self._run()
         query_time_ms = int((time.perf_counter() - t_start) * 1_000)
 
-        if open_images:
+        if do_open_images:
             if "image_path" in results:
                 image_path = results["image_path"]
                 os.system(f"open {image_path}")
 
         return {"results": results, "query_time_ms": query_time_ms}
 
-    def run(self, open_images):
+    def run(self, do_open_images):
         try:
-            return self.run_unsafe(open_images)
+            return self.run_unsafe(do_open_images)
 
         except Exception as e:
             log.error(f"Error running command '{self.cmd}': {e}")
