@@ -1,6 +1,6 @@
 # Lanka Data
 
-This repo implements a simple interface 
+This repo implements a simple interface
 to query data about Sri Lanka.
 
 ## Data Sources
