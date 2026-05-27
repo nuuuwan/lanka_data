@@ -67,9 +67,24 @@ class Regions(Where):
             )
         return cls(regions)
 
+    @classmethod
+    def clean(cls, d):
+        new_d = {
+            "region_id": d["id"],
+            "region_name": d["name"],
+            "region_type": RegionTypeUtils.get_region_type(d["id"]),
+        }
+        for k, v in d.items():
+            if k in ["id", "name"]:
+                continue
+            new_d[k] = v
+
+        return new_d
+
     def get_result(self) -> list[dict]:
+        data_list = [self.clean(d) for d in self.regions]
         return dict(
-            regions=self.regions,
+            data_list=data_list,
             source="Department of Census and Statistics, Sri Lanka",
             source_url="https://www.statistics.gov.lk/",
         )
