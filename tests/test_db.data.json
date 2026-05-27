@@ -138,5 +138,30 @@
       "source": "Census of Population and Housing 2012",
       "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
     }
+  ],
+  "LK-1103/Religion/2024": [
+    {
+      "region_id": "LK-1103",
+      "region_name": "Colombo",
+      "values": {
+        "buddhist": 47726,
+        "hindu": 71811,
+        "islam": 125890,
+        "roman_catholic": 36117,
+        "other_christian": 10381,
+        "other": 164
+      },
+      "total_value": 292089,
+      "p_values": {
+        "buddhist": 0.1634,
+        "hindu": 0.2459,
+        "islam": 0.431,
+        "roman_catholic": 0.1237,
+        "other_christian": 0.0355,
+        "other": 0.0006
+      },
+      "source": "Census of Population and Housing 2024",
+      "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+    }
   ]
 }

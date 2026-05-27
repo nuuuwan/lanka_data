@@ -6,11 +6,7 @@ import tempfile
 import time
 from functools import cached_property
 
-from lanka_data.what import (
-    Census2012,
-    Census2024,
-    Elections,
-)
+from lanka_data.what import Census2012, Census2024, Elections
 from lanka_data.where import Regions, RegionsMapUtils
 
 log = logging.getLogger(__name__)
