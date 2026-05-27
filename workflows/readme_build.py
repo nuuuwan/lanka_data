@@ -1,14 +1,13 @@
 import json
-import logging
 import os
 import shutil
 
 from custom_logging import setup_logging
 
 from lanka_data import Db
-from utils_future import File, JSONFile
+from utils_future import File, JSONFile, Log
 
-log = logging.getLogger(__name__)
+log = Log("ReadMe")
 
 
 class ReadMe:

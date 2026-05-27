@@ -1,5 +1,4 @@
 import json
-import logging
 import os
 import shutil
 import tempfile
@@ -8,8 +7,9 @@ from functools import cached_property
 
 from lanka_data.what import Census2012, Census2024, Elections
 from lanka_data.where import Regions, RegionsMapUtils
+from utils_future import Log
 
-log = logging.getLogger(__name__)
+log = Log("Db")
 
 
 class Db:

@@ -1,6 +1,5 @@
 import csv
 import hashlib
-import logging
 import os
 import tempfile
 from functools import cached_property
@@ -9,8 +8,9 @@ import requests
 
 from utils_future.BinaryFile import BinaryFile
 from utils_future.JSONFile import JSONFile
+from utils_future.Log import Log
 
-log = logging.getLogger(__name__)
+log = Log("WWW")
 
 
 class WWW:

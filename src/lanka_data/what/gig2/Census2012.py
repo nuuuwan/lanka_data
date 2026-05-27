@@ -1,9 +1,9 @@
-import logging
 import os
 
 from lanka_data.what.gig2.GIG2 import GIG2
+from utils_future import Log
 
-log = logging.getLogger(__name__)
+log = Log("Census2012")
 
 
 class Census2012(GIG2):

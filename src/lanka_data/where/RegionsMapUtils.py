@@ -1,10 +1,9 @@
-import logging
-
 import matplotlib.pyplot as plt
 
 from lanka_data.where.RegionsGeoUtils import RegionsGeoUtils
+from utils_future import Log
 
-log = logging.getLogger(__name__)
+log = Log("RegionsMapUtils")
 
 
 class RegionsMapUtils:

@@ -1,11 +1,10 @@
-import logging
 from functools import cached_property
 
 from lanka_data.where.RegionTypeUtils import RegionTypeUtils
 from lanka_data.where.Where import Where
-from utils_future import WWW
+from utils_future import WWW, Log
 
-log = logging.getLogger(__name__)
+log = Log("Regions")
 
 
 class Regions(Where):
