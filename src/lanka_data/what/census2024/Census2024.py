@@ -31,6 +31,8 @@ class Census2024(What):
         label_to_path = {}
         for level1 in metadata:
             for level2, label in metadata[level1].items():
+                if label in label_to_path:
+                    continue
                 path = f"{level1}/{level2}"
                 label_to_path[label] = path
         return label_to_path
