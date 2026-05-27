@@ -41,7 +41,7 @@ The underlying data is stored in different formats in multiple data repositories
   "total_value": 20357776,
   "n_values": 0,
   "values": {},
-  "p_values": null
+  "pct_values": null
 }
 ```
 
@@ -71,7 +71,7 @@ The underlying data is stored in different formats in multiple data repositories
     "veddha": 1373,
     "bharatha": 1183
   },
-  "p_values": { "sinhalese": 74.12, "sl_tamil": 12.31, "sl_moor": 10.48, ... }
+  "pct_values": { "sinhalese": 74.12, "sl_tamil": 12.31, "sl_moor": 10.48, ... }
 }
 ```
 
@@ -111,13 +111,21 @@ Returns an SVG.
   "n_values": null,
   "values": {
     "measurements": [
-      "AgeGroup", "CookingFuel", "DrinkingWater",
-      "Election:Parliamentary", "Election:Presidential",
-      "Ethnicity", "Gender", "Households", "Housing",
-      "Lighting", "Religion", "Toilet"
+      "AgeGroup",
+      "CookingFuel",
+      "DrinkingWater",
+      "Election:Parliamentary",
+      "Election:Presidential",
+      "Ethnicity",
+      "Gender",
+      "Households",
+      "Housing",
+      "Lighting",
+      "Religion",
+      "Toilet"
     ]
   },
-  "p_values": null
+  "pct_values": null
 }
 ```
 
@@ -149,14 +157,14 @@ Administrative districts and electoral districts are parallel hierarchies, both 
 
 To enumerate the sub-regions of a region, append `:` and a level name:
 
-| Canonical | Aliases |
-|---|---|
-| `Provinces` | |
-| `Districts` | |
-| `ElectoralDistricts` | `EDs` |
-| `PollingDivisions` | `PDs` |
-| `DSDs` | |
-| `GNDs` | |
+| Canonical            | Aliases |
+| -------------------- | ------- |
+| `Provinces`          |         |
+| `Districts`          |         |
+| `ElectoralDistricts` | `EDs`   |
+| `PollingDivisions`   | `PDs`   |
+| `DSDs`               |         |
+| `GNDs`               |         |
 
 Examples: `LK:Districts` (all 25 districts), `LK-3:Districts` (the 3 districts in Southern Province), `EC-01:PDs` (polling divisions of Colombo electoral district).
 
@@ -164,12 +172,12 @@ Examples: `LK:Districts` (all 25 districts), `LK-3:Districts` (the 3 districts i
 
 The `<how>` segment selects how the data is returned. The renderer dispatches on response shape; not every `<how>` is valid for every query.
 
-| How | Output | Use case |
-|---|---|---|
-| `JSON` | application/json | Raw data — the canonical machine-readable form |
-| `Bar` | SVG | Horizontal bars sorted descending; the workhorse for any `breakdown` response |
-| `Pie` | SVG | Proportional slices for share-of-whole framing; caps at ~6 slices with overflow into "other" |
-| `Map` | SVG | Choropleth for any `breakdown_by_region` response; geometry layer chosen by the `:Level` suffix |
+| How    | Output           | Use case                                                                                        |
+| ------ | ---------------- | ----------------------------------------------------------------------------------------------- |
+| `JSON` | application/json | Raw data — the canonical machine-readable form                                                  |
+| `Bar`  | SVG              | Horizontal bars sorted descending; the workhorse for any `breakdown` response                   |
+| `Pie`  | SVG              | Proportional slices for share-of-whole framing; caps at ~6 slices with overflow into "other"    |
+| `Map`  | SVG              | Choropleth for any `breakdown_by_region` response; geometry layer chosen by the `:Level` suffix |
 
 Omitting `<how>` defaults to `JSON`. Case-insensitive. Every SVG output bakes its query, source, source_url, repo_file, and render timestamp into `<metadata>`, so every infographic is self-attributing and reproducible from its footer alone.
 
@@ -209,24 +217,24 @@ When no sub-component is specified, the query returns all components together:
 
 `JSON` responses are plain JSON. All field names use `snake_case`. Every response includes:
 
-| Field | Description |
-|---|---|
-| `query` | The path as submitted |
-| `source` | Data source name |
-| `source_url` | Data source URL |
-| `repo_file` | URL of the raw data file |
+| Field         | Description                                                                                        |
+| ------------- | -------------------------------------------------------------------------------------------------- |
+| `query`       | The path as submitted                                                                              |
+| `source`      | Data source name                                                                                   |
+| `source_url`  | Data source URL                                                                                    |
+| `repo_file`   | URL of the raw data file                                                                           |
 | `total_value` | Aggregate total — a scalar for a single region, a `{region: total}` dict for sub-region breakdowns |
-| `n_values` | Number of breakdown categories (0 if none) |
-| `values` | Breakdown values, sorted by value descending |
-| `p_values` | Percentage of total for each value in `values` (null if no breakdown) |
+| `n_values`    | Number of breakdown categories (0 if none)                                                         |
+| `values`      | Breakdown values, sorted by value descending                                                       |
+| `pct_values`  | Percentage of total for each value in `values` (null if no breakdown)                              |
 
-Election queries replace `values`/`p_values` with `summary`, `party`, and `p_party`:
+Election queries replace `values`/`pct_values` with `summary`, `party`, and `p_party`:
 
-| Field | Description |
-|---|---|
+| Field     | Description                                                                                       |
+| --------- | ------------------------------------------------------------------------------------------------- |
 | `summary` | `{valid, rejected, polled, electors}` — either a flat dict (single region) or keyed by sub-region |
-| `party` | Party vote totals (or `{"years": [...]}` for wildcard-when catalog queries) |
-| `p_party` | Party vote shares as percentages |
+| `party`   | Party vote totals (or `{"years": [...]}` for wildcard-when catalog queries)                       |
+| `p_party` | Party vote shares as percentages                                                                  |
 
 ### Case and aliases
 

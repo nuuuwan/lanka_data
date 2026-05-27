@@ -31,12 +31,12 @@ class Census2012(GIG2):
 
         values = dict(sorted(values.items(), key=lambda item: -item[1]))
         total_value = sum(values.values())
-        p_values = {k: round(v / total_value, 4) for k, v in values.items()}
+        pct_values = {k: round(v / total_value, 4) for k, v in values.items()}
 
         return dict(
             values=values,
             total_value=total_value,
-            p_values=p_values,
+            pct_values=pct_values,
             source="Census of Population and Housing 2012",
             source_url="https://www.statistics.gov.lk"
             + "/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf",

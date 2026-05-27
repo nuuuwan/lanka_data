@@ -67,7 +67,7 @@
         "other": 2262
       },
       "total_value": 2323964,
-      "p_values": {
+      "pct_values": {
         "buddhist": 0.7023,
         "islam": 0.1179,
         "hindu": 0.0802,
@@ -95,7 +95,7 @@
         "bharatha": 12
       },
       "total_value": 1088007,
-      "p_values": {
+      "pct_values": {
         "sinhalese": 0.8711,
         "ind_tamil": 0.0571,
         "sl_tamil": 0.05,
@@ -124,7 +124,7 @@
         "bharatha": 4
       },
       "total_value": 840648,
-      "p_values": {
+      "pct_values": {
         "sinhalese": 0.8545,
         "sl_moor": 0.0714,
         "ind_tamil": 0.052,
@@ -152,7 +152,7 @@
         "other": 164
       },
       "total_value": 292089,
-      "p_values": {
+      "pct_values": {
         "islam": 0.431,
         "buddhist": 0.1634,
         "hindu": 0.2459,
