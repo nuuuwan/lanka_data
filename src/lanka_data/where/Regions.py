@@ -37,7 +37,7 @@ class Regions(Where):
         return cls(regions)
 
     @classmethod
-    def is_parent(cls, region, parent_region_id) -> bool:
+    def is_parent(cls, region, parent_region_id) -> bool:  # noqa: CFQ004
         if parent_region_id == "LK":
             return True
 
