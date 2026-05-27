@@ -51,10 +51,7 @@ class Db:
 
         # <Where>
         if n_tokens == 1:
-            result = regions.regions
-            result["source"] = "Department of Census and Statistics, Sri Lanka"
-            result["source_url"] = "https://www.statistics.gov.lk/"
-            return [result]
+            return regions.get_result()
 
         # <Where>/<How>
         if n_tokens == 2:
