@@ -6,10 +6,12 @@ from utils_future import WWW, JSONFile
 
 class GIG2(What):
 
-    def __init__(self, what_label: str, region_group: str, year: str):
-        self.what_label = what_label
-        self.region_group = region_group
-        self.year = year
+    def __init__(self, what_label: str, region_group: str):
+        super().__init__(
+            what_label=what_label,
+            region_group=region_group,
+            year="2012",
+        )
 
     @classmethod
     @cache
