@@ -1,6 +1,6 @@
 # Lanka Data
 
-This repo implements a simple interface
+This repo implements a simple interface 
 to query data about Sri Lanka.
 
 ## Data Sources
@@ -8,6 +8,7 @@ to query data about Sri Lanka.
 - [Census of Population and Housing 2012](https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf)
 - [Census of Population and Housing 2024](https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024)
 - [Department of Census and Statistics, Sri Lanka](https://www.statistics.gov.lk/)
+- [Election Commission of Sri Lanka](https://www.elections.gov.lk)
 
 ## Usage
 
@@ -255,30 +256,7 @@ python workflows/console.py <cmd>
                 "total_value": 1088007,
                 "pct_values": {
                     "sinhalese": 0.8711,
-                    "ind_tamil": 0.0571,
-                    "sl_tamil": 0.05,
-                    "sl_moor": 0.0205,
-                    "other_eth": 0.0005,
-                    "burgher": 0.0004,
-                    "malay": 0.0003,
-                    "sl_chetty": 0.0,
-                    "bharatha": 0.0
-                }
-            },
-            {
-                "region_id": "LK-92",
-                "region_name": "Kegalle",
-                "values": {
-                    "sinhalese": 718369,
-                    "sl_moor": 59997,
-                    "ind_tamil": 43748,
-                    "sl_tamil": 17861,
-                    "burgher": 227,
-                    "other_eth": 209,
-                    "malay": 184,
-                    "sl_chetty": 49,
-                    "bharatha": 4
-                },
+                    ... // 24 lines ...
                 "total_value": 840648,
                 "pct_values": {
                     "sinhalese": 0.8545,
@@ -301,7 +279,99 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 11. `LK-1103/Religion/2024`
+### 11. `LK/PresidentialElection/2024`
+
+```json
+{
+    "result": {
+        "data_list": [
+            {
+                "region_id": "LK",
+                "region_name": "Sri Lanka",
+                "summary": {
+                    "electors": 17140354,
+                    "polled": 13619916,
+                    "valid": 13319616,
+                    "rejected": 300300,
+                    "p_turnout": 0.7946,
+                    "p_valid": 0.978,
+                    "p_rejected": 0.022
+                },
+                "by_party": {
+                    "NPP": 5634915,
+                    "SJB": 4363035,
+                    "IND16": 2299767,
+                    "SLPP": 342781,
+                    ... // 63 lines ...
+                    "SEP": 0.0003,
+                    "NIF": 0.0003,
+                    "IND15": 0.0003,
+                    "NDF": 0.0003,
+                    "IND6": 0.0003,
+                    "UNFF": 0.0002,
+                    "IND7": 0.0002,
+                    "ELPP": 0.0002,
+                    "IND8": 0.0002,
+                    "NSU": 0.0001,
+                    "SLLP": 0.0001
+                }
+            }
+        ],
+        "source": "Election Commission of Sri Lanka",
+        "source_url": "https://www.elections.gov.lk"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
+}
+```
+
+### 12. `LK/ParliamentaryElection/2024`
+
+```json
+{
+    "result": {
+        "data_list": [
+            {
+                "region_id": "LK",
+                "region_name": "Sri Lanka",
+                "summary": {
+                    "electors": 17140354,
+                    "polled": 11815246,
+                    "valid": 11148006,
+                    "rejected": 667240,
+                    "p_turnout": 0.6893,
+                    "p_valid": 0.9435,
+                    "p_rejected": 0.0565
+                },
+                "by_party": {
+                    "NPP": 6863186,
+                    "SJB": 1968716,
+                    "NDF": 500835,
+                    "SLPP": 350429,
+                    ... // 649 lines ...
+                    "IND36-13": 0.0,
+                    "IND42-13": 0.0,
+                    "IND34-13": 0.0,
+                    "IND26-12": 0.0,
+                    "IND05-13": 0.0,
+                    "IND07-13": 0.0,
+                    "IND08-14": 0.0,
+                    "IND32-13": 0.0,
+                    "IND40-13": 0.0,
+                    "IND37-13": 0.0,
+                    "IND33-13": 0.0
+                }
+            }
+        ],
+        "source": "Election Commission of Sri Lanka",
+        "source_url": "https://www.elections.gov.lk"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
+}
+```
+
+### 13. `LK-1103/Religion/2024`
 
 ```json
 {

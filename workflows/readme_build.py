@@ -13,6 +13,7 @@ log = logging.getLogger(__name__)
 
 class ReadMe:
     PATH = "README.md"
+    MAX_LINES_IN_OUTPUT = 40
 
     def run_tests(self):
         test_db_data_file = os.path.join("tests", "test_db.data.json")
@@ -89,13 +90,27 @@ class ReadMe:
         commands = (
             JSONFile(os.path.join("tests", "test_db.data.json")).read().keys()
         )
+
         for i_command, command in enumerate(commands, start=1):
             output = test_idx[command]
 
             lines.append(f"### {i_command:02d}. `{command}`")
             lines.append("")
             lines.append("```json")
-            lines.append(json.dumps(output, indent=4))
+            output_json = json.dumps(output, indent=4)
+            output_json_lines = output_json.splitlines()
+            if len(output_json_lines) > self.MAX_LINES_IN_OUTPUT:
+                i_split = self.MAX_LINES_IN_OUTPUT // 2
+                n_spaces = len(output_json_lines[i_split - 1]) - len(
+                    output_json_lines[i_split - 1].lstrip(" ")
+                )
+                n_cut = len(output_json_lines) - self.MAX_LINES_IN_OUTPUT
+                output_json_lines = (
+                    output_json_lines[:i_split]
+                    + [" " * n_spaces + f"... // {n_cut} lines ..."]
+                    + output_json_lines[-i_split:]
+                )
+            lines.extend(output_json_lines)
             lines.append("```")
             lines.append("")
 

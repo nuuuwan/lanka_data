@@ -9,9 +9,11 @@ log = logging.getLogger(__name__)
 class Census2012(GIG2):
 
     def __init__(self, what_label: str, region_group: str):
-        self.what_label = what_label
-        self.region_group = region_group
-        self.year = "2012"
+        super().__init__(
+            what_label=what_label,
+            region_group=region_group,
+            year="2012",
+        )
 
     @classmethod
     def get_what_label_to_id_file_path(cls):
