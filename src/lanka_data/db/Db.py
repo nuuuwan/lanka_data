@@ -33,7 +33,7 @@ class Db:
         os.makedirs(cls.DIR_CACHE, exist_ok=True)
         log.warning("Cache cleared.")
 
-    def _run(self):
+    def _run(self):  # noqa: C901
         tokens = self.cmd.split("/")
         token0_tokens = tokens[0].split(":")
 
