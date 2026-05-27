@@ -138,8 +138,8 @@ class ReadMe:
             [
                 "# Lanka Data",
                 "",
-                "This repo implements a simple interface ",
-                "to query data about Sri Lanka.",
+                "This repo implements a simple interface"
+                + " to query data about Sri Lanka.",
                 "",
             ]
             + self.get_lines_for_sources(test_idx)

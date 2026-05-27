@@ -1,7 +1,6 @@
 # Lanka Data
 
-This repo implements a simple interface 
-to query data about Sri Lanka.
+This repo implements a simple interface to query data about Sri Lanka.
 
 ## Data Sources
 
@@ -114,7 +113,7 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 1,
+    "query_time_ms": 0,
     "cache_hit": true
 }
 ```
