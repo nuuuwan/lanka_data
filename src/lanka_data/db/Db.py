@@ -50,11 +50,11 @@ class Db:
 
         n_tokens = len(tokens)
 
-        # <What>
+        # <Where>
         if n_tokens == 1:
             return regions.regions
 
-        # <What>/?
+        # <Where>/<How>
         if n_tokens == 2:
             if tokens[1] == "JSON":
                 return regions.regions
@@ -64,7 +64,12 @@ class Db:
                     regions.regions, self.cache_file_base
                 )
 
-            what = Census2012(tokens[1], "regions", "2012")
+            raise ValueError(f"Invalid command: {self.cmd}")
+
+            # <Where>/<What>/<When>
+        if n_tokens == 3:
+            when = tokens[2]
+            what = Census2012(tokens[1], "regions", when)
             return what.get_results(regions)
 
         raise ValueError(f"Invalid command: {self.cmd}")

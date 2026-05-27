@@ -54,7 +54,7 @@
   "LK-1:pd/Map": {
     "image_path": "/tmp/lanka_data/cache/lk-1:pd-map.png"
   },
-  "LK-11/Religion": [
+  "LK-11/Religion/2012": [
     {
       "region_id": "LK-11",
       "region_name": "Colombo",
@@ -74,6 +74,62 @@
         "roman_catholic": 0.07,
         "other_christian": 0.03,
         "other": 0.0
+      }
+    }
+  ],
+  "LK-9:district/Ethnicity/2012": [
+    {
+      "region_id": "LK-91",
+      "region_name": "Ratnapura",
+      "values": {
+        "sinhalese": 947811,
+        "ind_tamil": 62124,
+        "sl_tamil": 54437,
+        "sl_moor": 22346,
+        "other_eth": 549,
+        "burgher": 405,
+        "malay": 288,
+        "sl_chetty": 35,
+        "bharatha": 12
+      },
+      "total_value": 1088007,
+      "p_values": {
+        "sinhalese": 0.87,
+        "ind_tamil": 0.06,
+        "sl_tamil": 0.05,
+        "sl_moor": 0.02,
+        "other_eth": 0.0,
+        "burgher": 0.0,
+        "malay": 0.0,
+        "sl_chetty": 0.0,
+        "bharatha": 0.0
+      }
+    },
+    {
+      "region_id": "LK-92",
+      "region_name": "Kegalle",
+      "values": {
+        "sinhalese": 718369,
+        "sl_moor": 59997,
+        "ind_tamil": 43748,
+        "sl_tamil": 17861,
+        "burgher": 227,
+        "other_eth": 209,
+        "malay": 184,
+        "sl_chetty": 49,
+        "bharatha": 4
+      },
+      "total_value": 840648,
+      "p_values": {
+        "sinhalese": 0.85,
+        "sl_moor": 0.07,
+        "ind_tamil": 0.05,
+        "sl_tamil": 0.02,
+        "burgher": 0.0,
+        "other_eth": 0.0,
+        "malay": 0.0,
+        "sl_chetty": 0.0,
+        "bharatha": 0.0
       }
     }
   ]
