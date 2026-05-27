@@ -1,13 +1,18 @@
+import logging
+
 import matplotlib.pyplot as plt
 
-from lanka_data.where.Regions import log
+from lanka_data.where.RegionsGeoUtils import RegionsGeoUtils
+
+log = logging.getLogger(__name__)
 
 
-class RegionsMapMixin:
+class RegionsMapUtils:
     MAX_REGIONS_TO_LABEL = 100
 
-    def draw_map(self, file_path_base: str):
-        gdf_region = self._get_geopandas_dataframe()
+    @staticmethod
+    def draw_map(regions, file_path_base: str):
+        gdf_region = RegionsGeoUtils.get_geopandas_dataframe(regions)
         n_regions = len(gdf_region)
         cmap = plt.cm.tab20  # pylint: disable=no-member.
         colors = [cmap(i % 20) for i in range(n_regions)]
@@ -23,7 +28,7 @@ class RegionsMapMixin:
             linewidth=0.2,
         )
 
-        if n_regions <= self.MAX_REGIONS_TO_LABEL:
+        if n_regions <= RegionsMapUtils.MAX_REGIONS_TO_LABEL:
             for _, row in gdf_region.iterrows():
                 centroid = row.geometry.centroid
                 ax.annotate(

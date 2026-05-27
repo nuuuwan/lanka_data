@@ -1,10 +1,10 @@
 from functools import cache
 
 
-class RegionType:
-    @classmethod
+class RegionTypeUtils:
+    @staticmethod
     @cache
-    def get_region_type(cls, region_id: str) -> str:
+    def get_region_type(region_id: str) -> str:
         region_type = None
         id_len = len(region_id)
         if region_id.startswith("LK"):

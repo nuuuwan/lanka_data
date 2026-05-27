@@ -2,7 +2,7 @@
 # flake8: noqa: F408
 
 from lanka_data.where.Regions import Regions
-from lanka_data.where.RegionsGeoMixin import RegionsGeoMixin
-from lanka_data.where.RegionsMapMixin import RegionsMapMixin
-from lanka_data.where.RegionType import RegionType
+from lanka_data.where.RegionsGeoUtils import RegionsGeoUtils
+from lanka_data.where.RegionsMapUtils import RegionsMapUtils
+from lanka_data.where.RegionTypeUtils import RegionTypeUtils
 from lanka_data.where.Where import Where

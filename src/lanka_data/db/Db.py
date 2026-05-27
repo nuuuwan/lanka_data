@@ -7,6 +7,7 @@ import time
 from functools import cached_property
 
 from lanka_data.where.Regions import Regions
+from lanka_data.where.RegionsMapUtils import RegionsMapUtils
 
 log = logging.getLogger(__name__)
 
@@ -54,7 +55,9 @@ class Db:
             if tokens[1] == "JSON":
                 return regions.regions
             if tokens[1] == "Map":
-                return regions.draw_map(self.cache_file_base)
+                return RegionsMapUtils.draw_map(
+                    regions.regions, self.cache_file_base
+                )
 
         raise ValueError(f"Invalid command: {self.cmd}")
 
