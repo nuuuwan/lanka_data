@@ -47,7 +47,7 @@ class Census2024(What):
             if "total" in k:
                 continue
             values[k] = int(float(v))
-
+        values = dict(sorted(values.items(), key=lambda item: -item[1]))
         total_value = sum(values.values())
         p_values = {k: round(v / total_value, 4) for k, v in values.items()}
 
