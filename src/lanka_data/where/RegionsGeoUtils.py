@@ -8,7 +8,7 @@ class RegionsGeoUtils:
     @staticmethod
     def get_geopandas_dataframe(regions):
         region_type = RegionTypeUtils.get_region_type(regions[0]["id"])
-        precision_label = {"gnd": "e3_medium"}.get(region_type, "e4_large")
+        precision_label = {"gnd": "e3_small"}.get(region_type, "e4_medium")
         url = (
             "https://raw.githubusercontent.com"
             + "/nuuuwan/lk_admin_regions/refs/heads/main"
