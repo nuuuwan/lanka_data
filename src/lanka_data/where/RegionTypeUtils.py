@@ -14,14 +14,17 @@ class RegionTypeUtils:
                 5: "district",
                 7: "dsd",
                 10: "gnd",
-                #
-                9: "lg",
             }.get(id_len)
 
         if region_id.startswith("EC-"):
             region_type = {
                 5: "ed",
                 6: "pd",
+            }.get(id_len)
+
+        if region_id.startswith("LG-"):
+            region_type = {
+                8: "lg",
             }.get(id_len)
 
         if region_type is not None:
