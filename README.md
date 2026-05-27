@@ -47,10 +47,11 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "regions": [
+        "data_list": [
             {
-                "id": "LK",
-                "name": "Sri Lanka",
+                "region_id": "LK",
+                "region_name": "Sri Lanka",
+                "region_type": "country",
                 "area_sqkm": 65983.58,
                 "center_lat": 7.621863,
                 "center_lng": 80.698448
@@ -77,10 +78,11 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "regions": [
+        "data_list": [
             {
-                "id": "LK-11",
-                "name": "Colombo",
+                "region_id": "LK-11",
+                "region_name": "Colombo",
+                "region_type": "district",
                 "area_sqkm": 688.17,
                 "center_lat": 6.869822,
                 "center_lng": 80.018487,
@@ -89,18 +91,18 @@ python workflows/console.py <cmd>
                 "pd_id": null
             },
             {
-                "id": "LK-12",
-                "name": "Gampaha",
+                "region_id": "LK-12",
+                "region_name": "Gampaha",
+                "region_type": "district",
                 "area_sqkm": 1385.23,
                 "center_lat": 7.123406,
-                "center_lng": 80.018206,
-                "province_id": "LK-1",
-                "ed_id": "EC-02",
+                ... // 3 lines ...
                 "pd_id": null
             },
             {
-                "id": "LK-13",
-                "name": "Kalutara",
+                "region_id": "LK-13",
+                "region_name": "Kalutara",
+                "region_type": "district",
                 "area_sqkm": 1646.99,
                 "center_lat": 6.577185,
                 "center_lng": 80.127744,
@@ -112,7 +114,7 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 0,
+    "query_time_ms": 1,
     "cache_hit": true
 }
 ```
