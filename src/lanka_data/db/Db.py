@@ -51,12 +51,15 @@ class Db:
 
         # <Where>
         if n_tokens == 1:
-            return regions.regions
+            result = regions.regions
+            result["source"] = "Department of Census and Statistics, Sri Lanka"
+            result["source_url"] = "https://www.statistics.gov.lk/"
+            return [result]
 
         # <Where>/<How>
         if n_tokens == 2:
             if tokens[1] == "JSON":
-                return regions.regions
+                return regions.get_result()
 
             if tokens[1] == "Map":
                 return RegionsMapUtils.draw_map(
@@ -69,14 +72,14 @@ class Db:
             what_label = tokens[1]
             if "Election" in tokens[1]:
                 what = Elections(what_label, "regions-ec", when)
-                return what.get_results(regions)
+                return what.get_result(regions)
             else:
                 if when == "2012":
                     what = Census2012(what_label, "regions")
-                    return what.get_results(regions)
+                    return what.get_result(regions)
                 if when == "2024":
                     what = Census2024(what_label)
-                    return what.get_results(regions)
+                    return what.get_result(regions)
 
         raise ValueError(f"Invalid command: {self.cmd}")
 
@@ -86,20 +89,20 @@ class Db:
 
         cache_hit = os.path.exists(cache_json_file) and do_use_cache
         if cache_hit:
-            results = json.load(open(cache_json_file, "r", encoding="utf-8"))
+            result = json.load(open(cache_json_file, "r", encoding="utf-8"))
         else:
-            results = self._run()
+            result = self._run()
             with open(cache_json_file, "w", encoding="utf-8") as f:
-                json.dump(results, f, ensure_ascii=False, indent=2)
+                json.dump(result, f, ensure_ascii=False, indent=2)
 
         if do_open_images:
-            if "image_path" in results:
-                image_path = results["image_path"]
+            if "image_path" in result:
+                image_path = result["image_path"]
                 os.system(f"open {image_path}")
 
         query_time_ms = int((time.perf_counter() - t_start) * 1_000)
         return {
-            "results": results,
+            "result": result,
             "query_time_ms": query_time_ms,
             "cache_hit": cache_hit,
         }

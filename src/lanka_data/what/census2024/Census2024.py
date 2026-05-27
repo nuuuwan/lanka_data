@@ -64,7 +64,7 @@ class Census2024(What):
             + "/Population/StaticalInformation/CPH2024",
         )
 
-    def get_results(self, regions) -> list[dict]:
+    def get_result(self, regions) -> list[dict]:
         label_to_path = self.get_label_to_path()
         path = label_to_path.get(self.label)
         if path is None:

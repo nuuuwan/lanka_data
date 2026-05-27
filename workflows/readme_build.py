@@ -14,6 +14,37 @@ log = logging.getLogger(__name__)
 class ReadMe:
     PATH = "README.md"
 
+    def run_tests(self):
+        test_db_data_file = os.path.join("tests", "test_db.data.json")
+        test_db_data = JSONFile(test_db_data_file).read()
+
+        idx = {}
+        for command in test_db_data.keys():
+            output = Db(command).run(
+                do_open_images=False,
+                do_use_cache=False,
+            )
+            idx[command] = output
+        return idx
+
+    def get_lines_for_sources(self, test_idx):
+
+        lines = [
+            "## Data Sources",
+            "",
+        ]
+        sources = set()
+        for output in test_idx.values():
+            print(output.get("result"))
+            if "result" in output and "source" in output["result"]:
+                source = output["result"]["source"]
+                sources.add(source)
+
+        for source in sorted(sources):
+            lines.append(f"- {source}")
+        lines.append("")
+        return lines
+
     def get_lines_for_usage(self):
         return [
             "## Usage",
@@ -48,7 +79,7 @@ class ReadMe:
             "",
         ]
 
-    def get_lines_for_examples(self):
+    def get_lines_for_examples(self, test_idx):
         lines = [
             "## Example Commands (`<cmd>`)",
             "",
@@ -58,7 +89,7 @@ class ReadMe:
             JSONFile(os.path.join("tests", "test_db.data.json")).read().keys()
         )
         for i_command, command in enumerate(commands, start=1):
-            output = Db(command).run(do_open_images=False, do_use_cache=True)
+            output = test_idx[command]
 
             lines.append(f"### {i_command:02d}. `{command}`")
             lines.append("")
@@ -67,8 +98,8 @@ class ReadMe:
             lines.append("```")
             lines.append("")
 
-            if "results" in output and "image_path" in output["results"]:
-                image_path = output["results"]["image_path"]
+            if "result" in output and "image_path" in output["result"]:
+                image_path = output["result"]["image_path"]
                 new_image_path = os.path.join(
                     "images", "readme", os.path.basename(image_path)
                 )
@@ -86,7 +117,7 @@ class ReadMe:
             "",
         ]
 
-    def get_lines(self):
+    def get_lines(self, test_idx):
         return (
             [
                 "# Lanka Data",
@@ -95,13 +126,15 @@ class ReadMe:
                 "to query data about Sri Lanka.",
                 "",
             ]
+            + self.get_lines_for_sources(test_idx)
             + self.get_lines_for_usage()
-            + self.get_lines_for_examples()
+            + self.get_lines_for_examples(test_idx)
             + self.get_lines_for_footer()
         )
 
     def build(self):
-        lines = self.get_lines()
+        test_idx = self.run_tests()
+        lines = self.get_lines(test_idx)
         readme_file = File(self.PATH)
         readme_file.write("\n".join(lines))
         log.info(f"Wrote {readme_file}")

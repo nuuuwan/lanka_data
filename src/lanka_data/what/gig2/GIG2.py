@@ -31,10 +31,10 @@ class GIG2(What):
         return dict(
             region_id=region_id,
             region_name=region_idx[region_id]["name"],
-        ) | cls.get_custom_results(d)
+        ) | cls.get_custom_result(d)
 
     @cache
-    def get_results(self, regions) -> list[dict]:
+    def get_result(self, regions) -> list[dict]:
         what_label_to_id = self.get_what_label_to_id()
         what_id = what_label_to_id.get(self.what_label)
         if what_id is None:

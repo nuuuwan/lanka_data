@@ -67,3 +67,10 @@ class Regions(Where):
                 f"No regions found for parent ID: {parent_region_id}"
             )
         return cls(regions)
+
+    def get_result(self) -> list[dict]:
+        return dict(
+            regions=self.regions,
+            source="Department of Census and Statistics, Sri Lanka",
+            source_url="https://www.statistics.gov.lk/",
+        )

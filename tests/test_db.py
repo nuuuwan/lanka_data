@@ -17,8 +17,8 @@ def make_test(cmd, expected):
     def test(self):
         db = Db(cmd)
         actual_output = db.run(do_open_images=False, do_use_cache=False)
-        if "results" in actual_output:
-            self.assertEqual(expected, actual_output["results"])
+        if "result" in actual_output:
+            self.assertEqual(expected, actual_output["result"])
         else:
             self.assertEqual(expected, actual_output)
 

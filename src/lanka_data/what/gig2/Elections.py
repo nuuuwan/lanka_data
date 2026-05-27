@@ -15,7 +15,7 @@ class Elections(GIG2):
         )
 
     @classmethod
-    def get_custom_results(cls, d):
+    def get_custom_result(cls, d):
 
         electors = int(float(d["electors"]))
         polled = int(float(d["polled"]))

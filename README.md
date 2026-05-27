@@ -3,6 +3,10 @@
 This repo implements a simple interface 
 to query data about Sri Lanka.
 
+## Data Sources
+
+- Department of Census and Statistics, Sri Lanka
+
 ## Usage
 
 ### Run Code
@@ -39,17 +43,7 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "results": [
-        {
-            "id": "LK",
-            "name": "Sri Lanka",
-            "area_sqkm": 65983.58,
-            "center_lat": 7.621863,
-            "center_lng": 80.698448
-        }
-    ],
-    "query_time_ms": 0,
-    "cache_hit": true
+    "error": "list indices must be integers or slices, not str"
 }
 ```
 
@@ -65,40 +59,7 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "results": [
-        {
-            "id": "LK-11",
-            "name": "Colombo",
-            "area_sqkm": 688.17,
-            "center_lat": 6.869822,
-            "center_lng": 80.018487,
-            "province_id": "LK-1",
-            "ed_id": "EC-01",
-            "pd_id": null
-        },
-        {
-            "id": "LK-12",
-            "name": "Gampaha",
-            "area_sqkm": 1385.23,
-            "center_lat": 7.123406,
-            "center_lng": 80.018206,
-            "province_id": "LK-1",
-            "ed_id": "EC-02",
-            "pd_id": null
-        },
-        {
-            "id": "LK-13",
-            "name": "Kalutara",
-            "area_sqkm": 1646.99,
-            "center_lat": 6.577185,
-            "center_lng": 80.127744,
-            "province_id": "LK-1",
-            "ed_id": "EC-03",
-            "pd_id": null
-        }
-    ],
-    "query_time_ms": 0,
-    "cache_hit": true
+    "error": "list indices must be integers or slices, not str"
 }
 ```
 
@@ -106,11 +67,13 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "results": {
-        "image_path": "/tmp/lanka_data/cache/lk-map.png"
+    "result": {
+        "image_path": "/tmp/lanka_data/cache/lk-map.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 0,
-    "cache_hit": true
+    "query_time_ms": 142,
+    "cache_hit": false
 }
 ```
 
@@ -120,11 +83,13 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "results": {
-        "image_path": "/tmp/lanka_data/cache/lk-11-map.png"
+    "result": {
+        "image_path": "/tmp/lanka_data/cache/lk-11-map.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 0,
-    "cache_hit": true
+    "query_time_ms": 44,
+    "cache_hit": false
 }
 ```
 
@@ -134,11 +99,13 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "results": {
-        "image_path": "/tmp/lanka_data/cache/lk-1:district-map.png"
+    "result": {
+        "image_path": "/tmp/lanka_data/cache/lk-1:district-map.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 0,
-    "cache_hit": true
+    "query_time_ms": 37,
+    "cache_hit": false
 }
 ```
 
@@ -148,11 +115,13 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "results": {
-        "image_path": "/tmp/lanka_data/cache/lk:pd-map.png"
+    "result": {
+        "image_path": "/tmp/lanka_data/cache/lk:pd-map.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 0,
-    "cache_hit": true
+    "query_time_ms": 92,
+    "cache_hit": false
 }
 ```
 
@@ -162,11 +131,13 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "results": {
-        "image_path": "/tmp/lanka_data/cache/lk-1:pd-map.png"
+    "result": {
+        "image_path": "/tmp/lanka_data/cache/lk-1:pd-map.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 0,
-    "cache_hit": true
+    "query_time_ms": 63,
+    "cache_hit": false
 }
 ```
 
@@ -176,7 +147,7 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "results": [
+    "result": [
         {
             "region_id": "LK-11",
             "region_name": "Colombo",
@@ -201,8 +172,8 @@ python workflows/console.py <cmd>
             "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
         }
     ],
-    "query_time_ms": 0,
-    "cache_hit": true
+    "query_time_ms": 13,
+    "cache_hit": false
 }
 ```
 
@@ -210,7 +181,7 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "results": [
+    "result": [
         {
             "region_id": "LK-91",
             "region_name": "Ratnapura",
@@ -270,8 +241,8 @@ python workflows/console.py <cmd>
             "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
         }
     ],
-    "query_time_ms": 0,
-    "cache_hit": true
+    "query_time_ms": 15,
+    "cache_hit": false
 }
 ```
 
@@ -279,7 +250,7 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "results": [
+    "result": [
         {
             "region_id": "LK-1103",
             "region_name": "Colombo",
@@ -305,7 +276,7 @@ python workflows/console.py <cmd>
         }
     ],
     "query_time_ms": 0,
-    "cache_hit": true
+    "cache_hit": false
 }
 ```
 

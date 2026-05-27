@@ -47,4 +47,6 @@ class RegionsMapUtils:
         plt.close(fig)
         return {
             "image_path": image_path,
+            "source": "Department of Census and Statistics, Sri Lanka",
+            "source_url": "https://www.statistics.gov.lk/",
         }
