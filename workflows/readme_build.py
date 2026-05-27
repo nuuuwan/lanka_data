@@ -22,7 +22,7 @@ class ReadMe:
         for command in test_db_data.keys():
             output = Db(command).run(
                 do_open_images=False,
-                do_use_cache=False,
+                do_use_cache=True,
             )
             idx[command] = output
         return idx
@@ -33,15 +33,16 @@ class ReadMe:
             "## Data Sources",
             "",
         ]
-        sources = set()
+        source_idx = {}
         for output in test_idx.values():
-            print(output.get("result"))
-            if "result" in output and "source" in output["result"]:
-                source = output["result"]["source"]
-                sources.add(source)
+            if "result" in output:
+                result = output["result"]
+                source = result["source"]
+                source_url = result["source_url"]
+                source_idx[source] = source_url
 
-        for source in sorted(sources):
-            lines.append(f"- {source}")
+        for source, source_url in sorted(source_idx.items()):
+            lines.append(f"- [{source}]({source_url})")
         lines.append("")
         return lines
 

@@ -20,6 +20,14 @@ class Census2012(GIG2):
         )
 
     @classmethod
+    def get_source_info(cls):
+        return dict(
+            source="Census of Population and Housing 2012",
+            source_url="https://www.statistics.gov.lk"
+            + "/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf",
+        )
+
+    @classmethod
     def get_custom_result(cls, d):
         values = {}
         for k, v in d.items():
@@ -37,7 +45,4 @@ class Census2012(GIG2):
             values=values,
             total_value=total_value,
             pct_values=pct_values,
-            source="Census of Population and Housing 2012",
-            source_url="https://www.statistics.gov.lk"
-            + "/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf",
         )

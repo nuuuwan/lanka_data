@@ -53,4 +53,9 @@ class GIG2(What):
         cleaned_data_list = [
             self.clean(d, region_idx) for d in filtered_data_list
         ]
-        return cleaned_data_list
+        return (
+            dict(
+                data_list=cleaned_data_list,
+            )
+            | self.get_source_info()
+        )

@@ -1,11 +1,13 @@
 # Lanka Data
 
-This repo implements a simple interface 
+This repo implements a simple interface
 to query data about Sri Lanka.
 
 ## Data Sources
 
-- Department of Census and Statistics, Sri Lanka
+- [Census of Population and Housing 2012](https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf)
+- [Census of Population and Housing 2024](https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024)
+- [Department of Census and Statistics, Sri Lanka](https://www.statistics.gov.lk/)
 
 ## Usage
 
@@ -43,7 +45,21 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "error": "list indices must be integers or slices, not str"
+    "result": {
+        "regions": [
+            {
+                "id": "LK",
+                "name": "Sri Lanka",
+                "area_sqkm": 65983.58,
+                "center_lat": 7.621863,
+                "center_lng": 80.698448
+            }
+        ],
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
 }
 ```
 
@@ -59,7 +75,44 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "error": "list indices must be integers or slices, not str"
+    "result": {
+        "regions": [
+            {
+                "id": "LK-11",
+                "name": "Colombo",
+                "area_sqkm": 688.17,
+                "center_lat": 6.869822,
+                "center_lng": 80.018487,
+                "province_id": "LK-1",
+                "ed_id": "EC-01",
+                "pd_id": null
+            },
+            {
+                "id": "LK-12",
+                "name": "Gampaha",
+                "area_sqkm": 1385.23,
+                "center_lat": 7.123406,
+                "center_lng": 80.018206,
+                "province_id": "LK-1",
+                "ed_id": "EC-02",
+                "pd_id": null
+            },
+            {
+                "id": "LK-13",
+                "name": "Kalutara",
+                "area_sqkm": 1646.99,
+                "center_lat": 6.577185,
+                "center_lng": 80.127744,
+                "province_id": "LK-1",
+                "ed_id": "EC-03",
+                "pd_id": null
+            }
+        ],
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
 }
 ```
 
@@ -72,8 +125,8 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 142,
-    "cache_hit": false
+    "query_time_ms": 0,
+    "cache_hit": true
 }
 ```
 
@@ -88,8 +141,8 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 44,
-    "cache_hit": false
+    "query_time_ms": 0,
+    "cache_hit": true
 }
 ```
 
@@ -104,8 +157,8 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 37,
-    "cache_hit": false
+    "query_time_ms": 0,
+    "cache_hit": true
 }
 ```
 
@@ -120,8 +173,8 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 92,
-    "cache_hit": false
+    "query_time_ms": 0,
+    "cache_hit": true
 }
 ```
 
@@ -136,8 +189,8 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 63,
-    "cache_hit": false
+    "query_time_ms": 0,
+    "cache_hit": true
 }
 ```
 
@@ -147,33 +200,35 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "result": [
-        {
-            "region_id": "LK-11",
-            "region_name": "Colombo",
-            "values": {
-                "buddhist": 1632125,
-                "islam": 274067,
-                "hindu": 186303,
-                "roman_catholic": 162260,
-                "other_christian": 66947,
-                "other": 2262
-            },
-            "total_value": 2323964,
-            "pct_values": {
-                "buddhist": 0.7023,
-                "islam": 0.1179,
-                "hindu": 0.0802,
-                "roman_catholic": 0.0698,
-                "other_christian": 0.0288,
-                "other": 0.001
-            },
-            "source": "Census of Population and Housing 2012",
-            "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
-        }
-    ],
-    "query_time_ms": 13,
-    "cache_hit": false
+    "result": {
+        "data_list": [
+            {
+                "region_id": "LK-11",
+                "region_name": "Colombo",
+                "values": {
+                    "buddhist": 1632125,
+                    "islam": 274067,
+                    "hindu": 186303,
+                    "roman_catholic": 162260,
+                    "other_christian": 66947,
+                    "other": 2262
+                },
+                "total_value": 2323964,
+                "pct_values": {
+                    "buddhist": 0.7023,
+                    "islam": 0.1179,
+                    "hindu": 0.0802,
+                    "roman_catholic": 0.0698,
+                    "other_christian": 0.0288,
+                    "other": 0.001
+                }
+            }
+        ],
+        "source": "Census of Population and Housing 2012",
+        "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
 }
 ```
 
@@ -181,68 +236,68 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "result": [
-        {
-            "region_id": "LK-91",
-            "region_name": "Ratnapura",
-            "values": {
-                "sinhalese": 947811,
-                "ind_tamil": 62124,
-                "sl_tamil": 54437,
-                "sl_moor": 22346,
-                "other_eth": 549,
-                "burgher": 405,
-                "malay": 288,
-                "sl_chetty": 35,
-                "bharatha": 12
+    "result": {
+        "data_list": [
+            {
+                "region_id": "LK-91",
+                "region_name": "Ratnapura",
+                "values": {
+                    "sinhalese": 947811,
+                    "ind_tamil": 62124,
+                    "sl_tamil": 54437,
+                    "sl_moor": 22346,
+                    "other_eth": 549,
+                    "burgher": 405,
+                    "malay": 288,
+                    "sl_chetty": 35,
+                    "bharatha": 12
+                },
+                "total_value": 1088007,
+                "pct_values": {
+                    "sinhalese": 0.8711,
+                    "ind_tamil": 0.0571,
+                    "sl_tamil": 0.05,
+                    "sl_moor": 0.0205,
+                    "other_eth": 0.0005,
+                    "burgher": 0.0004,
+                    "malay": 0.0003,
+                    "sl_chetty": 0.0,
+                    "bharatha": 0.0
+                }
             },
-            "total_value": 1088007,
-            "pct_values": {
-                "sinhalese": 0.8711,
-                "ind_tamil": 0.0571,
-                "sl_tamil": 0.05,
-                "sl_moor": 0.0205,
-                "other_eth": 0.0005,
-                "burgher": 0.0004,
-                "malay": 0.0003,
-                "sl_chetty": 0.0,
-                "bharatha": 0.0
-            },
-            "source": "Census of Population and Housing 2012",
-            "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
-        },
-        {
-            "region_id": "LK-92",
-            "region_name": "Kegalle",
-            "values": {
-                "sinhalese": 718369,
-                "sl_moor": 59997,
-                "ind_tamil": 43748,
-                "sl_tamil": 17861,
-                "burgher": 227,
-                "other_eth": 209,
-                "malay": 184,
-                "sl_chetty": 49,
-                "bharatha": 4
-            },
-            "total_value": 840648,
-            "pct_values": {
-                "sinhalese": 0.8545,
-                "sl_moor": 0.0714,
-                "ind_tamil": 0.052,
-                "sl_tamil": 0.0212,
-                "burgher": 0.0003,
-                "other_eth": 0.0002,
-                "malay": 0.0002,
-                "sl_chetty": 0.0001,
-                "bharatha": 0.0
-            },
-            "source": "Census of Population and Housing 2012",
-            "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
-        }
-    ],
-    "query_time_ms": 15,
-    "cache_hit": false
+            {
+                "region_id": "LK-92",
+                "region_name": "Kegalle",
+                "values": {
+                    "sinhalese": 718369,
+                    "sl_moor": 59997,
+                    "ind_tamil": 43748,
+                    "sl_tamil": 17861,
+                    "burgher": 227,
+                    "other_eth": 209,
+                    "malay": 184,
+                    "sl_chetty": 49,
+                    "bharatha": 4
+                },
+                "total_value": 840648,
+                "pct_values": {
+                    "sinhalese": 0.8545,
+                    "sl_moor": 0.0714,
+                    "ind_tamil": 0.052,
+                    "sl_tamil": 0.0212,
+                    "burgher": 0.0003,
+                    "other_eth": 0.0002,
+                    "malay": 0.0002,
+                    "sl_chetty": 0.0001,
+                    "bharatha": 0.0
+                }
+            }
+        ],
+        "source": "Census of Population and Housing 2012",
+        "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
 }
 ```
 
@@ -250,33 +305,35 @@ python workflows/console.py <cmd>
 
 ```json
 {
-    "result": [
-        {
-            "region_id": "LK-1103",
-            "region_name": "Colombo",
-            "values": {
-                "islam": 125890,
-                "hindu": 71811,
-                "buddhist": 47726,
-                "roman_catholic": 36117,
-                "other_christian": 10381,
-                "other": 164
-            },
-            "total_value": 292089,
-            "pct_values": {
-                "islam": 0.431,
-                "hindu": 0.2459,
-                "buddhist": 0.1634,
-                "roman_catholic": 0.1237,
-                "other_christian": 0.0355,
-                "other": 0.0006
-            },
-            "source": "Census of Population and Housing 2024",
-            "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
-        }
-    ],
+    "result": {
+        "data_list": [
+            {
+                "region_id": "LK-1103",
+                "region_name": "Colombo",
+                "values": {
+                    "islam": 125890,
+                    "hindu": 71811,
+                    "buddhist": 47726,
+                    "roman_catholic": 36117,
+                    "other_christian": 10381,
+                    "other": 164
+                },
+                "total_value": 292089,
+                "pct_values": {
+                    "islam": 0.431,
+                    "hindu": 0.2459,
+                    "buddhist": 0.1634,
+                    "roman_catholic": 0.1237,
+                    "other_christian": 0.0355,
+                    "other": 0.0006
+                }
+            }
+        ],
+        "source": "Census of Population and Housing 2024",
+        "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+    },
     "query_time_ms": 0,
-    "cache_hit": false
+    "cache_hit": true
 }
 ```
 

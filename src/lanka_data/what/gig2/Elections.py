@@ -15,6 +15,13 @@ class Elections(GIG2):
         )
 
     @classmethod
+    def get_source_info(cls):
+        return dict(
+            source="Election Commission of Sri Lanka",
+            source_url="https://www.elections.gov.lk",
+        )
+
+    @classmethod
     def get_custom_result(cls, d):
 
         electors = int(float(d["electors"]))
@@ -44,6 +51,4 @@ class Elections(GIG2):
             summary=summary,
             by_party=by_party,
             p_by_party=p_by_party,
-            source="Election Commission of Sri Lanka",
-            source_url="https://www.elections.gov.lk",
         )
