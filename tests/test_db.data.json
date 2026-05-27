@@ -153,9 +153,9 @@
       },
       "total_value": 292089,
       "p_values": {
+        "islam": 0.431,
         "buddhist": 0.1634,
         "hindu": 0.2459,
-        "islam": 0.431,
         "roman_catholic": 0.1237,
         "other_christian": 0.0355,
         "other": 0.0006
