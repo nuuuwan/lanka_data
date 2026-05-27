@@ -1,0 +1,36 @@
+{
+  "GN_housing_excel": {
+    "Occupied-Housing-Units": "OccupiedUnits"
+  },
+  "GN_population_excel": {
+    "Population-by-Age-Group": "AgeGroup",
+    "Population-by-Sex": "Gender"
+  },
+  "HH_GND_excel": {
+    "Main-Source-of-Drinking-Water": "Water",
+    "Main-Source-of-EnergyFuel-Used-for-Cooking": "CookingFuel",
+    "Main-Source-of-Lighting": "Lighting",
+    "Number-of-Households": "Households",
+    "Number-of-households-by-main-source-of-drinking-water": "HouseholdsWater",
+    "Number-of-households-by-main-source-of-energyfuel-used-for-cooking": "HouseholdsCookingFuel",
+    "Number-of-households-by-source-of-lighting": "HouseholdsLighting",
+    "Number-of-households-using-toilet-facilities": "HouseholdsToilet",
+    "Toilet-Facilities": "Toilet"
+  },
+  "Housing-Preliminary-Report": {
+    "Number-of-households-by-main-material-used-for-floor-construction": "Floor",
+    "Number-of-households-by-main-source-of-drinking-water": "Water",
+    "Number-of-households-by-main-source-of-energyfuel-used-for-cooking": "CookingFuel",
+    "Number-of-households-by-main-source-of-energyfuel-used": "EnergyFuel",
+    "Number-of-households-by-source-of-lighting": "Lighting",
+    "Number-of-households-using-toilet-facilities": "Toilet",
+    "Number-of-housing-units-by-housing-unit-structure": "Structure",
+    "Number-of-housing-units-by-main-material-used-for-roof-construction": "Roof",
+    "Number-of-housing-units-by-main-material-used-for-walls-construction": "Walls"
+  },
+  "Population-Preliminary-Report": {
+    "Population-by-ethnicity": "Ethnicity",
+    "Population-by-religion": "Religion",
+    "Population-by-sex-and-age": "GenderAndAgeGroup"
+  }
+}
