@@ -1,3 +1,4 @@
+import csv
 import hashlib
 import logging
 import os
@@ -40,6 +41,25 @@ class WWW:
         cache_json_file.write(data)
         log.debug(f"Wrote {cache_json_file}")
         return data
+
+    def _read_tsv_from_file(self, file_path):
+        with open(file_path, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            return list(reader)
+
+    def read_tsv(self, do_use_cache=True):
+        cache_tsv_file = BinaryFile(self.cache_file_base + ".tsv")
+        cache_hit = cache_tsv_file.exists() and do_use_cache
+
+        if cache_hit:
+            return self._read_tsv_from_file(cache_tsv_file.path)
+
+        log.info(f"🌐 {self.url}")
+        response = requests.get(self.url, timeout=self.T_TIMEOUT)
+        response.raise_for_status()
+        cache_tsv_file.write(response.content)
+        log.debug(f"Wrote {cache_tsv_file}")
+        return self._read_tsv_from_file(cache_tsv_file.path)
 
     def download(self, do_use_cache=True) -> str:
         cache_file_path = self.cache_file_base + "." + self.url.split("/")[-1]

@@ -53,5 +53,28 @@
   },
   "LK-1:pd/Map": {
     "image_path": "/tmp/lanka_data/cache/lk-1:pd-map.png"
-  }
+  },
+  "LK-11/Religion": [
+    {
+      "region_id": "LK-11",
+      "region_name": "Colombo",
+      "values": {
+        "buddhist": 1632125,
+        "islam": 274067,
+        "hindu": 186303,
+        "roman_catholic": 162260,
+        "other_christian": 66947,
+        "other": 2262
+      },
+      "total_value": 2323964,
+      "p_values": {
+        "buddhist": 0.7,
+        "islam": 0.12,
+        "hindu": 0.08,
+        "roman_catholic": 0.07,
+        "other_christian": 0.03,
+        "other": 0.0
+      }
+    }
+  ]
 }

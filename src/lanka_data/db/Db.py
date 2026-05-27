@@ -6,6 +6,7 @@ import tempfile
 import time
 from functools import cached_property
 
+from lanka_data.what.gig2.Census2012 import Census2012
 from lanka_data.where.Regions import Regions
 from lanka_data.where.RegionsMapUtils import RegionsMapUtils
 
@@ -33,7 +34,7 @@ class Db:
         os.makedirs(cls.DIR_CACHE, exist_ok=True)
         log.warning("Cache cleared.")
 
-    def _run(self):  # noqa: C901
+    def _run(self):  # noqa: C901, CFQ004
         tokens = self.cmd.split("/")
         token0_tokens = tokens[0].split(":")
 
@@ -48,16 +49,23 @@ class Db:
             )
 
         n_tokens = len(tokens)
+
+        # <What>
         if n_tokens == 1:
             return regions.regions
 
+        # <What>/?
         if n_tokens == 2:
             if tokens[1] == "JSON":
                 return regions.regions
+
             if tokens[1] == "Map":
                 return RegionsMapUtils.draw_map(
                     regions.regions, self.cache_file_base
                 )
+
+            what = Census2012(tokens[1], "regions", "2012")
+            return what.get_results(regions)
 
         raise ValueError(f"Invalid command: {self.cmd}")
 
