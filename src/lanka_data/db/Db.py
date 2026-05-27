@@ -6,10 +6,12 @@ import tempfile
 import time
 from functools import cached_property
 
-from lanka_data.what.gig2.Census2012 import Census2012
-from lanka_data.what.gig2.Elections import Elections
-from lanka_data.where.Regions import Regions
-from lanka_data.where.RegionsMapUtils import RegionsMapUtils
+from lanka_data.what import (
+    Census2012,
+    Census2024,
+    Elections,
+)
+from lanka_data.where import Regions, RegionsMapUtils
 
 log = logging.getLogger(__name__)
 
@@ -65,18 +67,20 @@ class Db:
                     regions.regions, self.cache_file_base
                 )
 
-            raise ValueError(f"Invalid command: {self.cmd}")
-
             # <Where>/<What>/<When>
         if n_tokens == 3:
             when = tokens[2]
             what_label = tokens[1]
             if "Election" in tokens[1]:
                 what = Elections(what_label, "regions-ec", when)
+                return what.get_results(regions)
             else:
-                what = Census2012(what_label, "regions", when)
-
-            return what.get_results(regions)
+                if when == "2012":
+                    what = Census2012(what_label, "regions")
+                    return what.get_results(regions)
+                if when == "2024":
+                    what = Census2024(what_label)
+                    return what.get_results(regions)
 
         raise ValueError(f"Invalid command: {self.cmd}")
 
