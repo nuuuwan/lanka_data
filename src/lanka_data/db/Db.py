@@ -7,6 +7,7 @@ import time
 from functools import cached_property
 
 from lanka_data.what.gig2.Census2012 import Census2012
+from lanka_data.what.gig2.Elections import Elections
 from lanka_data.where.Regions import Regions
 from lanka_data.where.RegionsMapUtils import RegionsMapUtils
 
@@ -34,7 +35,7 @@ class Db:
         os.makedirs(cls.DIR_CACHE, exist_ok=True)
         log.warning("Cache cleared.")
 
-    def _run(self):  # noqa: C901, CFQ004
+    def _run(self):  # noqa: C901, CFQ001, CFQ004
         tokens = self.cmd.split("/")
         token0_tokens = tokens[0].split(":")
 
@@ -69,7 +70,12 @@ class Db:
             # <Where>/<What>/<When>
         if n_tokens == 3:
             when = tokens[2]
-            what = Census2012(tokens[1], "regions", when)
+            what_label = tokens[1]
+            if "Election" in tokens[1]:
+                what = Elections(what_label, "regions-ec", when)
+            else:
+                what = Census2012(what_label, "regions", when)
+
             return what.get_results(regions)
 
         raise ValueError(f"Invalid command: {self.cmd}")

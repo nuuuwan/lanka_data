@@ -1,0 +1,5 @@
+{
+  "LocalGovElection": "government-elections-local-government",
+  "ParliamentaryElection": "government-elections-parliamentary",
+  "PresidentialElection": "government-elections-presidential"
+}

@@ -68,13 +68,15 @@
       },
       "total_value": 2323964,
       "p_values": {
-        "buddhist": 0.7,
-        "islam": 0.12,
-        "hindu": 0.08,
-        "roman_catholic": 0.07,
-        "other_christian": 0.03,
-        "other": 0.0
-      }
+        "buddhist": 0.7023,
+        "islam": 0.1179,
+        "hindu": 0.0802,
+        "roman_catholic": 0.0698,
+        "other_christian": 0.0288,
+        "other": 0.001
+      },
+      "source": "Census of Population and Housing 2012",
+      "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
     }
   ],
   "LK-9:district/Ethnicity/2012": [
@@ -94,16 +96,18 @@
       },
       "total_value": 1088007,
       "p_values": {
-        "sinhalese": 0.87,
-        "ind_tamil": 0.06,
+        "sinhalese": 0.8711,
+        "ind_tamil": 0.0571,
         "sl_tamil": 0.05,
-        "sl_moor": 0.02,
-        "other_eth": 0.0,
-        "burgher": 0.0,
-        "malay": 0.0,
+        "sl_moor": 0.0205,
+        "other_eth": 0.0005,
+        "burgher": 0.0004,
+        "malay": 0.0003,
         "sl_chetty": 0.0,
         "bharatha": 0.0
-      }
+      },
+      "source": "Census of Population and Housing 2012",
+      "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
     },
     {
       "region_id": "LK-92",
@@ -121,16 +125,18 @@
       },
       "total_value": 840648,
       "p_values": {
-        "sinhalese": 0.85,
-        "sl_moor": 0.07,
-        "ind_tamil": 0.05,
-        "sl_tamil": 0.02,
-        "burgher": 0.0,
-        "other_eth": 0.0,
-        "malay": 0.0,
-        "sl_chetty": 0.0,
+        "sinhalese": 0.8545,
+        "sl_moor": 0.0714,
+        "ind_tamil": 0.052,
+        "sl_tamil": 0.0212,
+        "burgher": 0.0003,
+        "other_eth": 0.0002,
+        "malay": 0.0002,
+        "sl_chetty": 0.0001,
         "bharatha": 0.0
-      }
+      },
+      "source": "Census of Population and Housing 2012",
+      "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
     }
   ]
 }
