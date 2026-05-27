@@ -6,7 +6,7 @@ import tempfile
 import time
 from functools import cached_property
 
-from lanka_data.core.Regions import Regions
+from lanka_data.where.Regions import Regions
 
 log = logging.getLogger(__name__)
 

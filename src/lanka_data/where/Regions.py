@@ -4,7 +4,7 @@ from functools import cache, cached_property
 import geopandas
 import matplotlib.pyplot as plt
 
-from lanka_data.core.Where import Where
+from lanka_data.where.Where import Where
 from utils_future import WWW
 
 log = logging.getLogger(__name__)
