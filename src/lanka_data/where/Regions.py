@@ -1,8 +1,5 @@
 import logging
-from functools import cache, cached_property
-
-import geopandas
-import matplotlib.pyplot as plt
+from functools import cached_property
 
 from lanka_data.where.Where import Where
 from utils_future import WWW
@@ -11,37 +8,9 @@ log = logging.getLogger(__name__)
 
 
 class Regions(Where):
-    MAX_REGIONS_TO_LABEL = 100
 
     def __init__(self, regions: list[str]):
         self.regions = regions
-
-    @classmethod
-    @cache
-    def get_region_type(cls, region_id: str) -> str:
-        region_type = None
-        id_len = len(region_id)
-        if region_id.startswith("LK"):
-            region_type = {
-                2: "country",
-                4: "province",
-                5: "district",
-                7: "dsd",
-                10: "gnd",
-                #
-                9: "lg",
-            }.get(id_len)
-
-        if region_id.startswith("EC-"):
-            region_type = {
-                5: "ed",
-                6: "pd",
-            }.get(id_len)
-
-        if region_type is not None:
-            return region_type
-
-        raise ValueError(f"Invalid region ID format: {region_id}")
 
     @cached_property
     def region_type(self):
@@ -97,59 +66,3 @@ class Regions(Where):
                 f"No regions found for parent ID: {parent_region_id}"
             )
         return cls(regions)
-
-    def _get_geopandas_dataframe(self):
-        region_type = self.region_type
-        precision_label = {"gnd": "e3_medium"}.get(region_type, "e4_large")
-        url = (
-            "https://raw.githubusercontent.com"
-            + "/nuuuwan/lk_admin_regions/refs/heads/main"
-            + f"/data/geo/topojson/{precision_label}/{region_type}s.topojson"
-        )
-        temp_topojson_file_path = WWW(url).download()
-        gdf_region = geopandas.read_file(temp_topojson_file_path)
-
-        region_ids = [d["id"] for d in self.regions]
-        gdf_region = gdf_region[gdf_region["id"].isin(region_ids)]
-
-        if gdf_region.empty:
-            raise ValueError("No map data found.")
-        return gdf_region
-
-    def draw_map(self, file_path_base: str):
-        gdf_region = self._get_geopandas_dataframe()
-        n_regions = len(gdf_region)
-        cmap = plt.cm.tab20  # pylint: disable=no-member.
-        colors = [cmap(i % 20) for i in range(n_regions)]
-        gdf_region = gdf_region.copy()
-        gdf_region["color"] = colors
-
-        fig, ax = plt.subplots(figsize=(10, 8))
-        gdf_region.plot(
-            ax=ax,
-            categorical=True,
-            color=gdf_region["color"],
-            edgecolor="white",
-            linewidth=0.2,
-        )
-
-        if n_regions <= self.MAX_REGIONS_TO_LABEL:
-            for _, row in gdf_region.iterrows():
-                centroid = row.geometry.centroid
-                ax.annotate(
-                    row["id"],
-                    xy=(centroid.x, centroid.y),
-                    ha="center",
-                    va="center",
-                    fontsize=5,
-                    color="black",
-                )
-        ax.set_axis_off()
-
-        image_path = f"{file_path_base}.png"
-        fig.savefig(image_path, dpi=200, bbox_inches="tight")
-        log.info(f"Wrote {image_path}")
-        plt.close(fig)
-        return {
-            "image_path": image_path,
-        }

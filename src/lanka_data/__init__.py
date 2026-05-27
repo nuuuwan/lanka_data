@@ -2,4 +2,5 @@
 # flake8: noqa: F408
 
 from lanka_data.db import Db
-from lanka_data.where import Regions, Where
+from lanka_data.where import (Regions, RegionsGeoMixin, RegionsMapMixin,
+                              RegionType, Where)
