@@ -1,3 +1,4 @@
+import hashlib
 import os
 import unittest
 
@@ -5,14 +6,20 @@ from lanka_data import Db
 from utils_future import JSONFile
 
 DATA_DIR = os.path.join("tests", "data")
+CMDS_FILE = os.path.join("tests", "cmds.json")
+
+
+def cmd_to_hash(cmd):
+    return hashlib.md5(cmd.encode()).hexdigest()
 
 
 def load_test_data():
+    cmds = JSONFile(CMDS_FILE).read()
     entries = []
-    for f in sorted(os.listdir(DATA_DIR)):
-        if f.endswith(".json") and f != "cmds.json":
-            data = JSONFile(os.path.join(DATA_DIR, f)).read()
-            entries.append((data["cmd"], data["expected_output"]))
+    for cmd in cmds:
+        path = os.path.join(DATA_DIR, f"{cmd_to_hash(cmd)}.json")
+        data = JSONFile(path).read()
+        entries.append((data["cmd"], data["expected_output"]))
     return entries
 
 

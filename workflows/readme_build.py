@@ -14,25 +14,30 @@ class ReadMe:
     MAX_LINES_IN_OUTPUT = 40
 
     DATA_DIR = os.path.join("tests", "data")
+    CMDS_FILE = os.path.join("tests", "cmds.json")
     DIR_IMAGES_README = os.path.join("images", "readme")
 
     @staticmethod
+    def cmd_to_hash(cmd):
+        import hashlib
+
+        return hashlib.md5(cmd.encode()).hexdigest()
+
+    @staticmethod
     def load_test_data():
+        cmds = JSONFile(ReadMe.CMDS_FILE).read()
         idx = {}
-        for f in sorted(os.listdir(ReadMe.DATA_DIR)):
-            if f.endswith(".json") and f != "cmds.json":
-                data = JSONFile(os.path.join(ReadMe.DATA_DIR, f)).read()
-                idx[data["cmd"]] = data["expected_output"]
+        for cmd in cmds:
+            path = os.path.join(
+                ReadMe.DATA_DIR, f"{ReadMe.cmd_to_hash(cmd)}.json"
+            )
+            data = JSONFile(path).read()
+            idx[data["cmd"]] = data["expected_output"]
         return idx
 
     @staticmethod
     def get_all_cmds():
-        cmds = []
-        for f in sorted(os.listdir(ReadMe.DATA_DIR)):
-            if f.endswith(".json") and f != "cmds.json":
-                data = JSONFile(os.path.join(ReadMe.DATA_DIR, f)).read()
-                cmds.append(data["cmd"])
-        return cmds
+        return JSONFile(ReadMe.CMDS_FILE).read()
 
     def get_lines_for_sources(self, test_idx):
 

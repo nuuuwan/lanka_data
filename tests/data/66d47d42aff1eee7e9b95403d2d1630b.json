@@ -28,7 +28,7 @@
       "source": "Census of Population and Housing 2024",
       "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
     },
-    "query_time_ms": 0,
+    "query_time_ms": 1,
     "cache_hit": false
   }
 }

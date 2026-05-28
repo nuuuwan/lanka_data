@@ -59,7 +59,7 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 0,
+    "query_time_ms": 2,
     "cache_hit": false
 }
 ```
@@ -158,7 +158,7 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 125,
+    "query_time_ms": 183,
     "cache_hit": false
 }
 ```
@@ -174,7 +174,7 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 52,
+    "query_time_ms": 54,
     "cache_hit": false
 }
 ```
@@ -190,7 +190,7 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 208,
+    "query_time_ms": 217,
     "cache_hit": false
 }
 ```
@@ -206,7 +206,7 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 199,
+    "query_time_ms": 204,
     "cache_hit": false
 }
 ```
@@ -222,7 +222,7 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 43,
+    "query_time_ms": 49,
     "cache_hit": false
 }
 ```
@@ -238,7 +238,7 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 35,
+    "query_time_ms": 38,
     "cache_hit": false
 }
 ```
@@ -254,7 +254,7 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 61,
+    "query_time_ms": 69,
     "cache_hit": false
 }
 ```
@@ -292,7 +292,7 @@ python workflows/console.py <cmd>
         "source": "Census of Population and Housing 2024",
         "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
     },
-    "query_time_ms": 0,
+    "query_time_ms": 1,
     "cache_hit": false
 }
 ```
@@ -384,7 +384,7 @@ python workflows/console.py <cmd>
         "source": "Election Commission of Sri Lanka",
         "source_url": "https://www.elections.gov.lk"
     },
-    "query_time_ms": 184,
+    "query_time_ms": 186,
     "cache_hit": false
 }
 ```
@@ -430,7 +430,7 @@ python workflows/console.py <cmd>
         "source": "Election Commission of Sri Lanka",
         "source_url": "https://www.elections.gov.lk"
     },
-    "query_time_ms": 30,
+    "query_time_ms": 31,
     "cache_hit": false
 }
 ```

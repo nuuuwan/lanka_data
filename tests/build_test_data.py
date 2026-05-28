@@ -1,23 +1,28 @@
+import hashlib
 import os
 
 from lanka_data import Db
 from utils_future import JSONFile
 
 DATA_DIR = os.path.join("tests", "data")
-CMDS_FILE = os.path.join(DATA_DIR, "cmds.json")
+CMDS_FILE = os.path.join("tests", "cmds.json")
+
+
+def cmd_to_hash(cmd):
+    return hashlib.md5(cmd.encode()).hexdigest()
 
 
 def main():
     cmds = JSONFile(CMDS_FILE).read()
 
-    # Remove stale numbered files before regenerating
+    # Remove stale data files before regenerating
     for f in os.listdir(DATA_DIR):
-        if f.endswith(".json") and f != "cmds.json":
+        if f.endswith(".json"):
             os.remove(os.path.join(DATA_DIR, f))
 
-    for i, cmd in enumerate(cmds):
+    for cmd in cmds:
         actual_output = Db(cmd).run(do_open_images=False, do_use_cache=False)
-        path = os.path.join(DATA_DIR, f"{i:03d}.json")
+        path = os.path.join(DATA_DIR, f"{cmd_to_hash(cmd)}.json")
         JSONFile(path).write({"cmd": cmd, "expected_output": actual_output})
 
 
