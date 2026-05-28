@@ -100,7 +100,7 @@
       "source": "Election Commission of Sri Lanka",
       "source_url": "https://www.elections.gov.lk"
     },
-    "query_time_ms": 32,
+    "query_time_ms": null,
     "cache_hit": false
   }
 }

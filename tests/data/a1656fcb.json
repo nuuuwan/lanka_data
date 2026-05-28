@@ -61,7 +61,7 @@
       "source": "Census of Population and Housing 2012",
       "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
     },
-    "query_time_ms": 15,
+    "query_time_ms": null,
     "cache_hit": false
   }
 }
