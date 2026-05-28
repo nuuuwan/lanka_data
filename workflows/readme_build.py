@@ -21,7 +21,7 @@ class ReadMe:
     def cmd_to_hash(cmd):
         import hashlib
 
-        return hashlib.md5(cmd.encode()).hexdigest()
+        return hashlib.md5(cmd.encode()).hexdigest()[:8]
 
     @staticmethod
     def load_test_data():

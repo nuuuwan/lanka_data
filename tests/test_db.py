@@ -10,7 +10,7 @@ CMDS_FILE = os.path.join("tests", "cmds.json")
 
 
 def cmd_to_hash(cmd):
-    return hashlib.md5(cmd.encode()).hexdigest()
+    return hashlib.md5(cmd.encode()).hexdigest()[:8]
 
 
 def load_test_data():
