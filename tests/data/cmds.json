@@ -2,14 +2,13 @@
   "LK",
   "LK-99",
   "LK-1:district",
-  "LK/Map",
+  "LK-1,LK-2",
+  "LK-1,LK-9,LK-3/Map",
   "LK-11/Map",
   "LK-1:district/Map",
   "LK-1:pd/Map",
-  "LK:pd/Map",
-  "LK-11/Religion/2012",
   "LK-1103/Religion/2024",
+  "LK-9:district/Ethnicity/2012",
   "LK/ParliamentaryElection/2024",
-  "LK/PresidentialElection/2024",
-  "LK-9:district/Ethnicity/2012"
+  "LK/PresidentialElection/2024"
 ]

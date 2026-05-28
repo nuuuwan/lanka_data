@@ -1,12 +1,29 @@
 {
-  "cmd": "LK/Map",
+  "cmd": "LK-1,LK-2",
   "expected_output": {
     "result": {
-      "image_path": "/tmp/lanka_data/cache/lk-map.png",
+      "data_list": [
+        {
+          "region_id": "LK-1",
+          "region_name": "Western",
+          "region_type": "province",
+          "area_sqkm": 3720.39,
+          "center_lat": 6.834692,
+          "center_lng": 80.06675
+        },
+        {
+          "region_id": "LK-2",
+          "region_name": "Central",
+          "region_type": "province",
+          "area_sqkm": 5731.25,
+          "center_lat": 7.324022,
+          "center_lng": 80.717397
+        }
+      ],
       "source": "Department of Census and Statistics, Sri Lanka",
       "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 132,
+    "query_time_ms": 0,
     "cache_hit": false
   }
 }
