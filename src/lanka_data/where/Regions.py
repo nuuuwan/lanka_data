@@ -28,19 +28,35 @@ class Regions(Where):
 
     @classmethod
     def from_token(cls, token: str):
-        token0_tokens = token.split(":")
-        n_token0_tokens = len(token0_tokens)
-        if n_token0_tokens == 1:
-            region_ids_str = token0_tokens[0]
-            return Regions.from_region_ids_str(region_ids_str)
-
-        if n_token0_tokens == 2:
-            parent_region_id, region_type = token0_tokens
+        if ":" in token:
+            parent_region_id, region_type = token.split(":")
             return Regions.from_parent_region_id_and_region_type(
                 region_type, parent_region_id
             )
 
-        raise ValueError(f"Invalid token for Regions: {token}")
+        if "..." in token:
+            from_region_id, to_region_id = token.split("...")
+            return Regions.from_region_id_range(from_region_id, to_region_id)
+
+        return Regions.from_region_ids_str(token)
+
+    @classmethod
+    def from_region_id_range(cls, from_region_id, to_region_id):
+        region_type = RegionTypeUtils.get_region_type(from_region_id)
+        if region_type != RegionTypeUtils.get_region_type(to_region_id):
+            raise ValueError(
+                f"Region types do not match: {from_region_id}, {to_region_id}"
+            )
+
+        regions = cls._get_data_list_for_region_type(region_type)
+        regions = [
+            d for d in regions if from_region_id <= d["id"] <= to_region_id
+        ]
+        if not regions:
+            raise ValueError(
+                f"No regions found in range: {from_region_id}...{to_region_id}"
+            )
+        return cls(regions)
 
     @classmethod
     def from_region_ids_str(cls, region_ids_str):

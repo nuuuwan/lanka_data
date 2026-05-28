@@ -1,0 +1,1 @@
+python3 tests/build_test_data.py && python3 -m pytest -v -p no:warnings "$*" && 'python3 workflows/readme_build.py

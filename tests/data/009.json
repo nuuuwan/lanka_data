@@ -1,67 +1,34 @@
 {
-  "cmd": "LK-9:district/Ethnicity/2012",
+  "cmd": "LK-1103/Religion/2024",
   "expected_output": {
     "result": {
       "data_list": [
         {
-          "region_id": "LK-91",
-          "region_name": "Ratnapura",
+          "region_id": "LK-1103",
+          "region_name": "Colombo",
           "values": {
-            "sinhalese": 947811,
-            "ind_tamil": 62124,
-            "sl_tamil": 54437,
-            "sl_moor": 22346,
-            "other_eth": 549,
-            "burgher": 405,
-            "malay": 288,
-            "sl_chetty": 35,
-            "bharatha": 12
+            "islam": 125890,
+            "hindu": 71811,
+            "buddhist": 47726,
+            "roman_catholic": 36117,
+            "other_christian": 10381,
+            "other": 164
           },
-          "total_value": 1088007,
+          "total_value": 292089,
           "pct_values": {
-            "sinhalese": 0.8711,
-            "ind_tamil": 0.0571,
-            "sl_tamil": 0.05,
-            "sl_moor": 0.0205,
-            "other_eth": 0.0005,
-            "burgher": 0.0004,
-            "malay": 0.0003,
-            "sl_chetty": 0.0,
-            "bharatha": 0.0
-          }
-        },
-        {
-          "region_id": "LK-92",
-          "region_name": "Kegalle",
-          "values": {
-            "sinhalese": 718369,
-            "sl_moor": 59997,
-            "ind_tamil": 43748,
-            "sl_tamil": 17861,
-            "burgher": 227,
-            "other_eth": 209,
-            "malay": 184,
-            "sl_chetty": 49,
-            "bharatha": 4
-          },
-          "total_value": 840648,
-          "pct_values": {
-            "sinhalese": 0.8545,
-            "sl_moor": 0.0714,
-            "ind_tamil": 0.052,
-            "sl_tamil": 0.0212,
-            "burgher": 0.0003,
-            "other_eth": 0.0002,
-            "malay": 0.0002,
-            "sl_chetty": 0.0001,
-            "bharatha": 0.0
+            "islam": 0.431,
+            "hindu": 0.2459,
+            "buddhist": 0.1634,
+            "roman_catholic": 0.1237,
+            "other_christian": 0.0355,
+            "other": 0.0006
           }
         }
       ],
-      "source": "Census of Population and Housing 2012",
-      "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+      "source": "Census of Population and Housing 2024",
+      "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
     },
-    "query_time_ms": 17,
+    "query_time_ms": 0,
     "cache_hit": false
   }
 }
