@@ -158,7 +158,7 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 126,
+    "query_time_ms": 122,
     "cache_hit": false
 }
 ```
@@ -174,14 +174,30 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 50,
+    "query_time_ms": 49,
     "cache_hit": false
 }
 ```
 
 ![LK-4...LK-6/Map](images/readme/7359ab60.png)
 
-### 07. `LK-11/Map`
+### 07. `LK-1127025@10/Map`
+
+```json
+{
+    "result": {
+        "image_path": "/tmp/lanka_data/cache/a9966c62.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 204,
+    "cache_hit": false
+}
+```
+
+![LK-1127025@10/Map](images/readme/a9966c62.png)
+
+### 08. `LK-11/Map`
 
 ```json
 {
@@ -197,7 +213,7 @@ python workflows/console.py <cmd>
 
 ![LK-11/Map](images/readme/4cb7cf4c.png)
 
-### 08. `LK-1:district/Map`
+### 09. `LK-1:district/Map`
 
 ```json
 {
@@ -206,14 +222,14 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 32,
+    "query_time_ms": 35,
     "cache_hit": false
 }
 ```
 
 ![LK-1:district/Map](images/readme/11923f96.png)
 
-### 09. `LK-1:pd/Map`
+### 10. `LK-1:pd/Map`
 
 ```json
 {
@@ -222,14 +238,14 @@ python workflows/console.py <cmd>
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 68,
+    "query_time_ms": 62,
     "cache_hit": false
 }
 ```
 
 ![LK-1:pd/Map](images/readme/7e17ed4b.png)
 
-### 10. `LK-1103/Religion/2024`
+### 11. `LK-1103/Religion/2024`
 
 ```json
 {
@@ -260,12 +276,12 @@ python workflows/console.py <cmd>
         "source": "Census of Population and Housing 2024",
         "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
     },
-    "query_time_ms": 0,
+    "query_time_ms": 1,
     "cache_hit": false
 }
 ```
 
-### 11. `LK-9:district/Ethnicity/2012`
+### 12. `LK-9:district/Ethnicity/2012`
 
 ```json
 {
@@ -306,12 +322,12 @@ python workflows/console.py <cmd>
         "source": "Census of Population and Housing 2012",
         "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
     },
-    "query_time_ms": 15,
+    "query_time_ms": 17,
     "cache_hit": false
 }
 ```
 
-### 12. `LK/ParliamentaryElection/2024`
+### 13. `LK/ParliamentaryElection/2024`
 
 ```json
 {
@@ -352,12 +368,12 @@ python workflows/console.py <cmd>
         "source": "Election Commission of Sri Lanka",
         "source_url": "https://www.elections.gov.lk"
     },
-    "query_time_ms": 176,
+    "query_time_ms": 171,
     "cache_hit": false
 }
 ```
 
-### 13. `LK/PresidentialElection/2024`
+### 14. `LK/PresidentialElection/2024`
 
 ```json
 {
@@ -398,7 +414,7 @@ python workflows/console.py <cmd>
         "source": "Election Commission of Sri Lanka",
         "source_url": "https://www.elections.gov.lk"
     },
-    "query_time_ms": 33,
+    "query_time_ms": 42,
     "cache_hit": false
 }
 ```
