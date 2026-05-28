@@ -1,3 +1,4 @@
+import hashlib
 import json
 import os
 import shutil
@@ -23,9 +24,9 @@ class Db:
     def cache_file_base(self) -> str:
         os.makedirs(self.DIR_CACHE, exist_ok=True)
 
-        tokens = self.cmd.lower().split("/")
-        cmd_id = "-".join(tokens)
-        return os.path.join(self.DIR_CACHE, cmd_id)
+        cmd_id = self.cmd.lower()
+        h = hashlib.md5(cmd_id.encode("utf-8")).hexdigest()[:8]
+        return os.path.join(self.DIR_CACHE, h)
 
     @classmethod
     def cache_clear(cls):

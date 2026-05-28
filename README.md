@@ -154,23 +154,23 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "image_path": "/tmp/lanka_data/cache/lk-1,lk-9,lk-3-map.png",
+        "image_path": "/tmp/lanka_data/cache/00b5c25f.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 132,
+    "query_time_ms": 183,
     "cache_hit": false
 }
 ```
 
-![LK-1,LK-9,LK-3/Map](images/readme/lk-1,lk-9,lk-3-map.png)
+![LK-1,LK-9,LK-3/Map](images/readme/00b5c25f.png)
 
 ### 06. `LK-11/Map`
 
 ```json
 {
     "result": {
-        "image_path": "/tmp/lanka_data/cache/lk-11-map.png",
+        "image_path": "/tmp/lanka_data/cache/4cb7cf4c.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -179,39 +179,39 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-11/Map](images/readme/lk-11-map.png)
+![LK-11/Map](images/readme/4cb7cf4c.png)
 
 ### 07. `LK-1:district/Map`
 
 ```json
 {
     "result": {
-        "image_path": "/tmp/lanka_data/cache/lk-1:district-map.png",
+        "image_path": "/tmp/lanka_data/cache/11923f96.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 34,
+    "query_time_ms": 37,
     "cache_hit": false
 }
 ```
 
-![LK-1:district/Map](images/readme/lk-1:district-map.png)
+![LK-1:district/Map](images/readme/11923f96.png)
 
 ### 08. `LK-1:pd/Map`
 
 ```json
 {
     "result": {
-        "image_path": "/tmp/lanka_data/cache/lk-1:pd-map.png",
+        "image_path": "/tmp/lanka_data/cache/7e17ed4b.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 68,
+    "query_time_ms": 67,
     "cache_hit": false
 }
 ```
 
-![LK-1:pd/Map](images/readme/lk-1:pd-map.png)
+![LK-1:pd/Map](images/readme/7e17ed4b.png)
 
 ### 09. `LK-1103/Religion/2024`
 
@@ -244,7 +244,7 @@ python workflows/console.py <cmd>
         "source": "Census of Population and Housing 2024",
         "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
     },
-    "query_time_ms": 0,
+    "query_time_ms": 3,
     "cache_hit": false
 }
 ```

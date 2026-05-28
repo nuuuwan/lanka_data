@@ -14,6 +14,7 @@ class ReadMe:
     MAX_LINES_IN_OUTPUT = 40
 
     DATA_DIR = os.path.join("tests", "data")
+    DIR_IMAGES_README = os.path.join("images", "readme")
 
     @staticmethod
     def load_test_data():
@@ -115,8 +116,9 @@ class ReadMe:
             lines.append("")
             if "result" in output and "image_path" in output["result"]:
                 image_path = output["result"]["image_path"]
+                os.makedirs(self.DIR_IMAGES_README, exist_ok=True)
                 new_image_path = os.path.join(
-                    "images", "readme", os.path.basename(image_path)
+                    self.DIR_IMAGES_README, os.path.basename(image_path)
                 )
                 shutil.copy2(image_path, new_image_path)
                 lines.append(f"![{command}]({new_image_path})")

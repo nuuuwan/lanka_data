@@ -2,11 +2,11 @@
   "cmd": "LK-1,LK-9,LK-3/Map",
   "expected_output": {
     "result": {
-      "image_path": "/tmp/lanka_data/cache/lk-1,lk-9,lk-3-map.png",
+      "image_path": "/tmp/lanka_data/cache/00b5c25f.png",
       "source": "Department of Census and Statistics, Sri Lanka",
       "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 132,
+    "query_time_ms": 183,
     "cache_hit": false
   }
 }
