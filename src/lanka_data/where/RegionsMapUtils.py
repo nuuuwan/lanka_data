@@ -1,3 +1,5 @@
+import random
+
 import matplotlib.pyplot as plt
 
 from lanka_data.where.RegionsGeoUtils import RegionsGeoUtils
@@ -8,15 +10,57 @@ log = Log("RegionsMapUtils")
 
 class RegionsMapUtils:
     MAX_REGIONS_TO_LABEL = 100
+    COLOR_IDX = {
+        # Religion
+        "buddhist": "#FFBE29",
+        "hindu": "#EB7400",
+        "islam": "#00534E",
+        "christian": "blue",
+        "roman_catholic": "purple",
+        "other": "gray",
+        # Ethnicity
+        "sinhalese": "#8D153A",
+        "sl_tamil": "#EB7400",
+        "ind_tamil": "blue",
+        "sl_moor": "#00534E",
+        "malay": "green",
+    }
+
+    @staticmethod
+    def get_random_color():
+
+        return "#{:06x}".format(random.randint(0, 0xFFFFFF))
+
+    @staticmethod
+    def get_colors_for_data_list(data_list):
+        color_idx = {}
+        colors = []
+        for data in data_list:
+            max_value_key = max(data["values"], key=data["values"].get)
+            if max_value_key not in color_idx:
+                color = (
+                    RegionsMapUtils.COLOR_IDX[max_value_key]
+                    if max_value_key in RegionsMapUtils.COLOR_IDX
+                    else RegionsMapUtils.get_random_color()
+                )
+                color_idx[max_value_key] = color
+            colors.append(color_idx[max_value_key])
+        return colors
 
     @staticmethod
     def draw_map(result, file_path_base: str):
         data_list = result["data_list"]
         region_ids = [d["region_id"] for d in data_list]
+        n_regions = len(region_ids)
         gdf_region = RegionsGeoUtils.get_geopandas_dataframe(region_ids)
-        n_regions = len(gdf_region)
-        cmap = plt.cm.tab20  # pylint: disable=no-member.
-        colors = [cmap(i % 20) for i in range(n_regions)]
+
+        has_values = data_list[0].get("values") is not None
+        if not has_values:
+            cmap = plt.cm.tab20  # pylint: disable=no-member.
+            colors = [cmap(i % 20) for i in range(n_regions)]
+        else:
+            colors = RegionsMapUtils.get_colors_for_data_list(data_list)
+
         gdf_region = gdf_region.copy()
         gdf_region["color"] = colors
 

@@ -19,6 +19,10 @@ class RegionsGeoUtils:
 
         gdf_region = gdf_region[gdf_region["id"].isin(region_ids)]
 
+        # sort by region_ids
+        gdf_region["id"] = gdf_region["id"].astype(str)
+        gdf_region = gdf_region.set_index("id").loc[region_ids].reset_index()
+
         if gdf_region.empty:
             raise ValueError("No map data found.")
         return gdf_region
