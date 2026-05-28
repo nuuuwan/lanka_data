@@ -5,7 +5,7 @@ import shutil
 from custom_logging import setup_logging
 
 from lanka_data import Db
-from utils_future import File, JSONFile, Log
+from utils_future import File, Log
 
 log = Log("ReadMe")
 
@@ -14,12 +14,19 @@ class ReadMe:
     PATH = "README.md"
     MAX_LINES_IN_OUTPUT = 40
 
-    def run_tests(self):
-        test_db_data_file = os.path.join("tests", "test_db.data.json")
-        test_db_data = JSONFile(test_db_data_file).read()
+    DATA_DIR = os.path.join("tests", "data")
 
+    @staticmethod
+    def get_all_cmds():
+        return [
+            f[:-5].replace(".", "/")
+            for f in sorted(os.listdir(ReadMe.DATA_DIR))
+            if f.endswith(".json")
+        ]
+
+    def run_tests(self):
         idx = {}
-        for command in test_db_data.keys():
+        for command in self.get_all_cmds():
             output = Db(command).run(
                 do_open_images=False,
                 do_use_cache=True,
@@ -86,11 +93,7 @@ class ReadMe:
             "",
         ]
 
-        commands = (
-            JSONFile(os.path.join("tests", "test_db.data.json")).read().keys()
-        )
-
-        for i_command, command in enumerate(commands, start=1):
+        for i_command, command in enumerate(self.get_all_cmds(), start=1):
             output = test_idx[command]
             lines.append(f"### {i_command:02d}. `{command}`")
             lines.append("")

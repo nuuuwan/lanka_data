@@ -41,21 +41,12 @@ python workflows/console.py <cmd>
 
 ## Example Commands (`<cmd>`)
 
-### 01. `LK`
+### 01. `LK-11/Map`
 
 ```json
 {
     "result": {
-        "data_list": [
-            {
-                "region_id": "LK",
-                "region_name": "Sri Lanka",
-                "region_type": "country",
-                "area_sqkm": 65983.58,
-                "center_lat": 7.621863,
-                "center_lng": 80.698448
-            }
-        ],
+        "image_path": "/tmp/lanka_data/cache/lk-11-map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -64,15 +55,97 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 02. `LK-99`
+![LK-11/Map](images/readme/lk-11-map.png)
+
+### 02. `LK-11/Religion/2012`
 
 ```json
 {
-    "error": "Region ID not found: LK-99"
+    "result": {
+        "data_list": [
+            {
+                "region_id": "LK-11",
+                "region_name": "Colombo",
+                "values": {
+                    "buddhist": 1632125,
+                    "islam": 274067,
+                    "hindu": 186303,
+                    "roman_catholic": 162260,
+                    "other_christian": 66947,
+                    "other": 2262
+                },
+                "total_value": 2323964,
+                "pct_values": {
+                    "buddhist": 0.7023,
+                    "islam": 0.1179,
+                    "hindu": 0.0802,
+                    "roman_catholic": 0.0698,
+                    "other_christian": 0.0288,
+                    "other": 0.001
+                }
+            }
+        ],
+        "source": "Census of Population and Housing 2012",
+        "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
 }
 ```
 
-### 03. `LK-1:district`
+### 03. `LK-1103/Religion/2024`
+
+```json
+{
+    "result": {
+        "data_list": [
+            {
+                "region_id": "LK-1103",
+                "region_name": "Colombo",
+                "values": {
+                    "islam": 125890,
+                    "hindu": 71811,
+                    "buddhist": 47726,
+                    "roman_catholic": 36117,
+                    "other_christian": 10381,
+                    "other": 164
+                },
+                "total_value": 292089,
+                "pct_values": {
+                    "islam": 0.431,
+                    "hindu": 0.2459,
+                    "buddhist": 0.1634,
+                    "roman_catholic": 0.1237,
+                    "other_christian": 0.0355,
+                    "other": 0.0006
+                }
+            }
+        ],
+        "source": "Census of Population and Housing 2024",
+        "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
+}
+```
+
+### 04. `LK-1:district/Map`
+
+```json
+{
+    "result": {
+        "image_path": "/tmp/lanka_data/cache/lk-1:district-map.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
+}
+```
+
+![LK-1:district/Map](images/readme/lk-1:district-map.png)
+
+### 05. `LK-1:district`
 
 ```json
 {
@@ -118,71 +191,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 04. `LK/Map`
-
-```json
-{
-    "result": {
-        "image_path": "/tmp/lanka_data/cache/lk-map.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": true
-}
-```
-
-![LK/Map](images/readme/lk-map.png)
-
-### 05. `LK-11/Map`
-
-```json
-{
-    "result": {
-        "image_path": "/tmp/lanka_data/cache/lk-11-map.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": true
-}
-```
-
-![LK-11/Map](images/readme/lk-11-map.png)
-
-### 06. `LK-1:district/Map`
-
-```json
-{
-    "result": {
-        "image_path": "/tmp/lanka_data/cache/lk-1:district-map.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": true
-}
-```
-
-![LK-1:district/Map](images/readme/lk-1:district-map.png)
-
-### 07. `LK:pd/Map`
-
-```json
-{
-    "result": {
-        "image_path": "/tmp/lanka_data/cache/lk:pd-map.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": true
-}
-```
-
-![LK:pd/Map](images/readme/lk:pd-map.png)
-
-### 08. `LK-1:pd/Map`
+### 06. `LK-1:pd/Map`
 
 ```json
 {
@@ -198,43 +207,15 @@ python workflows/console.py <cmd>
 
 ![LK-1:pd/Map](images/readme/lk-1:pd-map.png)
 
-### 09. `LK-11/Religion/2012`
+### 07. `LK-99`
 
 ```json
 {
-    "result": {
-        "data_list": [
-            {
-                "region_id": "LK-11",
-                "region_name": "Colombo",
-                "values": {
-                    "buddhist": 1632125,
-                    "islam": 274067,
-                    "hindu": 186303,
-                    "roman_catholic": 162260,
-                    "other_christian": 66947,
-                    "other": 2262
-                },
-                "total_value": 2323964,
-                "pct_values": {
-                    "buddhist": 0.7023,
-                    "islam": 0.1179,
-                    "hindu": 0.0802,
-                    "roman_catholic": 0.0698,
-                    "other_christian": 0.0288,
-                    "other": 0.001
-                }
-            }
-        ],
-        "source": "Census of Population and Housing 2012",
-        "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
-    },
-    "query_time_ms": 0,
-    "cache_hit": true
+    "error": "Region ID not found: LK-99"
 }
 ```
 
-### 10. `LK-9:district/Ethnicity/2012`
+### 08. `LK-9:district/Ethnicity/2012`
 
 ```json
 {
@@ -274,6 +255,68 @@ python workflows/console.py <cmd>
         ],
         "source": "Census of Population and Housing 2012",
         "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
+}
+```
+
+### 09. `LK/Map`
+
+```json
+{
+    "result": {
+        "image_path": "/tmp/lanka_data/cache/lk-map.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
+}
+```
+
+![LK/Map](images/readme/lk-map.png)
+
+### 10. `LK/ParliamentaryElection/2024`
+
+```json
+{
+    "result": {
+        "data_list": [
+            {
+                "region_id": "LK",
+                "region_name": "Sri Lanka",
+                "summary": {
+                    "electors": 17140354,
+                    "polled": 11815246,
+                    "valid": 11148006,
+                    "rejected": 667240,
+                    "p_turnout": 0.6893,
+                    "p_valid": 0.9435,
+                    "p_rejected": 0.0565
+                },
+                "by_party": {
+                    "NPP": 6863186,
+                    "SJB": 1968716,
+                    "NDF": 500835,
+                    "SLPP": 350429,
+                    ... // 649 lines ...
+                    "IND36-13": 0.0,
+                    "IND42-13": 0.0,
+                    "IND34-13": 0.0,
+                    "IND26-12": 0.0,
+                    "IND05-13": 0.0,
+                    "IND07-13": 0.0,
+                    "IND08-14": 0.0,
+                    "IND32-13": 0.0,
+                    "IND40-13": 0.0,
+                    "IND37-13": 0.0,
+                    "IND33-13": 0.0
+                }
+            }
+        ],
+        "source": "Election Commission of Sri Lanka",
+        "source_url": "https://www.elections.gov.lk"
     },
     "query_time_ms": 0,
     "cache_hit": true
@@ -326,7 +369,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 12. `LK/ParliamentaryElection/2024`
+### 12. `LK`
 
 ```json
 {
@@ -335,78 +378,35 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK",
                 "region_name": "Sri Lanka",
-                "summary": {
-                    "electors": 17140354,
-                    "polled": 11815246,
-                    "valid": 11148006,
-                    "rejected": 667240,
-                    "p_turnout": 0.6893,
-                    "p_valid": 0.9435,
-                    "p_rejected": 0.0565
-                },
-                "by_party": {
-                    "NPP": 6863186,
-                    "SJB": 1968716,
-                    "NDF": 500835,
-                    "SLPP": 350429,
-                    ... // 649 lines ...
-                    "IND36-13": 0.0,
-                    "IND42-13": 0.0,
-                    "IND34-13": 0.0,
-                    "IND26-12": 0.0,
-                    "IND05-13": 0.0,
-                    "IND07-13": 0.0,
-                    "IND08-14": 0.0,
-                    "IND32-13": 0.0,
-                    "IND40-13": 0.0,
-                    "IND37-13": 0.0,
-                    "IND33-13": 0.0
-                }
+                "region_type": "country",
+                "area_sqkm": 65983.58,
+                "center_lat": 7.621863,
+                "center_lng": 80.698448
             }
         ],
-        "source": "Election Commission of Sri Lanka",
-        "source_url": "https://www.elections.gov.lk"
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
     },
     "query_time_ms": 0,
     "cache_hit": true
 }
 ```
 
-### 13. `LK-1103/Religion/2024`
+### 13. `LK:pd/Map`
 
 ```json
 {
     "result": {
-        "data_list": [
-            {
-                "region_id": "LK-1103",
-                "region_name": "Colombo",
-                "values": {
-                    "islam": 125890,
-                    "hindu": 71811,
-                    "buddhist": 47726,
-                    "roman_catholic": 36117,
-                    "other_christian": 10381,
-                    "other": 164
-                },
-                "total_value": 292089,
-                "pct_values": {
-                    "islam": 0.431,
-                    "hindu": 0.2459,
-                    "buddhist": 0.1634,
-                    "roman_catholic": 0.1237,
-                    "other_christian": 0.0355,
-                    "other": 0.0006
-                }
-            }
-        ],
-        "source": "Census of Population and Housing 2024",
-        "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        "image_path": "/tmp/lanka_data/cache/lk:pd-map.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
     },
     "query_time_ms": 0,
     "cache_hit": true
 }
 ```
+
+![LK:pd/Map](images/readme/lk:pd-map.png)
 
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)
