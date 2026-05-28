@@ -7,7 +7,8 @@ import time
 from functools import cached_property
 
 from lanka_data.what import WhatFactory
-from lanka_data.where import Regions, RegionsMapUtils
+from lanka_data.where import Regions
+from lanka_data.where.RegionsMapUtils import RegionsMapUtils
 from utils_future import Log
 
 log = Log("Db")
@@ -34,32 +35,40 @@ class Db:
         os.makedirs(cls.DIR_CACHE, exist_ok=True)
         log.warning("Cache cleared.")
 
-    def _run(self):  # noqa: C901, CFQ001, CFQ004
-        tokens = self.cmd.split("/")
+    def _run_normalized(
+        self, where_cmd: str, what_cmd: str, when_cmd: str, how_cmd: str
+    ):
+        regions = Regions.from_token(where_cmd)
+        what = WhatFactory.from_what_and_when(what_cmd, when_cmd)
+
+        if how_cmd == "JSON":
+            return what.get_result(regions)
+        if how_cmd == "Map":
+            return RegionsMapUtils.draw_map(
+                regions.regions, self.cache_file_base
+            )
+
+        raise ValueError(f"Unknown how_cmd: {how_cmd}")
+
+    @staticmethod
+    def _parse_cmd(cmd: str):
+        tokens = cmd.split("/")
         n_tokens = len(tokens)
 
-        regions = Regions.from_token(tokens[0])
-
-        # <Where>
-        if n_tokens == 1:
-            return regions.get_result()
-
-        # <Where>/<How>
         if n_tokens == 2:
-            if tokens[1] == "JSON":
-                return regions.get_result()
+            tokens = [tokens[0], "Basic", "2024", tokens[1]]
+            n_tokens = 4
 
-            if tokens[1] == "Map":
-                return RegionsMapUtils.draw_map(
-                    regions.regions, self.cache_file_base
-                )
+        where_cmd = "LK" if n_tokens < 1 else tokens[0]
+        what_cmd = "Basic" if n_tokens < 2 else tokens[1]
+        when_cmd = "2024" if n_tokens < 3 else tokens[2]
+        how_cmd = "JSON" if n_tokens < 4 else tokens[3]
+        log.debug(f"{where_cmd=}, {what_cmd=}, {when_cmd=}, {how_cmd=}")
+        return where_cmd, what_cmd, when_cmd, how_cmd
 
-            # <Where>/<What>/<When>
-        if n_tokens == 3:
-            what = WhatFactory.from_what_and_when(tokens[1], tokens[2])
-            return what.get_result(regions)
-
-        raise ValueError(f"Invalid command: {self.cmd}")
+    def _run(self):
+        where_cmd, what_cmd, when_cmd, how_cmd = self._parse_cmd(self.cmd)
+        return self._run_normalized(where_cmd, what_cmd, when_cmd, how_cmd)
 
     def run_unsafe(self, do_open_images, do_use_cache):
         t_start = time.perf_counter()
