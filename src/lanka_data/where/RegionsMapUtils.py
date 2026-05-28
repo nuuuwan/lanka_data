@@ -24,6 +24,18 @@ class RegionsMapUtils:
         "ind_tamil": "blue",
         "sl_moor": "#00534E",
         "malay": "green",
+        # Political Party
+        "SLPP": "#8D153A",
+        "UPFA": "blue",
+        "PA": "blue",
+        "SLFP": "blue",
+        "NPP": "red",
+        "SJB": "green",
+        "UNP": "green",
+        "NDF": "green",
+        "IND9": "orange",
+        "SLMP": "purple",
+        "ACTC": "orange",
     }
 
     @staticmethod
@@ -53,6 +65,11 @@ class RegionsMapUtils:
         region_ids = [d["region_id"] for d in data_list]
         n_regions = len(region_ids)
         gdf_region = RegionsGeoUtils.get_geopandas_dataframe(region_ids)
+
+        if "by_party" in data_list[0]:
+            data_list = [
+                data | dict(values=data["by_party"]) for data in data_list
+            ]
 
         has_values = data_list[0].get("values") is not None
         if not has_values:
