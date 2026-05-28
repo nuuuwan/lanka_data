@@ -38,7 +38,57 @@ class Regions(Where):
             from_region_id, to_region_id = token.split("...")
             return Regions.from_region_id_range(from_region_id, to_region_id)
 
+        if "@" in token:
+            region_id, radius_km = token.split("@")
+            return Regions.from_region_radius(region_id, radius_km)
+
         return Regions.from_region_ids_str(token)
+
+    @classmethod
+    def from_region_radius(cls, region_id, radius_km):
+        region_type = RegionTypeUtils.get_region_type(region_id)
+        regions = cls._get_data_list_for_region_type(region_type)
+
+        center_region = None
+        for region in regions:
+            if region["id"] == region_id:
+                center_region = region
+                break
+
+        if not center_region:
+            raise ValueError(f"Region ID not found: {region_id}")
+
+        center_lat = center_region["center_lat"]
+        center_lng = center_region["center_lng"]
+
+        def haversine_distance(lat1, lon1, lat2, lon2):
+            from math import atan2, cos, radians, sin, sqrt
+
+            R = 6371.0  # Earth radius in kilometers
+
+            dlat = radians(lat2 - lat1)
+            dlon = radians(lon2 - lon1)
+            a = (
+                sin(dlat / 2) ** 2
+                + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon / 2) ** 2
+            )
+            c = 2 * atan2(sqrt(a), sqrt(1 - a))
+            distance_km = R * c
+            return distance_km
+
+        def is_within_radius(region):
+            lat = region["center_lat"]
+            lng = region["center_lng"]
+            distance_km = haversine_distance(center_lat, center_lng, lat, lng)
+            return distance_km <= float(radius_km)
+
+        nearby_regions = [r for r in regions if is_within_radius(r)]
+        if not nearby_regions:
+            raise ValueError(
+                f"No regions found within {radius_km} km of {region_id}"
+            )
+
+        return cls(nearby_regions)
 
     @classmethod
     def from_region_id_range(cls, from_region_id, to_region_id):
