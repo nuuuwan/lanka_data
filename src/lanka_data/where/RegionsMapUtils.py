@@ -36,7 +36,7 @@ class RegionsMapUtils:
         color_idx = {}
         colors = []
         for data in data_list:
-            max_value_key = max(data["values"], key=data["values"].get)
+            max_value_key = list(data["values"].keys())[0]
             if max_value_key not in color_idx:
                 color = (
                     RegionsMapUtils.COLOR_IDX[max_value_key]
@@ -77,14 +77,26 @@ class RegionsMapUtils:
             for _, row in gdf_region.iterrows():
                 centroid = row.geometry.centroid
                 ax.annotate(
-                    row["id"],
+                    row["name"],
                     xy=(centroid.x, centroid.y),
                     ha="center",
                     va="center",
                     fontsize=5,
-                    color="black",
+                    color="white",
                 )
+
         ax.set_axis_off()
+        # legend (only for colors with values in data_list)
+        if has_values:
+            unique_colors = set(colors)
+            for color in unique_colors:
+                idx = colors.index(color)
+                label = max(
+                    data_list[idx]["values"],
+                    key=data_list[idx]["values"].get,
+                )
+                ax.scatter([], [], color=color, label=label)
+            ax.legend(fontsize=6)
 
         image_path = f"{file_path_base}.png"
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
