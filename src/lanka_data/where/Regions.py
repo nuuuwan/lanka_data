@@ -27,12 +27,38 @@ class Regions(Where):
         return WWW(url).read_json()
 
     @classmethod
-    def from_region_id(cls, region_id):
-        region_type = RegionTypeUtils.get_region_type(region_id)
+    def from_token(cls, token: str):
+        token0_tokens = token.split(":")
+        n_token0_tokens = len(token0_tokens)
+        if n_token0_tokens == 1:
+            region_ids_str = token0_tokens[0]
+            return Regions.from_region_ids_str(region_ids_str)
+
+        if n_token0_tokens == 2:
+            parent_region_id, region_type = token0_tokens
+            return Regions.from_parent_region_id_and_region_type(
+                region_type, parent_region_id
+            )
+
+        raise ValueError(f"Invalid token for Regions: {token}")
+
+    @classmethod
+    def from_region_ids_str(cls, region_ids_str):
+        region_ids = region_ids_str.split(",")
+        region_types = [
+            RegionTypeUtils.get_region_type(region_id)
+            for region_id in region_ids
+        ]
+        if len(set(region_types)) != 1:
+            raise ValueError(
+                f"All region IDs must be of the same type: {region_ids_str}"
+            )
+
+        region_type = region_types[0]
         regions = cls._get_data_list_for_region_type(region_type)
-        regions = [d for d in regions if d["id"] == region_id]
+        regions = [d for d in regions if d["id"] in region_ids]
         if not regions:
-            raise ValueError(f"Region ID not found: {region_id}")
+            raise ValueError(f"Region ID not found: {region_ids_str}")
         return cls(regions)
 
     @classmethod

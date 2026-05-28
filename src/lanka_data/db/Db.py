@@ -35,19 +35,9 @@ class Db:
 
     def _run(self):  # noqa: C901, CFQ001, CFQ004
         tokens = self.cmd.split("/")
-        token0_tokens = tokens[0].split(":")
-
-        regions = None
-        if len(token0_tokens) == 1:
-            region_id = token0_tokens[0]
-            regions = Regions.from_region_id(region_id)
-        elif len(token0_tokens) == 2:
-            parent_region_id, region_type = token0_tokens
-            regions = Regions.from_parent_region_id_and_region_type(
-                region_type, parent_region_id
-            )
-
         n_tokens = len(tokens)
+
+        regions = Regions.from_token(tokens[0])
 
         # <Where>
         if n_tokens == 1:
