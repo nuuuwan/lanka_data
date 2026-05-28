@@ -22,7 +22,7 @@ def main():
 
     for cmd in cmds:
         actual_output = Db(cmd).run(do_open_images=False, do_use_cache=False)
-        actual_output["query_time_ms"] = None
+        actual_output["query_time_ms"] = 0
         path = os.path.join(DATA_DIR, f"{cmd_to_hash(cmd)}.json")
         JSONFile(path).write({"cmd": cmd, "expected_output": actual_output})
 

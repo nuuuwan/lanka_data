@@ -15,7 +15,7 @@
       "source": "Department of Census and Statistics, Sri Lanka",
       "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": null,
+    "query_time_ms": 0,
     "cache_hit": false
   }
 }

@@ -32,8 +32,7 @@ def make_test(cmd, expected_output):
         db = Db(cmd)
         actual_output = db.run(do_open_images=False, do_use_cache=False)
 
-        expected_output["query_time_ms"] = None
-        actual_output["query_time_ms"] = None
+        actual_output["query_time_ms"] = 0
 
         self.assertEqual(expected_output, actual_output)
 
