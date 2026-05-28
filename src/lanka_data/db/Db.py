@@ -6,7 +6,7 @@ import tempfile
 import time
 from functools import cached_property
 
-from lanka_data.what import Census2012, Census2024, Elections
+from lanka_data.what import WhatFactory
 from lanka_data.where import Regions, RegionsMapUtils
 from utils_future import Log
 
@@ -56,18 +56,8 @@ class Db:
 
             # <Where>/<What>/<When>
         if n_tokens == 3:
-            when = tokens[2]
-            what_label = tokens[1]
-            if "Election" in tokens[1]:
-                what = Elections(what_label, "regions-ec", when)
-                return what.get_result(regions)
-            else:
-                if when == "2012":
-                    what = Census2012(what_label, "regions")
-                    return what.get_result(regions)
-                if when == "2024":
-                    what = Census2024(what_label)
-                    return what.get_result(regions)
+            what = WhatFactory.from_what_and_when(tokens[1], tokens[2])
+            return what.get_result(regions)
 
         raise ValueError(f"Invalid command: {self.cmd}")
 
