@@ -1,12 +1,12 @@
 {
-  "cmd": "LK-1:district/Map",
+  "cmd": "LK-11/Map",
   "expected_output": {
     "result": {
-      "image_path": "/tmp/lanka_data/cache/11923f96.png",
+      "image_path": "/tmp/lanka_data/cache/4cb7cf4c.png",
       "source": "Department of Census and Statistics, Sri Lanka",
       "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 35,
+    "query_time_ms": 43,
     "cache_hit": false
   }
 }

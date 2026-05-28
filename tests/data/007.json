@@ -1,12 +1,12 @@
 {
-  "cmd": "LK-11/Map",
+  "cmd": "LK-1103&EC-01B/Map",
   "expected_output": {
     "result": {
-      "image_path": "/tmp/lanka_data/cache/4cb7cf4c.png",
+      "image_path": "/tmp/lanka_data/cache/09d76b20.png",
       "source": "Department of Census and Statistics, Sri Lanka",
       "source_url": "https://www.statistics.gov.lk/"
     },
-    "query_time_ms": 41,
+    "query_time_ms": 199,
     "cache_hit": false
   }
 }

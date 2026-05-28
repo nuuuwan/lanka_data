@@ -42,7 +42,30 @@ class Regions(Where):
             region_id, radius_km = token.split("@")
             return Regions.from_region_radius(region_id, radius_km)
 
+        if "&" in token:
+            region_a_id, region_b_id = token.split("&")
+            return Regions.from_region_intersection(region_a_id, region_b_id)
+
         return Regions.from_region_ids_str(token)
+
+    @classmethod
+    def from_region_intersection(cls, region_a_id, region_b_id):
+        region_a_type = RegionTypeUtils.get_region_type(region_a_id)
+        region_b_type = RegionTypeUtils.get_region_type(region_b_id)
+
+        region_a_id_key = f"{region_a_type}_id"
+        region_b_id_key = f"{region_b_type}_id"
+
+        gnds = cls._get_data_list_for_region_type("gnd")
+        intersection_gnds = []
+        for gnd in gnds:
+            if (
+                gnd.get(region_a_id_key) == region_a_id
+                and gnd.get(region_b_id_key) == region_b_id
+            ):
+                intersection_gnds.append(gnd)
+
+        return cls(intersection_gnds)
 
     @classmethod
     def from_region_radius(cls, region_id, radius_km):
