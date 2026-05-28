@@ -6,8 +6,8 @@ from utils_future import WWW
 
 class RegionsGeoUtils:
     @staticmethod
-    def get_geopandas_dataframe(regions):
-        region_type = RegionTypeUtils.get_region_type(regions[0]["id"])
+    def get_geopandas_dataframe(region_ids):
+        region_type = RegionTypeUtils.get_region_type(region_ids[0])
         precision_label = {"gnd": "e3_small"}.get(region_type, "e4_medium")
         url = (
             "https://raw.githubusercontent.com"
@@ -17,7 +17,6 @@ class RegionsGeoUtils:
         temp_topojson_file_path = WWW(url).download()
         gdf_region = geopandas.read_file(temp_topojson_file_path)
 
-        region_ids = [d["id"] for d in regions]
         gdf_region = gdf_region[gdf_region["id"].isin(region_ids)]
 
         if gdf_region.empty:

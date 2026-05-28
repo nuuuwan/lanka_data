@@ -10,8 +10,10 @@ class RegionsMapUtils:
     MAX_REGIONS_TO_LABEL = 100
 
     @staticmethod
-    def draw_map(regions, file_path_base: str):
-        gdf_region = RegionsGeoUtils.get_geopandas_dataframe(regions)
+    def draw_map(result, file_path_base: str):
+        data_list = result["data_list"]
+        region_ids = [d["region_id"] for d in data_list]
+        gdf_region = RegionsGeoUtils.get_geopandas_dataframe(region_ids)
         n_regions = len(gdf_region)
         cmap = plt.cm.tab20  # pylint: disable=no-member.
         colors = [cmap(i % 20) for i in range(n_regions)]

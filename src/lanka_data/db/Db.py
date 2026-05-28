@@ -41,15 +41,13 @@ class Db:
         regions = Regions.from_token(where_cmd)
         what = WhatFactory.from_what_and_when(what_cmd, when_cmd)
 
-        results = what.get_result(regions)
+        result = what.get_result(regions)
 
         if how_cmd == "JSON":
-            return results
+            return result
 
         if how_cmd == "Map":
-            return RegionsMapUtils.draw_map(
-                regions.regions, self.cache_file_base
-            )
+            return RegionsMapUtils.draw_map(result, self.cache_file_base)
 
         raise ValueError(f"Unknown how_cmd: {how_cmd}")
 
