@@ -4,8 +4,7 @@ import shutil
 
 from custom_logging import setup_logging
 
-from lanka_data import Db
-from utils_future import File, Log
+from utils_future import File, JSONFile, Log
 
 log = Log("ReadMe")
 
@@ -17,22 +16,22 @@ class ReadMe:
     DATA_DIR = os.path.join("tests", "data")
 
     @staticmethod
-    def get_all_cmds():
-        return [
-            f[:-5].replace(".", "/")
-            for f in sorted(os.listdir(ReadMe.DATA_DIR))
-            if f.endswith(".json")
-        ]
-
-    def run_tests(self):
+    def load_test_data():
         idx = {}
-        for command in self.get_all_cmds():
-            output = Db(command).run(
-                do_open_images=False,
-                do_use_cache=True,
-            )
-            idx[command] = output
+        for f in sorted(os.listdir(ReadMe.DATA_DIR)):
+            if f.endswith(".json") and f != "cmds.json":
+                data = JSONFile(os.path.join(ReadMe.DATA_DIR, f)).read()
+                idx[data["cmd"]] = data["expected_output"]
         return idx
+
+    @staticmethod
+    def get_all_cmds():
+        cmds = []
+        for f in sorted(os.listdir(ReadMe.DATA_DIR)):
+            if f.endswith(".json") and f != "cmds.json":
+                data = JSONFile(os.path.join(ReadMe.DATA_DIR, f)).read()
+                cmds.append(data["cmd"])
+        return cmds
 
     def get_lines_for_sources(self, test_idx):
 
@@ -152,7 +151,7 @@ class ReadMe:
         )
 
     def build(self):
-        test_idx = self.run_tests()
+        test_idx = self.load_test_data()
         lines = self.get_lines(test_idx)
         readme_file = File(self.PATH)
         readme_file.write("\n".join(lines))

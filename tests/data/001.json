@@ -1,0 +1,6 @@
+{
+  "cmd": "LK-99",
+  "expected_output": {
+    "error": "Region ID not found: LK-99"
+  }
+}
