@@ -124,6 +124,17 @@ class RegionsMapUtils:
             ax.set_title(cmd, fontsize=10)
         ax.set_axis_off()
 
+        source = result.get("source", "")
+        if source:
+            fig.text(
+                0.5,
+                0.01,
+                f"Source: {source}",
+                ha="center",
+                fontsize=7,
+                color="gray",
+            )
+
         image_path = f"{file_path_base}.png"
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
         log.info(f"Wrote {image_path}")
