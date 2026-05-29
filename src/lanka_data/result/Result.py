@@ -1,4 +1,4 @@
-from lanka_data.where.RegionsMapUtils import RegionsMapUtils
+from lanka_data.where.MapUtils import MapUtils
 
 
 class Result:
@@ -38,7 +38,7 @@ class Result:
             return self.get_data()
 
         if self.how == "Map":
-            return RegionsMapUtils.draw_map(self)
+            return MapUtils.draw_map(self)
 
         raise ValueError(f"Unknown how: {self.how}")
 

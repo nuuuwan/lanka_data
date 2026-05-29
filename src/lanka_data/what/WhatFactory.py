@@ -19,4 +19,6 @@ class WhatFactory:
         if when_label == "2024" or when_label == "Latest":
             return Census2024(title)
 
-        raise ValueError(f"Unknown title: {title} or when_label: {when_label}")
+        raise ValueError(
+            f"Unknown title: {title} or when_label: {when_label}"
+        )

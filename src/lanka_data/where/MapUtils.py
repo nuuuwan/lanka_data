@@ -5,13 +5,13 @@ import tempfile
 
 import matplotlib.pyplot as plt
 
-from lanka_data.where.RegionsGeoUtils import RegionsGeoUtils
+from lanka_data.where.GeoUtils import GeoUtils
 from utils_future import Log
 
-log = Log("RegionsMapUtils")
+log = Log("MapUtils")
 
 
-class RegionsMapUtils:
+class MapUtils:
     DELIM_TITLE = " · "
     MAX_REGIONS_TO_LABEL = 100
     COLOR_IDX = {
@@ -62,9 +62,9 @@ class RegionsMapUtils:
             max_value_key = list(result.what.get_values(data).keys())[0]
             if max_value_key not in color_idx:
                 color = (
-                    RegionsMapUtils.COLOR_IDX[max_value_key]
-                    if max_value_key in RegionsMapUtils.COLOR_IDX
-                    else RegionsMapUtils.get_random_color()
+                    MapUtils.COLOR_IDX[max_value_key]
+                    if max_value_key in MapUtils.COLOR_IDX
+                    else MapUtils.get_random_color()
                 )
                 color_idx[max_value_key] = color
             colors.append(color_idx[max_value_key])
@@ -99,17 +99,17 @@ class RegionsMapUtils:
 
     @staticmethod
     def draw_map(result):
-        title = RegionsMapUtils.DELIM_TITLE.join(result.get_title_items())
+        title = MapUtils.DELIM_TITLE.join(result.get_title_items())
         result_data = result.get_data()
         h = hashlib.md5(str(result_data).encode("utf-8")).hexdigest()[:8]
 
         data_list = result_data["data_list"]
         region_ids = [d["region_id"] for d in data_list]
         n_regions = len(region_ids)
-        gdf_region = RegionsGeoUtils.get_geopandas_dataframe(region_ids)
+        gdf_region = GeoUtils.get_geopandas_dataframe(region_ids)
 
         gdf_region = gdf_region.copy()
-        colors = RegionsMapUtils.get_colors_for_data_list(result, data_list)
+        colors = MapUtils.get_colors_for_data_list(result, data_list)
         gdf_region["color"] = colors
 
         fig, ax = plt.subplots(figsize=(10, 8))
@@ -121,10 +121,10 @@ class RegionsMapUtils:
             linewidth=0.2,
         )
 
-        if n_regions <= RegionsMapUtils.MAX_REGIONS_TO_LABEL:
-            RegionsMapUtils._draw_labels(gdf_region, ax)
+        if n_regions <= MapUtils.MAX_REGIONS_TO_LABEL:
+            MapUtils._draw_labels(gdf_region, ax)
 
-        RegionsMapUtils._draw_legend(result, data_list, colors, ax)
+        MapUtils._draw_legend(result, data_list, colors, ax)
         ax.set_title(title, fontsize=10)
         ax.set_axis_off()
 
@@ -139,7 +139,9 @@ class RegionsMapUtils:
                 color="gray",
             )
 
-        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
+        image_dir = os.path.join(
+            tempfile.gettempdir(), "lanka_data", "images"
+        )
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")

@@ -9,7 +9,6 @@ from functools import cached_property
 from lanka_data.result import Result
 from lanka_data.what import WhatFactory
 from lanka_data.where import Regions
-from lanka_data.where.RegionsMapUtils import RegionsMapUtils
 from utils_future import Log
 
 log = Log("Db")
