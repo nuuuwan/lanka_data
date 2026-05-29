@@ -1,0 +1,43 @@
+{
+  "result": {
+    "data_list": [
+      {
+        "region_id": "LK-11",
+        "region_name": "Colombo",
+        "region_type": "district",
+        "area_sqkm": 688.17,
+        "center_lat": 6.869822,
+        "center_lng": 80.018487,
+        "province_id": "LK-1",
+        "ed_id": "EC-01",
+        "pd_id": null
+      },
+      {
+        "region_id": "LK-12",
+        "region_name": "Gampaha",
+        "region_type": "district",
+        "area_sqkm": 1385.23,
+        "center_lat": 7.123406,
+        "center_lng": 80.018206,
+        "province_id": "LK-1",
+        "ed_id": "EC-02",
+        "pd_id": null
+      },
+      {
+        "region_id": "LK-13",
+        "region_name": "Kalutara",
+        "region_type": "district",
+        "area_sqkm": 1646.99,
+        "center_lat": 6.577185,
+        "center_lng": 80.127744,
+        "province_id": "LK-1",
+        "ed_id": "EC-03",
+        "pd_id": null
+      }
+    ],
+    "source": "Department of Census and Statistics, Sri Lanka",
+    "source_url": "https://www.statistics.gov.lk/"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
+}

@@ -39,7 +39,7 @@ python workflows/console.py <cmd>
 > /<cmd>
 ```
 
-## Example Commands (`<cmd>`)
+## Example cmds (`<cmd>`)
 
 ### 01. `LK`
 

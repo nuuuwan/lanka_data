@@ -1,26 +1,6 @@
-import hashlib
-import os
 import unittest
 
-from lanka_data import Db
-from utils_future import JSONFile
-
-DATA_DIR = os.path.join("tests", "data")
-CMDS_FILE = os.path.join("tests", "cmds.json")
-
-
-def cmd_to_hash(cmd):
-    return hashlib.md5(cmd.encode()).hexdigest()[:8]
-
-
-def load_test_data():
-    cmds = JSONFile(CMDS_FILE).read()
-    entries = []
-    for cmd in cmds:
-        path = os.path.join(DATA_DIR, f"{cmd_to_hash(cmd)}.json")
-        data = JSONFile(path).read()
-        entries.append((data["cmd"], data["expected_output"]))
-    return entries
+from lanka_data import Db, Example
 
 
 class TestCase(unittest.TestCase):
@@ -28,6 +8,7 @@ class TestCase(unittest.TestCase):
 
 
 def make_test(cmd, expected_output):
+
     def test(self):
         db = Db(cmd)
         actual_output = db.run(do_open_images=False, do_use_cache=False)
@@ -46,7 +27,8 @@ def make_test(cmd, expected_output):
     return test
 
 
-for i, (cmd, expected_output) in enumerate(load_test_data()):
+output_idx = Example.get_output_idx()
+for i, (cmd, expected_output) in enumerate(output_idx.items()):
     safe_name = cmd.replace("/", "_").replace(":", "_")
     name = f"test_db_{i:03d}_{safe_name}"
     setattr(TestCase, name, make_test(cmd, expected_output))

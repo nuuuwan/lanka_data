@@ -2,7 +2,8 @@ import json
 import os
 import shutil
 
-from utils_future import File, JSONFile, Log
+from lanka_data.examples import Example
+from utils_future import File, Log
 
 log = Log("ReadMe")
 
@@ -11,40 +12,16 @@ class ReadMe:
     PATH = "README.md"
     MAX_LINES_IN_OUTPUT = 40
 
-    DATA_DIR = os.path.join("tests", "data")
-    CMDS_FILE = os.path.join("tests", "cmds.json")
     DIR_IMAGES_README = os.path.join("images", "readme")
 
-    @staticmethod
-    def cmd_to_hash(cmd):
-        import hashlib
-
-        return hashlib.md5(cmd.encode()).hexdigest()[:8]
-
-    @staticmethod
-    def load_test_data():
-        cmds = JSONFile(ReadMe.CMDS_FILE).read()
-        idx = {}
-        for cmd in cmds:
-            path = os.path.join(
-                ReadMe.DATA_DIR, f"{ReadMe.cmd_to_hash(cmd)}.json"
-            )
-            data = JSONFile(path).read()
-            idx[data["cmd"]] = data["expected_output"]
-        return idx
-
-    @staticmethod
-    def get_all_cmds():
-        return JSONFile(ReadMe.CMDS_FILE).read()
-
-    def get_lines_for_sources(self, test_idx):
+    def get_lines_for_sources(self, output_idx):
 
         lines = [
             "## Data Sources",
             "",
         ]
         source_idx = {}
-        for output in test_idx.values():
+        for output in output_idx.values():
             if "result" in output:
                 result = output["result"]
                 source = result["source"]
@@ -90,15 +67,15 @@ class ReadMe:
             "",
         ]
 
-    def get_lines_for_examples(self, test_idx):
+    def get_lines_for_examples(self, output_idx):
         lines = [
-            "## Example Commands (`<cmd>`)",
+            "## Example cmds (`<cmd>`)",
             "",
         ]
 
-        for i_command, command in enumerate(self.get_all_cmds(), start=1):
-            output = test_idx[command]
-            lines.append(f"### {i_command:02d}. `{command}`")
+        for i_cmd, cmd in enumerate(Example.get_output_idx().keys(), start=1):
+            output = output_idx[cmd]
+            lines.append(f"### {i_cmd:02d}. `{cmd}`")
             lines.append("")
             lines.append("```json")
             output_json = json.dumps(output, indent=4)
@@ -124,7 +101,7 @@ class ReadMe:
                     self.DIR_IMAGES_README, os.path.basename(image_path)
                 )
                 shutil.copy2(image_path, new_image_path)
-                lines.append(f"![{command}]({new_image_path})")
+                lines.append(f"![{cmd}]({new_image_path})")
                 lines.append("")
 
         return lines
@@ -140,7 +117,7 @@ class ReadMe:
             "",
         ]
 
-    def get_lines(self, test_idx):
+    def get_lines(self, output_idx):
         return (
             [
                 "# Lanka Data",
@@ -149,15 +126,15 @@ class ReadMe:
                 + " to query data about Sri Lanka.",
                 "",
             ]
-            + self.get_lines_for_sources(test_idx)
+            + self.get_lines_for_sources(output_idx)
             + self.get_lines_for_usage()
-            + self.get_lines_for_examples(test_idx)
+            + self.get_lines_for_examples(output_idx)
             + self.get_lines_for_footer()
         )
 
     def build(self):
-        test_idx = self.load_test_data()
-        lines = self.get_lines(test_idx)
+        output_idx = Example.get_output_idx()
+        lines = self.get_lines(output_idx)
         readme_file = File(self.PATH)
         readme_file.write("\n".join(lines))
         log.info(f"Wrote {readme_file}")
