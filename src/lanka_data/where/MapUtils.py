@@ -95,7 +95,7 @@ class MapUtils:
     @staticmethod
     def _draw_legend(result, data_list, colors, ax):
         if result.what.get_values(data_list[0]) is not None:
-            unique_colors = set(colors)
+            unique_colors = list(sorted(set(colors)))
             for color in unique_colors:
                 idx = colors.index(color)
                 label = max(
