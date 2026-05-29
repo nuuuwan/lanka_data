@@ -4,8 +4,6 @@ This repo implements a simple interface to query data about Sri Lanka.
 
 ## Data Sources
 
-- [Census of Population and Housing 2012](https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf)
-- [Census of Population and Housing 2024](https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024)
 - [Department of Census and Statistics, Sri Lanka](https://www.statistics.gov.lk/)
 - [Election Commission of Sri Lanka](https://www.elections.gov.lk)
 
@@ -259,97 +257,39 @@ python workflows/console.py <cmd>
 
 ![LK-1:pd/Map](images/readme/21180992.png)
 
-### 11. `LK-1103/Religion/2024`
+### 11. `LK-1103:gnd/Religion/2012/Map`
 
 ```json
 {
     "result": {
-        "title": "Colombo Dsd \u00b7 Religion \u00b7 2024 \u00b7 JSON",
-        "data_list": [
-            {
-                "region_id": "LK-1103",
-                "region_name": "Colombo",
-                "values": {
-                    "islam": 125890,
-                    "hindu": 71811,
-                    "buddhist": 47726,
-                    "roman_catholic": 36117,
-                    "other_christian": 10381,
-                    "other": 164
-                },
-                "total_value": 292089,
-                "pct_values": {
-                    "islam": 0.431,
-                    "hindu": 0.2459,
-                    "buddhist": 0.1634,
-                    ... // 11 lines ...
-                "roman_catholic": 36117,
-                "other_christian": 10381,
-                "other": 164
-            },
-            "total_value": 292089,
-            "pct_values": {
-                "islam": 0.431,
-                "hindu": 0.2459,
-                "buddhist": 0.1634,
-                "roman_catholic": 0.1237,
-                "other_christian": 0.0355,
-                "other": 0.0006
-            }
-        },
-        "source": "Census of Population and Housing 2024",
-        "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        "title": "35 Gnds \u00b7 Religion \u00b7 2012 \u00b7 Map",
+        "image_path": "/tmp/lanka_data/images/965e6627.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
     },
     "query_time_ms": 0,
     "cache_hit": false
 }
 ```
 
-### 12. `LK-9:district/Ethnicity/2012`
+![LK-1103:gnd/Religion/2012/Map](images/readme/965e6627.png)
+
+### 12. `LK-2:dsd/Ethnicity/2024/Map`
 
 ```json
 {
     "result": {
-        "title": "Ratnapura, Kegalle Districts \u00b7 Ethnicity \u00b7 2012 \u00b7 JSON",
-        "data_list": [
-            {
-                "region_id": "LK-91",
-                "region_name": "Ratnapura",
-                "values": {
-                    "sinhalese": 947811,
-                    "ind_tamil": 62124,
-                    "sl_tamil": 54437,
-                    "sl_moor": 22346,
-                    "other_eth": 549,
-                    "burgher": 405,
-                    "malay": 288,
-                    "sl_chetty": 35,
-                    "bharatha": 12
-                },
-                "total_value": 1088007,
-                "pct_values": {
-                ... // 50 lines ...
-            },
-            "total_value": 1928655,
-            "pct_values": {
-                "sinhalese": 0.8639,
-                "ind_tamil": 0.0549,
-                "sl_moor": 0.0427,
-                "sl_tamil": 0.0375,
-                "other_eth": 0.0004,
-                "burgher": 0.0003,
-                "malay": 0.0002,
-                "sl_chetty": 0.0,
-                "bharatha": 0.0
-            }
-        },
-        "source": "Census of Population and Housing 2012",
-        "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        "title": "41 Dsds \u00b7 Ethnicity \u00b7 2024 \u00b7 Map",
+        "image_path": "/tmp/lanka_data/images/8319364a.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
     },
     "query_time_ms": 0,
     "cache_hit": false
 }
 ```
+
+![LK-2:dsd/Ethnicity/2024/Map](images/readme/8319364a.png)
 
 ### 13. `LK/ParliamentaryElection/2024`
 
