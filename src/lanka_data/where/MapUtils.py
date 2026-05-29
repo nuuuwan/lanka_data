@@ -52,32 +52,38 @@ class MapUtils:
         data_list = result.get_data()["data_list"]
         n_regions = len(data_list)
         cmap = plt.cm.tab20  # pylint: disable=no-member.
-        colors = [cmap(i % 20) for i in range(n_regions)]
-        return colors
+        return {
+            data["region_id"]: cmap(i % 20)
+            for i, data in enumerate(data_list[:n_regions])
+        }
 
     @staticmethod
     def get_colors_for_data_list_with_values(result):
         data_list = result.get_data()["data_list"]
-        color_idx = {}
-        colors = []
+        value_to_color = {}
+        region_color_map = {}
         for data in data_list:
             max_value_key = list(result.what.get_values(data).keys())[0]
-            if max_value_key not in color_idx:
+            if max_value_key not in value_to_color:
                 color = (
                     MapUtils.COLOR_IDX[max_value_key]
                     if max_value_key in MapUtils.COLOR_IDX
                     else MapUtils.get_random_color()
                 )
-                color_idx[max_value_key] = color
-            colors.append(color_idx[max_value_key])
-        return colors
+                value_to_color[max_value_key] = color
+            region_color_map[data["region_id"]] = value_to_color[
+                max_value_key
+            ]
+        return region_color_map
 
     @staticmethod
     def get_colors_for_data_list(result):
         data_list = result.get_data()["data_list"]
         if result.what.get_values(data_list[0]) is None:
             return MapUtils.get_colors_for_data_list_without_values(result)
-        return MapUtils.get_colors_for_data_list_with_values(result)
+        return MapUtils.get_colors_for_data_list_with_values(
+            result
+        )  # region_id -> color
 
     @staticmethod
     def _draw_labels(gdf_region, ax):
@@ -93,15 +99,18 @@ class MapUtils:
             )
 
     @staticmethod
-    def _draw_legend(result, data_list, colors, ax):
+    def _draw_legend(result, data_list, region_color_map, ax):
         if result.what.get_values(data_list[0]) is not None:
-            unique_colors = list(sorted(set(colors)))
-            for color in unique_colors:
-                idx = colors.index(color)
-                label = max(
-                    result.what.get_values(data_list[idx]),
-                    key=result.what.get_values(data_list[idx]).get,
-                )
+            seen = {}
+            for data in data_list:
+                color = region_color_map[data["region_id"]]
+                if color not in seen:
+                    label = max(
+                        result.what.get_values(data),
+                        key=result.what.get_values(data).get,
+                    )
+                    seen[color] = label
+            for color, label in sorted(seen.items()):
                 ax.scatter([], [], color=color, label=label)
             ax.legend(fontsize=6)
 
@@ -116,8 +125,8 @@ class MapUtils:
         gdf_region = GeoUtils.get_geopandas_dataframe(region_ids)
 
         gdf_region = gdf_region.copy()
-        colors = MapUtils.get_colors_for_data_list(result)
-        gdf_region["color"] = colors
+        region_color_map = MapUtils.get_colors_for_data_list(result)
+        gdf_region["color"] = gdf_region["id"].map(region_color_map)
 
         fig, ax = plt.subplots(figsize=(10, 8))
         gdf_region.plot(
@@ -131,7 +140,7 @@ class MapUtils:
         if n_regions <= MapUtils.MAX_REGIONS_TO_LABEL:
             MapUtils._draw_labels(gdf_region, ax)
 
-        MapUtils._draw_legend(result, data_list, colors, ax)
+        MapUtils._draw_legend(result, data_list, region_color_map, ax)
         title = MapUtils.DELIM_TITLE.join(result.get_title_items())
         ax.set_title(title, fontsize=10)
         ax.set_axis_off()
@@ -147,7 +156,9 @@ class MapUtils:
                 color="gray",
             )
 
-        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
+        image_dir = os.path.join(
+            tempfile.gettempdir(), "lanka_data", "images"
+        )
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
