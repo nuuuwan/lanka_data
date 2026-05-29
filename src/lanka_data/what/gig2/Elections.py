@@ -8,6 +8,13 @@ log = Log("Elections")
 
 class Elections(GIG2):
 
+    def __init__(self, what_label: str, when_label: str):
+        super().__init__(
+            what_label=what_label,
+            region_group="regions-ec",
+            year=when_label,
+        )
+
     @classmethod
     def get_what_label_to_id_file_path(cls):
         return os.path.join(

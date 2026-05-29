@@ -32,7 +32,7 @@ class GIG2(What):
         ) | cls.get_custom_result(d)
 
     @cache
-    def get_result(self, regions) -> list[dict]:
+    def get_data_list(self, regions) -> list[dict]:
         what_label_to_id = self.get_what_label_to_id()
         what_id = what_label_to_id.get(self.what_label)
         if what_id is None:
@@ -51,9 +51,4 @@ class GIG2(What):
         cleaned_data_list = [
             self.clean(d, region_idx) for d in filtered_data_list
         ]
-        return (
-            dict(
-                data_list=cleaned_data_list,
-            )
-            | self.get_source_info()
-        )
+        return cleaned_data_list

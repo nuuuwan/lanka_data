@@ -8,10 +8,10 @@ log = Log("Census2012")
 
 class Census2012(GIG2):
 
-    def __init__(self, what_label: str, region_group: str):
+    def __init__(self, what_label: str):
         super().__init__(
             what_label=what_label,
-            region_group=region_group,
+            region_group="regions",
             year="2012",
         )
 

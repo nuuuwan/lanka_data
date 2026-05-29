@@ -61,7 +61,15 @@ class Census2024(What):
             pct_values=pct_values,
         )
 
-    def get_result(self, regions) -> list[dict]:
+    @classmethod
+    def get_source_info(cls):
+        return dict(
+            source="Census of Population and Housing 2024",
+            source_url="https://www.statistics.gov.lk"
+            + "/Population/StaticalInformation/CPH2024",
+        )
+
+    def get_data_list(self, regions) -> list[dict]:
         label_to_path = self.get_label_to_path()
         path = label_to_path.get(self.label)
         if path is None:
@@ -78,9 +86,4 @@ class Census2024(What):
             d for d in raw_data_list if d["region_id"] in region_ids
         ]
         cleaned_data_list = [self.clean(d) for d in filtered_data_list]
-        return dict(
-            data_list=cleaned_data_list,
-            source="Census of Population and Housing 2024",
-            source_url="https://www.statistics.gov.lk"
-            + "/Population/StaticalInformation/CPH2024",
-        )
+        return cleaned_data_list

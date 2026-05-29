@@ -13,10 +13,10 @@ class WhatFactory:
             return BasicWhat()
 
         if "Election" in what_label:
-            return Elections(what_label, "regions-ec", when_label)
+            return Elections(what_label, when_label)
 
         if when_label == "2012":
-            return Census2012(what_label, "regions")
+            return Census2012(what_label)
 
         if when_label == "2024":
             return Census2024(what_label)
