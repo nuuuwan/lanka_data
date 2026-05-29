@@ -1,3 +1,4 @@
+import colorsys
 import hashlib
 import os
 import random
@@ -14,6 +15,7 @@ log = Log("MapUtils")
 class MapUtils:
     DELIM_TITLE = " · "
     MAX_REGIONS_TO_LABEL = 100
+    MAX_LEGEND_ITEMS = 7
     COLOR_IDX = {
         # Religion
         "buddhist": "#FFBE29",
@@ -71,7 +73,7 @@ class MapUtils:
         elif param == "Bottom":
             idx = -1
         else:
-            raise ValueError(f"Unknown how param: {param}")
+            return None
 
         def func_key_getter(data):
             return list(what.get_values(data).keys())[idx]
@@ -79,26 +81,55 @@ class MapUtils:
         return func_key_getter
 
     @staticmethod
-    def get_colors_for_data_list_with_values(result_data, how, what):
-        func_key_getter = MapUtils.get_func_key_getter(how, what)
+    def get_colors_for_data_list_with_values_key(result_data, how, what):
+        data_list = result_data["data_list"]
+        value_to_color = {}
+        region_color_map = {}
+        pct_values = [data["pct_values"][how.params] for data in data_list]
+        min_value = min(pct_values)
+        max_value = max(pct_values)
+        for data in data_list:
+            value = data["pct_values"][how.params]
+            p = (value - min_value) / (max_value - min_value)
+            hue = (1 - p) * 0.6
+            sat = 1.0
+            light = 0.5
+            color = colorsys.hls_to_rgb(hue, light, sat)
+            value_to_color[value] = color
+            region_color_map[data["region_id"]] = color
+        return region_color_map, value_to_color
 
+    @staticmethod
+    def get_colors_for_data_list_with_values_order(
+        result_data, how, what, func_key_getter
+    ):
         data_list = result_data["data_list"]
         value_to_color = {}
         region_color_map = {}
         for data in data_list:
-            color_value_key = func_key_getter(data)
-
-            if color_value_key not in value_to_color:
+            key = func_key_getter(data) if func_key_getter else None
+            if key not in value_to_color:
                 color = (
-                    MapUtils.COLOR_IDX[color_value_key]
-                    if color_value_key in MapUtils.COLOR_IDX
+                    MapUtils.COLOR_IDX[key]
+                    if key in MapUtils.COLOR_IDX
                     else MapUtils.get_random_color()
                 )
-                value_to_color[color_value_key] = color
-            region_color_map[data["region_id"]] = value_to_color[
-                color_value_key
-            ]
+                value_to_color[key] = color
+            region_color_map[data["region_id"]] = value_to_color[key]
         return region_color_map, value_to_color
+
+    @staticmethod
+    def get_colors_for_data_list_with_values(result_data, how, what):
+        func_key_getter = MapUtils.get_func_key_getter(how, what)
+        if func_key_getter:
+            return MapUtils.get_colors_for_data_list_with_values_order(
+                result_data, how, what, func_key_getter
+            )
+        return MapUtils.get_colors_for_data_list_with_values_key(
+            result_data,
+            how,
+            what,
+        )
 
     @staticmethod
     def get_colors_for_data_list(result_data, how, what):
@@ -125,12 +156,25 @@ class MapUtils:
             )
 
     @staticmethod
+    def _format_legend_label(value):
+        if isinstance(value, (int, float)):
+            return f"{value:.1%}"
+        return str(value)
+
+    @staticmethod
     def _draw_legend(value_to_color, ax):
         if value_to_color is None:
             return
-
-        for value, color in sorted(value_to_color.items()):
-            ax.scatter([], [], color=color, label=value)
+        value_and_color = sorted(value_to_color.items())
+        if len(value_and_color) > MapUtils.MAX_LEGEND_ITEMS:
+            value_and_color = (
+                value_and_color[: MapUtils.MAX_LEGEND_ITEMS // 2]
+                + value_and_color[-(MapUtils.MAX_LEGEND_ITEMS // 2) :]
+            )
+        for value, color in value_and_color:
+            ax.scatter(
+                [], [], color=color, label=MapUtils._format_legend_label(value)
+            )
         ax.legend(fontsize=6)
 
     @staticmethod
