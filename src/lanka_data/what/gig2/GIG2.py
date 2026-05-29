@@ -1,5 +1,3 @@
-from functools import cache
-
 from lanka_data.what.What import What
 from utils_future import WWW, JSONFile
 
@@ -12,7 +10,6 @@ class GIG2(What):
         self.year = year
 
     @classmethod
-    @cache
     def get_what_label_to_id(cls):
         return JSONFile(cls.get_what_label_to_id_file_path()).read()
 
@@ -31,7 +28,6 @@ class GIG2(What):
             region_name=region_idx[region_id]["name"],
         ) | cls.get_custom_data(d)
 
-    @cache
     def get_data_list(self, regions) -> list[dict]:
         what_label_to_id = self.get_what_label_to_id()
         what_id = what_label_to_id.get(self.what_label)

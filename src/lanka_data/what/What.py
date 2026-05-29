@@ -21,16 +21,3 @@ class What:
             total_value=total_value,
             pct_values=pct_values,
         )
-
-    def get_result(self, regions) -> list[dict]:
-        data_list = self.get_data_list(regions)
-        aggr_data = self.get_aggr_data(data_list)
-        source_info = self.get_source_info()
-
-        return (
-            dict(
-                data_list=data_list,
-                aggr_data=aggr_data,
-            )
-            | source_info
-        )

@@ -6,7 +6,7 @@ import tempfile
 import time
 from functools import cached_property
 
-from lanka_data.what import WhatFactory
+from lanka_data.what import Result, WhatFactory
 from lanka_data.where import Regions
 from lanka_data.where.RegionsMapUtils import RegionsMapUtils
 from utils_future import Log
@@ -41,7 +41,7 @@ class Db:
         regions = Regions.from_token(where_cmd)
         what = WhatFactory.from_what_and_when(what_cmd, when_cmd)
 
-        result = what.get_result(regions)
+        result = Result(regions, what, when_cmd).get()
 
         if how_cmd == "JSON":
             return result

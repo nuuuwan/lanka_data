@@ -5,6 +5,6 @@ from lanka_data.db import Db
 from lanka_data.examples import Example
 from lanka_data.readme import ReadMe
 from lanka_data.what import (GIG2, BasicWhat, Census2012, Census2024,
-                             Elections, What, WhatFactory)
+                             Elections, Result, What, WhatFactory)
 from lanka_data.where import (RegionLoadersMixin, Regions, RegionsGeoUtils,
                               RegionsMapUtils, RegionTypeUtils, Where)
