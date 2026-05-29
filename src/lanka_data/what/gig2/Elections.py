@@ -9,6 +9,15 @@ log = Log("Elections")
 class Elections(GIG2):
 
     def __init__(self, title: str, when_label: str):
+        if when_label == "Latest":
+            if title == "PresidentialElection":
+                when_label = "2024"
+            elif title == "ParliamentaryElection":
+                when_label = "2020"
+            else:
+                raise ValueError(
+                    f"Unknown title: {title} for Latest when_label"
+                )
         super().__init__(
             title=title,
             region_group="regions-ec",

@@ -337,13 +337,13 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 14. `LK:pd/PresidentialElection/2024/Map`
+### 14. `LK:pd/PresidentialElection/Latest/Map`
 
 ```json
 {
     "result": {
-        "title": "160 Pds \u00b7 PresidentialElection \u00b7 2024 \u00b7 Map",
-        "image_path": "/tmp/lanka_data/images/4ac73cd9.png",
+        "title": "160 Pds \u00b7 PresidentialElection \u00b7 Latest \u00b7 Map",
+        "image_path": "/tmp/lanka_data/images/6935e195.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -352,7 +352,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK:pd/PresidentialElection/2024/Map](images/readme/4ac73cd9.png)
+![LK:pd/PresidentialElection/Latest/Map](images/readme/6935e195.png)
 
 ### 15. `LK-2:dsd/Ethnicity/Latest/Map`
 
