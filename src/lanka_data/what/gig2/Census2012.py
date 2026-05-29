@@ -30,7 +30,7 @@ class Census2012(GIG2):
         )
 
     @classmethod
-    def get_custom_result(cls, d):
+    def get_custom_data(cls, d):
         values = {}
         for k, v in d.items():
             if "total" in k:

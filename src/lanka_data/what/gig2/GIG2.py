@@ -29,7 +29,7 @@ class GIG2(What):
         return dict(
             region_id=region_id,
             region_name=region_idx[region_id]["name"],
-        ) | cls.get_custom_result(d)
+        ) | cls.get_custom_data(d)
 
     @cache
     def get_data_list(self, regions) -> list[dict]:
