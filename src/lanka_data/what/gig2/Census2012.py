@@ -8,15 +8,15 @@ log = Log("Census2012")
 
 class Census2012(GIG2):
 
-    def __init__(self, what_label: str):
+    def __init__(self, title: str):
         super().__init__(
-            what_label=what_label,
+            title=title,
             region_group="regions",
             year="2012",
         )
 
     @classmethod
-    def get_what_label_to_id_file_path(cls):
+    def get_title_to_id_file_path(cls):
         return os.path.join(
             "src", "lanka_data", "what", "gig2", "census2012.datasets.json"
         )

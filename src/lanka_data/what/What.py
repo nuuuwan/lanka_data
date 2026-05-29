@@ -1,5 +1,9 @@
 class What:
-    pass
+    def __init__(self, title):
+        self.title = title
+
+    def get_title(self) -> str:
+        return self.title
 
     @classmethod
     def get_aggr_data(cls, data_list):

@@ -7,8 +7,8 @@ from utils_future import WWW, JSONFile
 
 class Census2024(What):
 
-    def __init__(self, label: str):
-        self.label = label
+    def __init__(self, title: str):
+        super().__init__(title)
 
     @classmethod
     def metadata_file_path(cls) -> str:
@@ -26,7 +26,7 @@ class Census2024(What):
 
     @classmethod
     @cache
-    def get_label_to_path(cls) -> dict:
+    def get_title_to_path(cls) -> dict:
         metadata = cls.get_metadata()
         label_to_path = {}
         for level1 in metadata:
@@ -70,8 +70,8 @@ class Census2024(What):
         )
 
     def get_data_list(self, regions) -> list[dict]:
-        label_to_path = self.get_label_to_path()
-        path = label_to_path.get(self.label)
+        label_to_path = self.get_title_to_path()
+        path = label_to_path.get(self.title)
         if path is None:
             raise ValueError(f"Invalid label: {self.label}")
 
@@ -81,7 +81,7 @@ class Census2024(What):
             + f"/data/{path}/data.json"
         )
         raw_data_list = WWW(url).read_json()
-        region_ids = [region["id"] for region in regions.regions]
+        region_ids = [region["id"] for region in regions.raw_region_data_list]
         filtered_data_list = [
             d for d in raw_data_list if d["region_id"] in region_ids
         ]

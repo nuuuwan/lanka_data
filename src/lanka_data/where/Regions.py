@@ -10,15 +10,27 @@ log = Log("Regions")
 
 class Regions(Where, RegionLoadersMixin):
 
-    def __init__(self, regions: list[str]):
-        self.regions = regions
+    @classmethod
+    def build_title(cls, raw_region_data_list):
+        region_ids = [d["id"] for d in raw_region_data_list]
+        n_regions = len(region_ids)
+        if n_regions:
+            return ", ".join(region_ids)
+
+        return f"{n_regions} regions"
+
+    def __init__(self, raw_region_data_list: list[str]):
+        super().__init__(self.build_title(raw_region_data_list))
+        self.raw_region_data_list = raw_region_data_list
 
     @cached_property
     def region_type(self):
-        return RegionTypeUtils.get_region_type(self.regions[0]["id"])
+        return RegionTypeUtils.get_region_type(
+            self.raw_region_data_list[0]["id"]
+        )
 
     @classmethod
-    def _get_data_list_for_region_type(cls, region_type: str):
+    def _get_raw_region_data_list_for_region_type(cls, region_type: str):
 
         url = (
             "https://raw.githubusercontent.com"
@@ -42,7 +54,7 @@ class Regions(Where, RegionLoadersMixin):
         return new_d
 
     def get_result(self) -> list[dict]:
-        data_list = [self.clean(d) for d in self.regions]
+        data_list = [self.clean(d) for d in self.raw_region_data_list]
         return dict(
             data_list=data_list,
             source="Department of Census and Statistics, Sri Lanka",

@@ -8,6 +8,16 @@ class Result:
         self.when = when
         self.how = how
 
+    def get_title(self):
+        return " · ".join(
+            [
+                self.where.get_title(),
+                self.what.get_title(),
+                self.when,
+                self.how,
+            ]
+        )
+
     def get_data(self):
         data_list = self.what.get_data_list(self.where)
         source_info = self.what.get_source_info()
@@ -28,6 +38,6 @@ class Result:
             return self.get_data()
 
         if self.how == "Map":
-            return RegionsMapUtils.draw_map(self, "")
+            return RegionsMapUtils.draw_map(self, self.get_title())
 
         raise ValueError(f"Unknown how: {self.how}")

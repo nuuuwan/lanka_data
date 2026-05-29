@@ -3,6 +3,9 @@ from lanka_data.what.What import What
 
 class BasicWhat(What):
 
+    def __init__(self):
+        super().__init__(title="Basic")
+
     @classmethod
     def clean(cls, data):
         new_data = {}
@@ -16,7 +19,7 @@ class BasicWhat(What):
         return new_data
 
     def get_data_list(self, regions) -> list[dict]:
-        return [self.clean(region) for region in regions.regions]
+        return [self.clean(region) for region in regions.raw_region_data_list]
 
     def get_source_info(self) -> dict:
         return dict(

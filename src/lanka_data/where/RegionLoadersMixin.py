@@ -33,9 +33,9 @@ class RegionLoadersMixin:
         region_a_id_key = f"{region_a_type}_id"
         region_b_id_key = f"{region_b_type}_id"
 
-        gnds = cls._get_data_list_for_region_type("gnd")
+        raw_gnds = cls._get_raw_region_data_list_for_region_type("gnd")
         intersection_gnds = []
-        for gnd in gnds:
+        for gnd in raw_gnds:
             if (
                 gnd.get(region_a_id_key) == region_a_id
                 and gnd.get(region_b_id_key) == region_b_id
@@ -59,10 +59,12 @@ class RegionLoadersMixin:
     @classmethod
     def from_region_radius(cls, region_id, radius_km):
         region_type = RegionTypeUtils.get_region_type(region_id)
-        regions = cls._get_data_list_for_region_type(region_type)
+        raw_regions = cls._get_raw_region_data_list_for_region_type(
+            region_type
+        )
 
         center_region = None
-        for region in regions:
+        for region in raw_regions:
             if region["id"] == region_id:
                 center_region = region
                 break
@@ -72,7 +74,7 @@ class RegionLoadersMixin:
 
         nearby_regions = [
             r
-            for r in regions
+            for r in raw_regions
             if cls._is_within_radius(radius_km, center_region, r)
         ]
         if not nearby_regions:
@@ -90,15 +92,17 @@ class RegionLoadersMixin:
                 f"Region types do not match: {from_region_id}, {to_region_id}"
             )
 
-        regions = cls._get_data_list_for_region_type(region_type)
-        regions = [
-            d for d in regions if from_region_id <= d["id"] <= to_region_id
+        raw_regions = cls._get_raw_region_data_list_for_region_type(
+            region_type
+        )
+        raw_regions = [
+            d for d in raw_regions if from_region_id <= d["id"] <= to_region_id
         ]
-        if not regions:
+        if not raw_regions:
             raise ValueError(
                 f"No regions found in range: {from_region_id}...{to_region_id}"
             )
-        return cls(regions)
+        return cls(raw_regions)
 
     @classmethod
     def from_region_ids_str(cls, region_ids_str):
@@ -113,11 +117,13 @@ class RegionLoadersMixin:
             )
 
         region_type = region_types[0]
-        regions = cls._get_data_list_for_region_type(region_type)
-        regions = [d for d in regions if d["id"] in region_ids]
-        if not regions:
+        raw_regions = cls._get_raw_region_data_list_for_region_type(
+            region_type
+        )
+        raw_regions = [d for d in raw_regions if d["id"] in region_ids]
+        if not raw_regions:
             raise ValueError(f"Region ID not found: {region_ids_str}")
-        return cls(regions)
+        return cls(raw_regions)
 
     @classmethod
     def is_parent(cls, region, parent_region_id) -> bool:  # noqa: CFQ004
@@ -139,14 +145,16 @@ class RegionLoadersMixin:
     def from_parent_region_id_and_region_type(
         cls, region_type, parent_region_id
     ):
-        regions = cls._get_data_list_for_region_type(region_type)
-        regions = [
+        raw_regions = cls._get_raw_region_data_list_for_region_type(
+            region_type
+        )
+        raw_regions = [
             region
-            for region in regions
+            for region in raw_regions
             if cls.is_parent(region, parent_region_id)
         ]
-        if not regions:
+        if not raw_regions:
             raise ValueError(
                 f"No regions found for parent ID: {parent_region_id}"
             )
-        return cls(regions)
+        return cls(raw_regions)
