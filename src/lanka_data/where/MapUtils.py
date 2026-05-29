@@ -48,14 +48,16 @@ class MapUtils:
         return "#{:06x}".format(random.randint(0, 0xFFFFFF))
 
     @staticmethod
-    def get_colors_for_data_list_without_values(data_list):
+    def get_colors_for_data_list_without_values(result):
+        data_list = result.get_data()["data_list"]
         n_regions = len(data_list)
         cmap = plt.cm.tab20  # pylint: disable=no-member.
         colors = [cmap(i % 20) for i in range(n_regions)]
         return colors
 
     @staticmethod
-    def get_colors_for_data_list_with_values(result, data_list):
+    def get_colors_for_data_list_with_values(result):
+        data_list = result.get_data()["data_list"]
         color_idx = {}
         colors = []
         for data in data_list:
@@ -71,13 +73,11 @@ class MapUtils:
         return colors
 
     @staticmethod
-    def get_colors_for_data_list(result, data_list):
+    def get_colors_for_data_list(result):
+        data_list = result.get_data()["data_list"]
         if result.what.get_values(data_list[0]) is None:
-            return MapUtils.get_colors_for_data_list_without_values(data_list)
-
-        return MapUtils.get_colors_for_data_list_with_values(
-            result, data_list
-        )
+            return MapUtils.get_colors_for_data_list_without_values(result)
+        return MapUtils.get_colors_for_data_list_with_values(result)
 
     @staticmethod
     def _draw_labels(gdf_region, ax):
@@ -94,7 +94,6 @@ class MapUtils:
 
     @staticmethod
     def _draw_legend(result, data_list, colors, ax):
-
         if result.what.get_values(data_list[0]) is not None:
             unique_colors = set(colors)
             for color in unique_colors:
@@ -117,7 +116,7 @@ class MapUtils:
         gdf_region = GeoUtils.get_geopandas_dataframe(region_ids)
 
         gdf_region = gdf_region.copy()
-        colors = MapUtils.get_colors_for_data_list(result, data_list)
+        colors = MapUtils.get_colors_for_data_list(result)
         gdf_region["color"] = colors
 
         fig, ax = plt.subplots(figsize=(10, 8))
@@ -148,9 +147,7 @@ class MapUtils:
                 color="gray",
             )
 
-        image_dir = os.path.join(
-            tempfile.gettempdir(), "lanka_data", "images"
-        )
+        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")

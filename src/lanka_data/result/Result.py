@@ -33,7 +33,6 @@ class Result:
         return result_data
 
     def get_inner(self):
-
         if self.how == "JSON":
             return self.get_data()
 
