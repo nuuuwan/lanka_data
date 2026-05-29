@@ -4,5 +4,5 @@
 from lanka_data.db import Db
 from lanka_data.what import (GIG2, BasicWhat, Census2012, Census2024,
                              Elections, What, WhatFactory)
-from lanka_data.where import (Regions, RegionsGeoUtils, RegionsMapUtils,
-                              RegionTypeUtils, Where)
+from lanka_data.where import (RegionLoadersMixin, Regions, RegionsGeoUtils,
+                              RegionsMapUtils, RegionTypeUtils, Where)
