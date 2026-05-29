@@ -48,13 +48,14 @@ class MapUtils:
         return "#{:06x}".format(random.randint(0, 0xFFFFFF))
 
     @staticmethod
-    def get_colors_for_data_list(result, data_list):
-        if result.what.get_values(data_list[0]) is None:
-            n_regions = len(data_list)
-            cmap = plt.cm.tab20  # pylint: disable=no-member.
-            colors = [cmap(i % 20) for i in range(n_regions)]
-            return colors
+    def get_colors_for_data_list_without_values(data_list):
+        n_regions = len(data_list)
+        cmap = plt.cm.tab20  # pylint: disable=no-member.
+        colors = [cmap(i % 20) for i in range(n_regions)]
+        return colors
 
+    @staticmethod
+    def get_colors_for_data_list_with_values(result, data_list):
         color_idx = {}
         colors = []
         for data in data_list:
@@ -68,6 +69,15 @@ class MapUtils:
                 color_idx[max_value_key] = color
             colors.append(color_idx[max_value_key])
         return colors
+
+    @staticmethod
+    def get_colors_for_data_list(result, data_list):
+        if result.what.get_values(data_list[0]) is None:
+            return MapUtils.get_colors_for_data_list_without_values(data_list)
+
+        return MapUtils.get_colors_for_data_list_with_values(
+            result, data_list
+        )
 
     @staticmethod
     def _draw_labels(gdf_region, ax):
@@ -138,7 +148,9 @@ class MapUtils:
                 color="gray",
             )
 
-        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
+        image_dir = os.path.join(
+            tempfile.gettempdir(), "lanka_data", "images"
+        )
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
