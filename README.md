@@ -436,6 +436,28 @@ python workflows/console.py <cmd>
 
 ![LK-2:dsd/Ethnicity/Latest/Map](images/readme/48ba887e.png)
 
+### 16. `LK-11:dsd/Religion/2012/Map:2nd`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "13 Dsds",
+            "Religion",
+            "2012",
+            "Map (2nd)"
+        ],
+        "image_path": "/tmp/lanka_data/images/03705447.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-11:dsd/Religion/2012/Map:2nd](images/readme/03705447.png)
+
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
