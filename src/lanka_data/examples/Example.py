@@ -1,5 +1,6 @@
 import hashlib
 import os
+import shutil
 
 from lanka_data.db import Db
 from utils_future import JSONFile, Log
@@ -38,10 +39,15 @@ class Example:
 
     @classmethod
     def build(cls):
+        dir_outputs = os.path.join("examples", "outputs")
+        if os.path.exists(dir_outputs):
+            shutil.rmtree(dir_outputs)
+        os.makedirs(dir_outputs)
+
         idx = cls.get_output_idx_hot()
         for cmd, output in idx.items():
             output_path = os.path.join(
-                "examples", "outputs", f"{Example.cmd_to_hash(cmd)}.json"
+                dir_outputs, f"{Example.cmd_to_hash(cmd)}.json"
             )
             output_file = JSONFile(output_path)
             output_file.write(output)
