@@ -285,11 +285,21 @@ python workflows/console.py <cmd>
                     "hindu": 0.2459,
                     "buddhist": 0.1634,
                     "roman_catholic": 0.1237,
-                    "other_christian": 0.0355,
-                    "other": 0.0006
-                }
+                    ... // 10 lines ...
+                "roman_catholic": 36117,
+                "other_christian": 10381,
+                "other": 164
+            },
+            "total_value": 292089,
+            "pct_values": {
+                "islam": 0.431,
+                "hindu": 0.2459,
+                "buddhist": 0.1634,
+                "roman_catholic": 0.1237,
+                "other_christian": 0.0355,
+                "other": 0.0006
             }
-        ],
+        },
         "source": "Census of Population and Housing 2024",
         "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
     },
@@ -321,21 +331,21 @@ python workflows/console.py <cmd>
                 "total_value": 1088007,
                 "pct_values": {
                     "sinhalese": 0.8711,
-                    ... // 24 lines ...
-                "total_value": 840648,
-                "pct_values": {
-                    "sinhalese": 0.8545,
-                    "sl_moor": 0.0714,
-                    "ind_tamil": 0.052,
-                    "sl_tamil": 0.0212,
-                    "burgher": 0.0003,
-                    "other_eth": 0.0002,
-                    "malay": 0.0002,
-                    "sl_chetty": 0.0001,
-                    "bharatha": 0.0
-                }
+                    ... // 49 lines ...
+            },
+            "total_value": 1928655,
+            "pct_values": {
+                "sinhalese": 0.8639,
+                "ind_tamil": 0.0549,
+                "sl_moor": 0.0427,
+                "sl_tamil": 0.0375,
+                "other_eth": 0.0004,
+                "burgher": 0.0003,
+                "malay": 0.0002,
+                "sl_chetty": 0.0,
+                "bharatha": 0.0
             }
-        ],
+        },
         "source": "Census of Population and Housing 2012",
         "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
     },
@@ -362,26 +372,26 @@ python workflows/console.py <cmd>
                     "p_valid": 0.9435,
                     "p_rejected": 0.0565
                 },
-                "by_party": {
+                "votes_by_party": {
                     "NPP": 6863186,
                     "SJB": 1968716,
                     "NDF": 500835,
                     "SLPP": 350429,
-                    ... // 649 lines ...
-                    "IND36-13": 0.0,
-                    "IND42-13": 0.0,
-                    "IND34-13": 0.0,
-                    "IND26-12": 0.0,
-                    "IND05-13": 0.0,
-                    "IND07-13": 0.0,
-                    "IND08-14": 0.0,
-                    "IND32-13": 0.0,
-                    "IND40-13": 0.0,
-                    "IND37-13": 0.0,
-                    "IND33-13": 0.0
-                }
+                    ... // 1326 lines ...
+                "IND28-13": 0.0,
+                "IND36-13": 0.0,
+                "IND42-13": 0.0,
+                "IND34-13": 0.0,
+                "IND26-12": 0.0,
+                "IND05-13": 0.0,
+                "IND07-13": 0.0,
+                "IND08-14": 0.0,
+                "IND32-13": 0.0,
+                "IND40-13": 0.0,
+                "IND37-13": 0.0,
+                "IND33-13": 0.0
             }
-        ],
+        },
         "source": "Election Commission of Sri Lanka",
         "source_url": "https://www.elections.gov.lk"
     },
@@ -408,26 +418,26 @@ python workflows/console.py <cmd>
                     "p_valid": 0.978,
                     "p_rejected": 0.022
                 },
-                "by_party": {
+                "votes_by_party": {
                     "NPP": 5634915,
                     "SJB": 4363035,
                     "IND16": 2299767,
                     "SLPP": 342781,
-                    ... // 63 lines ...
-                    "SEP": 0.0003,
-                    "NIF": 0.0003,
-                    "IND15": 0.0003,
-                    "NDF": 0.0003,
-                    "IND6": 0.0003,
-                    "UNFF": 0.0002,
-                    "IND7": 0.0002,
-                    "ELPP": 0.0002,
-                    "IND8": 0.0002,
-                    "NSU": 0.0001,
-                    "SLLP": 0.0001
-                }
+                    ... // 154 lines ...
+                "AJP": 0.0004,
+                "SEP": 0.0003,
+                "NIF": 0.0003,
+                "IND15": 0.0003,
+                "NDF": 0.0003,
+                "IND6": 0.0003,
+                "UNFF": 0.0002,
+                "IND7": 0.0002,
+                "ELPP": 0.0002,
+                "IND8": 0.0002,
+                "NSU": 0.0001,
+                "SLLP": 0.0001
             }
-        ],
+        },
         "source": "Election Commission of Sri Lanka",
         "source_url": "https://www.elections.gov.lk"
     },

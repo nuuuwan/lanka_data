@@ -45,17 +45,57 @@ class Elections(GIG2):
             p_valid=round(valid / polled, 4),
             p_rejected=round(rejected / polled, 4),
         )
-        by_party = {}
+        votes_by_party = {}
         for k, v in d.items():
             if k in ["entity_id", "electors", "polled", "valid", "rejected"]:
                 continue
-            by_party[k] = int(float(v))
+            votes_by_party[k] = int(float(v))
 
-        by_party = dict(sorted(by_party.items(), key=lambda item: -item[1]))
-        p_by_party = {k: round(v / valid, 4) for k, v in by_party.items()}
+        votes_by_party = dict(
+            sorted(votes_by_party.items(), key=lambda item: -item[1])
+        )
+        pct_votes_by_party = {
+            k: round(v / valid, 4) for k, v in votes_by_party.items()
+        }
 
         return dict(
             summary=summary,
-            by_party=by_party,
-            p_by_party=p_by_party,
+            votes_by_party=votes_by_party,
+            pct_votes_by_party=pct_votes_by_party,
+        )
+
+    @classmethod
+    def get_aggr_data(cls, data_list):
+        summary = {}
+        for k in ["electors", "polled", "valid", "rejected"]:
+            total = sum(d["summary"][k] for d in data_list)
+            summary[k] = total
+        summary["p_turnout"] = round(
+            summary["polled"] / summary["electors"], 4
+        )
+        summary["p_valid"] = round(summary["valid"] / summary["polled"], 4)
+        summary["p_rejected"] = round(
+            summary["rejected"] / summary["polled"], 4
+        )
+
+        votes_by_party = {}
+        for d in data_list:
+            for k, v in d["votes_by_party"].items():
+                votes_by_party[k] = votes_by_party.get(k, 0) + v
+        votes_by_party = dict(
+            sorted(votes_by_party.items(), key=lambda item: -item[1])
+        )
+
+        pct_votes_by_party = {
+            k: round(v / summary["valid"], 4)
+            for k, v in votes_by_party.items()
+        }
+        pct_votes_by_party = dict(
+            sorted(pct_votes_by_party.items(), key=lambda item: -item[1])
+        )
+
+        return dict(
+            summary=summary,
+            votes_by_party=votes_by_party,
+            pct_votes_by_party=pct_votes_by_party,
         )

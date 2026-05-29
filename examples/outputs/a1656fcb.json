@@ -56,6 +56,31 @@
         }
       }
     ],
+    "aggr_data": {
+      "values": {
+        "sinhalese": 1666180,
+        "ind_tamil": 105872,
+        "sl_moor": 82343,
+        "sl_tamil": 72298,
+        "other_eth": 758,
+        "burgher": 632,
+        "malay": 472,
+        "sl_chetty": 84,
+        "bharatha": 16
+      },
+      "total_value": 1928655,
+      "pct_values": {
+        "sinhalese": 0.8639,
+        "ind_tamil": 0.0549,
+        "sl_moor": 0.0427,
+        "sl_tamil": 0.0375,
+        "other_eth": 0.0004,
+        "burgher": 0.0003,
+        "malay": 0.0002,
+        "sl_chetty": 0.0,
+        "bharatha": 0.0
+      }
+    },
     "source": "Census of Population and Housing 2012",
     "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
   },
