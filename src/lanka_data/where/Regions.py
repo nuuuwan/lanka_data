@@ -12,12 +12,17 @@ class Regions(Where, RegionLoadersMixin):
 
     @classmethod
     def build_title(cls, raw_region_data_list):
-        region_ids = [d["id"] for d in raw_region_data_list]
-        n_regions = len(region_ids)
-        if n_regions <= 10:
-            return ", ".join(region_ids)
+        region_type = RegionTypeUtils.get_region_type(
+            raw_region_data_list[0]["id"]
+        )
+        region_names = [d["name"] for d in raw_region_data_list]
+        n_regions = len(region_names)
+        if n_regions == 1:
+            return region_names[0] + f" {region_type.title()}"
+        if n_regions <= 5:
+            return ", ".join(region_names) + f" {region_type.title()}s"
 
-        return f"{n_regions} regions"
+        return f"{n_regions} {region_type.title()}s"
 
     def __init__(self, raw_region_data_list: list[str]):
         super().__init__(self.build_title(raw_region_data_list))
