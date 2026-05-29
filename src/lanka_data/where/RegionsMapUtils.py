@@ -92,7 +92,7 @@ class RegionsMapUtils:
             ax.legend(fontsize=6)
 
     @staticmethod
-    def draw_map(result, file_path_base: str):
+    def draw_map(result, file_path_base: str, cmd: str):
         data_list = result["data_list"]
         region_ids = [d["region_id"] for d in data_list]
         n_regions = len(region_ids)
@@ -120,6 +120,8 @@ class RegionsMapUtils:
             RegionsMapUtils._draw_labels(gdf_region, ax)
 
         RegionsMapUtils._draw_legend(data_list, colors, ax)
+        if cmd:
+            ax.set_title(cmd, fontsize=10)
         ax.set_axis_off()
 
         image_path = f"{file_path_base}.png"
