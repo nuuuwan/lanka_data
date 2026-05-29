@@ -11,6 +11,8 @@ from utils_future import Log
 
 log = Log("MapUtils")
 
+random.seed(0)
+
 
 class MapUtils:
     DELIM_TITLE = " · "
@@ -21,28 +23,28 @@ class MapUtils:
         "buddhist": "#FFBE29",
         "hindu": "#EB7400",
         "islam": "#00534E",
-        "other_christian": "blue",
-        "roman_catholic": "purple",
-        "other": "gray",
+        "other_christian": "#0000FF",
+        "roman_catholic": "#800080",
+        "other": "#808080",
         # Ethnicity
         "sinhalese": "#8D153A",
         "sl_tamil": "#EB7400",
-        "ind_tamil": "blue",
+        "ind_tamil": "#0000FF",
         "sl_moor": "#00534E",
-        "malay": "green",
+        "malay": "#008000",
         # Political Party
         "SLPP": "#8D153A",
-        "UPFA": "blue",
-        "PA": "blue",
-        "SLFP": "blue",
-        "NPP": "red",
-        "SJB": "green",
-        "UNP": "green",
-        "NDF": "green",
-        "IND9": "orange",
-        "SLMP": "purple",
-        "ACTC": "orange",
-        "ITAK": "orange",
+        "UPFA": "#0000FF",
+        "PA": "#0000FF",
+        "SLFP": "#0000FF",
+        "NPP": "#FF0000",
+        "SJB": "#008000",
+        "UNP": "#008000",
+        "NDF": "#008000",
+        "IND9": "#FFA500",
+        "SLMP": "#800080",
+        "ACTC": "#FFA500",
+        "ITAK": "#FFA500",
     }
 
     @staticmethod
@@ -86,12 +88,15 @@ class MapUtils:
         value_to_color = {}
         region_color_map = {}
         pct_values = [data["pct_values"][how.params] for data in data_list]
-        min_value = min(pct_values)
-        max_value = max(pct_values)
+        value_to_rank = {
+            value: rank for rank, value in enumerate(sorted(set(pct_values)))
+        }
+        n = len(value_to_rank)
         for data in data_list:
             value = data["pct_values"][how.params]
-            p = (value - min_value) / (max_value - min_value)
-            hue = (1 - p) * 0.6
+            rank = value_to_rank[value]
+            p = rank / (n - 1)
+            hue = (1 - p) * 0.67
             sat = 1.0
             light = 0.5
             color = colorsys.hls_to_rgb(hue, light, sat)
@@ -143,16 +148,38 @@ class MapUtils:
         )  # region_id -> color
 
     @staticmethod
+    def _is_light_color(color):
+        if isinstance(color, str):
+            color = color.lstrip("#")
+            if len(color) == 6:
+                r, g, b = (
+                    int(color[0:2], 16) / 255,
+                    int(color[2:4], 16) / 255,
+                    int(color[4:6], 16) / 255,
+                )
+            else:
+                return False
+        else:
+            # assume RGBA or RGB tuple
+            r, g, b = color[0], color[1], color[2]
+        luminance = 0.299 * r + 0.587 * g + 0.114 * b
+        return luminance > 0.5
+
+    @staticmethod
     def _draw_labels(gdf_region, ax):
         for _, row in gdf_region.iterrows():
             centroid = row.geometry.centroid
+            bg_color = row.get("color", "black")
+            text_color = (
+                "black" if MapUtils._is_light_color(bg_color) else "white"
+            )
             ax.annotate(
                 row["name"],
                 xy=(centroid.x, centroid.y),
                 ha="center",
                 va="center",
                 fontsize=5,
-                color="white",
+                color=text_color,
             )
 
     @staticmethod
@@ -167,10 +194,16 @@ class MapUtils:
             return
         value_and_color = sorted(value_to_color.items())
         if len(value_and_color) > MapUtils.MAX_LEGEND_ITEMS:
-            value_and_color = (
-                value_and_color[: MapUtils.MAX_LEGEND_ITEMS // 2]
-                + value_and_color[-(MapUtils.MAX_LEGEND_ITEMS // 2) :]
-            )
+            n_actual = len(value_and_color)
+            n_required = MapUtils.MAX_LEGEND_ITEMS - 1
+
+            new_value_and_color = []
+            for i in range(n_required):
+                idx = int(i * n_actual / n_required)
+                new_value_and_color.append(value_and_color[idx])
+            new_value_and_color.append(value_and_color[-1])  # add max value
+            value_and_color = new_value_and_color
+
         for value, color in value_and_color:
             ax.scatter(
                 [], [], color=color, label=MapUtils._format_legend_label(value)
