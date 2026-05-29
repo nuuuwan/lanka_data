@@ -1,7 +1,12 @@
 {
   "result": {
-    "title": "Northern, Eastern, North Western Provinces · Basic Information · 2024 · Map",
-    "image_path": "/tmp/lanka_data/images/19402bf6.png",
+    "title_items": [
+      "Northern, Eastern, North Western Provinces",
+      "Basic Information",
+      "2024",
+      "Map"
+    ],
+    "image_path": "/tmp/lanka_data/images/9e2feebf.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

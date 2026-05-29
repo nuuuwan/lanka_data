@@ -1,7 +1,12 @@
 {
   "result": {
-    "title": "Colombo District · Basic Information · 2024 · Map",
-    "image_path": "/tmp/lanka_data/images/4dcb2f68.png",
+    "title_items": [
+      "Colombo District",
+      "Basic Information",
+      "2024",
+      "Map"
+    ],
+    "image_path": "/tmp/lanka_data/images/a3d3bd8a.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

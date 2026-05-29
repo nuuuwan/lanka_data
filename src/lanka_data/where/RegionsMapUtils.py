@@ -12,6 +12,7 @@ log = Log("RegionsMapUtils")
 
 
 class RegionsMapUtils:
+    DELIM_TITLE = " · "
     MAX_REGIONS_TO_LABEL = 100
     COLOR_IDX = {
         # Religion
@@ -97,7 +98,8 @@ class RegionsMapUtils:
             ax.legend(fontsize=6)
 
     @staticmethod
-    def draw_map(result, title: str):
+    def draw_map(result):
+        title = RegionsMapUtils.DELIM_TITLE.join(result.get_title_items())
         result_data = result.get_data()
         h = hashlib.md5(str(result_data).encode("utf-8")).hexdigest()[:8]
 

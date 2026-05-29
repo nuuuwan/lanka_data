@@ -1,7 +1,12 @@
 {
   "result": {
-    "title": "Western, Southern, Sabaragamuwa Provinces · Basic Information · 2024 · Map",
-    "image_path": "/tmp/lanka_data/images/9faefea7.png",
+    "title_items": [
+      "Western, Southern, Sabaragamuwa Provinces",
+      "Basic Information",
+      "2024",
+      "Map"
+    ],
+    "image_path": "/tmp/lanka_data/images/8e2f766b.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

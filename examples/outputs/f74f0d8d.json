@@ -1,7 +1,12 @@
 {
   "result": {
-    "title": "36 Pds · Basic Information · 2024 · Map",
-    "image_path": "/tmp/lanka_data/images/21180992.png",
+    "title_items": [
+      "36 Pds",
+      "Basic Information",
+      "2024",
+      "Map"
+    ],
+    "image_path": "/tmp/lanka_data/images/5233e0a7.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

@@ -44,7 +44,12 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title": "Sri Lanka Country \u00b7 Basic Information \u00b7 2024 \u00b7 JSON",
+        "title_items": [
+            "Sri Lanka Country",
+            "Basic Information",
+            "2024",
+            "JSON"
+        ],
         "data_list": [
             {
                 "region_id": "LK",
@@ -67,7 +72,12 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title": "Colombo, Gampaha, Kalutara Districts \u00b7 Basic Information \u00b7 2024 \u00b7 JSON",
+        "title_items": [
+            "Colombo, Gampaha, Kalutara Districts",
+            "Basic Information",
+            "2024",
+            "JSON"
+        ],
         "data_list": [
             {
                 "region_id": "LK-11",
@@ -80,12 +90,7 @@ python workflows/console.py <cmd>
                 "pd_id": null
             },
             {
-                "region_id": "LK-12",
-                "region_name": "Gampaha",
-                "area_sqkm": 1385.23,
-                "center_lat": 7.123406,
-                "center_lng": 80.018206,
-                ... // 1 lines ...
+            ... // 6 lines ...
                 "ed_id": "EC-02",
                 "pd_id": null
             },
@@ -113,7 +118,12 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title": "Western, Central Provinces \u00b7 Basic Information \u00b7 2024 \u00b7 JSON",
+        "title_items": [
+            "Western, Central Provinces",
+            "Basic Information",
+            "2024",
+            "JSON"
+        ],
         "data_list": [
             {
                 "region_id": "LK-1",
@@ -143,8 +153,13 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title": "Western, Southern, Sabaragamuwa Provinces \u00b7 Basic Information \u00b7 2024 \u00b7 Map",
-        "image_path": "/tmp/lanka_data/images/9faefea7.png",
+        "title_items": [
+            "Western, Southern, Sabaragamuwa Provinces",
+            "Basic Information",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/8e2f766b.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -153,15 +168,20 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1,LK-9,LK-3/Map](images/readme/9faefea7.png)
+![LK-1,LK-9,LK-3/Map](images/readme/8e2f766b.png)
 
 ### 05. `LK-4...LK-6/Map`
 
 ```json
 {
     "result": {
-        "title": "Northern, Eastern, North Western Provinces \u00b7 Basic Information \u00b7 2024 \u00b7 Map",
-        "image_path": "/tmp/lanka_data/images/19402bf6.png",
+        "title_items": [
+            "Northern, Eastern, North Western Provinces",
+            "Basic Information",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/9e2feebf.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -170,15 +190,20 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-4...LK-6/Map](images/readme/19402bf6.png)
+![LK-4...LK-6/Map](images/readme/9e2feebf.png)
 
 ### 06. `LK-1127025@10/Map`
 
 ```json
 {
     "result": {
-        "title": "267 Gnds \u00b7 Basic Information \u00b7 2024 \u00b7 Map",
-        "image_path": "/tmp/lanka_data/images/cf6f62d6.png",
+        "title_items": [
+            "267 Gnds",
+            "Basic Information",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/737b9182.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -187,15 +212,20 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1127025@10/Map](images/readme/cf6f62d6.png)
+![LK-1127025@10/Map](images/readme/737b9182.png)
 
 ### 07. `LK-1103&EC-01B/Map`
 
 ```json
 {
     "result": {
-        "title": "24 Gnds \u00b7 Basic Information \u00b7 2024 \u00b7 Map",
-        "image_path": "/tmp/lanka_data/images/dcc7b0dc.png",
+        "title_items": [
+            "24 Gnds",
+            "Basic Information",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/2f7133dc.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -204,15 +234,20 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1103&EC-01B/Map](images/readme/dcc7b0dc.png)
+![LK-1103&EC-01B/Map](images/readme/2f7133dc.png)
 
 ### 08. `LK-11/Map`
 
 ```json
 {
     "result": {
-        "title": "Colombo District \u00b7 Basic Information \u00b7 2024 \u00b7 Map",
-        "image_path": "/tmp/lanka_data/images/4dcb2f68.png",
+        "title_items": [
+            "Colombo District",
+            "Basic Information",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/a3d3bd8a.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -221,15 +256,20 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-11/Map](images/readme/4dcb2f68.png)
+![LK-11/Map](images/readme/a3d3bd8a.png)
 
 ### 09. `LK-1:district/Map`
 
 ```json
 {
     "result": {
-        "title": "Colombo, Gampaha, Kalutara Districts \u00b7 Basic Information \u00b7 2024 \u00b7 Map",
-        "image_path": "/tmp/lanka_data/images/61a5010c.png",
+        "title_items": [
+            "Colombo, Gampaha, Kalutara Districts",
+            "Basic Information",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/6a4a391b.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -238,15 +278,20 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1:district/Map](images/readme/61a5010c.png)
+![LK-1:district/Map](images/readme/6a4a391b.png)
 
 ### 10. `LK-1:pd/Map`
 
 ```json
 {
     "result": {
-        "title": "36 Pds \u00b7 Basic Information \u00b7 2024 \u00b7 Map",
-        "image_path": "/tmp/lanka_data/images/21180992.png",
+        "title_items": [
+            "36 Pds",
+            "Basic Information",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/5233e0a7.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -255,15 +300,20 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1:pd/Map](images/readme/21180992.png)
+![LK-1:pd/Map](images/readme/5233e0a7.png)
 
 ### 11. `LK-1103:gnd/Religion/2012/Map`
 
 ```json
 {
     "result": {
-        "title": "35 Gnds \u00b7 Religion \u00b7 2012 \u00b7 Map",
-        "image_path": "/tmp/lanka_data/images/965e6627.png",
+        "title_items": [
+            "35 Gnds",
+            "Religion",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/ed8455d1.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -272,15 +322,20 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1103:gnd/Religion/2012/Map](images/readme/965e6627.png)
+![LK-1103:gnd/Religion/2012/Map](images/readme/ed8455d1.png)
 
 ### 12. `LK-2:dsd/Ethnicity/2024/Map`
 
 ```json
 {
     "result": {
-        "title": "41 Dsds \u00b7 Ethnicity \u00b7 2024 \u00b7 Map",
-        "image_path": "/tmp/lanka_data/images/8319364a.png",
+        "title_items": [
+            "41 Dsds",
+            "Ethnicity",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/1bfe6f0a.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -289,14 +344,19 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-2:dsd/Ethnicity/2024/Map](images/readme/8319364a.png)
+![LK-2:dsd/Ethnicity/2024/Map](images/readme/1bfe6f0a.png)
 
 ### 13. `LK/ParliamentaryElection/2024`
 
 ```json
 {
     "result": {
-        "title": "Sri Lanka Country \u00b7 ParliamentaryElection \u00b7 2024 \u00b7 JSON",
+        "title_items": [
+            "Sri Lanka Country",
+            "ParliamentaryElection",
+            "2024",
+            "JSON"
+        ],
         "data_list": [
             {
                 "region_id": "LK",
@@ -309,12 +369,7 @@ python workflows/console.py <cmd>
                     "p_turnout": 0.6893,
                     "p_valid": 0.9435,
                     "p_rejected": 0.0565
-                },
-                "votes_by_party": {
-                    "NPP": 6863186,
-                    "SJB": 1968716,
-                    "NDF": 500835,
-                    ... // 1327 lines ...
+                    ... // 1332 lines ...
                 "IND28-13": 0.0,
                 "IND36-13": 0.0,
                 "IND42-13": 0.0,
@@ -342,8 +397,13 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title": "160 Pds \u00b7 PresidentialElection \u00b7 Latest \u00b7 Map",
-        "image_path": "/tmp/lanka_data/images/6935e195.png",
+        "title_items": [
+            "160 Pds",
+            "PresidentialElection",
+            "Latest",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/82e3c014.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -352,15 +412,20 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK:pd/PresidentialElection/Latest/Map](images/readme/6935e195.png)
+![LK:pd/PresidentialElection/Latest/Map](images/readme/82e3c014.png)
 
 ### 15. `LK-2:dsd/Ethnicity/Latest/Map`
 
 ```json
 {
     "result": {
-        "title": "41 Dsds \u00b7 Ethnicity \u00b7 Latest \u00b7 Map",
-        "image_path": "/tmp/lanka_data/images/df962292.png",
+        "title_items": [
+            "41 Dsds",
+            "Ethnicity",
+            "Latest",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/572c92ba.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -369,7 +434,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-2:dsd/Ethnicity/Latest/Map](images/readme/df962292.png)
+![LK-2:dsd/Ethnicity/Latest/Map](images/readme/572c92ba.png)
 
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)

@@ -1,6 +1,11 @@
 {
   "result": {
-    "title": "Colombo, Gampaha, Kalutara Districts · Basic Information · 2024 · JSON",
+    "title_items": [
+      "Colombo, Gampaha, Kalutara Districts",
+      "Basic Information",
+      "2024",
+      "JSON"
+    ],
     "data_list": [
       {
         "region_id": "LK-11",

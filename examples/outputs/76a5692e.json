@@ -1,7 +1,12 @@
 {
   "result": {
-    "title": "Colombo, Gampaha, Kalutara Districts · Basic Information · 2024 · Map",
-    "image_path": "/tmp/lanka_data/images/61a5010c.png",
+    "title_items": [
+      "Colombo, Gampaha, Kalutara Districts",
+      "Basic Information",
+      "2024",
+      "Map"
+    ],
+    "image_path": "/tmp/lanka_data/images/6a4a391b.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

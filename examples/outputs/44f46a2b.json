@@ -1,6 +1,11 @@
 {
   "result": {
-    "title": "Western, Central Provinces · Basic Information · 2024 · JSON",
+    "title_items": [
+      "Western, Central Provinces",
+      "Basic Information",
+      "2024",
+      "JSON"
+    ],
     "data_list": [
       {
         "region_id": "LK-1",

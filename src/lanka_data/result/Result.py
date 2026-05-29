@@ -2,28 +2,27 @@ from lanka_data.where.RegionsMapUtils import RegionsMapUtils
 
 
 class Result:
+
     def __init__(self, where, what, when, how):
         self.where = where
         self.what = what
         self.when = when
         self.how = how
 
-    def get_title(self):
-        return " · ".join(
-            [
-                self.where.get_title(),
-                self.what.get_title(),
-                self.when,
-                self.how,
-            ]
-        )
+    def get_title_items(self):
+        return [
+            self.where.get_title(),
+            self.what.get_title(),
+            self.when,
+            self.how,
+        ]
 
     def get_data(self):
         data_list = self.what.get_data_list(self.where)
         source_info = self.what.get_source_info()
 
         result_data = dict(
-            title=self.get_title(),
+            title_items=self.get_title_items(),
             data_list=data_list,
         )
         if self.what.get_values(data_list[0]) is not None:
@@ -39,9 +38,9 @@ class Result:
             return self.get_data()
 
         if self.how == "Map":
-            return RegionsMapUtils.draw_map(self, self.get_title())
+            return RegionsMapUtils.draw_map(self)
 
         raise ValueError(f"Unknown how: {self.how}")
 
     def get(self):
-        return dict(title=self.get_title()) | self.get_inner()
+        return dict(title_items=self.get_title_items()) | self.get_inner()

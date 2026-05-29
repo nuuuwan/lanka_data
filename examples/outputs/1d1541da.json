@@ -1,7 +1,12 @@
 {
   "result": {
-    "title": "41 Dsds · Ethnicity · 2024 · Map",
-    "image_path": "/tmp/lanka_data/images/8319364a.png",
+    "title_items": [
+      "41 Dsds",
+      "Ethnicity",
+      "2024",
+      "Map"
+    ],
+    "image_path": "/tmp/lanka_data/images/1bfe6f0a.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

@@ -1,7 +1,12 @@
 {
   "result": {
-    "title": "35 Gnds · Religion · 2012 · Map",
-    "image_path": "/tmp/lanka_data/images/965e6627.png",
+    "title_items": [
+      "35 Gnds",
+      "Religion",
+      "2012",
+      "Map"
+    ],
+    "image_path": "/tmp/lanka_data/images/ed8455d1.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

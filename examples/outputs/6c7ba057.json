@@ -1,7 +1,12 @@
 {
   "result": {
-    "title": "41 Dsds · Ethnicity · Latest · Map",
-    "image_path": "/tmp/lanka_data/images/df962292.png",
+    "title_items": [
+      "41 Dsds",
+      "Ethnicity",
+      "Latest",
+      "Map"
+    ],
+    "image_path": "/tmp/lanka_data/images/572c92ba.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },
