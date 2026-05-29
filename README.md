@@ -354,6 +354,23 @@ python workflows/console.py <cmd>
 
 ![LK:pd/PresidentialElection/2024/Map](images/readme/4ac73cd9.png)
 
+### 15. `LK-2:dsd/Ethnicity/Latest/Map`
+
+```json
+{
+    "result": {
+        "title": "41 Dsds \u00b7 Ethnicity \u00b7 Latest \u00b7 Map",
+        "image_path": "/tmp/lanka_data/images/df962292.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-2:dsd/Ethnicity/Latest/Map](images/readme/df962292.png)
+
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
