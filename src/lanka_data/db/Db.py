@@ -47,7 +47,9 @@ class Db:
             return result
 
         if how_cmd == "Map":
-            return RegionsMapUtils.draw_map(result, self.cache_file_base)
+            return RegionsMapUtils.draw_map(
+                result, self.cache_file_base, self.cmd
+            )
 
         raise ValueError(f"Unknown how_cmd: {how_cmd}")
 
