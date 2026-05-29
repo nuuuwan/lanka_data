@@ -387,51 +387,21 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 14. `LK/PresidentialElection/2024`
+### 14. `LK:pd/PresidentialElection/2024/Map`
 
 ```json
 {
     "result": {
-        "data_list": [
-            {
-                "region_id": "LK",
-                "region_name": "Sri Lanka",
-                "summary": {
-                    "electors": 17140354,
-                    "polled": 13619916,
-                    "valid": 13319616,
-                    "rejected": 300300,
-                    "p_turnout": 0.7946,
-                    "p_valid": 0.978,
-                    "p_rejected": 0.022
-                },
-                "votes_by_party": {
-                    "NPP": 5634915,
-                    "SJB": 4363035,
-                    "IND16": 2299767,
-                    "SLPP": 342781,
-                    ... // 154 lines ...
-                "AJP": 0.0004,
-                "SEP": 0.0003,
-                "NIF": 0.0003,
-                "IND15": 0.0003,
-                "NDF": 0.0003,
-                "IND6": 0.0003,
-                "UNFF": 0.0002,
-                "IND7": 0.0002,
-                "ELPP": 0.0002,
-                "IND8": 0.0002,
-                "NSU": 0.0001,
-                "SLLP": 0.0001
-            }
-        },
-        "source": "Election Commission of Sri Lanka",
-        "source_url": "https://www.elections.gov.lk"
+        "image_path": "/tmp/lanka_data/images/2f6f18c2.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
     },
     "query_time_ms": 0,
     "cache_hit": false
 }
 ```
+
+![LK:pd/PresidentialElection/2024/Map](images/readme/2f6f18c2.png)
 
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)

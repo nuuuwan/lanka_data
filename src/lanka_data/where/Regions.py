@@ -14,7 +14,7 @@ class Regions(Where, RegionLoadersMixin):
     def build_title(cls, raw_region_data_list):
         region_ids = [d["id"] for d in raw_region_data_list]
         n_regions = len(region_ids)
-        if n_regions:
+        if n_regions <= 10:
             return ", ".join(region_ids)
 
         return f"{n_regions} regions"
