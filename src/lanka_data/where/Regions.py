@@ -3,6 +3,7 @@ from functools import cached_property
 from lanka_data.where.RegionTypeUtils import RegionTypeUtils
 from lanka_data.where.Where import Where
 from utils_future import WWW, Log
+from utils_future.GeoUtils import GeoUtils
 
 log = Log("Regions")
 
@@ -27,7 +28,7 @@ class Regions(Where):
         return WWW(url).read_json()
 
     @classmethod
-    def from_token(cls, token: str):
+    def from_token(cls, token: str):  # noqa: CFQ004
         if ":" in token:
             parent_region_id, region_type = token.split(":")
             return Regions.from_parent_region_id_and_region_type(
@@ -67,6 +68,18 @@ class Regions(Where):
 
         return cls(intersection_gnds)
 
+    @staticmethod
+    def _is_within_radius(radius_km, center_region, region):
+        center_lat = center_region["center_lat"]
+        center_lng = center_region["center_lng"]
+
+        lat = region["center_lat"]
+        lng = region["center_lng"]
+        distance_km = GeoUtils.haversine_distance(
+            center_lat, center_lng, lat, lng
+        )
+        return distance_km <= float(radius_km)
+
     @classmethod
     def from_region_radius(cls, region_id, radius_km):
         region_type = RegionTypeUtils.get_region_type(region_id)
@@ -81,31 +94,11 @@ class Regions(Where):
         if not center_region:
             raise ValueError(f"Region ID not found: {region_id}")
 
-        center_lat = center_region["center_lat"]
-        center_lng = center_region["center_lng"]
-
-        def haversine_distance(lat1, lon1, lat2, lon2):
-            from math import atan2, cos, radians, sin, sqrt
-
-            R = 6371.0  # Earth radius in kilometers
-
-            dlat = radians(lat2 - lat1)
-            dlon = radians(lon2 - lon1)
-            a = (
-                sin(dlat / 2) ** 2
-                + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon / 2) ** 2
-            )
-            c = 2 * atan2(sqrt(a), sqrt(1 - a))
-            distance_km = R * c
-            return distance_km
-
-        def is_within_radius(region):
-            lat = region["center_lat"]
-            lng = region["center_lng"]
-            distance_km = haversine_distance(center_lat, center_lng, lat, lng)
-            return distance_km <= float(radius_km)
-
-        nearby_regions = [r for r in regions if is_within_radius(r)]
+        nearby_regions = [
+            r
+            for r in regions
+            if cls._is_within_radius(radius_km, center_region, r)
+        ]
         if not nearby_regions:
             raise ValueError(
                 f"No regions found within {radius_km} km of {region_id}"

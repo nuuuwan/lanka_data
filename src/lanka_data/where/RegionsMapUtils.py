@@ -45,6 +45,12 @@ class RegionsMapUtils:
 
     @staticmethod
     def get_colors_for_data_list(data_list):
+        if data_list[0].get("values") is None:
+            n_regions = len(data_list)
+            cmap = plt.cm.tab20  # pylint: disable=no-member.
+            colors = [cmap(i % 20) for i in range(n_regions)]
+            return colors
+
         color_idx = {}
         colors = []
         for data in data_list:
@@ -60,6 +66,32 @@ class RegionsMapUtils:
         return colors
 
     @staticmethod
+    def _draw_labels(gdf_region, ax):
+        for _, row in gdf_region.iterrows():
+            centroid = row.geometry.centroid
+            ax.annotate(
+                row["name"],
+                xy=(centroid.x, centroid.y),
+                ha="center",
+                va="center",
+                fontsize=5,
+                color="white",
+            )
+
+    @staticmethod
+    def _draw_legend(data_list, colors, ax):
+        if data_list[0].get("values") is not None:
+            unique_colors = set(colors)
+            for color in unique_colors:
+                idx = colors.index(color)
+                label = max(
+                    data_list[idx]["values"],
+                    key=data_list[idx]["values"].get,
+                )
+                ax.scatter([], [], color=color, label=label)
+            ax.legend(fontsize=6)
+
+    @staticmethod
     def draw_map(result, file_path_base: str):
         data_list = result["data_list"]
         region_ids = [d["region_id"] for d in data_list]
@@ -71,14 +103,8 @@ class RegionsMapUtils:
                 data | dict(values=data["by_party"]) for data in data_list
             ]
 
-        has_values = data_list[0].get("values") is not None
-        if not has_values:
-            cmap = plt.cm.tab20  # pylint: disable=no-member.
-            colors = [cmap(i % 20) for i in range(n_regions)]
-        else:
-            colors = RegionsMapUtils.get_colors_for_data_list(data_list)
-
         gdf_region = gdf_region.copy()
+        colors = RegionsMapUtils.get_colors_for_data_list(data_list)
         gdf_region["color"] = colors
 
         fig, ax = plt.subplots(figsize=(10, 8))
@@ -91,29 +117,10 @@ class RegionsMapUtils:
         )
 
         if n_regions <= RegionsMapUtils.MAX_REGIONS_TO_LABEL:
-            for _, row in gdf_region.iterrows():
-                centroid = row.geometry.centroid
-                ax.annotate(
-                    row["name"],
-                    xy=(centroid.x, centroid.y),
-                    ha="center",
-                    va="center",
-                    fontsize=5,
-                    color="white",
-                )
+            RegionsMapUtils._draw_labels(gdf_region, ax)
 
+        RegionsMapUtils._draw_legend(data_list, colors, ax)
         ax.set_axis_off()
-        # legend (only for colors with values in data_list)
-        if has_values:
-            unique_colors = set(colors)
-            for color in unique_colors:
-                idx = colors.index(color)
-                label = max(
-                    data_list[idx]["values"],
-                    key=data_list[idx]["values"].get,
-                )
-                ax.scatter([], [], color=color, label=label)
-            ax.legend(fontsize=6)
 
         image_path = f"{file_path_base}.png"
         fig.savefig(image_path, dpi=200, bbox_inches="tight")

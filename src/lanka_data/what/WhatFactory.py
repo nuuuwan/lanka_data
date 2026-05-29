@@ -6,19 +6,20 @@ from lanka_data.what.gig2.Elections import Elections
 
 class WhatFactory:
     @classmethod
-    def from_what_and_when(cls, what_label: str, when_label: str):
+    def from_what_and_when(  # noqa: CFQ004
+        cls, what_label: str, when_label: str
+    ):
         if what_label == "Basic":
             return BasicWhat()
 
         if "Election" in what_label:
             return Elections(what_label, "regions-ec", when_label)
 
-        else:
-            if when_label == "2012":
-                return Census2012(what_label, "regions")
+        if when_label == "2012":
+            return Census2012(what_label, "regions")
 
-            if when_label == "2024":
-                return Census2024(what_label)
+        if when_label == "2024":
+            return Census2024(what_label)
 
         raise ValueError(
             f"Unknown what_label: {what_label} or when_label: {when_label}"
