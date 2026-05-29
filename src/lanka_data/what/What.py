@@ -21,3 +21,7 @@ class What:
             total_value=total_value,
             pct_values=pct_values,
         )
+
+    @classmethod
+    def get_values(cls, data):
+        return data.get("values")

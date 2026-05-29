@@ -50,7 +50,6 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK",
                 "region_name": "Sri Lanka",
-                "region_type": "country",
                 "area_sqkm": 65983.58,
                 "center_lat": 7.621863,
                 "center_lng": 80.698448
@@ -64,16 +63,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 02. `LK-99`
-
-```json
-{
-    "error": "Region ID not found: LK-99",
-    "query_time_ms": 0
-}
-```
-
-### 03. `LK-1:district`
+### 02. `LK-1:district`
 
 ```json
 {
@@ -82,7 +72,6 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK-11",
                 "region_name": "Colombo",
-                "region_type": "district",
                 "area_sqkm": 688.17,
                 "center_lat": 6.869822,
                 "center_lng": 80.018487,
@@ -93,16 +82,16 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK-12",
                 "region_name": "Gampaha",
-                "region_type": "district",
                 "area_sqkm": 1385.23,
                 "center_lat": 7.123406,
-                ... // 3 lines ...
+                "center_lng": 80.018206,
+                "province_id": "LK-1",
+                "ed_id": "EC-02",
                 "pd_id": null
             },
             {
                 "region_id": "LK-13",
                 "region_name": "Kalutara",
-                "region_type": "district",
                 "area_sqkm": 1646.99,
                 "center_lat": 6.577185,
                 "center_lng": 80.127744,
@@ -119,7 +108,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 04. `LK-1,LK-2`
+### 03. `LK-1,LK-2`
 
 ```json
 {
@@ -128,7 +117,6 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK-1",
                 "region_name": "Western",
-                "region_type": "province",
                 "area_sqkm": 3720.39,
                 "center_lat": 6.834692,
                 "center_lng": 80.06675
@@ -136,7 +124,6 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK-2",
                 "region_name": "Central",
-                "region_type": "province",
                 "area_sqkm": 5731.25,
                 "center_lat": 7.324022,
                 "center_lng": 80.717397
@@ -150,7 +137,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 05. `LK-1,LK-9,LK-3/Map`
+### 04. `LK-1,LK-9,LK-3/Map`
 
 ```json
 {
@@ -166,7 +153,7 @@ python workflows/console.py <cmd>
 
 ![LK-1,LK-9,LK-3/Map](images/readme/00b5c25f.png)
 
-### 06. `LK-4...LK-6/Map`
+### 05. `LK-4...LK-6/Map`
 
 ```json
 {
@@ -182,7 +169,7 @@ python workflows/console.py <cmd>
 
 ![LK-4...LK-6/Map](images/readme/7359ab60.png)
 
-### 07. `LK-1127025@10/Map`
+### 06. `LK-1127025@10/Map`
 
 ```json
 {
@@ -198,7 +185,7 @@ python workflows/console.py <cmd>
 
 ![LK-1127025@10/Map](images/readme/a9966c62.png)
 
-### 08. `LK-1103&EC-01B/Map`
+### 07. `LK-1103&EC-01B/Map`
 
 ```json
 {
@@ -214,7 +201,7 @@ python workflows/console.py <cmd>
 
 ![LK-1103&EC-01B/Map](images/readme/09d76b20.png)
 
-### 09. `LK-11/Map`
+### 08. `LK-11/Map`
 
 ```json
 {
@@ -230,7 +217,7 @@ python workflows/console.py <cmd>
 
 ![LK-11/Map](images/readme/4cb7cf4c.png)
 
-### 10. `LK-1:district/Map`
+### 09. `LK-1:district/Map`
 
 ```json
 {
@@ -246,7 +233,7 @@ python workflows/console.py <cmd>
 
 ![LK-1:district/Map](images/readme/11923f96.png)
 
-### 11. `LK-1:pd/Map`
+### 10. `LK-1:pd/Map`
 
 ```json
 {
@@ -262,7 +249,7 @@ python workflows/console.py <cmd>
 
 ![LK-1:pd/Map](images/readme/7e17ed4b.png)
 
-### 12. `LK-1103/Religion/2024`
+### 11. `LK-1103/Religion/2024`
 
 ```json
 {
@@ -308,7 +295,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 13. `LK-9:district/Ethnicity/2012`
+### 12. `LK-9:district/Ethnicity/2012`
 
 ```json
 {
@@ -354,7 +341,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 14. `LK/ParliamentaryElection/2024`
+### 13. `LK/ParliamentaryElection/2024`
 
 ```json
 {
@@ -400,7 +387,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 15. `LK/PresidentialElection/2024`
+### 14. `LK/PresidentialElection/2024`
 
 ```json
 {

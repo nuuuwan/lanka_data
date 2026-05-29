@@ -6,13 +6,14 @@ class Result:
 
     def get(self):
         data_list = self.what.get_data_list(self.where)
-        aggr_data = self.what.get_aggr_data(data_list)
         source_info = self.what.get_source_info()
 
-        return (
-            dict(
-                data_list=data_list,
-                aggr_data=aggr_data,
-            )
-            | source_info
+        result_data = dict(
+            data_list=data_list,
         )
+        if self.what.get_values(data_list[0]) is not None:
+            result_data["aggr_data"] = self.what.get_aggr_data(data_list)
+
+        result_data = result_data | source_info
+
+        return result_data

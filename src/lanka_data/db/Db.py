@@ -41,10 +41,10 @@ class Db:
         regions = Regions.from_token(where_cmd)
         what = WhatFactory.from_what_and_when(what_cmd, when_cmd)
 
-        result = Result(regions, what, when_cmd).get()
+        result = Result(regions, what, when_cmd)
 
         if how_cmd == "JSON":
-            return result
+            return result.get()
 
         if how_cmd == "Map":
             return RegionsMapUtils.draw_map(

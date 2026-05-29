@@ -17,9 +17,8 @@ def make_test(cmd, expected_output):
 
         self.assertEqual(expected_output, actual_output)
 
-        self.assertTrue(
-            actual_output.get("result") or actual_output.get("error")
-        )
+        self.assertTrue(actual_output.get("result"))
+        self.assertIsNone(actual_output.get("error"))
         if actual_output.get("result"):
             self.assertTrue(actual_output["result"]["source"])
             self.assertTrue(actual_output["result"]["source_url"])

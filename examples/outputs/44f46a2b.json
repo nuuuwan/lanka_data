@@ -4,7 +4,6 @@
       {
         "region_id": "LK-1",
         "region_name": "Western",
-        "region_type": "province",
         "area_sqkm": 3720.39,
         "center_lat": 6.834692,
         "center_lng": 80.06675
@@ -12,7 +11,6 @@
       {
         "region_id": "LK-2",
         "region_name": "Central",
-        "region_type": "province",
         "area_sqkm": 5731.25,
         "center_lat": 7.324022,
         "center_lng": 80.717397

@@ -44,8 +44,8 @@ class RegionsMapUtils:
         return "#{:06x}".format(random.randint(0, 0xFFFFFF))
 
     @staticmethod
-    def get_colors_for_data_list(data_list):
-        if data_list[0].get("values") is None:
+    def get_colors_for_data_list(result, data_list):
+        if result.what.get_values(data_list[0]) is None:
             n_regions = len(data_list)
             cmap = plt.cm.tab20  # pylint: disable=no-member.
             colors = [cmap(i % 20) for i in range(n_regions)]
@@ -54,7 +54,7 @@ class RegionsMapUtils:
         color_idx = {}
         colors = []
         for data in data_list:
-            max_value_key = list(data["values"].keys())[0]
+            max_value_key = list(result.what.get_values(data).keys())[0]
             if max_value_key not in color_idx:
                 color = (
                     RegionsMapUtils.COLOR_IDX[max_value_key]
@@ -79,32 +79,29 @@ class RegionsMapUtils:
             )
 
     @staticmethod
-    def _draw_legend(data_list, colors, ax):
-        if data_list[0].get("values") is not None:
+    def _draw_legend(result, data_list, colors, ax):
+
+        if result.what.get_values(data_list[0]) is not None:
             unique_colors = set(colors)
             for color in unique_colors:
                 idx = colors.index(color)
                 label = max(
-                    data_list[idx]["values"],
-                    key=data_list[idx]["values"].get,
+                    result.what.get_values(data_list[idx]),
+                    key=result.what.get_values(data_list[idx]).get,
                 )
                 ax.scatter([], [], color=color, label=label)
             ax.legend(fontsize=6)
 
     @staticmethod
     def draw_map(result, file_path_base: str, cmd: str):
-        data_list = result["data_list"]
+        result_data = result.get()
+        data_list = result_data["data_list"]
         region_ids = [d["region_id"] for d in data_list]
         n_regions = len(region_ids)
         gdf_region = RegionsGeoUtils.get_geopandas_dataframe(region_ids)
 
-        if "by_party" in data_list[0]:
-            data_list = [
-                data | dict(values=data["by_party"]) for data in data_list
-            ]
-
         gdf_region = gdf_region.copy()
-        colors = RegionsMapUtils.get_colors_for_data_list(data_list)
+        colors = RegionsMapUtils.get_colors_for_data_list(result, data_list)
         gdf_region["color"] = colors
 
         fig, ax = plt.subplots(figsize=(10, 8))
@@ -119,12 +116,12 @@ class RegionsMapUtils:
         if n_regions <= RegionsMapUtils.MAX_REGIONS_TO_LABEL:
             RegionsMapUtils._draw_labels(gdf_region, ax)
 
-        RegionsMapUtils._draw_legend(data_list, colors, ax)
+        RegionsMapUtils._draw_legend(result, data_list, colors, ax)
         if cmd:
             ax.set_title(cmd, fontsize=10)
         ax.set_axis_off()
 
-        source = result.get("source", "")
+        source = result_data.get("source", "")
         if source:
             fig.text(
                 0.5,
