@@ -36,6 +36,7 @@ class RegionsMapUtils:
         "IND9": "orange",
         "SLMP": "purple",
         "ACTC": "orange",
+        "ITAK": "orange",
     }
 
     @staticmethod
