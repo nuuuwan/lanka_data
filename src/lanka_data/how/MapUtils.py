@@ -60,23 +60,27 @@ class MapUtils:
         return region_color_map, value_to_color
 
     @staticmethod
+    def get_func_key_getter(how, what):
+        param = how.params
+        if not param or param == "Top":
+            idx = 0
+        elif param == "2nd":
+            idx = 1
+        elif param == "3rd":
+            idx = 2
+        elif param == "Bottom":
+            idx = -1
+        else:
+            raise ValueError(f"Unknown how param: {param}")
+
+        def func_key_getter(data):
+            return list(what.get_values(data).keys())[idx]
+
+        return func_key_getter
+
+    @staticmethod
     def get_colors_for_data_list_with_values(result_data, how, what):
-        func_key_getter = lambda data: list(what.get_values(data).keys())[0]
-        if how.params and how.params != "Top":
-            if how.params == "2nd":
-                func_key_getter = lambda data: list(
-                    what.get_values(data).keys()
-                )[1]
-            elif how.params == "3rd":
-                func_key_getter = lambda data: list(
-                    what.get_values(data).keys()
-                )[2]
-            elif how.params == "Bottom":
-                func_key_getter = lambda data: list(
-                    what.get_values(data).keys()
-                )[-1]
-            else:
-                raise ValueError(f"Unknown how param: {how.params[0]}")
+        func_key_getter = MapUtils.get_func_key_getter(how, what)
 
         data_list = result_data["data_list"]
         value_to_color = {}
