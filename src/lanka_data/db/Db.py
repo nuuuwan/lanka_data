@@ -39,20 +39,10 @@ class Db:
     def _run_normalized(
         self, where_cmd: str, what_cmd: str, when_cmd: str, how_cmd: str
     ):
-        regions = Regions.from_token(where_cmd)
+        where = Regions.from_token(where_cmd)
         what = WhatFactory.from_what_and_when(what_cmd, when_cmd)
 
-        result = Result(regions, what, when_cmd)
-
-        if how_cmd == "JSON":
-            return result.get()
-
-        if how_cmd == "Map":
-            return RegionsMapUtils.draw_map(
-                result, self.cache_file_base, self.cmd
-            )
-
-        raise ValueError(f"Unknown how_cmd: {how_cmd}")
+        return Result(where, what, when_cmd, how_cmd).get()
 
     @staticmethod
     def _parse_cmd(cmd: str):

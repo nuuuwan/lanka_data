@@ -1,4 +1,7 @@
+import hashlib
+import os
 import random
+import tempfile
 
 import matplotlib.pyplot as plt
 
@@ -94,8 +97,10 @@ class RegionsMapUtils:
             ax.legend(fontsize=6)
 
     @staticmethod
-    def draw_map(result, file_path_base: str, cmd: str):
-        result_data = result.get()
+    def draw_map(result, title: str):
+        result_data = result.get_data()
+        h = hashlib.md5(str(result_data).encode("utf-8")).hexdigest()[:8]
+
         data_list = result_data["data_list"]
         region_ids = [d["region_id"] for d in data_list]
         n_regions = len(region_ids)
@@ -118,8 +123,7 @@ class RegionsMapUtils:
             RegionsMapUtils._draw_labels(gdf_region, ax)
 
         RegionsMapUtils._draw_legend(result, data_list, colors, ax)
-        if cmd:
-            ax.set_title(cmd, fontsize=10)
+        ax.set_title(title, fontsize=10)
         ax.set_axis_off()
 
         source = result_data.get("source", "")
@@ -133,7 +137,9 @@ class RegionsMapUtils:
                 color="gray",
             )
 
-        image_path = f"{file_path_base}.png"
+        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
+        os.makedirs(image_dir, exist_ok=True)
+        image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
         log.info(f"Wrote {image_path}")
         plt.close(fig)
