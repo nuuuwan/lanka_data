@@ -5,7 +5,7 @@ import tempfile
 
 import matplotlib.pyplot as plt
 
-from lanka_data.where.GeoUtils import GeoUtils
+from lanka_data.how.GeoUtils import GeoUtils
 from utils_future import Log
 
 log = Log("MapUtils")
@@ -48,8 +48,8 @@ class MapUtils:
         return "#{:06x}".format(random.randint(0, 0xFFFFFF))
 
     @staticmethod
-    def get_colors_for_data_list_without_values(result):
-        data_list = result.get_data()["data_list"]
+    def get_colors_for_data_list_without_values(result_data):
+        data_list = result_data["data_list"]
         n_regions = len(data_list)
         cmap = plt.cm.tab20  # pylint: disable=no-member.
         return {
@@ -58,12 +58,12 @@ class MapUtils:
         }
 
     @staticmethod
-    def get_colors_for_data_list_with_values(result):
-        data_list = result.get_data()["data_list"]
+    def get_colors_for_data_list_with_values(result_data, what):
+        data_list = result_data["data_list"]
         value_to_color = {}
         region_color_map = {}
         for data in data_list:
-            max_value_key = list(result.what.get_values(data).keys())[0]
+            max_value_key = list(what.get_values(data).keys())[0]
             if max_value_key not in value_to_color:
                 color = (
                     MapUtils.COLOR_IDX[max_value_key]
@@ -71,18 +71,18 @@ class MapUtils:
                     else MapUtils.get_random_color()
                 )
                 value_to_color[max_value_key] = color
-            region_color_map[data["region_id"]] = value_to_color[
-                max_value_key
-            ]
+            region_color_map[data["region_id"]] = value_to_color[max_value_key]
         return region_color_map
 
     @staticmethod
-    def get_colors_for_data_list(result):
-        data_list = result.get_data()["data_list"]
-        if result.what.get_values(data_list[0]) is None:
-            return MapUtils.get_colors_for_data_list_without_values(result)
+    def get_colors_for_data_list(result_data, what):
+        data_list = result_data["data_list"]
+        if what.get_values(data_list[0]) is None:
+            return MapUtils.get_colors_for_data_list_without_values(
+                result_data
+            )
         return MapUtils.get_colors_for_data_list_with_values(
-            result
+            result_data, what
         )  # region_id -> color
 
     @staticmethod
@@ -99,15 +99,15 @@ class MapUtils:
             )
 
     @staticmethod
-    def _draw_legend(result, data_list, region_color_map, ax):
-        if result.what.get_values(data_list[0]) is not None:
+    def _draw_legend(result_data, what, data_list, region_color_map, ax):
+        if what.get_values(data_list[0]) is not None:
             seen = {}
             for data in data_list:
                 color = region_color_map[data["region_id"]]
                 if color not in seen:
                     label = max(
-                        result.what.get_values(data),
-                        key=result.what.get_values(data).get,
+                        what.get_values(data),
+                        key=what.get_values(data).get,
                     )
                     seen[color] = label
             for color, label in sorted(seen.items()):
@@ -115,8 +115,8 @@ class MapUtils:
             ax.legend(fontsize=6)
 
     @staticmethod
-    def draw_map(result):
-        result_data = result.get_data()
+    def draw_map(where, what, when, how):
+        result_data = how.get_data(where, what, when)
         h = hashlib.md5(str(result_data).encode("utf-8")).hexdigest()[:8]
 
         data_list = result_data["data_list"]
@@ -125,7 +125,7 @@ class MapUtils:
         gdf_region = GeoUtils.get_geopandas_dataframe(region_ids)
 
         gdf_region = gdf_region.copy()
-        region_color_map = MapUtils.get_colors_for_data_list(result)
+        region_color_map = MapUtils.get_colors_for_data_list(result_data, what)
         gdf_region["color"] = gdf_region["id"].map(region_color_map)
 
         fig, ax = plt.subplots(figsize=(10, 8))
@@ -140,8 +140,12 @@ class MapUtils:
         if n_regions <= MapUtils.MAX_REGIONS_TO_LABEL:
             MapUtils._draw_labels(gdf_region, ax)
 
-        MapUtils._draw_legend(result, data_list, region_color_map, ax)
-        title = MapUtils.DELIM_TITLE.join(result.get_title_items())
+        MapUtils._draw_legend(
+            result_data, what, data_list, region_color_map, ax
+        )
+        title = MapUtils.DELIM_TITLE.join(
+            how.get_title_items(where, what, when)
+        )
         ax.set_title(title, fontsize=10)
         ax.set_axis_off()
 
@@ -156,9 +160,7 @@ class MapUtils:
                 color="gray",
             )
 
-        image_dir = os.path.join(
-            tempfile.gettempdir(), "lanka_data", "images"
-        )
+        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
