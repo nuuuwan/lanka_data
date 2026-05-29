@@ -61,20 +61,28 @@ class MapUtils:
 
     @staticmethod
     def get_colors_for_data_list_with_values(result_data, how, what):
+        func_key_getter = lambda data: list(what.get_values(data).keys())[0]
+        if how.params and how.params != "Top":
+            if how.params == "2nd":
+                func_key_getter = lambda data: list(
+                    what.get_values(data).keys()
+                )[1]
+            elif how.params == "3rd":
+                func_key_getter = lambda data: list(
+                    what.get_values(data).keys()
+                )[2]
+            elif how.params == "Bottom":
+                func_key_getter = lambda data: list(
+                    what.get_values(data).keys()
+                )[-1]
+            else:
+                raise ValueError(f"Unknown how param: {how.params[0]}")
+
         data_list = result_data["data_list"]
         value_to_color = {}
         region_color_map = {}
         for data in data_list:
-            color_value_key = list(what.get_values(data).keys())[0]
-            if how.params and how.params != "Top":
-                if how.params == "2nd":
-                    color_value_key = list(what.get_values(data).keys())[1]
-                elif how.params == "3rd":
-                    color_value_key = list(what.get_values(data).keys())[2]
-                elif how.params == "Bottom":
-                    color_value_key = list(what.get_values(data).keys())[-1]
-                else:
-                    raise ValueError(f"Unknown how param: {how.params[0]}")
+            color_value_key = func_key_getter(data)
 
             if color_value_key not in value_to_color:
                 color = (
