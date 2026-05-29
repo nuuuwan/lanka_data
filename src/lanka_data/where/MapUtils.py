@@ -45,7 +45,6 @@ class MapUtils:
 
     @staticmethod
     def get_random_color():
-
         return "#{:06x}".format(random.randint(0, 0xFFFFFF))
 
     @staticmethod
@@ -99,7 +98,6 @@ class MapUtils:
 
     @staticmethod
     def draw_map(result):
-        title = MapUtils.DELIM_TITLE.join(result.get_title_items())
         result_data = result.get_data()
         h = hashlib.md5(str(result_data).encode("utf-8")).hexdigest()[:8]
 
@@ -125,6 +123,7 @@ class MapUtils:
             MapUtils._draw_labels(gdf_region, ax)
 
         MapUtils._draw_legend(result, data_list, colors, ax)
+        title = MapUtils.DELIM_TITLE.join(result.get_title_items())
         ax.set_title(title, fontsize=10)
         ax.set_axis_off()
 
@@ -139,9 +138,7 @@ class MapUtils:
                 color="gray",
             )
 
-        image_dir = os.path.join(
-            tempfile.gettempdir(), "lanka_data", "images"
-        )
+        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
