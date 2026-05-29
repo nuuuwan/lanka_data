@@ -23,6 +23,7 @@ class Result:
         source_info = self.what.get_source_info()
 
         result_data = dict(
+            title=self.get_title(),
             data_list=data_list,
         )
         if self.what.get_values(data_list[0]) is not None:
@@ -32,7 +33,7 @@ class Result:
 
         return result_data
 
-    def get(self):
+    def get_inner(self):
 
         if self.how == "JSON":
             return self.get_data()
@@ -41,3 +42,6 @@ class Result:
             return RegionsMapUtils.draw_map(self, self.get_title())
 
         raise ValueError(f"Unknown how: {self.how}")
+
+    def get(self):
+        return dict(title=self.get_title()) | self.get_inner()
