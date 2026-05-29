@@ -40,7 +40,7 @@ class Db:
     ):
         where = Regions.from_token(where_cmd)
         what = WhatFactory.from_what_and_when(what_cmd, when_cmd)
-        how = HowFactory.from_title(how_cmd)
+        how = HowFactory.from_how_cmd(how_cmd)
         return how.get_result(where, what, when_cmd)
 
     @staticmethod

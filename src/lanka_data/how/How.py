@@ -1,6 +1,7 @@
 class How:
-    def __init__(self, title: str):
+    def __init__(self, title: str, params: str):
         self.title = title
+        self.params = params
 
     def get_data(self, where, what, when):
         data_list = what.get_data_list(where)
