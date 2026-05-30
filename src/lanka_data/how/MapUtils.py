@@ -213,7 +213,7 @@ class MapUtils:
     @staticmethod
     def draw_map(where, what, when, how):
         result_data = how.get_data(where, what, when)
-        h = hashlib.md5(str(result_data).encode("utf-8")).hexdigest()[:8]
+        h = how.get_hash(where, what, when)
 
         data_list = result_data["data_list"]
         region_ids = [d["region_id"] for d in data_list]

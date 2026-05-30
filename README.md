@@ -159,7 +159,7 @@ python workflows/console.py <cmd>
             "2024",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/e7f935bd.png",
+        "image_path": "/tmp/lanka_data/images/8817dd9d.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -168,7 +168,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1,LK-9,LK-3/Map](images/readme/e7f935bd.png)
+![LK-1,LK-9,LK-3/Map](images/readme/8817dd9d.png)
 
 ### 05. `LK-4...LK-6/Map`
 
@@ -181,7 +181,7 @@ python workflows/console.py <cmd>
             "2024",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/b2bd492e.png",
+        "image_path": "/tmp/lanka_data/images/04979af2.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -190,7 +190,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-4...LK-6/Map](images/readme/b2bd492e.png)
+![LK-4...LK-6/Map](images/readme/04979af2.png)
 
 ### 06. `LK-1127025@10/Map`
 
@@ -203,7 +203,7 @@ python workflows/console.py <cmd>
             "2024",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/d12f8e75.png",
+        "image_path": "/tmp/lanka_data/images/51e54ec5.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -212,7 +212,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1127025@10/Map](images/readme/d12f8e75.png)
+![LK-1127025@10/Map](images/readme/51e54ec5.png)
 
 ### 07. `LK-1103&EC-01B/Map`
 
@@ -225,7 +225,7 @@ python workflows/console.py <cmd>
             "2024",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/50e76e14.png",
+        "image_path": "/tmp/lanka_data/images/15de4034.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -234,7 +234,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1103&EC-01B/Map](images/readme/50e76e14.png)
+![LK-1103&EC-01B/Map](images/readme/15de4034.png)
 
 ### 08. `LK-11/Map`
 
@@ -247,7 +247,7 @@ python workflows/console.py <cmd>
             "2024",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/7338b18f.png",
+        "image_path": "/tmp/lanka_data/images/0b8085ec.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -256,7 +256,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-11/Map](images/readme/7338b18f.png)
+![LK-11/Map](images/readme/0b8085ec.png)
 
 ### 09. `LK-1:district/Map`
 
@@ -269,7 +269,7 @@ python workflows/console.py <cmd>
             "2024",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/c7e1e9ea.png",
+        "image_path": "/tmp/lanka_data/images/d81caf73.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -278,7 +278,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1:district/Map](images/readme/c7e1e9ea.png)
+![LK-1:district/Map](images/readme/d81caf73.png)
 
 ### 10. `LK-1:pd/Map`
 
@@ -291,7 +291,7 @@ python workflows/console.py <cmd>
             "2024",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/8af968fb.png",
+        "image_path": "/tmp/lanka_data/images/1b260c71.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -300,7 +300,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1:pd/Map](images/readme/8af968fb.png)
+![LK-1:pd/Map](images/readme/1b260c71.png)
 
 ### 11. `LK-1103:gnd/Religion/2012/Map`
 
@@ -313,7 +313,7 @@ python workflows/console.py <cmd>
             "2012",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/87273908.png",
+        "image_path": "/tmp/lanka_data/images/751be76c.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -322,7 +322,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1103:gnd/Religion/2012/Map](images/readme/87273908.png)
+![LK-1103:gnd/Religion/2012/Map](images/readme/751be76c.png)
 
 ### 12. `LK-2:dsd/Ethnicity/2024/Map`
 
@@ -335,7 +335,7 @@ python workflows/console.py <cmd>
             "2024",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/48ba887e.png",
+        "image_path": "/tmp/lanka_data/images/313af2dc.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -344,7 +344,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-2:dsd/Ethnicity/2024/Map](images/readme/48ba887e.png)
+![LK-2:dsd/Ethnicity/2024/Map](images/readme/313af2dc.png)
 
 ### 13. `LK/ParliamentaryElection/2024`
 
@@ -403,7 +403,7 @@ python workflows/console.py <cmd>
             "Latest",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/2f6f18c2.png",
+        "image_path": "/tmp/lanka_data/images/7dcce03f.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -412,7 +412,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK:pd/PresidentialElection/Latest/Map](images/readme/2f6f18c2.png)
+![LK:pd/PresidentialElection/Latest/Map](images/readme/7dcce03f.png)
 
 ### 15. `LK-2:dsd/Ethnicity/Latest/Map`
 
@@ -425,7 +425,7 @@ python workflows/console.py <cmd>
             "Latest",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/48ba887e.png",
+        "image_path": "/tmp/lanka_data/images/bade8195.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -434,7 +434,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-2:dsd/Ethnicity/Latest/Map](images/readme/48ba887e.png)
+![LK-2:dsd/Ethnicity/Latest/Map](images/readme/bade8195.png)
 
 ### 16. `LK-11:dsd/Religion/2012/Map:2nd`
 
@@ -447,7 +447,7 @@ python workflows/console.py <cmd>
             "2012",
             "Map (2nd)"
         ],
-        "image_path": "/tmp/lanka_data/images/03705447.png",
+        "image_path": "/tmp/lanka_data/images/1285b1cf.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -456,7 +456,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-11:dsd/Religion/2012/Map:2nd](images/readme/03705447.png)
+![LK-11:dsd/Religion/2012/Map:2nd](images/readme/1285b1cf.png)
 
 ### 17. `LK-11:dsd/Religion/2012/Map:buddhist`
 
@@ -469,7 +469,7 @@ python workflows/console.py <cmd>
             "2012",
             "Map (buddhist)"
         ],
-        "image_path": "/tmp/lanka_data/images/03705447.png",
+        "image_path": "/tmp/lanka_data/images/16ecb25a.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -478,7 +478,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-11:dsd/Religion/2012/Map:buddhist](images/readme/03705447.png)
+![LK-11:dsd/Religion/2012/Map:buddhist](images/readme/16ecb25a.png)
 
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)
