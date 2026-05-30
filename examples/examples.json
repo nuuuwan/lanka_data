@@ -1,19 +1,19 @@
 [
   "LK",
   "LK-1:district",
-  "LK-1,LK-2",
-  "LK-1,LK-9,LK-3/Map",
+  "LK-2,LK-2",
+  "LK-3,LK-9,LK-4/Map",
   "LK-4...LK-6/Map",
   "LK-1127025@10/Map",
   "LK-1103&EC-01B/Map",
-  "LK-11/Map",
-  "LK-1:district/Map",
-  "LK-1:pd/Map",
+  "LK-61/Map",
+  "LK-71:district/Map",
+  "LK-81:pd/Map",
   "LK-1103:gnd/Religion/2012/Map",
-  "LK-2:dsd/Ethnicity/2024/Map",
+  "LK-53:dsd/Ethnicity/2024/Map",
   "LK/ParliamentaryElection/2024",
-  "LK:pd/PresidentialElection/Latest/Map",
+  "LK-2:pd/PresidentialElection/Latest/Map",
   "LK-2:dsd/Ethnicity/Latest/Map",
-  "LK-11:dsd/Religion/2012/Map:2nd",
-  "LK-11:dsd/Religion/2012/Map:buddhist"
+  "LK-41:dsd/Religion/2012/Map:2nd",
+  "LK-51:dsd/Religion/2012/Map:buddhist"
 ]

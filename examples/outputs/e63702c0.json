@@ -1,19 +1,12 @@
 {
   "result": {
     "title_items": [
-      "Western, Central Provinces",
+      "Central Province",
       "Basic Information",
       "2024",
       "JSON"
     ],
     "data_list": [
-      {
-        "region_id": "LK-1",
-        "region_name": "Western",
-        "area_sqkm": 3720.39,
-        "center_lat": 6.834692,
-        "center_lng": 80.06675
-      },
       {
         "region_id": "LK-2",
         "region_name": "Central",
