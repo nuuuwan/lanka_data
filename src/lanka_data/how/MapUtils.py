@@ -14,37 +14,53 @@ log = Log("MapUtils")
 random.seed(0)
 
 
+class COLOR:
+    GOLD = "#FFBE29"
+    DARK_ORANGE = "#EB7400"
+    TEAL = "#00534E"
+    BLUE = "#0000FF"
+    MAROON = "#800080"
+    GRAY = "#808080"
+    DARK_RED = "#8D153A"
+    GREEN = "#008000"
+    RED = "#FF0000"
+    ORANGE = "#FFA500"
+
+
 class MapUtils:
     DELIM_TITLE = " · "
     MAX_REGIONS_TO_LABEL = 100
     MAX_LEGEND_ITEMS = 7
     COLOR_IDX = {
         # Religion
-        "buddhist": "#FFBE29",
-        "hindu": "#EB7400",
-        "islam": "#00534E",
-        "other_christian": "#0000FF",
-        "roman_catholic": "#800080",
-        "other": "#808080",
+        "buddhist": COLOR.GOLD,
+        "hindu": COLOR.DARK_ORANGE,
+        "islam": COLOR.TEAL,
+        "other_christian": COLOR.BLUE,
+        "roman_catholic": COLOR.MAROON,
+        "other": COLOR.GRAY,
         # Ethnicity
-        "sinhalese": "#8D153A",
-        "sl_tamil": "#EB7400",
-        "ind_tamil": "#0000FF",
-        "sl_moor": "#00534E",
-        "malay": "#008000",
+        "sinhalese": COLOR.DARK_RED,
+        "sl_tamil": COLOR.DARK_ORANGE,
+        "sri_lanka_tamil": COLOR.DARK_ORANGE,
+        "ind_tamil": COLOR.BLUE,
+        "indian_tamil_or_malaiyaga_thamilar": COLOR.BLUE,
+        "sl_moor": COLOR.TEAL,
+        "sri_lanka_moor_or_muslim": COLOR.TEAL,
+        "malay": COLOR.GREEN,
         # Political Party
-        "SLPP": "#8D153A",
-        "UPFA": "#0000FF",
-        "PA": "#0000FF",
-        "SLFP": "#0000FF",
-        "NPP": "#FF0000",
-        "SJB": "#008000",
-        "UNP": "#008000",
-        "NDF": "#008000",
-        "IND9": "#FFA500",
-        "SLMP": "#800080",
-        "ACTC": "#FFA500",
-        "ITAK": "#FFA500",
+        "SLPP": COLOR.DARK_RED,
+        "UPFA": COLOR.BLUE,
+        "PA": COLOR.BLUE,
+        "SLFP": COLOR.BLUE,
+        "NPP": COLOR.RED,
+        "SJB": COLOR.GREEN,
+        "UNP": COLOR.GREEN,
+        "NDF": COLOR.GREEN,
+        "IND9": COLOR.ORANGE,
+        "SLMP": COLOR.MAROON,
+        "ACTC": COLOR.ORANGE,
+        "ITAK": COLOR.ORANGE,
     }
 
     @staticmethod
