@@ -1,15 +1,4 @@
 {
-  "result": {
-    "title_items": [
-      "21 Districts",
-      "Religion",
-      "2012",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/be5b4913.png",
-    "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/"
-  },
-  "query_time_ms": 0,
-  "cache_hit": false
+  "error": "too many values to unpack (expected 2)",
+  "query_time_ms": 0
 }

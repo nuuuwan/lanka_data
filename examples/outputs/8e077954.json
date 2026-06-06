@@ -1,15 +1,4 @@
 {
-  "result": {
-    "title_items": [
-      "20 Gnds",
-      "Religion",
-      "2012",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/0d265f1a.png",
-    "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/"
-  },
-  "query_time_ms": 0,
-  "cache_hit": false
+  "error": "404 Client Error: Not Found for url: https://raw.githubusercontent.com/nuuuwan/lk_admin_regions/refs/heads/main/data/ents/history/gnds-pre2019.json",
+  "query_time_ms": 0
 }
