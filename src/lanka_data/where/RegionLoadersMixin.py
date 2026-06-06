@@ -101,7 +101,9 @@ class RegionLoadersMixin:
             region_type, None
         )
         raw_regions = [
-            d for d in raw_regions if from_region_id <= d["id"] <= to_region_id
+            d
+            for d in raw_regions
+            if from_region_id <= d["id"] <= to_region_id
         ]
         if not raw_regions:
             raise ValueError(
