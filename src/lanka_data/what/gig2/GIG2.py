@@ -54,9 +54,12 @@ class GIG2(What):
                 d = base_data_idx.get(current_id)
                 if d is None:
                     raise ValueError(
-                        f"Data not found for current_id: {current_id}"
+                        f"Missing data for current_id: {current_id}"
                     )
                 data_list.append(d)
+
+            if not data_list:
+                continue
             cleaned_data_list = [
                 self.clean(d, region_idx, region_id) for d in data_list
             ]

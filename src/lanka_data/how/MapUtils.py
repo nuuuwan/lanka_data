@@ -67,6 +67,17 @@ class MapUtils:
         return "#{:06x}".format(random.randint(0, 0xFFFFFF))
 
     @staticmethod
+    def _color_with_opacity(hex_color, pct):
+        """Return RGBA tuple for hex_color with alpha=pct (1.0=opaque, 0.0=transparent)."""
+        hex_color = hex_color.lstrip("#")
+        r = int(hex_color[0:2], 16) / 255
+        g = int(hex_color[2:4], 16) / 255
+        b = int(hex_color[4:6], 16) / 255
+        MIN_ALPHA = 0.0
+        alpha = MIN_ALPHA + pct * (1.0 - MIN_ALPHA)
+        return (r, g, b, alpha)
+
+    @staticmethod
     def get_colors_for_data_list_without_values(result_data):
         data_list = result_data["data_list"]
         n_regions = len(data_list)
@@ -124,18 +135,24 @@ class MapUtils:
         result_data, how, what, func_key_getter
     ):
         data_list = result_data["data_list"]
+        key_to_base_hex = {}
         value_to_color = {}
         region_color_map = {}
         for data in data_list:
             key = func_key_getter(data) if func_key_getter else None
-            if key not in value_to_color:
-                color = (
+            if key not in key_to_base_hex:
+                key_to_base_hex[key] = (
                     MapUtils.COLOR_IDX[key]
                     if key in MapUtils.COLOR_IDX
                     else MapUtils.get_random_color()
                 )
-                value_to_color[key] = color
-            region_color_map[data["region_id"]] = value_to_color[key]
+                value_to_color[key] = MapUtils._color_with_opacity(
+                    key_to_base_hex[key], 1.0
+                )
+            pct = (data.get("pct_values") or {}).get(key, 0.5)
+            region_color_map[data["region_id"]] = MapUtils._color_with_opacity(
+                key_to_base_hex[key], pct
+            )
         return region_color_map, value_to_color
 
     @staticmethod
@@ -204,19 +221,78 @@ class MapUtils:
         return str(value)
 
     @staticmethod
-    def _draw_legend(value_to_color, ax):
+    def _draw_legend_2d(value_to_color, legend_ax):
+        import numpy as np
+
+        MIN_ALPHA = 0.2
+        categories = sorted(value_to_color.keys(), key=str)
+        n_rows = len(categories)
+        pct_levels = [0.0, 0.25, 0.5, 0.75, 1.0]
+        n_cols = len(pct_levels)
+
+        # Build RGBA image: rows=categories, cols=pct levels
+        img = np.zeros((n_rows, n_cols, 4))
+        for row_i, cat in enumerate(reversed(categories)):
+            r, g, b = value_to_color[cat][:3]
+            for col_j, pct in enumerate(pct_levels):
+                img[row_i, col_j] = [
+                    r,
+                    g,
+                    b,
+                    MIN_ALPHA + pct * (1.0 - MIN_ALPHA),
+                ]
+
+        # Constrain height so cells are square-ish; centre vertically
+        cell_h = 0.12  # fraction of axes height per row
+        grid_h = min(n_rows * cell_h, 0.9)
+        y0 = (1.0 - grid_h) / 2
+        inset = legend_ax.inset_axes([0.0, y0, 1.0, grid_h])
+        # Hide the parent axes decorations but keep it alive for the inset
+        legend_ax.set_axis_off()
+
+        inset.imshow(img, aspect="auto", interpolation="nearest")
+
+        # Column headers: percentage labels on top
+        inset.set_xticks(range(n_cols))
+        inset.set_xticklabels([f"{p:.0%}" for p in pct_levels], fontsize=5)
+        inset.xaxis.set_ticks_position("top")
+        inset.xaxis.set_label_position("top")
+        inset.set_xlabel("% share", fontsize=5, labelpad=3)
+
+        # Row labels: category names on left
+        inset.set_yticks(range(n_rows))
+        inset.set_yticklabels(
+            [str(c) for c in reversed(categories)], fontsize=5
+        )
+        inset.tick_params(axis="both", length=0, pad=2)
+
+        # White grid lines between cells
+        for x in [i - 0.5 for i in range(n_cols + 1)]:
+            inset.axvline(x, color="white", linewidth=0.5)
+        for y in [i - 0.5 for i in range(n_rows + 1)]:
+            inset.axhline(y, color="white", linewidth=0.5)
+
+    @staticmethod
+    def _draw_legend(value_to_color, ax, legend_ax):
         if value_to_color is None:
+            legend_ax.set_visible(False)
             return
+
+        colors = list(value_to_color.values())
+        if colors and isinstance(colors[0], tuple) and len(colors[0]) == 4:
+            MapUtils._draw_legend_2d(value_to_color, legend_ax)
+            return
+
+        legend_ax.set_visible(False)
         value_and_color = sorted(value_to_color.items())
         if len(value_and_color) > MapUtils.MAX_LEGEND_ITEMS:
             n_actual = len(value_and_color)
             n_required = MapUtils.MAX_LEGEND_ITEMS - 1
-
             new_value_and_color = []
             for i in range(n_required):
                 idx = int(i * n_actual / n_required)
                 new_value_and_color.append(value_and_color[idx])
-            new_value_and_color.append(value_and_color[-1])  # add max value
+            new_value_and_color.append(value_and_color[-1])
             value_and_color = new_value_and_color
 
         for value, color in value_and_color:
@@ -256,7 +332,11 @@ class MapUtils:
         )
         gdf_region["color"] = gdf_region["id"].map(region_color_map)
 
-        fig, ax = plt.subplots(figsize=(10, 8))
+        fig = plt.figure(figsize=(12, 8))
+        gs = fig.add_gridspec(1, 2, width_ratios=[5, 1], wspace=0.05)
+        ax = fig.add_subplot(gs[0])
+        legend_ax = fig.add_subplot(gs[1])
+
         gdf_region.plot(
             ax=ax,
             categorical=True,
@@ -268,7 +348,7 @@ class MapUtils:
         if n_regions <= MapUtils.MAX_REGIONS_TO_LABEL:
             MapUtils._draw_labels(gdf_region, ax)
 
-        MapUtils._draw_legend(value_to_color, ax)
+        MapUtils._draw_legend(value_to_color, ax, legend_ax)
         title = MapUtils.DELIM_TITLE.join(
             how.get_title_items(where, what, when)
         )
