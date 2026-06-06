@@ -211,19 +211,58 @@ class MapUtils:
         return luminance > 0.5
 
     @staticmethod
+    def _inscribed_circle(geom):
+        """Return (center_x, center_y, radius) of the largest circle that fits inside geom."""
+        bounds = geom.bounds
+        hi = max(bounds[2] - bounds[0], bounds[3] - bounds[1]) / 2
+        lo = 0.0
+        for _ in range(24):
+            mid = (lo + hi) / 2
+            shrunk = geom.buffer(-mid)
+            if shrunk.is_empty:
+                hi = mid
+            else:
+                lo = mid
+        radius = lo
+        center = geom.buffer(-radius).centroid
+        return center.x, center.y, radius
+
+    @staticmethod
+    def _fit_fontsize(text, cx, cy, radius, ax, fig):
+        """Return font size (pts) so `text` fits inside a circle of `radius` data units."""
+        ax_bbox = ax.get_window_extent(renderer=fig.canvas.get_renderer())
+        x_min, x_max = ax.get_xlim()
+        y_min, y_max = ax.get_ylim()
+        px_per_data_x = ax_bbox.width / (x_max - x_min)
+        px_per_data_y = ax_bbox.height / (y_max - y_min)
+
+        # diameter available in display pixels
+        px_w = 2 * radius * px_per_data_x
+        px_h = 2 * radius * px_per_data_y
+        n_chars = max(len(text), 1)
+
+        # ~0.6 px per pt per character, ~1.2 px per pt height
+        size_from_w = px_w / (n_chars * 0.6 * 5)
+        size_from_h = px_h / (1.2 * 5)
+        return max(3.0, min(size_from_w, size_from_h))
+
+    @staticmethod
     def _draw_labels(gdf_region, ax):
+        fig = ax.get_figure()
         for _, row in gdf_region.iterrows():
-            centroid = row.geometry.centroid
+            cx, cy, radius = MapUtils._inscribed_circle(row.geometry)
             bg_color = row.get("color", "black")
             text_color = (
                 "black" if MapUtils._is_light_color(bg_color) else "white"
             )
+            label = row.get("name", row["id"])
+            fontsize = MapUtils._fit_fontsize(label, cx, cy, radius, ax, fig)
             ax.annotate(
-                row.get("name", row["id"]),
-                xy=(centroid.x, centroid.y),
+                label,
+                xy=(cx, cy),
                 ha="center",
                 va="center",
-                fontsize=5,
+                fontsize=fontsize,
                 color=text_color,
             )
 
