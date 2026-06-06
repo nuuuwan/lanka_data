@@ -8,7 +8,7 @@ class GeoDataUtils:
     @staticmethod
     def _load_raw_gdf(all_current_ids):
         region_type = RegionTypeUtils.get_region_type(all_current_ids[0])
-        precision_label = {"gnd": "e3_small"}.get(region_type, "e4_medium")
+        precision_label = "e4_medium"
         url = (
             "https://raw.githubusercontent.com"
             + "/nuuuwan/lk_admin_regions/refs/heads/main"
