@@ -632,6 +632,28 @@ python workflows/console.py <cmd>
 
 ![LK-pre1959:district/Religion/2012/Map](images/readme/4e535cda.png)
 
+### 23. `LK-pre1845:province/Basic/2012/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Western (pre 1845), Central (pre 1886), Southern (pre 1886), Northern (pre 1873), Eastern (pre 1873) Provinces",
+            "Basic Information",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/a85c9f82.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-pre1845:province/Basic/2012/Map](images/readme/a85c9f82.png)
+
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
