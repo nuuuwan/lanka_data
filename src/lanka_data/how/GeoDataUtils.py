@@ -48,6 +48,24 @@ class GeoDataUtils:
         return region_to_current_ids
 
     @staticmethod
+    def _enrich_from_data_list(gdf, data_list):
+        import pandas as pd
+
+        rows = []
+        for d in data_list:
+            row = {"id": d["region_id"], "name": d.get("region_name")}
+            for k, v in d.items():
+                if k in ("region_id", "region_name", "current_ids"):
+                    continue
+                if isinstance(v, (str, int, float, bool)) or v is None:
+                    row[k] = v
+            rows.append(row)
+        df = pd.DataFrame(rows)
+        overlap = [c for c in df.columns if c in gdf.columns and c != "id"]
+        gdf = gdf.drop(columns=overlap)
+        return gdf.merge(df, on="id", how="left")
+
+    @staticmethod
     def get_geopandas_dataframe(data_list):
         region_to_current_ids = GeoDataUtils._build_region_map(data_list)
         all_current_ids = [
@@ -59,4 +77,4 @@ class GeoDataUtils:
         gdf = GeoDataUtils._dissolve_by_region(gdf, region_to_current_ids)
         if gdf.empty:
             raise ValueError("No map data found.")
-        return gdf
+        return GeoDataUtils._enrich_from_data_list(gdf, data_list)
