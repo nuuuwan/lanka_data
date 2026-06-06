@@ -290,22 +290,14 @@ class MapUtils:
 
     @staticmethod
     def _draw_labels(gdf_region, ax):
-        import matplotlib.patches as mpatches
-
         fig = ax.get_figure()
         for _, row in gdf_region.iterrows():
-            poly = MapUtils._largest_polygon(row.geometry)
-            log.debug(
-                f"{row.get('name', row['id'])}: geom_type={row.geometry.geom_type} "
-                f"largest_poly_area={poly.area:.6f}"
-            )
             cx, cy, rect_w, rect_h = MapUtils._best_label_fit(row.geometry)
             bg_color = row.get("color", "black")
             text_color = (
                 "black" if MapUtils._is_light_color(bg_color) else "white"
             )
             label = row.get("name", row["id"])
-            # Try 0° and 90°, pick whichever gives the bigger font
             size_normal = MapUtils._fit_fontsize(
                 label, rect_w, rect_h, ax, fig
             )
@@ -313,31 +305,9 @@ class MapUtils:
                 label, rect_h, rect_w, ax, fig
             )
             if size_rotated > size_normal:
-                fontsize, rotation, draw_w, draw_h = (
-                    size_rotated,
-                    90,
-                    rect_w,
-                    rect_h,
-                )
+                fontsize, rotation = size_rotated, 90
             else:
-                fontsize, rotation, draw_w, draw_h = (
-                    size_normal,
-                    0,
-                    rect_w,
-                    rect_h,
-                )
-
-            # Debug: draw axis-aligned inscribed rectangle
-            rect_patch = mpatches.Rectangle(
-                (cx - draw_w / 2, cy - draw_h / 2),
-                draw_w,
-                draw_h,
-                linewidth=0.8,
-                edgecolor="black",
-                facecolor="none",
-            )
-            ax.add_patch(rect_patch)
-
+                fontsize, rotation = size_normal, 0
             ax.annotate(
                 label,
                 xy=(cx, cy),
