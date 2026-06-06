@@ -27,6 +27,7 @@ class GeoDataUtils:
         }
         gdf["region_id"] = gdf["id"].map(current_to_region)
         gdf = gdf.drop(columns=["id"])
+        gdf["geometry"] = gdf["geometry"].buffer(0)
         gdf_dissolved = gdf.dissolve(
             by="region_id", aggfunc="first"
         ).reset_index()
