@@ -473,6 +473,52 @@ python workflows/console.py <cmd>
 
 ![LK-51:dsd/Religion/2012/Map:buddhist](images/readme/75a61fa4.png)
 
+### 18. `LK-pre1984:district/Basic/2012/JSON`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "24 Districts",
+            "Basic Information",
+            "2012",
+            "JSON"
+        ],
+        "data_list": [
+            {
+                "region_id": "LK-11",
+                "region_name": "Colombo",
+                "area_sqkm": 688.17,
+                "center_lat": 6.869822,
+                "center_lng": 80.018487,
+                "current_ids": [
+                    "LK-11"
+                ]
+            },
+            {
+            ... // 217 lines ...
+                    "LK-91"
+                ]
+            },
+            {
+                "region_id": "LK-92",
+                "region_name": "Kegalle",
+                "area_sqkm": 1657.73,
+                "center_lat": 7.104294,
+                "center_lng": 80.342772,
+                "current_ids": [
+                    "LK-92"
+                ]
+            }
+        ],
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

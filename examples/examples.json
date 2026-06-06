@@ -15,5 +15,6 @@
   "LK-2:pd/PresidentialElection/Latest/Map",
   "LK-2:dsd/Ethnicity/Latest/Map",
   "LK-41:dsd/Religion/2012/Map:2nd",
-  "LK-51:dsd/Religion/2012/Map:buddhist"
+  "LK-51:dsd/Religion/2012/Map:buddhist",
+  "LK-pre1984:district/Basic/2012/JSON"
 ]

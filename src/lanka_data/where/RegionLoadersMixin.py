@@ -7,8 +7,13 @@ class RegionLoadersMixin:
     def from_token(cls, token: str):  # noqa: CFQ004
         if ":" in token:
             parent_region_id, region_type = token.split(":")
+            historical_year = None
+            if "-pre" in parent_region_id:
+                parent_region_id, historical_year = parent_region_id.split(
+                    "-pre"
+                )
             return cls.from_parent_region_id_and_region_type(
-                region_type, parent_region_id
+                region_type, parent_region_id, historical_year
             )
 
         if "..." in token:
@@ -33,7 +38,7 @@ class RegionLoadersMixin:
         region_a_id_key = f"{region_a_type}_id"
         region_b_id_key = f"{region_b_type}_id"
 
-        raw_gnds = cls._get_raw_region_data_list_for_region_type("gnd")
+        raw_gnds = cls._get_raw_region_data_list_for_region_type("gnd", None)
         intersection_gnds = []
         for gnd in raw_gnds:
             if (
@@ -60,7 +65,7 @@ class RegionLoadersMixin:
     def from_region_radius(cls, region_id, radius_km):
         region_type = RegionTypeUtils.get_region_type(region_id)
         raw_regions = cls._get_raw_region_data_list_for_region_type(
-            region_type
+            region_type, None
         )
 
         center_region = None
@@ -93,12 +98,10 @@ class RegionLoadersMixin:
             )
 
         raw_regions = cls._get_raw_region_data_list_for_region_type(
-            region_type
+            region_type, None
         )
         raw_regions = [
-            d
-            for d in raw_regions
-            if from_region_id <= d["id"] <= to_region_id
+            d for d in raw_regions if from_region_id <= d["id"] <= to_region_id
         ]
         if not raw_regions:
             raise ValueError(
@@ -120,7 +123,7 @@ class RegionLoadersMixin:
 
         region_type = region_types[0]
         raw_regions = cls._get_raw_region_data_list_for_region_type(
-            region_type
+            region_type, None
         )
         raw_regions = [d for d in raw_regions if d["id"] in region_ids]
         if not raw_regions:
@@ -145,10 +148,13 @@ class RegionLoadersMixin:
 
     @classmethod
     def from_parent_region_id_and_region_type(
-        cls, region_type, parent_region_id
+        cls,
+        region_type,
+        parent_region_id,
+        historical_year,
     ):
         raw_regions = cls._get_raw_region_data_list_for_region_type(
-            region_type
+            region_type, historical_year
         )
         raw_regions = [
             region

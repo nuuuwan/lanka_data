@@ -35,13 +35,24 @@ class Regions(Where, RegionLoadersMixin):
         )
 
     @classmethod
-    def _get_raw_region_data_list_for_region_type(cls, region_type: str):
+    def _get_raw_region_data_list_for_region_type(
+        cls, region_type: str, historical_year: str
+    ):
+        if historical_year is None:
+            url = (
+                "https://raw.githubusercontent.com"
+                + "/nuuuwan/lk_admin_regions/refs/heads/main"
+                + "/data/ents"
+                + f"/{region_type}s.json"
+            )
+        else:
+            url = (
+                "https://raw.githubusercontent.com"
+                + "/nuuuwan/lk_admin_regions/refs/heads/main"
+                + "/data/ents/history"
+                + f"/{region_type}s-pre{historical_year}.json"
+            )
 
-        url = (
-            "https://raw.githubusercontent.com"
-            + "/nuuuwan/lk_admin_regions/refs/heads/main"
-            + f"/data/ents/{region_type}s.json"
-        )
         return WWW(url).read_json()
 
     @classmethod
