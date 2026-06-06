@@ -1,12 +1,9 @@
 import json
 
 from lanka_data import Db
-from workflows.custom_logging import setup_logging
 
 
 def main():
-    setup_logging()
-
     print("")
     print("/Where/What/When/How")
     print("")
