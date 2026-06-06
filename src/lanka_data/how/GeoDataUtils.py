@@ -7,16 +7,26 @@ from utils_future import WWW
 class GeoDataUtils:
     @staticmethod
     def _load_raw_gdf(all_current_ids):
-        region_type = RegionTypeUtils.get_region_type(all_current_ids[0])
         precision_label = "e4_medium"
-        url = (
-            "https://raw.githubusercontent.com"
-            + "/nuuuwan/lk_admin_regions/refs/heads/main"
-            + f"/data/geo/topojson/{precision_label}/{region_type}s.topojson"
-        )
-        temp_topojson_file_path = WWW(url).download()
-        gdf = geopandas.read_file(temp_topojson_file_path)
-        return gdf[gdf["id"].isin(all_current_ids)]
+        ids_by_type = {}
+        for region_id in all_current_ids:
+            region_type = RegionTypeUtils.get_region_type(region_id)
+            ids_by_type.setdefault(region_type, []).append(region_id)
+
+        gdfs = []
+        for region_type, ids in ids_by_type.items():
+            url = (
+                "https://raw.githubusercontent.com"
+                + "/nuuuwan/lk_admin_regions/refs/heads/main"
+                + f"/data/geo/topojson/{precision_label}/{region_type}s.topojson"
+            )
+            temp_topojson_file_path = WWW(url).download()
+            gdf = geopandas.read_file(temp_topojson_file_path)
+            gdfs.append(gdf[gdf["id"].isin(ids)])
+
+        import pandas as pd
+
+        return geopandas.GeoDataFrame(pd.concat(gdfs, ignore_index=True))
 
     @staticmethod
     def _dissolve_by_region(gdf, region_to_current_ids):
