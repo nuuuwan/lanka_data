@@ -47,9 +47,6 @@ class GeoDataUtils:
         ]
         gdf = GeoDataUtils._load_raw_gdf(all_current_ids)
         gdf = GeoDataUtils._dissolve_by_region(gdf, region_to_current_ids)
-        gdf = GeoDataUtils._sort_by_region_ids(
-            gdf, list(region_to_current_ids.keys())
-        )
         if gdf.empty:
             raise ValueError("No map data found.")
         return gdf
