@@ -52,11 +52,8 @@ class GIG2(What):
             data_list = []
             for current_id in current_ids:
                 d = base_data_idx.get(current_id)
-                if d is None:
-                    raise ValueError(
-                        f"Missing data for current_id: {current_id}"
-                    )
-                data_list.append(d)
+                if d is not None:
+                    data_list.append(d)
 
             if not data_list:
                 continue
