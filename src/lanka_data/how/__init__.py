@@ -1,7 +1,7 @@
 # lanka_data.how (auto generate by build_inits.py)
 # flake8: noqa: F408
 
-from lanka_data.how.ColorUtils import COLOR, ColorUtils
+from lanka_data.how.ColorUtils import ColorUtils
 from lanka_data.how.GeoDataUtils import GeoDataUtils
 from lanka_data.how.How import How
 from lanka_data.how.HowFactory import HowFactory

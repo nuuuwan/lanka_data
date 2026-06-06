@@ -4,7 +4,7 @@ from utils_future.GeoUtils import GeoUtils
 
 class RegionLoadersMixin:
     @classmethod
-    def from_token(cls, token: str):  # noqa: CFQ004
+    def from_token(cls, token: str):  # noqa: CFQ004, C901
         if ":" in token:
             parent_region_id, region_type = token.split(":")
             historical_year = None
@@ -101,9 +101,7 @@ class RegionLoadersMixin:
             region_type, None
         )
         raw_regions = [
-            d
-            for d in raw_regions
-            if from_region_id <= d["id"] <= to_region_id
+            d for d in raw_regions if from_region_id <= d["id"] <= to_region_id
         ]
         if not raw_regions:
             raise ValueError(

@@ -1,19 +1,20 @@
 class PolyUtils:
     @staticmethod
-    def _largest_polygon(geom):
+    def _collect_polygons(g):
         from shapely.geometry import Polygon
 
-        def _collect_polygons(g):
-            if isinstance(g, Polygon):
-                return [g]
-            if hasattr(g, "geoms"):
-                polys = []
-                for sub in g.geoms:
-                    polys.extend(_collect_polygons(sub))
-                return polys
-            return []
+        if isinstance(g, Polygon):
+            return [g]
+        if hasattr(g, "geoms"):
+            polys = []
+            for sub in g.geoms:
+                polys.extend(PolyUtils._collect_polygons(sub))
+            return polys
+        return []
 
-        polys = _collect_polygons(geom)
+    @staticmethod
+    def _largest_polygon(geom):
+        polys = PolyUtils._collect_polygons(geom)
         if not polys:
             return geom
         return max(polys, key=lambda g: g.area)

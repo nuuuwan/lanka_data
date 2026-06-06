@@ -2,18 +2,12 @@ from lanka_data.how.ColorUtils import ColorUtils
 
 
 class OrderColorUtils:
+    _PARAM_IDX = {"Top": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
+
     @staticmethod
     def _func_key_getter(how, what):
-        param = how.params
-        if not param or param == "Top":
-            idx = 0
-        elif param == "2nd":
-            idx = 1
-        elif param == "3rd":
-            idx = 2
-        elif param == "Bottom":
-            idx = -1
-        else:
+        idx = OrderColorUtils._PARAM_IDX.get(how.params or "Top")
+        if idx is None:
             return None
 
         def func_key_getter(data):
@@ -29,10 +23,9 @@ class OrderColorUtils:
         for data in data_list:
             key = func_key_getter(data) if func_key_getter else None
             if key not in key_to_base_hex:
-                key_to_base_hex[key] = (
-                    ColorUtils.COLOR_IDX.get(key)
-                    or ColorUtils.get_random_color(key)
-                )
+                key_to_base_hex[key] = ColorUtils.COLOR_IDX.get(
+                    key
+                ) or ColorUtils.get_random_color(key)
                 value_to_color[key] = ColorUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0
                 )
