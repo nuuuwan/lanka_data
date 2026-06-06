@@ -572,12 +572,19 @@ class MapUtils:
         ax = fig.add_subplot(gs[0])
         legend_ax = fig.add_subplot(gs[1])
 
+        if n_regions > 100:
+            edge_color, edge_width = "none", 0
+        elif n_regions >= 30:
+            edge_color, edge_width = "white", 0.2
+        else:
+            edge_color, edge_width = "black", 0.2
+
         gdf_region.plot(
             ax=ax,
             categorical=True,
             color=gdf_region["color"],
-            edgecolor="white",
-            linewidth=0.2,
+            edgecolor=edge_color,
+            linewidth=edge_width,
         )
 
         if n_regions <= MapUtils.MAX_REGIONS_TO_LABEL:
