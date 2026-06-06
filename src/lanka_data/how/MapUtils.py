@@ -203,7 +203,9 @@ class MapUtils:
             else:
                 return False
         else:
-            # assume RGBA or RGB tuple
+            # RGBA tuple: low alpha → near-transparent → treat as light
+            if len(color) == 4 and color[3] < 0.4:
+                return True
             r, g, b = color[0], color[1], color[2]
         luminance = 0.299 * r + 0.587 * g + 0.114 * b
         return luminance > 0.5
