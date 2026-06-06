@@ -296,7 +296,51 @@ python workflows/console.py <cmd>
 
 ![LK-81:pd/Map](images/readme/bfa7d721.png)
 
-### 11. `LK-1103:gnd/Religion/2012/JSON`
+### 11. `LK-23:dsd/Religion/2012/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Kotmale, Hanguranketa (pre 2019), Walapane (pre 2019), Nuwara Eliya (pre 2019), Ambagamuwa Dsds",
+            "Religion",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/a2b164d4.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-23:dsd/Religion/2012/Map](images/readme/a2b164d4.png)
+
+### 12. `LK-23:dsd/Religion/2024/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "10 Dsds",
+            "Religion",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/3147011c.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-23:dsd/Religion/2024/Map](images/readme/3147011c.png)
+
+### 13. `LK-1103:gnd/Religion/2012/JSON`
 
 ```json
 {
@@ -342,7 +386,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 12. `LK-1127:gnd/Religion/2012/Map`
+### 14. `LK-1127:gnd/Religion/2012/Map`
 
 ```json
 {
@@ -364,7 +408,7 @@ python workflows/console.py <cmd>
 
 ![LK-1127:gnd/Religion/2012/Map](images/readme/0d265f1a.png)
 
-### 13. `LK-53:dsd/Ethnicity/2024/Map`
+### 15. `LK-53:dsd/Ethnicity/2024/Map`
 
 ```json
 {
@@ -386,7 +430,7 @@ python workflows/console.py <cmd>
 
 ![LK-53:dsd/Ethnicity/2024/Map](images/readme/8069c8aa.png)
 
-### 14. `LK/ParliamentaryElection/2024`
+### 16. `LK/ParliamentaryElection/2024`
 
 ```json
 {
@@ -432,7 +476,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 15. `LK-2:pd/PresidentialElection/Latest/Map`
+### 17. `LK-2:pd/PresidentialElection/Latest/Map`
 
 ```json
 {
@@ -454,7 +498,7 @@ python workflows/console.py <cmd>
 
 ![LK-2:pd/PresidentialElection/Latest/Map](images/readme/35e3a262.png)
 
-### 16. `LK-2:dsd/Ethnicity/Latest/Map`
+### 18. `LK-2:dsd/Ethnicity/Latest/Map`
 
 ```json
 {
@@ -476,7 +520,7 @@ python workflows/console.py <cmd>
 
 ![LK-2:dsd/Ethnicity/Latest/Map](images/readme/bade8195.png)
 
-### 17. `LK-41:dsd/Religion/2012/Map:2nd`
+### 19. `LK-41:dsd/Religion/2012/Map:2nd`
 
 ```json
 {
@@ -498,7 +542,7 @@ python workflows/console.py <cmd>
 
 ![LK-41:dsd/Religion/2012/Map:2nd](images/readme/09cd4316.png)
 
-### 18. `LK-51:dsd/Religion/2012/Map:buddhist`
+### 20. `LK-51:dsd/Religion/2012/Map:buddhist`
 
 ```json
 {
@@ -520,7 +564,7 @@ python workflows/console.py <cmd>
 
 ![LK-51:dsd/Religion/2012/Map:buddhist](images/readme/75a61fa4.png)
 
-### 19. `LK-pre1984:district/Basic/2012/JSON`
+### 21. `LK-pre1984:district/Basic/2012/JSON`
 
 ```json
 {
@@ -566,7 +610,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 20. `LK-pre1959:district/Religion/2012/Map`
+### 22. `LK-pre1959:district/Religion/2012/Map`
 
 ```json
 {

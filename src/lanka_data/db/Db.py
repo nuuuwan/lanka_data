@@ -60,7 +60,8 @@ class Db:
         if when_cmd == "2012":
             if "-pre2019" not in where_cmd:
                 tokens = where_cmd.split(":")
-                where_cmd = tokens[0] + "-pre2019:" + ":".join(tokens[1:])
+                if len(tokens) == 2 and tokens[1] == "dsd":
+                    where_cmd = tokens[0] + "-pre2019:" + ":".join(tokens[1:])
 
         log.debug(f"{where_cmd=}, {what_cmd=}, {when_cmd=}, {how_cmd=}")
         return where_cmd, what_cmd, when_cmd, how_cmd

@@ -1,4 +1,875 @@
 {
-  "error": "404 Client Error: Not Found for url: https://raw.githubusercontent.com/nuuuwan/lk_admin_regions/refs/heads/main/data/ents/history/gnds-pre2019.json",
-  "query_time_ms": 0
+  "result": {
+    "title_items": [
+      "35 Gnds",
+      "Religion",
+      "2012",
+      "JSON"
+    ],
+    "data_list": [
+      {
+        "region_id": "LK-1103005",
+        "region_name": "Sammanthranapura",
+        "current_ids": [
+          "LK-1103005"
+        ],
+        "values": {
+          "buddhist": 2689,
+          "islam": 1862,
+          "hindu": 1644,
+          "roman_catholic": 1039,
+          "other_christian": 585,
+          "other": 10
+        },
+        "total_value": 7829,
+        "pct_values": {
+          "buddhist": 0.3435,
+          "islam": 0.2378,
+          "hindu": 0.21,
+          "roman_catholic": 0.1327,
+          "other_christian": 0.0747,
+          "other": 0.0013
+        }
+      },
+      {
+        "region_id": "LK-1103010",
+        "region_name": "Mattakkuliya",
+        "current_ids": [
+          "LK-1103010"
+        ],
+        "values": {
+          "hindu": 7922,
+          "islam": 7871,
+          "roman_catholic": 6563,
+          "buddhist": 3634,
+          "other_christian": 1998,
+          "other": 15
+        },
+        "total_value": 28003,
+        "pct_values": {
+          "hindu": 0.2829,
+          "islam": 0.2811,
+          "roman_catholic": 0.2344,
+          "buddhist": 0.1298,
+          "other_christian": 0.0713,
+          "other": 0.0005
+        }
+      },
+      {
+        "region_id": "LK-1103015",
+        "region_name": "Modara",
+        "current_ids": [
+          "LK-1103015"
+        ],
+        "values": {
+          "hindu": 6659,
+          "roman_catholic": 4128,
+          "islam": 3279,
+          "buddhist": 2340,
+          "other_christian": 1347,
+          "other": 4
+        },
+        "total_value": 17757,
+        "pct_values": {
+          "hindu": 0.375,
+          "roman_catholic": 0.2325,
+          "islam": 0.1847,
+          "buddhist": 0.1318,
+          "other_christian": 0.0759,
+          "other": 0.0002
+        }
+      },
+      {
+        "region_id": "LK-1103020",
+        "region_name": "Madampitiya",
+        "current_ids": [
+          "LK-1103020"
+        ],
+        "values": {
+          "islam": 5333,
+          "buddhist": 3044,
+          "hindu": 2703,
+          "roman_catholic": 1460,
+          "other_christian": 429,
+          "other": 1
+        },
+        "total_value": 12970,
+        "pct_values": {
+          "islam": 0.4112,
+          "buddhist": 0.2347,
+          "hindu": 0.2084,
+          "roman_catholic": 0.1126,
+          "other_christian": 0.0331,
+          "other": 0.0001
+        }
+      },
+      {
+        "region_id": "LK-1103025",
+        "region_name": "Mahawatta",
+        "current_ids": [
+          "LK-1103025"
+        ],
+        "values": {
+          "buddhist": 3305,
+          "islam": 2470,
+          "hindu": 1478,
+          "roman_catholic": 1191,
+          "other_christian": 352,
+          "other": 13
+        },
+        "total_value": 8809,
+        "pct_values": {
+          "buddhist": 0.3752,
+          "islam": 0.2804,
+          "hindu": 0.1678,
+          "roman_catholic": 0.1352,
+          "other_christian": 0.04,
+          "other": 0.0015
+        }
+      },
+      {
+        "region_id": "LK-1103030",
+        "region_name": "Aluthmawatha",
+        "current_ids": [
+          "LK-1103030"
+        ],
+        "values": {
+          "hindu": 5372,
+          "roman_catholic": 2735,
+          "buddhist": 2588,
+          "islam": 2428,
+          "other_christian": 486,
+          "other": 16
+        },
+        "total_value": 13625,
+        "pct_values": {
+          "hindu": 0.3943,
+          "roman_catholic": 0.2007,
+          "buddhist": 0.1899,
+          "islam": 0.1782,
+          "other_christian": 0.0357,
+          "other": 0.0012
+        }
+      },
+      {
+        "region_id": "LK-1103035",
+        "region_name": "Lunupokuna",
+        "current_ids": [
+          "LK-1103035"
+        ],
+        "values": {
+          "hindu": 4684,
+          "roman_catholic": 3725,
+          "buddhist": 2959,
+          "other_christian": 597,
+          "islam": 449,
+          "other": 9
+        },
+        "total_value": 12423,
+        "pct_values": {
+          "hindu": 0.377,
+          "roman_catholic": 0.2998,
+          "buddhist": 0.2382,
+          "other_christian": 0.0481,
+          "islam": 0.0361,
+          "other": 0.0007
+        }
+      },
+      {
+        "region_id": "LK-1103040",
+        "region_name": "Bloemendhal",
+        "current_ids": [
+          "LK-1103040"
+        ],
+        "values": {
+          "hindu": 4023,
+          "buddhist": 3582,
+          "roman_catholic": 3114,
+          "islam": 2206,
+          "other_christian": 866,
+          "other": 11
+        },
+        "total_value": 13802,
+        "pct_values": {
+          "hindu": 0.2915,
+          "buddhist": 0.2595,
+          "roman_catholic": 0.2256,
+          "islam": 0.1598,
+          "other_christian": 0.0627,
+          "other": 0.0008
+        }
+      },
+      {
+        "region_id": "LK-1103045",
+        "region_name": "Kotahena East",
+        "current_ids": [
+          "LK-1103045"
+        ],
+        "values": {
+          "hindu": 3362,
+          "roman_catholic": 1886,
+          "buddhist": 687,
+          "islam": 257,
+          "other_christian": 191,
+          "other": 2
+        },
+        "total_value": 6385,
+        "pct_values": {
+          "hindu": 0.5265,
+          "roman_catholic": 0.2954,
+          "buddhist": 0.1076,
+          "islam": 0.0403,
+          "other_christian": 0.0299,
+          "other": 0.0003
+        }
+      },
+      {
+        "region_id": "LK-1103050",
+        "region_name": "Kotahena West",
+        "current_ids": [
+          "LK-1103050"
+        ],
+        "values": {
+          "hindu": 4382,
+          "roman_catholic": 2930,
+          "buddhist": 1214,
+          "islam": 483,
+          "other_christian": 396,
+          "other": 4
+        },
+        "total_value": 9409,
+        "pct_values": {
+          "hindu": 0.4657,
+          "roman_catholic": 0.3114,
+          "buddhist": 0.129,
+          "islam": 0.0513,
+          "other_christian": 0.0421,
+          "other": 0.0004
+        }
+      },
+      {
+        "region_id": "LK-1103055",
+        "region_name": "Kochchikade North",
+        "current_ids": [
+          "LK-1103055"
+        ],
+        "values": {
+          "hindu": 4046,
+          "roman_catholic": 3651,
+          "islam": 715,
+          "buddhist": 598,
+          "other_christian": 329,
+          "other": 0
+        },
+        "total_value": 9339,
+        "pct_values": {
+          "hindu": 0.4332,
+          "roman_catholic": 0.3909,
+          "islam": 0.0766,
+          "buddhist": 0.064,
+          "other_christian": 0.0352,
+          "other": 0.0
+        }
+      },
+      {
+        "region_id": "LK-1103060",
+        "region_name": "Jinthupitiya",
+        "current_ids": [
+          "LK-1103060"
+        ],
+        "values": {
+          "hindu": 3923,
+          "roman_catholic": 1797,
+          "islam": 1782,
+          "buddhist": 417,
+          "other_christian": 191,
+          "other": 0
+        },
+        "total_value": 8110,
+        "pct_values": {
+          "hindu": 0.4837,
+          "roman_catholic": 0.2216,
+          "islam": 0.2197,
+          "buddhist": 0.0514,
+          "other_christian": 0.0236,
+          "other": 0.0
+        }
+      },
+      {
+        "region_id": "LK-1103065",
+        "region_name": "Masangasweediya",
+        "current_ids": [
+          "LK-1103065"
+        ],
+        "values": {
+          "islam": 5122,
+          "hindu": 2270,
+          "roman_catholic": 635,
+          "buddhist": 357,
+          "other_christian": 132,
+          "other": 0
+        },
+        "total_value": 8516,
+        "pct_values": {
+          "islam": 0.6015,
+          "hindu": 0.2666,
+          "roman_catholic": 0.0746,
+          "buddhist": 0.0419,
+          "other_christian": 0.0155,
+          "other": 0.0
+        }
+      },
+      {
+        "region_id": "LK-1103070",
+        "region_name": "New Bazaar",
+        "current_ids": [
+          "LK-1103070"
+        ],
+        "values": {
+          "islam": 8898,
+          "hindu": 2243,
+          "buddhist": 1436,
+          "roman_catholic": 674,
+          "other_christian": 175,
+          "other": 10
+        },
+        "total_value": 13436,
+        "pct_values": {
+          "islam": 0.6623,
+          "hindu": 0.1669,
+          "buddhist": 0.1069,
+          "roman_catholic": 0.0502,
+          "other_christian": 0.013,
+          "other": 0.0007
+        }
+      },
+      {
+        "region_id": "LK-1103075",
+        "region_name": "Grandpass South",
+        "current_ids": [
+          "LK-1103075"
+        ],
+        "values": {
+          "islam": 7926,
+          "buddhist": 5585,
+          "hindu": 2581,
+          "roman_catholic": 1121,
+          "other_christian": 300,
+          "other": 75
+        },
+        "total_value": 17588,
+        "pct_values": {
+          "islam": 0.4506,
+          "buddhist": 0.3175,
+          "hindu": 0.1467,
+          "roman_catholic": 0.0637,
+          "other_christian": 0.0171,
+          "other": 0.0043
+        }
+      },
+      {
+        "region_id": "LK-1103080",
+        "region_name": "Grandpass North",
+        "current_ids": [
+          "LK-1103080"
+        ],
+        "values": {
+          "islam": 5566,
+          "buddhist": 1382,
+          "hindu": 1134,
+          "roman_catholic": 710,
+          "other_christian": 111,
+          "other": 1
+        },
+        "total_value": 8904,
+        "pct_values": {
+          "islam": 0.6251,
+          "buddhist": 0.1552,
+          "hindu": 0.1274,
+          "roman_catholic": 0.0797,
+          "other_christian": 0.0125,
+          "other": 0.0001
+        }
+      },
+      {
+        "region_id": "LK-1103085",
+        "region_name": "Nawagampura",
+        "current_ids": [
+          "LK-1103085"
+        ],
+        "values": {
+          "hindu": 2890,
+          "buddhist": 1543,
+          "islam": 1494,
+          "roman_catholic": 612,
+          "other_christian": 282,
+          "other": 0
+        },
+        "total_value": 6821,
+        "pct_values": {
+          "hindu": 0.4237,
+          "buddhist": 0.2262,
+          "islam": 0.219,
+          "roman_catholic": 0.0897,
+          "other_christian": 0.0413,
+          "other": 0.0
+        }
+      },
+      {
+        "region_id": "LK-1103090",
+        "region_name": "Maligawatta East",
+        "current_ids": [
+          "LK-1103090"
+        ],
+        "values": {
+          "islam": 8512,
+          "buddhist": 2212,
+          "hindu": 488,
+          "roman_catholic": 241,
+          "other_christian": 70,
+          "other": 1
+        },
+        "total_value": 11524,
+        "pct_values": {
+          "islam": 0.7386,
+          "buddhist": 0.1919,
+          "hindu": 0.0423,
+          "roman_catholic": 0.0209,
+          "other_christian": 0.0061,
+          "other": 0.0001
+        }
+      },
+      {
+        "region_id": "LK-1103095",
+        "region_name": "Khettarama",
+        "current_ids": [
+          "LK-1103095"
+        ],
+        "values": {
+          "islam": 11479,
+          "buddhist": 888,
+          "hindu": 849,
+          "roman_catholic": 339,
+          "other_christian": 124,
+          "other": 4
+        },
+        "total_value": 13683,
+        "pct_values": {
+          "islam": 0.8389,
+          "buddhist": 0.0649,
+          "hindu": 0.062,
+          "roman_catholic": 0.0248,
+          "other_christian": 0.0091,
+          "other": 0.0003
+        }
+      },
+      {
+        "region_id": "LK-1103100",
+        "region_name": "Aluthkade East",
+        "current_ids": [
+          "LK-1103100"
+        ],
+        "values": {
+          "islam": 8432,
+          "hindu": 843,
+          "buddhist": 430,
+          "roman_catholic": 226,
+          "other_christian": 121,
+          "other": 1
+        },
+        "total_value": 10053,
+        "pct_values": {
+          "islam": 0.8388,
+          "hindu": 0.0839,
+          "buddhist": 0.0428,
+          "roman_catholic": 0.0225,
+          "other_christian": 0.012,
+          "other": 0.0001
+        }
+      },
+      {
+        "region_id": "LK-1103105",
+        "region_name": "Aluthkade West",
+        "current_ids": [
+          "LK-1103105"
+        ],
+        "values": {
+          "islam": 6121,
+          "hindu": 567,
+          "buddhist": 535,
+          "roman_catholic": 173,
+          "other_christian": 120,
+          "other": 1
+        },
+        "total_value": 7517,
+        "pct_values": {
+          "islam": 0.8143,
+          "hindu": 0.0754,
+          "buddhist": 0.0712,
+          "roman_catholic": 0.023,
+          "other_christian": 0.016,
+          "other": 0.0001
+        }
+      },
+      {
+        "region_id": "LK-1103110",
+        "region_name": "Kochchikade South",
+        "current_ids": [
+          "LK-1103110"
+        ],
+        "values": {
+          "islam": 4670,
+          "hindu": 1499,
+          "buddhist": 1158,
+          "roman_catholic": 311,
+          "other_christian": 106,
+          "other": 2
+        },
+        "total_value": 7746,
+        "pct_values": {
+          "islam": 0.6029,
+          "hindu": 0.1935,
+          "buddhist": 0.1495,
+          "roman_catholic": 0.0401,
+          "other_christian": 0.0137,
+          "other": 0.0003
+        }
+      },
+      {
+        "region_id": "LK-1103115",
+        "region_name": "Pettah",
+        "current_ids": [
+          "LK-1103115"
+        ],
+        "values": {
+          "hindu": 1137,
+          "buddhist": 513,
+          "islam": 217,
+          "roman_catholic": 39,
+          "other_christian": 18,
+          "other": 0
+        },
+        "total_value": 1924,
+        "pct_values": {
+          "hindu": 0.591,
+          "buddhist": 0.2666,
+          "islam": 0.1128,
+          "roman_catholic": 0.0203,
+          "other_christian": 0.0094,
+          "other": 0.0
+        }
+      },
+      {
+        "region_id": "LK-1103120",
+        "region_name": "Fort",
+        "current_ids": [
+          "LK-1103120"
+        ],
+        "values": {
+          "buddhist": 1343,
+          "hindu": 51,
+          "roman_catholic": 32,
+          "islam": 31,
+          "other_christian": 10,
+          "other": 6
+        },
+        "total_value": 1473,
+        "pct_values": {
+          "buddhist": 0.9117,
+          "hindu": 0.0346,
+          "roman_catholic": 0.0217,
+          "islam": 0.021,
+          "other_christian": 0.0068,
+          "other": 0.0041
+        }
+      },
+      {
+        "region_id": "LK-1103125",
+        "region_name": "Galle Face",
+        "current_ids": [
+          "LK-1103125"
+        ],
+        "values": {
+          "islam": 2688,
+          "buddhist": 422,
+          "hindu": 323,
+          "roman_catholic": 228,
+          "other_christian": 125,
+          "other": 3
+        },
+        "total_value": 3789,
+        "pct_values": {
+          "islam": 0.7094,
+          "buddhist": 0.1114,
+          "hindu": 0.0852,
+          "roman_catholic": 0.0602,
+          "other_christian": 0.033,
+          "other": 0.0008
+        }
+      },
+      {
+        "region_id": "LK-1103130",
+        "region_name": "Slave Island",
+        "current_ids": [
+          "LK-1103130"
+        ],
+        "values": {
+          "islam": 2644,
+          "buddhist": 545,
+          "hindu": 399,
+          "roman_catholic": 171,
+          "other_christian": 36,
+          "other": 0
+        },
+        "total_value": 3795,
+        "pct_values": {
+          "islam": 0.6967,
+          "buddhist": 0.1436,
+          "hindu": 0.1051,
+          "roman_catholic": 0.0451,
+          "other_christian": 0.0095,
+          "other": 0.0
+        }
+      },
+      {
+        "region_id": "LK-1103135",
+        "region_name": "Hunupitiya",
+        "current_ids": [
+          "LK-1103135"
+        ],
+        "values": {
+          "islam": 3569,
+          "buddhist": 1966,
+          "hindu": 903,
+          "roman_catholic": 295,
+          "other_christian": 147,
+          "other": 3
+        },
+        "total_value": 6883,
+        "pct_values": {
+          "islam": 0.5185,
+          "buddhist": 0.2856,
+          "hindu": 0.1312,
+          "roman_catholic": 0.0429,
+          "other_christian": 0.0214,
+          "other": 0.0004
+        }
+      },
+      {
+        "region_id": "LK-1103140",
+        "region_name": "Suduwella",
+        "current_ids": [
+          "LK-1103140"
+        ],
+        "values": {
+          "islam": 1882,
+          "buddhist": 1195,
+          "hindu": 432,
+          "roman_catholic": 332,
+          "other_christian": 71,
+          "other": 3
+        },
+        "total_value": 3915,
+        "pct_values": {
+          "islam": 0.4807,
+          "buddhist": 0.3052,
+          "hindu": 0.1103,
+          "roman_catholic": 0.0848,
+          "other_christian": 0.0181,
+          "other": 0.0008
+        }
+      },
+      {
+        "region_id": "LK-1103145",
+        "region_name": "Keselwatta",
+        "current_ids": [
+          "LK-1103145"
+        ],
+        "values": {
+          "islam": 3760,
+          "buddhist": 2301,
+          "hindu": 780,
+          "roman_catholic": 279,
+          "other_christian": 101,
+          "other": 0
+        },
+        "total_value": 7221,
+        "pct_values": {
+          "islam": 0.5207,
+          "buddhist": 0.3187,
+          "hindu": 0.108,
+          "roman_catholic": 0.0386,
+          "other_christian": 0.014,
+          "other": 0.0
+        }
+      },
+      {
+        "region_id": "LK-1103150",
+        "region_name": "Panchikawatta",
+        "current_ids": [
+          "LK-1103150"
+        ],
+        "values": {
+          "islam": 5265,
+          "buddhist": 1730,
+          "hindu": 924,
+          "roman_catholic": 329,
+          "other_christian": 211,
+          "other": 8
+        },
+        "total_value": 8467,
+        "pct_values": {
+          "islam": 0.6218,
+          "buddhist": 0.2043,
+          "hindu": 0.1091,
+          "roman_catholic": 0.0389,
+          "other_christian": 0.0249,
+          "other": 0.0009
+        }
+      },
+      {
+        "region_id": "LK-1103155",
+        "region_name": "Maligawatta West",
+        "current_ids": [
+          "LK-1103155"
+        ],
+        "values": {
+          "islam": 4504,
+          "buddhist": 2254,
+          "hindu": 1235,
+          "roman_catholic": 705,
+          "other_christian": 259,
+          "other": 11
+        },
+        "total_value": 8968,
+        "pct_values": {
+          "islam": 0.5022,
+          "buddhist": 0.2513,
+          "hindu": 0.1377,
+          "roman_catholic": 0.0786,
+          "other_christian": 0.0289,
+          "other": 0.0012
+        }
+      },
+      {
+        "region_id": "LK-1103160",
+        "region_name": "Maligakanda",
+        "current_ids": [
+          "LK-1103160"
+        ],
+        "values": {
+          "islam": 6106,
+          "buddhist": 2002,
+          "hindu": 264,
+          "roman_catholic": 107,
+          "other_christian": 44,
+          "other": 3
+        },
+        "total_value": 8526,
+        "pct_values": {
+          "islam": 0.7162,
+          "buddhist": 0.2348,
+          "hindu": 0.031,
+          "roman_catholic": 0.0125,
+          "other_christian": 0.0052,
+          "other": 0.0004
+        }
+      },
+      {
+        "region_id": "LK-1103165",
+        "region_name": "Maradana",
+        "current_ids": [
+          "LK-1103165"
+        ],
+        "values": {
+          "islam": 2168,
+          "buddhist": 1649,
+          "hindu": 491,
+          "roman_catholic": 166,
+          "other_christian": 105,
+          "other": 12
+        },
+        "total_value": 4591,
+        "pct_values": {
+          "islam": 0.4722,
+          "buddhist": 0.3592,
+          "hindu": 0.1069,
+          "roman_catholic": 0.0362,
+          "other_christian": 0.0229,
+          "other": 0.0026
+        }
+      },
+      {
+        "region_id": "LK-1103170",
+        "region_name": "Ibbanwala",
+        "current_ids": [
+          "LK-1103170"
+        ],
+        "values": {
+          "buddhist": 1628,
+          "islam": 371,
+          "hindu": 264,
+          "roman_catholic": 180,
+          "other_christian": 119,
+          "other": 21
+        },
+        "total_value": 2583,
+        "pct_values": {
+          "buddhist": 0.6303,
+          "islam": 0.1436,
+          "hindu": 0.1022,
+          "roman_catholic": 0.0697,
+          "other_christian": 0.0461,
+          "other": 0.0081
+        }
+      },
+      {
+        "region_id": "LK-1103175",
+        "region_name": "Wekanda",
+        "current_ids": [
+          "LK-1103175"
+        ],
+        "values": {
+          "islam": 4440,
+          "buddhist": 1317,
+          "hindu": 609,
+          "roman_catholic": 311,
+          "other_christian": 161,
+          "other": 1
+        },
+        "total_value": 6839,
+        "pct_values": {
+          "islam": 0.6492,
+          "buddhist": 0.1926,
+          "hindu": 0.089,
+          "roman_catholic": 0.0455,
+          "other_christian": 0.0235,
+          "other": 0.0001
+        }
+      }
+    ],
+    "aggr_data": {
+      "values": {
+        "islam": 135000,
+        "hindu": 73374,
+        "buddhist": 61448,
+        "roman_catholic": 42435,
+        "other_christian": 10715,
+        "other": 251
+      },
+      "total_value": 323223,
+      "pct_values": {
+        "islam": 0.4177,
+        "hindu": 0.227,
+        "buddhist": 0.1901,
+        "roman_catholic": 0.1313,
+        "other_christian": 0.0332,
+        "other": 0.0008
+      }
+    },
+    "source": "Census of Population and Housing 2012",
+    "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
 }
