@@ -189,7 +189,7 @@ class MapUtils:
                 "black" if MapUtils._is_light_color(bg_color) else "white"
             )
             ax.annotate(
-                row["name"],
+                row.get("region_name", row["id"]),
                 xy=(centroid.x, centroid.y),
                 ha="center",
                 va="center",
@@ -234,9 +234,21 @@ class MapUtils:
         h = how.get_hash(where, what, when)
 
         data_list = result_data["data_list"]
-        region_ids = [d["region_id"] for d in data_list]
+
+        region_to_current_ids = {}
+        for d in data_list:
+            region_id = d["region_id"]
+            current_ids = d.get("current_ids")
+            if current_ids is None:
+                current_ids = [region_id]
+            region_to_current_ids[region_id] = current_ids
+
+        region_ids = list(region_to_current_ids.keys())
         n_regions = len(region_ids)
-        gdf_region = GeoDataUtils.get_geopandas_dataframe(region_ids)
+
+        gdf_region = GeoDataUtils.get_geopandas_dataframe(
+            region_to_current_ids
+        )
 
         gdf_region = gdf_region.copy()
         region_color_map, value_to_color = MapUtils.get_colors_for_data_list(
@@ -274,9 +286,7 @@ class MapUtils:
                 color="gray",
             )
 
-        image_dir = os.path.join(
-            tempfile.gettempdir(), "lanka_data", "images"
-        )
+        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")

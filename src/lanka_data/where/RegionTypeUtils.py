@@ -5,6 +5,9 @@ class RegionTypeUtils:
     @staticmethod
     @cache
     def get_region_type(region_id: str) -> str:
+        if "-pre" in region_id:
+            region_id = region_id.split("-pre")[0]
+
         region_type = None
         id_len = len(region_id)
         if region_id.startswith("LK"):
