@@ -31,7 +31,7 @@ class OrderColorUtils:
             if key not in key_to_base_hex:
                 key_to_base_hex[key] = (
                     ColorUtils.COLOR_IDX.get(key)
-                    or ColorUtils.get_random_color()
+                    or ColorUtils.get_random_color(key)
                 )
                 value_to_color[key] = ColorUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0

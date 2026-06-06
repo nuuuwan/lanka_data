@@ -1,6 +1,4 @@
-import random
-
-random.seed(0)
+import hashlib
 
 
 class COLOR:
@@ -50,8 +48,9 @@ class ColorUtils:
     }
 
     @staticmethod
-    def get_random_color():
-        return "#{:06x}".format(random.randint(0, 0xFFFFFF))
+    def get_random_color(label: str) -> str:
+        digest = hashlib.md5(str(label).encode()).hexdigest()
+        return f"#{digest[:6]}"
 
     @staticmethod
     def _color_with_opacity(hex_color, pct):
