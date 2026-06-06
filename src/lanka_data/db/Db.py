@@ -56,6 +56,12 @@ class Db:
         what_cmd = "Basic" if n_tokens < 2 else tokens[1]
         when_cmd = "2024" if n_tokens < 3 else tokens[2]
         how_cmd = "JSON" if n_tokens < 4 else tokens[3]
+
+        if when_cmd == "2012":
+            if "-pre2019" not in where_cmd:
+                tokens = where_cmd.split(":")
+                where_cmd = tokens[0] + "-pre2019:" + ":".join(tokens[1:])
+
         log.debug(f"{where_cmd=}, {what_cmd=}, {when_cmd=}, {how_cmd=}")
         return where_cmd, what_cmd, when_cmd, how_cmd
 
