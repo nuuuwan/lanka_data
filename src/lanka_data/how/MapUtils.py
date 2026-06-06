@@ -284,7 +284,7 @@ class MapUtils:
             return
 
         legend_ax.set_visible(False)
-        value_and_color = sorted(value_to_color.items())
+        value_and_color = sorted(value_to_color.items(), reverse=True)
         if len(value_and_color) > MapUtils.MAX_LEGEND_ITEMS:
             n_actual = len(value_and_color)
             n_required = MapUtils.MAX_LEGEND_ITEMS - 1
