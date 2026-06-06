@@ -213,41 +213,51 @@ class MapUtils:
 
     @staticmethod
     def _largest_polygon(geom):
-        """Return the largest sub-polygon from a (Multi)Polygon."""
+        """Return the largest simple Polygon extracted from any geometry type."""
         from shapely.geometry import MultiPolygon, Polygon
 
-        if isinstance(geom, Polygon):
+        def _collect_polygons(g):
+            if isinstance(g, Polygon):
+                return [g]
+            if hasattr(g, "geoms"):
+                polys = []
+                for sub in g.geoms:
+                    polys.extend(_collect_polygons(sub))
+                return polys
+            return []
+
+        polys = _collect_polygons(geom)
+        if not polys:
             return geom
-        if isinstance(geom, MultiPolygon):
-            return max(geom.geoms, key=lambda g: g.area)
-        # fallback for GeometryCollection etc.
-        polys = [g for g in geom.geoms if isinstance(g, Polygon)]
-        return max(polys, key=lambda g: g.area) if polys else geom
+        return max(polys, key=lambda g: g.area)
 
     @staticmethod
     def _best_label_fit(geom):
-        """Return (cx, cy, rect_w, rect_h, angle_deg) for the largest rectangle
-        that fits inside geom at any angle (-90..+90), centred at the representative point.
+        """Return (cx, cy, rect_w, rect_h) — largest axis-aligned rectangle that
+        fits inside the largest polygon, centred at the polygon's centroid
+        (falling back to representative_point if centroid is outside).
+        Uses 4 axis-aligned rays to measure available space in each direction.
         """
-        import math
-
         from shapely.geometry import LineString, Point
 
-        geom = MapUtils._largest_polygon(geom)
-        pt = geom.representative_point()
-        cx, cy = pt.x, pt.y
-        center = Point(cx, cy)
-        span = max(
-            geom.bounds[2] - geom.bounds[0], geom.bounds[3] - geom.bounds[1]
-        )
-        boundary = geom.boundary
+        poly = MapUtils._largest_polygon(geom)
 
-        def ray(deg):
-            rad = math.radians(deg)
-            dx, dy = math.cos(rad), math.sin(rad)
-            line = LineString(
-                [(cx, cy), (cx + dx * span * 2, cy + dy * span * 2)]
-            )
+        # Prefer centroid; fall back to representative_point if outside
+        centroid = poly.centroid
+        center_pt = (
+            centroid
+            if poly.contains(centroid)
+            else poly.representative_point()
+        )
+        cx, cy = center_pt.x, center_pt.y
+        center = Point(cx, cy)
+
+        b = poly.bounds
+        span = max(b[2] - b[0], b[3] - b[1]) * 2
+        boundary = poly.boundary
+
+        def ray_dist(dx, dy):
+            line = LineString([(cx, cy), (cx + dx * span, cy + dy * span)])
             inter = boundary.intersection(line)
             if inter.is_empty:
                 return span
@@ -255,18 +265,9 @@ class MapUtils:
             dists = [center.distance(p) for p in pts]
             return min(dists) if dists else span
 
-        best_area, best = 0.0, (span, span, 0)
-        # Angles -90..+90 (15° steps) keep text right-way-up
-        for angle_deg in range(-90, 91, 15):
-            half_w = min(ray(angle_deg), ray(angle_deg + 180))
-            half_h = min(ray(angle_deg + 90), ray(angle_deg + 270))
-            area = half_w * half_h
-            if area > best_area:
-                best_area = area
-                best = (2 * half_w, 2 * half_h, angle_deg)
-
-        rect_w, rect_h, angle_deg = best
-        return cx, cy, rect_w, rect_h, angle_deg
+        half_w = min(ray_dist(-1, 0), ray_dist(1, 0))
+        half_h = min(ray_dist(0, -1), ray_dist(0, 1))
+        return cx, cy, 2 * half_w, 2 * half_h
 
     @staticmethod
     def _fit_fontsize(text, rect_w, rect_h, ax, fig):
@@ -276,11 +277,9 @@ class MapUtils:
         x_min, x_max = ax.get_xlim()
         y_min, y_max = ax.get_ylim()
 
-        # Express rect as fractions of the total map extent
         frac_w = rect_w / (x_max - x_min)
         frac_h = rect_h / (y_max - y_min)
 
-        # Convert fractions to available points (72 pts per inch)
         avail_w_pts = frac_w * fig.get_figwidth() * 72
         avail_h_pts = frac_h * fig.get_figheight() * 72
 
@@ -291,17 +290,22 @@ class MapUtils:
 
     @staticmethod
     def _draw_labels(gdf_region, ax):
+        import matplotlib.patches as mpatches
+
         fig = ax.get_figure()
         for _, row in gdf_region.iterrows():
-            cx, cy, rect_w, rect_h, angle_deg = MapUtils._best_label_fit(
-                row.geometry
+            poly = MapUtils._largest_polygon(row.geometry)
+            log.debug(
+                f"{row.get('name', row['id'])}: geom_type={row.geometry.geom_type} "
+                f"largest_poly_area={poly.area:.6f}"
             )
+            cx, cy, rect_w, rect_h = MapUtils._best_label_fit(row.geometry)
             bg_color = row.get("color", "black")
             text_color = (
                 "black" if MapUtils._is_light_color(bg_color) else "white"
             )
             label = row.get("name", row["id"])
-            # rect_w is along angle_deg; try both orientations and pick the bigger font
+            # Try 0° and 90°, pick whichever gives the bigger font
             size_normal = MapUtils._fit_fontsize(
                 label, rect_w, rect_h, ax, fig
             )
@@ -309,11 +313,31 @@ class MapUtils:
                 label, rect_h, rect_w, ax, fig
             )
             if size_rotated > size_normal:
-                fontsize = size_rotated
-                rotation = (angle_deg + 90) % 180
+                fontsize, rotation, draw_w, draw_h = (
+                    size_rotated,
+                    90,
+                    rect_w,
+                    rect_h,
+                )
             else:
-                fontsize = size_normal
-                rotation = angle_deg
+                fontsize, rotation, draw_w, draw_h = (
+                    size_normal,
+                    0,
+                    rect_w,
+                    rect_h,
+                )
+
+            # Debug: draw axis-aligned inscribed rectangle
+            rect_patch = mpatches.Rectangle(
+                (cx - draw_w / 2, cy - draw_h / 2),
+                draw_w,
+                draw_h,
+                linewidth=0.8,
+                edgecolor="black",
+                facecolor="none",
+            )
+            ax.add_patch(rect_patch)
+
             ax.annotate(
                 label,
                 xy=(cx, cy),
