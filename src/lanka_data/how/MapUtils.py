@@ -152,7 +152,10 @@ class MapUtils:
                 value_to_color[key] = MapUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0
                 )
-            pct = (data.get("pct_values") or {}).get(key, 0.5)
+            pct_dict = (
+                data.get("pct_values") or data.get("pct_votes_by_party") or {}
+            )
+            pct = pct_dict.get(key, 0.5)
             all_pcts.append(pct)
             raw_pcts[data["region_id"]] = (key, pct)
 
