@@ -1,12 +1,11 @@
 import colorsys
-import hashlib
 import os
 import random
 import tempfile
 
 import matplotlib.pyplot as plt
 
-from lanka_data.how.GeoUtils import GeoUtils
+from lanka_data.how.GeoDataUtils import GeoDataUtils
 from utils_future import Log
 
 log = Log("MapUtils")
@@ -222,7 +221,10 @@ class MapUtils:
 
         for value, color in value_and_color:
             ax.scatter(
-                [], [], color=color, label=MapUtils._format_legend_label(value)
+                [],
+                [],
+                color=color,
+                label=MapUtils._format_legend_label(value),
             )
         ax.legend(fontsize=6)
 
@@ -234,7 +236,7 @@ class MapUtils:
         data_list = result_data["data_list"]
         region_ids = [d["region_id"] for d in data_list]
         n_regions = len(region_ids)
-        gdf_region = GeoUtils.get_geopandas_dataframe(region_ids)
+        gdf_region = GeoDataUtils.get_geopandas_dataframe(region_ids)
 
         gdf_region = gdf_region.copy()
         region_color_map, value_to_color = MapUtils.get_colors_for_data_list(
@@ -272,7 +274,9 @@ class MapUtils:
                 color="gray",
             )
 
-        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
+        image_dir = os.path.join(
+            tempfile.gettempdir(), "lanka_data", "images"
+        )
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")

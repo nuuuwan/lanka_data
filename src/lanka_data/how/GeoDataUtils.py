@@ -4,7 +4,7 @@ from lanka_data.where.RegionTypeUtils import RegionTypeUtils
 from utils_future import WWW
 
 
-class GeoUtils:
+class GeoDataUtils:
     @staticmethod
     def get_geopandas_dataframe(region_ids):
         region_type = RegionTypeUtils.get_region_type(region_ids[0])

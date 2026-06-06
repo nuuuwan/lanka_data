@@ -1,5 +1,3 @@
-
-
 class Result:
 
     def __init__(self, where, what, when, how):
