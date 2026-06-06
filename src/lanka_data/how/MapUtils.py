@@ -233,16 +233,23 @@ class MapUtils:
 
     @staticmethod
     def _best_label_fit(geom):
-        """Return (cx, cy, rect_w, rect_h) — largest axis-aligned rectangle that
-        fits inside the largest polygon, centred at the polygon's centroid
-        (falling back to representative_point if centroid is outside).
-        Uses 4 axis-aligned rays to measure available space in each direction.
+        """Search over rotation angles (0°–175° in 5° steps) to find the optimal
+        rotated rectangle for label placement inside the largest polygon.
+
+        For each candidate angle the polygon is rotated so that angle aligns with
+        the x-axis and 4 axis-aligned rays are cast from the centroid to measure
+        the inscribed rectangle.  The rectangle is then scored by the area of its
+        intersection with the (rotated) polygon — this acts as a penalty against
+        rectangles that overflow non-convex boundaries.
+
+        Returns (cx, cy, rect_w, rect_h, angle_deg) where angle_deg is the angle
+        of the rectangle's long (x) axis in the original coordinate frame.
         """
-        from shapely.geometry import LineString, Point
+        from shapely.affinity import rotate as shapely_rotate
+        from shapely.geometry import LineString, Point, box
 
         poly = MapUtils._largest_polygon(geom)
 
-        # Prefer centroid; fall back to representative_point if outside
         centroid = poly.centroid
         center_pt = (
             centroid
@@ -250,24 +257,45 @@ class MapUtils:
             else poly.representative_point()
         )
         cx, cy = center_pt.x, center_pt.y
-        center = Point(cx, cy)
 
         b = poly.bounds
         span = max(b[2] - b[0], b[3] - b[1]) * 2
-        boundary = poly.boundary
 
-        def ray_dist(dx, dy):
-            line = LineString([(cx, cy), (cx + dx * span, cy + dy * span)])
-            inter = boundary.intersection(line)
-            if inter.is_empty:
-                return span
-            pts = list(inter.geoms) if hasattr(inter, "geoms") else [inter]
-            dists = [center.distance(p) for p in pts]
-            return min(dists) if dists else span
+        best_score = -1.0
+        best_result = (cx, cy, 0.0, 0.0, 0.0)
 
-        half_w = min(ray_dist(-1, 0), ray_dist(1, 0))
-        half_h = min(ray_dist(0, -1), ray_dist(0, 1))
-        return cx, cy, 2 * half_w, 2 * half_h
+        N_ANGLES = 36  # 5° steps across 0°–175°
+
+        for i in range(N_ANGLES):
+            angle_deg = i * 180.0 / N_ANGLES
+
+            # Rotate polygon so this angle aligns with the x-axis
+            rpoly = shapely_rotate(poly, -angle_deg, origin=(cx, cy))
+            rboundary = rpoly.boundary
+            cp = Point(cx, cy)
+
+            def ray(ddx, ddy, _rb=rboundary, _cp=cp):
+                ln = LineString([(cx, cy), (cx + ddx * span, cy + ddy * span)])
+                inter = _rb.intersection(ln)
+                if inter.is_empty:
+                    return span
+                pts = list(inter.geoms) if hasattr(inter, "geoms") else [inter]
+                dists = [_cp.distance(p) for p in pts]
+                return min(dists) if dists else span
+
+            hw = min(ray(-1, 0), ray(1, 0))
+            hh = min(ray(0, -1), ray(0, 1))
+            rw, rh = 2 * hw, 2 * hh
+
+            # Penalised score: area of the rectangle that lies inside the polygon
+            rect_geom = box(cx - hw, cy - hh, cx + hw, cy + hh)
+            score = rect_geom.intersection(rpoly).area
+
+            if score > best_score:
+                best_score = score
+                best_result = (cx, cy, rw, rh, angle_deg)
+
+        return best_result
 
     @staticmethod
     def _fit_fontsize(text, rect_w, rect_h, ax, fig):
@@ -292,22 +320,28 @@ class MapUtils:
     def _draw_labels(gdf_region, ax):
         fig = ax.get_figure()
         for _, row in gdf_region.iterrows():
-            cx, cy, rect_w, rect_h = MapUtils._best_label_fit(row.geometry)
+            cx, cy, rect_w, rect_h, angle_deg = MapUtils._best_label_fit(
+                row.geometry
+            )
             bg_color = row.get("color", "black")
             text_color = (
                 "black" if MapUtils._is_light_color(bg_color) else "white"
             )
             label = row.get("name", row["id"])
-            size_normal = MapUtils._fit_fontsize(
-                label, rect_w, rect_h, ax, fig
-            )
-            size_rotated = MapUtils._fit_fontsize(
-                label, rect_h, rect_w, ax, fig
-            )
-            if size_rotated > size_normal:
-                fontsize, rotation = size_rotated, 90
+
+            # Orient text along the long axis of the rotated rectangle
+            if rect_w >= rect_h:
+                text_w, text_h = rect_w, rect_h
+                text_angle = angle_deg
             else:
-                fontsize, rotation = size_normal, 0
+                text_w, text_h = rect_h, rect_w
+                text_angle = angle_deg + 90.0
+
+            # Normalise so text is never upside-down (keep in [-90°, 90°])
+            while text_angle > 90.0:
+                text_angle -= 180.0
+
+            fontsize = MapUtils._fit_fontsize(label, text_w, text_h, ax, fig)
             ax.annotate(
                 label,
                 xy=(cx, cy),
@@ -315,7 +349,7 @@ class MapUtils:
                 va="center",
                 fontsize=fontsize,
                 color=text_color,
-                rotation=rotation,
+                rotation=text_angle,
             )
 
     @staticmethod
