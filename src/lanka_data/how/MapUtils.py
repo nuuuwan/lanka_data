@@ -74,7 +74,7 @@ class MapUtils:
         r = int(hex_color[0:2], 16) / 255
         g = int(hex_color[2:4], 16) / 255
         b = int(hex_color[4:6], 16) / 255
-        MIN_ALPHA = 0.1
+        MIN_ALPHA = 0.25
         alpha = MIN_ALPHA + pct * (1.0 - MIN_ALPHA)
         return (r, g, b, alpha)
 
@@ -260,69 +260,136 @@ class MapUtils:
         return best_pt
 
     @staticmethod
-    def _best_label_fit(geom):
-        """Search over rotation angles (0°–175° in 5° steps) to find the optimal
-        rotated rectangle for label placement inside the largest polygon.
+    def _interior_candidates(poly, n_cells=6):
+        """Return a list of (x, y) tuples sampled from a grid, filtered to
+        points that lie strictly inside *poly*."""
+        from shapely.geometry import Point
 
-        The ray-casting origin is the pole of inaccessibility — the interior point
-        farthest from the boundary — so non-convex regions like Ampara get a large
-        rectangle rather than one squeezed against a nearby edge.
+        minx, miny, maxx, maxy = poly.bounds
+        pts = []
+        for gi in range(n_cells):
+            for gj in range(n_cells):
+                x = minx + (maxx - minx) * (gi + 0.5) / n_cells
+                y = miny + (maxy - miny) * (gj + 0.5) / n_cells
+                if poly.contains(Point(x, y)):
+                    pts.append((x, y))
+        if not pts:
+            rp = poly.representative_point()
+            pts = [(rp.x, rp.y)]
+        return pts
 
-        For each candidate angle the polygon is rotated so that angle aligns with
-        the x-axis and 4 axis-aligned rays are cast from that origin to measure
-        the inscribed rectangle.  The rectangle is scored by the area of its
-        intersection with the (rotated) polygon — penalising angles where the
-        rectangle overflows non-convex voids.
-
-        Returns (cx, cy, rect_w, rect_h, angle_deg) where angle_deg is the angle
-        of the rectangle's long (x) axis in the original coordinate frame.
-        """
-        from shapely.affinity import rotate as shapely_rotate
+    @staticmethod
+    def _score_rect_at(rpoly, rboundary, px, py, span):
+        """Cast 4 rays from (px, py) inside rotated polygon *rpoly* and return
+        (hw, hh, score) where score is the intersection area of the inscribed
+        rectangle with *rpoly*."""
         from shapely.geometry import LineString, Point, box
 
+        cp = Point(px, py)
+
+        def ray(ddx, ddy):
+            ln = LineString([(px, py), (px + ddx * span, py + ddy * span)])
+            inter = rboundary.intersection(ln)
+            if inter.is_empty:
+                return span
+            pts = list(inter.geoms) if hasattr(inter, "geoms") else [inter]
+            dists = [cp.distance(p) for p in pts]
+            return min(dists) if dists else span
+
+        hw = min(ray(-1, 0), ray(1, 0))
+        hh = min(ray(0, -1), ray(0, 1))
+        rect_geom = box(px - hw, py - hh, px + hw, py + hh)
+        score = rect_geom.intersection(rpoly).area
+        return hw, hh, score
+
+    @staticmethod
+    def _best_label_fit(geom):
+        """Two-stage search for the optimal rotated label rectangle.
+
+        Stage 1 — coarse (fast): test all 36 angles using only the pole of
+        inaccessibility as the anchor point.
+
+        Stage 2 — fine: for the top-5 angles from stage 1, rotate the polygon
+        once per angle around a shared fixed origin, then evaluate a 6×6 grid
+        of interior candidate points.  Each candidate is rotated by the same
+        transform so the rotated polygon can be reused across all candidates.
+
+        This finds the optimal (angle, position) pair without paying for a full
+        36 × N_pts rotation budget.
+
+        Returns (cx, cy, rect_w, rect_h, angle_deg) in original coordinates.
+        """
+        import math
+
+        from shapely.affinity import rotate as shapely_rotate
+        from shapely.geometry import Point
+
         poly = MapUtils._largest_polygon(geom)
-
-        center_pt = MapUtils._pole_of_inaccessibility(poly)
-        cx, cy = center_pt.x, center_pt.y
-
         b = poly.bounds
         span = max(b[2] - b[0], b[3] - b[1]) * 2
 
-        best_score = -1.0
-        best_result = (cx, cy, 0.0, 0.0, 0.0)
+        # Fixed origin for shared rotations (bounding-box centre)
+        ox = (b[0] + b[2]) / 2.0
+        oy = (b[1] + b[3]) / 2.0
 
-        N_ANGLES = 36  # 5° steps across 0°–175°
+        # --- Stage 1: coarse scan from the pole ---
+        pole = MapUtils._pole_of_inaccessibility(poly)
+        px0, py0 = pole.x, pole.y
+
+        N_ANGLES = 36  # 5° steps
+        N_TOP = 5  # angles to refine in stage 2
+        N_GRID = 6  # 6×6 interior grid for stage 2
+
+        angle_results = []  # (score, angle_deg, cx, cy, rw, rh)
 
         for i in range(N_ANGLES):
             angle_deg = i * 180.0 / N_ANGLES
+            rpoly = shapely_rotate(poly, -angle_deg, origin=(px0, py0))
+            hw, hh, score = MapUtils._score_rect_at(
+                rpoly, rpoly.boundary, px0, py0, span
+            )
+            angle_results.append((score, angle_deg, px0, py0, 2 * hw, 2 * hh))
 
-            # Rotate polygon so this angle aligns with the x-axis
-            rpoly = shapely_rotate(poly, -angle_deg, origin=(cx, cy))
+        angle_results.sort(reverse=True)
+        best_score, best_angle, best_cx, best_cy, best_rw, best_rh = (
+            angle_results[0]
+        )
+
+        # --- Stage 2: fine search for top-N angles ---
+        candidates = MapUtils._interior_candidates(poly, n_cells=N_GRID)
+
+        for _, angle_deg, _, _, _, _ in angle_results[:N_TOP]:
+            theta = math.radians(-angle_deg)
+            cos_t = math.cos(theta)
+            sin_t = math.sin(theta)
+
+            # One rotation of the polygon for this angle
+            rpoly = shapely_rotate(poly, -angle_deg, origin=(ox, oy))
             rboundary = rpoly.boundary
-            cp = Point(cx, cy)
 
-            def ray(ddx, ddy, _rb=rboundary, _cp=cp):
-                ln = LineString([(cx, cy), (cx + ddx * span, cy + ddy * span)])
-                inter = _rb.intersection(ln)
-                if inter.is_empty:
-                    return span
-                pts = list(inter.geoms) if hasattr(inter, "geoms") else [inter]
-                dists = [_cp.distance(p) for p in pts]
-                return min(dists) if dists else span
+            for px, py in candidates:
+                # Rotate candidate point by the same transform
+                dx, dy = px - ox, py - oy
+                rpx = ox + dx * cos_t - dy * sin_t
+                rpy = oy + dx * sin_t + dy * cos_t
 
-            hw = min(ray(-1, 0), ray(1, 0))
-            hh = min(ray(0, -1), ray(0, 1))
-            rw, rh = 2 * hw, 2 * hh
+                if not rpoly.contains(Point(rpx, rpy)):
+                    continue
 
-            # Penalised score: area of the rectangle that lies inside the polygon
-            rect_geom = box(cx - hw, cy - hh, cx + hw, cy + hh)
-            score = rect_geom.intersection(rpoly).area
+                hw, hh, score = MapUtils._score_rect_at(
+                    rpoly, rboundary, rpx, rpy, span
+                )
 
-            if score > best_score:
-                best_score = score
-                best_result = (cx, cy, rw, rh, angle_deg)
+                if score > best_score:
+                    best_score = score
+                    best_rw, best_rh = 2 * hw, 2 * hh
+                    best_angle = angle_deg
+                    # Rotate candidate back to original coordinates
+                    dx2, dy2 = rpx - ox, rpy - oy
+                    best_cx = ox + dx2 * cos_t + dy2 * sin_t
+                    best_cy = oy - dx2 * sin_t + dy2 * cos_t
 
-        return best_result
+        return best_cx, best_cy, best_rw, best_rh, best_angle
 
     @staticmethod
     def _fit_fontsize(text, rect_w, rect_h, ax, fig):
@@ -388,7 +455,7 @@ class MapUtils:
     @staticmethod
     def _draw_legend_2d(value_to_color, legend_ax):
 
-        MIN_ALPHA = 0.2
+        MIN_ALPHA = 0.5
         pct_range = value_to_color.pop("__pct_range__", (0.0, 1.0))
         pct_min, pct_max = pct_range
         categories = sorted(value_to_color.keys(), key=str)
