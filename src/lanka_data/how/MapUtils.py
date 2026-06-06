@@ -17,15 +17,6 @@ class MapUtils:
     MAX_REGIONS_TO_LABEL = 100
 
     @staticmethod
-    def _build_region_map(data_list):
-        region_to_current_ids = {}
-        for d in data_list:
-            region_id = d["region_id"]
-            current_ids = d.get("current_ids") or [region_id]
-            region_to_current_ids[region_id] = current_ids
-        return region_to_current_ids
-
-    @staticmethod
     def _render_figure(gdf_region, n_regions, value_to_color, title, source):
         fig = plt.figure(figsize=(12, 8))
         gs = fig.add_gridspec(1, 2, width_ratios=[5, 1], wspace=0.05)
@@ -65,11 +56,8 @@ class MapUtils:
         result_data = how.get_data(where, what, when)
         h = how.get_hash(where, what, when)
         data_list = result_data["data_list"]
-        region_to_current_ids = MapUtils._build_region_map(data_list)
-        n_regions = len(region_to_current_ids)
-        gdf_region = GeoDataUtils.get_geopandas_dataframe(
-            region_to_current_ids
-        ).copy()
+        n_regions = len(data_list)
+        gdf_region = GeoDataUtils.get_geopandas_dataframe(data_list).copy()
         region_color_map, value_to_color = (
             RegionColorUtils.get_region_color_map(result_data, how, what)
         )

@@ -39,11 +39,21 @@ class GeoDataUtils:
         return gdf.set_index("id").loc[region_ids].reset_index()
 
     @staticmethod
-    def get_geopandas_dataframe(region_to_current_ids):
+    def _build_region_map(data_list):
+        region_to_current_ids = {}
+        for d in data_list:
+            region_id = d["region_id"]
+            current_ids = d.get("current_ids") or [region_id]
+            region_to_current_ids[region_id] = current_ids
+        return region_to_current_ids
+
+    @staticmethod
+    def get_geopandas_dataframe(data_list):
+        region_to_current_ids = GeoDataUtils._build_region_map(data_list)
         all_current_ids = [
-            region_id
-            for region_ids in region_to_current_ids.values()
-            for region_id in region_ids
+            cid
+            for current_ids in region_to_current_ids.values()
+            for cid in current_ids
         ]
         gdf = GeoDataUtils._load_raw_gdf(all_current_ids)
         gdf = GeoDataUtils._dissolve_by_region(gdf, region_to_current_ids)
