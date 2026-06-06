@@ -138,6 +138,8 @@ class MapUtils:
         key_to_base_hex = {}
         value_to_color = {}
         region_color_map = {}
+        all_pcts = []
+        raw_pcts = {}
         for data in data_list:
             key = func_key_getter(data) if func_key_getter else None
             if key not in key_to_base_hex:
@@ -150,9 +152,18 @@ class MapUtils:
                     key_to_base_hex[key], 1.0
                 )
             pct = (data.get("pct_values") or {}).get(key, 0.5)
-            region_color_map[data["region_id"]] = MapUtils._color_with_opacity(
-                key_to_base_hex[key], pct
+            all_pcts.append(pct)
+            raw_pcts[data["region_id"]] = (key, pct)
+
+        pct_min = min(all_pcts)
+        pct_max = max(all_pcts)
+        pct_span = pct_max - pct_min if pct_max > pct_min else 1.0
+        for region_id, (key, pct) in raw_pcts.items():
+            normalised = (pct - pct_min) / pct_span
+            region_color_map[region_id] = MapUtils._color_with_opacity(
+                key_to_base_hex[key], normalised
             )
+        value_to_color["__pct_range__"] = (pct_min, pct_max)
         return region_color_map, value_to_color
 
     @staticmethod
@@ -225,9 +236,11 @@ class MapUtils:
         import numpy as np
 
         MIN_ALPHA = 0.2
+        pct_range = value_to_color.pop("__pct_range__", (0.0, 1.0))
+        pct_min, pct_max = pct_range
         categories = sorted(value_to_color.keys(), key=str)
         n_rows = len(categories)
-        pct_levels = [0.0, 0.25, 0.5, 0.75, 1.0]
+        pct_levels = [pct_min + i * (pct_max - pct_min) / 4 for i in range(5)]
         n_cols = len(pct_levels)
 
         # Build RGBA image: rows=categories, cols=pct levels
@@ -235,11 +248,13 @@ class MapUtils:
         for row_i, cat in enumerate(reversed(categories)):
             r, g, b = value_to_color[cat][:3]
             for col_j, pct in enumerate(pct_levels):
+                pct_span = pct_max - pct_min if pct_max > pct_min else 1.0
+                normalised = (pct - pct_min) / pct_span
                 img[row_i, col_j] = [
                     r,
                     g,
                     b,
-                    MIN_ALPHA + pct * (1.0 - MIN_ALPHA),
+                    MIN_ALPHA + normalised * (1.0 - MIN_ALPHA),
                 ]
 
         # Constrain height so cells are square-ish; centre vertically
