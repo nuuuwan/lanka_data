@@ -168,6 +168,12 @@ class MapUtils:
                 key_to_base_hex[key], normalised
             )
         value_to_color["__pct_range__"] = (pct_min, pct_max)
+        # Per-category pct ranges (min, max) across all regions
+        cat_pct_ranges = {}
+        for key, pct in raw_pcts.values():
+            lo, hi = cat_pct_ranges.get(key, (pct, pct))
+            cat_pct_ranges[key] = (min(lo, pct), max(hi, pct))
+        value_to_color["__cat_pct_ranges__"] = cat_pct_ranges
         return region_color_map, value_to_color
 
     @staticmethod
@@ -460,17 +466,29 @@ class MapUtils:
 
         MIN_ALPHA = 0.5
         pct_range = value_to_color.pop("__pct_range__", (0.0, 1.0))
+        cat_pct_ranges = value_to_color.pop("__cat_pct_ranges__", {})
         pct_min, pct_max = pct_range
         categories = sorted(value_to_color.keys(), key=str)
         n_rows = len(categories)
         pct_levels = [pct_min + i * (pct_max - pct_min) / 4 for i in range(5)]
         n_cols = len(pct_levels)
+        col_half_width = (
+            (pct_levels[1] - pct_levels[0]) / 2 if n_cols > 1 else 0
+        )
 
         # Build RGBA image: rows=categories, cols=pct levels
         img = np.zeros((n_rows, n_cols, 4))
         for row_i, cat in enumerate(reversed(categories)):
             r, g, b = value_to_color[cat][:3]
+            cat_lo, cat_hi = cat_pct_ranges.get(cat, (pct_min, pct_max))
             for col_j, pct in enumerate(pct_levels):
+                # Hide cell if this pct level is outside the category's actual range
+                if (
+                    pct < cat_lo - col_half_width
+                    or pct > cat_hi + col_half_width
+                ):
+                    img[row_i, col_j] = [0, 0, 0, 0]  # fully transparent
+                    continue
                 pct_span = pct_max - pct_min if pct_max > pct_min else 1.0
                 normalised = (pct - pct_min) / pct_span
                 img[row_i, col_j] = [
@@ -480,27 +498,30 @@ class MapUtils:
                     MIN_ALPHA + normalised * (1.0 - MIN_ALPHA),
                 ]
 
-        # Constrain height so cells are square-ish; centre vertically
-        cell_h = 0.12  # fraction of axes height per row
+        # Flat cells (wider than tall); centre vertically
+        cell_h = 0.07  # fraction of axes height per row — flatter than before
         grid_h = min(n_rows * cell_h, 0.9)
         y0 = (1.0 - grid_h) / 2
         inset = legend_ax.inset_axes([0.0, y0, 1.0, grid_h])
-        # Hide the parent axes decorations but keep it alive for the inset
         legend_ax.set_axis_off()
 
         inset.imshow(img, aspect="auto", interpolation="nearest")
 
+        # Remove the outer border of the inset
+        for spine in inset.spines.values():
+            spine.set_visible(False)
+
         # Column headers: percentage labels on top
         inset.set_xticks(range(n_cols))
-        inset.set_xticklabels([f"{p:.0%}" for p in pct_levels], fontsize=5)
+        inset.set_xticklabels([f"{p:.0%}" for p in pct_levels], fontsize=7)
         inset.xaxis.set_ticks_position("top")
         inset.xaxis.set_label_position("top")
-        inset.set_xlabel("% share", fontsize=5, labelpad=3)
+        inset.set_xlabel("% share", fontsize=7, labelpad=3)
 
         # Row labels: category names on left
         inset.set_yticks(range(n_rows))
         inset.set_yticklabels(
-            [str(c) for c in reversed(categories)], fontsize=5
+            [str(c) for c in reversed(categories)], fontsize=7
         )
         inset.tick_params(axis="both", length=0, pad=2)
 
