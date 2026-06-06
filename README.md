@@ -4,6 +4,7 @@ This repo implements a simple interface to query data about Sri Lanka.
 
 ## Data Sources
 
+- [Census of Population and Housing 2012](https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf)
 - [Department of Census and Statistics, Sri Lanka](https://www.statistics.gov.lk/)
 - [Election Commission of Sri Lanka](https://www.elections.gov.lk)
 
@@ -295,7 +296,7 @@ python workflows/console.py <cmd>
 
 ![LK-81:pd/Map](images/readme/bfa7d721.png)
 
-### 11. `LK-1103:gnd/Religion/2012/Map`
+### 11. `LK-1103:gnd/Religion/2012/JSON`
 
 ```json
 {
@@ -304,9 +305,55 @@ python workflows/console.py <cmd>
             "35 Gnds",
             "Religion",
             "2012",
+            "JSON"
+        ],
+        "data_list": [
+            {
+                "region_id": "LK-1103005",
+                "region_name": "Sammanthranapura",
+                "current_ids": [
+                    "LK-1103005"
+                ],
+                "values": {
+                    "buddhist": 2689,
+                    "islam": 1862,
+                    "hindu": 1644,
+                    "roman_catholic": 1039,
+                    ... // 835 lines ...
+                "roman_catholic": 42435,
+                "other_christian": 10715,
+                "other": 251
+            },
+            "total_value": 323223,
+            "pct_values": {
+                "islam": 0.4177,
+                "hindu": 0.227,
+                "buddhist": 0.1901,
+                "roman_catholic": 0.1313,
+                "other_christian": 0.0332,
+                "other": 0.0008
+            }
+        },
+        "source": "Census of Population and Housing 2012",
+        "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+### 12. `LK-1127:gnd/Religion/2012/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "20 Gnds",
+            "Religion",
+            "2012",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/751be76c.png",
+        "image_path": "/tmp/lanka_data/images/0d265f1a.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -315,9 +362,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1103:gnd/Religion/2012/Map](images/readme/751be76c.png)
+![LK-1127:gnd/Religion/2012/Map](images/readme/0d265f1a.png)
 
-### 12. `LK-53:dsd/Ethnicity/2024/Map`
+### 13. `LK-53:dsd/Ethnicity/2024/Map`
 
 ```json
 {
@@ -339,7 +386,7 @@ python workflows/console.py <cmd>
 
 ![LK-53:dsd/Ethnicity/2024/Map](images/readme/8069c8aa.png)
 
-### 13. `LK/ParliamentaryElection/2024`
+### 14. `LK/ParliamentaryElection/2024`
 
 ```json
 {
@@ -354,15 +401,15 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK",
                 "region_name": "Sri Lanka",
+                "current_ids": [
+                    "LK"
+                ],
                 "summary": {
                     "electors": 17140354,
                     "polled": 11815246,
                     "valid": 11148006,
                     "rejected": 667240,
-                    "p_turnout": 0.6893,
-                    "p_valid": 0.9435,
-                    "p_rejected": 0.0565
-                    ... // 1332 lines ...
+                    ... // 1335 lines ...
                 "IND28-13": 0.0,
                 "IND36-13": 0.0,
                 "IND42-13": 0.0,
@@ -385,7 +432,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 14. `LK-2:pd/PresidentialElection/Latest/Map`
+### 15. `LK-2:pd/PresidentialElection/Latest/Map`
 
 ```json
 {
@@ -407,7 +454,7 @@ python workflows/console.py <cmd>
 
 ![LK-2:pd/PresidentialElection/Latest/Map](images/readme/35e3a262.png)
 
-### 15. `LK-2:dsd/Ethnicity/Latest/Map`
+### 16. `LK-2:dsd/Ethnicity/Latest/Map`
 
 ```json
 {
@@ -429,7 +476,7 @@ python workflows/console.py <cmd>
 
 ![LK-2:dsd/Ethnicity/Latest/Map](images/readme/bade8195.png)
 
-### 16. `LK-41:dsd/Religion/2012/Map:2nd`
+### 17. `LK-41:dsd/Religion/2012/Map:2nd`
 
 ```json
 {
@@ -451,7 +498,7 @@ python workflows/console.py <cmd>
 
 ![LK-41:dsd/Religion/2012/Map:2nd](images/readme/09cd4316.png)
 
-### 17. `LK-51:dsd/Religion/2012/Map:buddhist`
+### 18. `LK-51:dsd/Religion/2012/Map:buddhist`
 
 ```json
 {
@@ -473,7 +520,7 @@ python workflows/console.py <cmd>
 
 ![LK-51:dsd/Religion/2012/Map:buddhist](images/readme/75a61fa4.png)
 
-### 18. `LK-pre1984:district/Basic/2012/JSON`
+### 19. `LK-pre1984:district/Basic/2012/JSON`
 
 ```json
 {
@@ -519,7 +566,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-### 19. `LK-pre1959:district/Religion/2012/Map`
+### 20. `LK-pre1959:district/Religion/2012/Map`
 
 ```json
 {

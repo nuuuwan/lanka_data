@@ -10,6 +10,9 @@
       {
         "region_id": "LK",
         "region_name": "Sri Lanka",
+        "current_ids": [
+          "LK"
+        ],
         "summary": {
           "electors": 17140354,
           "polled": 11815246,

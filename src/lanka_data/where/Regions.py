@@ -34,6 +34,17 @@ class Regions(Where, RegionLoadersMixin):
             self.raw_region_data_list[0]["id"]
         )
 
+    @cached_property
+    def region_to_current_ids(self):
+        region_to_current_ids = {}
+        for d in self.raw_region_data_list:
+            region_id = d["id"]
+            current_ids = d.get("current_ids")
+            if current_ids is None:
+                current_ids = [region_id]
+            region_to_current_ids[region_id] = current_ids
+        return region_to_current_ids
+
     @classmethod
     def _get_raw_region_data_list_for_region_type(
         cls, region_type: str, historical_year: str
