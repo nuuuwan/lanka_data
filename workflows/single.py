@@ -2,11 +2,9 @@ import json
 import sys
 
 from lanka_data import Db
-from workflows.custom_logging import setup_logging
 
 
 def main(cmd):
-    setup_logging()
     db = Db(cmd)
     result = db.run_unsafe(do_open_images=True, do_use_cache=False)
     print(json.dumps(result, indent=2))
