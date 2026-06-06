@@ -519,6 +519,28 @@ python workflows/console.py <cmd>
 }
 ```
 
+### 19. `LK-pre1959:district/Basic/2012/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "21 Districts",
+            "Basic Information",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/0ef3f552.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-pre1959:district/Basic/2012/Map](images/readme/0ef3f552.png)
+
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

@@ -189,7 +189,7 @@ class MapUtils:
                 "black" if MapUtils._is_light_color(bg_color) else "white"
             )
             ax.annotate(
-                row.get("region_name", row["id"]),
+                row.get("name", row["id"]),
                 xy=(centroid.x, centroid.y),
                 ha="center",
                 va="center",
