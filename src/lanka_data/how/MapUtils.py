@@ -232,15 +232,47 @@ class MapUtils:
         return max(polys, key=lambda g: g.area)
 
     @staticmethod
+    def _pole_of_inaccessibility(poly, n_cells=32):
+        """Approximate the pole of inaccessibility (interior point farthest from
+        the boundary) using a grid search.  This is a much better label anchor
+        than the centroid for non-convex or L-shaped polygons like Ampara.
+        """
+        from shapely.geometry import Point
+
+        minx, miny, maxx, maxy = poly.bounds
+        boundary = poly.boundary
+        best_dist = -1.0
+        best_pt = poly.representative_point()
+        xs = [
+            minx + (maxx - minx) * (i + 0.5) / n_cells for i in range(n_cells)
+        ]
+        ys = [
+            miny + (maxy - miny) * (j + 0.5) / n_cells for j in range(n_cells)
+        ]
+        for x in xs:
+            for y in ys:
+                pt = Point(x, y)
+                if poly.contains(pt):
+                    d = boundary.distance(pt)
+                    if d > best_dist:
+                        best_dist = d
+                        best_pt = pt
+        return best_pt
+
+    @staticmethod
     def _best_label_fit(geom):
         """Search over rotation angles (0°–175° in 5° steps) to find the optimal
         rotated rectangle for label placement inside the largest polygon.
 
+        The ray-casting origin is the pole of inaccessibility — the interior point
+        farthest from the boundary — so non-convex regions like Ampara get a large
+        rectangle rather than one squeezed against a nearby edge.
+
         For each candidate angle the polygon is rotated so that angle aligns with
-        the x-axis and 4 axis-aligned rays are cast from the centroid to measure
-        the inscribed rectangle.  The rectangle is then scored by the area of its
-        intersection with the (rotated) polygon — this acts as a penalty against
-        rectangles that overflow non-convex boundaries.
+        the x-axis and 4 axis-aligned rays are cast from that origin to measure
+        the inscribed rectangle.  The rectangle is scored by the area of its
+        intersection with the (rotated) polygon — penalising angles where the
+        rectangle overflows non-convex voids.
 
         Returns (cx, cy, rect_w, rect_h, angle_deg) where angle_deg is the angle
         of the rectangle's long (x) axis in the original coordinate frame.
@@ -250,12 +282,7 @@ class MapUtils:
 
         poly = MapUtils._largest_polygon(geom)
 
-        centroid = poly.centroid
-        center_pt = (
-            centroid
-            if poly.contains(centroid)
-            else poly.representative_point()
-        )
+        center_pt = MapUtils._pole_of_inaccessibility(poly)
         cx, cy = center_pt.x, center_pt.y
 
         b = poly.bounds
