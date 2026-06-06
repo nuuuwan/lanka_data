@@ -100,9 +100,9 @@
       {
         "region_id": "LK-41-pre1984",
         "region_name": "Jaffna (pre 1984)",
-        "area_sqkm": 2410.5299999999997,
-        "center_lat": 9.542044696178849,
-        "center_lng": 80.22189536820534,
+        "area_sqkm": 2410.53,
+        "center_lat": 9.542045,
+        "center_lng": 80.221895,
         "current_ids": [
           "LK-41",
           "LK-45"

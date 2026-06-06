@@ -616,12 +616,12 @@ python workflows/console.py <cmd>
 {
     "result": {
         "title_items": [
-            "21 Districts",
+            "20 Districts",
             "Religion",
             "2012",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/be5b4913.png",
+        "image_path": "/tmp/lanka_data/images/4e535cda.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -630,7 +630,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-pre1959:district/Religion/2012/Map](images/readme/be5b4913.png)
+![LK-pre1959:district/Religion/2012/Map](images/readme/4e535cda.png)
 
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)
