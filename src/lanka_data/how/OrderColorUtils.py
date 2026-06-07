@@ -1,3 +1,5 @@
+import colorsys
+
 from lanka_data.how.ColorUtils import ColorUtils
 
 
@@ -20,15 +22,31 @@ class OrderColorUtils:
         key_to_base_hex = {}
         value_to_color = {}
         all_pcts, raw_pcts = [], {}
+
+        # First pass: collect all unknown keys in order of first appearance
+        unknown_keys = []
+        for data in data_list:
+            key = func_key_getter(data) if func_key_getter else None
+            if key not in key_to_base_hex and key not in ColorUtils.HUE_IDX:
+                if key not in unknown_keys:
+                    unknown_keys.append(key)
+
+        n_keys = max(len(unknown_keys), 1)
+
         for data in data_list:
             key = func_key_getter(data) if func_key_getter else None
             if key not in key_to_base_hex:
-                hue = ColorUtils.HUE_IDX.get(key)
-                key_to_base_hex[key] = (
-                    ColorUtils.hue_to_hex(hue)
-                    if key in ColorUtils.HUE_IDX
-                    else ColorUtils.get_random_color(key)
-                )
+                if key in ColorUtils.HUE_IDX:
+                    key_to_base_hex[key] = ColorUtils.hue_to_hex(
+                        ColorUtils.HUE_IDX[key]
+                    )
+                else:
+                    i_key = unknown_keys.index(key)
+                    hue = 0.83 * i_key / n_keys
+                    r, g, b = colorsys.hls_to_rgb(hue, 0.5, 1.0)
+                    key_to_base_hex[key] = (
+                        f"#{round(r*255):02X}{round(g*255):02X}{round(b*255):02X}"
+                    )
                 value_to_color[key] = ColorUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0
                 )

@@ -2,9 +2,9 @@
   "result": {
     "what_description": "Population classified by economic activity status including employed, unemployed, and economically inactive",
     "when_description": "2012",
-    "where_description": "Dsds within LK-5",
+    "where_description": "Dsds within LK-5 (pre-2019 Map)",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/images/ab12490b.png",
+    "image_path": "/tmp/lanka_data/images/62c5bb44.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Economy/2012/LK-5:dsd/Map"

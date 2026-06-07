@@ -42,13 +42,6 @@ class HUE:
         )
         return f"#{round(r * 255):02X}{round(g * 255):02X}{round(b * 255):02X}"
 
-    @staticmethod
-    def random(label: str) -> str:
-        digest = hashlib.md5(str(label).encode()).hexdigest()
-        digest_int = int(digest[:4], 16)
-        hue = MIN_HUE_SEPARATION * (digest_int % (360 // MIN_HUE_SEPARATION))
-        return HUE.to_hex(hue)
-
 
 HUE._check_hue_separation()
 
@@ -89,10 +82,6 @@ class ColorUtils:
     @staticmethod
     def hue_to_hex(hue) -> str:
         return HUE.to_hex(hue)
-
-    @staticmethod
-    def get_random_color(label: str) -> str:
-        return HUE.random(label)
 
     @staticmethod
     def _color_with_opacity(hex_color, pct):
