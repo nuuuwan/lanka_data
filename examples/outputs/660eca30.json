@@ -3,8 +3,8 @@
     "what_description": "Number of households classified by the type of toilet facility used",
     "when_description": "2024",
     "where_description": "Dsds within LK-5",
-    "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/bc70199f.png",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/22a03fe8.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Toilet/2024/LK-5:dsd/Map"

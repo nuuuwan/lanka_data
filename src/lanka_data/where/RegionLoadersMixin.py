@@ -147,7 +147,9 @@ class RegionLoadersMixin:
         raw_regions = [d for d in raw_regions if d["region_id"] in region_ids]
         if not raw_regions:
             raise ValueError(f"Region ID not found: {region_ids_str}")
-        description = f"{region_type.title()}s" + f" with IDs {region_ids_str}"
+        description = (
+            f"{region_type.title()}s" + f" with IDs {region_ids_str}"
+        )
         return cls(raw_regions, region_year, description)
 
     @classmethod
@@ -185,5 +187,7 @@ class RegionLoadersMixin:
             raise ValueError(
                 f"No regions found for parent ID: {parent_region_id}"
             )
-        description = f"{region_type.title()}s" + f" within {parent_region_id}"
+        description = (
+            f"{region_type.title()}s" + f" within {parent_region_id}"
+        )
         return cls(raw_regions, region_year, description)

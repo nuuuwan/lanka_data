@@ -3,8 +3,8 @@
     "what_description": "Population classified by their relationship to the head of the household",
     "when_description": "2012",
     "where_description": "Dsds within LK-23",
-    "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/a748a3ff.png",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/12793d6f.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "RelationshipToHead/2012/LK-23:dsd/Map"

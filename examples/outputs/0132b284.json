@@ -3,8 +3,8 @@
     "what_description": "Housing units classified by the main material used for roof construction (e.g. tile, sheet, concrete)",
     "when_description": "2024",
     "where_description": "Dsds within LK-9",
-    "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/6a16ce08.png",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/07980346.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Roof/2024/LK-9:dsd/Map"

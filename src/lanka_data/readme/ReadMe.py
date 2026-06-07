@@ -67,6 +67,56 @@ class ReadMe:
             "",
         ]
 
+    @staticmethod
+    def get_lines_for_example(i_group_name, i_cmd, example, output_idx):
+        lines = []
+        cmd = example.cmd
+        output = output_idx[cmd]
+        result = output["result"]
+
+        lines.append(f"#### {i_group_name}.{i_cmd:02d}) `{cmd}`")
+        lines.append("")
+
+        if "what_description" in result:
+            what_description = result["what_description"]
+            when_description = result["when_description"]
+            where_description = result["where_description"]
+            how_description = result["how_description"]
+            lines.append(
+                f"{how_description} of"
+                + f" {what_description} ({when_description}) for"
+                + f" {where_description}."
+            )
+            lines.append("")
+        lines.append("```json")
+        output_json = json.dumps(output, indent=4)
+        output_json_lines = output_json.splitlines()
+        if len(output_json_lines) > ReadMe.MAX_LINES_IN_OUTPUT:
+            i_split = ReadMe.MAX_LINES_IN_OUTPUT // 2
+            n_spaces = len(output_json_lines[i_split - 1]) - len(
+                output_json_lines[i_split - 1].lstrip(" ")
+            )
+            n_cut = len(output_json_lines) - ReadMe.MAX_LINES_IN_OUTPUT
+            output_json_lines = (
+                output_json_lines[:i_split]
+                + [" " * n_spaces + f"... // {n_cut} lines ..."]
+                + output_json_lines[-i_split:]
+            )
+        lines.extend(output_json_lines)
+        lines.append("```")
+        lines.append("")
+        if "result" in output and "image_path" in output["result"]:
+            image_path = output["result"]["image_path"]
+            os.makedirs(ReadMe.DIR_IMAGES_README, exist_ok=True)
+            new_image_path = os.path.join(
+                ReadMe.DIR_IMAGES_README, os.path.basename(image_path)
+            )
+            shutil.copy2(image_path, new_image_path)
+            lines.append(f"![{cmd}]({new_image_path})")
+            lines.append("")
+
+        return lines
+
     def get_lines_for_examples(self, example_idx, output_idx):
         lines = [
             "## Example cmds (`<cmd>`)",
@@ -80,36 +130,11 @@ class ReadMe:
             lines.append(f"### {i_group_name}) {group_name}")
             lines.append("")
             for i_cmd, example in enumerate(examples, start=1):
-                cmd = example.cmd
-                output = output_idx[cmd]
-                lines.append(f"#### {i_group_name}.{i_cmd:02d}) `{cmd}`")
-                lines.append("")
-                lines.append("```json")
-                output_json = json.dumps(output, indent=4)
-                output_json_lines = output_json.splitlines()
-                if len(output_json_lines) > self.MAX_LINES_IN_OUTPUT:
-                    i_split = self.MAX_LINES_IN_OUTPUT // 2
-                    n_spaces = len(output_json_lines[i_split - 1]) - len(
-                        output_json_lines[i_split - 1].lstrip(" ")
+                lines.extend(
+                    self.get_lines_for_example(
+                        i_group_name, i_cmd, example, output_idx
                     )
-                    n_cut = len(output_json_lines) - self.MAX_LINES_IN_OUTPUT
-                    output_json_lines = (
-                        output_json_lines[:i_split]
-                        + [" " * n_spaces + f"... // {n_cut} lines ..."]
-                        + output_json_lines[-i_split:]
-                    )
-                lines.extend(output_json_lines)
-                lines.append("```")
-                lines.append("")
-                if "result" in output and "image_path" in output["result"]:
-                    image_path = output["result"]["image_path"]
-                    os.makedirs(self.DIR_IMAGES_README, exist_ok=True)
-                    new_image_path = os.path.join(
-                        self.DIR_IMAGES_README, os.path.basename(image_path)
-                    )
-                    shutil.copy2(image_path, new_image_path)
-                    lines.append(f"![{cmd}]({new_image_path})")
-                    lines.append("")
+                )
 
         return lines
 

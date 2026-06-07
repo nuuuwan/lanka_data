@@ -3,8 +3,8 @@
     "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
     "when_description": "2012",
     "where_description": "Districts within LK",
-    "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/488036dc.png",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/581f1378.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Religion/2012/LK-pre1959:district/Map"

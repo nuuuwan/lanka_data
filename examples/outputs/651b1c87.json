@@ -3,8 +3,8 @@
     "what_description": "Housing units classified by the decade or period in which they were constructed",
     "when_description": "2012",
     "where_description": "Dsds within LK-3",
-    "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/30cf6f6d.png",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/b33d7da0.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "ConstructionYear/2012/LK-3:dsd/Map"

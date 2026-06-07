@@ -3,8 +3,8 @@
     "what_description": "Households classified by the main energy fuel used for any purpose",
     "when_description": "2024",
     "where_description": "Dsds within LK-7",
-    "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/7cbe1400.png",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/c93741a2.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Energy/2024/LK-7:dsd/Map"

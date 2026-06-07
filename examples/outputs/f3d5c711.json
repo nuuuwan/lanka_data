@@ -3,8 +3,8 @@
     "what_description": "Population classified by the highest level of educational qualification attained",
     "when_description": "2012",
     "where_description": "Dsds within LK-6",
-    "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/d6f800e3.png",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/b29be328.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Education/2012/LK-6:dsd/Map"

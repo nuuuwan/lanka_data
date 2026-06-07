@@ -3,8 +3,8 @@
     "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
     "when_description": "2024",
     "where_description": "Dsds within LK-23",
-    "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/5348caed.png",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/8e56f8e3.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Ethnicity/2024/LK-23-pre2019:dsd/Map"

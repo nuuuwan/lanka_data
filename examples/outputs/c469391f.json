@@ -3,8 +3,8 @@
     "what_description": "Basic information",
     "when_description": "2024",
     "where_description": "Provinces, from LK-5 to LK-8",
-    "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/5accfe2f.png",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/c11facd1.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Basic/2024/LK-5...LK-8/Map"
