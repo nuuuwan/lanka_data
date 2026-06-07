@@ -25,7 +25,7 @@ class HUE:
             if not k.startswith("_") and isinstance(v, int)
         )
         for i, h1 in enumerate(hues):
-            for h2 in hues[i + 1:]:
+            for h2 in hues[i + 1 :]:
                 dist = min(h2 - h1, 360 - (h2 - h1))
                 if dist < MIN_HUE_SEPARATION:
                     raise ValueError(
@@ -40,9 +40,7 @@ class HUE:
         r, g, b = colorsys.hls_to_rgb(
             hue / 360.0, DEFAULT_LIGHTNESS, DEFAULT_SATURATION
         )
-        return (
-            f"#{round(r * 255):02X}{round(g * 255):02X}{round(b * 255):02X}"
-        )
+        return f"#{round(r * 255):02X}{round(g * 255):02X}{round(b * 255):02X}"
 
     @staticmethod
     def random(label: str) -> str:
@@ -61,15 +59,15 @@ class ColorUtils:
             HUE.GOLD: ["Buddhist"],
             HUE.ORANGE: ["Hindu"],
             HUE.GREEN: ["Islam"],
-            HUE.BLUE: ["Other Christian"],
-            HUE.PURPLE: ["Roman Catholic"],
+            HUE.BLUE: ["OtherChristian"],
+            HUE.PURPLE: ["RomanCatholic"],
             HUE.GRAY: ["Other"],
         },
         "Ethnicity": {
             HUE.RED: ["Sinhalese"],
-            HUE.ORANGE: ["SL Tamil"],
-            HUE.BLUE: ["Ind/Malaiyaga Tamil"],
-            HUE.GREEN: ["SL Moor"],
+            HUE.ORANGE: ["SLTamil"],
+            HUE.BLUE: ["IndMalaiyagaTamil"],
+            HUE.GREEN: ["SLMoor"],
             HUE.TEAL: ["Malay"],
         },
         "Political Party": {
