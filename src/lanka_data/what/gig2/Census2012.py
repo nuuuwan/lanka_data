@@ -19,7 +19,11 @@ class Census2012(GIG2):
     @classmethod
     def get_title_to_id_file_path(cls):
         return os.path.join(
-            "src", "lanka_data", "what", "gig2", "census2012.datasets.json"
+            "src",
+            "lanka_data",
+            "what",
+            "gig2",
+            "census2012.datasets.json",
         )
 
     @classmethod
@@ -27,7 +31,8 @@ class Census2012(GIG2):
         return dict(
             source="Census of Population and Housing 2012",
             source_url="https://www.statistics.gov.lk"
-            + "/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf",
+            + "/Resource/en/Population"
+            + "/CPH_2011/CPH_2012_5Per_Rpt.pdf",
         )
 
     @classmethod
