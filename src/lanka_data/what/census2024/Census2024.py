@@ -2,7 +2,9 @@ import os
 from functools import cache
 
 from lanka_data.what.What import What
-from utils_future import WWW, JSONFile
+from utils_future import WWW, JSONFile, Log
+
+log = Log("Census2024")
 
 
 class Census2024(What):
@@ -72,9 +74,6 @@ class Census2024(What):
     def get_data_list(self, regions) -> list[dict]:
         label_to_path = self.get_title_to_path()
         path = label_to_path.get(self.title)
-        if path is None:
-            raise ValueError(f"Invalid label: {self.label}")
-
         url = (
             "https://raw.githubusercontent.com"
             + "/nuuuwan/lk_census_2024/refs/heads/main"
@@ -82,8 +81,15 @@ class Census2024(What):
         )
         raw_data_list = WWW(url).read_json()
         region_ids = [region["id"] for region in regions.raw_region_data_list]
+        n_regions = len(region_ids)
         filtered_data_list = [
             d for d in raw_data_list if d["region_id"] in region_ids
         ]
+        n_regions_with_data = len(filtered_data_list)
+        if n_regions_with_data < n_regions:
+            log.warning(
+                f"Only {n_regions_with_data} out of {n_regions}"
+                + f" regions have data for {self.title}."
+            )
         cleaned_data_list = [self.clean(d) for d in filtered_data_list]
         return cleaned_data_list
