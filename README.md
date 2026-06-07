@@ -40,7 +40,7 @@ python workflows/console.py <cmd>
 
 ## Example cmds (`<cmd>`)
 
-### 01. Basic
+### 01. Region Selection
 
 #### 01.01. `LK`
 
@@ -236,7 +236,9 @@ python workflows/console.py <cmd>
 
 ![LK-1103&EC-01B/Map](images/readme/15de4034.png)
 
-#### 01.08. `LK-61/Map`
+### 02. Administrative Views
+
+#### 02.01. `LK-61/Map`
 
 ```json
 {
@@ -258,7 +260,7 @@ python workflows/console.py <cmd>
 
 ![LK-61/Map](images/readme/f3dd60f4.png)
 
-#### 01.09. `LK-71:district/Map`
+#### 02.02. `LK-71:district/Map`
 
 ```json
 {
@@ -280,7 +282,7 @@ python workflows/console.py <cmd>
 
 ![LK-71:district/Map](images/readme/cca3cd4e.png)
 
-#### 01.10. `LK-81:pd/Map`
+#### 02.03. `LK-81:pd/Map`
 
 ```json
 {
@@ -302,7 +304,9 @@ python workflows/console.py <cmd>
 
 ![LK-81:pd/Map](images/readme/bfa7d721.png)
 
-#### 01.11. `LK-23:dsd/Religion/2012/Map`
+### 03. Census: Religion
+
+#### 03.01. `LK-23:dsd/Religion/2012/Map`
 
 ```json
 {
@@ -324,7 +328,7 @@ python workflows/console.py <cmd>
 
 ![LK-23:dsd/Religion/2012/Map](images/readme/a2b164d4.png)
 
-#### 01.12. `LK-23:dsd/Religion/2024/Map`
+#### 03.02. `LK-23:dsd/Religion/2024/Map`
 
 ```json
 {
@@ -346,7 +350,7 @@ python workflows/console.py <cmd>
 
 ![LK-23:dsd/Religion/2024/Map](images/readme/3147011c.png)
 
-#### 01.13. `LK-1103:gnd/Religion/2012/JSON`
+#### 03.03. `LK-1103:gnd/Religion/2012/JSON`
 
 ```json
 {
@@ -392,7 +396,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 01.14. `LK-1127:gnd/Religion/2012/Map`
+#### 03.04. `LK-1127:gnd/Religion/2012/Map`
 
 ```json
 {
@@ -414,7 +418,53 @@ python workflows/console.py <cmd>
 
 ![LK-1127:gnd/Religion/2012/Map](images/readme/0d265f1a.png)
 
-#### 01.15. `LK-53:dsd/Ethnicity/2024/Map`
+#### 03.05. `LK-41:dsd/Religion/2012/Map:2nd`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "15 Dsds",
+            "Religion",
+            "2012",
+            "Map (2nd)"
+        ],
+        "image_path": "/tmp/lanka_data/images/09cd4316.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-41:dsd/Religion/2012/Map:2nd](images/readme/09cd4316.png)
+
+#### 03.06. `LK-51:dsd/Religion/2012/Map:buddhist`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "14 Dsds",
+            "Religion",
+            "2012",
+            "Map (buddhist)"
+        ],
+        "image_path": "/tmp/lanka_data/images/75a61fa4.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-51:dsd/Religion/2012/Map:buddhist](images/readme/75a61fa4.png)
+
+### 04. Census: Ethnicity
+
+#### 04.01. `LK-53:dsd/Ethnicity/2024/Map`
 
 ```json
 {
@@ -436,7 +486,53 @@ python workflows/console.py <cmd>
 
 ![LK-53:dsd/Ethnicity/2024/Map](images/readme/8069c8aa.png)
 
-#### 01.16. `LK/ParliamentaryElection/2024`
+#### 04.02. `LK-2:dsd/Ethnicity/Latest/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "41 Dsds",
+            "Ethnicity",
+            "Latest",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/bade8195.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-2:dsd/Ethnicity/Latest/Map](images/readme/bade8195.png)
+
+#### 04.03. `LK-23:dsd/Ethnicity/2024/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "10 Dsds",
+            "Ethnicity",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/d6f9c6e3.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-23:dsd/Ethnicity/2024/Map](images/readme/d6f9c6e3.png)
+
+### 05. Elections
+
+#### 05.01. `LK/ParliamentaryElection/2024`
 
 ```json
 {
@@ -482,7 +578,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 01.17. `LK-2:pd/PresidentialElection/Latest/Map`
+#### 05.02. `LK-2:pd/PresidentialElection/Latest/Map`
 
 ```json
 {
@@ -504,73 +600,9 @@ python workflows/console.py <cmd>
 
 ![LK-2:pd/PresidentialElection/Latest/Map](images/readme/35e3a262.png)
 
-#### 01.18. `LK-2:dsd/Ethnicity/Latest/Map`
+### 06. Historical Boundaries
 
-```json
-{
-    "result": {
-        "title_items": [
-            "41 Dsds",
-            "Ethnicity",
-            "Latest",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/bade8195.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![LK-2:dsd/Ethnicity/Latest/Map](images/readme/bade8195.png)
-
-#### 01.19. `LK-41:dsd/Religion/2012/Map:2nd`
-
-```json
-{
-    "result": {
-        "title_items": [
-            "15 Dsds",
-            "Religion",
-            "2012",
-            "Map (2nd)"
-        ],
-        "image_path": "/tmp/lanka_data/images/09cd4316.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![LK-41:dsd/Religion/2012/Map:2nd](images/readme/09cd4316.png)
-
-#### 01.20. `LK-51:dsd/Religion/2012/Map:buddhist`
-
-```json
-{
-    "result": {
-        "title_items": [
-            "14 Dsds",
-            "Religion",
-            "2012",
-            "Map (buddhist)"
-        ],
-        "image_path": "/tmp/lanka_data/images/75a61fa4.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![LK-51:dsd/Religion/2012/Map:buddhist](images/readme/75a61fa4.png)
-
-#### 01.21. `LK-pre1984:district/Basic/2012/JSON`
+#### 06.01. `LK-pre1984:district/Basic/2012/JSON`
 
 ```json
 {
@@ -616,7 +648,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 01.22. `LK-pre1959:district/Religion/2012/Map`
+#### 06.02. `LK-pre1959:district/Religion/2012/Map`
 
 ```json
 {
@@ -638,7 +670,7 @@ python workflows/console.py <cmd>
 
 ![LK-pre1959:district/Religion/2012/Map](images/readme/4e535cda.png)
 
-#### 01.23. `LK-pre1845:province/Basic/2012/Map`
+#### 06.03. `LK-pre1845:province/Basic/2012/Map`
 
 ```json
 {
@@ -660,7 +692,7 @@ python workflows/console.py <cmd>
 
 ![LK-pre1845:province/Basic/2012/Map](images/readme/a85c9f82.png)
 
-#### 01.24. `LK-23-pre2019:dsd/Ethnicity/2012/Map`
+#### 06.04. `LK-23-pre2019:dsd/Ethnicity/2012/Map`
 
 ```json
 {
@@ -682,7 +714,7 @@ python workflows/console.py <cmd>
 
 ![LK-23-pre2019:dsd/Ethnicity/2012/Map](images/readme/d9a29dc7.png)
 
-#### 01.25. `LK-23-pre2019:dsd/Ethnicity/2024/Map`
+#### 06.05. `LK-23-pre2019:dsd/Ethnicity/2024/Map`
 
 ```json
 {
@@ -703,28 +735,6 @@ python workflows/console.py <cmd>
 ```
 
 ![LK-23-pre2019:dsd/Ethnicity/2024/Map](images/readme/a7f89f48.png)
-
-#### 01.26. `LK-23:dsd/Ethnicity/2024/Map`
-
-```json
-{
-    "result": {
-        "title_items": [
-            "10 Dsds",
-            "Ethnicity",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/d6f9c6e3.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![LK-23:dsd/Ethnicity/2024/Map](images/readme/d6f9c6e3.png)
 
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)

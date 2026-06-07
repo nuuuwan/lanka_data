@@ -1,30 +1,36 @@
 {
-  "Basic": [
+  "Region Selection": [
     "LK",
     "LK-1:district",
     "LK-2,LK-2",
     "LK-3,LK-9,LK-4/Map",
     "LK-4...LK-6/Map",
     "LK-1127025@10/Map",
-    "LK-1103&EC-01B/Map",
-    "LK-61/Map",
-    "LK-71:district/Map",
-    "LK-81:pd/Map",
+    "LK-1103&EC-01B/Map"
+  ],
+  "Administrative Views": ["LK-61/Map", "LK-71:district/Map", "LK-81:pd/Map"],
+  "Census: Religion": [
     "LK-23:dsd/Religion/2012/Map",
     "LK-23:dsd/Religion/2024/Map",
     "LK-1103:gnd/Religion/2012/JSON",
     "LK-1127:gnd/Religion/2012/Map",
-    "LK-53:dsd/Ethnicity/2024/Map",
-    "LK/ParliamentaryElection/2024",
-    "LK-2:pd/PresidentialElection/Latest/Map",
-    "LK-2:dsd/Ethnicity/Latest/Map",
     "LK-41:dsd/Religion/2012/Map:2nd",
-    "LK-51:dsd/Religion/2012/Map:buddhist",
+    "LK-51:dsd/Religion/2012/Map:buddhist"
+  ],
+  "Census: Ethnicity": [
+    "LK-53:dsd/Ethnicity/2024/Map",
+    "LK-2:dsd/Ethnicity/Latest/Map",
+    "LK-23:dsd/Ethnicity/2024/Map"
+  ],
+  "Elections": [
+    "LK/ParliamentaryElection/2024",
+    "LK-2:pd/PresidentialElection/Latest/Map"
+  ],
+  "Historical Boundaries": [
     "LK-pre1984:district/Basic/2012/JSON",
     "LK-pre1959:district/Religion/2012/Map",
     "LK-pre1845:province/Basic/2012/Map",
     "LK-23-pre2019:dsd/Ethnicity/2012/Map",
-    "LK-23-pre2019:dsd/Ethnicity/2024/Map",
-    "LK-23:dsd/Ethnicity/2024/Map"
+    "LK-23-pre2019:dsd/Ethnicity/2024/Map"
   ]
 }
