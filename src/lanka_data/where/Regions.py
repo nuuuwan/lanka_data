@@ -50,6 +50,8 @@ class Regions(Where, RegionLoadersMixin):
         cls, region_type: str, historical_year: str
     ):
         if historical_year is None:
+            raise ValueError("historical_year cannot be None")
+        if historical_year == "Current":
             url = (
                 "https://raw.githubusercontent.com"
                 + "/nuuuwan/lk_admin_regions/refs/heads/main"
