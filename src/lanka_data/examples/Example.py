@@ -33,6 +33,10 @@ class Example:
         idx = {}
         for cmd in cmd_list:
             output = Db(cmd).run(do_open_images=False, do_use_cache=False)
+            if "result" not in output:
+                raise ValueError(
+                    f"Output for cmd '{cmd}' does not contain 'result'"
+                )
             output["query_time_ms"] = 0
             idx[cmd] = output
         return idx
