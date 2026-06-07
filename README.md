@@ -40,9 +40,9 @@ python workflows/console.py <cmd>
 
 ## Example cmds (`<cmd>`)
 
-### 1) Region Selection
+### 1) Selection
 
-#### 1.01) `LK/Basic/2024/Map`
+#### 1.01) `Basic/2024/LK/Map`
 
 ```json
 {
@@ -62,9 +62,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK/Basic/2024/Map](images/readme/48853a44.png)
+![Basic/2024/LK/Map](images/readme/48853a44.png)
 
-#### 1.02) `LK-1:district/Basic/2024/Map`
+#### 1.02) `Basic/2024/LK-1:district/Map`
 
 ```json
 {
@@ -84,9 +84,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1:district/Basic/2024/Map](images/readme/d81caf73.png)
+![Basic/2024/LK-1:district/Map](images/readme/d81caf73.png)
 
-#### 1.03) `LK-2,LK-3/Basic/2024/Map`
+#### 1.03) `Basic/2024/LK-2,LK-3/Map`
 
 ```json
 {
@@ -106,9 +106,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-2,LK-3/Basic/2024/Map](images/readme/0233d3fd.png)
+![Basic/2024/LK-2,LK-3/Map](images/readme/0233d3fd.png)
 
-#### 1.04) `LK-3,LK-9,LK-8/Basic/2024/Map`
+#### 1.04) `Basic/2024/LK-3,LK-9,LK-8/Map`
 
 ```json
 {
@@ -128,9 +128,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-3,LK-9,LK-8/Basic/2024/Map](images/readme/4399d293.png)
+![Basic/2024/LK-3,LK-9,LK-8/Map](images/readme/4399d293.png)
 
-#### 1.05) `LK-5...LK-8/Basic/2024/Map`
+#### 1.05) `Basic/2024/LK-5...LK-8/Map`
 
 ```json
 {
@@ -150,9 +150,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-5...LK-8/Basic/2024/Map](images/readme/58e0fbfb.png)
+![Basic/2024/LK-5...LK-8/Map](images/readme/58e0fbfb.png)
 
-#### 1.06) `LK-1127025@20/Basic/2024/Map`
+#### 1.06) `Basic/2024/LK-1127025@20/Map`
 
 ```json
 {
@@ -172,9 +172,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1127025@20/Basic/2024/Map](images/readme/f57d8427.png)
+![Basic/2024/LK-1127025@20/Map](images/readme/f57d8427.png)
 
-#### 1.07) `LK-1103&EC-01B/Basic/2024/Map`
+#### 1.07) `Basic/2024/LK-1103&EC-01B/Map`
 
 ```json
 {
@@ -194,11 +194,11 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1103&EC-01B/Basic/2024/Map](images/readme/15de4034.png)
+![Basic/2024/LK-1103&EC-01B/Map](images/readme/15de4034.png)
 
-### 2) Administrative Views
+### 2) Sub-Regions
 
-#### 2.01) `LK-61/Basic/2024/Map`
+#### 2.01) `Basic/2024/LK-61/Map`
 
 ```json
 {
@@ -218,9 +218,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-61/Basic/2024/Map](images/readme/f3dd60f4.png)
+![Basic/2024/LK-61/Map](images/readme/f3dd60f4.png)
 
-#### 2.02) `LK-71:dsd/Basic/2024/Map`
+#### 2.02) `Basic/2024/LK-71:dsd/Map`
 
 ```json
 {
@@ -240,9 +240,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-71:dsd/Basic/2024/Map](images/readme/98aa28e2.png)
+![Basic/2024/LK-71:dsd/Map](images/readme/98aa28e2.png)
 
-#### 2.03) `LK-81:pd/Basic/2024/Map`
+#### 2.03) `Basic/2024/LK-81:pd/Map`
 
 ```json
 {
@@ -262,11 +262,11 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-81:pd/Basic/2024/Map](images/readme/bfa7d721.png)
+![Basic/2024/LK-81:pd/Map](images/readme/bfa7d721.png)
 
-### 3) Census: Religion
+### 3) Religion
 
-#### 3.01) `LK-23:dsd/Religion/2012/Map`
+#### 3.01) `Religion/2012/LK-23:dsd/Map`
 
 ```json
 {
@@ -286,9 +286,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-23:dsd/Religion/2012/Map](images/readme/a2b164d4.png)
+![Religion/2012/LK-23:dsd/Map](images/readme/a2b164d4.png)
 
-#### 3.02) `LK-23:dsd/Religion/2024/Map`
+#### 3.02) `Religion/2024/LK-23:dsd/Map`
 
 ```json
 {
@@ -308,9 +308,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-23:dsd/Religion/2024/Map](images/readme/3147011c.png)
+![Religion/2024/LK-23:dsd/Map](images/readme/3147011c.png)
 
-#### 3.03) `LK-1103:gnd/Religion/2012/JSON`
+#### 3.03) `Religion/2012/LK-1103:gnd/JSON`
 
 ```json
 {
@@ -356,7 +356,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 3.04) `LK-1127:gnd/Religion/2012/Map`
+#### 3.04) `Religion/2012/LK-1127:gnd/Map`
 
 ```json
 {
@@ -376,9 +376,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1127:gnd/Religion/2012/Map](images/readme/0d265f1a.png)
+![Religion/2012/LK-1127:gnd/Map](images/readme/0d265f1a.png)
 
-#### 3.05) `LK-41:dsd/Religion/2012/Map:2nd`
+#### 3.05) `Religion/2012/LK-41:dsd/Map:2nd`
 
 ```json
 {
@@ -398,9 +398,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-41:dsd/Religion/2012/Map:2nd](images/readme/09cd4316.png)
+![Religion/2012/LK-41:dsd/Map:2nd](images/readme/09cd4316.png)
 
-#### 3.06) `LK-51:dsd/Religion/2012/Map:Buddhist`
+#### 3.06) `Religion/2012/LK-51:dsd/Map:Buddhist`
 
 ```json
 {
@@ -420,11 +420,11 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-51:dsd/Religion/2012/Map:Buddhist](images/readme/6b7887b6.png)
+![Religion/2012/LK-51:dsd/Map:Buddhist](images/readme/6b7887b6.png)
 
-### 4) Census: Ethnicity
+### 4) Ethnicity
 
-#### 4.01) `LK-53:dsd/Ethnicity/2024/Map`
+#### 4.01) `Ethnicity/2024/LK-53:dsd/Map`
 
 ```json
 {
@@ -444,9 +444,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-53:dsd/Ethnicity/2024/Map](images/readme/8069c8aa.png)
+![Ethnicity/2024/LK-53:dsd/Map](images/readme/8069c8aa.png)
 
-#### 4.02) `LK-2:dsd/Ethnicity/Latest/Map`
+#### 4.02) `Ethnicity/Latest/LK-2:dsd/Map`
 
 ```json
 {
@@ -466,9 +466,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-2:dsd/Ethnicity/Latest/Map](images/readme/bade8195.png)
+![Ethnicity/Latest/LK-2:dsd/Map](images/readme/bade8195.png)
 
-#### 4.03) `LK-23:dsd/Ethnicity/2024/Map`
+#### 4.03) `Ethnicity/2024/LK-23:dsd/Map`
 
 ```json
 {
@@ -488,11 +488,11 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-23:dsd/Ethnicity/2024/Map](images/readme/d6f9c6e3.png)
+![Ethnicity/2024/LK-23:dsd/Map](images/readme/d6f9c6e3.png)
 
 ### 5) Elections
 
-#### 5.01) `LK/ParliamentaryElection/2024/JSON`
+#### 5.01) `ParliamentaryElection/2024/LK/JSON`
 
 ```json
 {
@@ -538,7 +538,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 5.02) `LK-2:pd/PresidentialElection/Latest/Map`
+#### 5.02) `PresidentialElection/Latest/LK-2:pd/Map`
 
 ```json
 {
@@ -558,11 +558,11 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-2:pd/PresidentialElection/Latest/Map](images/readme/35e3a262.png)
+![PresidentialElection/Latest/LK-2:pd/Map](images/readme/35e3a262.png)
 
-### 6) Historical Boundaries
+### 6) History
 
-#### 6.01) `LK-pre1984:district/Basic/2012/JSON`
+#### 6.01) `Basic/2012/LK-pre1984:district/JSON`
 
 ```json
 {
@@ -608,7 +608,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 6.02) `LK-pre1959:district/Religion/2012/Map`
+#### 6.02) `Religion/2012/LK-pre1959:district/Map`
 
 ```json
 {
@@ -628,9 +628,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-pre1959:district/Religion/2012/Map](images/readme/4e535cda.png)
+![Religion/2012/LK-pre1959:district/Map](images/readme/4e535cda.png)
 
-#### 6.03) `LK-pre1845:province/Basic/2012/Map`
+#### 6.03) `Basic/2012/LK-pre1845:province/Map`
 
 ```json
 {
@@ -650,9 +650,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-pre1845:province/Basic/2012/Map](images/readme/a85c9f82.png)
+![Basic/2012/LK-pre1845:province/Map](images/readme/a85c9f82.png)
 
-#### 6.04) `LK-23-pre2019:dsd/Ethnicity/2012/Map`
+#### 6.04) `Ethnicity/2012/LK-23-pre2019:dsd/Map`
 
 ```json
 {
@@ -672,9 +672,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-23-pre2019:dsd/Ethnicity/2012/Map](images/readme/d9a29dc7.png)
+![Ethnicity/2012/LK-23-pre2019:dsd/Map](images/readme/d9a29dc7.png)
 
-#### 6.05) `LK-23-pre2019:dsd/Ethnicity/2024/Map`
+#### 6.05) `Ethnicity/2024/LK-23-pre2019:dsd/Map`
 
 ```json
 {
@@ -694,7 +694,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-23-pre2019:dsd/Ethnicity/2024/Map](images/readme/a7f89f48.png)
+![Ethnicity/2024/LK-23-pre2019:dsd/Map](images/readme/a7f89f48.png)
 
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)

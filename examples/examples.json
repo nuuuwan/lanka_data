@@ -1,40 +1,40 @@
 {
-  "Region Selection": [
-    "LK/Basic/2024/Map",
-    "LK-1:district/Basic/2024/Map",
-    "LK-2,LK-3/Basic/2024/Map",
-    "LK-3,LK-9,LK-8/Basic/2024/Map",
-    "LK-5...LK-8/Basic/2024/Map",
-    "LK-1127025@20/Basic/2024/Map",
-    "LK-1103&EC-01B/Basic/2024/Map"
+  "Selection": [
+    "Basic/2024/LK/Map",
+    "Basic/2024/LK-1:district/Map",
+    "Basic/2024/LK-2,LK-3/Map",
+    "Basic/2024/LK-3,LK-9,LK-8/Map",
+    "Basic/2024/LK-5...LK-8/Map",
+    "Basic/2024/LK-1127025@20/Map",
+    "Basic/2024/LK-1103&EC-01B/Map"
   ],
-  "Administrative Views": [
-    "LK-61/Basic/2024/Map",
-    "LK-71:dsd/Basic/2024/Map",
-    "LK-81:pd/Basic/2024/Map"
+  "Sub-Regions": [
+    "Basic/2024/LK-61/Map",
+    "Basic/2024/LK-71:dsd/Map",
+    "Basic/2024/LK-81:pd/Map"
   ],
-  "Census: Religion": [
-    "LK-23:dsd/Religion/2012/Map",
-    "LK-23:dsd/Religion/2024/Map",
-    "LK-1103:gnd/Religion/2012/JSON",
-    "LK-1127:gnd/Religion/2012/Map",
-    "LK-41:dsd/Religion/2012/Map:2nd",
-    "LK-51:dsd/Religion/2012/Map:Buddhist"
+  "Religion": [
+    "Religion/2012/LK-23:dsd/Map",
+    "Religion/2024/LK-23:dsd/Map",
+    "Religion/2012/LK-1103:gnd/JSON",
+    "Religion/2012/LK-1127:gnd/Map",
+    "Religion/2012/LK-41:dsd/Map:2nd",
+    "Religion/2012/LK-51:dsd/Map:Buddhist"
   ],
-  "Census: Ethnicity": [
-    "LK-53:dsd/Ethnicity/2024/Map",
-    "LK-2:dsd/Ethnicity/Latest/Map",
-    "LK-23:dsd/Ethnicity/2024/Map"
+  "Ethnicity": [
+    "Ethnicity/2024/LK-53:dsd/Map",
+    "Ethnicity/Latest/LK-2:dsd/Map",
+    "Ethnicity/2024/LK-23:dsd/Map"
   ],
   "Elections": [
-    "LK/ParliamentaryElection/2024/JSON",
-    "LK-2:pd/PresidentialElection/Latest/Map"
+    "ParliamentaryElection/2024/LK/JSON",
+    "PresidentialElection/Latest/LK-2:pd/Map"
   ],
-  "Historical Boundaries": [
-    "LK-pre1984:district/Basic/2012/JSON",
-    "LK-pre1959:district/Religion/2012/Map",
-    "LK-pre1845:province/Basic/2012/Map",
-    "LK-23-pre2019:dsd/Ethnicity/2012/Map",
-    "LK-23-pre2019:dsd/Ethnicity/2024/Map"
+  "History": [
+    "Basic/2012/LK-pre1984:district/JSON",
+    "Religion/2012/LK-pre1959:district/Map",
+    "Basic/2012/LK-pre1845:province/Map",
+    "Ethnicity/2012/LK-23-pre2019:dsd/Map",
+    "Ethnicity/2024/LK-23-pre2019:dsd/Map"
   ]
 }
