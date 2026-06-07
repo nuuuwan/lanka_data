@@ -1,50 +1,81 @@
 import colorsys
 import hashlib
 
-
-def _hue_to_hex(hue: int) -> str:
-    """Convert a hue (0–360°) at S=100%, L=50% to a hex colour string."""
-    r, g, b = colorsys.hls_to_rgb(hue / 360.0, 0.5, 1.0)
-    return f"#{round(r * 255):02X}{round(g * 255):02X}{round(b * 255):02X}"
+DEFAULT_SATURATION = 1.0
+DEFAULT_LIGHTNESS = 0.5
+DEFAULT_GRAY = "#808080"
 
 
 class HUE:
     RED = 0
-    DARK_RED = 345
-    DARK_ORANGE = 20
-    ORANGE = 35
-    GOLD = 50
+    ORANGE = 30
+    GOLD = 60
     GREEN = 120
     TEAL = 170
     BLUE = 240
-    MAROON = 300
+    PURPLE = 300
     GRAY = None  # achromatic – no hue
+
+    @staticmethod
+    def _check_hue_separation(min_sep: int = 30) -> None:
+        hues = sorted(
+            v
+            for k, v in vars(HUE).items()
+            if not k.startswith("_") and isinstance(v, int)
+        )
+        for i, h1 in enumerate(hues):
+            for h2 in hues[i + 1:]:
+                dist = min(h2 - h1, 360 - (h2 - h1))
+                if dist < min_sep:
+                    raise ValueError(
+                        f"HUE values {h1}° and {h2}° are only {dist}° apart"
+                        f" (minimum {min_sep}°)"
+                    )
+
+    @staticmethod
+    def to_hex(hue) -> str:
+        if hue is None:
+            return DEFAULT_GRAY
+        r, g, b = colorsys.hls_to_rgb(
+            hue / 360.0, DEFAULT_LIGHTNESS, DEFAULT_SATURATION
+        )
+        return (
+            f"#{round(r * 255):02X}{round(g * 255):02X}{round(b * 255):02X}"
+        )
+
+    @staticmethod
+    def random(label: str) -> str:
+        digest = hashlib.md5(str(label).encode()).hexdigest()
+        hue = int(digest[:4], 16) % 360
+        return HUE.to_hex(hue)
+
+
+HUE._check_hue_separation()
 
 
 class ColorUtils:
     GROUP_TO_HUE_TO_LABEL_LIST = {
         "Religion": {
             HUE.GOLD: ["buddhist"],
-            HUE.DARK_ORANGE: ["hindu"],
-            HUE.TEAL: ["islam"],
+            HUE.ORANGE: ["hindu"],
+            HUE.GREEN: ["islam"],
             HUE.BLUE: ["other_christian"],
-            HUE.MAROON: ["roman_catholic"],
+            HUE.PURPLE: ["roman_catholic"],
             HUE.GRAY: ["other"],
         },
         "Ethnicity": {
-            HUE.DARK_RED: ["sinhalese"],
-            HUE.DARK_ORANGE: ["sl_tamil", "sri_lanka_tamil"],
+            HUE.RED: ["sinhalese"],
+            HUE.ORANGE: ["sl_tamil", "sri_lanka_tamil"],
             HUE.BLUE: ["ind_tamil", "indian_tamil_or_malaiyaga_thamilar"],
-            HUE.TEAL: ["sl_moor", "sri_lanka_moor_or_muslim"],
-            HUE.GREEN: ["malay"],
+            HUE.GREEN: ["sl_moor", "sri_lanka_moor_or_muslim"],
+            HUE.TEAL: ["malay"],
         },
         "Political Party": {
-            HUE.DARK_RED: ["SLPP"],
+            HUE.PURPLE: ["SLPP", "SLMP"],
             HUE.BLUE: ["UPFA", "PA", "SLFP"],
             HUE.RED: ["NPP"],
             HUE.GREEN: ["SJB", "UNP", "NDF"],
             HUE.ORANGE: ["IND9", "ACTC", "ITAK"],
-            HUE.MAROON: ["SLMP"],
         },
     }
 
@@ -57,14 +88,11 @@ class ColorUtils:
 
     @staticmethod
     def hue_to_hex(hue) -> str:
-        if hue is None:
-            return "#808080"
-        return _hue_to_hex(hue)
+        return HUE.to_hex(hue)
 
     @staticmethod
     def get_random_color(label: str) -> str:
-        digest = hashlib.md5(str(label).encode()).hexdigest()
-        return f"#{digest[:6]}"
+        return HUE.random(label)
 
     @staticmethod
     def _color_with_opacity(hex_color, pct):
