@@ -46,7 +46,7 @@ class GIG2(What):
             if not data_list:
                 continue
             cleaned_data_list = [self.get_custom_data(d) for d in data_list]
-            aggr_data = self.get_aggr_data(cleaned_data_list)
+            aggr_data = self.get_aggregated_value_data(cleaned_data_list)
             region_data = (
                 dict(
                     region_id=region_id,

@@ -74,7 +74,7 @@ class Elections(GIG2):
         )
 
     @classmethod
-    def get_aggr_data(cls, data_list):
+    def get_aggregated_value_data(cls, data_list):
         summary = {}
         for k in ["electors", "polled", "valid", "rejected"]:
             total = sum(d["summary"][k] for d in data_list)

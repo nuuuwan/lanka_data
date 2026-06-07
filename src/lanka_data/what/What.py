@@ -6,7 +6,7 @@ class What:
         return self.title
 
     @classmethod
-    def get_aggr_data(cls, data_list):
+    def get_aggregated_value_data(cls, data_list):
         aggr_values = {}
         for data in data_list:
             values = data["values"]

@@ -30,7 +30,9 @@ class How:
             data_list=data_list,
         )
         if what.get_values(data_list[0]) is not None:
-            result_data["aggr_data"] = what.get_aggr_data(data_list)
+            result_data["aggr_data"] = what.get_aggregated_value_data(
+                data_list
+            )
 
         result_data = result_data | source_info
 
