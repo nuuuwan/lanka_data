@@ -1,5 +1,7 @@
 from lanka_data.what.What import What
-from utils_future import WWW, JSONFile
+from utils_future import WWW, JSONFile, Log
+
+log = Log("GIG2")
 
 
 class GIG2(What):
@@ -49,6 +51,7 @@ class GIG2(What):
         region_to_current_ids = regions.region_to_current_ids
         merged_data_list = []
         for region_id, current_ids in region_to_current_ids.items():
+            log.debug(f"{region_id} -> {current_ids}")
             data_list = []
             for current_id in current_ids:
                 d = base_data_idx.get(current_id)
