@@ -41,7 +41,8 @@ class What:
         )
         total_value = sum(aggr_values.values())
         pct_values = {
-            k: round(v / total_value, 4) for k, v in aggr_values.items()
+            k: round(v / total_value, 4) if total_value else 0
+            for k, v in aggr_values.items()
         }
         return dict(
             values=aggr_values,

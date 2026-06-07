@@ -1,6 +1,5 @@
 import hashlib
 import os
-import shutil
 
 from lanka_data.db import Db
 from utils_future import JSONFile, Log
@@ -39,9 +38,10 @@ class Example:
     def get_output_idx_hot(cls):
         cmd_list = cls.get_cmd_list()
         idx = {}
+        n_cmds = len(cmd_list)
         for i_cmd, cmd in enumerate(cmd_list, start=1):
-            log.info(f"{i_cmd}) Building {cmd}.")
-            output = Db(cmd).run(do_open_images=False, do_use_cache=False)
+            log.info(f"{i_cmd}/{n_cmds}) Building {cmd}.")
+            output = Db(cmd).run(do_open_images=False, do_use_cache=True)
             if "result" not in output:
                 raise ValueError(
                     f"Output for cmd '{cmd}' does not contain 'result'"
@@ -53,9 +53,7 @@ class Example:
     @classmethod
     def build(cls):
         dir_outputs = os.path.join("examples", "outputs")
-        if os.path.exists(dir_outputs):
-            shutil.rmtree(dir_outputs)
-        os.makedirs(dir_outputs)
+        os.makedirs(dir_outputs, exist_ok=True)
 
         idx = cls.get_output_idx_hot()
         for cmd, output in idx.items():

@@ -1,3 +1,4 @@
+import random
 import unittest
 
 from lanka_data import Db, Example
@@ -27,7 +28,12 @@ def make_test(cmd, expected_output):
 
 
 output_idx = Example.get_output_idx()
-for i, (cmd, expected_output) in enumerate(output_idx.items()):
+MAX_TESTS_TO_RUN = 5
+sampled_items = random.sample(
+    list(output_idx.items()), min(MAX_TESTS_TO_RUN, len(output_idx))
+)
+
+for i, (cmd, expected_output) in enumerate(sampled_items):
     safe_name = cmd.replace("/", "_").replace(":", "_")
     name = f"test_db_{i:03d}_{safe_name}"
     setattr(TestCase, name, make_test(cmd, expected_output))

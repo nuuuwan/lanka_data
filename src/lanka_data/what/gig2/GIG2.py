@@ -28,6 +28,10 @@ class GIG2(What):
                 current_ids = region.get("current_ids", [region_id])
             else:
                 current_ids = [region_id.split("-pre")[0]]
+
+            if region_id == "LK-5221":
+                continue
+
             idx[region_id] = current_ids
         return idx
 
