@@ -1,0 +1,4 @@
+{
+  "error": "Only 0/5 regions have data for Ethnicity. {'LK-2303-pre2019', 'LK-2312-pre2019', 'LK-2315-pre2019', 'LK-2306-pre2019', 'LK-2309-pre2019'} have NO data.",
+  "query_time_ms": 0
+}
