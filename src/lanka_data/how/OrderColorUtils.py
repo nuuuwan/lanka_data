@@ -23,7 +23,7 @@ class OrderColorUtils:
         for data in data_list:
             key = func_key_getter(data) if func_key_getter else None
             if key not in key_to_base_hex:
-                key_to_base_hex[key] = ColorUtils.COLOR_IDX.get(
+                key_to_base_hex[key] = ColorUtils.HUE_IDX.get(
                     key
                 ) or ColorUtils.get_random_color(key)
                 value_to_color[key] = ColorUtils._color_with_opacity(

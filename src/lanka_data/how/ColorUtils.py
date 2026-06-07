@@ -1,50 +1,58 @@
+import colorsys
 import hashlib
 
 
-class COLOR:
-    GOLD = "#FFBE29"
-    DARK_ORANGE = "#EB7400"
-    TEAL = "#00534E"
-    BLUE = "#0000FF"
-    MAROON = "#800080"
-    GRAY = "#808080"
-    DARK_RED = "#8D153A"
-    GREEN = "#008000"
-    RED = "#FF0000"
-    ORANGE = "#FFA500"
+def _hue_to_hex(hue: int) -> str:
+    """Convert a hue (0–360°) at S=100%, L=50% to a hex colour string."""
+    r, g, b = colorsys.hls_to_rgb(hue / 360.0, 0.5, 1.0)
+    return f"#{round(r * 255):02X}{round(g * 255):02X}{round(b * 255):02X}"
+
+
+class HUE:
+    RED = 0
+    DARK_RED = 345
+    DARK_ORANGE = 20
+    ORANGE = 35
+    GOLD = 50
+    GREEN = 120
+    TEAL = 170
+    BLUE = 240
+    MAROON = 300
+    GRAY = None  # achromatic – no hue
 
 
 class ColorUtils:
-    COLOR_IDX = {
-        # Religion
-        "buddhist": COLOR.GOLD,
-        "hindu": COLOR.DARK_ORANGE,
-        "islam": COLOR.TEAL,
-        "other_christian": COLOR.BLUE,
-        "roman_catholic": COLOR.MAROON,
-        "other": COLOR.GRAY,
-        # Ethnicity
-        "sinhalese": COLOR.DARK_RED,
-        "sl_tamil": COLOR.DARK_ORANGE,
-        "sri_lanka_tamil": COLOR.DARK_ORANGE,
-        "ind_tamil": COLOR.BLUE,
-        "indian_tamil_or_malaiyaga_thamilar": COLOR.BLUE,
-        "sl_moor": COLOR.TEAL,
-        "sri_lanka_moor_or_muslim": COLOR.TEAL,
-        "malay": COLOR.GREEN,
-        # Political Party
-        "SLPP": COLOR.DARK_RED,
-        "UPFA": COLOR.BLUE,
-        "PA": COLOR.BLUE,
-        "SLFP": COLOR.BLUE,
-        "NPP": COLOR.RED,
-        "SJB": COLOR.GREEN,
-        "UNP": COLOR.GREEN,
-        "NDF": COLOR.GREEN,
-        "IND9": COLOR.ORANGE,
-        "SLMP": COLOR.MAROON,
-        "ACTC": COLOR.ORANGE,
-        "ITAK": COLOR.ORANGE,
+    GROUP_TO_HUE_TO_LABEL_LIST = {
+        "Religion": {
+            HUE.GOLD: ["buddhist"],
+            HUE.DARK_ORANGE: ["hindu"],
+            HUE.TEAL: ["islam"],
+            HUE.BLUE: ["other_christian"],
+            HUE.MAROON: ["roman_catholic"],
+            HUE.GRAY: ["other"],
+        },
+        "Ethnicity": {
+            HUE.DARK_RED: ["sinhalese"],
+            HUE.DARK_ORANGE: ["sl_tamil", "sri_lanka_tamil"],
+            HUE.BLUE: ["ind_tamil", "indian_tamil_or_malaiyaga_thamilar"],
+            HUE.TEAL: ["sl_moor", "sri_lanka_moor_or_muslim"],
+            HUE.GREEN: ["malay"],
+        },
+        "Political Party": {
+            HUE.DARK_RED: ["SLPP"],
+            HUE.BLUE: ["UPFA", "PA", "SLFP"],
+            HUE.RED: ["NPP"],
+            HUE.GREEN: ["SJB", "UNP", "NDF"],
+            HUE.ORANGE: ["IND9", "ACTC", "ITAK"],
+            HUE.MAROON: ["SLMP"],
+        },
+    }
+
+    HUE_IDX = {
+        label: hue
+        for group in GROUP_TO_HUE_TO_LABEL_LIST.values()
+        for hue, labels in group.items()
+        for label in labels
     }
 
     @staticmethod
