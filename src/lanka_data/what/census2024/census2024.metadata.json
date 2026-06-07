@@ -2,107 +2,107 @@
   "GN_housing_excel": {
     "Occupied-Housing-Units": {
       "label": "OccupiedUnits",
-      "description": "Count of occupied housing units."
+      "description": "Count of occupied housing units"
     }
   },
   "GN_population_excel": {
     "Population-by-Age-Group": {
       "label": "AgeGroup",
-      "description": "Population distributed across standard age bands."
+      "description": "Population distributed across standard age bands"
     },
     "Population-by-Sex": {
       "label": "Gender",
-      "description": "Population broken down by male and female."
+      "description": "Population broken down by male and female"
     }
   },
   "HH_GND_excel": {
     "Main-Source-of-Drinking-Water": {
       "label": "Water",
-      "description": "Primary source of drinking water (e.g. pipe-borne, well, river) used by households."
+      "description": "Primary source of drinking water (e.g. pipe-borne, well, river) used by households"
     },
     "Main-Source-of-EnergyFuel-Used-for-Cooking": {
       "label": "CookingFuel",
-      "description": "Main energy or fuel type used for cooking (e.g. gas, firewood, electricity) by households."
+      "description": "Main energy or fuel type used for cooking (e.g. gas, firewood, electricity) by households"
     },
     "Main-Source-of-Lighting": {
       "label": "Lighting",
-      "description": "Primary source of lighting (e.g. electricity, kerosene) used by households."
+      "description": "Primary source of lighting (e.g. electricity, kerosene) used by households"
     },
     "Number-of-Households": {
       "label": "Households",
-      "description": "Total number of households."
+      "description": "Total number of households"
     },
     "Number-of-households-by-main-source-of-drinking-water": {
       "label": "HouseholdsWater",
-      "description": "Number of households classified by their main source of drinking water."
+      "description": "Number of households classified by their main source of drinking water"
     },
     "Number-of-households-by-main-source-of-energyfuel-used-for-cooking": {
       "label": "HouseholdsCookingFuel",
-      "description": "Number of households classified by the main fuel or energy source used for cooking."
+      "description": "Number of households classified by the main fuel or energy source used for cooking"
     },
     "Number-of-households-by-source-of-lighting": {
       "label": "HouseholdsLighting",
-      "description": "Number of households classified by their primary source of lighting."
+      "description": "Number of households classified by their primary source of lighting"
     },
     "Number-of-households-using-toilet-facilities": {
       "label": "HouseholdsToilet",
-      "description": "Number of households classified by the type of toilet facility used."
+      "description": "Number of households classified by the type of toilet facility used"
     },
     "Toilet-Facilities": {
       "label": "Toilet",
-      "description": "Distribution of households by type of toilet facility (e.g. flush, pit latrine, none)."
+      "description": "Distribution of households by type of toilet facility (e.g. flush, pit latrine, none)"
     }
   },
   "Housing-Preliminary-Report": {
     "Number-of-households-by-main-material-used-for-floor-construction": {
       "label": "Floor",
-      "description": "Households classified by the main material used for floor construction (e.g. cement, tile, mud)."
+      "description": "Households classified by the main material used for floor construction (e.g. cement, tile, mud)"
     },
     "Number-of-households-by-main-source-of-drinking-water": {
       "label": "Water",
-      "description": "Households classified by their main source of drinking water."
+      "description": "Households classified by their main source of drinking water"
     },
     "Number-of-households-by-main-source-of-energyfuel-used-for-cooking": {
       "label": "CookingFuel",
-      "description": "Households classified by the main cooking fuel or energy source."
+      "description": "Households classified by the main cooking fuel or energy source"
     },
     "Number-of-households-by-main-source-of-energyfuel-used": {
       "label": "EnergyFuel",
-      "description": "Households classified by the main energy fuel used for any purpose."
+      "description": "Households classified by the main energy fuel used for any purpose"
     },
     "Number-of-households-by-source-of-lighting": {
       "label": "Lighting",
-      "description": "Households classified by their primary source of lighting."
+      "description": "Households classified by their primary source of lighting"
     },
     "Number-of-households-using-toilet-facilities": {
       "label": "Toilet",
-      "description": "Households classified by type of toilet facility used."
+      "description": "Households classified by type of toilet facility used"
     },
     "Number-of-housing-units-by-housing-unit-structure": {
       "label": "Structure",
-      "description": "Housing units classified by structural type (e.g. permanent, semi-permanent, temporary)."
+      "description": "Housing units classified by structural type (e.g. permanent, semi-permanent, temporary)"
     },
     "Number-of-housing-units-by-main-material-used-for-roof-construction": {
       "label": "Roof",
-      "description": "Housing units classified by the main material used for roof construction (e.g. tile, sheet, concrete)."
+      "description": "Housing units classified by the main material used for roof construction (e.g. tile, sheet, concrete)"
     },
     "Number-of-housing-units-by-main-material-used-for-walls-construction": {
       "label": "Walls",
-      "description": "Housing units classified by the main material used for wall construction (e.g. brick, cabook, cadjan)."
+      "description": "Housing units classified by the main material used for wall construction (e.g. brick, cabook, cadjan)"
     }
   },
   "Population-Preliminary-Report": {
     "Population-by-ethnicity": {
       "label": "Ethnicity",
-      "description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)."
+      "description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)"
     },
     "Population-by-religion": {
       "label": "Religion",
-      "description": "Population distributed by religious affiliation (e.g. Buddhist, Hindu, Islam)."
+      "description": "Population distributed by religious affiliation (e.g. Buddhist, Hindu, Islam)"
     },
     "Population-by-sex-and-age": {
       "label": "GenderAndAgeGroup",
-      "description": "Population cross-tabulated by sex and age group."
+      "description": "Population cross-tabulated by sex and age group"
     }
   }
 }
