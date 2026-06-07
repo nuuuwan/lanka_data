@@ -1,10 +1,4 @@
 {
-  "GN_housing_excel": {
-    "Occupied-Housing-Units": {
-      "label": "OccupiedUnits",
-      "description": "Count of occupied housing units"
-    }
-  },
   "GN_population_excel": {
     "Population-by-Age-Group": {
       "label": "AgeGroup",
@@ -16,41 +10,25 @@
     }
   },
   "HH_GND_excel": {
-    "Main-Source-of-Drinking-Water": {
-      "label": "Water",
-      "description": "Primary source of drinking water (e.g. pipe-borne, well, river) used by households"
-    },
-    "Main-Source-of-EnergyFuel-Used-for-Cooking": {
-      "label": "CookingFuel",
-      "description": "Main energy or fuel type used for cooking (e.g. gas, firewood, electricity) by households"
-    },
-    "Main-Source-of-Lighting": {
-      "label": "Lighting",
-      "description": "Primary source of lighting (e.g. electricity, kerosene) used by households"
-    },
     "Number-of-Households": {
       "label": "Households",
       "description": "Total number of households"
     },
     "Number-of-households-by-main-source-of-drinking-water": {
-      "label": "HouseholdsWater",
+      "label": "Water",
       "description": "Number of households classified by their main source of drinking water"
     },
     "Number-of-households-by-main-source-of-energyfuel-used-for-cooking": {
-      "label": "HouseholdsCookingFuel",
+      "label": "Fuel",
       "description": "Number of households classified by the main fuel or energy source used for cooking"
     },
     "Number-of-households-by-source-of-lighting": {
-      "label": "HouseholdsLighting",
+      "label": "Lighting",
       "description": "Number of households classified by their primary source of lighting"
     },
     "Number-of-households-using-toilet-facilities": {
-      "label": "HouseholdsToilet",
-      "description": "Number of households classified by the type of toilet facility used"
-    },
-    "Toilet-Facilities": {
       "label": "Toilet",
-      "description": "Distribution of households by type of toilet facility (e.g. flush, pit latrine, none)"
+      "description": "Number of households classified by the type of toilet facility used"
     }
   },
   "Housing-Preliminary-Report": {
@@ -58,25 +36,9 @@
       "label": "Floor",
       "description": "Households classified by the main material used for floor construction (e.g. cement, tile, mud)"
     },
-    "Number-of-households-by-main-source-of-drinking-water": {
-      "label": "Water",
-      "description": "Households classified by their main source of drinking water"
-    },
-    "Number-of-households-by-main-source-of-energyfuel-used-for-cooking": {
-      "label": "CookingFuel",
-      "description": "Households classified by the main cooking fuel or energy source"
-    },
     "Number-of-households-by-main-source-of-energyfuel-used": {
-      "label": "EnergyFuel",
+      "label": "Energy",
       "description": "Households classified by the main energy fuel used for any purpose"
-    },
-    "Number-of-households-by-source-of-lighting": {
-      "label": "Lighting",
-      "description": "Households classified by their primary source of lighting"
-    },
-    "Number-of-households-using-toilet-facilities": {
-      "label": "Toilet",
-      "description": "Households classified by type of toilet facility used"
     },
     "Number-of-housing-units-by-housing-unit-structure": {
       "label": "Structure",

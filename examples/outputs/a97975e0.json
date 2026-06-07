@@ -1368,7 +1368,8 @@
       }
     },
     "source": "Election Commission of Sri Lanka",
-    "source_url": "https://www.elections.gov.lk"
+    "source_url": "https://www.elections.gov.lk",
+    "cmd": "Parliamentary/2024/LK/JSON"
   },
   "query_time_ms": 0,
   "cache_hit": false

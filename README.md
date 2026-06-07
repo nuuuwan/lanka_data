@@ -62,11 +62,11 @@ python workflows/console.py <cmd>
             "ConstructionYear": [
                 "2012"
             ],
-            "CookingFuel": [
-                "2024"
-            ],
             "Economy": [
-            ... // 121 lines ...
+                "2012"
+            ],
+            "Education": [
+            ... // 101 lines ...
             "Water": [
                 "2012",
                 "2024"
@@ -102,7 +102,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/f578857e.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2024/LK/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -122,7 +123,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/06554961.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2024/LK-1:district/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -142,7 +144,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/67a36359.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2024/LK-2,LK-3/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -162,7 +165,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/c235c32c.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2024/LK-3,LK-9,LK-8/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -182,7 +186,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/5accfe2f.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2024/LK-5...LK-8/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -202,7 +207,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/7394e15c.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2024/LK-1127025@20/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -222,7 +228,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/0816017b.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2024/LK-1103&EC-01B/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -244,7 +251,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/49033146.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2024/LK-61/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -264,7 +272,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/7ae293c9.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2024/LK-71:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -284,7 +293,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/771bc5cb.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2024/LK-81:pd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -306,7 +316,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/b3b4de30.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Religion/2012/LK-23:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -326,7 +337,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/9d4ac0b7.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Religion/2024/LK-23:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -358,8 +370,7 @@ python workflows/console.py <cmd>
                 "province_id": "LK-1",
                 "district_id": "LK-11",
                 "dsd_id": "LK-1103",
-                ... // 1184 lines ...
-                "Other Christian": 10715,
+                ... // 1185 lines ...
                 "Other": 251
             },
             "total_value": 323223,
@@ -367,14 +378,15 @@ python workflows/console.py <cmd>
                 "Islam": 0.4177,
                 "Hindu": 0.227,
                 "Buddhist": 0.1901,
-                "Roman Catholic": 0.1313,
-                "Other Christian": 0.0332,
+                "RomanCatholic": 0.1313,
+                "OtherChristian": 0.0332,
                 "Other": 0.0008
             }
         },
         "source": "Census of Population and Housing 2012",
         "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf",
-        "description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian"
+        "description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
+        "cmd": "Religion/2012/LK-1103:gnd/JSON"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -392,7 +404,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/7e388621.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Religion/2012/LK-1127:gnd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -412,7 +425,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/6a015ea6.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Religion/2012/LK-41:dsd/Map:2nd"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -432,7 +446,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/aaaf7c50.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Religion/2012/LK-51:dsd/Map:Buddhist"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -454,7 +469,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/823b017d.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Ethnicity/2024/LK-53:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -474,7 +490,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/1abd1338.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Ethnicity/Latest/LK-2:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -494,7 +511,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/5348caed.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Ethnicity/2024/LK-23:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -528,8 +546,7 @@ python workflows/console.py <cmd>
                     "polled": 11815246,
                     "valid": 11148006,
                     "rejected": 667240,
-                    ... // 1335 lines ...
-                "IND28-13": 0.0,
+                    ... // 1336 lines ...
                 "IND36-13": 0.0,
                 "IND42-13": 0.0,
                 "IND34-13": 0.0,
@@ -544,7 +561,8 @@ python workflows/console.py <cmd>
             }
         },
         "source": "Election Commission of Sri Lanka",
-        "source_url": "https://www.elections.gov.lk"
+        "source_url": "https://www.elections.gov.lk",
+        "cmd": "Parliamentary/2024/LK/JSON"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -562,7 +580,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/3dae5731.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Presidential/Latest/LK-2:pd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -596,8 +615,7 @@ python workflows/console.py <cmd>
                 ]
             },
             {
-            ... // 263 lines ...
-            },
+            ... // 264 lines ...
             {
                 "region_id": "LK-92",
                 "region_name": "Kegalle",
@@ -612,7 +630,8 @@ python workflows/console.py <cmd>
             }
         ],
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2012/LK-pre1984:district/JSON"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -630,7 +649,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/488036dc.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Religion/2012/LK-pre1959:district/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -650,7 +670,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/9c727ec1.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2012/LK-pre1845:province/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -670,7 +691,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/2ec9cf9f.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Ethnicity/2012/LK-23-pre2019:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -690,7 +712,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/5348caed.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Ethnicity/2024/LK-23-pre2019:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -712,7 +735,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/c035ac55.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "AgeGroup/2024/LK-1:district/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -732,7 +756,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/7dfd94e9.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Communication/2012/LK-2:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -752,7 +777,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/30cf6f6d.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "ConstructionYear/2012/LK-3:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -761,25 +787,26 @@ python workflows/console.py <cmd>
 
 ![ConstructionYear/2012/LK-3:dsd/Map](images/readme/30cf6f6d.png)
 
-#### 8.04) `CookingFuel/2024/LK-4:dsd/Map`
+#### 8.04) `Fuel/2024/LK-4:dsd/Map`
 
 ```json
 {
     "result": {
-        "what_description": "Main energy or fuel type used for cooking (e.g. gas, firewood, electricity) by households",
+        "what_description": "Number of households classified by the main fuel or energy source used for cooking",
         "when_description": "2024",
         "where_description": "Dsds within LK-4",
         "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/0fde27e5.png",
+        "image_path": "/tmp/lanka_data/images/e28cd398.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Fuel/2024/LK-4:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
 }
 ```
 
-![CookingFuel/2024/LK-4:dsd/Map](images/readme/0fde27e5.png)
+![Fuel/2024/LK-4:dsd/Map](images/readme/e28cd398.png)
 
 #### 8.05) `Economy/2012/LK-5:dsd/Map`
 
@@ -792,7 +819,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/25b52575.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Economy/2012/LK-5:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -812,7 +840,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/d6f800e3.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Education/2012/LK-6:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -821,7 +850,7 @@ python workflows/console.py <cmd>
 
 ![Education/2012/LK-6:dsd/Map](images/readme/d6f800e3.png)
 
-#### 8.07) `EnergyFuel/2024/LK-7:dsd/Map`
+#### 8.07) `Energy/2024/LK-7:dsd/Map`
 
 ```json
 {
@@ -832,14 +861,15 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/7cbe1400.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Energy/2024/LK-7:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
 }
 ```
 
-![EnergyFuel/2024/LK-7:dsd/Map](images/readme/7cbe1400.png)
+![Energy/2024/LK-7:dsd/Map](images/readme/7cbe1400.png)
 
 #### 8.08) `Floor/2024/LK-2,LK-3/Map`
 
@@ -852,7 +882,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/30a639ed.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Floor/2024/LK-2,LK-3/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -861,27 +892,7 @@ python workflows/console.py <cmd>
 
 ![Floor/2024/LK-2,LK-3/Map](images/readme/30a639ed.png)
 
-#### 8.09) `Fuel/2012/LK-5...LK-8/Map`
-
-```json
-{
-    "result": {
-        "what_description": "Households classified by the primary fuel used for cooking",
-        "when_description": "2012",
-        "where_description": "Provinces, from LK-5 to LK-8",
-        "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/1ad10d7d.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![Fuel/2012/LK-5...LK-8/Map](images/readme/1ad10d7d.png)
-
-#### 8.10) `Gender/2024/LK-1127025@20/Map`
+#### 8.09) `Gender/2024/LK-1127025@20/Map`
 
 ```json
 {
@@ -892,7 +903,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/4f5ded21.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Gender/2024/LK-1127025@20/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -901,7 +913,7 @@ python workflows/console.py <cmd>
 
 ![Gender/2024/LK-1127025@20/Map](images/readme/4f5ded21.png)
 
-#### 8.11) `GenderAndAgeGroup/2024/LK-1103/Map`
+#### 8.10) `GenderAndAgeGroup/2024/LK-1103/Map`
 
 ```json
 {
@@ -912,7 +924,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/d3efd811.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "GenderAndAgeGroup/2024/LK-1103/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -921,107 +934,28 @@ python workflows/console.py <cmd>
 
 ![GenderAndAgeGroup/2024/LK-1103/Map](images/readme/d3efd811.png)
 
-#### 8.12) `HouseholdsCookingFuel/2024/LK-81:pd/Map`
-
-```json
-{
-    "result": {
-        "what_description": "Number of households classified by the main fuel or energy source used for cooking",
-        "when_description": "2024",
-        "where_description": "Pds within LK-81",
-        "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/2271372d.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![HouseholdsCookingFuel/2024/LK-81:pd/Map](images/readme/2271372d.png)
-
-#### 8.13) `HouseholdsLighting/2024/LK-23:dsd/Map`
+#### 8.11) `Lighting/2024/LK-61:dsd/Map`
 
 ```json
 {
     "result": {
         "what_description": "Number of households classified by their primary source of lighting",
         "when_description": "2024",
-        "where_description": "Dsds within LK-23",
-        "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/590722dc.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![HouseholdsLighting/2024/LK-23:dsd/Map](images/readme/590722dc.png)
-
-#### 8.14) `HouseholdsToilet/2024/LK-41:dsd/Map`
-
-```json
-{
-    "result": {
-        "what_description": "Number of households classified by the type of toilet facility used",
-        "when_description": "2024",
-        "where_description": "Dsds within LK-41",
-        "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/0f59d95a.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![HouseholdsToilet/2024/LK-41:dsd/Map](images/readme/0f59d95a.png)
-
-#### 8.15) `HouseholdsWater/2024/LK-51:dsd/Map`
-
-```json
-{
-    "result": {
-        "what_description": "Number of households classified by their main source of drinking water",
-        "when_description": "2024",
-        "where_description": "Dsds within LK-51",
-        "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/5de2504c.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![HouseholdsWater/2024/LK-51:dsd/Map](images/readme/5de2504c.png)
-
-#### 8.16) `Lighting/2024/LK-61:dsd/Map`
-
-```json
-{
-    "result": {
-        "what_description": "Primary source of lighting (e.g. electricity, kerosene) used by households",
-        "when_description": "2024",
         "where_description": "Dsds within LK-61",
         "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/224b8a0b.png",
+        "image_path": "/tmp/lanka_data/images/fb1cd9f5.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Lighting/2024/LK-61:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
 }
 ```
 
-![Lighting/2024/LK-61:dsd/Map](images/readme/224b8a0b.png)
+![Lighting/2024/LK-61:dsd/Map](images/readme/fb1cd9f5.png)
 
-#### 8.17) `Local/2025/LK:district/Map`
+#### 8.12) `Local/2025/LK:district/Map`
 
 ```json
 {
@@ -1032,7 +966,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/2210f68e.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Local/2025/LK:district/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -1041,7 +976,7 @@ python workflows/console.py <cmd>
 
 ![Local/2025/LK:district/Map](images/readme/2210f68e.png)
 
-#### 8.18) `Marital/2012/LK-3,LK-9,LK-8/Map`
+#### 8.13) `Marital/2012/LK-3,LK-9,LK-8/Map`
 
 ```json
 {
@@ -1052,7 +987,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/d1dd8a40.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Marital/2012/LK-3,LK-9,LK-8/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -1061,7 +997,7 @@ python workflows/console.py <cmd>
 
 ![Marital/2012/LK-3,LK-9,LK-8/Map](images/readme/d1dd8a40.png)
 
-#### 8.19) `Occupancy/2012/LK-1127:gnd/Map`
+#### 8.14) `Occupancy/2012/LK-1127:gnd/Map`
 
 ```json
 {
@@ -1072,7 +1008,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/315aa0b9.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Occupancy/2012/LK-1127:gnd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -1081,27 +1018,7 @@ python workflows/console.py <cmd>
 
 ![Occupancy/2012/LK-1127:gnd/Map](images/readme/315aa0b9.png)
 
-#### 8.20) `OccupiedUnits/2024/LK-2:district/Map`
-
-```json
-{
-    "result": {
-        "what_description": "Count of occupied housing units",
-        "when_description": "2024",
-        "where_description": "Districts within LK-2",
-        "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/886dd277.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![OccupiedUnits/2024/LK-2:district/Map](images/readme/886dd277.png)
-
-#### 8.21) `Ownership/2012/LK-53:dsd/Map`
+#### 8.15) `Ownership/2012/LK-53:dsd/Map`
 
 ```json
 {
@@ -1112,7 +1029,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/3f30ebc0.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Ownership/2012/LK-53:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -1121,27 +1039,7 @@ python workflows/console.py <cmd>
 
 ![Ownership/2012/LK-53:dsd/Map](images/readme/3f30ebc0.png)
 
-#### 8.22) `Persons/2012/LK-1103:gnd/Map`
-
-```json
-{
-    "result": {
-        "what_description": "Households classified by the number of persons living in the dwelling",
-        "when_description": "2012",
-        "where_description": "Gnds within LK-1103",
-        "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/68045d2a.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![Persons/2012/LK-1103:gnd/Map](images/readme/68045d2a.png)
-
-#### 8.23) `Quarters/2012/LK-4...LK-6/Map`
+#### 8.16) `Quarters/2012/LK-4...LK-6/Map`
 
 ```json
 {
@@ -1152,7 +1050,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/57f7cedf.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Quarters/2012/LK-4...LK-6/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -1161,7 +1060,7 @@ python workflows/console.py <cmd>
 
 ![Quarters/2012/LK-4...LK-6/Map](images/readme/57f7cedf.png)
 
-#### 8.24) `RelationshipToHead/2012/LK-23:dsd/Map`
+#### 8.17) `RelationshipToHead/2012/LK-23:dsd/Map`
 
 ```json
 {
@@ -1172,7 +1071,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/a748a3ff.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "RelationshipToHead/2012/LK-23:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -1181,7 +1081,7 @@ python workflows/console.py <cmd>
 
 ![RelationshipToHead/2012/LK-23:dsd/Map](images/readme/a748a3ff.png)
 
-#### 8.25) `Roof/2024/LK-9:dsd/Map`
+#### 8.18) `Roof/2024/LK-9:dsd/Map`
 
 ```json
 {
@@ -1192,7 +1092,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/6a16ce08.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Roof/2024/LK-9:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -1201,7 +1102,7 @@ python workflows/console.py <cmd>
 
 ![Roof/2024/LK-9:dsd/Map](images/readme/6a16ce08.png)
 
-#### 8.26) `Rooms/2012/LK-2:pd/Map`
+#### 8.19) `Rooms/2012/LK-2:pd/Map`
 
 ```json
 {
@@ -1212,7 +1113,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/7ee47c5c.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Rooms/2012/LK-2:pd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -1221,7 +1123,7 @@ python workflows/console.py <cmd>
 
 ![Rooms/2012/LK-2:pd/Map](images/readme/7ee47c5c.png)
 
-#### 8.27) `Structure/2024/LK-3:district/Map`
+#### 8.20) `Structure/2024/LK-3:district/Map`
 
 ```json
 {
@@ -1232,7 +1134,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/7dc46400.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Structure/2024/LK-3:district/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -1241,67 +1144,28 @@ python workflows/console.py <cmd>
 
 ![Structure/2024/LK-3:district/Map](images/readme/7dc46400.png)
 
-#### 8.28) `Toilet/2024/LK-5:dsd/Map`
+#### 8.21) `Toilet/2024/LK-5:dsd/Map`
 
 ```json
 {
     "result": {
-        "what_description": "Distribution of households by type of toilet facility (e.g. flush, pit latrine, none)",
+        "what_description": "Number of households classified by the type of toilet facility used",
         "when_description": "2024",
         "where_description": "Dsds within LK-5",
         "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/bff1609d.png",
+        "image_path": "/tmp/lanka_data/images/bc70199f.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Toilet/2024/LK-5:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
 }
 ```
 
-![Toilet/2024/LK-5:dsd/Map](images/readme/bff1609d.png)
+![Toilet/2024/LK-5:dsd/Map](images/readme/bc70199f.png)
 
-#### 8.29) `Unit/2012/LK-6:dsd/Map`
-
-```json
-{
-    "result": {
-        "what_description": "Housing units classified by type such as house, flat, annexe, or room",
-        "when_description": "2012",
-        "where_description": "Dsds within LK-6",
-        "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/5731ac0c.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![Unit/2012/LK-6:dsd/Map](images/readme/5731ac0c.png)
-
-#### 8.30) `Wall/2012/LK-7:dsd/Map`
-
-```json
-{
-    "result": {
-        "what_description": "Housing units classified by the main material used for wall construction",
-        "when_description": "2012",
-        "where_description": "Dsds within LK-7",
-        "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/1fe8e7c0.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![Wall/2012/LK-7:dsd/Map](images/readme/1fe8e7c0.png)
-
-#### 8.31) `Walls/2024/LK-8:dsd/Map`
+#### 8.22) `Walls/2024/LK-8:dsd/Map`
 
 ```json
 {
@@ -1312,7 +1176,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/0e5b4f40.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Walls/2024/LK-8:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -1321,7 +1186,7 @@ python workflows/console.py <cmd>
 
 ![Walls/2024/LK-8:dsd/Map](images/readme/0e5b4f40.png)
 
-#### 8.32) `Waste/2012/LK-1:dsd/Map`
+#### 8.23) `Waste/2012/LK-1:dsd/Map`
 
 ```json
 {
@@ -1332,7 +1197,8 @@ python workflows/console.py <cmd>
         "how_description": "Geographical map visualization",
         "image_path": "/tmp/lanka_data/images/dcf9c1e0.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Waste/2012/LK-1:dsd/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -1341,25 +1207,26 @@ python workflows/console.py <cmd>
 
 ![Waste/2012/LK-1:dsd/Map](images/readme/dcf9c1e0.png)
 
-#### 8.33) `Water/2024/LK-2,LK-4/Map`
+#### 8.24) `Water/2024/LK-2,LK-4/Map`
 
 ```json
 {
     "result": {
-        "what_description": "Primary source of drinking water (e.g. pipe-borne, well, river) used by households",
+        "what_description": "Number of households classified by their main source of drinking water",
         "when_description": "2024",
         "where_description": "Provinces with IDs LK-2,LK-4",
         "how_description": "Geographical map visualization",
-        "image_path": "/tmp/lanka_data/images/5ca1ae49.png",
+        "image_path": "/tmp/lanka_data/images/2d05ab1d.png",
         "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Water/2024/LK-2,LK-4/Map"
     },
     "query_time_ms": 0,
     "cache_hit": false
 }
 ```
 
-![Water/2024/LK-2,LK-4/Map](images/readme/5ca1ae49.png)
+![Water/2024/LK-2,LK-4/Map](images/readme/2d05ab1d.png)
 
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)

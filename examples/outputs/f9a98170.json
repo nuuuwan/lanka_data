@@ -6,7 +6,8 @@
     "how_description": "Geographical map visualization",
     "image_path": "/tmp/lanka_data/images/25b52575.png",
     "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/"
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "Economy/2012/LK-5:dsd/Map"
   },
   "query_time_ms": 0,
   "cache_hit": false

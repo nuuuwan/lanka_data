@@ -1,12 +1,13 @@
 {
   "result": {
-    "what_description": "Main energy or fuel type used for cooking (e.g. gas, firewood, electricity) by households",
+    "what_description": "Number of households classified by the main fuel or energy source used for cooking",
     "when_description": "2024",
     "where_description": "Dsds within LK-4",
     "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/0fde27e5.png",
+    "image_path": "/tmp/lanka_data/images/e28cd398.png",
     "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/"
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "Fuel/2024/LK-4:dsd/Map"
   },
   "query_time_ms": 0,
   "cache_hit": false

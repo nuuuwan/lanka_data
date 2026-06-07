@@ -3,13 +3,13 @@ from functools import cache
 
 class FieldNameUtils:
     NORMALIZED_TO_ORIGINAL = {
-        "SL Tamil": {"Sri Lanka Tamil", "SL Tamil"},
-        "Ind/Malaiyaga Tamil": {
+        "SLTamil": {"Sri Lanka Tamil", "SL Tamil"},
+        "IndMalaiyagaTamil": {
             "Ind Tamil",
             "Indian Tamil Or Malaiyaga Thamilar",
         },
-        "SL Moor": {"Sri Lanka Moor Or Muslim", "SL Moor"},
-        "SL Chetty": {"Sri Lanka Chetty"},
+        "SLMoor": {"Sri Lanka Moor Or Muslim", "SL Moor"},
+        "SLChetty": {"Sri Lanka Chetty"},
     }
     NAME_IDX = {
         original_name: normalized_name
@@ -18,13 +18,13 @@ class FieldNameUtils:
     }
 
     @staticmethod
-    def from_snake_case_to_title_case(snake_str):
-        return snake_str.replace("_", " ").title()
+    def from_snake_case_to_pascal_case(snake_str):
+        return snake_str.replace("_", " ").title().replace(" ", "")
 
     @staticmethod
     @cache
     def normalize(field_name):
-        remapped_name = FieldNameUtils.from_snake_case_to_title_case(
+        remapped_name = FieldNameUtils.from_snake_case_to_pascal_case(
             field_name
         )
         return FieldNameUtils.NAME_IDX.get(remapped_name, remapped_name)

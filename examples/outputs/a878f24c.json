@@ -25,8 +25,8 @@
           "Buddhist": 2689,
           "Islam": 1862,
           "Hindu": 1644,
-          "Roman Catholic": 1039,
-          "Other Christian": 585,
+          "RomanCatholic": 1039,
+          "OtherChristian": 585,
           "Other": 10
         },
         "total_value": 7829,
@@ -34,8 +34,8 @@
           "Buddhist": 0.3435,
           "Islam": 0.2378,
           "Hindu": 0.21,
-          "Roman Catholic": 0.1327,
-          "Other Christian": 0.0747,
+          "RomanCatholic": 0.1327,
+          "OtherChristian": 0.0747,
           "Other": 0.0013
         }
       },
@@ -58,18 +58,18 @@
         "values": {
           "Hindu": 7922,
           "Islam": 7871,
-          "Roman Catholic": 6563,
+          "RomanCatholic": 6563,
           "Buddhist": 3634,
-          "Other Christian": 1998,
+          "OtherChristian": 1998,
           "Other": 15
         },
         "total_value": 28003,
         "pct_values": {
           "Hindu": 0.2829,
           "Islam": 0.2811,
-          "Roman Catholic": 0.2344,
+          "RomanCatholic": 0.2344,
           "Buddhist": 0.1298,
-          "Other Christian": 0.0713,
+          "OtherChristian": 0.0713,
           "Other": 0.0005
         }
       },
@@ -91,19 +91,19 @@
         "lg_id": "LG-11011",
         "values": {
           "Hindu": 6659,
-          "Roman Catholic": 4128,
+          "RomanCatholic": 4128,
           "Islam": 3279,
           "Buddhist": 2340,
-          "Other Christian": 1347,
+          "OtherChristian": 1347,
           "Other": 4
         },
         "total_value": 17757,
         "pct_values": {
           "Hindu": 0.375,
-          "Roman Catholic": 0.2325,
+          "RomanCatholic": 0.2325,
           "Islam": 0.1847,
           "Buddhist": 0.1318,
-          "Other Christian": 0.0759,
+          "OtherChristian": 0.0759,
           "Other": 0.0002
         }
       },
@@ -127,8 +127,8 @@
           "Islam": 5333,
           "Buddhist": 3044,
           "Hindu": 2703,
-          "Roman Catholic": 1460,
-          "Other Christian": 429,
+          "RomanCatholic": 1460,
+          "OtherChristian": 429,
           "Other": 1
         },
         "total_value": 12970,
@@ -136,8 +136,8 @@
           "Islam": 0.4112,
           "Buddhist": 0.2347,
           "Hindu": 0.2084,
-          "Roman Catholic": 0.1126,
-          "Other Christian": 0.0331,
+          "RomanCatholic": 0.1126,
+          "OtherChristian": 0.0331,
           "Other": 0.0001
         }
       },
@@ -161,8 +161,8 @@
           "Buddhist": 3305,
           "Islam": 2470,
           "Hindu": 1478,
-          "Roman Catholic": 1191,
-          "Other Christian": 352,
+          "RomanCatholic": 1191,
+          "OtherChristian": 352,
           "Other": 13
         },
         "total_value": 8809,
@@ -170,8 +170,8 @@
           "Buddhist": 0.3752,
           "Islam": 0.2804,
           "Hindu": 0.1678,
-          "Roman Catholic": 0.1352,
-          "Other Christian": 0.04,
+          "RomanCatholic": 0.1352,
+          "OtherChristian": 0.04,
           "Other": 0.0015
         }
       },
@@ -193,19 +193,19 @@
         "lg_id": "LG-11011",
         "values": {
           "Hindu": 5372,
-          "Roman Catholic": 2735,
+          "RomanCatholic": 2735,
           "Buddhist": 2588,
           "Islam": 2428,
-          "Other Christian": 486,
+          "OtherChristian": 486,
           "Other": 16
         },
         "total_value": 13625,
         "pct_values": {
           "Hindu": 0.3943,
-          "Roman Catholic": 0.2007,
+          "RomanCatholic": 0.2007,
           "Buddhist": 0.1899,
           "Islam": 0.1782,
-          "Other Christian": 0.0357,
+          "OtherChristian": 0.0357,
           "Other": 0.0012
         }
       },
@@ -227,18 +227,18 @@
         "lg_id": "LG-11011",
         "values": {
           "Hindu": 4684,
-          "Roman Catholic": 3725,
+          "RomanCatholic": 3725,
           "Buddhist": 2959,
-          "Other Christian": 597,
+          "OtherChristian": 597,
           "Islam": 449,
           "Other": 9
         },
         "total_value": 12423,
         "pct_values": {
           "Hindu": 0.377,
-          "Roman Catholic": 0.2998,
+          "RomanCatholic": 0.2998,
           "Buddhist": 0.2382,
-          "Other Christian": 0.0481,
+          "OtherChristian": 0.0481,
           "Islam": 0.0361,
           "Other": 0.0007
         }
@@ -262,18 +262,18 @@
         "values": {
           "Hindu": 4023,
           "Buddhist": 3582,
-          "Roman Catholic": 3114,
+          "RomanCatholic": 3114,
           "Islam": 2206,
-          "Other Christian": 866,
+          "OtherChristian": 866,
           "Other": 11
         },
         "total_value": 13802,
         "pct_values": {
           "Hindu": 0.2915,
           "Buddhist": 0.2595,
-          "Roman Catholic": 0.2256,
+          "RomanCatholic": 0.2256,
           "Islam": 0.1598,
-          "Other Christian": 0.0627,
+          "OtherChristian": 0.0627,
           "Other": 0.0008
         }
       },
@@ -295,19 +295,19 @@
         "lg_id": "LG-11011",
         "values": {
           "Hindu": 3362,
-          "Roman Catholic": 1886,
+          "RomanCatholic": 1886,
           "Buddhist": 687,
           "Islam": 257,
-          "Other Christian": 191,
+          "OtherChristian": 191,
           "Other": 2
         },
         "total_value": 6385,
         "pct_values": {
           "Hindu": 0.5265,
-          "Roman Catholic": 0.2954,
+          "RomanCatholic": 0.2954,
           "Buddhist": 0.1076,
           "Islam": 0.0403,
-          "Other Christian": 0.0299,
+          "OtherChristian": 0.0299,
           "Other": 0.0003
         }
       },
@@ -329,19 +329,19 @@
         "lg_id": "LG-11011",
         "values": {
           "Hindu": 4382,
-          "Roman Catholic": 2930,
+          "RomanCatholic": 2930,
           "Buddhist": 1214,
           "Islam": 483,
-          "Other Christian": 396,
+          "OtherChristian": 396,
           "Other": 4
         },
         "total_value": 9409,
         "pct_values": {
           "Hindu": 0.4657,
-          "Roman Catholic": 0.3114,
+          "RomanCatholic": 0.3114,
           "Buddhist": 0.129,
           "Islam": 0.0513,
-          "Other Christian": 0.0421,
+          "OtherChristian": 0.0421,
           "Other": 0.0004
         }
       },
@@ -363,19 +363,19 @@
         "lg_id": "LG-11011",
         "values": {
           "Hindu": 4046,
-          "Roman Catholic": 3651,
+          "RomanCatholic": 3651,
           "Islam": 715,
           "Buddhist": 598,
-          "Other Christian": 329,
+          "OtherChristian": 329,
           "Other": 0
         },
         "total_value": 9339,
         "pct_values": {
           "Hindu": 0.4332,
-          "Roman Catholic": 0.3909,
+          "RomanCatholic": 0.3909,
           "Islam": 0.0766,
           "Buddhist": 0.064,
-          "Other Christian": 0.0352,
+          "OtherChristian": 0.0352,
           "Other": 0.0
         }
       },
@@ -397,19 +397,19 @@
         "lg_id": "LG-11011",
         "values": {
           "Hindu": 3923,
-          "Roman Catholic": 1797,
+          "RomanCatholic": 1797,
           "Islam": 1782,
           "Buddhist": 417,
-          "Other Christian": 191,
+          "OtherChristian": 191,
           "Other": 0
         },
         "total_value": 8110,
         "pct_values": {
           "Hindu": 0.4837,
-          "Roman Catholic": 0.2216,
+          "RomanCatholic": 0.2216,
           "Islam": 0.2197,
           "Buddhist": 0.0514,
-          "Other Christian": 0.0236,
+          "OtherChristian": 0.0236,
           "Other": 0.0
         }
       },
@@ -432,18 +432,18 @@
         "values": {
           "Islam": 5122,
           "Hindu": 2270,
-          "Roman Catholic": 635,
+          "RomanCatholic": 635,
           "Buddhist": 357,
-          "Other Christian": 132,
+          "OtherChristian": 132,
           "Other": 0
         },
         "total_value": 8516,
         "pct_values": {
           "Islam": 0.6015,
           "Hindu": 0.2666,
-          "Roman Catholic": 0.0746,
+          "RomanCatholic": 0.0746,
           "Buddhist": 0.0419,
-          "Other Christian": 0.0155,
+          "OtherChristian": 0.0155,
           "Other": 0.0
         }
       },
@@ -467,8 +467,8 @@
           "Islam": 8898,
           "Hindu": 2243,
           "Buddhist": 1436,
-          "Roman Catholic": 674,
-          "Other Christian": 175,
+          "RomanCatholic": 674,
+          "OtherChristian": 175,
           "Other": 10
         },
         "total_value": 13436,
@@ -476,8 +476,8 @@
           "Islam": 0.6623,
           "Hindu": 0.1669,
           "Buddhist": 0.1069,
-          "Roman Catholic": 0.0502,
-          "Other Christian": 0.013,
+          "RomanCatholic": 0.0502,
+          "OtherChristian": 0.013,
           "Other": 0.0007
         }
       },
@@ -501,8 +501,8 @@
           "Islam": 7926,
           "Buddhist": 5585,
           "Hindu": 2581,
-          "Roman Catholic": 1121,
-          "Other Christian": 300,
+          "RomanCatholic": 1121,
+          "OtherChristian": 300,
           "Other": 75
         },
         "total_value": 17588,
@@ -510,8 +510,8 @@
           "Islam": 0.4506,
           "Buddhist": 0.3175,
           "Hindu": 0.1467,
-          "Roman Catholic": 0.0637,
-          "Other Christian": 0.0171,
+          "RomanCatholic": 0.0637,
+          "OtherChristian": 0.0171,
           "Other": 0.0043
         }
       },
@@ -535,8 +535,8 @@
           "Islam": 5566,
           "Buddhist": 1382,
           "Hindu": 1134,
-          "Roman Catholic": 710,
-          "Other Christian": 111,
+          "RomanCatholic": 710,
+          "OtherChristian": 111,
           "Other": 1
         },
         "total_value": 8904,
@@ -544,8 +544,8 @@
           "Islam": 0.6251,
           "Buddhist": 0.1552,
           "Hindu": 0.1274,
-          "Roman Catholic": 0.0797,
-          "Other Christian": 0.0125,
+          "RomanCatholic": 0.0797,
+          "OtherChristian": 0.0125,
           "Other": 0.0001
         }
       },
@@ -569,8 +569,8 @@
           "Hindu": 2890,
           "Buddhist": 1543,
           "Islam": 1494,
-          "Roman Catholic": 612,
-          "Other Christian": 282,
+          "RomanCatholic": 612,
+          "OtherChristian": 282,
           "Other": 0
         },
         "total_value": 6821,
@@ -578,8 +578,8 @@
           "Hindu": 0.4237,
           "Buddhist": 0.2262,
           "Islam": 0.219,
-          "Roman Catholic": 0.0897,
-          "Other Christian": 0.0413,
+          "RomanCatholic": 0.0897,
+          "OtherChristian": 0.0413,
           "Other": 0.0
         }
       },
@@ -603,8 +603,8 @@
           "Islam": 8512,
           "Buddhist": 2212,
           "Hindu": 488,
-          "Roman Catholic": 241,
-          "Other Christian": 70,
+          "RomanCatholic": 241,
+          "OtherChristian": 70,
           "Other": 1
         },
         "total_value": 11524,
@@ -612,8 +612,8 @@
           "Islam": 0.7386,
           "Buddhist": 0.1919,
           "Hindu": 0.0423,
-          "Roman Catholic": 0.0209,
-          "Other Christian": 0.0061,
+          "RomanCatholic": 0.0209,
+          "OtherChristian": 0.0061,
           "Other": 0.0001
         }
       },
@@ -637,8 +637,8 @@
           "Islam": 11479,
           "Buddhist": 888,
           "Hindu": 849,
-          "Roman Catholic": 339,
-          "Other Christian": 124,
+          "RomanCatholic": 339,
+          "OtherChristian": 124,
           "Other": 4
         },
         "total_value": 13683,
@@ -646,8 +646,8 @@
           "Islam": 0.8389,
           "Buddhist": 0.0649,
           "Hindu": 0.062,
-          "Roman Catholic": 0.0248,
-          "Other Christian": 0.0091,
+          "RomanCatholic": 0.0248,
+          "OtherChristian": 0.0091,
           "Other": 0.0003
         }
       },
@@ -671,8 +671,8 @@
           "Islam": 8432,
           "Hindu": 843,
           "Buddhist": 430,
-          "Roman Catholic": 226,
-          "Other Christian": 121,
+          "RomanCatholic": 226,
+          "OtherChristian": 121,
           "Other": 1
         },
         "total_value": 10053,
@@ -680,8 +680,8 @@
           "Islam": 0.8388,
           "Hindu": 0.0839,
           "Buddhist": 0.0428,
-          "Roman Catholic": 0.0225,
-          "Other Christian": 0.012,
+          "RomanCatholic": 0.0225,
+          "OtherChristian": 0.012,
           "Other": 0.0001
         }
       },
@@ -705,8 +705,8 @@
           "Islam": 6121,
           "Hindu": 567,
           "Buddhist": 535,
-          "Roman Catholic": 173,
-          "Other Christian": 120,
+          "RomanCatholic": 173,
+          "OtherChristian": 120,
           "Other": 1
         },
         "total_value": 7517,
@@ -714,8 +714,8 @@
           "Islam": 0.8143,
           "Hindu": 0.0754,
           "Buddhist": 0.0712,
-          "Roman Catholic": 0.023,
-          "Other Christian": 0.016,
+          "RomanCatholic": 0.023,
+          "OtherChristian": 0.016,
           "Other": 0.0001
         }
       },
@@ -739,8 +739,8 @@
           "Islam": 4670,
           "Hindu": 1499,
           "Buddhist": 1158,
-          "Roman Catholic": 311,
-          "Other Christian": 106,
+          "RomanCatholic": 311,
+          "OtherChristian": 106,
           "Other": 2
         },
         "total_value": 7746,
@@ -748,8 +748,8 @@
           "Islam": 0.6029,
           "Hindu": 0.1935,
           "Buddhist": 0.1495,
-          "Roman Catholic": 0.0401,
-          "Other Christian": 0.0137,
+          "RomanCatholic": 0.0401,
+          "OtherChristian": 0.0137,
           "Other": 0.0003
         }
       },
@@ -773,8 +773,8 @@
           "Hindu": 1137,
           "Buddhist": 513,
           "Islam": 217,
-          "Roman Catholic": 39,
-          "Other Christian": 18,
+          "RomanCatholic": 39,
+          "OtherChristian": 18,
           "Other": 0
         },
         "total_value": 1924,
@@ -782,8 +782,8 @@
           "Hindu": 0.591,
           "Buddhist": 0.2666,
           "Islam": 0.1128,
-          "Roman Catholic": 0.0203,
-          "Other Christian": 0.0094,
+          "RomanCatholic": 0.0203,
+          "OtherChristian": 0.0094,
           "Other": 0.0
         }
       },
@@ -806,18 +806,18 @@
         "values": {
           "Buddhist": 1343,
           "Hindu": 51,
-          "Roman Catholic": 32,
+          "RomanCatholic": 32,
           "Islam": 31,
-          "Other Christian": 10,
+          "OtherChristian": 10,
           "Other": 6
         },
         "total_value": 1473,
         "pct_values": {
           "Buddhist": 0.9117,
           "Hindu": 0.0346,
-          "Roman Catholic": 0.0217,
+          "RomanCatholic": 0.0217,
           "Islam": 0.021,
-          "Other Christian": 0.0068,
+          "OtherChristian": 0.0068,
           "Other": 0.0041
         }
       },
@@ -841,8 +841,8 @@
           "Islam": 2688,
           "Buddhist": 422,
           "Hindu": 323,
-          "Roman Catholic": 228,
-          "Other Christian": 125,
+          "RomanCatholic": 228,
+          "OtherChristian": 125,
           "Other": 3
         },
         "total_value": 3789,
@@ -850,8 +850,8 @@
           "Islam": 0.7094,
           "Buddhist": 0.1114,
           "Hindu": 0.0852,
-          "Roman Catholic": 0.0602,
-          "Other Christian": 0.033,
+          "RomanCatholic": 0.0602,
+          "OtherChristian": 0.033,
           "Other": 0.0008
         }
       },
@@ -875,8 +875,8 @@
           "Islam": 2644,
           "Buddhist": 545,
           "Hindu": 399,
-          "Roman Catholic": 171,
-          "Other Christian": 36,
+          "RomanCatholic": 171,
+          "OtherChristian": 36,
           "Other": 0
         },
         "total_value": 3795,
@@ -884,8 +884,8 @@
           "Islam": 0.6967,
           "Buddhist": 0.1436,
           "Hindu": 0.1051,
-          "Roman Catholic": 0.0451,
-          "Other Christian": 0.0095,
+          "RomanCatholic": 0.0451,
+          "OtherChristian": 0.0095,
           "Other": 0.0
         }
       },
@@ -909,8 +909,8 @@
           "Islam": 3569,
           "Buddhist": 1966,
           "Hindu": 903,
-          "Roman Catholic": 295,
-          "Other Christian": 147,
+          "RomanCatholic": 295,
+          "OtherChristian": 147,
           "Other": 3
         },
         "total_value": 6883,
@@ -918,8 +918,8 @@
           "Islam": 0.5185,
           "Buddhist": 0.2856,
           "Hindu": 0.1312,
-          "Roman Catholic": 0.0429,
-          "Other Christian": 0.0214,
+          "RomanCatholic": 0.0429,
+          "OtherChristian": 0.0214,
           "Other": 0.0004
         }
       },
@@ -943,8 +943,8 @@
           "Islam": 1882,
           "Buddhist": 1195,
           "Hindu": 432,
-          "Roman Catholic": 332,
-          "Other Christian": 71,
+          "RomanCatholic": 332,
+          "OtherChristian": 71,
           "Other": 3
         },
         "total_value": 3915,
@@ -952,8 +952,8 @@
           "Islam": 0.4807,
           "Buddhist": 0.3052,
           "Hindu": 0.1103,
-          "Roman Catholic": 0.0848,
-          "Other Christian": 0.0181,
+          "RomanCatholic": 0.0848,
+          "OtherChristian": 0.0181,
           "Other": 0.0008
         }
       },
@@ -977,8 +977,8 @@
           "Islam": 3760,
           "Buddhist": 2301,
           "Hindu": 780,
-          "Roman Catholic": 279,
-          "Other Christian": 101,
+          "RomanCatholic": 279,
+          "OtherChristian": 101,
           "Other": 0
         },
         "total_value": 7221,
@@ -986,8 +986,8 @@
           "Islam": 0.5207,
           "Buddhist": 0.3187,
           "Hindu": 0.108,
-          "Roman Catholic": 0.0386,
-          "Other Christian": 0.014,
+          "RomanCatholic": 0.0386,
+          "OtherChristian": 0.014,
           "Other": 0.0
         }
       },
@@ -1011,8 +1011,8 @@
           "Islam": 5265,
           "Buddhist": 1730,
           "Hindu": 924,
-          "Roman Catholic": 329,
-          "Other Christian": 211,
+          "RomanCatholic": 329,
+          "OtherChristian": 211,
           "Other": 8
         },
         "total_value": 8467,
@@ -1020,8 +1020,8 @@
           "Islam": 0.6218,
           "Buddhist": 0.2043,
           "Hindu": 0.1091,
-          "Roman Catholic": 0.0389,
-          "Other Christian": 0.0249,
+          "RomanCatholic": 0.0389,
+          "OtherChristian": 0.0249,
           "Other": 0.0009
         }
       },
@@ -1045,8 +1045,8 @@
           "Islam": 4504,
           "Buddhist": 2254,
           "Hindu": 1235,
-          "Roman Catholic": 705,
-          "Other Christian": 259,
+          "RomanCatholic": 705,
+          "OtherChristian": 259,
           "Other": 11
         },
         "total_value": 8968,
@@ -1054,8 +1054,8 @@
           "Islam": 0.5022,
           "Buddhist": 0.2513,
           "Hindu": 0.1377,
-          "Roman Catholic": 0.0786,
-          "Other Christian": 0.0289,
+          "RomanCatholic": 0.0786,
+          "OtherChristian": 0.0289,
           "Other": 0.0012
         }
       },
@@ -1079,8 +1079,8 @@
           "Islam": 6106,
           "Buddhist": 2002,
           "Hindu": 264,
-          "Roman Catholic": 107,
-          "Other Christian": 44,
+          "RomanCatholic": 107,
+          "OtherChristian": 44,
           "Other": 3
         },
         "total_value": 8526,
@@ -1088,8 +1088,8 @@
           "Islam": 0.7162,
           "Buddhist": 0.2348,
           "Hindu": 0.031,
-          "Roman Catholic": 0.0125,
-          "Other Christian": 0.0052,
+          "RomanCatholic": 0.0125,
+          "OtherChristian": 0.0052,
           "Other": 0.0004
         }
       },
@@ -1113,8 +1113,8 @@
           "Islam": 2168,
           "Buddhist": 1649,
           "Hindu": 491,
-          "Roman Catholic": 166,
-          "Other Christian": 105,
+          "RomanCatholic": 166,
+          "OtherChristian": 105,
           "Other": 12
         },
         "total_value": 4591,
@@ -1122,8 +1122,8 @@
           "Islam": 0.4722,
           "Buddhist": 0.3592,
           "Hindu": 0.1069,
-          "Roman Catholic": 0.0362,
-          "Other Christian": 0.0229,
+          "RomanCatholic": 0.0362,
+          "OtherChristian": 0.0229,
           "Other": 0.0026
         }
       },
@@ -1147,8 +1147,8 @@
           "Buddhist": 1628,
           "Islam": 371,
           "Hindu": 264,
-          "Roman Catholic": 180,
-          "Other Christian": 119,
+          "RomanCatholic": 180,
+          "OtherChristian": 119,
           "Other": 21
         },
         "total_value": 2583,
@@ -1156,8 +1156,8 @@
           "Buddhist": 0.6303,
           "Islam": 0.1436,
           "Hindu": 0.1022,
-          "Roman Catholic": 0.0697,
-          "Other Christian": 0.0461,
+          "RomanCatholic": 0.0697,
+          "OtherChristian": 0.0461,
           "Other": 0.0081
         }
       },
@@ -1181,8 +1181,8 @@
           "Islam": 4440,
           "Buddhist": 1317,
           "Hindu": 609,
-          "Roman Catholic": 311,
-          "Other Christian": 161,
+          "RomanCatholic": 311,
+          "OtherChristian": 161,
           "Other": 1
         },
         "total_value": 6839,
@@ -1190,8 +1190,8 @@
           "Islam": 0.6492,
           "Buddhist": 0.1926,
           "Hindu": 0.089,
-          "Roman Catholic": 0.0455,
-          "Other Christian": 0.0235,
+          "RomanCatholic": 0.0455,
+          "OtherChristian": 0.0235,
           "Other": 0.0001
         }
       }
@@ -1201,8 +1201,8 @@
         "Islam": 135000,
         "Hindu": 73374,
         "Buddhist": 61448,
-        "Roman Catholic": 42435,
-        "Other Christian": 10715,
+        "RomanCatholic": 42435,
+        "OtherChristian": 10715,
         "Other": 251
       },
       "total_value": 323223,
@@ -1210,14 +1210,15 @@
         "Islam": 0.4177,
         "Hindu": 0.227,
         "Buddhist": 0.1901,
-        "Roman Catholic": 0.1313,
-        "Other Christian": 0.0332,
+        "RomanCatholic": 0.1313,
+        "OtherChristian": 0.0332,
         "Other": 0.0008
       }
     },
     "source": "Census of Population and Housing 2012",
     "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf",
-    "description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian"
+    "description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
+    "cmd": "Religion/2012/LK-1103:gnd/JSON"
   },
   "query_time_ms": 0,
   "cache_hit": false

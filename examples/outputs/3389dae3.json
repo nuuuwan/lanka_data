@@ -14,16 +14,13 @@
       "ConstructionYear": [
         "2012"
       ],
-      "CookingFuel": [
-        "2024"
-      ],
       "Economy": [
         "2012"
       ],
       "Education": [
         "2012"
       ],
-      "EnergyFuel": [
+      "Energy": [
         "2024"
       ],
       "Ethnicity": [
@@ -35,7 +32,8 @@
         "2024"
       ],
       "Fuel": [
-        "2012"
+        "2012",
+        "2024"
       ],
       "Gender": [
         "2012",
@@ -47,34 +45,18 @@
       "Households": [
         "2024"
       ],
-      "HouseholdsCookingFuel": [
-        "2024"
-      ],
-      "HouseholdsLighting": [
-        "2024"
-      ],
-      "HouseholdsToilet": [
-        "2024"
-      ],
-      "HouseholdsWater": [
-        "2024"
-      ],
       "Lighting": [
         "2012",
         "2024"
       ],
       "Local": [
-        "2011",
-        "2018"
+        "2025"
       ],
       "Marital": [
         "2012"
       ],
       "Occupancy": [
         "2012"
-      ],
-      "OccupiedUnits": [
-        "2024"
       ],
       "Ownership": [
         "2012"
@@ -130,10 +112,8 @@
       "Unit": [
         "2012"
       ],
-      "Wall": [
-        "2012"
-      ],
       "Walls": [
+        "2012",
         "2024"
       ],
       "Waste": [

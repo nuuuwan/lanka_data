@@ -6,7 +6,8 @@
     "how_description": "Geographical map visualization",
     "image_path": "/tmp/lanka_data/images/f578857e.png",
     "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/"
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "Basic/2024/LK/Map"
   },
   "query_time_ms": 0,
   "cache_hit": false

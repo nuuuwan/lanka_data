@@ -1,12 +1,13 @@
 {
   "result": {
-    "what_description": "Distribution of households by type of toilet facility (e.g. flush, pit latrine, none)",
+    "what_description": "Number of households classified by the type of toilet facility used",
     "when_description": "2024",
     "where_description": "Dsds within LK-5",
     "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/bff1609d.png",
+    "image_path": "/tmp/lanka_data/images/bc70199f.png",
     "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/"
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "Toilet/2024/LK-5:dsd/Map"
   },
   "query_time_ms": 0,
   "cache_hit": false

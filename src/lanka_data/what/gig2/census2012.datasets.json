@@ -87,7 +87,7 @@
     "id": "social-household-type_of_unit",
     "description": "Housing units classified by type such as house, flat, annexe, or room"
   },
-  "Wall": {
+  "Walls": {
     "id": "social-household-wall_type",
     "description": "Housing units classified by the main material used for wall construction"
   },

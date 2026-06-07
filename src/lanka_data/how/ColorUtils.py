@@ -47,7 +47,6 @@ class HUE:
         digest = hashlib.md5(str(label).encode()).hexdigest()
         digest_int = int(digest[:4], 16)
         hue = MIN_HUE_SEPARATION * (digest_int % (360 // MIN_HUE_SEPARATION))
-        print(label, hue)
         return HUE.to_hex(hue)
 
 

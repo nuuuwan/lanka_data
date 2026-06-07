@@ -6,7 +6,8 @@
     "how_description": "Geographical map visualization",
     "image_path": "/tmp/lanka_data/images/aaaf7c50.png",
     "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/"
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "Religion/2012/LK-51:dsd/Map:Buddhist"
   },
   "query_time_ms": 0,
   "cache_hit": false
