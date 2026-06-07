@@ -18,11 +18,11 @@ class CustomLoggingFormatter(logging.Formatter):
 
 
 class Log(logging.Logger):
-    def __init__(self, name: str, level: int = logging.DEBUG):
+    def __init__(self, name: str = "unamed", level: int = logging.DEBUG):
         super(Log, self).__init__(name, level)
         self.propagate = False
 
-        formatter = CustomLoggingFormatter()
+        formatter = CustomLoggingFormatter("[%(name)s] %(message)s")
         sh = logging.StreamHandler()
         sh.setLevel(logging.DEBUG)
         sh.setFormatter(formatter)
