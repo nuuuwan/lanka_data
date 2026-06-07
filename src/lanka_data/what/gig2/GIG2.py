@@ -7,9 +7,13 @@ log = Log("GIG2")
 class GIG2(What):
 
     def __init__(self, title: str, region_group: str, year: str):
-        super().__init__(title, region_year="2019")
+        super().__init__(title)
         self.region_group = region_group
         self.year = year
+
+    @classmethod
+    def get_region_year(cls):
+        return "2019"
 
     @classmethod
     def get_title_to_id(cls):

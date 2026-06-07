@@ -4,7 +4,7 @@ from lanka_data.what.What import What
 class BasicWhat(What):
 
     def __init__(self):
-        super().__init__(title="Basic Information", region_year="Current")
+        super().__init__(title="Basic Information")
 
     @classmethod
     def clean(cls, data):

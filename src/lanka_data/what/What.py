@@ -1,10 +1,13 @@
 class What:
-    def __init__(self, title: str, region_year: str):
+    def __init__(self, title: str):
         self.title = title
-        self.region_year = region_year
 
     def get_title(self) -> str:
         return self.title
+
+    @classmethod
+    def get_region_year(cls):
+        return "Current"
 
     @classmethod
     def extract_source_data_values(cls, d):
@@ -49,6 +52,12 @@ class What:
 
     @classmethod
     def get_where_to_what_id_map(cls, regions) -> dict:
+        if cls.get_region_year() != "Current":
+            raise NotImplementedError(
+                f'{cls.get_region_year()} != "Current".'
+                + " get_where_to_what_id_map should be"
+                + " implemented for non-Current region_year."
+            )
         idx = {}
         for region in regions.raw_region_data_list:
             region_id = region["region_id"]

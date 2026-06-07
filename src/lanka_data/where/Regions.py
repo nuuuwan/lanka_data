@@ -10,8 +10,8 @@ log = Log("Regions")
 
 class Regions(Where, RegionLoadersMixin):
 
-    def __init__(self, raw_region_data_list: list[str], year: str):
-        super().__init__(self.build_title(raw_region_data_list), year)
+    def __init__(self, raw_region_data_list: list[str], region_year: str):
+        super().__init__(self.build_title(raw_region_data_list), region_year)
         self.raw_region_data_list = raw_region_data_list
 
     @classmethod
@@ -66,7 +66,7 @@ class Regions(Where, RegionLoadersMixin):
                 + f"/{region_type}s-pre{region_year}.json"
             )
 
-        source_data_list = WWW(url).read_json()
+        raw_data_list = WWW(url).read_json()
 
         def remap(d):
             d = (
@@ -74,7 +74,7 @@ class Regions(Where, RegionLoadersMixin):
                     region_id=d["id"],
                     region_name=d["name"],
                     region_type=region_type,
-                    region_year=region_year,
+                    history_year=region_year,
                 )
                 | d
             )
@@ -82,7 +82,7 @@ class Regions(Where, RegionLoadersMixin):
             del d["name"]
             return d
 
-        remapped_data_list = [remap(d) for d in source_data_list]
+        remapped_data_list = [remap(d) for d in raw_data_list]
         return remapped_data_list
 
     @classmethod

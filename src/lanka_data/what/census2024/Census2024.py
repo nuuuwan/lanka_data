@@ -9,9 +9,6 @@ log = Log("Census2024")
 
 class Census2024(What):
 
-    def __init__(self, title: str):
-        super().__init__(title, region_year="Current")
-
     @classmethod
     def metadata_file_path(cls) -> str:
         return os.path.join(
@@ -74,6 +71,6 @@ class Census2024(What):
             + "/nuuuwan/lk_census_2024/refs/heads/main"
             + f"/data/{path}/data.json"
         )
-        source_data_list = WWW(url).read_json()
+        raw_data_list = WWW(url).read_json()
 
-        return source_data_list
+        return raw_data_list
