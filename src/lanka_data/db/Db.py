@@ -72,6 +72,9 @@ class Db:
                 what_to_whens=WhatFactory.get_what_to_whens(),
                 where=["LK*", "EC-*", "LG-*"],
                 how=["JSON", "Map"],
+                source="lanka_data",
+                source_url="https://github.com"
+                + "/nuuuwan/lanka_data/blob/main/README.md",
             )
 
         where_cmd, what_cmd, when_cmd, how_cmd = self._parse_cmd(self.cmd)
