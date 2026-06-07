@@ -26,6 +26,9 @@ class Elections(GIG2):
             year=when_label,
         )
 
+    def get_description(self):
+        return f"Results of the {self.year} Sri Lankan {self.title} Election"
+
     @classmethod
     def get_title_to_id_file_path(cls):
         return os.path.join(

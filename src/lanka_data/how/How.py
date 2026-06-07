@@ -15,7 +15,7 @@ class How:
 
     def get_hash(self, where, what, when):
         return hashlib.md5(
-            str(self.get_title_items(where, what, when)).encode()
+            str(self.get_descriptions(where, what, when)).encode()
         ).hexdigest()[:8]
 
     def get_data(self, where, what, when):
@@ -41,19 +41,26 @@ class How:
     def get_inner(self, where, what, when):
         raise NotImplementedError("Subclasses should implement this method.")
 
-    def get_title_items(self, where, what, when):
-        return [
-            where.get_title(),
-            what.get_title(),
-            when,
-            self.get_title(),
-        ]
-
-    def get_result(self, where, what, when):
+    def get_descriptions(self, where, what, when):
         return dict(
-            title_items=self.get_title_items(where, what, when),
             what_description=what.get_description(),
             when_description=when,
             where_description=where.get_description(),
             how_description=self.get_description(),
-        ) | self.get_inner(where, what, when)
+        )
+
+    def get_result(self, where, what, when):
+        return self.get_descriptions(where, what, when) | self.get_inner(
+            where, what, when
+        )
+
+    def get_descriptions_title(self, where, what, when):
+        what_description = what.get_description()
+        when_description = when
+        where_description = where.get_description()
+        how_description = self.get_description()
+
+        return (
+            f"{how_description} of\n{what_description}"
+            + f" ({when_description}) for\n{where_description}"
+        )

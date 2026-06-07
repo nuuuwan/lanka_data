@@ -50,6 +50,9 @@ class Census2024(What):
                     label_to_desc[label] = entry.get("description", "")
         return label_to_desc
 
+    def get_description(self):
+        return self.get_label_to_description().get(self.title, "")
+
     @classmethod
     def get_what_to_whens(cls) -> dict[str, set[str]]:
         label_to_path = cls.get_title_to_path()
