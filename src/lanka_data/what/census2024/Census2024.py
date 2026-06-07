@@ -85,11 +85,15 @@ class Census2024(What):
         filtered_data_list = [
             d for d in raw_data_list if d["region_id"] in region_ids
         ]
-        n_regions_with_data = len(filtered_data_list)
+        region_ids_with_data = [d["region_id"] for d in filtered_data_list]
+        region_ids_without_data = set(region_ids) - set(region_ids_with_data)
+        n_regions_with_data = len(region_ids_with_data)
+
         if n_regions_with_data < n_regions:
-            log.warning(
-                f"Only {n_regions_with_data} out of {n_regions}"
+            raise ValueError(
+                f"Only {n_regions_with_data}/{n_regions}"
                 + f" regions have data for {self.title}."
+                + f" {region_ids_without_data} have NO data."
             )
         cleaned_data_list = [self.clean(d) for d in filtered_data_list]
         return cleaned_data_list
