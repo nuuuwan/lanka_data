@@ -73,7 +73,7 @@ class MapUtils:
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
-        log.info(f"Wrote {image_path}")
+        log.debug(f"Wrote {image_path}")
         plt.close(fig)
         return {
             "image_path": image_path,

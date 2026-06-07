@@ -38,7 +38,7 @@ class Elections(GIG2):
         )
 
     @classmethod
-    def get_custom_data(cls, d):
+    def extract_source_data_values(cls, d):
 
         electors = int(float(d["electors"]))
         polled = int(float(d["polled"]))

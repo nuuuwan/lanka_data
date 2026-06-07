@@ -74,14 +74,6 @@ class Census2024(What):
             + "/nuuuwan/lk_census_2024/refs/heads/main"
             + f"/data/{path}/data.json"
         )
-        raw_data_list = WWW(url).read_json()
+        source_data_list = WWW(url).read_json()
 
-        def remap(d):
-            d["region_id"] = d["region_id"]
-            d["region_name"] = d["region_name"]
-            del d["region_id"]
-            del d["region_name"]
-            return d
-
-        remapped_data_list = [remap(d) for d in raw_data_list]
-        return remapped_data_list
+        return source_data_list

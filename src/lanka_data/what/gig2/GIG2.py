@@ -16,15 +16,16 @@ class GIG2(What):
         return JSONFile(cls.get_title_to_id_file_path()).read()
 
     @classmethod
-    def extract_source_data_values(cls, d):
-        values = {}
-        for k, v in d.items():
-            if k in ("region_id", "region_name"):
-                continue
-            if "total" in k:
-                continue
-            values[k] = int(float(v))
-        return dict(values=values)
+    def get_where_to_what_id_map(cls, regions) -> dict:
+        idx = {}
+        for region in regions.raw_region_data_list:
+            region_id = region["region_id"]
+            if regions.region_year == "Current":
+                current_ids = region.get("current_ids", [region_id])
+            else:
+                current_ids = [region_id.split("-pre")[0]]
+            idx[region_id] = current_ids
+        return idx
 
     def get_source_data_list(self) -> list[dict]:
         title_to_id = self.get_title_to_id()

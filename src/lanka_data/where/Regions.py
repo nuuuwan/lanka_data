@@ -66,7 +66,7 @@ class Regions(Where, RegionLoadersMixin):
                 + f"/{region_type}s-pre{region_year}.json"
             )
 
-        raw_data_list = WWW(url).read_json()
+        source_data_list = WWW(url).read_json()
 
         def remap(d):
             d = (
@@ -82,7 +82,7 @@ class Regions(Where, RegionLoadersMixin):
             del d["name"]
             return d
 
-        remapped_data_list = [remap(d) for d in raw_data_list]
+        remapped_data_list = [remap(d) for d in source_data_list]
         return remapped_data_list
 
     @classmethod

@@ -31,7 +31,8 @@ class Example:
     def get_output_idx_hot(cls):
         cmd_list = cls.get_cmd_list()
         idx = {}
-        for cmd in cmd_list:
+        for i_cmd, cmd in enumerate(cmd_list, start=1):
+            log.info(f"{i_cmd}) Building {cmd}.")
             output = Db(cmd).run(do_open_images=False, do_use_cache=False)
             if "result" not in output:
                 raise ValueError(

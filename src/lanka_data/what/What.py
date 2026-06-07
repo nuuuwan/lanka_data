@@ -7,6 +7,22 @@ class What:
         return self.title
 
     @classmethod
+    def extract_source_data_values(cls, d):
+        values = {}
+        for k, v in d.items():
+            if k in (
+                "region_id",
+                "region_name",
+                "region_name_in_data",
+                "region_ent_type",
+            ):
+                continue
+            if "total" in k:
+                continue
+            values[k] = int(float(v))
+        return dict(values=values)
+
+    @classmethod
     def get_aggregated_value_data(cls, data_list):
         aggr_values = {}
         for data in data_list:
@@ -54,12 +70,6 @@ class What:
                 )
             source_data_list_for_region.append(data_for_current)
 
-        if not source_data_list_for_region:
-            raise ValueError(
-                f"No data found for region_id={region_id}"
-                + f" with current_ids={current_ids}."
-            )
-
         source_data_list_for_region_with_values = [
             cls.extract_source_data_values(d)
             for d in source_data_list_for_region
@@ -80,9 +90,7 @@ class What:
 
     def get_data_list(self, regions) -> list[dict]:
         source_data_list = self.get_source_data_list()
-        source_data_idx = {
-            d["region_id"]: d for d in source_data_list if "region_id" in d
-        }
+        source_data_idx = {d["region_id"]: d for d in source_data_list}
 
         raw_region_data_idx = {
             r["region_id"]: r for r in regions.raw_region_data_list
