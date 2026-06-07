@@ -118,21 +118,22 @@ class Census2024(What):
                     + f" with current_ids={current_ids}."
                 )
 
-            aggr_data = self.aggregate_raw_data_list_for_region(
-                raw_data_list_for_region
-            )
-            cleaned_data_list = [
+            cleaned_data_list_for_region = [
                 self.clean(d) for d in raw_data_list_for_region
             ]
-            aggr_data = self.get_aggr_data(cleaned_data_list)
+            aggr_data = self.get_aggr_data(cleaned_data_list_for_region)
+            raw_data_for_region = raw_region_data_idx[region_id]
             mapped_data = (
                 dict(
                     region_id=region_id,
-                    region_name=raw_region_data_idx[region_id],
-                    current_ids=current_ids,
+                    region_name=raw_data_for_region["name"],
                 )
+                | raw_region_data_idx[region_id]
                 | aggr_data
             )
+            del mapped_data["id"]
+            del mapped_data["name"]
+
             mapped_data_list.append(mapped_data)
 
         return mapped_data_list
