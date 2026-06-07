@@ -77,12 +77,12 @@ class ReadMe:
             example_idx.items(), start=1
         ):
 
-            lines.append(f"### {i_group_name:02d}. {group_name}")
+            lines.append(f"### {i_group_name}) {group_name}")
             lines.append("")
             for i_cmd, example in enumerate(examples, start=1):
                 cmd = example.cmd
                 output = output_idx[cmd]
-                lines.append(f"#### {i_group_name:02d}.{i_cmd:02d}. `{cmd}`")
+                lines.append(f"#### {i_group_name}.{i_cmd:02d}) `{cmd}`")
                 lines.append("")
                 lines.append("```json")
                 output_json = json.dumps(output, indent=4)
