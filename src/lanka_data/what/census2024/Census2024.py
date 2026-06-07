@@ -71,7 +71,7 @@ class Census2024(What):
             + "/Population/StaticalInformation/CPH2024",
         )
 
-    def get_data_list(self, regions) -> list[dict]:
+    def get_base_data_list(self) -> list[dict]:
         label_to_path = self.get_title_to_path()
         path = label_to_path.get(self.title)
         url = (
@@ -80,6 +80,13 @@ class Census2024(What):
             + f"/data/{path}/data.json"
         )
         raw_data_list = WWW(url).read_json()
+        return raw_data_list
+
+    def get_base_data_region_year(self) -> str:
+        return "2024"
+
+    def get_data_list(self, regions) -> list[dict]:
+        raw_data_list = self.get_base_data_list()
         region_ids = [region["id"] for region in regions.raw_region_data_list]
         n_regions = len(region_ids)
         filtered_data_list = [
