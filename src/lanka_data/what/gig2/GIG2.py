@@ -15,22 +15,7 @@ class GIG2(What):
     def get_title_to_id(cls):
         return JSONFile(cls.get_title_to_id_file_path()).read()
 
-    @classmethod
-    def clean(cls, d, region_idx, region_id=None):
-        region_id = region_id or d["entity_id"]
-
-        for k, v in d.items():
-            if "total" in k:
-                continue
-            if "entity_id" in k:
-                continue
-
-        return dict(
-            region_id=region_id,
-            region_name=region_idx[region_id]["name"],
-        ) | cls.get_custom_data(d)
-
-    def get_base_data_list(self) -> list[dict]:
+    def get_source_data_list(self) -> list[dict]:
         title_to_id = self.get_title_to_id()
         what_id = title_to_id.get(self.title)
         if what_id is None:
@@ -44,7 +29,7 @@ class GIG2(What):
         return data_list
 
     def get_data_list(self, regions) -> list[dict]:
-        base_data_list = self.get_base_data_list()
+        base_data_list = self.get_source_data_list()
         base_data_idx = {d["entity_id"]: d for d in base_data_list}
 
         region_idx = {r["id"]: r for r in regions.raw_region_data_list}
@@ -60,9 +45,7 @@ class GIG2(What):
 
             if not data_list:
                 continue
-            cleaned_data_list = [
-                self.clean(d, region_idx, region_id) for d in data_list
-            ]
+            cleaned_data_list = [self.get_custom_data(d) for d in data_list]
             aggr_data = self.get_aggr_data(cleaned_data_list)
             region_data = (
                 dict(
