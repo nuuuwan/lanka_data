@@ -2,13 +2,13 @@
   "Region Selection": [
     "LK",
     "LK-1:district",
-    "LK-2,LK-2",
-    "LK-3,LK-9,LK-4/Map",
-    "LK-4...LK-6/Map",
-    "LK-1127025@10/Map",
+    "LK-2,LK-3",
+    "LK-3,LK-9,LK-8/Map",
+    "LK-5...LK-8/Map",
+    "LK-1127025@20/Map",
     "LK-1103&EC-01B/Map"
   ],
-  "Administrative Views": ["LK-61/Map", "LK-71:district/Map", "LK-81:pd/Map"],
+  "Administrative Views": ["LK-61/Map", "LK-71:dsd/Map", "LK-81:pd/Map"],
   "Census: Religion": [
     "LK-23:dsd/Religion/2012/Map",
     "LK-23:dsd/Religion/2024/Map",
