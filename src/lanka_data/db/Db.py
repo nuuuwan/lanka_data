@@ -48,14 +48,14 @@ class Db:
         tokens = cmd.split("/")
         n_tokens = len(tokens)
 
-        if n_tokens == 2:
-            tokens = [tokens[0], "Basic", "2024", tokens[1]]
-            n_tokens = 4
+        if n_tokens != 4:
+            raise ValueError(
+                "Invalid command format:"
+                + " expected <where>/<what>/<when>/<how>,"
+                + f" got '{cmd}'"
+            )
 
-        where_cmd = "LK" if n_tokens < 1 else tokens[0]
-        what_cmd = "Basic" if n_tokens < 2 else tokens[1]
-        when_cmd = "2024" if n_tokens < 3 else tokens[2]
-        how_cmd = "JSON" if n_tokens < 4 else tokens[3]
+        where_cmd, what_cmd, when_cmd, how_cmd = tokens
 
         if when_cmd == "2012":
             if "-pre" not in where_cmd:
