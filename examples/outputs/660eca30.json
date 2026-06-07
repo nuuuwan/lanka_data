@@ -1,0 +1,15 @@
+{
+  "result": {
+    "title_items": [
+      "45 Dsds",
+      "Toilet",
+      "2024",
+      "Map"
+    ],
+    "image_path": "/tmp/lanka_data/images/78bd7d5f.png",
+    "source": "Department of Census and Statistics, Sri Lanka",
+    "source_url": "https://www.statistics.gov.lk/"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
+}

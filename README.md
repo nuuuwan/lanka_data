@@ -745,6 +745,756 @@ python workflows/console.py <cmd>
 
 ![Ethnicity/2024/LK-23-pre2019:dsd/Map](images/readme/a7f89f48.png)
 
+### 8) Other-Whats
+
+#### 8.01) `AgeGroup/2024/LK-1:district/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Colombo, Gampaha, Kalutara Districts",
+            "AgeGroup",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/834057ce.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![AgeGroup/2024/LK-1:district/Map](images/readme/834057ce.png)
+
+#### 8.02) `Communication/2012/LK-2:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "36 Dsds",
+            "Communication",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/150c7b9f.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Communication/2012/LK-2:dsd/Map](images/readme/150c7b9f.png)
+
+#### 8.03) `ConstructionYear/2012/LK-3:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "47 Dsds",
+            "ConstructionYear",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/42b51986.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![ConstructionYear/2012/LK-3:dsd/Map](images/readme/42b51986.png)
+
+#### 8.04) `CookingFuel/2024/LK-4:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "34 Dsds",
+            "CookingFuel",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/fdfb9a54.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![CookingFuel/2024/LK-4:dsd/Map](images/readme/fdfb9a54.png)
+
+#### 8.05) `Economy/2012/LK-5:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "45 Dsds",
+            "Economy",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/848930b3.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Economy/2012/LK-5:dsd/Map](images/readme/848930b3.png)
+
+#### 8.06) `Education/2012/LK-6:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "46 Dsds",
+            "Education",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/54683c50.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Education/2012/LK-6:dsd/Map](images/readme/54683c50.png)
+
+#### 8.07) `EnergyFuel/2024/LK-7:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "29 Dsds",
+            "EnergyFuel",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/53075548.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![EnergyFuel/2024/LK-7:dsd/Map](images/readme/53075548.png)
+
+#### 8.08) `Floor/2024/LK-2,LK-3/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Central, Southern Provinces",
+            "Floor",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/415ee2d5.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Floor/2024/LK-2,LK-3/Map](images/readme/415ee2d5.png)
+
+#### 8.09) `Fuel/2012/LK-5...LK-8/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Eastern, North Western, North Central, Uva Provinces",
+            "Fuel",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/9f684050.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Fuel/2012/LK-5...LK-8/Map](images/readme/9f684050.png)
+
+#### 8.10) `Gender/2024/LK-1127025@20/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "718 Gnds",
+            "Gender",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/d2e11f6f.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Gender/2024/LK-1127025@20/Map](images/readme/d2e11f6f.png)
+
+#### 8.11) `GenderAndAgeGroup/2024/LK-1103/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Colombo Dsd",
+            "GenderAndAgeGroup",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/ef2bf007.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![GenderAndAgeGroup/2024/LK-1103/Map](images/readme/ef2bf007.png)
+
+#### 8.12) `Households/2024/LK-71:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "22 Dsds",
+            "Households",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/804f2d2f.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Households/2024/LK-71:dsd/Map](images/readme/804f2d2f.png)
+
+#### 8.13) `HouseholdsCookingFuel/2024/LK-81:pd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "9 Pds",
+            "HouseholdsCookingFuel",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/fe7e7210.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![HouseholdsCookingFuel/2024/LK-81:pd/Map](images/readme/fe7e7210.png)
+
+#### 8.14) `HouseholdsLighting/2024/LK-23:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "10 Dsds",
+            "HouseholdsLighting",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/2846abfd.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![HouseholdsLighting/2024/LK-23:dsd/Map](images/readme/2846abfd.png)
+
+#### 8.15) `HouseholdsToilet/2024/LK-41:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "15 Dsds",
+            "HouseholdsToilet",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/cba445e5.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![HouseholdsToilet/2024/LK-41:dsd/Map](images/readme/cba445e5.png)
+
+#### 8.16) `HouseholdsWater/2024/LK-51:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "14 Dsds",
+            "HouseholdsWater",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/c68396f1.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![HouseholdsWater/2024/LK-51:dsd/Map](images/readme/c68396f1.png)
+
+#### 8.17) `Lighting/2024/LK-61:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "30 Dsds",
+            "Lighting",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/e8dadecc.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Lighting/2024/LK-61:dsd/Map](images/readme/e8dadecc.png)
+
+#### 8.18) `Local/2025/LK:district/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "25 Districts",
+            "Local",
+            "2025",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/4f4123dc.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Local/2025/LK:district/Map](images/readme/4f4123dc.png)
+
+#### 8.19) `Marital/2012/LK-3,LK-9,LK-8/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Southern, Uva, Sabaragamuwa Provinces",
+            "Marital",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/b5352f71.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Marital/2012/LK-3,LK-9,LK-8/Map](images/readme/b5352f71.png)
+
+#### 8.20) `Occupancy/2012/LK-1127:gnd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "20 Gnds",
+            "Occupancy",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/1f6aaf88.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Occupancy/2012/LK-1127:gnd/Map](images/readme/1f6aaf88.png)
+
+#### 8.21) `OccupiedUnits/2024/LK-2:district/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Kandy, Matale, Nuwara Eliya Districts",
+            "OccupiedUnits",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/1c305ccf.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![OccupiedUnits/2024/LK-2:district/Map](images/readme/1c305ccf.png)
+
+#### 8.22) `Ownership/2012/LK-53:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "11 Dsds",
+            "Ownership",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/90e24c24.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Ownership/2012/LK-53:dsd/Map](images/readme/90e24c24.png)
+
+#### 8.23) `Persons/2012/LK-1103:gnd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "35 Gnds",
+            "Persons",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/c178877a.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Persons/2012/LK-1103:gnd/Map](images/readme/c178877a.png)
+
+#### 8.24) `Quarters/2012/LK-4...LK-6/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Northern, Eastern, North Western Provinces",
+            "Quarters",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/2cad1482.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Quarters/2012/LK-4...LK-6/Map](images/readme/2cad1482.png)
+
+#### 8.25) `RelationshipToHead/2012/LK-23:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Kotmale, Hanguranketa (pre 2019), Walapane (pre 2019), Nuwara Eliya (pre 2019), Ambagamuwa Dsds",
+            "RelationshipToHead",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/cc5bb087.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![RelationshipToHead/2012/LK-23:dsd/Map](images/readme/cc5bb087.png)
+
+#### 8.26) `Roof/2024/LK-9:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "29 Dsds",
+            "Roof",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/bd9cf7c8.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Roof/2024/LK-9:dsd/Map](images/readme/bd9cf7c8.png)
+
+#### 8.27) `Rooms/2012/LK-2:pd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "21 Pds",
+            "Rooms",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/df465f56.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Rooms/2012/LK-2:pd/Map](images/readme/df465f56.png)
+
+#### 8.28) `Structure/2024/LK-3:district/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Galle, Matara, Hambantota Districts",
+            "Structure",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/492b8ace.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Structure/2024/LK-3:district/Map](images/readme/492b8ace.png)
+
+#### 8.29) `Toilet/2024/LK-5:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "45 Dsds",
+            "Toilet",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/78bd7d5f.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Toilet/2024/LK-5:dsd/Map](images/readme/78bd7d5f.png)
+
+#### 8.30) `Unit/2012/LK-6:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "46 Dsds",
+            "Unit",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/790f7553.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Unit/2012/LK-6:dsd/Map](images/readme/790f7553.png)
+
+#### 8.31) `Wall/2012/LK-7:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "29 Dsds",
+            "Wall",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/268040e0.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Wall/2012/LK-7:dsd/Map](images/readme/268040e0.png)
+
+#### 8.32) `Walls/2024/LK-8:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "26 Dsds",
+            "Walls",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/1b82d282.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Walls/2024/LK-8:dsd/Map](images/readme/1b82d282.png)
+
+#### 8.33) `Waste/2012/LK-1:dsd/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "40 Dsds",
+            "Waste",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/d7929424.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Waste/2012/LK-1:dsd/Map](images/readme/d7929424.png)
+
+#### 8.34) `Water/2024/LK-2,LK-4/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Central, Northern Provinces",
+            "Water",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/b5745e1b.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Water/2024/LK-2,LK-4/Map](images/readme/b5745e1b.png)
+
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
