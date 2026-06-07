@@ -1,5 +1,6 @@
 import os
 
+from lanka_data.what.FieldNameUtils import FieldNameUtils
 from lanka_data.what.gig2.GIG2 import GIG2
 from utils_future import Log
 
@@ -37,7 +38,7 @@ class Census2012(GIG2):
                 continue
             if "region_id" in k:
                 continue
-            values[k] = int(float(v))
+            values[FieldNameUtils.normalize(k)] = int(float(v))
 
         values = dict(sorted(values.items(), key=lambda item: -item[1]))
         total_value = sum(values.values())

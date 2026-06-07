@@ -10,6 +10,6 @@ from lanka_data.how import (JSON, ColorUtils, GeoDataUtils, How, HowFactory,
 from lanka_data.readme import ReadMe
 from lanka_data.result import Result
 from lanka_data.what import (GIG2, BasicWhat, Census2012, Census2024,
-                             Elections, What, WhatFactory)
+                             Elections, FieldNameUtils, What, WhatFactory)
 from lanka_data.where import (RegionLoadersMixin, Regions, RegionTypeUtils,
                               Where)

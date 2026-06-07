@@ -1,3 +1,6 @@
+from lanka_data.what.FieldNameUtils import FieldNameUtils
+
+
 class What:
     def __init__(self, title: str):
         self.title = title
@@ -22,7 +25,7 @@ class What:
                 continue
             if "total" in k:
                 continue
-            values[k] = int(float(v))
+            values[FieldNameUtils.normalize(k)] = int(float(v))
         return dict(values=values)
 
     @classmethod

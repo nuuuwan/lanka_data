@@ -56,19 +56,19 @@ HUE._check_hue_separation()
 class ColorUtils:
     GROUP_TO_HUE_TO_LABEL_LIST = {
         "Religion": {
-            HUE.GOLD: ["buddhist"],
-            HUE.ORANGE: ["hindu"],
-            HUE.GREEN: ["islam"],
-            HUE.BLUE: ["other_christian"],
-            HUE.PURPLE: ["roman_catholic"],
-            HUE.GRAY: ["other"],
+            HUE.GOLD: ["Buddhist"],
+            HUE.ORANGE: ["Hindu"],
+            HUE.GREEN: ["Islam"],
+            HUE.BLUE: ["Other Christian"],
+            HUE.PURPLE: ["Roman Catholic"],
+            HUE.GRAY: ["Other"],
         },
         "Ethnicity": {
-            HUE.RED: ["sinhalese"],
-            HUE.ORANGE: ["sl_tamil", "sri_lanka_tamil"],
-            HUE.BLUE: ["ind_tamil", "indian_tamil_or_malaiyaga_thamilar"],
-            HUE.GREEN: ["sl_moor", "sri_lanka_moor_or_muslim"],
-            HUE.TEAL: ["malay"],
+            HUE.RED: ["Sinhalese"],
+            HUE.ORANGE: ["SL Tamil"],
+            HUE.BLUE: ["Ind/Malaiyaga Tamil"],
+            HUE.GREEN: ["SL Moor"],
+            HUE.TEAL: ["Malay"],
         },
         "Political Party": {
             HUE.PURPLE: ["SLPP", "SLMP"],

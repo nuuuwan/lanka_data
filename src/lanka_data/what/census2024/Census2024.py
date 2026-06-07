@@ -1,6 +1,7 @@
 import os
 from functools import cache
 
+from lanka_data.what.FieldNameUtils import FieldNameUtils
 from lanka_data.what.What import What
 from utils_future import WWW, JSONFile, Log
 
@@ -44,7 +45,7 @@ class Census2024(What):
                 continue
             if "total" in k:
                 continue
-            values[k] = int(float(v))
+            values[FieldNameUtils.normalize(k)] = int(float(v))
         values = dict(sorted(values.items(), key=lambda item: -item[1]))
         total_value = sum(values.values())
         pct_values = {k: round(v / total_value, 4) for k, v in values.items()}
