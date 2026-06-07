@@ -51,11 +51,11 @@ class Db:
         if n_tokens != 4:
             raise ValueError(
                 "Invalid command format:"
-                + " expected <where>/<what>/<when>/<how>,"
+                + " expected <what>/<when>/<where>/<how>,"
                 + f" got '{cmd}'"
             )
 
-        where_cmd, what_cmd, when_cmd, how_cmd = tokens
+        what_cmd, when_cmd, where_cmd, how_cmd = tokens
 
         if when_cmd == "2012":
             if "-pre" not in where_cmd:
@@ -63,7 +63,7 @@ class Db:
                 if len(tokens) == 2 and tokens[1] == "dsd":
                     where_cmd = tokens[0] + "-pre2019:" + ":".join(tokens[1:])
 
-        log.debug(f"{where_cmd=}, {what_cmd=}, {when_cmd=}, {how_cmd=}")
+        log.debug(f"{what_cmd=}, {when_cmd=}, {where_cmd=}, {how_cmd=}")
         return where_cmd, what_cmd, when_cmd, how_cmd
 
     def _run(self):
