@@ -41,9 +41,6 @@ class Census2024(What):
 
     @classmethod
     def clean(cls, d):
-        region_id = d["region_id"]
-        region_name = d["region_name"]
-
         values = {}
         for k, v in d.items():
             if "region" in k:
@@ -56,8 +53,6 @@ class Census2024(What):
         pct_values = {k: round(v / total_value, 4) for k, v in values.items()}
 
         return dict(
-            region_id=region_id,
-            region_name=region_name,
             values=values,
             total_value=total_value,
             pct_values=pct_values,
@@ -85,22 +80,59 @@ class Census2024(What):
     def get_base_data_region_year(self) -> str:
         return "2024"
 
+    @classmethod
+    def get_where_to_what_id_map(cls, regions) -> dict:
+        idx = {}
+        for region in regions.raw_region_data_list:
+            region_id = region["id"]
+            current_ids = region.get("current_ids", [region_id])
+            idx[region_id] = current_ids
+        return idx
+
     def get_data_list(self, regions) -> list[dict]:
         raw_data_list = self.get_base_data_list()
-        region_ids = [region["id"] for region in regions.raw_region_data_list]
-        n_regions = len(region_ids)
-        filtered_data_list = [
-            d for d in raw_data_list if d["region_id"] in region_ids
-        ]
-        region_ids_with_data = [d["region_id"] for d in filtered_data_list]
-        region_ids_without_data = set(region_ids) - set(region_ids_with_data)
-        n_regions_with_data = len(region_ids_with_data)
+        raw_data_idx = {
+            d["region_id"]: d for d in raw_data_list if "region_id" in d
+        }
 
-        if n_regions_with_data < n_regions:
-            raise ValueError(
-                f"Only {n_regions_with_data}/{n_regions}"
-                + f" regions have data for {self.title}."
-                + f" {region_ids_without_data} have NO data."
+        raw_region_data_idx = {
+            r["id"]: r for r in regions.raw_region_data_list
+        }
+
+        mapped_data_list = []
+        for region_id, current_ids in self.get_where_to_what_id_map(
+            regions
+        ).items():
+            raw_data_list_for_region = []
+            for current_id in current_ids:
+                data_for_current = raw_data_idx.get(current_id)
+                if not data_for_current:
+                    raise ValueError(
+                        f"No data found for region_id={current_id} (mapped from {region_id})."
+                    )
+                raw_data_list_for_region.append(data_for_current)
+
+            if not raw_data_list_for_region:
+                raise ValueError(
+                    f"No data found for region_id={region_id}"
+                    + f" with current_ids={current_ids}."
+                )
+
+            aggr_data = self.aggregate_raw_data_list_for_region(
+                raw_data_list_for_region
             )
-        cleaned_data_list = [self.clean(d) for d in filtered_data_list]
-        return cleaned_data_list
+            cleaned_data_list = [
+                self.clean(d) for d in raw_data_list_for_region
+            ]
+            aggr_data = self.get_aggr_data(cleaned_data_list)
+            mapped_data = (
+                dict(
+                    region_id=region_id,
+                    region_name=raw_region_data_idx[region_id],
+                    current_ids=current_ids,
+                )
+                | aggr_data
+            )
+            mapped_data_list.append(mapped_data)
+
+        return mapped_data_list
