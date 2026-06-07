@@ -56,6 +56,12 @@ class ColorUtils:
     }
 
     @staticmethod
+    def hue_to_hex(hue) -> str:
+        if hue is None:
+            return "#808080"
+        return _hue_to_hex(hue)
+
+    @staticmethod
     def get_random_color(label: str) -> str:
         digest = hashlib.md5(str(label).encode()).hexdigest()
         return f"#{digest[:6]}"
