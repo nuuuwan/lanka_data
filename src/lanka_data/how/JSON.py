@@ -5,5 +5,5 @@ class JSON(How):
     def get_description(self):
         return "JSON data"
 
-    def get_inner(self, where, what, when):
+    def get_inner(self, where, what, when, cmd):
         return self.get_data(where, what, when)

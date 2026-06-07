@@ -40,6 +40,7 @@ class MapUtils:
         when_description,
         where_description,
         source,
+        cmd,
     ):
         fig = plt.figure(figsize=(12, 8))
         gs = fig.add_gridspec(1, 2, width_ratios=[5, 1], wspace=0.05)
@@ -74,44 +75,56 @@ class MapUtils:
             transform=t,
             ha="center",
             va="bottom",
-            fontsize=7,
-            color="gray",
+            fontsize=12,
+            color="grey",
         )
         fig.text(
             0.5,
-            0.93,
+            0.92,
             f"{what_description} ({when_description})",
             transform=t,
             ha="center",
             va="bottom",
-            fontsize=13,
+            fontsize=18,
             fontweight="bold",
+            color="black",
         )
         fig.text(
             0.5,
-            0.90,
+            0.88,
             where_description,
             transform=t,
             ha="center",
             va="bottom",
-            fontsize=7,
-            color="gray",
+            fontsize=14,
+            color="black",
         )
         ax.set_axis_off()
         if source:
             fig.text(
                 0.5,
-                0.01,
+                0.08,
                 f"Source: {source}",
+                transform=t,
+                ha="center",
+                fontsize=14,
+                color="black",
+            )
+        if cmd:
+            fig.text(
+                0.5,
+                0.04,
+                "Command: /" + cmd,
                 transform=t,
                 ha="center",
                 fontsize=7,
                 color="gray",
             )
+
         return fig
 
     @staticmethod
-    def draw_map(where, what, when, how):
+    def draw_map(where, what, when, how, cmd):
         result_data = how.get_data(where, what, when)
         h = how.get_hash(where, what, when)
         data_list = result_data["data_list"]
@@ -137,6 +150,7 @@ class MapUtils:
             when_description,
             where_description,
             source,
+            cmd,
         )
         image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
         os.makedirs(image_dir, exist_ok=True)

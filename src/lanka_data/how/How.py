@@ -38,7 +38,7 @@ class How:
 
         return result_data
 
-    def get_inner(self, where, what, when):
+    def get_inner(self, where, what, when, cmd):
         raise NotImplementedError("Subclasses should implement this method.")
 
     def get_descriptions(self, where, what, when):
@@ -49,9 +49,11 @@ class How:
             how_description=self.get_description(),
         )
 
-    def get_result(self, where, what, when):
-        return self.get_descriptions(where, what, when) | self.get_inner(
-            where, what, when
+    def get_result(self, where, what, when, cmd):
+        return (
+            self.get_descriptions(where, what, when)
+            | self.get_inner(where, what, when, cmd)
+            | dict(cmd=cmd)
         )
 
     def get_descriptions_title(self, where, what, when):

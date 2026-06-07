@@ -6,5 +6,5 @@ class Map(How):
     def get_description(self):
         return "Geographical map visualization"
 
-    def get_inner(self, where, what, when):
-        return MapUtils.draw_map(where, what, when, self)
+    def get_inner(self, where, what, when, cmd):
+        return MapUtils.draw_map(where, what, when, self, cmd)
