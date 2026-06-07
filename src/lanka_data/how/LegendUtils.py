@@ -3,7 +3,7 @@ import numpy as np
 
 class LegendUtils:
     MAX_LEGEND_ITEMS = 7
-    LEGEND_2D_N_COLS = 7
+    LEGEND_2D_N_COLS = 5
 
     @staticmethod
     def _format_legend_label(value):
@@ -20,7 +20,7 @@ class LegendUtils:
         pct_min,
         pct_max,
         cat_pct_ranges,
-        col_half_width,
+        col_width,
     ):
         n_rows, n_cols = len(categories), len(pct_levels)
         pct_span = pct_max - pct_min if pct_max > pct_min else 1.0
@@ -29,10 +29,7 @@ class LegendUtils:
             r, g, b = value_to_color[cat][:3]
             cat_lo, cat_hi = cat_pct_ranges.get(cat, (pct_min, pct_max))
             for col_j, pct in enumerate(pct_levels):
-                if (
-                    pct < cat_lo - col_half_width
-                    or pct > cat_hi + col_half_width
-                ):
+                if pct < cat_lo - col_width or pct > cat_hi + col_width:
                     img[row_i, col_j] = [0, 0, 0, 0]
                 else:
                     normalised = (pct - pct_min) / pct_span
@@ -66,11 +63,12 @@ class LegendUtils:
         pct_min, pct_max = pct_range
         categories = sorted(value_to_color.keys(), key=str)
         pct_levels = [
-            pct_min + i * (pct_max - pct_min) / 4
+            pct_min
+            + i * (pct_max - pct_min) / (LegendUtils.LEGEND_2D_N_COLS - 1)
             for i in range(LegendUtils.LEGEND_2D_N_COLS)
         ]
-        col_half_width = (
-            (pct_levels[1] - pct_levels[0]) / 2
+        col_width = (
+            (pct_levels[1] - pct_levels[0])
             if LegendUtils.LEGEND_2D_N_COLS > 1
             else 0
         )
@@ -81,7 +79,7 @@ class LegendUtils:
             pct_min,
             pct_max,
             cat_pct_ranges,
-            col_half_width,
+            col_width,
         )
         n_rows = len(categories)
         grid_h = min(n_rows * 0.07, 0.9)
