@@ -10,7 +10,7 @@ class WhatFactory:
         if title == "Basic":
             return BasicWhat()
 
-        if "Election" in title:
+        if title in ["Parliamentary", "Presidential", "Local"]:
             return Elections(title, when_label)
 
         if when_label == "2012":
@@ -19,6 +19,4 @@ class WhatFactory:
         if when_label == "2024" or when_label == "Latest":
             return Census2024(title)
 
-        raise ValueError(
-            f"Unknown title: {title} or when_label: {when_label}"
-        )
+        raise ValueError(f"Unknown title: {title} or when_label: {when_label}")
