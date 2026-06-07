@@ -18,7 +18,8 @@ class GeoDataUtils:
             url = (
                 "https://raw.githubusercontent.com"
                 + "/nuuuwan/lk_admin_regions/refs/heads/main"
-                + f"/data/geo/topojson/{precision_label}/{region_type}s.topojson"
+                + "/data/geo/topojson"
+                + f"/{precision_label}/{region_type}s.topojson"
             )
             temp_topojson_file_path = WWW(url).download()
             gdf = geopandas.read_file(temp_topojson_file_path)
