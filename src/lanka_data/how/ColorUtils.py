@@ -4,6 +4,7 @@ import hashlib
 DEFAULT_SATURATION = 1.0
 DEFAULT_LIGHTNESS = 0.4
 DEFAULT_GRAY = "#808080"
+MIN_HUE_SEPARATION = 30
 
 
 class HUE:
@@ -17,19 +18,19 @@ class HUE:
     GRAY = None  # achromatic – no hue
 
     @staticmethod
-    def _check_hue_separation(min_sep: int = 30) -> None:
+    def _check_hue_separation() -> None:
         hues = sorted(
             v
             for k, v in vars(HUE).items()
             if not k.startswith("_") and isinstance(v, int)
         )
         for i, h1 in enumerate(hues):
-            for h2 in hues[i + 1:]:
+            for h2 in hues[i + 1 :]:
                 dist = min(h2 - h1, 360 - (h2 - h1))
-                if dist < min_sep:
+                if dist < MIN_HUE_SEPARATION:
                     raise ValueError(
                         f"HUE values {h1}° and {h2}° are only {dist}° apart"
-                        f" (minimum {min_sep}°)"
+                        f" (minimum {MIN_HUE_SEPARATION}°)"
                     )
 
     @staticmethod
@@ -39,14 +40,14 @@ class HUE:
         r, g, b = colorsys.hls_to_rgb(
             hue / 360.0, DEFAULT_LIGHTNESS, DEFAULT_SATURATION
         )
-        return (
-            f"#{round(r * 255):02X}{round(g * 255):02X}{round(b * 255):02X}"
-        )
+        return f"#{round(r * 255):02X}{round(g * 255):02X}{round(b * 255):02X}"
 
     @staticmethod
     def random(label: str) -> str:
         digest = hashlib.md5(str(label).encode()).hexdigest()
-        hue = int(digest[:4], 16) % 360
+        digest_int = int(digest[:4], 16)
+        hue = MIN_HUE_SEPARATION * (digest_int % (360 // MIN_HUE_SEPARATION))
+        print(label, hue)
         return HUE.to_hex(hue)
 
 
