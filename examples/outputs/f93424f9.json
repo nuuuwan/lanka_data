@@ -10,9 +10,19 @@
       {
         "region_id": "LK-1103005",
         "region_name": "Sammanthranapura",
-        "current_ids": [
-          "LK-1103005"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.18,
+        "center_lat": 6.977933,
+        "center_lng": 79.878128,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01A",
+        "lg_id": "LG-11011",
         "values": {
           "buddhist": 2689,
           "islam": 1862,
@@ -34,9 +44,19 @@
       {
         "region_id": "LK-1103010",
         "region_name": "Mattakkuliya",
-        "current_ids": [
-          "LK-1103010"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 2.16,
+        "center_lat": 6.972178,
+        "center_lng": 79.876962,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01A",
+        "lg_id": "LG-11011",
         "values": {
           "hindu": 7922,
           "islam": 7871,
@@ -58,9 +78,19 @@
       {
         "region_id": "LK-1103015",
         "region_name": "Modara",
-        "current_ids": [
-          "LK-1103015"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.79,
+        "center_lat": 6.964661,
+        "center_lng": 79.871736,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01A",
+        "lg_id": "LG-11011",
         "values": {
           "hindu": 6659,
           "roman_catholic": 4128,
@@ -82,9 +112,19 @@
       {
         "region_id": "LK-1103020",
         "region_name": "Madampitiya",
-        "current_ids": [
-          "LK-1103020"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.28,
+        "center_lat": 6.961778,
+        "center_lng": 79.875497,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01A",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 5333,
           "buddhist": 3044,
@@ -106,9 +146,19 @@
       {
         "region_id": "LK-1103025",
         "region_name": "Mahawatta",
-        "current_ids": [
-          "LK-1103025"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.51,
+        "center_lat": 6.957463,
+        "center_lng": 79.874186,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01A",
+        "lg_id": "LG-11011",
         "values": {
           "buddhist": 3305,
           "islam": 2470,
@@ -130,9 +180,19 @@
       {
         "region_id": "LK-1103030",
         "region_name": "Aluthmawatha",
-        "current_ids": [
-          "LK-1103030"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.66,
+        "center_lat": 6.9618,
+        "center_lng": 79.865614,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01A",
+        "lg_id": "LG-11011",
         "values": {
           "hindu": 5372,
           "roman_catholic": 2735,
@@ -154,9 +214,19 @@
       {
         "region_id": "LK-1103035",
         "region_name": "Lunupokuna",
-        "current_ids": [
-          "LK-1103035"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 1.37,
+        "center_lat": 6.955716,
+        "center_lng": 79.859101,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01A",
+        "lg_id": "LG-11011",
         "values": {
           "hindu": 4684,
           "roman_catholic": 3725,
@@ -178,9 +248,19 @@
       {
         "region_id": "LK-1103040",
         "region_name": "Bloemendhal",
-        "current_ids": [
-          "LK-1103040"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 1.03,
+        "center_lat": 6.951047,
+        "center_lng": 79.870148,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01A",
+        "lg_id": "LG-11011",
         "values": {
           "hindu": 4023,
           "buddhist": 3582,
@@ -202,9 +282,19 @@
       {
         "region_id": "LK-1103045",
         "region_name": "Kotahena East",
-        "current_ids": [
-          "LK-1103045"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.32,
+        "center_lat": 6.94936,
+        "center_lng": 79.863938,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01A",
+        "lg_id": "LG-11011",
         "values": {
           "hindu": 3362,
           "roman_catholic": 1886,
@@ -226,9 +316,19 @@
       {
         "region_id": "LK-1103050",
         "region_name": "Kotahena West",
-        "current_ids": [
-          "LK-1103050"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.32,
+        "center_lat": 6.948995,
+        "center_lng": 79.859734,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01A",
+        "lg_id": "LG-11011",
         "values": {
           "hindu": 4382,
           "roman_catholic": 2930,
@@ -250,9 +350,19 @@
       {
         "region_id": "LK-1103055",
         "region_name": "Kochchikade North",
-        "current_ids": [
-          "LK-1103055"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.21,
+        "center_lat": 6.942807,
+        "center_lng": 79.855212,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "hindu": 4046,
           "roman_catholic": 3651,
@@ -274,9 +384,19 @@
       {
         "region_id": "LK-1103060",
         "region_name": "Jinthupitiya",
-        "current_ids": [
-          "LK-1103060"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.2,
+        "center_lat": 6.943902,
+        "center_lng": 79.860296,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "hindu": 3923,
           "roman_catholic": 1797,
@@ -298,9 +418,19 @@
       {
         "region_id": "LK-1103065",
         "region_name": "Masangasweediya",
-        "current_ids": [
-          "LK-1103065"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.28,
+        "center_lat": 6.94249,
+        "center_lng": 79.863332,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 5122,
           "hindu": 2270,
@@ -322,9 +452,19 @@
       {
         "region_id": "LK-1103070",
         "region_name": "New Bazaar",
-        "current_ids": [
-          "LK-1103070"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.48,
+        "center_lat": 6.941974,
+        "center_lng": 79.866713,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 8898,
           "hindu": 2243,
@@ -346,9 +486,19 @@
       {
         "region_id": "LK-1103075",
         "region_name": "Grandpass South",
-        "current_ids": [
-          "LK-1103075"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.52,
+        "center_lat": 6.941995,
+        "center_lng": 79.875151,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 7926,
           "buddhist": 5585,
@@ -370,9 +520,19 @@
       {
         "region_id": "LK-1103080",
         "region_name": "Grandpass North",
-        "current_ids": [
-          "LK-1103080"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.33,
+        "center_lat": 6.947224,
+        "center_lng": 79.873681,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 5566,
           "buddhist": 1382,
@@ -394,9 +554,19 @@
       {
         "region_id": "LK-1103085",
         "region_name": "Nawagampura",
-        "current_ids": [
-          "LK-1103085"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.14,
+        "center_lat": 6.946311,
+        "center_lng": 79.877159,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "hindu": 2890,
           "buddhist": 1543,
@@ -418,9 +588,19 @@
       {
         "region_id": "LK-1103090",
         "region_name": "Maligawatta East",
-        "current_ids": [
-          "LK-1103090"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.61,
+        "center_lat": 6.935238,
+        "center_lng": 79.874922,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 8512,
           "buddhist": 2212,
@@ -442,9 +622,19 @@
       {
         "region_id": "LK-1103095",
         "region_name": "Khettarama",
-        "current_ids": [
-          "LK-1103095"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.34,
+        "center_lat": 6.937798,
+        "center_lng": 79.870764,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 11479,
           "buddhist": 888,
@@ -466,9 +656,19 @@
       {
         "region_id": "LK-1103100",
         "region_name": "Aluthkade East",
-        "current_ids": [
-          "LK-1103100"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.31,
+        "center_lat": 6.936685,
+        "center_lng": 79.864496,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 8432,
           "hindu": 843,
@@ -490,9 +690,19 @@
       {
         "region_id": "LK-1103105",
         "region_name": "Aluthkade West",
-        "current_ids": [
-          "LK-1103105"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.15,
+        "center_lat": 6.937002,
+        "center_lng": 79.85985,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 6121,
           "hindu": 567,
@@ -514,9 +724,19 @@
       {
         "region_id": "LK-1103110",
         "region_name": "Kochchikade South",
-        "current_ids": [
-          "LK-1103110"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.24,
+        "center_lat": 6.938581,
+        "center_lng": 79.858062,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 4670,
           "hindu": 1499,
@@ -538,9 +758,19 @@
       {
         "region_id": "LK-1103115",
         "region_name": "Pettah",
-        "current_ids": [
-          "LK-1103115"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.92,
+        "center_lat": 6.940054,
+        "center_lng": 79.851538,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "hindu": 1137,
           "buddhist": 513,
@@ -562,9 +792,19 @@
       {
         "region_id": "LK-1103120",
         "region_name": "Fort",
-        "current_ids": [
-          "LK-1103120"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 7.46,
+        "center_lat": 6.944053,
+        "center_lng": 79.835533,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "buddhist": 1343,
           "hindu": 51,
@@ -586,9 +826,19 @@
       {
         "region_id": "LK-1103125",
         "region_name": "Galle Face",
-        "current_ids": [
-          "LK-1103125"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.68,
+        "center_lat": 6.924045,
+        "center_lng": 79.846861,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01E",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 2688,
           "buddhist": 422,
@@ -610,9 +860,19 @@
       {
         "region_id": "LK-1103130",
         "region_name": "Slave Island",
-        "current_ids": [
-          "LK-1103130"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.12,
+        "center_lat": 6.92537,
+        "center_lng": 79.850397,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 2644,
           "buddhist": 545,
@@ -634,9 +894,19 @@
       {
         "region_id": "LK-1103135",
         "region_name": "Hunupitiya",
-        "current_ids": [
-          "LK-1103135"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.71,
+        "center_lat": 6.923614,
+        "center_lng": 79.855542,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 3569,
           "buddhist": 1966,
@@ -658,9 +928,19 @@
       {
         "region_id": "LK-1103140",
         "region_name": "Suduwella",
-        "current_ids": [
-          "LK-1103140"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.92,
+        "center_lat": 6.926554,
+        "center_lng": 79.859143,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 1882,
           "buddhist": 1195,
@@ -682,9 +962,19 @@
       {
         "region_id": "LK-1103145",
         "region_name": "Keselwatta",
-        "current_ids": [
-          "LK-1103145"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.3,
+        "center_lat": 6.934651,
+        "center_lng": 79.861124,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 3760,
           "buddhist": 2301,
@@ -706,9 +996,19 @@
       {
         "region_id": "LK-1103150",
         "region_name": "Panchikawatta",
-        "current_ids": [
-          "LK-1103150"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.21,
+        "center_lat": 6.931765,
+        "center_lng": 79.863663,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 5265,
           "buddhist": 1730,
@@ -730,9 +1030,19 @@
       {
         "region_id": "LK-1103155",
         "region_name": "Maligawatta West",
-        "current_ids": [
-          "LK-1103155"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.31,
+        "center_lat": 6.931695,
+        "center_lng": 79.869359,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 4504,
           "buddhist": 2254,
@@ -754,9 +1064,19 @@
       {
         "region_id": "LK-1103160",
         "region_name": "Maligakanda",
-        "current_ids": [
-          "LK-1103160"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.21,
+        "center_lat": 6.928646,
+        "center_lng": 79.867851,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 6106,
           "buddhist": 2002,
@@ -778,9 +1098,19 @@
       {
         "region_id": "LK-1103165",
         "region_name": "Maradana",
-        "current_ids": [
-          "LK-1103165"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.21,
+        "center_lat": 6.926081,
+        "center_lng": 79.864187,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 2168,
           "buddhist": 1649,
@@ -802,9 +1132,19 @@
       {
         "region_id": "LK-1103170",
         "region_name": "Ibbanwala",
-        "current_ids": [
-          "LK-1103170"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.75,
+        "center_lat": 6.918075,
+        "center_lng": 79.863032,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "buddhist": 1628,
           "islam": 371,
@@ -826,9 +1166,19 @@
       {
         "region_id": "LK-1103175",
         "region_name": "Wekanda",
-        "current_ids": [
-          "LK-1103175"
-        ],
+        "region_type": "gnd",
+        "history_year": "Current",
+        "area_sqkm": 0.33,
+        "center_lat": 6.919531,
+        "center_lng": 79.851424,
+        "num": " ",
+        "country_id": "LK",
+        "province_id": "LK-1",
+        "district_id": "LK-11",
+        "dsd_id": "LK-1103",
+        "ed_id": "EC-01",
+        "pd_id": "EC-01B",
+        "lg_id": "LG-11011",
         "values": {
           "islam": 4440,
           "buddhist": 1317,

@@ -1,15 +1,4 @@
 {
-  "result": {
-    "title_items": [
-      "10 Dsds",
-      "Religion",
-      "2024",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/3147011c.png",
-    "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/"
-  },
-  "query_time_ms": 0,
-  "cache_hit": false
+  "error": "No data found for region_id=LK-2302 (mapped from LK-2302).",
+  "query_time_ms": 0
 }
