@@ -23,7 +23,8 @@
   ],
   "Elections": [
     "Parliamentary/2024/LK/JSON",
-    "Presidential/Latest/LK-2:pd/Map"
+    "Presidential/Latest/LK-11:pd/Map",
+    "Local/2025/LK:district/Map"
   ],
   "History": [
     "Basic/2012/LK-pre1984:district/JSON",
@@ -44,7 +45,6 @@
     "Gender/2024/LK-1127025@20/Map",
     "GenderAndAgeGroup/2024/LK-1103/Map",
     "Lighting/2024/LK-61:dsd/Map",
-    "Local/2025/LK:district/Map",
     "Marital/2012/LK-3,LK-9,LK-8/Map",
     "Occupancy/2012/LK-1127:gnd/Map",
     "Ownership/2012/LK-53:dsd/Map",

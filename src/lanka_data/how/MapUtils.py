@@ -3,7 +3,6 @@ import tempfile
 
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
-from matplotlib.transforms import blended_transform_factory
 from PIL import Image, ImageOps
 
 from lanka_data.how.GeoDataUtils import GeoDataUtils
@@ -77,56 +76,29 @@ class MapUtils:
         center_x = (ax_pos.x0 + right_x) / 2
         t = fig.transFigure
         fig.text(
-            0.5,
-            0.97,
-            how_description,
-            transform=t,
-            ha="center",
-            va="bottom",
-            fontsize=12,
-            color="grey",
+            center_x, 0.97, how_description,
+            transform=t, ha="center", va="bottom", fontsize=12, color="grey",
         )
         fig.text(
-            0.5,
-            0.92,
+            center_x, 0.92,
             f"{what_description} ({when_description})",
-            transform=t,
-            ha="center",
-            va="bottom",
-            fontsize=18,
-            fontweight="bold",
-            color="black",
+            transform=t, ha="center", va="bottom",
+            fontsize=18, fontweight="bold", color="black",
         )
         fig.text(
-            0.5,
-            0.88,
-            where_description,
-            transform=t,
-            ha="center",
-            va="bottom",
-            fontsize=14,
-            color="black",
+            center_x, 0.88, where_description,
+            transform=t, ha="center", va="bottom", fontsize=14, color="black",
         )
         ax.set_axis_off()
         if source:
             fig.text(
-                0.5,
-                0.08,
-                f"Source: {source}",
-                transform=t,
-                ha="center",
-                fontsize=10,
-                color="darkgray",
+                center_x, 0.08, f"Source: {source}",
+                transform=t, ha="center", fontsize=10, color="darkgray",
             )
         if cmd:
             fig.text(
-                0.5,
-                0.04,
-                "Command: /" + cmd,
-                transform=t,
-                ha="center",
-                fontsize=7,
-                color="gray",
+                center_x, 0.04, "Command: /" + cmd,
+                transform=t, ha="center", fontsize=7, color="gray",
             )
 
         return fig
