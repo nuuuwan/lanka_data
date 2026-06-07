@@ -11,6 +11,7 @@ class LegendUtils:
             return f"{value:.1%}"
         return str(value)
 
+    # flake8: noqa: CFQ002
     @staticmethod
     def _build_legend_image(
         value_to_color,
@@ -33,9 +34,9 @@ class LegendUtils:
                     or pct > cat_hi + col_half_width
                 ):
                     img[row_i, col_j] = [0, 0, 0, 0]
-                    continue
-                normalised = (pct - pct_min) / pct_span
-                img[row_i, col_j] = [r, g, b, 0.5 + normalised * 0.5]
+                else:
+                    normalised = (pct - pct_min) / pct_span
+                    img[row_i, col_j] = [r, g, b, 0.5 + normalised * 0.5]
         return img
 
     @staticmethod
