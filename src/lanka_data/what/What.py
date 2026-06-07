@@ -1,6 +1,7 @@
 class What:
-    def __init__(self, title):
+    def __init__(self, title: str, region_year: str):
         self.title = title
+        self.region_year = region_year
 
     def get_title(self) -> str:
         return self.title

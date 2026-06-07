@@ -10,7 +10,7 @@ log = Log("Census2024")
 class Census2024(What):
 
     def __init__(self, title: str):
-        super().__init__(title)
+        super().__init__(title, region_year="Current")
 
     @classmethod
     def metadata_file_path(cls) -> str:
