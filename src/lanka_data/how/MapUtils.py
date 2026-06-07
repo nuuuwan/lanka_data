@@ -107,8 +107,8 @@ class MapUtils:
                 f"Source: {source}",
                 transform=t,
                 ha="center",
-                fontsize=14,
-                color="black",
+                fontsize=10,
+                color="darkgray",
             )
         if cmd:
             fig.text(
@@ -152,9 +152,7 @@ class MapUtils:
             source,
             cmd,
         )
-        image_dir = os.path.join(
-            tempfile.gettempdir(), "lanka_data", "images"
-        )
+        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
