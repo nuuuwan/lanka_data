@@ -654,6 +654,72 @@ python workflows/console.py <cmd>
 
 ![LK-pre1845:province/Basic/2012/Map](images/readme/a85c9f82.png)
 
+### 24. `LK-23-pre2019:dsd/Ethnicity/2012/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Kotmale, Hanguranketa (pre 2019), Walapane (pre 2019), Nuwara Eliya (pre 2019), Ambagamuwa Dsds",
+            "Ethnicity",
+            "2012",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/d9a29dc7.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-23-pre2019:dsd/Ethnicity/2012/Map](images/readme/d9a29dc7.png)
+
+### 25. `LK-23-pre2019:dsd/Ethnicity/2024/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "Kotmale, Hanguranketa (pre 2019), Walapane (pre 2019), Nuwara Eliya (pre 2019), Ambagamuwa Dsds",
+            "Ethnicity",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/a7f89f48.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-23-pre2019:dsd/Ethnicity/2024/Map](images/readme/a7f89f48.png)
+
+### 26. `LK-23:dsd/Ethnicity/2024/Map`
+
+```json
+{
+    "result": {
+        "title_items": [
+            "10 Dsds",
+            "Ethnicity",
+            "2024",
+            "Map"
+        ],
+        "image_path": "/tmp/lanka_data/images/d6f9c6e3.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![LK-23:dsd/Ethnicity/2024/Map](images/readme/d6f9c6e3.png)
+
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
