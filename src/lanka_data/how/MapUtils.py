@@ -165,7 +165,7 @@ class MapUtils:
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
         plt.close(fig)
         with Image.open(image_path) as img:
-            bordered = ImageOps.expand(img, border=6, fill="#404040")
+            bordered = ImageOps.expand(img, border=2, fill="#404040")
             bordered.save(image_path)
         log.debug(f"Wrote {image_path}")
         return {
