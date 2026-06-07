@@ -36,6 +36,14 @@ class Census2012(GIG2):
         )
 
     @classmethod
+    def get_what_to_whens(cls) -> dict[str, set[str]]:
+        title_to_id = cls.get_title_to_id()
+        what_to_whens = {}
+        for title in title_to_id:
+            what_to_whens[title] = ["2012"]
+        return what_to_whens
+
+    @classmethod
     def get_custom_data(cls, d):
         values = {}
         for k, v in d.items():

@@ -40,6 +40,35 @@ class Elections(GIG2):
         )
 
     @classmethod
+    def get_what_to_whens(cls) -> dict[str, set[str]]:
+        return {
+            "Presidential": [
+                "1982",
+                "1988",
+                "1994",
+                "1999",
+                "2005",
+                "2010",
+                "2015",
+                "2024",
+            ],
+            "Parliamentary": [
+                "1989",
+                "1994",
+                "2000",
+                "2001",
+                "2004",
+                "2010",
+                "2015",
+                "2020",
+            ],
+            "Local": [
+                "2011",
+                "2018",
+            ],
+        }
+
+    @classmethod
     def extract_source_data_values(cls, d):
 
         electors = int(float(d["electors"]))

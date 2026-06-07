@@ -26,3 +26,7 @@ class BasicWhat(What):
             source="Department of Census and Statistics, Sri Lanka",
             source_url="https://www.statistics.gov.lk/",
         )
+
+    @classmethod
+    def get_what_to_whens(cls) -> dict[str, set[str]]:
+        return {"Basic": ["2024"]}

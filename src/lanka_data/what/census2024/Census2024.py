@@ -38,6 +38,14 @@ class Census2024(What):
         return label_to_path
 
     @classmethod
+    def get_what_to_whens(cls) -> dict[str, set[str]]:
+        label_to_path = cls.get_title_to_path()
+        what_to_whens = {}
+        for label in label_to_path:
+            what_to_whens[label] = ["2024"]
+        return what_to_whens
+
+    @classmethod
     def clean(cls, d):
         values = {}
         for k, v in d.items():
