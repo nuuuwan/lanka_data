@@ -63,33 +63,33 @@ class MapUtils:
         LegendUtils._draw_legend(value_to_color, ax, legend_ax)
 
         ax.set_title("")  # clear default title space
-        ax.text(
+        fig.text(
             0.5,
-            1.06,
+            0.97,
             how_description,
-            transform=ax.transAxes,
+            transform=fig.transFigure,
             ha="center",
             va="bottom",
             fontsize=7,
             color="gray",
         )
-        ax.text(
+        fig.text(
             0.5,
-            1.01,
+            0.93,
             f"{what_description} ({when_description})",
-            transform=ax.transAxes,
+            transform=fig.transFigure,
             ha="center",
             va="bottom",
             fontsize=13,
             fontweight="bold",
         )
-        ax.text(
+        fig.text(
             0.5,
-            0.98,
+            0.90,
             where_description,
-            transform=ax.transAxes,
+            transform=fig.transFigure,
             ha="center",
-            va="top",
+            va="bottom",
             fontsize=7,
             color="gray",
         )
