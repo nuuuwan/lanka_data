@@ -95,7 +95,7 @@ python workflows/console.py <cmd>
 
 ### 2) Selection
 
-#### 2.01) Map of Basic information (2024) for Provinces within LK
+#### 2.01) Map of Basic information (2024) for Provinces within LK.
 
 ```bash
 Basic/2024/LK:province/Map
@@ -120,7 +120,7 @@ Basic/2024/LK:province/Map
 
 ![Basic/2024/LK:province/Map](images/readme/299e9172.png)
 
-#### 2.02) Map of Basic information (2024) for Districts within LK-1
+#### 2.02) Map of Basic information (2024) for Districts within LK-1.
 
 ```bash
 Basic/2024/LK-1:district/Map
@@ -145,7 +145,7 @@ Basic/2024/LK-1:district/Map
 
 ![Basic/2024/LK-1:district/Map](images/readme/56178688.png)
 
-#### 2.03) Map of Basic information (2024) for Provinces with IDs LK-1,LK-2,LK-3,LK-9,LK-8
+#### 2.03) Map of Basic information (2024) for Provinces with IDs LK-1,LK-2,LK-3,LK-9,LK-8.
 
 ```bash
 Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map
@@ -170,7 +170,7 @@ Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map
 
 ![Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map](images/readme/17c29d10.png)
 
-#### 2.04) Map of Basic information (2024) for Provinces, from LK-5 to LK-8
+#### 2.04) Map of Basic information (2024) for Provinces, from LK-5 to LK-8.
 
 ```bash
 Basic/2024/LK-5...LK-8/Map
@@ -195,7 +195,7 @@ Basic/2024/LK-5...LK-8/Map
 
 ![Basic/2024/LK-5...LK-8/Map](images/readme/c11facd1.png)
 
-#### 2.05) Map of Basic information (2024) for Gnds within 20 km of LK-1127025
+#### 2.05) Map of Basic information (2024) for Gnds within 20 km of LK-1127025.
 
 ```bash
 Basic/2024/LK-1127025@20/Map
@@ -220,7 +220,7 @@ Basic/2024/LK-1127025@20/Map
 
 ![Basic/2024/LK-1127025@20/Map](images/readme/8f0011f7.png)
 
-#### 2.06) Map of Basic information (2024) for Intersection of Dsd LK-1103 and Pd EC-01B
+#### 2.06) Map of Basic information (2024) for Intersection of Dsd LK-1103 and Pd EC-01B.
 
 ```bash
 Basic/2024/LK-1103&EC-01B/Map
@@ -247,7 +247,7 @@ Basic/2024/LK-1103&EC-01B/Map
 
 ### 3) Religion
 
-#### 3.01) Map of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Dsds within LK-23 (pre-2019 Map)
+#### 3.01) Map of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Dsds within LK-23 (pre-2019 Map).
 
 ```bash
 Religion/2012/LK-23:dsd/Map
@@ -272,7 +272,7 @@ Religion/2012/LK-23:dsd/Map
 
 ![Religion/2012/LK-23:dsd/Map](images/readme/da7129b9.png)
 
-#### 3.02) Map of Population distributed by religious affiliation (e.g. Buddhist, Hindu, Islam) (2024) for Dsds within LK-23
+#### 3.02) Map of Population distributed by religious affiliation (e.g. Buddhist, Hindu, Islam) (2024) for Dsds within LK-23.
 
 ```bash
 Religion/2024/LK-23:dsd/Map
@@ -297,7 +297,7 @@ Religion/2024/LK-23:dsd/Map
 
 ![Religion/2024/LK-23:dsd/Map](images/readme/dccbd315.png)
 
-#### 3.03) JSON data of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Gnds within LK-1103
+#### 3.03) JSON data of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Gnds within LK-1103.
 
 ```bash
 Religion/2012/LK-1103:gnd/JSON
@@ -347,7 +347,7 @@ Religion/2012/LK-1103:gnd/JSON
 }
 ```
 
-#### 3.04) Map of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Gnds within LK-1127
+#### 3.04) Map of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Gnds within LK-1127.
 
 ```bash
 Religion/2012/LK-1127:gnd/Map
@@ -372,7 +372,7 @@ Religion/2012/LK-1127:gnd/Map
 
 ![Religion/2012/LK-1127:gnd/Map](images/readme/c9ea8f62.png)
 
-#### 3.05) Map of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Dsds within LK-41 (pre-2019 Map)
+#### 3.05) Map of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Dsds within LK-41 (pre-2019 Map).
 
 ```bash
 Religion/2012/LK-41:dsd/Map:2nd
@@ -397,7 +397,7 @@ Religion/2012/LK-41:dsd/Map:2nd
 
 ![Religion/2012/LK-41:dsd/Map:2nd](images/readme/e4407d3a.png)
 
-#### 3.06) Map of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Dsds within LK-51 (pre-2019 Map)
+#### 3.06) Map of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Dsds within LK-51 (pre-2019 Map).
 
 ```bash
 Religion/2012/LK-51:dsd/Map:Buddhist
@@ -424,7 +424,7 @@ Religion/2012/LK-51:dsd/Map:Buddhist
 
 ### 4) Ethnicity
 
-#### 4.01) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Dsds within LK-53
+#### 4.01) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Dsds within LK-53.
 
 ```bash
 Ethnicity/2024/LK-53:dsd/Map
@@ -449,7 +449,7 @@ Ethnicity/2024/LK-53:dsd/Map
 
 ![Ethnicity/2024/LK-53:dsd/Map](images/readme/12e17292.png)
 
-#### 4.02) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (Latest) for Dsds within LK-2
+#### 4.02) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (Latest) for Dsds within LK-2.
 
 ```bash
 Ethnicity/Latest/LK-2:dsd/Map
@@ -474,7 +474,7 @@ Ethnicity/Latest/LK-2:dsd/Map
 
 ![Ethnicity/Latest/LK-2:dsd/Map](images/readme/bb6f5bc5.png)
 
-#### 4.03) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Dsds within LK-23
+#### 4.03) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Dsds within LK-23.
 
 ```bash
 Ethnicity/2024/LK-23:dsd/Map
@@ -501,7 +501,7 @@ Ethnicity/2024/LK-23:dsd/Map
 
 ### 5) Elections
 
-#### 5.01) JSON data of Results of the 2024 Sri Lankan Parliamentary Election (2024) for Countrys with IDs LK
+#### 5.01) JSON data of Results of the 2024 Sri Lankan Parliamentary Election (2024) for Countrys with IDs LK.
 
 ```bash
 Parliamentary/2024/LK/JSON
@@ -551,7 +551,7 @@ Parliamentary/2024/LK/JSON
 }
 ```
 
-#### 5.02) Map of Results of the 2024 Sri Lankan Presidential Election (Latest) for Pds within LK-11
+#### 5.02) Map of Results of the 2024 Sri Lankan Presidential Election (Latest) for Pds within LK-11.
 
 ```bash
 Presidential/Latest/LK-11:pd/Map
@@ -576,7 +576,7 @@ Presidential/Latest/LK-11:pd/Map
 
 ![Presidential/Latest/LK-11:pd/Map](images/readme/21e4d8cb.png)
 
-#### 5.03) Map of Results of the 2025 Sri Lankan Local Election (2025) for Districts within LK
+#### 5.03) Map of Results of the 2025 Sri Lankan Local Election (2025) for Districts within LK.
 
 ```bash
 Local/2025/LK:district/Map
@@ -603,7 +603,7 @@ Local/2025/LK:district/Map
 
 ### 6) History
 
-#### 6.01) Map of Basic information (2012) for Provinces within LK (pre-1845 Map)
+#### 6.01) Map of Basic information (2012) for Provinces within LK (pre-1845 Map).
 
 ```bash
 Basic/2012/LK-pre1845:province/Map
@@ -628,7 +628,7 @@ Basic/2012/LK-pre1845:province/Map
 
 ![Basic/2012/LK-pre1845:province/Map](images/readme/491464a9.png)
 
-#### 6.02) Map of Basic information (2012) for Provinces within LK (pre-1873 Map)
+#### 6.02) Map of Basic information (2012) for Provinces within LK (pre-1873 Map).
 
 ```bash
 Basic/2012/LK-pre1873:province/Map
@@ -653,7 +653,7 @@ Basic/2012/LK-pre1873:province/Map
 
 ![Basic/2012/LK-pre1873:province/Map](images/readme/82b80adf.png)
 
-#### 6.03) Map of Basic information (2012) for Provinces within LK (pre-1886 Map)
+#### 6.03) Map of Basic information (2012) for Provinces within LK (pre-1886 Map).
 
 ```bash
 Basic/2012/LK-pre1886:province/Map
@@ -678,7 +678,7 @@ Basic/2012/LK-pre1886:province/Map
 
 ![Basic/2012/LK-pre1886:province/Map](images/readme/f8a0ca32.png)
 
-#### 6.04) Map of Basic information (2012) for Provinces within LK (pre-1889 Map)
+#### 6.04) Map of Basic information (2012) for Provinces within LK (pre-1889 Map).
 
 ```bash
 Basic/2012/LK-pre1889:province/Map
@@ -703,7 +703,7 @@ Basic/2012/LK-pre1889:province/Map
 
 ![Basic/2012/LK-pre1889:province/Map](images/readme/89126ab8.png)
 
-#### 6.05) Map of Basic information (2012) for Provinces within LK
+#### 6.05) Map of Basic information (2012) for Provinces within LK.
 
 ```bash
 Basic/2012/LK:province/Map
@@ -728,7 +728,7 @@ Basic/2012/LK:province/Map
 
 ![Basic/2012/LK:province/Map](images/readme/52038455.png)
 
-#### 6.06) Map of Basic information (2012) for Districts within LK (pre-1959 Map)
+#### 6.06) Map of Basic information (2012) for Districts within LK (pre-1959 Map).
 
 ```bash
 Basic/2012/LK-pre1959:district/Map
@@ -753,7 +753,7 @@ Basic/2012/LK-pre1959:district/Map
 
 ![Basic/2012/LK-pre1959:district/Map](images/readme/12904b91.png)
 
-#### 6.07) Map of Basic information (2012) for Districts within LK (pre-1961 Map)
+#### 6.07) Map of Basic information (2012) for Districts within LK (pre-1961 Map).
 
 ```bash
 Basic/2012/LK-pre1961:district/Map
@@ -778,7 +778,7 @@ Basic/2012/LK-pre1961:district/Map
 
 ![Basic/2012/LK-pre1961:district/Map](images/readme/0f9fd511.png)
 
-#### 6.08) Map of Basic information (2012) for Districts within LK (pre-1978 Map)
+#### 6.08) Map of Basic information (2012) for Districts within LK (pre-1978 Map).
 
 ```bash
 Basic/2012/LK-pre1978:district/Map
@@ -803,7 +803,7 @@ Basic/2012/LK-pre1978:district/Map
 
 ![Basic/2012/LK-pre1978:district/Map](images/readme/92c8c7f4.png)
 
-#### 6.09) Map of Basic information (2012) for Districts within LK (pre-1984 Map)
+#### 6.09) Map of Basic information (2012) for Districts within LK (pre-1984 Map).
 
 ```bash
 Basic/2012/LK-pre1984:district/Map
@@ -828,7 +828,32 @@ Basic/2012/LK-pre1984:district/Map
 
 ![Basic/2012/LK-pre1984:district/Map](images/readme/25ddf97d.png)
 
-#### 6.10) Map of Population distributed by ethnic group such as Sinhalese, Sri Lanka Tamil, Moor, and others (2012) for Dsds within LK-23 (pre-2019 Map)
+#### 6.10) Map of Basic information (2012) for Districts within LK.
+
+```bash
+Basic/2012/LK:district/Map
+```
+
+```json
+{
+    "result": {
+        "what_description": "Basic information",
+        "when_description": "2012",
+        "where_description": "Districts within LK",
+        "how_description": "Map",
+        "image_path": "/tmp/lanka_data/images/e5ea66e5.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2012/LK:district/Map"
+    },
+    "query_time_ms": 0,
+    "cache_hit": false
+}
+```
+
+![Basic/2012/LK:district/Map](images/readme/e5ea66e5.png)
+
+#### 6.11) Map of Population distributed by ethnic group such as Sinhalese, Sri Lanka Tamil, Moor, and others (2012) for Dsds within LK-23 (pre-2019 Map).
 
 ```bash
 Ethnicity/2012/LK-23-pre2019:dsd/Map
@@ -853,7 +878,7 @@ Ethnicity/2012/LK-23-pre2019:dsd/Map
 
 ![Ethnicity/2012/LK-23-pre2019:dsd/Map](images/readme/c697c0e3.png)
 
-#### 6.11) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Dsds within LK-23 (pre-2019 Map)
+#### 6.12) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Dsds within LK-23 (pre-2019 Map).
 
 ```bash
 Ethnicity/2024/LK-23-pre2019:dsd/Map
@@ -878,7 +903,7 @@ Ethnicity/2024/LK-23-pre2019:dsd/Map
 
 ![Ethnicity/2024/LK-23-pre2019:dsd/Map](images/readme/58a9cdc4.png)
 
-#### 6.12) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Dsds within LK-23
+#### 6.13) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Dsds within LK-23.
 
 ```bash
 Ethnicity/2024/LK-23:dsd/Map
@@ -905,7 +930,7 @@ Ethnicity/2024/LK-23:dsd/Map
 
 ### 7) Other-Whats
 
-#### 7.01) Map of Population distributed across standard age bands (2024) for Districts within LK-1
+#### 7.01) Map of Population distributed across standard age bands (2024) for Districts within LK-1.
 
 ```bash
 AgeGroup/2024/LK-1:district/Map
@@ -930,7 +955,7 @@ AgeGroup/2024/LK-1:district/Map
 
 ![AgeGroup/2024/LK-1:district/Map](images/readme/fc30a57a.png)
 
-#### 7.02) Map of Households classified by ownership of communication items such as telephone, radio, and television (2012) for Dsds within LK-2 (pre-2019 Map)
+#### 7.02) Map of Households classified by ownership of communication items such as telephone, radio, and television (2012) for Dsds within LK-2 (pre-2019 Map).
 
 ```bash
 Communication/2012/LK-2:dsd/Map
@@ -955,7 +980,7 @@ Communication/2012/LK-2:dsd/Map
 
 ![Communication/2012/LK-2:dsd/Map](images/readme/68d8df08.png)
 
-#### 7.03) Map of Housing units classified by the decade or period in which they were constructed (2012) for Dsds within LK-3 (pre-2019 Map)
+#### 7.03) Map of Housing units classified by the decade or period in which they were constructed (2012) for Dsds within LK-3 (pre-2019 Map).
 
 ```bash
 ConstructionYear/2012/LK-3:dsd/Map
@@ -980,7 +1005,7 @@ ConstructionYear/2012/LK-3:dsd/Map
 
 ![ConstructionYear/2012/LK-3:dsd/Map](images/readme/84aa93db.png)
 
-#### 7.04) Map of Number of households classified by the main fuel or energy source used for cooking (2024) for Dsds within LK-4
+#### 7.04) Map of Number of households classified by the main fuel or energy source used for cooking (2024) for Dsds within LK-4.
 
 ```bash
 Fuel/2024/LK-4:dsd/Map
@@ -1005,7 +1030,7 @@ Fuel/2024/LK-4:dsd/Map
 
 ![Fuel/2024/LK-4:dsd/Map](images/readme/7b63105b.png)
 
-#### 7.05) Map of Population classified by economic activity status including employed, unemployed, and economically inactive (2012) for Dsds within LK-5 (pre-2019 Map)
+#### 7.05) Map of Population classified by economic activity status including employed, unemployed, and economically inactive (2012) for Dsds within LK-5 (pre-2019 Map).
 
 ```bash
 Economy/2012/LK-5:dsd/Map
@@ -1030,7 +1055,7 @@ Economy/2012/LK-5:dsd/Map
 
 ![Economy/2012/LK-5:dsd/Map](images/readme/62c5bb44.png)
 
-#### 7.06) Map of Population classified by the highest level of educational qualification attained (2012) for Dsds within LK-6 (pre-2019 Map)
+#### 7.06) Map of Population classified by the highest level of educational qualification attained (2012) for Dsds within LK-6 (pre-2019 Map).
 
 ```bash
 Education/2012/LK-6:dsd/Map
@@ -1055,7 +1080,7 @@ Education/2012/LK-6:dsd/Map
 
 ![Education/2012/LK-6:dsd/Map](images/readme/940f1ae1.png)
 
-#### 7.07) Map of Households classified by the main energy fuel used for any purpose (2024) for Dsds within LK-7
+#### 7.07) Map of Households classified by the main energy fuel used for any purpose (2024) for Dsds within LK-7.
 
 ```bash
 Energy/2024/LK-7:dsd/Map
@@ -1080,7 +1105,7 @@ Energy/2024/LK-7:dsd/Map
 
 ![Energy/2024/LK-7:dsd/Map](images/readme/c93741a2.png)
 
-#### 7.08) Map of Households classified by the main material used for floor construction (e.g. cement, tile, mud) (2024) for Provinces with IDs LK-2,LK-3
+#### 7.08) Map of Households classified by the main material used for floor construction (e.g. cement, tile, mud) (2024) for Provinces with IDs LK-2,LK-3.
 
 ```bash
 Floor/2024/LK-2,LK-3/Map
@@ -1105,7 +1130,7 @@ Floor/2024/LK-2,LK-3/Map
 
 ![Floor/2024/LK-2,LK-3/Map](images/readme/7f3bf03e.png)
 
-#### 7.09) Map of Population broken down by male and female (2024) for Gnds within 20 km of LK-1127025
+#### 7.09) Map of Population broken down by male and female (2024) for Gnds within 20 km of LK-1127025.
 
 ```bash
 Gender/2024/LK-1127025@20/Map
@@ -1130,7 +1155,7 @@ Gender/2024/LK-1127025@20/Map
 
 ![Gender/2024/LK-1127025@20/Map](images/readme/a9bb4fea.png)
 
-#### 7.10) Map of Population cross-tabulated by sex and age group (2024) for Dsds with IDs LK-1103
+#### 7.10) Map of Population cross-tabulated by sex and age group (2024) for Dsds with IDs LK-1103.
 
 ```bash
 GenderAndAgeGroup/2024/LK-1103/Map
@@ -1155,7 +1180,7 @@ GenderAndAgeGroup/2024/LK-1103/Map
 
 ![GenderAndAgeGroup/2024/LK-1103/Map](images/readme/47e1ee3a.png)
 
-#### 7.11) Map of Number of households classified by their primary source of lighting (2024) for Dsds within LK-61
+#### 7.11) Map of Number of households classified by their primary source of lighting (2024) for Dsds within LK-61.
 
 ```bash
 Lighting/2024/LK-61:dsd/Map
@@ -1180,7 +1205,7 @@ Lighting/2024/LK-61:dsd/Map
 
 ![Lighting/2024/LK-61:dsd/Map](images/readme/c17cb1b8.png)
 
-#### 7.12) Map of Population classified by marital status such as never married, married, widowed, and divorced (2012) for Provinces with IDs LK-3,LK-9,LK-8
+#### 7.12) Map of Population classified by marital status such as never married, married, widowed, and divorced (2012) for Provinces with IDs LK-3,LK-9,LK-8.
 
 ```bash
 Marital/2012/LK-3,LK-9,LK-8/Map
@@ -1205,7 +1230,7 @@ Marital/2012/LK-3,LK-9,LK-8/Map
 
 ![Marital/2012/LK-3,LK-9,LK-8/Map](images/readme/14c4da11.png)
 
-#### 7.13) Map of Housing units classified by occupancy status, distinguishing occupied from vacant units (2012) for Gnds within LK-1127
+#### 7.13) Map of Housing units classified by occupancy status, distinguishing occupied from vacant units (2012) for Gnds within LK-1127.
 
 ```bash
 Occupancy/2012/LK-1127:gnd/Map
@@ -1230,7 +1255,7 @@ Occupancy/2012/LK-1127:gnd/Map
 
 ![Occupancy/2012/LK-1127:gnd/Map](images/readme/e09aca73.png)
 
-#### 7.14) Map of Households classified by the ownership status of their dwelling, such as owned or rented (2012) for Dsds within LK-53 (pre-2019 Map)
+#### 7.14) Map of Households classified by the ownership status of their dwelling, such as owned or rented (2012) for Dsds within LK-53 (pre-2019 Map).
 
 ```bash
 Ownership/2012/LK-53:dsd/Map
@@ -1255,7 +1280,7 @@ Ownership/2012/LK-53:dsd/Map
 
 ![Ownership/2012/LK-53:dsd/Map](images/readme/b78936c4.png)
 
-#### 7.15) Map of Households classified by the type of living quarters such as housing units, collective living quarters, and makeshift housing (2012) for Provinces, from LK-4 to LK-6
+#### 7.15) Map of Households classified by the type of living quarters such as housing units, collective living quarters, and makeshift housing (2012) for Provinces, from LK-4 to LK-6.
 
 ```bash
 Quarters/2012/LK-4...LK-6/Map
@@ -1280,7 +1305,7 @@ Quarters/2012/LK-4...LK-6/Map
 
 ![Quarters/2012/LK-4...LK-6/Map](images/readme/657e433d.png)
 
-#### 7.16) Map of Population classified by their relationship to the head of the household (2012) for Dsds within LK-23 (pre-2019 Map)
+#### 7.16) Map of Population classified by their relationship to the head of the household (2012) for Dsds within LK-23 (pre-2019 Map).
 
 ```bash
 RelationshipToHead/2012/LK-23:dsd/Map
@@ -1305,7 +1330,7 @@ RelationshipToHead/2012/LK-23:dsd/Map
 
 ![RelationshipToHead/2012/LK-23:dsd/Map](images/readme/34d0a308.png)
 
-#### 7.17) Map of Housing units classified by the main material used for roof construction (e.g. tile, sheet, concrete) (2024) for Dsds within LK-9
+#### 7.17) Map of Housing units classified by the main material used for roof construction (e.g. tile, sheet, concrete) (2024) for Dsds within LK-9.
 
 ```bash
 Roof/2024/LK-9:dsd/Map
@@ -1330,7 +1355,7 @@ Roof/2024/LK-9:dsd/Map
 
 ![Roof/2024/LK-9:dsd/Map](images/readme/07980346.png)
 
-#### 7.18) Map of Households classified by the number of rooms in the dwelling (2012) for Pds within LK-2
+#### 7.18) Map of Households classified by the number of rooms in the dwelling (2012) for Pds within LK-2.
 
 ```bash
 Rooms/2012/LK-2:pd/Map
@@ -1355,7 +1380,7 @@ Rooms/2012/LK-2:pd/Map
 
 ![Rooms/2012/LK-2:pd/Map](images/readme/5517e3d3.png)
 
-#### 7.19) Map of Housing units classified by structural type (e.g. permanent, semi-permanent, temporary) (2024) for Districts within LK-3
+#### 7.19) Map of Housing units classified by structural type (e.g. permanent, semi-permanent, temporary) (2024) for Districts within LK-3.
 
 ```bash
 Structure/2024/LK-3:district/Map
@@ -1380,7 +1405,7 @@ Structure/2024/LK-3:district/Map
 
 ![Structure/2024/LK-3:district/Map](images/readme/779a358c.png)
 
-#### 7.20) Map of Number of households classified by the type of toilet facility used (2024) for Dsds within LK-53
+#### 7.20) Map of Number of households classified by the type of toilet facility used (2024) for Dsds within LK-53.
 
 ```bash
 Toilet/2024/LK-53:dsd/Map
@@ -1405,7 +1430,7 @@ Toilet/2024/LK-53:dsd/Map
 
 ![Toilet/2024/LK-53:dsd/Map](images/readme/c5510ca4.png)
 
-#### 7.21) Map of Housing units classified by the main material used for wall construction (e.g. brick, cabook, cadjan) (2024) for Dsds within LK-8
+#### 7.21) Map of Housing units classified by the main material used for wall construction (e.g. brick, cabook, cadjan) (2024) for Dsds within LK-8.
 
 ```bash
 Walls/2024/LK-8:dsd/Map
@@ -1430,7 +1455,7 @@ Walls/2024/LK-8:dsd/Map
 
 ![Walls/2024/LK-8:dsd/Map](images/readme/13043e75.png)
 
-#### 7.22) Map of Households classified by the method used for solid waste disposal (2012) for Dsds within LK-1 (pre-2019 Map)
+#### 7.22) Map of Households classified by the method used for solid waste disposal (2012) for Dsds within LK-1 (pre-2019 Map).
 
 ```bash
 Waste/2012/LK-1:dsd/Map
@@ -1455,7 +1480,7 @@ Waste/2012/LK-1:dsd/Map
 
 ![Waste/2012/LK-1:dsd/Map](images/readme/8f88d8fa.png)
 
-#### 7.23) Map of Number of households classified by their main source of drinking water (2024) for Dsds within LK-4
+#### 7.23) Map of Number of households classified by their main source of drinking water (2024) for Dsds within LK-4.
 
 ```bash
 Water/2024/LK-4:dsd/Map
