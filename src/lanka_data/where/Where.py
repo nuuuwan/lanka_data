@@ -4,3 +4,6 @@ class Where:
 
     def get_title(self):
         return self.title
+
+    def __str__(self):
+        return f"{self.__class__.__name__}({self.get_title()})"
