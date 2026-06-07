@@ -11,7 +11,7 @@
         "region_id": "LK-2",
         "region_name": "Central",
         "region_type": "province",
-        "region_year": "Current",
+        "history_year": "Current",
         "area_sqkm": 5731.25,
         "center_lat": 7.324022,
         "center_lng": 80.717397
