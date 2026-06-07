@@ -32,9 +32,10 @@ class WWW:
         cache_hit = cache_json_file.exists() and do_use_cache
 
         if cache_hit:
+            log.debug(f"💾 Getting {self.url} from cache.")
             return cache_json_file.read()
 
-        log.info(f"🌐 {self.url}")
+        log.info(f"🌐 Getting {self.url} from web.")
         response = requests.get(self.url, timeout=self.T_TIMEOUT)
         response.raise_for_status()
         data = response.json()
@@ -52,9 +53,10 @@ class WWW:
         cache_hit = cache_tsv_file.exists() and do_use_cache
 
         if cache_hit:
+            log.debug(f"💾 Getting {self.url} from cache.")
             return self._read_tsv_from_file(cache_tsv_file.path)
 
-        log.info(f"🌐 {self.url}")
+        log.info(f"🌐 Getting {self.url} from web.")
         response = requests.get(self.url, timeout=self.T_TIMEOUT)
         response.raise_for_status()
         cache_tsv_file.write(response.content)
@@ -66,9 +68,10 @@ class WWW:
         cache_file = BinaryFile(cache_file_path)
 
         if cache_file.exists() and do_use_cache:
+            log.debug(f"💾 Getting {self.url} from cache.")
             return cache_file.path
 
-        log.info(f"🌐 {self.url}")
+        log.info(f"🌐 Getting {self.url} from web.")
         response = requests.get(self.url, timeout=self.T_TIMEOUT)
         response.raise_for_status()
         cache_file.write(response.content)
