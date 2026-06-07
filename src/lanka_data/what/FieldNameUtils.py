@@ -3,13 +3,13 @@ from functools import cache
 
 class FieldNameUtils:
     NORMALIZED_TO_ORIGINAL = {
-        "SLTamil": {"Sri Lanka Tamil", "SL Tamil"},
+        "SLTamil": {"SriLankaTamil", "SLTamil"},
         "IndMalaiyagaTamil": {
-            "Ind Tamil",
-            "Indian Tamil Or Malaiyaga Thamilar",
+            "IndTamil",
+            "IndianTamilOrMalaiyagaThamilar",
         },
-        "SLMoor": {"Sri Lanka Moor Or Muslim", "SL Moor"},
-        "SLChetty": {"Sri Lanka Chetty"},
+        "SLMoor": {"SriLankaMoorOrMuslim", "SLMoor"},
+        "SLChetty": {"SriLankaChetty", "SLChetty"},
     }
     NAME_IDX = {
         original_name: normalized_name

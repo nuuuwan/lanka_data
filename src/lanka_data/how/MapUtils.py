@@ -67,8 +67,15 @@ class MapUtils:
         LegendUtils._draw_legend(value_to_color, ax, legend_ax)
 
         ax.set_title("")  # clear default title space
-        # Blend: x centered over map ax, y in figure coords
-        t = blended_transform_factory(ax.transAxes, fig.transFigure)
+        # Centre x over the visible content (map ax only, or map+legend)
+        ax_pos = ax.get_position()
+        right_x = (
+            legend_ax.get_position().x1
+            if legend_ax.get_visible()
+            else ax_pos.x1
+        )
+        center_x = (ax_pos.x0 + right_x) / 2
+        t = fig.transFigure
         fig.text(
             0.5,
             0.97,
