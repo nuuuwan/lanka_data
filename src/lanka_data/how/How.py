@@ -52,4 +52,8 @@ class How:
     def get_result(self, where, what, when):
         return dict(
             title_items=self.get_title_items(where, what, when),
+            what_description=what.get_description(),
+            when_description=when,
+            where_description=where.get_description(),
+            how_description=self.get_description(),
         ) | self.get_inner(where, what, when)

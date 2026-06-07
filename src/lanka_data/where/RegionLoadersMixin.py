@@ -51,7 +51,12 @@ class RegionLoadersMixin:
             ):
                 intersection_gnds.append(gnd)
 
-        return cls(intersection_gnds, region_year)
+        description = (
+            "Intersection of "
+            + f"{region_a_type} {region_a_id}"
+            + f" and {region_b_type} {region_b_id}"
+        )
+        return cls(intersection_gnds, region_year, description)
 
     @staticmethod
     def _is_within_radius(radius_km, center_region, region):
@@ -91,7 +96,11 @@ class RegionLoadersMixin:
                 f"No regions found within {radius_km} km of {region_id}"
             )
 
-        return cls(nearby_regions, region_year)
+        description = (
+            f"Regions of type {region_type}"
+            + f" within {radius_km} km of {region_id}"
+        )
+        return cls(nearby_regions, region_year, description)
 
     @classmethod
     def from_region_id_range(cls, from_region_id, to_region_id, region_year):
@@ -113,7 +122,11 @@ class RegionLoadersMixin:
             raise ValueError(
                 f"No regions found in range: {from_region_id}...{to_region_id}"
             )
-        return cls(raw_regions, region_year)
+        description = (
+            f"Regions of type {region_type},"
+            + f" from {from_region_id} to {to_region_id}"
+        )
+        return cls(raw_regions, region_year, description)
 
     @classmethod
     def from_region_ids_str(cls, region_ids_str, region_year):
@@ -134,7 +147,10 @@ class RegionLoadersMixin:
         raw_regions = [d for d in raw_regions if d["region_id"] in region_ids]
         if not raw_regions:
             raise ValueError(f"Region ID not found: {region_ids_str}")
-        return cls(raw_regions, region_year)
+        description = (
+            f"Regions of type {region_type}" + f" with IDs {region_ids_str}"
+        )
+        return cls(raw_regions, region_year, description)
 
     @classmethod
     def is_parent(cls, region, parent_region_id) -> bool:  # noqa: CFQ004
@@ -171,4 +187,8 @@ class RegionLoadersMixin:
             raise ValueError(
                 f"No regions found for parent ID: {parent_region_id}"
             )
-        return cls(raw_regions, region_year)
+        description = (
+            f"Regions of type {region_type}"
+            + f" within parent region {parent_region_id}"
+        )
+        return cls(raw_regions, region_year, description)

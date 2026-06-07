@@ -10,8 +10,15 @@ log = Log("Regions")
 
 class Regions(Where, RegionLoadersMixin):
 
-    def __init__(self, raw_region_data_list: list[str], region_year: str):
-        super().__init__(self.build_title(raw_region_data_list), region_year)
+    def __init__(
+        self,
+        raw_region_data_list: list[str],
+        region_year: str,
+        description: str,
+    ):
+        super().__init__(
+            self.build_title(raw_region_data_list), region_year, description
+        )
         self.raw_region_data_list = raw_region_data_list
 
     @classmethod

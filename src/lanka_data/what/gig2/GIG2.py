@@ -11,6 +11,9 @@ class GIG2(What):
         self.region_group = region_group
         self.year = year
 
+    def get_description(self):
+        return self.get_title_to_description().get(self.title, "")
+
     @classmethod
     def get_region_year(cls):
         return "2019"
