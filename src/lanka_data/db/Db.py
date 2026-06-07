@@ -58,7 +58,7 @@ class Db:
         how_cmd = "JSON" if n_tokens < 4 else tokens[3]
 
         if when_cmd == "2012":
-            if "-pre2019" not in where_cmd:
+            if "-pre" not in where_cmd:
                 tokens = where_cmd.split(":")
                 if len(tokens) == 2 and tokens[1] == "dsd":
                     where_cmd = tokens[0] + "-pre2019:" + ":".join(tokens[1:])
