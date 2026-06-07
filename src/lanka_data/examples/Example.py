@@ -69,7 +69,7 @@ class Example:
 
     @classmethod
     def get_output_idx(cls):
-        cmd_list = JSONFile(cls.EXAMPLES_PATH).read()
+        cmd_list = cls.get_cmd_list()
         idx = {}
         for cmd in cmd_list:
             output_path = os.path.join(

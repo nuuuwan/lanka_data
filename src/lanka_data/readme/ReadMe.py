@@ -67,42 +67,49 @@ class ReadMe:
             "",
         ]
 
-    def get_lines_for_examples(self, output_idx):
+    def get_lines_for_examples(self, example_idx, output_idx):
         lines = [
             "## Example cmds (`<cmd>`)",
             "",
         ]
 
-        for i_cmd, cmd in enumerate(Example.get_output_idx().keys(), start=1):
-            output = output_idx[cmd]
-            lines.append(f"### {i_cmd:02d}. `{cmd}`")
+        for i_group_name, (group_name, examples) in enumerate(
+            example_idx.items(), start=1
+        ):
+
+            lines.append(f"### {i_group_name:02d}. {group_name}")
             lines.append("")
-            lines.append("```json")
-            output_json = json.dumps(output, indent=4)
-            output_json_lines = output_json.splitlines()
-            if len(output_json_lines) > self.MAX_LINES_IN_OUTPUT:
-                i_split = self.MAX_LINES_IN_OUTPUT // 2
-                n_spaces = len(output_json_lines[i_split - 1]) - len(
-                    output_json_lines[i_split - 1].lstrip(" ")
-                )
-                n_cut = len(output_json_lines) - self.MAX_LINES_IN_OUTPUT
-                output_json_lines = (
-                    output_json_lines[:i_split]
-                    + [" " * n_spaces + f"... // {n_cut} lines ..."]
-                    + output_json_lines[-i_split:]
-                )
-            lines.extend(output_json_lines)
-            lines.append("```")
-            lines.append("")
-            if "result" in output and "image_path" in output["result"]:
-                image_path = output["result"]["image_path"]
-                os.makedirs(self.DIR_IMAGES_README, exist_ok=True)
-                new_image_path = os.path.join(
-                    self.DIR_IMAGES_README, os.path.basename(image_path)
-                )
-                shutil.copy2(image_path, new_image_path)
-                lines.append(f"![{cmd}]({new_image_path})")
+            for i_cmd, example in enumerate(examples, start=1):
+                cmd = example.cmd
+                output = output_idx[cmd]
+                lines.append(f"#### {i_group_name:02d}.{i_cmd:02d}. `{cmd}`")
                 lines.append("")
+                lines.append("```json")
+                output_json = json.dumps(output, indent=4)
+                output_json_lines = output_json.splitlines()
+                if len(output_json_lines) > self.MAX_LINES_IN_OUTPUT:
+                    i_split = self.MAX_LINES_IN_OUTPUT // 2
+                    n_spaces = len(output_json_lines[i_split - 1]) - len(
+                        output_json_lines[i_split - 1].lstrip(" ")
+                    )
+                    n_cut = len(output_json_lines) - self.MAX_LINES_IN_OUTPUT
+                    output_json_lines = (
+                        output_json_lines[:i_split]
+                        + [" " * n_spaces + f"... // {n_cut} lines ..."]
+                        + output_json_lines[-i_split:]
+                    )
+                lines.extend(output_json_lines)
+                lines.append("```")
+                lines.append("")
+                if "result" in output and "image_path" in output["result"]:
+                    image_path = output["result"]["image_path"]
+                    os.makedirs(self.DIR_IMAGES_README, exist_ok=True)
+                    new_image_path = os.path.join(
+                        self.DIR_IMAGES_README, os.path.basename(image_path)
+                    )
+                    shutil.copy2(image_path, new_image_path)
+                    lines.append(f"![{cmd}]({new_image_path})")
+                    lines.append("")
 
         return lines
 
@@ -117,7 +124,7 @@ class ReadMe:
             "",
         ]
 
-    def get_lines(self, output_idx):
+    def get_lines(self, example_idx, output_idx):
         return (
             [
                 "# Lanka Data",
@@ -128,7 +135,7 @@ class ReadMe:
             ]
             + self.get_lines_for_sources(output_idx)
             + self.get_lines_for_usage()
-            + self.get_lines_for_examples(output_idx)
+            + self.get_lines_for_examples(example_idx, output_idx)
             + self.get_lines_for_footer()
         )
 
@@ -138,8 +145,9 @@ class ReadMe:
 
     def build(self):
         self.cleanup()
+        example_idx = Example.get_example_idx()
         output_idx = Example.get_output_idx()
-        lines = self.get_lines(output_idx)
+        lines = self.get_lines(example_idx, output_idx)
         readme_file = File(self.PATH)
         readme_file.write("\n".join(lines))
         log.info(f"Wrote {readme_file}")
