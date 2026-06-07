@@ -17,7 +17,20 @@ class GIG2(What):
 
     @classmethod
     def get_title_to_id(cls):
-        return JSONFile(cls.get_title_to_id_file_path()).read()
+        raw = JSONFile(cls.get_title_to_id_file_path()).read()
+        return {
+            title: (entry["id"] if isinstance(entry, dict) else entry)
+            for title, entry in raw.items()
+        }
+
+    @classmethod
+    def get_title_to_description(cls):
+        raw = JSONFile(cls.get_title_to_id_file_path()).read()
+        return {
+            title: entry.get("description", "")
+            for title, entry in raw.items()
+            if isinstance(entry, dict)
+        }
 
     @classmethod
     def get_where_to_what_id_map(cls, regions) -> dict:

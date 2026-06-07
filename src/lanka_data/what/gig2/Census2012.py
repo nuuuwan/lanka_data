@@ -26,13 +26,14 @@ class Census2012(GIG2):
             "census2012.datasets.json",
         )
 
-    @classmethod
-    def get_source_info(cls):
+    def get_source_info(self):
+        description = self.get_title_to_description().get(self.title, "")
         return dict(
             source="Census of Population and Housing 2012",
             source_url="https://www.statistics.gov.lk"
             + "/Resource/en/Population"
             + "/CPH_2011/CPH_2012_5Per_Rpt.pdf",
+            description=description,
         )
 
     @classmethod
