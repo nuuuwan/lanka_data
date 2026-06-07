@@ -61,7 +61,7 @@ class MapUtils:
         region_color_map, value_to_color = (
             RegionColorUtils.get_region_color_map(result_data, how, what)
         )
-        gdf_region["color"] = gdf_region["id"].map(region_color_map)
+        gdf_region["color"] = gdf_region["region_id"].map(region_color_map)
         title = MapUtils.DELIM_TITLE.join(
             how.get_title_items(where, what, when)
         )
@@ -69,9 +69,7 @@ class MapUtils:
         fig = MapUtils._render_figure(
             gdf_region, n_regions, value_to_color, title, source
         )
-        image_dir = os.path.join(
-            tempfile.gettempdir(), "lanka_data", "images"
-        )
+        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")

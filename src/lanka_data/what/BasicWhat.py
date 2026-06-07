@@ -10,9 +10,9 @@ class BasicWhat(What):
     def clean(cls, data):
         new_data = {}
         for k, v in data.items():
-            if k == "id":
+            if k == "region_id":
                 new_data["region_id"] = v
-            elif k == "name":
+            elif k == "region_name":
                 new_data["region_name"] = v
             else:
                 new_data[k] = v

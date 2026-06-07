@@ -17,9 +17,9 @@ class Regions(Where, RegionLoadersMixin):
     @classmethod
     def build_title(cls, raw_region_data_list):
         region_type = RegionTypeUtils.get_region_type(
-            raw_region_data_list[0]["id"]
+            raw_region_data_list[0]["region_id"]
         )
-        region_names = [d["name"] for d in raw_region_data_list]
+        region_names = [d["region_name"] for d in raw_region_data_list]
         n_regions = len(region_names)
         if n_regions == 1:
             return region_names[0] + f" {region_type.title()}"
@@ -31,14 +31,14 @@ class Regions(Where, RegionLoadersMixin):
     @cached_property
     def region_type(self):
         return RegionTypeUtils.get_region_type(
-            self.raw_region_data_list[0]["id"]
+            self.raw_region_data_list[0]["region_id"]
         )
 
     @cached_property
     def region_to_current_ids(self):
         region_to_current_ids = {}
         for d in self.raw_region_data_list:
-            region_id = d["id"]
+            region_id = d["region_id"]
             current_ids = d.get("current_ids")
             if current_ids is None:
                 current_ids = [region_id]
@@ -66,17 +66,34 @@ class Regions(Where, RegionLoadersMixin):
                 + f"/{region_type}s-pre{historical_year}.json"
             )
 
-        return WWW(url).read_json()
+        raw_data_list = WWW(url).read_json()
+
+        def remap(d):
+            d = (
+                dict(
+                    region_id=d["id"],
+                    region_name=d["name"],
+                    region_type=region_type,
+                    history_year=historical_year,
+                )
+                | d
+            )
+            del d["id"]
+            del d["name"]
+            return d
+
+        remapped_data_list = [remap(d) for d in raw_data_list]
+        return remapped_data_list
 
     @classmethod
     def clean(cls, d):
         new_d = {
-            "region_id": d["id"],
-            "region_name": d["name"],
-            "region_type": RegionTypeUtils.get_region_type(d["id"]),
+            "region_id": d["region_id"],
+            "region_name": d["region_name"],
+            "region_type": RegionTypeUtils.get_region_type(d["region_id"]),
         }
         for k, v in d.items():
-            if k in ["id", "name"]:
+            if k in ["region_id", "region_name"]:
                 continue
             new_d[k] = v
 

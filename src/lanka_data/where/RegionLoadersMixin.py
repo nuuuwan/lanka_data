@@ -80,7 +80,7 @@ class RegionLoadersMixin:
 
         center_region = None
         for region in raw_regions:
-            if region["id"] == region_id:
+            if region["region_id"] == region_id:
                 center_region = region
                 break
 
@@ -115,7 +115,7 @@ class RegionLoadersMixin:
         raw_regions = [
             d
             for d in raw_regions
-            if from_region_id <= d["id"] <= to_region_id
+            if from_region_id <= d["region_id"] <= to_region_id
         ]
         if not raw_regions:
             raise ValueError(
@@ -139,7 +139,7 @@ class RegionLoadersMixin:
         raw_regions = cls._get_raw_region_data_list_for_region_type(
             region_type, historical_year
         )
-        raw_regions = [d for d in raw_regions if d["id"] in region_ids]
+        raw_regions = [d for d in raw_regions if d["region_id"] in region_ids]
         if not raw_regions:
             raise ValueError(f"Region ID not found: {region_ids_str}")
         return cls(raw_regions, historical_year)
@@ -149,7 +149,7 @@ class RegionLoadersMixin:
         if parent_region_id == "LK":
             return True
 
-        region_id = region["id"]
+        region_id = region["region_id"]
         if parent_region_id in region_id:
             return True
 

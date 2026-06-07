@@ -56,7 +56,7 @@ class Elections(GIG2):
         )
         votes_by_party = {}
         for k, v in d.items():
-            if k in ["entity_id", "electors", "polled", "valid", "rejected"]:
+            if k in ["region_id", "electors", "polled", "valid", "rejected"]:
                 continue
             votes_by_party[k] = int(float(v))
 

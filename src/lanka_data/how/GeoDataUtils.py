@@ -1,4 +1,5 @@
 import geopandas
+import pandas as pd
 
 from lanka_data.where.RegionTypeUtils import RegionTypeUtils
 from utils_future import WWW
@@ -23,9 +24,10 @@ class GeoDataUtils:
             )
             temp_topojson_file_path = WWW(url).download()
             gdf = geopandas.read_file(temp_topojson_file_path)
-            gdfs.append(gdf[gdf["id"].isin(ids)])
-
-        import pandas as pd
+            gdf = gdf.rename(
+                columns={"id": "region_id", "name": "region_name"}
+            )
+            gdfs.append(gdf[gdf["region_id"].isin(ids)])
 
         return geopandas.GeoDataFrame(pd.concat(gdfs, ignore_index=True))
 
@@ -36,18 +38,17 @@ class GeoDataUtils:
             for region_id, current_ids in region_to_current_ids.items()
             for current_id in current_ids
         }
-        gdf["region_id"] = gdf["id"].map(current_to_region)
-        gdf = gdf.drop(columns=["id"])
+        gdf["region_id"] = gdf["region_id"].map(current_to_region)
         gdf["geometry"] = gdf["geometry"].buffer(0)
         gdf_dissolved = gdf.dissolve(
             by="region_id", aggfunc="first"
         ).reset_index()
-        return gdf_dissolved.rename(columns={"region_id": "id"})
+        return gdf_dissolved.rename(columns={"region_id": "region_id"})
 
     @staticmethod
     def _sort_by_region_ids(gdf, region_ids):
-        gdf["id"] = gdf["id"].astype(str)
-        return gdf.set_index("id").loc[region_ids].reset_index()
+        gdf["region_id"] = gdf["region_id"].astype(str)
+        return gdf.set_index("region_id").loc[region_ids].reset_index()
 
     @staticmethod
     def _build_region_map(data_list):
@@ -64,7 +65,11 @@ class GeoDataUtils:
 
         rows = []
         for d in data_list:
-            row = {"id": d["region_id"], "name": d.get("region_name")}
+            row = {
+                "region_id": d["region_id"],
+                "region_name": d.get("region_name"),
+                "current_ids": d.get("current_ids", [d["region_id"]]),
+            }
             for k, v in d.items():
                 if k in ("region_id", "region_name", "current_ids"):
                     continue
@@ -72,9 +77,11 @@ class GeoDataUtils:
                     row[k] = v
             rows.append(row)
         df = pd.DataFrame(rows)
-        overlap = [c for c in df.columns if c in gdf.columns and c != "id"]
+        overlap = [
+            c for c in df.columns if c in gdf.columns and c != "region_id"
+        ]
         gdf = gdf.drop(columns=overlap)
-        return gdf.merge(df, on="id", how="left")
+        return gdf.merge(df, on="region_id", how="left")
 
     @staticmethod
     def get_geopandas_dataframe(data_list):

@@ -35,7 +35,7 @@ class Census2012(GIG2):
         for k, v in d.items():
             if "total" in k:
                 continue
-            if "entity_id" in k:
+            if "region_id" in k:
                 continue
             values[k] = int(float(v))
 
