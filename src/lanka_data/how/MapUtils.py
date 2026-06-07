@@ -3,6 +3,7 @@ import tempfile
 
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
+from matplotlib.transforms import blended_transform_factory
 
 from lanka_data.how.GeoDataUtils import GeoDataUtils
 from lanka_data.how.LabelUtils import LabelUtils
@@ -63,11 +64,13 @@ class MapUtils:
         LegendUtils._draw_legend(value_to_color, ax, legend_ax)
 
         ax.set_title("")  # clear default title space
+        # Blend: x centered over map ax, y in figure coords
+        t = blended_transform_factory(ax.transAxes, fig.transFigure)
         fig.text(
             0.5,
             0.97,
             how_description,
-            transform=fig.transFigure,
+            transform=t,
             ha="center",
             va="bottom",
             fontsize=7,
@@ -77,7 +80,7 @@ class MapUtils:
             0.5,
             0.93,
             f"{what_description} ({when_description})",
-            transform=fig.transFigure,
+            transform=t,
             ha="center",
             va="bottom",
             fontsize=13,
@@ -87,7 +90,7 @@ class MapUtils:
             0.5,
             0.90,
             where_description,
-            transform=fig.transFigure,
+            transform=t,
             ha="center",
             va="bottom",
             fontsize=7,
@@ -99,6 +102,7 @@ class MapUtils:
                 0.5,
                 0.01,
                 f"Source: {source}",
+                transform=t,
                 ha="center",
                 fontsize=7,
                 color="gray",
