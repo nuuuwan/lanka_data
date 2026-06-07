@@ -10,6 +10,10 @@ log = Log("Regions")
 
 class Regions(Where, RegionLoadersMixin):
 
+    def __init__(self, raw_region_data_list: list[str]):
+        super().__init__(self.build_title(raw_region_data_list))
+        self.raw_region_data_list = raw_region_data_list
+
     @classmethod
     def build_title(cls, raw_region_data_list):
         region_type = RegionTypeUtils.get_region_type(
@@ -23,10 +27,6 @@ class Regions(Where, RegionLoadersMixin):
             return ", ".join(region_names) + f" {region_type.title()}s"
 
         return f"{n_regions} {region_type.title()}s"
-
-    def __init__(self, raw_region_data_list: list[str]):
-        super().__init__(self.build_title(raw_region_data_list))
-        self.raw_region_data_list = raw_region_data_list
 
     @cached_property
     def region_type(self):
