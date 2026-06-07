@@ -40,9 +40,9 @@ python workflows/console.py <cmd>
 
 ## Example cmds (`<cmd>`)
 
-### 01. Region Selection
+### 1) Region Selection
 
-#### 01.01. `LK`
+#### 1.01) `LK`
 
 ```json
 {
@@ -72,7 +72,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 01.02. `LK-1:district`
+#### 1.02) `LK-1:district`
 
 ```json
 {
@@ -118,13 +118,13 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 01.03. `LK-2,LK-2`
+#### 1.03) `LK-2,LK-3`
 
 ```json
 {
     "result": {
         "title_items": [
-            "Central Province",
+            "Central, Southern Provinces",
             "Basic Information",
             "2024",
             "JSON"
@@ -138,6 +138,15 @@ python workflows/console.py <cmd>
                 "area_sqkm": 5731.25,
                 "center_lat": 7.324022,
                 "center_lng": 80.717397
+            },
+            {
+                "region_id": "LK-3",
+                "region_name": "Southern",
+                "region_type": "province",
+                "history_year": "Current",
+                "area_sqkm": 5544.92,
+                "center_lat": 6.218721,
+                "center_lng": 80.717092
             }
         ],
         "source": "Department of Census and Statistics, Sri Lanka",
@@ -148,18 +157,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 01.04. `LK-3,LK-9,LK-4/Map`
+#### 1.04) `LK-3,LK-9,LK-8/Map`
 
 ```json
 {
     "result": {
         "title_items": [
-            "Southern, Northern, Sabaragamuwa Provinces",
+            "Southern, Uva, Sabaragamuwa Provinces",
             "Basic Information",
             "2024",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/450c8169.png",
+        "image_path": "/tmp/lanka_data/images/4399d293.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -168,20 +177,20 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-3,LK-9,LK-4/Map](images/readme/450c8169.png)
+![LK-3,LK-9,LK-8/Map](images/readme/4399d293.png)
 
-#### 01.05. `LK-4...LK-6/Map`
+#### 1.05) `LK-5...LK-8/Map`
 
 ```json
 {
     "result": {
         "title_items": [
-            "Northern, Eastern, North Western Provinces",
+            "Eastern, North Western, North Central, Uva Provinces",
             "Basic Information",
             "2024",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/04979af2.png",
+        "image_path": "/tmp/lanka_data/images/58e0fbfb.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -190,20 +199,20 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-4...LK-6/Map](images/readme/04979af2.png)
+![LK-5...LK-8/Map](images/readme/58e0fbfb.png)
 
-#### 01.06. `LK-1127025@10/Map`
+#### 1.06) `LK-1127025@20/Map`
 
 ```json
 {
     "result": {
         "title_items": [
-            "267 Gnds",
+            "718 Gnds",
             "Basic Information",
             "2024",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/51e54ec5.png",
+        "image_path": "/tmp/lanka_data/images/f57d8427.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -212,9 +221,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1127025@10/Map](images/readme/51e54ec5.png)
+![LK-1127025@20/Map](images/readme/f57d8427.png)
 
-#### 01.07. `LK-1103&EC-01B/Map`
+#### 1.07) `LK-1103&EC-01B/Map`
 
 ```json
 {
@@ -236,9 +245,9 @@ python workflows/console.py <cmd>
 
 ![LK-1103&EC-01B/Map](images/readme/15de4034.png)
 
-### 02. Administrative Views
+### 2) Administrative Views
 
-#### 02.01. `LK-61/Map`
+#### 2.01) `LK-61/Map`
 
 ```json
 {
@@ -260,18 +269,18 @@ python workflows/console.py <cmd>
 
 ![LK-61/Map](images/readme/f3dd60f4.png)
 
-#### 02.02. `LK-71:district/Map`
+#### 2.02) `LK-71:dsd/Map`
 
 ```json
 {
     "result": {
         "title_items": [
-            "Anuradhapura District",
+            "22 Dsds",
             "Basic Information",
             "2024",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/cca3cd4e.png",
+        "image_path": "/tmp/lanka_data/images/98aa28e2.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -280,9 +289,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-71:district/Map](images/readme/cca3cd4e.png)
+![LK-71:dsd/Map](images/readme/98aa28e2.png)
 
-#### 02.03. `LK-81:pd/Map`
+#### 2.03) `LK-81:pd/Map`
 
 ```json
 {
@@ -304,9 +313,9 @@ python workflows/console.py <cmd>
 
 ![LK-81:pd/Map](images/readme/bfa7d721.png)
 
-### 03. Census: Religion
+### 3) Census: Religion
 
-#### 03.01. `LK-23:dsd/Religion/2012/Map`
+#### 3.01) `LK-23:dsd/Religion/2012/Map`
 
 ```json
 {
@@ -328,7 +337,7 @@ python workflows/console.py <cmd>
 
 ![LK-23:dsd/Religion/2012/Map](images/readme/a2b164d4.png)
 
-#### 03.02. `LK-23:dsd/Religion/2024/Map`
+#### 3.02) `LK-23:dsd/Religion/2024/Map`
 
 ```json
 {
@@ -350,7 +359,7 @@ python workflows/console.py <cmd>
 
 ![LK-23:dsd/Religion/2024/Map](images/readme/3147011c.png)
 
-#### 03.03. `LK-1103:gnd/Religion/2012/JSON`
+#### 3.03) `LK-1103:gnd/Religion/2012/JSON`
 
 ```json
 {
@@ -396,7 +405,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 03.04. `LK-1127:gnd/Religion/2012/Map`
+#### 3.04) `LK-1127:gnd/Religion/2012/Map`
 
 ```json
 {
@@ -418,7 +427,7 @@ python workflows/console.py <cmd>
 
 ![LK-1127:gnd/Religion/2012/Map](images/readme/0d265f1a.png)
 
-#### 03.05. `LK-41:dsd/Religion/2012/Map:2nd`
+#### 3.05) `LK-41:dsd/Religion/2012/Map:2nd`
 
 ```json
 {
@@ -440,7 +449,7 @@ python workflows/console.py <cmd>
 
 ![LK-41:dsd/Religion/2012/Map:2nd](images/readme/09cd4316.png)
 
-#### 03.06. `LK-51:dsd/Religion/2012/Map:buddhist`
+#### 3.06) `LK-51:dsd/Religion/2012/Map:buddhist`
 
 ```json
 {
@@ -462,9 +471,9 @@ python workflows/console.py <cmd>
 
 ![LK-51:dsd/Religion/2012/Map:buddhist](images/readme/75a61fa4.png)
 
-### 04. Census: Ethnicity
+### 4) Census: Ethnicity
 
-#### 04.01. `LK-53:dsd/Ethnicity/2024/Map`
+#### 4.01) `LK-53:dsd/Ethnicity/2024/Map`
 
 ```json
 {
@@ -486,7 +495,7 @@ python workflows/console.py <cmd>
 
 ![LK-53:dsd/Ethnicity/2024/Map](images/readme/8069c8aa.png)
 
-#### 04.02. `LK-2:dsd/Ethnicity/Latest/Map`
+#### 4.02) `LK-2:dsd/Ethnicity/Latest/Map`
 
 ```json
 {
@@ -508,7 +517,7 @@ python workflows/console.py <cmd>
 
 ![LK-2:dsd/Ethnicity/Latest/Map](images/readme/bade8195.png)
 
-#### 04.03. `LK-23:dsd/Ethnicity/2024/Map`
+#### 4.03) `LK-23:dsd/Ethnicity/2024/Map`
 
 ```json
 {
@@ -530,9 +539,9 @@ python workflows/console.py <cmd>
 
 ![LK-23:dsd/Ethnicity/2024/Map](images/readme/d6f9c6e3.png)
 
-### 05. Elections
+### 5) Elections
 
-#### 05.01. `LK/ParliamentaryElection/2024`
+#### 5.01) `LK/ParliamentaryElection/2024`
 
 ```json
 {
@@ -578,7 +587,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 05.02. `LK-2:pd/PresidentialElection/Latest/Map`
+#### 5.02) `LK-2:pd/PresidentialElection/Latest/Map`
 
 ```json
 {
@@ -600,9 +609,9 @@ python workflows/console.py <cmd>
 
 ![LK-2:pd/PresidentialElection/Latest/Map](images/readme/35e3a262.png)
 
-### 06. Historical Boundaries
+### 6) Historical Boundaries
 
-#### 06.01. `LK-pre1984:district/Basic/2012/JSON`
+#### 6.01) `LK-pre1984:district/Basic/2012/JSON`
 
 ```json
 {
@@ -648,7 +657,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 06.02. `LK-pre1959:district/Religion/2012/Map`
+#### 6.02) `LK-pre1959:district/Religion/2012/Map`
 
 ```json
 {
@@ -670,7 +679,7 @@ python workflows/console.py <cmd>
 
 ![LK-pre1959:district/Religion/2012/Map](images/readme/4e535cda.png)
 
-#### 06.03. `LK-pre1845:province/Basic/2012/Map`
+#### 6.03) `LK-pre1845:province/Basic/2012/Map`
 
 ```json
 {
@@ -692,7 +701,7 @@ python workflows/console.py <cmd>
 
 ![LK-pre1845:province/Basic/2012/Map](images/readme/a85c9f82.png)
 
-#### 06.04. `LK-23-pre2019:dsd/Ethnicity/2012/Map`
+#### 6.04) `LK-23-pre2019:dsd/Ethnicity/2012/Map`
 
 ```json
 {
@@ -714,7 +723,7 @@ python workflows/console.py <cmd>
 
 ![LK-23-pre2019:dsd/Ethnicity/2012/Map](images/readme/d9a29dc7.png)
 
-#### 06.05. `LK-23-pre2019:dsd/Ethnicity/2024/Map`
+#### 6.05) `LK-23-pre2019:dsd/Ethnicity/2024/Map`
 
 ```json
 {

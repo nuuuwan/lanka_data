@@ -1,7 +1,7 @@
 {
   "result": {
     "title_items": [
-      "Central Province",
+      "Central, Southern Provinces",
       "Basic Information",
       "2024",
       "JSON"
@@ -15,6 +15,15 @@
         "area_sqkm": 5731.25,
         "center_lat": 7.324022,
         "center_lng": 80.717397
+      },
+      {
+        "region_id": "LK-3",
+        "region_name": "Southern",
+        "region_type": "province",
+        "history_year": "Current",
+        "area_sqkm": 5544.92,
+        "center_lat": 6.218721,
+        "center_lng": 80.717092
       }
     ],
     "source": "Department of Census and Statistics, Sri Lanka",
