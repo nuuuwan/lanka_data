@@ -29,6 +29,7 @@ class MapUtils:
     DEFAULT_EDGE_COLOR = "#fff"
     DEFAULT_EDGE_WIDTH = 0.5
 
+    # flake8: noqa: CFQ002
     @staticmethod
     def _render_figure(
         gdf_region,
