@@ -45,7 +45,6 @@
         "2024"
       ],
       "Households": [
-        "2012",
         "2024"
       ],
       "HouseholdsCookingFuel": [
@@ -91,9 +90,6 @@
         "2020"
       ],
       "Persons": [
-        "2012"
-      ],
-      "Population": [
         "2012"
       ],
       "Presidential": [

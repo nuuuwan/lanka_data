@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "29 Dsds",
-      "Roof",
-      "2024",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/bd9cf7c8.png",
+    "what_description": "Housing units classified by the main material used for roof construction (e.g. tile, sheet, concrete)",
+    "when_description": "2024",
+    "where_description": "Regions of type dsd within parent region LK-9",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/46043a13.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "Kotmale, Hanguranketa (pre 2019), Walapane (pre 2019), Nuwara Eliya (pre 2019), Ambagamuwa Dsds",
-      "Ethnicity",
-      "2024",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/a7f89f48.png",
+    "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+    "when_description": "2024",
+    "where_description": "Regions of type dsd within parent region LK-23",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/db891200.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

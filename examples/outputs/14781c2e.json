@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "Sri Lanka Country",
-      "Basic Information",
-      "2024",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/48853a44.png",
+    "what_description": "Basic information",
+    "when_description": "2024",
+    "where_description": "Regions of type country with IDs LK",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/7aad53e5.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

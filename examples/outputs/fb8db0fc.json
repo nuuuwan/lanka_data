@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "15 Dsds",
-      "HouseholdsToilet",
-      "2024",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/cba445e5.png",
+    "what_description": "Number of households classified by the type of toilet facility used",
+    "when_description": "2024",
+    "where_description": "Regions of type dsd within parent region LK-41",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/6474ea5e.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

@@ -1,11 +1,9 @@
 {
   "result": {
-    "title_items": [
-      "24 Districts",
-      "Basic Information",
-      "2012",
-      "JSON"
-    ],
+    "what_description": "Basic information",
+    "when_description": "2012",
+    "where_description": "Regions of type district within parent region LK",
+    "how_description": "JSON data",
     "data_list": [
       {
         "region_id": "LK-11",

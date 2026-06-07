@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "11 Dsds",
-      "Ethnicity",
-      "2024",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/8069c8aa.png",
+    "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+    "when_description": "2024",
+    "where_description": "Regions of type dsd within parent region LK-53",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/577176c5.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

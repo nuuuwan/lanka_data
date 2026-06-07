@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "20 Gnds",
-      "Occupancy",
-      "2012",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/1f6aaf88.png",
+    "what_description": "Housing units classified by occupancy status, distinguishing occupied from vacant units",
+    "when_description": "2012",
+    "where_description": "Regions of type gnd within parent region LK-1127",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/afe92b98.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

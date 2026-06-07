@@ -1,11 +1,9 @@
 {
   "result": {
-    "title_items": [
-      "Sri Lanka Country",
-      "Parliamentary",
-      "2024",
-      "JSON"
-    ],
+    "what_description": "Results of the 2024 Sri Lankan Parliamentary Election",
+    "when_description": "2024",
+    "where_description": "Regions of type country with IDs LK",
+    "how_description": "JSON data",
     "data_list": [
       {
         "region_id": "LK",

@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "Colombo Dsd",
-      "GenderAndAgeGroup",
-      "2024",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/ef2bf007.png",
+    "what_description": "Population cross-tabulated by sex and age group",
+    "when_description": "2024",
+    "where_description": "Regions of type dsd with IDs LK-1103",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/99b92321.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

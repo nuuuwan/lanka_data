@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "9 Pds",
-      "HouseholdsCookingFuel",
-      "2024",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/fe7e7210.png",
+    "what_description": "Number of households classified by the main fuel or energy source used for cooking",
+    "when_description": "2024",
+    "where_description": "Regions of type pd within parent region LK-81",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/fd0c9ed2.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

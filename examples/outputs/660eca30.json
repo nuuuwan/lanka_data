@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "45 Dsds",
-      "Toilet",
-      "2024",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/78bd7d5f.png",
+    "what_description": "Distribution of households by type of toilet facility (e.g. flush, pit latrine, none)",
+    "when_description": "2024",
+    "where_description": "Regions of type dsd within parent region LK-5",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/7090dbe0.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

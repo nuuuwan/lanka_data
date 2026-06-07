@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "Central, Northern Provinces",
-      "Water",
-      "2024",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/b5745e1b.png",
+    "what_description": "Primary source of drinking water (e.g. pipe-borne, well, river) used by households",
+    "when_description": "2024",
+    "where_description": "Regions of type province with IDs LK-2,LK-4",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/d34c5c1b.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

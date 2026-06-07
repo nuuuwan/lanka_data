@@ -66,7 +66,7 @@ python workflows/console.py <cmd>
                 "2024"
             ],
             "Economy": [
-            ... // 125 lines ...
+            ... // 121 lines ...
             "Water": [
                 "2012",
                 "2024"
@@ -96,13 +96,11 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title_items": [
-            "Sri Lanka Country",
-            "Basic Information",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/48853a44.png",
+        "what_description": "Basic information",
+        "when_description": "2024",
+        "where_description": "Regions of type country with IDs LK",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/7aad53e5.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -111,20 +109,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Basic/2024/LK/Map](images/readme/48853a44.png)
+![Basic/2024/LK/Map](images/readme/7aad53e5.png)
 
 #### 2.02) `Basic/2024/LK-1:district/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Colombo, Gampaha, Kalutara Districts",
-            "Basic Information",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/d81caf73.png",
+        "what_description": "Basic information",
+        "when_description": "2024",
+        "where_description": "Regions of type district within parent region LK-1",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/dcd97d2b.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -133,20 +129,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Basic/2024/LK-1:district/Map](images/readme/d81caf73.png)
+![Basic/2024/LK-1:district/Map](images/readme/dcd97d2b.png)
 
 #### 2.03) `Basic/2024/LK-2,LK-3/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Central, Southern Provinces",
-            "Basic Information",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/0233d3fd.png",
+        "what_description": "Basic information",
+        "when_description": "2024",
+        "where_description": "Regions of type province with IDs LK-2,LK-3",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/19881b4c.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -155,20 +149,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Basic/2024/LK-2,LK-3/Map](images/readme/0233d3fd.png)
+![Basic/2024/LK-2,LK-3/Map](images/readme/19881b4c.png)
 
 #### 2.04) `Basic/2024/LK-3,LK-9,LK-8/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Southern, Uva, Sabaragamuwa Provinces",
-            "Basic Information",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/4399d293.png",
+        "what_description": "Basic information",
+        "when_description": "2024",
+        "where_description": "Regions of type province with IDs LK-3,LK-9,LK-8",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/bbb12bdc.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -177,20 +169,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Basic/2024/LK-3,LK-9,LK-8/Map](images/readme/4399d293.png)
+![Basic/2024/LK-3,LK-9,LK-8/Map](images/readme/bbb12bdc.png)
 
 #### 2.05) `Basic/2024/LK-5...LK-8/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Eastern, North Western, North Central, Uva Provinces",
-            "Basic Information",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/58e0fbfb.png",
+        "what_description": "Basic information",
+        "when_description": "2024",
+        "where_description": "Regions of type province, from LK-5 to LK-8",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/4fbd45c2.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -199,20 +189,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Basic/2024/LK-5...LK-8/Map](images/readme/58e0fbfb.png)
+![Basic/2024/LK-5...LK-8/Map](images/readme/4fbd45c2.png)
 
 #### 2.06) `Basic/2024/LK-1127025@20/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "718 Gnds",
-            "Basic Information",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/f57d8427.png",
+        "what_description": "Basic information",
+        "when_description": "2024",
+        "where_description": "Regions of type gnd within 20 km of LK-1127025",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/b1457038.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -221,20 +209,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Basic/2024/LK-1127025@20/Map](images/readme/f57d8427.png)
+![Basic/2024/LK-1127025@20/Map](images/readme/b1457038.png)
 
 #### 2.07) `Basic/2024/LK-1103&EC-01B/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "24 Gnds",
-            "Basic Information",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/15de4034.png",
+        "what_description": "Basic information",
+        "when_description": "2024",
+        "where_description": "Intersection of dsd LK-1103 and pd EC-01B",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/b1d5861a.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -243,7 +229,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Basic/2024/LK-1103&EC-01B/Map](images/readme/15de4034.png)
+![Basic/2024/LK-1103&EC-01B/Map](images/readme/b1d5861a.png)
 
 ### 3) Sub-Regions
 
@@ -252,13 +238,11 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title_items": [
-            "Kurunegala District",
-            "Basic Information",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/f3dd60f4.png",
+        "what_description": "Basic information",
+        "when_description": "2024",
+        "where_description": "Regions of type district with IDs LK-61",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/aedd9a9d.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -267,20 +251,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Basic/2024/LK-61/Map](images/readme/f3dd60f4.png)
+![Basic/2024/LK-61/Map](images/readme/aedd9a9d.png)
 
 #### 3.02) `Basic/2024/LK-71:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "22 Dsds",
-            "Basic Information",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/98aa28e2.png",
+        "what_description": "Basic information",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-71",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/a7caacfb.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -289,20 +271,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Basic/2024/LK-71:dsd/Map](images/readme/98aa28e2.png)
+![Basic/2024/LK-71:dsd/Map](images/readme/a7caacfb.png)
 
 #### 3.03) `Basic/2024/LK-81:pd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "9 Pds",
-            "Basic Information",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/bfa7d721.png",
+        "what_description": "Basic information",
+        "when_description": "2024",
+        "where_description": "Regions of type pd within parent region LK-81",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/099634e3.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -311,7 +291,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Basic/2024/LK-81:pd/Map](images/readme/bfa7d721.png)
+![Basic/2024/LK-81:pd/Map](images/readme/099634e3.png)
 
 ### 4) Religion
 
@@ -320,13 +300,11 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title_items": [
-            "Kotmale, Hanguranketa (pre 2019), Walapane (pre 2019), Nuwara Eliya (pre 2019), Ambagamuwa Dsds",
-            "Religion",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/a2b164d4.png",
+        "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-23",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/eaa344b5.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -335,20 +313,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Religion/2012/LK-23:dsd/Map](images/readme/a2b164d4.png)
+![Religion/2012/LK-23:dsd/Map](images/readme/eaa344b5.png)
 
 #### 4.02) `Religion/2024/LK-23:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "10 Dsds",
-            "Religion",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/3147011c.png",
+        "what_description": "Population distributed by religious affiliation (e.g. Buddhist, Hindu, Islam)",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-23",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/7f56315f.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -357,19 +333,17 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Religion/2024/LK-23:dsd/Map](images/readme/3147011c.png)
+![Religion/2024/LK-23:dsd/Map](images/readme/7f56315f.png)
 
 #### 4.03) `Religion/2012/LK-1103:gnd/JSON`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "35 Gnds",
-            "Religion",
-            "2012",
-            "JSON"
-        ],
+        "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
+        "when_description": "2012",
+        "where_description": "Regions of type gnd within parent region LK-1103",
+        "how_description": "JSON data",
         "data_list": [
             {
                 "region_id": "LK-1103005",
@@ -382,8 +356,9 @@ python workflows/console.py <cmd>
                 "num": " ",
                 "country_id": "LK",
                 "province_id": "LK-1",
-                ... // 1185 lines ...
-                "Roman Catholic": 42435,
+                "district_id": "LK-11",
+                "dsd_id": "LK-1103",
+                ... // 1184 lines ...
                 "Other Christian": 10715,
                 "Other": 251
             },
@@ -398,7 +373,8 @@ python workflows/console.py <cmd>
             }
         },
         "source": "Census of Population and Housing 2012",
-        "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf",
+        "description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian"
     },
     "query_time_ms": 0,
     "cache_hit": false
@@ -410,13 +386,11 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title_items": [
-            "20 Gnds",
-            "Religion",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/0d265f1a.png",
+        "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
+        "when_description": "2012",
+        "where_description": "Regions of type gnd within parent region LK-1127",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/d125b289.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -425,20 +399,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Religion/2012/LK-1127:gnd/Map](images/readme/0d265f1a.png)
+![Religion/2012/LK-1127:gnd/Map](images/readme/d125b289.png)
 
 #### 4.05) `Religion/2012/LK-41:dsd/Map:2nd`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "15 Dsds",
-            "Religion",
-            "2012",
-            "Map (2nd)"
-        ],
-        "image_path": "/tmp/lanka_data/images/09cd4316.png",
+        "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-41",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/bd492166.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -447,20 +419,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Religion/2012/LK-41:dsd/Map:2nd](images/readme/09cd4316.png)
+![Religion/2012/LK-41:dsd/Map:2nd](images/readme/bd492166.png)
 
 #### 4.06) `Religion/2012/LK-51:dsd/Map:Buddhist`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "14 Dsds",
-            "Religion",
-            "2012",
-            "Map (Buddhist)"
-        ],
-        "image_path": "/tmp/lanka_data/images/6b7887b6.png",
+        "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-51",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/3c31bb67.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -469,7 +439,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Religion/2012/LK-51:dsd/Map:Buddhist](images/readme/6b7887b6.png)
+![Religion/2012/LK-51:dsd/Map:Buddhist](images/readme/3c31bb67.png)
 
 ### 5) Ethnicity
 
@@ -478,13 +448,11 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title_items": [
-            "11 Dsds",
-            "Ethnicity",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/8069c8aa.png",
+        "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-53",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/577176c5.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -493,20 +461,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Ethnicity/2024/LK-53:dsd/Map](images/readme/8069c8aa.png)
+![Ethnicity/2024/LK-53:dsd/Map](images/readme/577176c5.png)
 
 #### 5.02) `Ethnicity/Latest/LK-2:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "41 Dsds",
-            "Ethnicity",
-            "Latest",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/bade8195.png",
+        "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+        "when_description": "Latest",
+        "where_description": "Regions of type dsd within parent region LK-2",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/98bdd86e.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -515,20 +481,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Ethnicity/Latest/LK-2:dsd/Map](images/readme/bade8195.png)
+![Ethnicity/Latest/LK-2:dsd/Map](images/readme/98bdd86e.png)
 
 #### 5.03) `Ethnicity/2024/LK-23:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "10 Dsds",
-            "Ethnicity",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/d6f9c6e3.png",
+        "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-23",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/db891200.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -537,7 +501,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Ethnicity/2024/LK-23:dsd/Map](images/readme/d6f9c6e3.png)
+![Ethnicity/2024/LK-23:dsd/Map](images/readme/db891200.png)
 
 ### 6) Elections
 
@@ -546,12 +510,10 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title_items": [
-            "Sri Lanka Country",
-            "Parliamentary",
-            "2024",
-            "JSON"
-        ],
+        "what_description": "Results of the 2024 Sri Lankan Parliamentary Election",
+        "when_description": "2024",
+        "where_description": "Regions of type country with IDs LK",
+        "how_description": "JSON data",
         "data_list": [
             {
                 "region_id": "LK",
@@ -564,7 +526,9 @@ python workflows/console.py <cmd>
                 "summary": {
                     "electors": 17140354,
                     "polled": 11815246,
-                    ... // 1337 lines ...
+                    "valid": 11148006,
+                    "rejected": 667240,
+                    ... // 1335 lines ...
                 "IND28-13": 0.0,
                 "IND36-13": 0.0,
                 "IND42-13": 0.0,
@@ -592,13 +556,11 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title_items": [
-            "21 Pds",
-            "Presidential",
-            "Latest",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/9aa59ecf.png",
+        "what_description": "Results of the 2024 Sri Lankan Presidential Election",
+        "when_description": "Latest",
+        "where_description": "Regions of type pd within parent region LK-2",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/514179a3.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -607,7 +569,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Presidential/Latest/LK-2:pd/Map](images/readme/9aa59ecf.png)
+![Presidential/Latest/LK-2:pd/Map](images/readme/514179a3.png)
 
 ### 7) History
 
@@ -616,12 +578,10 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title_items": [
-            "24 Districts",
-            "Basic Information",
-            "2012",
-            "JSON"
-        ],
+        "what_description": "Basic information",
+        "when_description": "2012",
+        "where_description": "Regions of type district within parent region LK",
+        "how_description": "JSON data",
         "data_list": [
             {
                 "region_id": "LK-11",
@@ -634,7 +594,9 @@ python workflows/console.py <cmd>
                 "current_ids": [
                     "LK-11"
                 ]
-                ... // 265 lines ...
+            },
+            {
+            ... // 263 lines ...
             },
             {
                 "region_id": "LK-92",
@@ -662,13 +624,11 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title_items": [
-            "20 Districts",
-            "Religion",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/4e535cda.png",
+        "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
+        "when_description": "2012",
+        "where_description": "Regions of type district within parent region LK",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/529e2e3b.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -677,20 +637,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Religion/2012/LK-pre1959:district/Map](images/readme/4e535cda.png)
+![Religion/2012/LK-pre1959:district/Map](images/readme/529e2e3b.png)
 
 #### 7.03) `Basic/2012/LK-pre1845:province/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Western (pre 1845), Central (pre 1886), Southern (pre 1886), Northern (pre 1873), Eastern (pre 1873) Provinces",
-            "Basic Information",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/a85c9f82.png",
+        "what_description": "Basic information",
+        "when_description": "2012",
+        "where_description": "Regions of type province within parent region LK",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/8d311976.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -699,20 +657,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Basic/2012/LK-pre1845:province/Map](images/readme/a85c9f82.png)
+![Basic/2012/LK-pre1845:province/Map](images/readme/8d311976.png)
 
 #### 7.04) `Ethnicity/2012/LK-23-pre2019:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Kotmale, Hanguranketa (pre 2019), Walapane (pre 2019), Nuwara Eliya (pre 2019), Ambagamuwa Dsds",
-            "Ethnicity",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/d9a29dc7.png",
+        "what_description": "Population distributed by ethnic group such as Sinhalese, Sri Lanka Tamil, Moor, and others",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-23",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/32a1e0e6.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -721,20 +677,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Ethnicity/2012/LK-23-pre2019:dsd/Map](images/readme/d9a29dc7.png)
+![Ethnicity/2012/LK-23-pre2019:dsd/Map](images/readme/32a1e0e6.png)
 
 #### 7.05) `Ethnicity/2024/LK-23-pre2019:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Kotmale, Hanguranketa (pre 2019), Walapane (pre 2019), Nuwara Eliya (pre 2019), Ambagamuwa Dsds",
-            "Ethnicity",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/a7f89f48.png",
+        "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-23",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/db891200.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -743,7 +697,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Ethnicity/2024/LK-23-pre2019:dsd/Map](images/readme/a7f89f48.png)
+![Ethnicity/2024/LK-23-pre2019:dsd/Map](images/readme/db891200.png)
 
 ### 8) Other-Whats
 
@@ -752,13 +706,11 @@ python workflows/console.py <cmd>
 ```json
 {
     "result": {
-        "title_items": [
-            "Colombo, Gampaha, Kalutara Districts",
-            "AgeGroup",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/834057ce.png",
+        "what_description": "Population distributed across standard age bands",
+        "when_description": "2024",
+        "where_description": "Regions of type district within parent region LK-1",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/d90cf6de.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -767,20 +719,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![AgeGroup/2024/LK-1:district/Map](images/readme/834057ce.png)
+![AgeGroup/2024/LK-1:district/Map](images/readme/d90cf6de.png)
 
 #### 8.02) `Communication/2012/LK-2:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "36 Dsds",
-            "Communication",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/150c7b9f.png",
+        "what_description": "Households classified by ownership of communication items such as telephone, radio, and television",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-2",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/78ee004c.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -789,20 +739,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Communication/2012/LK-2:dsd/Map](images/readme/150c7b9f.png)
+![Communication/2012/LK-2:dsd/Map](images/readme/78ee004c.png)
 
 #### 8.03) `ConstructionYear/2012/LK-3:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "47 Dsds",
-            "ConstructionYear",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/42b51986.png",
+        "what_description": "Housing units classified by the decade or period in which they were constructed",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-3",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/7277a9e9.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -811,20 +759,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![ConstructionYear/2012/LK-3:dsd/Map](images/readme/42b51986.png)
+![ConstructionYear/2012/LK-3:dsd/Map](images/readme/7277a9e9.png)
 
 #### 8.04) `CookingFuel/2024/LK-4:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "34 Dsds",
-            "CookingFuel",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/fdfb9a54.png",
+        "what_description": "Main energy or fuel type used for cooking (e.g. gas, firewood, electricity) by households",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-4",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/93fd117c.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -833,20 +779,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![CookingFuel/2024/LK-4:dsd/Map](images/readme/fdfb9a54.png)
+![CookingFuel/2024/LK-4:dsd/Map](images/readme/93fd117c.png)
 
 #### 8.05) `Economy/2012/LK-5:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "45 Dsds",
-            "Economy",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/848930b3.png",
+        "what_description": "Population classified by economic activity status including employed, unemployed, and economically inactive",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-5",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/c6bc2ae2.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -855,20 +799,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Economy/2012/LK-5:dsd/Map](images/readme/848930b3.png)
+![Economy/2012/LK-5:dsd/Map](images/readme/c6bc2ae2.png)
 
 #### 8.06) `Education/2012/LK-6:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "46 Dsds",
-            "Education",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/54683c50.png",
+        "what_description": "Population classified by the highest level of educational qualification attained",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-6",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/9ab3f647.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -877,20 +819,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Education/2012/LK-6:dsd/Map](images/readme/54683c50.png)
+![Education/2012/LK-6:dsd/Map](images/readme/9ab3f647.png)
 
 #### 8.07) `EnergyFuel/2024/LK-7:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "29 Dsds",
-            "EnergyFuel",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/53075548.png",
+        "what_description": "Households classified by the main energy fuel used for any purpose",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-7",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/754e8b73.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -899,20 +839,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![EnergyFuel/2024/LK-7:dsd/Map](images/readme/53075548.png)
+![EnergyFuel/2024/LK-7:dsd/Map](images/readme/754e8b73.png)
 
 #### 8.08) `Floor/2024/LK-2,LK-3/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Central, Southern Provinces",
-            "Floor",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/415ee2d5.png",
+        "what_description": "Households classified by the main material used for floor construction (e.g. cement, tile, mud)",
+        "when_description": "2024",
+        "where_description": "Regions of type province with IDs LK-2,LK-3",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/96c12447.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -921,20 +859,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Floor/2024/LK-2,LK-3/Map](images/readme/415ee2d5.png)
+![Floor/2024/LK-2,LK-3/Map](images/readme/96c12447.png)
 
 #### 8.09) `Fuel/2012/LK-5...LK-8/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Eastern, North Western, North Central, Uva Provinces",
-            "Fuel",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/9f684050.png",
+        "what_description": "Households classified by the primary fuel used for cooking",
+        "when_description": "2012",
+        "where_description": "Regions of type province, from LK-5 to LK-8",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/20259bb8.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -943,20 +879,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Fuel/2012/LK-5...LK-8/Map](images/readme/9f684050.png)
+![Fuel/2012/LK-5...LK-8/Map](images/readme/20259bb8.png)
 
 #### 8.10) `Gender/2024/LK-1127025@20/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "718 Gnds",
-            "Gender",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/d2e11f6f.png",
+        "what_description": "Population broken down by male and female",
+        "when_description": "2024",
+        "where_description": "Regions of type gnd within 20 km of LK-1127025",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/5083c4fc.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -965,20 +899,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Gender/2024/LK-1127025@20/Map](images/readme/d2e11f6f.png)
+![Gender/2024/LK-1127025@20/Map](images/readme/5083c4fc.png)
 
 #### 8.11) `GenderAndAgeGroup/2024/LK-1103/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Colombo Dsd",
-            "GenderAndAgeGroup",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/ef2bf007.png",
+        "what_description": "Population cross-tabulated by sex and age group",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd with IDs LK-1103",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/99b92321.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -987,20 +919,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![GenderAndAgeGroup/2024/LK-1103/Map](images/readme/ef2bf007.png)
+![GenderAndAgeGroup/2024/LK-1103/Map](images/readme/99b92321.png)
 
-#### 8.12) `Households/2024/LK-71:dsd/Map`
+#### 8.12) `HouseholdsCookingFuel/2024/LK-81:pd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "22 Dsds",
-            "Households",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/804f2d2f.png",
+        "what_description": "Number of households classified by the main fuel or energy source used for cooking",
+        "when_description": "2024",
+        "where_description": "Regions of type pd within parent region LK-81",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/fd0c9ed2.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1009,20 +939,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Households/2024/LK-71:dsd/Map](images/readme/804f2d2f.png)
+![HouseholdsCookingFuel/2024/LK-81:pd/Map](images/readme/fd0c9ed2.png)
 
-#### 8.13) `HouseholdsCookingFuel/2024/LK-81:pd/Map`
+#### 8.13) `HouseholdsLighting/2024/LK-23:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "9 Pds",
-            "HouseholdsCookingFuel",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/fe7e7210.png",
+        "what_description": "Number of households classified by their primary source of lighting",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-23",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/a5f622e5.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1031,20 +959,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![HouseholdsCookingFuel/2024/LK-81:pd/Map](images/readme/fe7e7210.png)
+![HouseholdsLighting/2024/LK-23:dsd/Map](images/readme/a5f622e5.png)
 
-#### 8.14) `HouseholdsLighting/2024/LK-23:dsd/Map`
+#### 8.14) `HouseholdsToilet/2024/LK-41:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "10 Dsds",
-            "HouseholdsLighting",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/2846abfd.png",
+        "what_description": "Number of households classified by the type of toilet facility used",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-41",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/6474ea5e.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1053,20 +979,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![HouseholdsLighting/2024/LK-23:dsd/Map](images/readme/2846abfd.png)
+![HouseholdsToilet/2024/LK-41:dsd/Map](images/readme/6474ea5e.png)
 
-#### 8.15) `HouseholdsToilet/2024/LK-41:dsd/Map`
+#### 8.15) `HouseholdsWater/2024/LK-51:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "15 Dsds",
-            "HouseholdsToilet",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/cba445e5.png",
+        "what_description": "Number of households classified by their main source of drinking water",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-51",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/703f367d.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1075,20 +999,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![HouseholdsToilet/2024/LK-41:dsd/Map](images/readme/cba445e5.png)
+![HouseholdsWater/2024/LK-51:dsd/Map](images/readme/703f367d.png)
 
-#### 8.16) `HouseholdsWater/2024/LK-51:dsd/Map`
+#### 8.16) `Lighting/2024/LK-61:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "14 Dsds",
-            "HouseholdsWater",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/c68396f1.png",
+        "what_description": "Primary source of lighting (e.g. electricity, kerosene) used by households",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-61",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/cca555a6.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1097,20 +1019,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![HouseholdsWater/2024/LK-51:dsd/Map](images/readme/c68396f1.png)
+![Lighting/2024/LK-61:dsd/Map](images/readme/cca555a6.png)
 
-#### 8.17) `Lighting/2024/LK-61:dsd/Map`
+#### 8.17) `Local/2025/LK:district/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "30 Dsds",
-            "Lighting",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/e8dadecc.png",
+        "what_description": "Results of the 2025 Sri Lankan Local Election",
+        "when_description": "2025",
+        "where_description": "Regions of type district within parent region LK",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/f37e1230.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1119,20 +1039,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Lighting/2024/LK-61:dsd/Map](images/readme/e8dadecc.png)
+![Local/2025/LK:district/Map](images/readme/f37e1230.png)
 
-#### 8.18) `Local/2025/LK:district/Map`
+#### 8.18) `Marital/2012/LK-3,LK-9,LK-8/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "25 Districts",
-            "Local",
-            "2025",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/4f4123dc.png",
+        "what_description": "Population classified by marital status such as never married, married, widowed, and divorced",
+        "when_description": "2012",
+        "where_description": "Regions of type province with IDs LK-3,LK-9,LK-8",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/f76234db.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1141,20 +1059,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Local/2025/LK:district/Map](images/readme/4f4123dc.png)
+![Marital/2012/LK-3,LK-9,LK-8/Map](images/readme/f76234db.png)
 
-#### 8.19) `Marital/2012/LK-3,LK-9,LK-8/Map`
+#### 8.19) `Occupancy/2012/LK-1127:gnd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Southern, Uva, Sabaragamuwa Provinces",
-            "Marital",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/b5352f71.png",
+        "what_description": "Housing units classified by occupancy status, distinguishing occupied from vacant units",
+        "when_description": "2012",
+        "where_description": "Regions of type gnd within parent region LK-1127",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/afe92b98.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1163,20 +1079,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Marital/2012/LK-3,LK-9,LK-8/Map](images/readme/b5352f71.png)
+![Occupancy/2012/LK-1127:gnd/Map](images/readme/afe92b98.png)
 
-#### 8.20) `Occupancy/2012/LK-1127:gnd/Map`
+#### 8.20) `OccupiedUnits/2024/LK-2:district/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "20 Gnds",
-            "Occupancy",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/1f6aaf88.png",
+        "what_description": "Count of occupied housing units",
+        "when_description": "2024",
+        "where_description": "Regions of type district within parent region LK-2",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/72d5dc0a.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1185,20 +1099,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Occupancy/2012/LK-1127:gnd/Map](images/readme/1f6aaf88.png)
+![OccupiedUnits/2024/LK-2:district/Map](images/readme/72d5dc0a.png)
 
-#### 8.21) `OccupiedUnits/2024/LK-2:district/Map`
+#### 8.21) `Ownership/2012/LK-53:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Kandy, Matale, Nuwara Eliya Districts",
-            "OccupiedUnits",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/1c305ccf.png",
+        "what_description": "Households classified by the ownership status of their dwelling, such as owned or rented",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-53",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/6f90ddff.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1207,20 +1119,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![OccupiedUnits/2024/LK-2:district/Map](images/readme/1c305ccf.png)
+![Ownership/2012/LK-53:dsd/Map](images/readme/6f90ddff.png)
 
-#### 8.22) `Ownership/2012/LK-53:dsd/Map`
+#### 8.22) `Persons/2012/LK-1103:gnd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "11 Dsds",
-            "Ownership",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/90e24c24.png",
+        "what_description": "Households classified by the number of persons living in the dwelling",
+        "when_description": "2012",
+        "where_description": "Regions of type gnd within parent region LK-1103",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/f6f65c56.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1229,20 +1139,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Ownership/2012/LK-53:dsd/Map](images/readme/90e24c24.png)
+![Persons/2012/LK-1103:gnd/Map](images/readme/f6f65c56.png)
 
-#### 8.23) `Persons/2012/LK-1103:gnd/Map`
+#### 8.23) `Quarters/2012/LK-4...LK-6/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "35 Gnds",
-            "Persons",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/c178877a.png",
+        "what_description": "Households classified by the type of living quarters such as housing units, collective living quarters, and makeshift housing",
+        "when_description": "2012",
+        "where_description": "Regions of type province, from LK-4 to LK-6",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/7d0daf3f.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1251,20 +1159,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Persons/2012/LK-1103:gnd/Map](images/readme/c178877a.png)
+![Quarters/2012/LK-4...LK-6/Map](images/readme/7d0daf3f.png)
 
-#### 8.24) `Quarters/2012/LK-4...LK-6/Map`
+#### 8.24) `RelationshipToHead/2012/LK-23:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Northern, Eastern, North Western Provinces",
-            "Quarters",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/2cad1482.png",
+        "what_description": "Population classified by their relationship to the head of the household",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-23",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/7b902a0d.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1273,20 +1179,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Quarters/2012/LK-4...LK-6/Map](images/readme/2cad1482.png)
+![RelationshipToHead/2012/LK-23:dsd/Map](images/readme/7b902a0d.png)
 
-#### 8.25) `RelationshipToHead/2012/LK-23:dsd/Map`
+#### 8.25) `Roof/2024/LK-9:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Kotmale, Hanguranketa (pre 2019), Walapane (pre 2019), Nuwara Eliya (pre 2019), Ambagamuwa Dsds",
-            "RelationshipToHead",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/cc5bb087.png",
+        "what_description": "Housing units classified by the main material used for roof construction (e.g. tile, sheet, concrete)",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-9",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/46043a13.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1295,20 +1199,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![RelationshipToHead/2012/LK-23:dsd/Map](images/readme/cc5bb087.png)
+![Roof/2024/LK-9:dsd/Map](images/readme/46043a13.png)
 
-#### 8.26) `Roof/2024/LK-9:dsd/Map`
+#### 8.26) `Rooms/2012/LK-2:pd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "29 Dsds",
-            "Roof",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/bd9cf7c8.png",
+        "what_description": "Households classified by the number of rooms in the dwelling",
+        "when_description": "2012",
+        "where_description": "Regions of type pd within parent region LK-2",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/361b3f9d.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1317,20 +1219,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Roof/2024/LK-9:dsd/Map](images/readme/bd9cf7c8.png)
+![Rooms/2012/LK-2:pd/Map](images/readme/361b3f9d.png)
 
-#### 8.27) `Rooms/2012/LK-2:pd/Map`
+#### 8.27) `Structure/2024/LK-3:district/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "21 Pds",
-            "Rooms",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/df465f56.png",
+        "what_description": "Housing units classified by structural type (e.g. permanent, semi-permanent, temporary)",
+        "when_description": "2024",
+        "where_description": "Regions of type district within parent region LK-3",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/dea30d59.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1339,20 +1239,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Rooms/2012/LK-2:pd/Map](images/readme/df465f56.png)
+![Structure/2024/LK-3:district/Map](images/readme/dea30d59.png)
 
-#### 8.28) `Structure/2024/LK-3:district/Map`
+#### 8.28) `Toilet/2024/LK-5:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "Galle, Matara, Hambantota Districts",
-            "Structure",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/492b8ace.png",
+        "what_description": "Distribution of households by type of toilet facility (e.g. flush, pit latrine, none)",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-5",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/7090dbe0.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1361,20 +1259,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Structure/2024/LK-3:district/Map](images/readme/492b8ace.png)
+![Toilet/2024/LK-5:dsd/Map](images/readme/7090dbe0.png)
 
-#### 8.29) `Toilet/2024/LK-5:dsd/Map`
+#### 8.29) `Unit/2012/LK-6:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "45 Dsds",
-            "Toilet",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/78bd7d5f.png",
+        "what_description": "Housing units classified by type such as house, flat, annexe, or room",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-6",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/7c107e7d.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1383,20 +1279,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Toilet/2024/LK-5:dsd/Map](images/readme/78bd7d5f.png)
+![Unit/2012/LK-6:dsd/Map](images/readme/7c107e7d.png)
 
-#### 8.30) `Unit/2012/LK-6:dsd/Map`
+#### 8.30) `Wall/2012/LK-7:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "46 Dsds",
-            "Unit",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/790f7553.png",
+        "what_description": "Housing units classified by the main material used for wall construction",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-7",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/10599a7f.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1405,20 +1299,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Unit/2012/LK-6:dsd/Map](images/readme/790f7553.png)
+![Wall/2012/LK-7:dsd/Map](images/readme/10599a7f.png)
 
-#### 8.31) `Wall/2012/LK-7:dsd/Map`
+#### 8.31) `Walls/2024/LK-8:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "29 Dsds",
-            "Wall",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/268040e0.png",
+        "what_description": "Housing units classified by the main material used for wall construction (e.g. brick, cabook, cadjan)",
+        "when_description": "2024",
+        "where_description": "Regions of type dsd within parent region LK-8",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/90480a91.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1427,20 +1319,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Wall/2012/LK-7:dsd/Map](images/readme/268040e0.png)
+![Walls/2024/LK-8:dsd/Map](images/readme/90480a91.png)
 
-#### 8.32) `Walls/2024/LK-8:dsd/Map`
+#### 8.32) `Waste/2012/LK-1:dsd/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "26 Dsds",
-            "Walls",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/1b82d282.png",
+        "what_description": "Households classified by the method used for solid waste disposal",
+        "when_description": "2012",
+        "where_description": "Regions of type dsd within parent region LK-1",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/51d83e79.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1449,20 +1339,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Walls/2024/LK-8:dsd/Map](images/readme/1b82d282.png)
+![Waste/2012/LK-1:dsd/Map](images/readme/51d83e79.png)
 
-#### 8.33) `Waste/2012/LK-1:dsd/Map`
+#### 8.33) `Water/2024/LK-2,LK-4/Map`
 
 ```json
 {
     "result": {
-        "title_items": [
-            "40 Dsds",
-            "Waste",
-            "2012",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/d7929424.png",
+        "what_description": "Primary source of drinking water (e.g. pipe-borne, well, river) used by households",
+        "when_description": "2024",
+        "where_description": "Regions of type province with IDs LK-2,LK-4",
+        "how_description": "Geographical map visualization",
+        "image_path": "/tmp/lanka_data/images/d34c5c1b.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -1471,29 +1359,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![Waste/2012/LK-1:dsd/Map](images/readme/d7929424.png)
-
-#### 8.34) `Water/2024/LK-2,LK-4/Map`
-
-```json
-{
-    "result": {
-        "title_items": [
-            "Central, Northern Provinces",
-            "Water",
-            "2024",
-            "Map"
-        ],
-        "image_path": "/tmp/lanka_data/images/b5745e1b.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/"
-    },
-    "query_time_ms": 0,
-    "cache_hit": false
-}
-```
-
-![Water/2024/LK-2,LK-4/Map](images/readme/b5745e1b.png)
+![Water/2024/LK-2,LK-4/Map](images/readme/d34c5c1b.png)
 
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)

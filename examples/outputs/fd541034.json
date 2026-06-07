@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "Eastern, North Western, North Central, Uva Provinces",
-      "Fuel",
-      "2012",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/9f684050.png",
+    "what_description": "Households classified by the primary fuel used for cooking",
+    "when_description": "2012",
+    "where_description": "Regions of type province, from LK-5 to LK-8",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/20259bb8.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

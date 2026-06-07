@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "Southern, Uva, Sabaragamuwa Provinces",
-      "Marital",
-      "2012",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/b5352f71.png",
+    "what_description": "Population classified by marital status such as never married, married, widowed, and divorced",
+    "when_description": "2012",
+    "where_description": "Regions of type province with IDs LK-3,LK-9,LK-8",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/f76234db.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

@@ -1,12 +1,10 @@
 {
   "result": {
-    "title_items": [
-      "Western (pre 1845), Central (pre 1886), Southern (pre 1886), Northern (pre 1873), Eastern (pre 1873) Provinces",
-      "Basic Information",
-      "2012",
-      "Map"
-    ],
-    "image_path": "/tmp/lanka_data/images/a85c9f82.png",
+    "what_description": "Basic information",
+    "when_description": "2012",
+    "where_description": "Regions of type province within parent region LK",
+    "how_description": "Geographical map visualization",
+    "image_path": "/tmp/lanka_data/images/8d311976.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },
