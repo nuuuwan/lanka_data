@@ -89,6 +89,43 @@ class Census2024(What):
             idx[region_id] = current_ids
         return idx
 
+    @classmethod
+    def _get_mapped_data_for_region(
+        cls, region_id, current_ids, raw_data_idx, raw_region_data_idx
+    ):
+        raw_data_list_for_region = []
+        for current_id in current_ids:
+            data_for_current = raw_data_idx.get(current_id)
+            if not data_for_current:
+                raise ValueError(
+                    f"No data found for region_id={current_id}"
+                    + f" (mapped from {region_id})."
+                )
+            raw_data_list_for_region.append(data_for_current)
+
+        if not raw_data_list_for_region:
+            raise ValueError(
+                f"No data found for region_id={region_id}"
+                + f" with current_ids={current_ids}."
+            )
+
+        cleaned_data_list_for_region = [
+            self.clean(d) for d in raw_data_list_for_region
+        ]
+        aggr_data = self.get_aggr_data(cleaned_data_list_for_region)
+        raw_data_for_region = raw_region_data_idx[region_id]
+        mapped_data = (
+            dict(
+                region_id=region_id,
+                region_name=raw_data_for_region["name"],
+            )
+            | raw_region_data_idx[region_id]
+            | aggr_data
+        )
+        del mapped_data["id"]
+        del mapped_data["name"]
+        return mapped_data
+
     def get_data_list(self, regions) -> list[dict]:
         raw_data_list = self.get_base_data_list()
         raw_data_idx = {
@@ -103,38 +140,9 @@ class Census2024(What):
         for region_id, current_ids in self.get_where_to_what_id_map(
             regions
         ).items():
-            raw_data_list_for_region = []
-            for current_id in current_ids:
-                data_for_current = raw_data_idx.get(current_id)
-                if not data_for_current:
-                    raise ValueError(
-                        f"No data found for region_id={current_id}"
-                        + f" (mapped from {region_id})."
-                    )
-                raw_data_list_for_region.append(data_for_current)
-
-            if not raw_data_list_for_region:
-                raise ValueError(
-                    f"No data found for region_id={region_id}"
-                    + f" with current_ids={current_ids}."
-                )
-
-            cleaned_data_list_for_region = [
-                self.clean(d) for d in raw_data_list_for_region
-            ]
-            aggr_data = self.get_aggr_data(cleaned_data_list_for_region)
-            raw_data_for_region = raw_region_data_idx[region_id]
-            mapped_data = (
-                dict(
-                    region_id=region_id,
-                    region_name=raw_data_for_region["name"],
-                )
-                | raw_region_data_idx[region_id]
-                | aggr_data
+            mapped_data = self._get_mapped_data_for_region(
+                region_id, current_ids, raw_data_idx, raw_region_data_idx
             )
-            del mapped_data["id"]
-            del mapped_data["name"]
-
             mapped_data_list.append(mapped_data)
 
         return mapped_data_list
