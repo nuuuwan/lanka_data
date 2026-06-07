@@ -2,9 +2,9 @@
   "result": {
     "what_description": "Households classified by the main material used for floor construction (e.g. cement, tile, mud)",
     "when_description": "2024",
-    "where_description": "Regions of type province with IDs LK-2,LK-3",
+    "where_description": "Provinces with IDs LK-2,LK-3",
     "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/96c12447.png",
+    "image_path": "/tmp/lanka_data/images/30a639ed.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

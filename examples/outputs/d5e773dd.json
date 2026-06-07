@@ -2,9 +2,9 @@
   "result": {
     "what_description": "Households classified by the main energy fuel used for any purpose",
     "when_description": "2024",
-    "where_description": "Regions of type dsd within parent region LK-7",
+    "where_description": "Dsds within LK-7",
     "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/754e8b73.png",
+    "image_path": "/tmp/lanka_data/images/7cbe1400.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

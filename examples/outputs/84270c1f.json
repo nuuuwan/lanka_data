@@ -2,9 +2,9 @@
   "result": {
     "what_description": "Basic information",
     "when_description": "2012",
-    "where_description": "Regions of type province within parent region LK",
+    "where_description": "Provinces within LK",
     "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/8d311976.png",
+    "image_path": "/tmp/lanka_data/images/9c727ec1.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

@@ -2,9 +2,9 @@
   "result": {
     "what_description": "Housing units classified by the main material used for wall construction (e.g. brick, cabook, cadjan)",
     "when_description": "2024",
-    "where_description": "Regions of type dsd within parent region LK-8",
+    "where_description": "Dsds within LK-8",
     "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/90480a91.png",
+    "image_path": "/tmp/lanka_data/images/0e5b4f40.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },

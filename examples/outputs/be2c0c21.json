@@ -2,9 +2,9 @@
   "result": {
     "what_description": "Results of the 2024 Sri Lankan Presidential Election",
     "when_description": "Latest",
-    "where_description": "Regions of type pd within parent region LK-2",
+    "where_description": "Pds within LK-2",
     "how_description": "Geographical map visualization",
-    "image_path": "/tmp/lanka_data/images/514179a3.png",
+    "image_path": "/tmp/lanka_data/images/3dae5731.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/"
   },
