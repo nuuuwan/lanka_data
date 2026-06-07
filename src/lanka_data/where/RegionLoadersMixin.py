@@ -46,7 +46,9 @@ class RegionLoadersMixin:
         region_a_id_key = f"{region_a_type}_id"
         region_b_id_key = f"{region_b_type}_id"
 
-        raw_gnds = cls._get_raw_region_data_list_for_region_type("gnd", None)
+        raw_gnds = cls._get_raw_region_data_list_for_region_type(
+            "gnd", historical_year
+        )
         intersection_gnds = []
         for gnd in raw_gnds:
             if (
@@ -108,7 +110,7 @@ class RegionLoadersMixin:
             )
 
         raw_regions = cls._get_raw_region_data_list_for_region_type(
-            region_type, None
+            region_type, historical_year
         )
         raw_regions = [
             d for d in raw_regions if from_region_id <= d["id"] <= to_region_id
