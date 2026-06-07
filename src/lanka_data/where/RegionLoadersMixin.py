@@ -5,41 +5,35 @@ from utils_future.GeoUtils import GeoUtils
 class RegionLoadersMixin:
     @classmethod
     def from_token(cls, token: str):  # noqa: CFQ004, C901
-        historical_year = "Current"
+        region_year = "Current"
         if ":" in token:
             parent_region_id, region_type = token.split(":")
             if "-pre" in parent_region_id:
-                parent_region_id, historical_year = parent_region_id.split(
-                    "-pre"
-                )
+                parent_region_id, region_year = parent_region_id.split("-pre")
             return cls.from_parent_region_id_and_region_type(
-                region_type, parent_region_id, historical_year
+                region_type, parent_region_id, region_year
             )
 
         if "..." in token:
             from_region_id, to_region_id = token.split("...")
             return cls.from_region_id_range(
-                from_region_id, to_region_id, historical_year
+                from_region_id, to_region_id, region_year
             )
 
         if "@" in token:
             region_id, radius_km = token.split("@")
-            return cls.from_region_radius(
-                region_id, radius_km, historical_year
-            )
+            return cls.from_region_radius(region_id, radius_km, region_year)
 
         if "&" in token:
             region_a_id, region_b_id = token.split("&")
             return cls.from_region_intersection(
-                region_a_id, region_b_id, historical_year
+                region_a_id, region_b_id, region_year
             )
 
-        return cls.from_region_ids_str(token, historical_year)
+        return cls.from_region_ids_str(token, region_year)
 
     @classmethod
-    def from_region_intersection(
-        cls, region_a_id, region_b_id, historical_year
-    ):
+    def from_region_intersection(cls, region_a_id, region_b_id, region_year):
         region_a_type = RegionTypeUtils.get_region_type(region_a_id)
         region_b_type = RegionTypeUtils.get_region_type(region_b_id)
 
@@ -47,7 +41,7 @@ class RegionLoadersMixin:
         region_b_id_key = f"{region_b_type}_id"
 
         raw_gnds = cls._get_raw_region_data_list_for_region_type(
-            "gnd", historical_year
+            "gnd", region_year
         )
         intersection_gnds = []
         for gnd in raw_gnds:
@@ -57,7 +51,7 @@ class RegionLoadersMixin:
             ):
                 intersection_gnds.append(gnd)
 
-        return cls(intersection_gnds, historical_year)
+        return cls(intersection_gnds, region_year)
 
     @staticmethod
     def _is_within_radius(radius_km, center_region, region):
@@ -72,10 +66,10 @@ class RegionLoadersMixin:
         return distance_km <= float(radius_km)
 
     @classmethod
-    def from_region_radius(cls, region_id, radius_km, historical_year):
+    def from_region_radius(cls, region_id, radius_km, region_year):
         region_type = RegionTypeUtils.get_region_type(region_id)
         raw_regions = cls._get_raw_region_data_list_for_region_type(
-            region_type, historical_year
+            region_type, region_year
         )
 
         center_region = None
@@ -97,12 +91,10 @@ class RegionLoadersMixin:
                 f"No regions found within {radius_km} km of {region_id}"
             )
 
-        return cls(nearby_regions, historical_year)
+        return cls(nearby_regions, region_year)
 
     @classmethod
-    def from_region_id_range(
-        cls, from_region_id, to_region_id, historical_year
-    ):
+    def from_region_id_range(cls, from_region_id, to_region_id, region_year):
         region_type = RegionTypeUtils.get_region_type(from_region_id)
         if region_type != RegionTypeUtils.get_region_type(to_region_id):
             raise ValueError(
@@ -110,7 +102,7 @@ class RegionLoadersMixin:
             )
 
         raw_regions = cls._get_raw_region_data_list_for_region_type(
-            region_type, historical_year
+            region_type, region_year
         )
         raw_regions = [
             d
@@ -121,10 +113,10 @@ class RegionLoadersMixin:
             raise ValueError(
                 f"No regions found in range: {from_region_id}...{to_region_id}"
             )
-        return cls(raw_regions, historical_year)
+        return cls(raw_regions, region_year)
 
     @classmethod
-    def from_region_ids_str(cls, region_ids_str, historical_year):
+    def from_region_ids_str(cls, region_ids_str, region_year):
         region_ids = region_ids_str.split(",")
         region_types = [
             RegionTypeUtils.get_region_type(region_id)
@@ -137,12 +129,12 @@ class RegionLoadersMixin:
 
         region_type = region_types[0]
         raw_regions = cls._get_raw_region_data_list_for_region_type(
-            region_type, historical_year
+            region_type, region_year
         )
         raw_regions = [d for d in raw_regions if d["region_id"] in region_ids]
         if not raw_regions:
             raise ValueError(f"Region ID not found: {region_ids_str}")
-        return cls(raw_regions, historical_year)
+        return cls(raw_regions, region_year)
 
     @classmethod
     def is_parent(cls, region, parent_region_id) -> bool:  # noqa: CFQ004
@@ -165,10 +157,10 @@ class RegionLoadersMixin:
         cls,
         region_type,
         parent_region_id,
-        historical_year,
+        region_year,
     ):
         raw_regions = cls._get_raw_region_data_list_for_region_type(
-            region_type, historical_year
+            region_type, region_year
         )
         raw_regions = [
             region
@@ -179,4 +171,4 @@ class RegionLoadersMixin:
             raise ValueError(
                 f"No regions found for parent ID: {parent_region_id}"
             )
-        return cls(raw_regions, historical_year)
+        return cls(raw_regions, region_year)

@@ -47,11 +47,11 @@ class Regions(Where, RegionLoadersMixin):
 
     @classmethod
     def _get_raw_region_data_list_for_region_type(
-        cls, region_type: str, historical_year: str
+        cls, region_type: str, region_year: str
     ):
-        if historical_year is None:
-            raise ValueError("historical_year cannot be None")
-        if historical_year == "Current":
+        if region_year is None:
+            raise ValueError("region_year cannot be None")
+        if region_year == "Current":
             url = (
                 "https://raw.githubusercontent.com"
                 + "/nuuuwan/lk_admin_regions/refs/heads/main"
@@ -63,7 +63,7 @@ class Regions(Where, RegionLoadersMixin):
                 "https://raw.githubusercontent.com"
                 + "/nuuuwan/lk_admin_regions/refs/heads/main"
                 + "/data/ents/history"
-                + f"/{region_type}s-pre{historical_year}.json"
+                + f"/{region_type}s-pre{region_year}.json"
             )
 
         raw_data_list = WWW(url).read_json()
@@ -74,7 +74,7 @@ class Regions(Where, RegionLoadersMixin):
                     region_id=d["id"],
                     region_name=d["name"],
                     region_type=region_type,
-                    history_year=historical_year,
+                    region_year=region_year,
                 )
                 | d
             )
