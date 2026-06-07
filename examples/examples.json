@@ -3,16 +3,10 @@
   "Selection": [
     "Basic/2024/LK:province/Map",
     "Basic/2024/LK-1:district/Map",
-    "Basic/2024/LK-2,LK-3/Map",
-    "Basic/2024/LK-3,LK-9,LK-8/Map",
+    "Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map",
     "Basic/2024/LK-5...LK-8/Map",
     "Basic/2024/LK-1127025@20/Map",
     "Basic/2024/LK-1103&EC-01B/Map"
-  ],
-  "Sub-Regions": [
-    "Basic/2024/LK-61/Map",
-    "Basic/2024/LK-71:dsd/Map",
-    "Basic/2024/LK-81:pd/Map"
   ],
   "Religion": [
     "Religion/2012/LK-23:dsd/Map",

@@ -4,6 +4,7 @@ import tempfile
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 from matplotlib.transforms import blended_transform_factory
+from PIL import Image, ImageOps
 
 from lanka_data.how.GeoDataUtils import GeoDataUtils
 from lanka_data.how.LabelUtils import LabelUtils
@@ -156,8 +157,11 @@ class MapUtils:
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
-        log.debug(f"Wrote {image_path}")
         plt.close(fig)
+        with Image.open(image_path) as img:
+            bordered = ImageOps.expand(img, border=6, fill="#404040")
+            bordered.save(image_path)
+        log.debug(f"Wrote {image_path}")
         return {
             "image_path": image_path,
             "source": "Department of Census and Statistics, Sri Lanka",
