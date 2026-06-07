@@ -383,18 +383,18 @@ python workflows/console.py <cmd>
                 "country_id": "LK",
                 "province_id": "LK-1",
                 ... // 1185 lines ...
-                "roman_catholic": 42435,
-                "other_christian": 10715,
-                "other": 251
+                "Roman Catholic": 42435,
+                "Other Christian": 10715,
+                "Other": 251
             },
             "total_value": 323223,
             "pct_values": {
-                "islam": 0.4177,
-                "hindu": 0.227,
-                "buddhist": 0.1901,
-                "roman_catholic": 0.1313,
-                "other_christian": 0.0332,
-                "other": 0.0008
+                "Islam": 0.4177,
+                "Hindu": 0.227,
+                "Buddhist": 0.1901,
+                "Roman Catholic": 0.1313,
+                "Other Christian": 0.0332,
+                "Other": 0.0008
             }
         },
         "source": "Census of Population and Housing 2012",
@@ -449,7 +449,7 @@ python workflows/console.py <cmd>
 
 ![LK-41:dsd/Religion/2012/Map:2nd](images/readme/09cd4316.png)
 
-#### 3.06) `LK-51:dsd/Religion/2012/Map:buddhist`
+#### 3.06) `LK-51:dsd/Religion/2012/Map:Buddhist`
 
 ```json
 {
@@ -458,9 +458,9 @@ python workflows/console.py <cmd>
             "14 Dsds",
             "Religion",
             "2012",
-            "Map (buddhist)"
+            "Map (Buddhist)"
         ],
-        "image_path": "/tmp/lanka_data/images/75a61fa4.png",
+        "image_path": "/tmp/lanka_data/images/6b7887b6.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -469,7 +469,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-51:dsd/Religion/2012/Map:buddhist](images/readme/75a61fa4.png)
+![LK-51:dsd/Religion/2012/Map:Buddhist](images/readme/6b7887b6.png)
 
 ### 4) Census: Ethnicity
 

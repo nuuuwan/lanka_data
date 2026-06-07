@@ -15,6 +15,8 @@ log = Log("MapUtils")
 class MapUtils:
     DELIM_TITLE = " · "
     MAX_REGIONS_TO_LABEL = 100
+    DEFAULT_EDGE_COLOR = "#fff"
+    DEFAULT_EDGE_WIDTH = 0.5
 
     @staticmethod
     def _render_figure(gdf_region, n_regions, value_to_color, title, source):
@@ -24,10 +26,12 @@ class MapUtils:
         legend_ax = fig.add_subplot(gs[1])
         if n_regions > 100:
             edge_color, edge_width = "none", 0
-        elif n_regions >= 30:
-            edge_color, edge_width = "white", 0.2
         else:
-            edge_color, edge_width = "black", 0.2
+            edge_color, edge_width = (
+                MapUtils.DEFAULT_EDGE_COLOR,
+                MapUtils.DEFAULT_EDGE_WIDTH,
+            )
+
         gdf_region.plot(
             ax=ax,
             categorical=True,
@@ -69,9 +73,7 @@ class MapUtils:
         fig = MapUtils._render_figure(
             gdf_region, n_regions, value_to_color, title, source
         )
-        image_dir = os.path.join(
-            tempfile.gettempdir(), "lanka_data", "images"
-        )
+        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
