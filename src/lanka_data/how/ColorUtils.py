@@ -2,7 +2,7 @@ import colorsys
 import hashlib
 
 DEFAULT_SATURATION = 1.0
-DEFAULT_LIGHTNESS = 0.5
+DEFAULT_LIGHTNESS = 0.4
 DEFAULT_GRAY = "#808080"
 
 

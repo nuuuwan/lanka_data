@@ -6,9 +6,10 @@ class FieldNameUtils:
         "SL Tamil": {"Sri Lanka Tamil", "SL Tamil"},
         "Ind/Malaiyaga Tamil": {
             "Ind Tamil",
-            "Indian Tamil or Malaiyaga Thamilar",
+            "Indian Tamil Or Malaiyaga Thamilar",
         },
-        "SL Moor": {"Sri Lanka Moor or Muslim", "SL Moor"},
+        "SL Moor": {"Sri Lanka Moor Or Muslim", "SL Moor"},
+        "SL Chetty": {"Sri Lanka Chetty"},
     }
     NAME_IDX = {
         original_name: normalized_name
