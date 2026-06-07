@@ -27,8 +27,8 @@
     "Ethnicity/2024/LK-23:dsd/Map"
   ],
   "Elections": [
-    "ParliamentaryElection/2024/LK/JSON",
-    "PresidentialElection/Latest/LK-2:pd/Map"
+    "Parliamentary/2024/LK/JSON",
+    "Presidential/Latest/LK-2:pd/Map"
   ],
   "History": [
     "Basic/2012/LK-pre1984:district/JSON",

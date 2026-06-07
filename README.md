@@ -492,14 +492,14 @@ python workflows/console.py <cmd>
 
 ### 5) Elections
 
-#### 5.01) `ParliamentaryElection/2024/LK/JSON`
+#### 5.01) `Parliamentary/2024/LK/JSON`
 
 ```json
 {
     "result": {
         "title_items": [
             "Sri Lanka Country",
-            "ParliamentaryElection",
+            "Parliamentary",
             "2024",
             "JSON"
         ],
@@ -538,18 +538,18 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 5.02) `PresidentialElection/Latest/LK-2:pd/Map`
+#### 5.02) `Presidential/Latest/LK-2:pd/Map`
 
 ```json
 {
     "result": {
         "title_items": [
             "21 Pds",
-            "PresidentialElection",
+            "Presidential",
             "Latest",
             "Map"
         ],
-        "image_path": "/tmp/lanka_data/images/35e3a262.png",
+        "image_path": "/tmp/lanka_data/images/9aa59ecf.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -558,7 +558,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![PresidentialElection/Latest/LK-2:pd/Map](images/readme/35e3a262.png)
+![Presidential/Latest/LK-2:pd/Map](images/readme/9aa59ecf.png)
 
 ### 6) History
 
