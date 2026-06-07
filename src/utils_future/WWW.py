@@ -2,6 +2,7 @@ import csv
 import hashlib
 import os
 import tempfile
+import time
 from functools import cached_property
 
 import requests
@@ -19,7 +20,7 @@ class WWW:
     HASH_LEN = 16
 
     def __init__(self, url: str):
-        self.url = url
+        self.url = url + "?t=" + str(int(time.time()))
 
     @cached_property
     def cache_file_base(self):
