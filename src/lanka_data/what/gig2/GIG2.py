@@ -30,7 +30,7 @@ class GIG2(What):
             region_name=region_idx[region_id]["name"],
         ) | cls.get_custom_data(d)
 
-    def _get_base_data_list(self) -> list[dict]:
+    def get_base_data_list(self) -> list[dict]:
         title_to_id = self.get_title_to_id()
         what_id = title_to_id.get(self.title)
         if what_id is None:
@@ -44,7 +44,7 @@ class GIG2(What):
         return data_list
 
     def get_data_list(self, regions) -> list[dict]:
-        base_data_list = self._get_base_data_list()
+        base_data_list = self.get_base_data_list()
         base_data_idx = {d["entity_id"]: d for d in base_data_list}
 
         region_idx = {r["id"]: r for r in regions.raw_region_data_list}
