@@ -1,14 +1,18 @@
 {
   "Region Selection": [
-    "LK",
-    "LK-1:district",
-    "LK-2,LK-3",
-    "LK-3,LK-9,LK-8/Map",
-    "LK-5...LK-8/Map",
-    "LK-1127025@20/Map",
-    "LK-1103&EC-01B/Map"
+    "LK/Basic/2024/Map",
+    "LK-1:district/Basic/2024/Map",
+    "LK-2,LK-3/Basic/2024/Map",
+    "LK-3,LK-9,LK-8/Basic/2024/Map",
+    "LK-5...LK-8/Basic/2024/Map",
+    "LK-1127025@20/Basic/2024/Map",
+    "LK-1103&EC-01B/Basic/2024/Map"
   ],
-  "Administrative Views": ["LK-61/Map", "LK-71:dsd/Map", "LK-81:pd/Map"],
+  "Administrative Views": [
+    "LK-61/Basic/2024/Map",
+    "LK-71:dsd/Basic/2024/Map",
+    "LK-81:pd/Basic/2024/Map"
+  ],
   "Census: Religion": [
     "LK-23:dsd/Religion/2012/Map",
     "LK-23:dsd/Religion/2024/Map",
@@ -23,7 +27,7 @@
     "LK-23:dsd/Ethnicity/2024/Map"
   ],
   "Elections": [
-    "LK/ParliamentaryElection/2024",
+    "LK/ParliamentaryElection/2024/JSON",
     "LK-2:pd/PresidentialElection/Latest/Map"
   ],
   "Historical Boundaries": [

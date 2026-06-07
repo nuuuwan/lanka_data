@@ -42,7 +42,7 @@ python workflows/console.py <cmd>
 
 ### 1) Region Selection
 
-#### 1.01) `LK`
+#### 1.01) `LK/Basic/2024/Map`
 
 ```json
 {
@@ -51,19 +51,9 @@ python workflows/console.py <cmd>
             "Sri Lanka Country",
             "Basic Information",
             "2024",
-            "JSON"
+            "Map"
         ],
-        "data_list": [
-            {
-                "region_id": "LK",
-                "region_name": "Sri Lanka",
-                "region_type": "country",
-                "history_year": "Current",
-                "area_sqkm": 65983.58,
-                "center_lat": 7.621863,
-                "center_lng": 80.698448
-            }
-        ],
+        "image_path": "/tmp/lanka_data/images/48853a44.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -72,7 +62,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 1.02) `LK-1:district`
+![LK/Basic/2024/Map](images/readme/48853a44.png)
+
+#### 1.02) `LK-1:district/Basic/2024/Map`
 
 ```json
 {
@@ -81,35 +73,9 @@ python workflows/console.py <cmd>
             "Colombo, Gampaha, Kalutara Districts",
             "Basic Information",
             "2024",
-            "JSON"
+            "Map"
         ],
-        "data_list": [
-            {
-                "region_id": "LK-11",
-                "region_name": "Colombo",
-                "region_type": "district",
-                "history_year": "Current",
-                "area_sqkm": 688.17,
-                "center_lat": 6.869822,
-                "center_lng": 80.018487,
-                "province_id": "LK-1",
-                "ed_id": "EC-01",
-                "pd_id": null
-                ... // 12 lines ...
-            },
-            {
-                "region_id": "LK-13",
-                "region_name": "Kalutara",
-                "region_type": "district",
-                "history_year": "Current",
-                "area_sqkm": 1646.99,
-                "center_lat": 6.577185,
-                "center_lng": 80.127744,
-                "province_id": "LK-1",
-                "ed_id": "EC-03",
-                "pd_id": null
-            }
-        ],
+        "image_path": "/tmp/lanka_data/images/d81caf73.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -118,7 +84,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 1.03) `LK-2,LK-3`
+![LK-1:district/Basic/2024/Map](images/readme/d81caf73.png)
+
+#### 1.03) `LK-2,LK-3/Basic/2024/Map`
 
 ```json
 {
@@ -127,28 +95,9 @@ python workflows/console.py <cmd>
             "Central, Southern Provinces",
             "Basic Information",
             "2024",
-            "JSON"
+            "Map"
         ],
-        "data_list": [
-            {
-                "region_id": "LK-2",
-                "region_name": "Central",
-                "region_type": "province",
-                "history_year": "Current",
-                "area_sqkm": 5731.25,
-                "center_lat": 7.324022,
-                "center_lng": 80.717397
-            },
-            {
-                "region_id": "LK-3",
-                "region_name": "Southern",
-                "region_type": "province",
-                "history_year": "Current",
-                "area_sqkm": 5544.92,
-                "center_lat": 6.218721,
-                "center_lng": 80.717092
-            }
-        ],
+        "image_path": "/tmp/lanka_data/images/0233d3fd.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/"
     },
@@ -157,7 +106,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-#### 1.04) `LK-3,LK-9,LK-8/Map`
+![LK-2,LK-3/Basic/2024/Map](images/readme/0233d3fd.png)
+
+#### 1.04) `LK-3,LK-9,LK-8/Basic/2024/Map`
 
 ```json
 {
@@ -177,9 +128,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-3,LK-9,LK-8/Map](images/readme/4399d293.png)
+![LK-3,LK-9,LK-8/Basic/2024/Map](images/readme/4399d293.png)
 
-#### 1.05) `LK-5...LK-8/Map`
+#### 1.05) `LK-5...LK-8/Basic/2024/Map`
 
 ```json
 {
@@ -199,9 +150,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-5...LK-8/Map](images/readme/58e0fbfb.png)
+![LK-5...LK-8/Basic/2024/Map](images/readme/58e0fbfb.png)
 
-#### 1.06) `LK-1127025@20/Map`
+#### 1.06) `LK-1127025@20/Basic/2024/Map`
 
 ```json
 {
@@ -221,9 +172,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1127025@20/Map](images/readme/f57d8427.png)
+![LK-1127025@20/Basic/2024/Map](images/readme/f57d8427.png)
 
-#### 1.07) `LK-1103&EC-01B/Map`
+#### 1.07) `LK-1103&EC-01B/Basic/2024/Map`
 
 ```json
 {
@@ -243,11 +194,11 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-1103&EC-01B/Map](images/readme/15de4034.png)
+![LK-1103&EC-01B/Basic/2024/Map](images/readme/15de4034.png)
 
 ### 2) Administrative Views
 
-#### 2.01) `LK-61/Map`
+#### 2.01) `LK-61/Basic/2024/Map`
 
 ```json
 {
@@ -267,9 +218,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-61/Map](images/readme/f3dd60f4.png)
+![LK-61/Basic/2024/Map](images/readme/f3dd60f4.png)
 
-#### 2.02) `LK-71:dsd/Map`
+#### 2.02) `LK-71:dsd/Basic/2024/Map`
 
 ```json
 {
@@ -289,9 +240,9 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-71:dsd/Map](images/readme/98aa28e2.png)
+![LK-71:dsd/Basic/2024/Map](images/readme/98aa28e2.png)
 
-#### 2.03) `LK-81:pd/Map`
+#### 2.03) `LK-81:pd/Basic/2024/Map`
 
 ```json
 {
@@ -311,7 +262,7 @@ python workflows/console.py <cmd>
 }
 ```
 
-![LK-81:pd/Map](images/readme/bfa7d721.png)
+![LK-81:pd/Basic/2024/Map](images/readme/bfa7d721.png)
 
 ### 3) Census: Religion
 
@@ -541,7 +492,7 @@ python workflows/console.py <cmd>
 
 ### 5) Elections
 
-#### 5.01) `LK/ParliamentaryElection/2024`
+#### 5.01) `LK/ParliamentaryElection/2024/JSON`
 
 ```json
 {
