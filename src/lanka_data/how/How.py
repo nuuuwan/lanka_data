@@ -20,6 +20,10 @@ class How:
 
     def get_data(self, where, what, when):
         data_list = what.get_data_list(where)
+        if len(data_list) == 0:
+            raise ValueError(
+                f"No data found for the specified region: {where}."
+            )
         source_info = what.get_source_info()
 
         result_data = dict(
