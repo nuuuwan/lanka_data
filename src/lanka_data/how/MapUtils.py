@@ -19,7 +19,16 @@ class MapUtils:
     DEFAULT_EDGE_WIDTH = 0.5
 
     @staticmethod
-    def _render_figure(gdf_region, n_regions, value_to_color, title, source):
+    def _render_figure(
+        gdf_region,
+        n_regions,
+        value_to_color,
+        how_description,
+        what_description,
+        when_description,
+        where_description,
+        source,
+    ):
         fig = plt.figure(figsize=(12, 8))
         gs = fig.add_gridspec(1, 2, width_ratios=[5, 1], wspace=0.05)
         ax = fig.add_subplot(gs[0])
@@ -42,7 +51,38 @@ class MapUtils:
         if n_regions <= MapUtils.MAX_REGIONS_TO_LABEL:
             LabelUtils._draw_labels(gdf_region, ax)
         LegendUtils._draw_legend(value_to_color, ax, legend_ax)
-        ax.set_title(title, fontsize=10)
+
+        ax.set_title("")  # clear default title space
+        ax.text(
+            0.5,
+            1.06,
+            how_description,
+            transform=ax.transAxes,
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            color="gray",
+        )
+        ax.text(
+            0.5,
+            1.01,
+            f"{what_description} ({when_description})",
+            transform=ax.transAxes,
+            ha="center",
+            va="bottom",
+            fontsize=13,
+            fontweight="bold",
+        )
+        ax.text(
+            0.5,
+            0.98,
+            where_description,
+            transform=ax.transAxes,
+            ha="center",
+            va="top",
+            fontsize=7,
+            color="gray",
+        )
         ax.set_axis_off()
         if source:
             fig.text(
@@ -66,11 +106,22 @@ class MapUtils:
             RegionColorUtils.get_region_color_map(result_data, how, what)
         )
         gdf_region["color"] = gdf_region["region_id"].map(region_color_map)
-        title = how.get_descriptions_title(where, what, when)
+
+        where_description = where.get_description()
+        what_description = what.get_description()
+        when_description = when
+        how_description = how.get_description()
 
         source = result_data.get("source", "")
         fig = MapUtils._render_figure(
-            gdf_region, n_regions, value_to_color, title, source
+            gdf_region,
+            n_regions,
+            value_to_color,
+            how_description,
+            what_description,
+            when_description,
+            where_description,
+            source,
         )
         image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
         os.makedirs(image_dir, exist_ok=True)
