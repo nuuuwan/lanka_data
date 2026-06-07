@@ -110,9 +110,9 @@ class Census2024(What):
             )
 
         cleaned_data_list_for_region = [
-            self.clean(d) for d in raw_data_list_for_region
+            cls.clean(d) for d in raw_data_list_for_region
         ]
-        aggr_data = self.get_aggr_data(cleaned_data_list_for_region)
+        aggr_data = cls.get_aggr_data(cleaned_data_list_for_region)
         raw_data_for_region = raw_region_data_idx[region_id]
         mapped_data = (
             dict(
