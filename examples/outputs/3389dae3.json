@@ -1,0 +1,165 @@
+{
+  "result": {
+    "what_to_whens": {
+      "AgeGroup": [
+        "2012",
+        "2024"
+      ],
+      "Basic": [
+        "2024"
+      ],
+      "Communication": [
+        "2012"
+      ],
+      "ConstructionYear": [
+        "2012"
+      ],
+      "CookingFuel": [
+        "2024"
+      ],
+      "Economy": [
+        "2012"
+      ],
+      "Education": [
+        "2012"
+      ],
+      "EnergyFuel": [
+        "2024"
+      ],
+      "Ethnicity": [
+        "2012",
+        "2024"
+      ],
+      "Floor": [
+        "2012",
+        "2024"
+      ],
+      "Fuel": [
+        "2012"
+      ],
+      "Gender": [
+        "2012",
+        "2024"
+      ],
+      "GenderAndAgeGroup": [
+        "2024"
+      ],
+      "Households": [
+        "2012",
+        "2024"
+      ],
+      "HouseholdsCookingFuel": [
+        "2024"
+      ],
+      "HouseholdsLighting": [
+        "2024"
+      ],
+      "HouseholdsToilet": [
+        "2024"
+      ],
+      "HouseholdsWater": [
+        "2024"
+      ],
+      "Lighting": [
+        "2012",
+        "2024"
+      ],
+      "Local": [
+        "2011",
+        "2018"
+      ],
+      "Marital": [
+        "2012"
+      ],
+      "Occupancy": [
+        "2012"
+      ],
+      "OccupiedUnits": [
+        "2024"
+      ],
+      "Ownership": [
+        "2012"
+      ],
+      "Parliamentary": [
+        "1989",
+        "1994",
+        "2000",
+        "2001",
+        "2004",
+        "2010",
+        "2015",
+        "2020"
+      ],
+      "Persons": [
+        "2012"
+      ],
+      "Population": [
+        "2012"
+      ],
+      "Presidential": [
+        "1982",
+        "1988",
+        "1994",
+        "1999",
+        "2005",
+        "2010",
+        "2015",
+        "2024"
+      ],
+      "Quarters": [
+        "2012"
+      ],
+      "RelationshipToHead": [
+        "2012"
+      ],
+      "Religion": [
+        "2012",
+        "2024"
+      ],
+      "Roof": [
+        "2012",
+        "2024"
+      ],
+      "Rooms": [
+        "2012"
+      ],
+      "Structure": [
+        "2012",
+        "2024"
+      ],
+      "Toilet": [
+        "2012",
+        "2024"
+      ],
+      "Unit": [
+        "2012"
+      ],
+      "Wall": [
+        "2012"
+      ],
+      "Walls": [
+        "2024"
+      ],
+      "Waste": [
+        "2012"
+      ],
+      "Water": [
+        "2012",
+        "2024"
+      ]
+    },
+    "where": [
+      "LK*",
+      "EC-*",
+      "LG-*"
+    ],
+    "how": [
+      "JSON",
+      "Map"
+    ],
+    "source": "lanka_data",
+    "source_url": "https://github.com/nuuuwan/lanka_data/blob/main/README.md"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
+}
