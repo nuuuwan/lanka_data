@@ -55,7 +55,7 @@ class RegionLoadersMixin:
             "Intersection of "
             + f"{region_a_type.title()} {region_a_id}"
             + f" and {region_b_type.title()} {region_b_id}"
-        )
+        ) + (f" (pre-{region_year} Map)" if region_year != "Current" else "")
         return cls(intersection_gnds, region_year, description)
 
     @staticmethod
@@ -99,6 +99,7 @@ class RegionLoadersMixin:
         description = (
             f"{region_type.title()}s"
             + f" within {radius_km} km of {region_id}"
+            + (f" (pre-{region_year} Map)" if region_year != "Current" else "")
         )
         return cls(nearby_regions, region_year, description)
 
@@ -125,6 +126,7 @@ class RegionLoadersMixin:
         description = (
             f"{region_type.title()}s,"
             + f" from {from_region_id} to {to_region_id}"
+            + (f" (pre-{region_year} Map)" if region_year != "Current" else "")
         )
         return cls(raw_regions, region_year, description)
 
@@ -148,7 +150,9 @@ class RegionLoadersMixin:
         if not raw_regions:
             raise ValueError(f"Region ID not found: {region_ids_str}")
         description = (
-            f"{region_type.title()}s" + f" with IDs {region_ids_str}"
+            f"{region_type.title()}s"
+            + f" with IDs {region_ids_str}"
+            + (f" (pre-{region_year} Map)" if region_year != "Current" else "")
         )
         return cls(raw_regions, region_year, description)
 
@@ -188,6 +192,8 @@ class RegionLoadersMixin:
                 f"No regions found for parent ID: {parent_region_id}"
             )
         description = (
-            f"{region_type.title()}s" + f" within {parent_region_id}"
+            f"{region_type.title()}s"
+            + f" within {parent_region_id}"
+            + (f" (pre-{region_year} Map)" if region_year != "Current" else "")
         )
         return cls(raw_regions, region_year, description)
