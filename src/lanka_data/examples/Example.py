@@ -16,9 +16,12 @@ class Example:
         self.cmd = cmd
 
     @classmethod
-    def list(cls):
-        cmd_list = JSONFile(cls.EXAMPLES_PATH).read()
-        return [Example(cmd) for cmd in cmd_list]
+    def get_example_idx(cls):
+        idx = JSONFile(cls.EXAMPLES_PATH).read()
+        return {
+            group_name: [Example(cmd) for cmd in cmds]
+            for group_name, cmds in idx.items()
+        }
 
     @staticmethod
     def cmd_to_hash(cmd):
@@ -26,7 +29,12 @@ class Example:
 
     @classmethod
     def get_cmd_list(cls):
-        return JSONFile(cls.EXAMPLES_PATH).read()
+        idx = cls.get_example_idx()
+        cmd_list = []
+        for examples in idx.values():
+            cmd_list.extend([example.cmd for example in examples])
+        cmd_list.sort()
+        return cmd_list
 
     @classmethod
     def get_output_idx_hot(cls):
@@ -68,7 +76,9 @@ class Example:
                 "examples", "outputs", f"{Example.cmd_to_hash(cmd)}.json"
             )
             output_file = JSONFile(output_path)
-            assert output_file.exists()
+            assert (
+                output_file.exists()
+            ), f"Output file for cmd '{cmd}' does not exist at {output_file}"
             output = output_file.read()
 
             idx[cmd] = output
