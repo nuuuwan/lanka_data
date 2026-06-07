@@ -28,4 +28,4 @@ class What:
 
     @classmethod
     def get_values(cls, data):
-        return data.get("values")
+        return data["values"]
