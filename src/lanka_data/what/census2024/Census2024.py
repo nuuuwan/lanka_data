@@ -108,7 +108,8 @@ class Census2024(What):
                 data_for_current = raw_data_idx.get(current_id)
                 if not data_for_current:
                     raise ValueError(
-                        f"No data found for region_id={current_id} (mapped from {region_id})."
+                        f"No data found for region_id={current_id}"
+                        + f" (mapped from {region_id})."
                     )
                 raw_data_list_for_region.append(data_for_current)
 
