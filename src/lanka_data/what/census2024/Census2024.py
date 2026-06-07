@@ -30,12 +30,25 @@ class Census2024(What):
         metadata = cls.get_metadata()
         label_to_path = {}
         for level1 in metadata:
-            for level2, label in metadata[level1].items():
+            for level2, entry in metadata[level1].items():
+                label = entry["label"]
                 if label in label_to_path:
                     continue
                 path = f"{level1}/{level2}"
                 label_to_path[label] = path
         return label_to_path
+
+    @classmethod
+    @cache
+    def get_label_to_description(cls) -> dict:
+        metadata = cls.get_metadata()
+        label_to_desc = {}
+        for level1 in metadata:
+            for level2, entry in metadata[level1].items():
+                label = entry["label"]
+                if label not in label_to_desc:
+                    label_to_desc[label] = entry.get("description", "")
+        return label_to_desc
 
     @classmethod
     def get_what_to_whens(cls) -> dict[str, set[str]]:
@@ -64,12 +77,13 @@ class Census2024(What):
             pct_values=pct_values,
         )
 
-    @classmethod
-    def get_source_info(cls):
+    def get_source_info(self):
+        description = self.get_label_to_description().get(self.title, "")
         return dict(
             source="Census of Population and Housing 2024",
             source_url="https://www.statistics.gov.lk"
             + "/Population/StaticalInformation/CPH2024",
+            description=description,
         )
 
     def get_source_data_list(self) -> list[dict]:
