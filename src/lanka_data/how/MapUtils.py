@@ -1,6 +1,7 @@
 import os
 import tempfile
 
+import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 
 from lanka_data.how.GeoDataUtils import GeoDataUtils
@@ -10,6 +11,15 @@ from lanka_data.how.RegionColorUtils import RegionColorUtils
 from utils_future import Log
 
 log = Log("MapUtils")
+
+_ubuntu_font = next(
+    (f.fname for f in fm.fontManager.ttflist if "Ubuntu" in f.name),
+    None,
+)
+if _ubuntu_font:
+    plt.rcParams["font.family"] = "Ubuntu"
+else:
+    log.warning("Ubuntu font not found; using default font.")
 
 
 class MapUtils:
