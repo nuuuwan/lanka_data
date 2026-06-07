@@ -1,6 +1,11 @@
 {
   "result": {
-    "title_items": ["35 Gnds", "Religion", "2012", "JSON"],
+    "title_items": [
+      "35 Gnds",
+      "Religion",
+      "2012",
+      "JSON"
+    ],
     "data_list": [
       {
         "region_id": "LK-1103005",

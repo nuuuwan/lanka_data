@@ -1,6 +1,11 @@
 {
   "result": {
-    "title_items": ["Sri Lanka Country", "Basic Information", "2024", "JSON"],
+    "title_items": [
+      "Sri Lanka Country",
+      "Basic Information",
+      "2024",
+      "JSON"
+    ],
     "data_list": [
       {
         "region_id": "LK",

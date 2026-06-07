@@ -55,6 +55,8 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK",
                 "region_name": "Sri Lanka",
+                "region_type": "country",
+                "region_year": "Current",
                 "area_sqkm": 65983.58,
                 "center_lat": 7.621863,
                 "center_lng": 80.698448
@@ -83,21 +85,21 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK-11",
                 "region_name": "Colombo",
+                "region_type": "district",
+                "region_year": "Current",
                 "area_sqkm": 688.17,
                 "center_lat": 6.869822,
                 "center_lng": 80.018487,
                 "province_id": "LK-1",
                 "ed_id": "EC-01",
                 "pd_id": null
-            },
-            {
-            ... // 6 lines ...
-                "ed_id": "EC-02",
-                "pd_id": null
+                ... // 12 lines ...
             },
             {
                 "region_id": "LK-13",
                 "region_name": "Kalutara",
+                "region_type": "district",
+                "region_year": "Current",
                 "area_sqkm": 1646.99,
                 "center_lat": 6.577185,
                 "center_lng": 80.127744,
@@ -129,6 +131,8 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK-2",
                 "region_name": "Central",
+                "region_type": "province",
+                "region_year": "Current",
                 "area_sqkm": 5731.25,
                 "center_lat": 7.324022,
                 "center_lng": 80.717397
@@ -355,15 +359,15 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK-1103005",
                 "region_name": "Sammanthranapura",
-                "current_ids": [
-                    "LK-1103005"
-                ],
-                "values": {
-                    "buddhist": 2689,
-                    "islam": 1862,
-                    "hindu": 1644,
-                    "roman_catholic": 1039,
-                    ... // 835 lines ...
+                "region_type": "gnd",
+                "region_year": "Current",
+                "area_sqkm": 0.18,
+                "center_lat": 6.977933,
+                "center_lng": 79.878128,
+                "num": " ",
+                "country_id": "LK",
+                "province_id": "LK-1",
+                ... // 1185 lines ...
                 "roman_catholic": 42435,
                 "other_christian": 10715,
                 "other": 251
@@ -445,15 +449,15 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK",
                 "region_name": "Sri Lanka",
-                "current_ids": [
-                    "LK"
-                ],
+                "region_type": "country",
+                "region_year": "Current",
+                "area_sqkm": 65983.58,
+                "center_lat": 7.621863,
+                "center_lng": 80.698448,
                 "summary": {
                     "electors": 17140354,
                     "polled": 11815246,
-                    "valid": 11148006,
-                    "rejected": 667240,
-                    ... // 1335 lines ...
+                    ... // 1337 lines ...
                 "IND28-13": 0.0,
                 "IND36-13": 0.0,
                 "IND42-13": 0.0,
@@ -579,21 +583,21 @@ python workflows/console.py <cmd>
             {
                 "region_id": "LK-11",
                 "region_name": "Colombo",
+                "region_type": "district",
+                "region_year": "1984",
                 "area_sqkm": 688.17,
                 "center_lat": 6.869822,
                 "center_lng": 80.018487,
                 "current_ids": [
                     "LK-11"
                 ]
-            },
-            {
-            ... // 217 lines ...
-                    "LK-91"
-                ]
+                ... // 265 lines ...
             },
             {
                 "region_id": "LK-92",
                 "region_name": "Kegalle",
+                "region_type": "district",
+                "region_year": "1984",
                 "area_sqkm": 1657.73,
                 "center_lat": 7.104294,
                 "center_lng": 80.342772,

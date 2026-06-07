@@ -1,6 +1,11 @@
 {
   "result": {
-    "title_items": ["24 Districts", "Basic Information", "2012", "JSON"],
+    "title_items": [
+      "24 Districts",
+      "Basic Information",
+      "2012",
+      "JSON"
+    ],
     "data_list": [
       {
         "region_id": "LK-11",
@@ -10,7 +15,9 @@
         "area_sqkm": 688.17,
         "center_lat": 6.869822,
         "center_lng": 80.018487,
-        "current_ids": ["LK-11"]
+        "current_ids": [
+          "LK-11"
+        ]
       },
       {
         "region_id": "LK-12",
@@ -20,7 +27,9 @@
         "area_sqkm": 1385.23,
         "center_lat": 7.123406,
         "center_lng": 80.018206,
-        "current_ids": ["LK-12"]
+        "current_ids": [
+          "LK-12"
+        ]
       },
       {
         "region_id": "LK-13",
@@ -30,7 +39,9 @@
         "area_sqkm": 1646.99,
         "center_lat": 6.577185,
         "center_lng": 80.127744,
-        "current_ids": ["LK-13"]
+        "current_ids": [
+          "LK-13"
+        ]
       },
       {
         "region_id": "LK-21",
@@ -40,7 +51,9 @@
         "area_sqkm": 1927.69,
         "center_lat": 7.273178,
         "center_lng": 80.708811,
-        "current_ids": ["LK-21"]
+        "current_ids": [
+          "LK-21"
+        ]
       },
       {
         "region_id": "LK-22",
@@ -50,7 +63,9 @@
         "area_sqkm": 2058.75,
         "center_lat": 7.667651,
         "center_lng": 80.730702,
-        "current_ids": ["LK-22"]
+        "current_ids": [
+          "LK-22"
+        ]
       },
       {
         "region_id": "LK-23",
@@ -60,7 +75,9 @@
         "area_sqkm": 1744.81,
         "center_lat": 6.974738,
         "center_lng": 80.711186,
-        "current_ids": ["LK-23"]
+        "current_ids": [
+          "LK-23"
+        ]
       },
       {
         "region_id": "LK-31",
@@ -70,7 +87,9 @@
         "area_sqkm": 1613.49,
         "center_lat": 6.222792,
         "center_lng": 80.251811,
-        "current_ids": ["LK-31"]
+        "current_ids": [
+          "LK-31"
+        ]
       },
       {
         "region_id": "LK-32",
@@ -80,7 +99,9 @@
         "area_sqkm": 1306.37,
         "center_lat": 6.142725,
         "center_lng": 80.539846,
-        "current_ids": ["LK-32"]
+        "current_ids": [
+          "LK-32"
+        ]
       },
       {
         "region_id": "LK-33",
@@ -90,7 +111,9 @@
         "area_sqkm": 2625.06,
         "center_lat": 6.254039,
         "center_lng": 81.091281,
-        "current_ids": ["LK-33"]
+        "current_ids": [
+          "LK-33"
+        ]
       },
       {
         "region_id": "LK-41-pre1984",
@@ -100,7 +123,10 @@
         "area_sqkm": 2410.53,
         "center_lat": 9.542045,
         "center_lng": 80.221895,
-        "current_ids": ["LK-41", "LK-45"]
+        "current_ids": [
+          "LK-41",
+          "LK-45"
+        ]
       },
       {
         "region_id": "LK-42",
@@ -110,7 +136,9 @@
         "area_sqkm": 2010.83,
         "center_lat": 8.878476,
         "center_lng": 80.091433,
-        "current_ids": ["LK-42"]
+        "current_ids": [
+          "LK-42"
+        ]
       },
       {
         "region_id": "LK-43",
@@ -120,7 +148,9 @@
         "area_sqkm": 1934.91,
         "center_lat": 8.853162,
         "center_lng": 80.470869,
-        "current_ids": ["LK-43"]
+        "current_ids": [
+          "LK-43"
+        ]
       },
       {
         "region_id": "LK-44",
@@ -130,7 +160,9 @@
         "area_sqkm": 2681.15,
         "center_lat": 9.170128,
         "center_lng": 80.552726,
-        "current_ids": ["LK-44"]
+        "current_ids": [
+          "LK-44"
+        ]
       },
       {
         "region_id": "LK-51",
@@ -140,7 +172,9 @@
         "area_sqkm": 2480.5,
         "center_lat": 7.795426,
         "center_lng": 81.478872,
-        "current_ids": ["LK-51"]
+        "current_ids": [
+          "LK-51"
+        ]
       },
       {
         "region_id": "LK-52",
@@ -150,7 +184,9 @@
         "area_sqkm": 4474.66,
         "center_lat": 7.233261,
         "center_lng": 81.553888,
-        "current_ids": ["LK-52"]
+        "current_ids": [
+          "LK-52"
+        ]
       },
       {
         "region_id": "LK-53",
@@ -160,7 +196,9 @@
         "area_sqkm": 2692.11,
         "center_lat": 8.553962,
         "center_lng": 81.091548,
-        "current_ids": ["LK-53"]
+        "current_ids": [
+          "LK-53"
+        ]
       },
       {
         "region_id": "LK-61",
@@ -170,7 +208,9 @@
         "area_sqkm": 4905.71,
         "center_lat": 7.664511,
         "center_lng": 80.236804,
-        "current_ids": ["LK-61"]
+        "current_ids": [
+          "LK-61"
+        ]
       },
       {
         "region_id": "LK-62",
@@ -180,7 +220,9 @@
         "area_sqkm": 3133.88,
         "center_lat": 7.975263,
         "center_lng": 79.910874,
-        "current_ids": ["LK-62"]
+        "current_ids": [
+          "LK-62"
+        ]
       },
       {
         "region_id": "LK-71",
@@ -190,7 +232,9 @@
         "area_sqkm": 7218.29,
         "center_lat": 8.392067,
         "center_lng": 80.51313,
-        "current_ids": ["LK-71"]
+        "current_ids": [
+          "LK-71"
+        ]
       },
       {
         "region_id": "LK-72",
@@ -200,7 +244,9 @@
         "area_sqkm": 3469.72,
         "center_lat": 7.994209,
         "center_lng": 81.028281,
-        "current_ids": ["LK-72"]
+        "current_ids": [
+          "LK-72"
+        ]
       },
       {
         "region_id": "LK-81",
@@ -210,7 +256,9 @@
         "area_sqkm": 2871.96,
         "center_lat": 7.073578,
         "center_lng": 81.044926,
-        "current_ids": ["LK-81"]
+        "current_ids": [
+          "LK-81"
+        ]
       },
       {
         "region_id": "LK-82",
@@ -220,7 +268,9 @@
         "area_sqkm": 5757.99,
         "center_lat": 6.787062,
         "center_lng": 81.301821,
-        "current_ids": ["LK-82"]
+        "current_ids": [
+          "LK-82"
+        ]
       },
       {
         "region_id": "LK-91",
@@ -230,7 +280,9 @@
         "area_sqkm": 3287.08,
         "center_lat": 6.586622,
         "center_lng": 80.565541,
-        "current_ids": ["LK-91"]
+        "current_ids": [
+          "LK-91"
+        ]
       },
       {
         "region_id": "LK-92",
@@ -240,7 +292,9 @@
         "area_sqkm": 1657.73,
         "center_lat": 7.104294,
         "center_lng": 80.342772,
-        "current_ids": ["LK-92"]
+        "current_ids": [
+          "LK-92"
+        ]
       }
     ],
     "source": "Department of Census and Statistics, Sri Lanka",
