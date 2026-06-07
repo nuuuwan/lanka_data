@@ -48,8 +48,8 @@ class What:
             data_for_current = source_data_idx.get(current_id)
             if not data_for_current:
                 raise ValueError(
-                    f"No data found for region_id={current_id}"
-                    + f" (mapped from {region_id})."
+                    f"No data found for {current_id=}"
+                    + f" (mapped from {region_id=})."
                 )
             source_data_list_for_region.append(data_for_current)
 
