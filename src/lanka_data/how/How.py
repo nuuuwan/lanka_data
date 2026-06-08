@@ -6,6 +6,18 @@ class How:
         self.how_label = how_label
         self.params = params
 
+    def get_description(self):
+        description = self.__class__.__name__
+        param_description = {
+            "2nd": "2nd largest value",
+            "3rd": "3rd largest value",
+            "Bottom": "Bottom value",
+            "Top": "Top value",
+        }.get(self.params, self.params)
+        if param_description:
+            description += f" ({param_description})"
+        return description
+
     def get_title(self):
         return (
             f"{self.how_label} ({self.params})"
