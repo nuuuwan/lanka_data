@@ -3,7 +3,7 @@ from functools import cached_property
 from lanka_data.where.RegionLoadersMixin import RegionLoadersMixin
 from lanka_data.where.RegionTypeUtils import RegionTypeUtils
 from lanka_data.where.Where import Where
-from utils_future import WWW, Log
+from utils_future import Log
 
 log = Log("Regions")
 
@@ -51,46 +51,6 @@ class Regions(Where, RegionLoadersMixin):
                 current_ids = [region_id]
             region_to_current_ids[region_id] = current_ids
         return region_to_current_ids
-
-    @classmethod
-    def _get_raw_region_data_list_for_region_type(
-        cls, region_type: str, region_year: str
-    ):
-        if region_year is None:
-            raise ValueError("region_year cannot be None")
-        if region_year == "Current":
-            url = (
-                "https://raw.githubusercontent.com"
-                + "/nuuuwan/lk_admin_regions/refs/heads/main"
-                + "/data/ents"
-                + f"/{region_type}s.json"
-            )
-        else:
-            url = (
-                "https://raw.githubusercontent.com"
-                + "/nuuuwan/lk_admin_regions/refs/heads/main"
-                + "/data/ents/history"
-                + f"/{region_type}s-pre{region_year}.json"
-            )
-
-        raw_data_list = WWW(url).read_json()
-
-        def remap(d):
-            d = (
-                dict(
-                    region_id=d["id"],
-                    region_name=d["name"],
-                    region_type=region_type,
-                    history_year=region_year,
-                )
-                | d
-            )
-            del d["id"]
-            del d["name"]
-            return d
-
-        remapped_data_list = [remap(d) for d in raw_data_list]
-        return remapped_data_list
 
     @classmethod
     def clean(cls, d):

@@ -26,3 +26,23 @@ class RegionTypeUtils:
                 if region_type:
                     return region_type
         raise ValueError(f"Invalid region ID format: {region_id}")
+
+    @staticmethod
+    def get_long_name(region_type: str) -> str:
+        long_names = {
+            "country": "Country",
+            "province": "Province",
+            "district": "District",
+            "dsd": "Divisional Secretariat Division",
+            "gnd": "Grama Niladhari Division",
+            "ed": "Electoral Division",
+            "pd": "Polling Division",
+            "lg": "Local Authority",
+        }
+        return long_names.get(region_type, region_type)
+
+    @staticmethod
+    def get_long_name_plural(region_type: str) -> str:
+        if region_type in ["country", "lg"]:
+            return RegionTypeUtils.get_long_name(region_type)[:-1] + "ies"
+        return RegionTypeUtils.get_long_name(region_type) + "s"
