@@ -3,7 +3,7 @@
     "what_description": "Results of the 2024 Sri Lankan Parliamentary Election",
     "when_description": "2024",
     "where_description": "Countrys with IDs LK",
-    "how_description": "JSON data",
+    "how_description": "JSON",
     "data_list": [
       {
         "region_id": "LK",

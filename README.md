@@ -297,7 +297,7 @@ Religion/2024/LK-23:dsd/Map
 
 ![Religion/2024/LK-23:dsd/Map](images/readme/dccbd315.png)
 
-#### 3.03) JSON data of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Gnds within LK-1103.
+#### 3.03) JSON of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Gnds within LK-1103.
 
 ```bash
 Religion/2012/LK-1103:gnd/JSON
@@ -309,7 +309,7 @@ Religion/2012/LK-1103:gnd/JSON
         "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
         "when_description": "2012",
         "where_description": "Gnds within LK-1103",
-        "how_description": "JSON data",
+        "how_description": "JSON",
         "data_list": [
             {
                 "region_id": "LK-1103005",
@@ -372,7 +372,7 @@ Religion/2012/LK-1127:gnd/Map
 
 ![Religion/2012/LK-1127:gnd/Map](images/readme/c9ea8f62.png)
 
-#### 3.05) Map of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Dsds within LK-41 (pre-2019 Map).
+#### 3.05) Map (2nd largest value) of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Dsds within LK-41 (pre-2019 Map).
 
 ```bash
 Religion/2012/LK-41:dsd/Map:2nd
@@ -384,8 +384,8 @@ Religion/2012/LK-41:dsd/Map:2nd
         "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
         "when_description": "2012",
         "where_description": "Dsds within LK-41 (pre-2019 Map)",
-        "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/e4407d3a.png",
+        "how_description": "Map (2nd largest value)",
+        "image_path": "/tmp/lanka_data/images/134e9897.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Religion/2012/LK-41:dsd/Map:2nd"
@@ -395,9 +395,9 @@ Religion/2012/LK-41:dsd/Map:2nd
 }
 ```
 
-![Religion/2012/LK-41:dsd/Map:2nd](images/readme/e4407d3a.png)
+![Religion/2012/LK-41:dsd/Map:2nd](images/readme/134e9897.png)
 
-#### 3.06) Map of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Dsds within LK-51 (pre-2019 Map).
+#### 3.06) Map (Buddhist) of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Dsds within LK-51 (pre-2019 Map).
 
 ```bash
 Religion/2012/LK-51:dsd/Map:Buddhist
@@ -409,8 +409,8 @@ Religion/2012/LK-51:dsd/Map:Buddhist
         "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
         "when_description": "2012",
         "where_description": "Dsds within LK-51 (pre-2019 Map)",
-        "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/5e74516e.png",
+        "how_description": "Map (Buddhist)",
+        "image_path": "/tmp/lanka_data/images/197cd5ef.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Religion/2012/LK-51:dsd/Map:Buddhist"
@@ -420,7 +420,7 @@ Religion/2012/LK-51:dsd/Map:Buddhist
 }
 ```
 
-![Religion/2012/LK-51:dsd/Map:Buddhist](images/readme/5e74516e.png)
+![Religion/2012/LK-51:dsd/Map:Buddhist](images/readme/197cd5ef.png)
 
 ### 4) Ethnicity
 
@@ -501,7 +501,7 @@ Ethnicity/2024/LK-23:dsd/Map
 
 ### 5) Elections
 
-#### 5.01) JSON data of Results of the 2024 Sri Lankan Parliamentary Election (2024) for Countrys with IDs LK.
+#### 5.01) JSON of Results of the 2024 Sri Lankan Parliamentary Election (2024) for Countrys with IDs LK.
 
 ```bash
 Parliamentary/2024/LK/JSON
@@ -513,7 +513,7 @@ Parliamentary/2024/LK/JSON
         "what_description": "Results of the 2024 Sri Lankan Parliamentary Election",
         "when_description": "2024",
         "where_description": "Countrys with IDs LK",
-        "how_description": "JSON data",
+        "how_description": "JSON",
         "data_list": [
             {
                 "region_id": "LK",
