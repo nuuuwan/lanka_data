@@ -23,13 +23,17 @@ print(output)
 
 ```
 
-### workflows/run.py
+### workflows/single.py
+
+Runs single command.
 
 ```bash
-python workflows/run.py <cmd>
+python workflows/single.py <cmd>
 ```
 
 ### workflows/console.py
+
+Console tool for running commands.
 
 ```bash
 python workflows/console.py <cmd>
