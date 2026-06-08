@@ -57,10 +57,11 @@ class How:
         )
 
     def get_descriptions_title(self, where, what, when):
-        what_description = what.get_description()
-        when_description = when
-        where_description = where.get_description()
-        how_description = self.get_description()
+        descriptions = self.get_descriptions(where, what, when)
+        what_description = descriptions["what_description"]
+        when_description = descriptions["when_description"]
+        where_description = descriptions["where_description"]
+        how_description = descriptions["how_description"]
 
         return (
             f"{how_description} of\n{what_description}"
