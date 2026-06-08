@@ -112,7 +112,7 @@ Basic/2024/LK:province/Map
         "when_description": "2024",
         "where_description": "Provinces in LK",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/f16e1479.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2024_LK:province_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2024/LK:province/Map"
@@ -122,7 +122,7 @@ Basic/2024/LK:province/Map
 }
 ```
 
-![Basic/2024/LK:province/Map](images/readme/f16e1479.png)
+![Basic/2024/LK:province/Map](images/readme/Basic_2024_LK:province_Map.png)
 
 #### 2.02) Map of Basic Information (2024) for Districts in LK-1.
 
@@ -137,7 +137,7 @@ Basic/2024/LK-1:district/Map
         "when_description": "2024",
         "where_description": "Districts in LK-1",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/e179b856.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2024_LK-1:district_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2024/LK-1:district/Map"
@@ -147,7 +147,7 @@ Basic/2024/LK-1:district/Map
 }
 ```
 
-![Basic/2024/LK-1:district/Map](images/readme/e179b856.png)
+![Basic/2024/LK-1:district/Map](images/readme/Basic_2024_LK-1:district_Map.png)
 
 #### 2.03) Map of Basic Information (2024) for LK-1, LK-2, LK-3, LK-9, LK-8.
 
@@ -162,7 +162,7 @@ Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map
         "when_description": "2024",
         "where_description": "LK-1, LK-2, LK-3, LK-9, LK-8",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/9201a5ce.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2024_LK-1,LK-2,LK-3,LK-9,LK-8_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map"
@@ -172,9 +172,9 @@ Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map
 }
 ```
 
-![Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map](images/readme/9201a5ce.png)
+![Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map](images/readme/Basic_2024_LK-1,LK-2,LK-3,LK-9,LK-8_Map.png)
 
-#### 2.04) Map of Basic Information (2024) for Regions from LK-5 to LK-8.
+#### 2.04) Map of Basic Information (2024) for LK-5 to LK-8.
 
 ```bash
 Basic/2024/LK-5...LK-8/Map
@@ -185,9 +185,9 @@ Basic/2024/LK-5...LK-8/Map
     "result": {
         "what_description": "Basic Information",
         "when_description": "2024",
-        "where_description": "Regions from LK-5 to LK-8",
+        "where_description": "LK-5 to LK-8",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/bd9855e4.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2024_LK-5...LK-8_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2024/LK-5...LK-8/Map"
@@ -197,7 +197,7 @@ Basic/2024/LK-5...LK-8/Map
 }
 ```
 
-![Basic/2024/LK-5...LK-8/Map](images/readme/bd9855e4.png)
+![Basic/2024/LK-5...LK-8/Map](images/readme/Basic_2024_LK-5...LK-8_Map.png)
 
 #### 2.05) Map of Basic Information (2024) for Regions within 20.0 km of LK-1127025.
 
@@ -212,7 +212,7 @@ Basic/2024/LK-1127025@20/Map
         "when_description": "2024",
         "where_description": "Regions within 20.0 km of LK-1127025",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/b2da9d2a.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2024_LK-1127025@20_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2024/LK-1127025@20/Map"
@@ -222,7 +222,7 @@ Basic/2024/LK-1127025@20/Map
 }
 ```
 
-![Basic/2024/LK-1127025@20/Map](images/readme/b2da9d2a.png)
+![Basic/2024/LK-1127025@20/Map](images/readme/Basic_2024_LK-1127025@20_Map.png)
 
 ### 3) Religion
 
@@ -239,7 +239,7 @@ Religion/2012/LK-23:dsd/Map
         "when_description": "2012",
         "where_description": "Divisional Secretariat Divisions in LK-23-pre2019",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/acc6997e.png",
+        "image_path": "/tmp/lanka_data/images/Religion_2012_LK-23:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Religion/2012/LK-23:dsd/Map"
@@ -249,7 +249,7 @@ Religion/2012/LK-23:dsd/Map
 }
 ```
 
-![Religion/2012/LK-23:dsd/Map](images/readme/acc6997e.png)
+![Religion/2012/LK-23:dsd/Map](images/readme/Religion_2012_LK-23:dsd_Map.png)
 
 #### 3.02) Map of Population distributed by religious affiliation (e.g. Buddhist, Hindu, Islam) (2024) for Divisional Secretariat Divisions in LK-23.
 
@@ -264,7 +264,7 @@ Religion/2024/LK-23:dsd/Map
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-23",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/7464ff2f.png",
+        "image_path": "/tmp/lanka_data/images/Religion_2024_LK-23:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Religion/2024/LK-23:dsd/Map"
@@ -274,7 +274,7 @@ Religion/2024/LK-23:dsd/Map
 }
 ```
 
-![Religion/2024/LK-23:dsd/Map](images/readme/7464ff2f.png)
+![Religion/2024/LK-23:dsd/Map](images/readme/Religion_2024_LK-23:dsd_Map.png)
 
 #### 3.03) JSON of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Grama Niladhari Divisions in LK-1103.
 
@@ -339,7 +339,7 @@ Religion/2012/LK-1127:gnd/Map
         "when_description": "2012",
         "where_description": "Grama Niladhari Divisions in LK-1127",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/c9230774.png",
+        "image_path": "/tmp/lanka_data/images/Religion_2012_LK-1127:gnd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Religion/2012/LK-1127:gnd/Map"
@@ -349,7 +349,7 @@ Religion/2012/LK-1127:gnd/Map
 }
 ```
 
-![Religion/2012/LK-1127:gnd/Map](images/readme/c9230774.png)
+![Religion/2012/LK-1127:gnd/Map](images/readme/Religion_2012_LK-1127:gnd_Map.png)
 
 #### 3.05) Map (2nd largest value) of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Divisional Secretariat Divisions in LK-41-pre2019.
 
@@ -364,7 +364,7 @@ Religion/2012/LK-41:dsd/Map:2nd
         "when_description": "2012",
         "where_description": "Divisional Secretariat Divisions in LK-41-pre2019",
         "how_description": "Map (2nd largest value)",
-        "image_path": "/tmp/lanka_data/images/568d2902.png",
+        "image_path": "/tmp/lanka_data/images/Religion_2012_LK-41:dsd_Map:2nd.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Religion/2012/LK-41:dsd/Map:2nd"
@@ -374,7 +374,7 @@ Religion/2012/LK-41:dsd/Map:2nd
 }
 ```
 
-![Religion/2012/LK-41:dsd/Map:2nd](images/readme/568d2902.png)
+![Religion/2012/LK-41:dsd/Map:2nd](images/readme/Religion_2012_LK-41:dsd_Map:2nd.png)
 
 #### 3.06) Map (Buddhist) of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Divisional Secretariat Divisions in LK-51-pre2019.
 
@@ -389,7 +389,7 @@ Religion/2012/LK-51:dsd/Map:Buddhist
         "when_description": "2012",
         "where_description": "Divisional Secretariat Divisions in LK-51-pre2019",
         "how_description": "Map (Buddhist)",
-        "image_path": "/tmp/lanka_data/images/bafe5362.png",
+        "image_path": "/tmp/lanka_data/images/Religion_2012_LK-51:dsd_Map:Buddhist.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Religion/2012/LK-51:dsd/Map:Buddhist"
@@ -399,7 +399,7 @@ Religion/2012/LK-51:dsd/Map:Buddhist
 }
 ```
 
-![Religion/2012/LK-51:dsd/Map:Buddhist](images/readme/bafe5362.png)
+![Religion/2012/LK-51:dsd/Map:Buddhist](images/readme/Religion_2012_LK-51:dsd_Map:Buddhist.png)
 
 ### 4) Ethnicity
 
@@ -416,7 +416,7 @@ Ethnicity/2024/LK-53:dsd/Map
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-53",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/68f58767.png",
+        "image_path": "/tmp/lanka_data/images/Ethnicity_2024_LK-53:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Ethnicity/2024/LK-53:dsd/Map"
@@ -426,7 +426,7 @@ Ethnicity/2024/LK-53:dsd/Map
 }
 ```
 
-![Ethnicity/2024/LK-53:dsd/Map](images/readme/68f58767.png)
+![Ethnicity/2024/LK-53:dsd/Map](images/readme/Ethnicity_2024_LK-53:dsd_Map.png)
 
 #### 4.02) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (Latest) for Divisional Secretariat Divisions in LK-2.
 
@@ -441,7 +441,7 @@ Ethnicity/Latest/LK-2:dsd/Map
         "when_description": "Latest",
         "where_description": "Divisional Secretariat Divisions in LK-2",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/c0acb07a.png",
+        "image_path": "/tmp/lanka_data/images/Ethnicity_Latest_LK-2:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Ethnicity/Latest/LK-2:dsd/Map"
@@ -451,7 +451,7 @@ Ethnicity/Latest/LK-2:dsd/Map
 }
 ```
 
-![Ethnicity/Latest/LK-2:dsd/Map](images/readme/c0acb07a.png)
+![Ethnicity/Latest/LK-2:dsd/Map](images/readme/Ethnicity_Latest_LK-2:dsd_Map.png)
 
 #### 4.03) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Divisional Secretariat Divisions in LK-23.
 
@@ -466,7 +466,7 @@ Ethnicity/2024/LK-23:dsd/Map
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-23",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/bf5ee2ec.png",
+        "image_path": "/tmp/lanka_data/images/Ethnicity_2024_LK-23:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Ethnicity/2024/LK-23:dsd/Map"
@@ -476,7 +476,7 @@ Ethnicity/2024/LK-23:dsd/Map
 }
 ```
 
-![Ethnicity/2024/LK-23:dsd/Map](images/readme/bf5ee2ec.png)
+![Ethnicity/2024/LK-23:dsd/Map](images/readme/Ethnicity_2024_LK-23:dsd_Map.png)
 
 ### 5) Elections
 
@@ -543,7 +543,7 @@ Presidential/Latest/LK-11:pd/Map
         "when_description": "Latest",
         "where_description": "Polling Divisions in LK-11",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/11d142a0.png",
+        "image_path": "/tmp/lanka_data/images/Presidential_Latest_LK-11:pd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Presidential/Latest/LK-11:pd/Map"
@@ -553,7 +553,7 @@ Presidential/Latest/LK-11:pd/Map
 }
 ```
 
-![Presidential/Latest/LK-11:pd/Map](images/readme/11d142a0.png)
+![Presidential/Latest/LK-11:pd/Map](images/readme/Presidential_Latest_LK-11:pd_Map.png)
 
 #### 5.03) Map of Results of the 2025 Sri Lankan Local Election (2025) for Districts in LK.
 
@@ -568,7 +568,7 @@ Local/2025/LK:district/Map
         "when_description": "2025",
         "where_description": "Districts in LK",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/9bfe1df6.png",
+        "image_path": "/tmp/lanka_data/images/Local_2025_LK:district_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Local/2025/LK:district/Map"
@@ -578,7 +578,7 @@ Local/2025/LK:district/Map
 }
 ```
 
-![Local/2025/LK:district/Map](images/readme/9bfe1df6.png)
+![Local/2025/LK:district/Map](images/readme/Local_2025_LK:district_Map.png)
 
 ### 6) History
 
@@ -595,7 +595,7 @@ Basic/2012/LK-pre1845:province/Map
         "when_description": "2012",
         "where_description": "Provinces in LK-pre1845",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/c64e62d1.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2012_LK-pre1845:province_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2012/LK-pre1845:province/Map"
@@ -605,7 +605,7 @@ Basic/2012/LK-pre1845:province/Map
 }
 ```
 
-![Basic/2012/LK-pre1845:province/Map](images/readme/c64e62d1.png)
+![Basic/2012/LK-pre1845:province/Map](images/readme/Basic_2012_LK-pre1845:province_Map.png)
 
 #### 6.02) Map of Basic Information (2012) for Provinces in LK-pre1873.
 
@@ -620,7 +620,7 @@ Basic/2012/LK-pre1873:province/Map
         "when_description": "2012",
         "where_description": "Provinces in LK-pre1873",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/73d08acb.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2012_LK-pre1873:province_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2012/LK-pre1873:province/Map"
@@ -630,7 +630,7 @@ Basic/2012/LK-pre1873:province/Map
 }
 ```
 
-![Basic/2012/LK-pre1873:province/Map](images/readme/73d08acb.png)
+![Basic/2012/LK-pre1873:province/Map](images/readme/Basic_2012_LK-pre1873:province_Map.png)
 
 #### 6.03) Map of Basic Information (2012) for Provinces in LK-pre1886.
 
@@ -645,7 +645,7 @@ Basic/2012/LK-pre1886:province/Map
         "when_description": "2012",
         "where_description": "Provinces in LK-pre1886",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/babe51ac.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2012_LK-pre1886:province_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2012/LK-pre1886:province/Map"
@@ -655,7 +655,7 @@ Basic/2012/LK-pre1886:province/Map
 }
 ```
 
-![Basic/2012/LK-pre1886:province/Map](images/readme/babe51ac.png)
+![Basic/2012/LK-pre1886:province/Map](images/readme/Basic_2012_LK-pre1886:province_Map.png)
 
 #### 6.04) Map of Basic Information (2012) for Provinces in LK-pre1889.
 
@@ -670,7 +670,7 @@ Basic/2012/LK-pre1889:province/Map
         "when_description": "2012",
         "where_description": "Provinces in LK-pre1889",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/acfae924.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2012_LK-pre1889:province_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2012/LK-pre1889:province/Map"
@@ -680,7 +680,7 @@ Basic/2012/LK-pre1889:province/Map
 }
 ```
 
-![Basic/2012/LK-pre1889:province/Map](images/readme/acfae924.png)
+![Basic/2012/LK-pre1889:province/Map](images/readme/Basic_2012_LK-pre1889:province_Map.png)
 
 #### 6.05) Map of Basic Information (2012) for Provinces in LK.
 
@@ -695,7 +695,7 @@ Basic/2012/LK:province/Map
         "when_description": "2012",
         "where_description": "Provinces in LK",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/742d1154.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2012_LK:province_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2012/LK:province/Map"
@@ -705,7 +705,7 @@ Basic/2012/LK:province/Map
 }
 ```
 
-![Basic/2012/LK:province/Map](images/readme/742d1154.png)
+![Basic/2012/LK:province/Map](images/readme/Basic_2012_LK:province_Map.png)
 
 #### 6.06) Map of Basic Information (2012) for Districts in LK-pre1959.
 
@@ -720,7 +720,7 @@ Basic/2012/LK-pre1959:district/Map
         "when_description": "2012",
         "where_description": "Districts in LK-pre1959",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/af850d17.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2012_LK-pre1959:district_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2012/LK-pre1959:district/Map"
@@ -730,7 +730,7 @@ Basic/2012/LK-pre1959:district/Map
 }
 ```
 
-![Basic/2012/LK-pre1959:district/Map](images/readme/af850d17.png)
+![Basic/2012/LK-pre1959:district/Map](images/readme/Basic_2012_LK-pre1959:district_Map.png)
 
 #### 6.07) Map of Basic Information (2012) for Districts in LK-pre1961.
 
@@ -745,7 +745,7 @@ Basic/2012/LK-pre1961:district/Map
         "when_description": "2012",
         "where_description": "Districts in LK-pre1961",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/a0a30ab1.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2012_LK-pre1961:district_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2012/LK-pre1961:district/Map"
@@ -755,7 +755,7 @@ Basic/2012/LK-pre1961:district/Map
 }
 ```
 
-![Basic/2012/LK-pre1961:district/Map](images/readme/a0a30ab1.png)
+![Basic/2012/LK-pre1961:district/Map](images/readme/Basic_2012_LK-pre1961:district_Map.png)
 
 #### 6.08) Map of Basic Information (2012) for Districts in LK-pre1978.
 
@@ -770,7 +770,7 @@ Basic/2012/LK-pre1978:district/Map
         "when_description": "2012",
         "where_description": "Districts in LK-pre1978",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/021f6821.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2012_LK-pre1978:district_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2012/LK-pre1978:district/Map"
@@ -780,7 +780,7 @@ Basic/2012/LK-pre1978:district/Map
 }
 ```
 
-![Basic/2012/LK-pre1978:district/Map](images/readme/021f6821.png)
+![Basic/2012/LK-pre1978:district/Map](images/readme/Basic_2012_LK-pre1978:district_Map.png)
 
 #### 6.09) Map of Basic Information (2012) for Districts in LK-pre1984.
 
@@ -795,7 +795,7 @@ Basic/2012/LK-pre1984:district/Map
         "when_description": "2012",
         "where_description": "Districts in LK-pre1984",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/46842893.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2012_LK-pre1984:district_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2012/LK-pre1984:district/Map"
@@ -805,7 +805,7 @@ Basic/2012/LK-pre1984:district/Map
 }
 ```
 
-![Basic/2012/LK-pre1984:district/Map](images/readme/46842893.png)
+![Basic/2012/LK-pre1984:district/Map](images/readme/Basic_2012_LK-pre1984:district_Map.png)
 
 #### 6.10) Map of Basic Information (2012) for Districts in LK.
 
@@ -820,7 +820,7 @@ Basic/2012/LK:district/Map
         "when_description": "2012",
         "where_description": "Districts in LK",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/e62baa30.png",
+        "image_path": "/tmp/lanka_data/images/Basic_2012_LK:district_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2012/LK:district/Map"
@@ -830,7 +830,7 @@ Basic/2012/LK:district/Map
 }
 ```
 
-![Basic/2012/LK:district/Map](images/readme/e62baa30.png)
+![Basic/2012/LK:district/Map](images/readme/Basic_2012_LK:district_Map.png)
 
 #### 6.11) Map of Population distributed by ethnic group such as Sinhalese, Sri Lanka Tamil, Moor, and others (2012) for Divisional Secretariat Divisions in LK-23-pre2019.
 
@@ -845,7 +845,7 @@ Ethnicity/2012/LK-23-pre2019:dsd/Map
         "when_description": "2012",
         "where_description": "Divisional Secretariat Divisions in LK-23-pre2019",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/c3627751.png",
+        "image_path": "/tmp/lanka_data/images/Ethnicity_2012_LK-23-pre2019:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Ethnicity/2012/LK-23-pre2019:dsd/Map"
@@ -855,7 +855,7 @@ Ethnicity/2012/LK-23-pre2019:dsd/Map
 }
 ```
 
-![Ethnicity/2012/LK-23-pre2019:dsd/Map](images/readme/c3627751.png)
+![Ethnicity/2012/LK-23-pre2019:dsd/Map](images/readme/Ethnicity_2012_LK-23-pre2019:dsd_Map.png)
 
 #### 6.12) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Divisional Secretariat Divisions in LK-23-pre2019.
 
@@ -870,7 +870,7 @@ Ethnicity/2024/LK-23-pre2019:dsd/Map
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-23-pre2019",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/c523e858.png",
+        "image_path": "/tmp/lanka_data/images/Ethnicity_2024_LK-23-pre2019:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Ethnicity/2024/LK-23-pre2019:dsd/Map"
@@ -880,7 +880,7 @@ Ethnicity/2024/LK-23-pre2019:dsd/Map
 }
 ```
 
-![Ethnicity/2024/LK-23-pre2019:dsd/Map](images/readme/c523e858.png)
+![Ethnicity/2024/LK-23-pre2019:dsd/Map](images/readme/Ethnicity_2024_LK-23-pre2019:dsd_Map.png)
 
 #### 6.13) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Divisional Secretariat Divisions in LK-23.
 
@@ -895,7 +895,7 @@ Ethnicity/2024/LK-23:dsd/Map
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-23",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/bf5ee2ec.png",
+        "image_path": "/tmp/lanka_data/images/Ethnicity_2024_LK-23:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Ethnicity/2024/LK-23:dsd/Map"
@@ -905,7 +905,7 @@ Ethnicity/2024/LK-23:dsd/Map
 }
 ```
 
-![Ethnicity/2024/LK-23:dsd/Map](images/readme/bf5ee2ec.png)
+![Ethnicity/2024/LK-23:dsd/Map](images/readme/Ethnicity_2024_LK-23:dsd_Map.png)
 
 ### 7) Other-Whats
 
@@ -922,7 +922,7 @@ AgeGroup/2024/LK-1:district/Map
         "when_description": "2024",
         "where_description": "Districts in LK-1",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/fc10199d.png",
+        "image_path": "/tmp/lanka_data/images/AgeGroup_2024_LK-1:district_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "AgeGroup/2024/LK-1:district/Map"
@@ -932,7 +932,7 @@ AgeGroup/2024/LK-1:district/Map
 }
 ```
 
-![AgeGroup/2024/LK-1:district/Map](images/readme/fc10199d.png)
+![AgeGroup/2024/LK-1:district/Map](images/readme/AgeGroup_2024_LK-1:district_Map.png)
 
 #### 7.02) Map of Households classified by ownership of communication items such as telephone, radio, and television (2012) for Divisional Secretariat Divisions in LK-2-pre2019.
 
@@ -947,7 +947,7 @@ Communication/2012/LK-2:dsd/Map
         "when_description": "2012",
         "where_description": "Divisional Secretariat Divisions in LK-2-pre2019",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/5ea432b7.png",
+        "image_path": "/tmp/lanka_data/images/Communication_2012_LK-2:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Communication/2012/LK-2:dsd/Map"
@@ -957,7 +957,7 @@ Communication/2012/LK-2:dsd/Map
 }
 ```
 
-![Communication/2012/LK-2:dsd/Map](images/readme/5ea432b7.png)
+![Communication/2012/LK-2:dsd/Map](images/readme/Communication_2012_LK-2:dsd_Map.png)
 
 #### 7.03) Map of Housing units classified by the decade or period in which they were constructed (2012) for Divisional Secretariat Divisions in LK-3-pre2019.
 
@@ -972,7 +972,7 @@ ConstructionYear/2012/LK-3:dsd/Map
         "when_description": "2012",
         "where_description": "Divisional Secretariat Divisions in LK-3-pre2019",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/4f122f47.png",
+        "image_path": "/tmp/lanka_data/images/ConstructionYear_2012_LK-3:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "ConstructionYear/2012/LK-3:dsd/Map"
@@ -982,7 +982,7 @@ ConstructionYear/2012/LK-3:dsd/Map
 }
 ```
 
-![ConstructionYear/2012/LK-3:dsd/Map](images/readme/4f122f47.png)
+![ConstructionYear/2012/LK-3:dsd/Map](images/readme/ConstructionYear_2012_LK-3:dsd_Map.png)
 
 #### 7.04) Map of Number of households classified by the main fuel or energy source used for cooking (2024) for Divisional Secretariat Divisions in LK-4.
 
@@ -997,7 +997,7 @@ Fuel/2024/LK-4:dsd/Map
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-4",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/24b0421b.png",
+        "image_path": "/tmp/lanka_data/images/Fuel_2024_LK-4:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Fuel/2024/LK-4:dsd/Map"
@@ -1007,7 +1007,7 @@ Fuel/2024/LK-4:dsd/Map
 }
 ```
 
-![Fuel/2024/LK-4:dsd/Map](images/readme/24b0421b.png)
+![Fuel/2024/LK-4:dsd/Map](images/readme/Fuel_2024_LK-4:dsd_Map.png)
 
 #### 7.05) Map of Population classified by economic activity status including employed, unemployed, and economically inactive (2012) for Divisional Secretariat Divisions in LK-5-pre2019.
 
@@ -1022,7 +1022,7 @@ Economy/2012/LK-5:dsd/Map
         "when_description": "2012",
         "where_description": "Divisional Secretariat Divisions in LK-5-pre2019",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/2a0ce718.png",
+        "image_path": "/tmp/lanka_data/images/Economy_2012_LK-5:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Economy/2012/LK-5:dsd/Map"
@@ -1032,7 +1032,7 @@ Economy/2012/LK-5:dsd/Map
 }
 ```
 
-![Economy/2012/LK-5:dsd/Map](images/readme/2a0ce718.png)
+![Economy/2012/LK-5:dsd/Map](images/readme/Economy_2012_LK-5:dsd_Map.png)
 
 #### 7.06) Map of Population classified by the highest level of educational qualification attained (2012) for Divisional Secretariat Divisions in LK-6-pre2019.
 
@@ -1047,7 +1047,7 @@ Education/2012/LK-6:dsd/Map
         "when_description": "2012",
         "where_description": "Divisional Secretariat Divisions in LK-6-pre2019",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/60767de7.png",
+        "image_path": "/tmp/lanka_data/images/Education_2012_LK-6:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Education/2012/LK-6:dsd/Map"
@@ -1057,7 +1057,7 @@ Education/2012/LK-6:dsd/Map
 }
 ```
 
-![Education/2012/LK-6:dsd/Map](images/readme/60767de7.png)
+![Education/2012/LK-6:dsd/Map](images/readme/Education_2012_LK-6:dsd_Map.png)
 
 #### 7.07) Map of Households classified by the main energy fuel used for any purpose (2024) for Divisional Secretariat Divisions in LK-7.
 
@@ -1072,7 +1072,7 @@ Energy/2024/LK-7:dsd/Map
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-7",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/a4ceb5c9.png",
+        "image_path": "/tmp/lanka_data/images/Energy_2024_LK-7:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Energy/2024/LK-7:dsd/Map"
@@ -1082,7 +1082,7 @@ Energy/2024/LK-7:dsd/Map
 }
 ```
 
-![Energy/2024/LK-7:dsd/Map](images/readme/a4ceb5c9.png)
+![Energy/2024/LK-7:dsd/Map](images/readme/Energy_2024_LK-7:dsd_Map.png)
 
 #### 7.08) Map of Households classified by the main material used for floor construction (e.g. cement, tile, mud) (2024) for LK-2, LK-3.
 
@@ -1097,7 +1097,7 @@ Floor/2024/LK-2,LK-3/Map
         "when_description": "2024",
         "where_description": "LK-2, LK-3",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/1d802b4a.png",
+        "image_path": "/tmp/lanka_data/images/Floor_2024_LK-2,LK-3_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Floor/2024/LK-2,LK-3/Map"
@@ -1107,7 +1107,7 @@ Floor/2024/LK-2,LK-3/Map
 }
 ```
 
-![Floor/2024/LK-2,LK-3/Map](images/readme/1d802b4a.png)
+![Floor/2024/LK-2,LK-3/Map](images/readme/Floor_2024_LK-2,LK-3_Map.png)
 
 #### 7.09) Map of Population broken down by male and female (2024) for Regions within 20.0 km of LK-1127025.
 
@@ -1122,7 +1122,7 @@ Gender/2024/LK-1127025@20/Map
         "when_description": "2024",
         "where_description": "Regions within 20.0 km of LK-1127025",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/8a531d04.png",
+        "image_path": "/tmp/lanka_data/images/Gender_2024_LK-1127025@20_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Gender/2024/LK-1127025@20/Map"
@@ -1132,7 +1132,7 @@ Gender/2024/LK-1127025@20/Map
 }
 ```
 
-![Gender/2024/LK-1127025@20/Map](images/readme/8a531d04.png)
+![Gender/2024/LK-1127025@20/Map](images/readme/Gender_2024_LK-1127025@20_Map.png)
 
 #### 7.10) Map of Population cross-tabulated by sex and age group (2024) for LK-1103.
 
@@ -1147,7 +1147,7 @@ GenderAndAgeGroup/2024/LK-1103/Map
         "when_description": "2024",
         "where_description": "LK-1103",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/aa369d99.png",
+        "image_path": "/tmp/lanka_data/images/GenderAndAgeGroup_2024_LK-1103_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "GenderAndAgeGroup/2024/LK-1103/Map"
@@ -1157,7 +1157,7 @@ GenderAndAgeGroup/2024/LK-1103/Map
 }
 ```
 
-![GenderAndAgeGroup/2024/LK-1103/Map](images/readme/aa369d99.png)
+![GenderAndAgeGroup/2024/LK-1103/Map](images/readme/GenderAndAgeGroup_2024_LK-1103_Map.png)
 
 #### 7.11) Map of Number of households classified by their primary source of lighting (2024) for Divisional Secretariat Divisions in LK-61.
 
@@ -1172,7 +1172,7 @@ Lighting/2024/LK-61:dsd/Map
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-61",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/eb1d396f.png",
+        "image_path": "/tmp/lanka_data/images/Lighting_2024_LK-61:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Lighting/2024/LK-61:dsd/Map"
@@ -1182,7 +1182,7 @@ Lighting/2024/LK-61:dsd/Map
 }
 ```
 
-![Lighting/2024/LK-61:dsd/Map](images/readme/eb1d396f.png)
+![Lighting/2024/LK-61:dsd/Map](images/readme/Lighting_2024_LK-61:dsd_Map.png)
 
 #### 7.12) Map of Population classified by marital status such as never married, married, widowed, and divorced (2012) for LK-3, LK-9, LK-8.
 
@@ -1197,7 +1197,7 @@ Marital/2012/LK-3,LK-9,LK-8/Map
         "when_description": "2012",
         "where_description": "LK-3, LK-9, LK-8",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/8d06d514.png",
+        "image_path": "/tmp/lanka_data/images/Marital_2012_LK-3,LK-9,LK-8_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Marital/2012/LK-3,LK-9,LK-8/Map"
@@ -1207,7 +1207,7 @@ Marital/2012/LK-3,LK-9,LK-8/Map
 }
 ```
 
-![Marital/2012/LK-3,LK-9,LK-8/Map](images/readme/8d06d514.png)
+![Marital/2012/LK-3,LK-9,LK-8/Map](images/readme/Marital_2012_LK-3,LK-9,LK-8_Map.png)
 
 #### 7.13) Map of Housing units classified by occupancy status, distinguishing occupied from vacant units (2012) for Grama Niladhari Divisions in LK-1127.
 
@@ -1222,7 +1222,7 @@ Occupancy/2012/LK-1127:gnd/Map
         "when_description": "2012",
         "where_description": "Grama Niladhari Divisions in LK-1127",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/dd8989ca.png",
+        "image_path": "/tmp/lanka_data/images/Occupancy_2012_LK-1127:gnd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Occupancy/2012/LK-1127:gnd/Map"
@@ -1232,7 +1232,7 @@ Occupancy/2012/LK-1127:gnd/Map
 }
 ```
 
-![Occupancy/2012/LK-1127:gnd/Map](images/readme/dd8989ca.png)
+![Occupancy/2012/LK-1127:gnd/Map](images/readme/Occupancy_2012_LK-1127:gnd_Map.png)
 
 #### 7.14) Map of Households classified by the ownership status of their dwelling, such as owned or rented (2012) for Divisional Secretariat Divisions in LK-53-pre2019.
 
@@ -1247,7 +1247,7 @@ Ownership/2012/LK-53:dsd/Map
         "when_description": "2012",
         "where_description": "Divisional Secretariat Divisions in LK-53-pre2019",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/2ed0f000.png",
+        "image_path": "/tmp/lanka_data/images/Ownership_2012_LK-53:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Ownership/2012/LK-53:dsd/Map"
@@ -1257,9 +1257,9 @@ Ownership/2012/LK-53:dsd/Map
 }
 ```
 
-![Ownership/2012/LK-53:dsd/Map](images/readme/2ed0f000.png)
+![Ownership/2012/LK-53:dsd/Map](images/readme/Ownership_2012_LK-53:dsd_Map.png)
 
-#### 7.15) Map of Households classified by the type of living quarters such as housing units, collective living quarters, and makeshift housing (2012) for Regions from LK-4 to LK-6.
+#### 7.15) Map of Households classified by the type of living quarters such as housing units, collective living quarters, and makeshift housing (2012) for LK-4 to LK-6.
 
 ```bash
 Quarters/2012/LK-4...LK-6/Map
@@ -1270,9 +1270,9 @@ Quarters/2012/LK-4...LK-6/Map
     "result": {
         "what_description": "Households classified by the type of living quarters such as housing units, collective living quarters, and makeshift housing",
         "when_description": "2012",
-        "where_description": "Regions from LK-4 to LK-6",
+        "where_description": "LK-4 to LK-6",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/f05a417e.png",
+        "image_path": "/tmp/lanka_data/images/Quarters_2012_LK-4...LK-6_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Quarters/2012/LK-4...LK-6/Map"
@@ -1282,7 +1282,7 @@ Quarters/2012/LK-4...LK-6/Map
 }
 ```
 
-![Quarters/2012/LK-4...LK-6/Map](images/readme/f05a417e.png)
+![Quarters/2012/LK-4...LK-6/Map](images/readme/Quarters_2012_LK-4...LK-6_Map.png)
 
 #### 7.16) Map of Population classified by their relationship to the head of the household (2012) for Divisional Secretariat Divisions in LK-23-pre2019.
 
@@ -1297,7 +1297,7 @@ RelationshipToHead/2012/LK-23:dsd/Map
         "when_description": "2012",
         "where_description": "Divisional Secretariat Divisions in LK-23-pre2019",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/4d949120.png",
+        "image_path": "/tmp/lanka_data/images/RelationshipToHead_2012_LK-23:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "RelationshipToHead/2012/LK-23:dsd/Map"
@@ -1307,7 +1307,7 @@ RelationshipToHead/2012/LK-23:dsd/Map
 }
 ```
 
-![RelationshipToHead/2012/LK-23:dsd/Map](images/readme/4d949120.png)
+![RelationshipToHead/2012/LK-23:dsd/Map](images/readme/RelationshipToHead_2012_LK-23:dsd_Map.png)
 
 #### 7.17) Map of Housing units classified by the main material used for roof construction (e.g. tile, sheet, concrete) (2024) for Divisional Secretariat Divisions in LK-9.
 
@@ -1322,7 +1322,7 @@ Roof/2024/LK-9:dsd/Map
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-9",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/89d0d952.png",
+        "image_path": "/tmp/lanka_data/images/Roof_2024_LK-9:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Roof/2024/LK-9:dsd/Map"
@@ -1332,7 +1332,7 @@ Roof/2024/LK-9:dsd/Map
 }
 ```
 
-![Roof/2024/LK-9:dsd/Map](images/readme/89d0d952.png)
+![Roof/2024/LK-9:dsd/Map](images/readme/Roof_2024_LK-9:dsd_Map.png)
 
 #### 7.18) Map of Households classified by the number of rooms in the dwelling (2012) for Polling Divisions in LK-2.
 
@@ -1347,7 +1347,7 @@ Rooms/2012/LK-2:pd/Map
         "when_description": "2012",
         "where_description": "Polling Divisions in LK-2",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/7ece7ecd.png",
+        "image_path": "/tmp/lanka_data/images/Rooms_2012_LK-2:pd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Rooms/2012/LK-2:pd/Map"
@@ -1357,7 +1357,7 @@ Rooms/2012/LK-2:pd/Map
 }
 ```
 
-![Rooms/2012/LK-2:pd/Map](images/readme/7ece7ecd.png)
+![Rooms/2012/LK-2:pd/Map](images/readme/Rooms_2012_LK-2:pd_Map.png)
 
 #### 7.19) Map of Housing units classified by structural type (e.g. permanent, semi-permanent, temporary) (2024) for Districts in LK-3.
 
@@ -1372,7 +1372,7 @@ Structure/2024/LK-3:district/Map
         "when_description": "2024",
         "where_description": "Districts in LK-3",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/d5a7ddcf.png",
+        "image_path": "/tmp/lanka_data/images/Structure_2024_LK-3:district_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Structure/2024/LK-3:district/Map"
@@ -1382,7 +1382,7 @@ Structure/2024/LK-3:district/Map
 }
 ```
 
-![Structure/2024/LK-3:district/Map](images/readme/d5a7ddcf.png)
+![Structure/2024/LK-3:district/Map](images/readme/Structure_2024_LK-3:district_Map.png)
 
 #### 7.20) Map of Number of households classified by the type of toilet facility used (2024) for Divisional Secretariat Divisions in LK-53.
 
@@ -1397,7 +1397,7 @@ Toilet/2024/LK-53:dsd/Map
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-53",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/63dc71cf.png",
+        "image_path": "/tmp/lanka_data/images/Toilet_2024_LK-53:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Toilet/2024/LK-53:dsd/Map"
@@ -1407,7 +1407,7 @@ Toilet/2024/LK-53:dsd/Map
 }
 ```
 
-![Toilet/2024/LK-53:dsd/Map](images/readme/63dc71cf.png)
+![Toilet/2024/LK-53:dsd/Map](images/readme/Toilet_2024_LK-53:dsd_Map.png)
 
 #### 7.21) Map of Housing units classified by the main material used for wall construction (e.g. brick, cabook, cadjan) (2024) for Divisional Secretariat Divisions in LK-8.
 
@@ -1422,7 +1422,7 @@ Walls/2024/LK-8:dsd/Map
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-8",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/d71d3a67.png",
+        "image_path": "/tmp/lanka_data/images/Walls_2024_LK-8:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Walls/2024/LK-8:dsd/Map"
@@ -1432,7 +1432,7 @@ Walls/2024/LK-8:dsd/Map
 }
 ```
 
-![Walls/2024/LK-8:dsd/Map](images/readme/d71d3a67.png)
+![Walls/2024/LK-8:dsd/Map](images/readme/Walls_2024_LK-8:dsd_Map.png)
 
 #### 7.22) Map of Households classified by the method used for solid waste disposal (2012) for Divisional Secretariat Divisions in LK-1-pre2019.
 
@@ -1447,7 +1447,7 @@ Waste/2012/LK-1:dsd/Map
         "when_description": "2012",
         "where_description": "Divisional Secretariat Divisions in LK-1-pre2019",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/594bba37.png",
+        "image_path": "/tmp/lanka_data/images/Waste_2012_LK-1:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Waste/2012/LK-1:dsd/Map"
@@ -1457,7 +1457,7 @@ Waste/2012/LK-1:dsd/Map
 }
 ```
 
-![Waste/2012/LK-1:dsd/Map](images/readme/594bba37.png)
+![Waste/2012/LK-1:dsd/Map](images/readme/Waste_2012_LK-1:dsd_Map.png)
 
 #### 7.23) Map of Number of households classified by their main source of drinking water (2024) for Divisional Secretariat Divisions in LK-4.
 
@@ -1472,7 +1472,7 @@ Water/2024/LK-4:dsd/Map
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-4",
         "how_description": "Map",
-        "image_path": "/tmp/lanka_data/images/e414f3c6.png",
+        "image_path": "/tmp/lanka_data/images/Water_2024_LK-4:dsd_Map.png",
         "source": "Department of Census and Statistics, Sri Lanka",
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Water/2024/LK-4:dsd/Map"
@@ -1482,7 +1482,7 @@ Water/2024/LK-4:dsd/Map
 }
 ```
 
-![Water/2024/LK-4:dsd/Map](images/readme/e414f3c6.png)
+![Water/2024/LK-4:dsd/Map](images/readme/Water_2024_LK-4:dsd_Map.png)
 
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)

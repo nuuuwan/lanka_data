@@ -1,0 +1,14 @@
+{
+  "result": {
+    "what_description": "Population broken down by male and female",
+    "when_description": "2024",
+    "where_description": "Regions within 20.0 km of LK-1127025",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/Gender_2024_LK-1127025@20_Map.png",
+    "source": "Department of Census and Statistics, Sri Lanka",
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "Gender/2024/LK-1127025@20/Map"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
+}

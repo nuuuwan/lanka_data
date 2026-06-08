@@ -1,0 +1,14 @@
+{
+  "result": {
+    "what_description": "Results of the 2024 Sri Lankan Presidential Election",
+    "when_description": "Latest",
+    "where_description": "Polling Divisions in LK-11",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/Presidential_Latest_LK-11:pd_Map.png",
+    "source": "Department of Census and Statistics, Sri Lanka",
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "Presidential/Latest/LK-11:pd/Map"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
+}

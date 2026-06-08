@@ -28,7 +28,7 @@ class Example:
         for examples in idx.values():
             cmd_list.extend([example.cmd for example in examples])
         cmd_list.sort()
-        return cmd_list[:1]
+        return cmd_list
 
     @classmethod
     def get_output_idx_hot(cls):

@@ -1,0 +1,14 @@
+{
+  "result": {
+    "what_description": "Basic Information",
+    "when_description": "2012",
+    "where_description": "Districts in LK-pre1984",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/Basic_2012_LK-pre1984:district_Map.png",
+    "source": "Department of Census and Statistics, Sri Lanka",
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "Basic/2012/LK-pre1984:district/Map"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
+}

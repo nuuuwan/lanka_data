@@ -1,0 +1,14 @@
+{
+  "result": {
+    "what_description": "Number of households classified by the type of toilet facility used",
+    "when_description": "2024",
+    "where_description": "Divisional Secretariat Divisions in LK-53",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/images/Toilet_2024_LK-53:dsd_Map.png",
+    "source": "Department of Census and Statistics, Sri Lanka",
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "Toilet/2024/LK-53:dsd/Map"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
+}
