@@ -5,6 +5,7 @@ from lanka_data.how.ColorUtils import ColorUtils
 from lanka_data.how.GeoDataUtils import GeoDataUtils
 from lanka_data.how.How import How
 from lanka_data.how.HowFactory import HowFactory
+from lanka_data.how.HueUtils import HueUtils
 from lanka_data.how.JSON import JSON
 from lanka_data.how.LabelFitUtils import LabelFitUtils
 from lanka_data.how.LabelUtils import LabelUtils

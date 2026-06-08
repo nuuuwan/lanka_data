@@ -1,75 +1,29 @@
-import colorsys
-
-DEFAULT_SATURATION = 1.0
-DEFAULT_LIGHTNESS = 0.4
-DEFAULT_GRAY = "#808080"
-MIN_HUE_SEPARATION = 30
-
-
-class HUE:
-    RED = 0
-    ORANGE = 30
-    GOLD = 60
-    GREEN = 120
-    TEAL = 170
-    BLUE = 240
-    PURPLE = 300
-    GRAY = None  # achromatic – no hue
-
-    @staticmethod
-    def _check_hue_separation() -> None:
-        hues = sorted(
-            v
-            for k, v in vars(HUE).items()
-            if not k.startswith("_") and isinstance(v, int)
-        )
-        for i, h1 in enumerate(hues):
-            for h2 in hues[i + 1:]:
-                dist = min(h2 - h1, 360 - (h2 - h1))
-                if dist < MIN_HUE_SEPARATION:
-                    raise ValueError(
-                        f"HUE values {h1}° and {h2}° are only {dist}° apart"
-                        f" (minimum {MIN_HUE_SEPARATION}°)"
-                    )
-
-    @staticmethod
-    def to_hex(hue) -> str:
-        if hue is None:
-            return DEFAULT_GRAY
-        r, g, b = colorsys.hls_to_rgb(
-            hue / 360.0, DEFAULT_LIGHTNESS, DEFAULT_SATURATION
-        )
-        return (
-            f"#{round(r * 255):02X}{round(g * 255):02X}{round(b * 255):02X}"
-        )
-
-
-HUE._check_hue_separation()
+from lanka_data.how.HueUtils import HueUtils
 
 
 class ColorUtils:
     GROUP_TO_HUE_TO_LABEL_LIST = {
         "Religion": {
-            HUE.GOLD: ["Buddhist"],
-            HUE.ORANGE: ["Hindu"],
-            HUE.GREEN: ["Islam"],
-            HUE.BLUE: ["OtherChristian"],
-            HUE.PURPLE: ["RomanCatholic"],
-            HUE.GRAY: ["Other"],
+            HueUtils.GOLD: ["Buddhist"],
+            HueUtils.ORANGE: ["Hindu"],
+            HueUtils.GREEN: ["Islam"],
+            HueUtils.BLUE: ["OtherChristian"],
+            HueUtils.PURPLE: ["RomanCatholic"],
+            HueUtils.GRAY: ["Other"],
         },
         "Ethnicity": {
-            HUE.RED: ["Sinhalese"],
-            HUE.ORANGE: ["SLTamil"],
-            HUE.BLUE: ["IndMalaiyagaTamil"],
-            HUE.GREEN: ["SLMoor"],
-            HUE.TEAL: ["Malay"],
+            HueUtils.RED: ["Sinhalese"],
+            HueUtils.ORANGE: ["SLTamil"],
+            HueUtils.BLUE: ["IndMalaiyagaTamil"],
+            HueUtils.GREEN: ["SLMoor"],
+            HueUtils.TEAL: ["Malay"],
         },
         "Political Party": {
-            HUE.PURPLE: ["SLPP", "SLMP"],
-            HUE.BLUE: ["UPFA", "PA", "SLFP"],
-            HUE.RED: ["NPP"],
-            HUE.GREEN: ["SJB", "UNP", "NDF"],
-            HUE.ORANGE: ["IND9", "ACTC", "ITAK"],
+            HueUtils.PURPLE: ["SLPP", "SLMP"],
+            HueUtils.BLUE: ["UPFA", "PA", "SLFP"],
+            HueUtils.RED: ["NPP"],
+            HueUtils.GREEN: ["SJB", "UNP", "NDF"],
+            HueUtils.ORANGE: ["IND9", "ACTC", "ITAK"],
         },
     }
 
@@ -82,7 +36,7 @@ class ColorUtils:
 
     @staticmethod
     def hue_to_hex(hue) -> str:
-        return HUE.to_hex(hue)
+        return HueUtils.to_hex(hue)
 
     @staticmethod
     def _color_with_opacity(hex_color, pct):
