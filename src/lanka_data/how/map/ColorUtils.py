@@ -13,9 +13,9 @@ class ColorUtils:
         },
         "Ethnicity": {
             HueUtils.RED: ["Sinhalese"],
-            HueUtils.ORANGE: ["SLTamil"],
+            HueUtils.ORANGE: ["SlTamil"],
             HueUtils.BLUE: ["IndMalaiyagaTamil"],
-            HueUtils.GREEN: ["SLMoor"],
+            HueUtils.GREEN: ["SlMoor"],
             HueUtils.TEAL: ["Malay"],
         },
         "Political Party": {
