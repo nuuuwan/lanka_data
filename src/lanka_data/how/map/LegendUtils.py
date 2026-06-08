@@ -3,7 +3,7 @@ import numpy as np
 
 class LegendUtils:
     MAX_LEGEND_ITEMS = 7
-    LEGEND_2D_N_COLS = 5
+    LEGEND_2D_N_COLS = 3
 
     @staticmethod
     def _format_legend_label(value):
