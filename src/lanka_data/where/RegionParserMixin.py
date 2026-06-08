@@ -93,7 +93,7 @@ class RegionParserMixin:
         if not child_region_type:
             return (
                 cls._get_raw_region_data_list_for_region_ids(
-                    parent_region_ids, region_year
+                    parent_region_ids
                 ),
                 region_year,
             )

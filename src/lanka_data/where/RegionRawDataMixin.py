@@ -86,12 +86,14 @@ class RegionRawDataMixin:
                 raw_region_idx = cls._get_raw_region_data_idx_for_region_type(
                     region_type, region_year
                 )
-                raw_region = raw_region_idx.get(region_id)
-                if raw_region is None:
-                    raise ValueError(
-                        f"Region ID not found: {region_id} (type: {region_type}, year: {region_year})"
-                    )
-                region_id_to_raw_region[region_id] = raw_region
+                for region_id in region_ids:
+                    raw_region = raw_region_idx.get(region_id)
+                    if raw_region is None:
+                        raise ValueError(
+                            f"Region ID not found: {region_id} (type: {region_type}, year: {region_year})"
+                        )
+                    region_id_to_raw_region[region_id] = raw_region
+
         return [region_id_to_raw_region[region_id] for region_id in region_ids]
 
     # flake8: noqa: C901
