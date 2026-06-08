@@ -13,9 +13,9 @@ class ColorUtils:
         },
         "Ethnicity": {
             HueUtils.RED: ["Sinhalese"],
-            HueUtils.ORANGE: ["SlTamil"],
+            HueUtils.ORANGE: ["SLTamil"],
             HueUtils.BLUE: ["IndMalaiyagaTamil"],
-            HueUtils.GREEN: ["SlMoor"],
+            HueUtils.GREEN: ["SLMoor"],
             HueUtils.TEAL: ["Malay"],
         },
         "Political Party": {
@@ -38,7 +38,7 @@ class ColorUtils:
     def hue_to_hex(hue) -> str:
         return HueUtils.to_hex(hue)
 
-    MIN_ALPHA = 0.1
+    MIN_ALPHA = 0.33
     MAX_ALPHA = 1.0
     ALPHA_SPAN = MAX_ALPHA - MIN_ALPHA
 
