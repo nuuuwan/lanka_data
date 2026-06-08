@@ -27,7 +27,11 @@ class LabelUtils:
             text_color = (
                 "black" if ColorUtils._is_light_color(bg_color) else "white"
             )
-            label = row.get("region_name") or row["region_id"]
+            label = (
+                f'{row.get("region_name")}\n{row.get("region_id")}'
+                if row.get("region_name")
+                else str(row.get("region_id"))
+            )
 
             if rect_w >= rect_h:
                 text_w, text_h = rect_w, rect_h
@@ -37,9 +41,7 @@ class LabelUtils:
                 text_angle = angle_deg + 90.0
             while text_angle > 90.0:
                 text_angle -= 180.0
-            fontsize = LabelUtils._fit_fontsize(
-                label, text_w, text_h, ax, fig
-            )
+            fontsize = LabelUtils._fit_fontsize(label, text_w, text_h, ax, fig)
             ax.annotate(
                 label,
                 xy=(cx, cy),
