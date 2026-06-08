@@ -33,10 +33,13 @@ class RegionLoadersMixin:
         return cls.from_region_ids_str(token, region_year)
 
     @classmethod
+    def get_description_from_region_year(cls, region_year):
+        return f" (pre-{region_year} Map)" if region_year != "Current" else ""
+
+    @classmethod
     def from_region_intersection(cls, region_a_id, region_b_id, region_year):
         region_a_type = RegionTypeUtils.get_region_type(region_a_id)
         region_b_type = RegionTypeUtils.get_region_type(region_b_id)
-
         region_a_id_key = f"{region_a_type}_id"
         region_b_id_key = f"{region_b_type}_id"
 
@@ -55,7 +58,7 @@ class RegionLoadersMixin:
             "Intersection of "
             + f"{region_a_type.title()} {region_a_id}"
             + f" and {region_b_type.title()} {region_b_id}"
-        ) + (f" (pre-{region_year} Map)" if region_year != "Current" else "")
+        ) + cls.get_description_from_region_year(region_year)
         return cls(intersection_gnds, region_year, description)
 
     @staticmethod
@@ -99,7 +102,7 @@ class RegionLoadersMixin:
         description = (
             f"{region_type.title()}s"
             + f" within {radius_km} km of {region_id}"
-            + (f" (pre-{region_year} Map)" if region_year != "Current" else "")
+            + cls.get_description_from_region_year(region_year)
         )
         return cls(nearby_regions, region_year, description)
 
@@ -126,7 +129,7 @@ class RegionLoadersMixin:
         description = (
             f"{region_type.title()}s,"
             + f" from {from_region_id} to {to_region_id}"
-            + (f" (pre-{region_year} Map)" if region_year != "Current" else "")
+            + cls.get_description_from_region_year(region_year)
         )
         return cls(raw_regions, region_year, description)
 
@@ -152,7 +155,7 @@ class RegionLoadersMixin:
         description = (
             f"{region_type.title()}s"
             + f" with IDs {region_ids_str}"
-            + (f" (pre-{region_year} Map)" if region_year != "Current" else "")
+            + cls.get_description_from_region_year(region_year)
         )
         return cls(raw_regions, region_year, description)
 
@@ -194,6 +197,6 @@ class RegionLoadersMixin:
         description = (
             f"{region_type.title()}s"
             + f" within {parent_region_id}"
-            + (f" (pre-{region_year} Map)" if region_year != "Current" else "")
+            + cls.get_description_from_region_year(region_year)
         )
         return cls(raw_regions, region_year, description)
