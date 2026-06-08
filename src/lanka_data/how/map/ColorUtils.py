@@ -67,3 +67,12 @@ class ColorUtils:
             r, g, b = color[0], color[1], color[2]
         luminance = 0.299 * r + 0.587 * g + 0.114 * b
         return luminance > 0.5
+
+    @staticmethod
+    def rgb_to_hex(rgb):
+        r, g, b = rgb
+
+        def part(x):
+            return f"{round(x * 255):02X}"
+
+        return f"#{part(r)}{part(g)}{part(b)}"
