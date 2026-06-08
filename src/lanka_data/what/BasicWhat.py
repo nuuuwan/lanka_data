@@ -19,7 +19,7 @@ class BasicWhat(What):
         return new_data
 
     def get_description(self):
-        return "Basic information"
+        return "Basic Information"
 
     def get_data_list(self, regions) -> list[dict]:
         return [self.clean(region) for region in regions.raw_region_data_list]

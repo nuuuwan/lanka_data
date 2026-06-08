@@ -75,20 +75,15 @@ class MapUtils:
         )
         center_x = (ax_pos.x0 + right_x) / 2
         t = fig.transFigure
+
         fig.text(
             center_x,
             0.97,
-            how_description,
-            transform=t,
-            ha="center",
-            va="bottom",
-            fontsize=12,
-            color="grey",
-        )
-        fig.text(
-            center_x,
-            0.92,
-            f"{what_description} ({when_description})",
+            (
+                f"{what_description} ({when_description})"
+                if what_description != "Basic Information"
+                else "Geo Boundaries"
+            ),
             transform=t,
             ha="center",
             va="bottom",
@@ -98,7 +93,7 @@ class MapUtils:
         )
         fig.text(
             center_x,
-            0.88,
+            0.92,
             where_description,
             transform=t,
             ha="center",
@@ -106,6 +101,18 @@ class MapUtils:
             fontsize=14,
             color="black",
         )
+
+        fig.text(
+            center_x,
+            0.87,
+            how_description,
+            transform=t,
+            ha="center",
+            va="bottom",
+            fontsize=12,
+            color="grey",
+        )
+
         ax.set_axis_off()
         if source:
             fig.text(
@@ -159,9 +166,7 @@ class MapUtils:
             source,
             cmd,
         )
-        image_dir = os.path.join(
-            tempfile.gettempdir(), "lanka_data", "images"
-        )
+        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, f"{h}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
