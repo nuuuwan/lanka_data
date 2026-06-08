@@ -82,7 +82,7 @@ class RegionParserMixin:
                 from_region_id, to_region_id
             )
             region_year = cls._get_region_year(parent_region_ids[0])
-            description = f"Regions from {from_region_id} to {to_region_id}"
+            description = f"{from_region_id} to {to_region_id}"
             return parent_region_ids, region_year, description
 
         if "@" in parent_part:
