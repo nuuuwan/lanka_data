@@ -12,7 +12,7 @@ class FieldNameUtils:
         "SLChetty": {"SriLankaChetty", "SLChetty"},
     }
     NAME_IDX = {
-        original_name: normalized_name
+        original_name.lower(): normalized_name
         for normalized_name, original_names in NORMALIZED_TO_ORIGINAL.items()
         for original_name in original_names
     }
@@ -27,4 +27,6 @@ class FieldNameUtils:
         remapped_name = FieldNameUtils.from_snake_case_to_pascal_case(
             field_name
         )
-        return FieldNameUtils.NAME_IDX.get(remapped_name, remapped_name)
+        return FieldNameUtils.NAME_IDX.get(
+            remapped_name.lower(), remapped_name
+        )
