@@ -2,9 +2,9 @@
   "result": {
     "what_description": "Households classified by the ownership status of their dwelling, such as owned or rented",
     "when_description": "2012",
-    "where_description": "Dsds within LK-53 (pre-2019 Map)",
+    "where_description": "Divisional Secretariat Divisions in LK-53-pre2019",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/images/b78936c4.png",
+    "image_path": "/tmp/lanka_data/images/2ed0f000.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Ownership/2012/LK-53:dsd/Map"

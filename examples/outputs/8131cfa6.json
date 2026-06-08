@@ -2,9 +2,9 @@
   "result": {
     "what_description": "Housing units classified by structural type (e.g. permanent, semi-permanent, temporary)",
     "when_description": "2024",
-    "where_description": "Districts within LK-3",
+    "where_description": "Districts in LK-3",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/images/779a358c.png",
+    "image_path": "/tmp/lanka_data/images/d5a7ddcf.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Structure/2024/LK-3:district/Map"

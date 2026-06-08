@@ -1,10 +1,10 @@
 {
   "result": {
-    "what_description": "Basic information",
+    "what_description": "Basic Information",
     "when_description": "2024",
-    "where_description": "Gnds within 20 km of LK-1127025",
+    "where_description": "Regions within 20.0 km of LK-1127025",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/images/8f0011f7.png",
+    "image_path": "/tmp/lanka_data/images/b2da9d2a.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Basic/2024/LK-1127025@20/Map"

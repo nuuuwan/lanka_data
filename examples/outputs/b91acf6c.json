@@ -2,9 +2,9 @@
   "result": {
     "what_description": "Households classified by the method used for solid waste disposal",
     "when_description": "2012",
-    "where_description": "Dsds within LK-1 (pre-2019 Map)",
+    "where_description": "Divisional Secretariat Divisions in LK-1-pre2019",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/images/8f88d8fa.png",
+    "image_path": "/tmp/lanka_data/images/594bba37.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Waste/2012/LK-1:dsd/Map"

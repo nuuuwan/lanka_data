@@ -1,10 +1,10 @@
 {
   "result": {
-    "what_description": "Basic information",
+    "what_description": "Basic Information",
     "when_description": "2024",
-    "where_description": "Provinces, from LK-5 to LK-8",
+    "where_description": "Regions from LK-5 to LK-8",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/images/c11facd1.png",
+    "image_path": "/tmp/lanka_data/images/bd9855e4.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Basic/2024/LK-5...LK-8/Map"

@@ -2,9 +2,9 @@
   "result": {
     "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
     "when_description": "Latest",
-    "where_description": "Dsds within LK-2",
+    "where_description": "Divisional Secretariat Divisions in LK-2",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/images/bb6f5bc5.png",
+    "image_path": "/tmp/lanka_data/images/c0acb07a.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Ethnicity/Latest/LK-2:dsd/Map"

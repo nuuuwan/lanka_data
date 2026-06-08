@@ -2,9 +2,9 @@
   "result": {
     "what_description": "Number of households classified by their primary source of lighting",
     "when_description": "2024",
-    "where_description": "Dsds within LK-61",
+    "where_description": "Divisional Secretariat Divisions in LK-61",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/images/c17cb1b8.png",
+    "image_path": "/tmp/lanka_data/images/eb1d396f.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Lighting/2024/LK-61:dsd/Map"

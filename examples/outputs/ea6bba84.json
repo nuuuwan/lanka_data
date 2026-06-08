@@ -1,10 +1,10 @@
 {
   "result": {
-    "what_description": "Basic information",
+    "what_description": "Basic Information",
     "when_description": "2012",
-    "where_description": "Districts within LK (pre-1959 Map)",
+    "where_description": "Districts in LK-pre1959",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/images/12904b91.png",
+    "image_path": "/tmp/lanka_data/images/af850d17.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Basic/2012/LK-pre1959:district/Map"

@@ -1,10 +1,10 @@
 {
   "result": {
-    "what_description": "Basic information",
+    "what_description": "Basic Information",
     "when_description": "2024",
-    "where_description": "Provinces within LK",
+    "where_description": "Provinces in LK",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/images/299e9172.png",
+    "image_path": "/tmp/lanka_data/images/f16e1479.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Basic/2024/LK:province/Map"

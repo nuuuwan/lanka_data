@@ -2,9 +2,9 @@
   "result": {
     "what_description": "Housing units classified by occupancy status, distinguishing occupied from vacant units",
     "when_description": "2012",
-    "where_description": "Gnds within LK-1127",
+    "where_description": "Grama Niladhari Divisions in LK-1127",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/images/e09aca73.png",
+    "image_path": "/tmp/lanka_data/images/dd8989ca.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Occupancy/2012/LK-1127:gnd/Map"

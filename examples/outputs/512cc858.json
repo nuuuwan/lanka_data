@@ -1,10 +1,10 @@
 {
   "result": {
-    "what_description": "Basic information",
+    "what_description": "Basic Information",
     "when_description": "2012",
-    "where_description": "Provinces within LK (pre-1873 Map)",
+    "where_description": "Provinces in LK-pre1873",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/images/82b80adf.png",
+    "image_path": "/tmp/lanka_data/images/73d08acb.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Basic/2012/LK-pre1873:province/Map"
