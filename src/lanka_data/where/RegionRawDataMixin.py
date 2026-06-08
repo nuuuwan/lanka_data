@@ -97,6 +97,7 @@ class RegionRawDataMixin:
     # flake8: noqa: C901
     @classmethod
     def is_parent(cls, parent_region_id: str, child_region_id: str) -> bool:
+        parent_region_id = parent_region_id.split("-pre")[0]
         if parent_region_id == "LK":
             return True
 
