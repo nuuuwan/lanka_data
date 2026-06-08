@@ -36,7 +36,7 @@
       "label": "Floor",
       "description": "Households classified by the main material used for floor construction (e.g. cement, tile, mud)"
     },
-    "Number-of-households-by-main-source-of-energyfuel-used": {
+    "Number-of-households-by-main-source-of-energyfuel-used-for-cooking": {
       "label": "Energy",
       "description": "Households classified by the main energy fuel used for any purpose"
     },
