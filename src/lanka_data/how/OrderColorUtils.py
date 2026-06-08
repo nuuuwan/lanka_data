@@ -45,7 +45,10 @@ class OrderColorUtils:
                     hue = 0.83 * i_key / n_keys
                     r, g, b = colorsys.hls_to_rgb(hue, 0.5, 1.0)
                     key_to_base_hex[key] = (
-                        f"#{round(r*255):02X}{round(g*255):02X}{round(b*255):02X}"
+                        f"#{round(r *
+                                  255):02X}{round(g *
+                                                  255):02X}{round(b *
+                                                                  255):02X}"
                     )
                 value_to_color[key] = ColorUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0
