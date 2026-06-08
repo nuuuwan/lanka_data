@@ -38,14 +38,17 @@ class ColorUtils:
     def hue_to_hex(hue) -> str:
         return HueUtils.to_hex(hue)
 
+    MIN_ALPHA = 0.1
+    MAX_ALPHA = 1.0
+    ALPHA_SPAN = MAX_ALPHA - MIN_ALPHA
+
     @staticmethod
     def _color_with_opacity(hex_color, pct):
         hex_color = hex_color.lstrip("#")
         r = int(hex_color[0:2], 16) / 255
         g = int(hex_color[2:4], 16) / 255
         b = int(hex_color[4:6], 16) / 255
-        MIN_ALPHA = 0.25
-        alpha = MIN_ALPHA + pct * (1.0 - MIN_ALPHA)
+        alpha = ColorUtils.MIN_ALPHA + pct * ColorUtils.ALPHA_SPAN
         return (r, g, b, alpha)
 
     @staticmethod

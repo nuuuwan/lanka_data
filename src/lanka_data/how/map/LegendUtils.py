@@ -1,5 +1,7 @@
 import numpy as np
 
+from lanka_data.how.map.ColorUtils import ColorUtils
+
 
 class LegendUtils:
     MAX_LEGEND_ITEMS = 7
@@ -33,7 +35,13 @@ class LegendUtils:
                     img[row_i, col_j] = [0, 0, 0, 0]
                 else:
                     normalised = (pct - pct_min) / pct_span
-                    img[row_i, col_j] = [r, g, b, 0.5 + normalised * 0.5]
+                    img[row_i, col_j] = [
+                        r,
+                        g,
+                        b,
+                        ColorUtils.MIN_ALPHA
+                        + normalised * (ColorUtils.ALPHA_SPAN),
+                    ]
         return img
 
     @staticmethod
