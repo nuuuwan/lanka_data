@@ -1,5 +1,8 @@
+from geopy.distance import geodesic
+
 from lanka_data.where.RegionTypeUtils import RegionTypeUtils
 from utils_future import Log
+from utils_future.GeoUtils import GeoUtils
 
 log = Log("RegionParserMixin")
 
@@ -32,6 +35,16 @@ class RegionParserMixin:
                 f"No regions found in range: {from_region_id}...{to_region_id}"
             )
         return region_ids
+
+    @classmethod
+    def _is_within_radius(cls, radius_km, center_region, other_region):
+        distance = GeoUtils.haversine_distance(
+            center_region["center_lat"],
+            center_region["center_lng"],
+            other_region["center_lat"],
+            other_region["center_lng"],
+        )
+        return distance <= radius_km
 
     @classmethod
     def get_region_ids_from_region_radius(cls, region_id, radius_km):
@@ -73,13 +86,14 @@ class RegionParserMixin:
             return parent_region_ids, region_year, description
 
         if "@" in parent_part:
-            region_id, radius_km = parent_part.split("@")
+            region_id, radius_km_str = parent_part.split("@")
+            radius_km = float(radius_km_str)
             parent_region_ids = cls.get_region_ids_from_region_radius(
                 region_id, radius_km
             )
             region_year = cls._get_region_year(parent_region_ids[0])
             description = f"Regions within {radius_km} km of {region_id}"
-            return parent_region_ids, region_year
+            return parent_region_ids, region_year, description
 
         parent_region_ids = parent_part.split(",")
         region_year = cls._get_region_year(parent_region_ids[0])
