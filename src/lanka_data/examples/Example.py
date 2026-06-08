@@ -38,6 +38,7 @@ class Example:
     @classmethod
     def get_output_idx_hot(cls):
         cmd_list = cls.get_cmd_list()
+        random.shuffle(cmd_list)
         idx = {}
         n_cmds = len(cmd_list)
         for i_cmd, cmd in enumerate(cmd_list, start=1):
@@ -57,7 +58,7 @@ class Example:
         os.makedirs(dir_outputs, exist_ok=True)
 
         idx = cls.get_output_idx_hot()
-        for cmd, output in random.shuffle(idx.items()):
+        for cmd, output in idx.items():
             output_path = os.path.join(
                 dir_outputs, f"{Example.cmd_to_hash(cmd)}.json"
             )
