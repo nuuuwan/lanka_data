@@ -19,6 +19,8 @@ class Db:
     DIR_CACHE = os.path.join(DIR_TEMP_DATA, "cache")
 
     def __init__(self, cmd: str):
+        if "_" in cmd:
+            raise ValueError("Invalid command: underscores are not allowed.")
         self.cmd = cmd
 
     @cached_property
