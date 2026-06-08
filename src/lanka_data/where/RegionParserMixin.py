@@ -1,4 +1,3 @@
-from geopy.distance import geodesic
 
 from lanka_data.where.RegionTypeUtils import RegionTypeUtils
 from utils_future import Log

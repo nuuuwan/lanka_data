@@ -2,6 +2,8 @@
 # flake8: noqa: F408
 
 from lanka_data.where.RegionLoadersMixin import RegionLoadersMixin
+from lanka_data.where.RegionParserMixin import RegionParserMixin
+from lanka_data.where.RegionRawDataMixin import RegionRawDataMixin
 from lanka_data.where.Regions import Regions
 from lanka_data.where.RegionTypeUtils import RegionTypeUtils
 from lanka_data.where.Where import Where

@@ -32,7 +32,9 @@ class WWW:
         cache_hit = cache_json_file.exists() and do_use_cache
 
         if cache_hit:
-            log.debug(f"💾 Getting {self.url} from cache - {cache_json_file}.")
+            log.debug(
+                f"💾 Getting {self.url} from cache - {cache_json_file}."
+            )
             return cache_json_file.read()
 
         log.info(f"🌐 Getting {self.url} from web.")

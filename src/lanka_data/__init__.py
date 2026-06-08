@@ -11,5 +11,6 @@ from lanka_data.readme import ReadMe
 from lanka_data.result import Result
 from lanka_data.what import (GIG2, BasicWhat, Census2012, Census2024,
                              Elections, FieldNameUtils, What, WhatFactory)
-from lanka_data.where import (RegionLoadersMixin, Regions, RegionTypeUtils,
+from lanka_data.where import (RegionLoadersMixin, RegionParserMixin,
+                              RegionRawDataMixin, Regions, RegionTypeUtils,
                               Where)
