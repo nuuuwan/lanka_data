@@ -5,6 +5,7 @@ import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 from PIL import Image, ImageOps
 
+from lanka_data.db.CmdUtils import CmdUtils
 from lanka_data.how.map.GeoDataUtils import GeoDataUtils
 from lanka_data.how.map.LabelUtils import LabelUtils
 from lanka_data.how.map.LegendUtils import LegendUtils
@@ -140,7 +141,6 @@ class MapUtils:
     @staticmethod
     def draw_map(where, what, when, how, cmd):
         result_data = how.get_data(where, what, when)
-        h = how.get_hash(where, what, when)
         data_list = result_data["data_list"]
         n_regions = len(data_list)
         gdf_region = GeoDataUtils.get_geopandas_dataframe(data_list).copy()
@@ -166,11 +166,10 @@ class MapUtils:
             source,
             cmd,
         )
-        image_dir = os.path.join(
-            tempfile.gettempdir(), "lanka_data", "images"
-        )
+        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
         os.makedirs(image_dir, exist_ok=True)
-        image_path = os.path.join(image_dir, f"{h}.png")
+        file_name_base = CmdUtils.get_name_base_from_cmd(cmd)
+        image_path = os.path.join(image_dir, f"{file_name_base}.png")
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
         plt.close(fig)
         with Image.open(image_path) as img:

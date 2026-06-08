@@ -1,6 +1,3 @@
-import hashlib
-
-
 class How:
     def __init__(self, how_label: str, params: str):
         self.how_label = how_label
@@ -24,11 +21,6 @@ class How:
             if self.params
             else self.how_label
         )
-
-    def get_hash(self, where, what, when):
-        return hashlib.md5(
-            str(self.get_descriptions(where, what, when)).encode()
-        ).hexdigest()[:8]
 
     def get_data(self, where, what, when):
         data_list = what.get_data_list(where)

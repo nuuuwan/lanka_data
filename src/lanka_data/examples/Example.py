@@ -22,10 +22,6 @@ class Example:
             for group_name, cmds in idx.items()
         }
 
-    @staticmethod
-    def cmd_to_hash(cmd):
-        return hashlib.md5(cmd.encode()).hexdigest()[:8]
-
     @classmethod
     def get_cmd_list(cls):
         idx = cls.get_example_idx()
@@ -59,9 +55,8 @@ class Example:
 
         idx = cls.get_output_idx_hot()
         for cmd, output in idx.items():
-            output_path = os.path.join(
-                dir_outputs, f"{Example.cmd_to_hash(cmd)}.json"
-            )
+            file_name_base = Db.get_name_base_from_cmd(cmd)
+            output_path = os.path.join(dir_outputs, f"{file_name_base}.json")
             output_file = JSONFile(output_path)
             output_file.write(output)
             log.info(f"Wrote {output_file}")

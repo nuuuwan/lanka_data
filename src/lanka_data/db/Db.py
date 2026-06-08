@@ -1,4 +1,3 @@
-import hashlib
 import json
 import os
 import shutil
@@ -6,6 +5,7 @@ import tempfile
 import time
 from functools import cached_property
 
+from lanka_data.db.CmdUtils import CmdUtils
 from lanka_data.how import HowFactory
 from lanka_data.what import WhatFactory
 from lanka_data.where import Regions
@@ -24,12 +24,10 @@ class Db:
         self.cmd = cmd
 
     @cached_property
-    def cache_file_base(self) -> str:
+    def cache_file_name_base(self) -> str:
         os.makedirs(self.DIR_CACHE, exist_ok=True)
-
-        cmd_id = self.cmd.lower()
-        h = hashlib.md5(cmd_id.encode("utf-8")).hexdigest()[:8]
-        return os.path.join(self.DIR_CACHE, h)
+        file_name_base = CmdUtils.get_name_base_from_cmd(self.cmd)
+        return os.path.join(self.DIR_CACHE, file_name_base)
 
     @classmethod
     def cache_clear(cls):
@@ -84,7 +82,7 @@ class Db:
 
     def run_unsafe(self, do_open_images, do_use_cache):
         t_start = time.perf_counter()
-        cache_json_file = os.path.join(self.cache_file_base + ".json")
+        cache_json_file = os.path.join(self.cache_file_name_base + ".json")
 
         cache_hit = os.path.exists(cache_json_file) and do_use_cache
         if cache_hit:
