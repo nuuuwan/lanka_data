@@ -1,5 +1,6 @@
 import hashlib
 import os
+import random
 
 from lanka_data.db import Db
 from utils_future import JSONFile, Log
@@ -56,7 +57,7 @@ class Example:
         os.makedirs(dir_outputs, exist_ok=True)
 
         idx = cls.get_output_idx_hot()
-        for cmd, output in idx.items():
+        for cmd, output in random.shuffle(idx.items()):
             output_path = os.path.join(
                 dir_outputs, f"{Example.cmd_to_hash(cmd)}.json"
             )
