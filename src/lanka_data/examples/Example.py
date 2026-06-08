@@ -1,7 +1,7 @@
 import os
 import random
 
-from lanka_data.db import Db
+from lanka_data.db import CmdUtils, Db
 from utils_future import JSONFile, Log
 
 log = Log("Example")
@@ -28,7 +28,7 @@ class Example:
         for examples in idx.values():
             cmd_list.extend([example.cmd for example in examples])
         cmd_list.sort()
-        return cmd_list
+        return cmd_list[:1]
 
     @classmethod
     def get_output_idx_hot(cls):
@@ -54,7 +54,7 @@ class Example:
 
         idx = cls.get_output_idx_hot()
         for cmd, output in idx.items():
-            file_name_base = Db.get_name_base_from_cmd(cmd)
+            file_name_base = CmdUtils.get_name_base_from_cmd(cmd)
             output_path = os.path.join(dir_outputs, f"{file_name_base}.json")
             output_file = JSONFile(output_path)
             output_file.write(output)
@@ -66,7 +66,9 @@ class Example:
         idx = {}
         for cmd in cmd_list:
             output_path = os.path.join(
-                "examples", "outputs", f"{Example.cmd_to_hash(cmd)}.json"
+                "examples",
+                "outputs",
+                f"{CmdUtils.get_name_base_from_cmd(cmd)}.json",
             )
             output_file = JSONFile(output_path)
             assert (
