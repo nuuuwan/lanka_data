@@ -1,4 +1,4 @@
-from lanka_data.how.PolyUtils import PolyUtils
+from lanka_data.how.map.PolyUtils import PolyUtils
 
 
 class LabelFitUtils:

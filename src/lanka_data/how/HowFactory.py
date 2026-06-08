@@ -1,5 +1,5 @@
 from lanka_data.how.JSON import JSON
-from lanka_data.how.Map import Map
+from lanka_data.how.map.Map import Map
 
 
 class HowFactory:

@@ -5,10 +5,10 @@ import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 from PIL import Image, ImageOps
 
-from lanka_data.how.GeoDataUtils import GeoDataUtils
-from lanka_data.how.LabelUtils import LabelUtils
-from lanka_data.how.LegendUtils import LegendUtils
-from lanka_data.how.RegionColorUtils import RegionColorUtils
+from lanka_data.how.map.GeoDataUtils import GeoDataUtils
+from lanka_data.how.map.LabelUtils import LabelUtils
+from lanka_data.how.map.LegendUtils import LegendUtils
+from lanka_data.how.map.RegionColorUtils import RegionColorUtils
 from utils_future import Log
 
 log = Log("MapUtils")

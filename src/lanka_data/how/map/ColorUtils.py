@@ -1,4 +1,4 @@
-from lanka_data.how.HueUtils import HueUtils
+from lanka_data.how.map.HueUtils import HueUtils
 
 
 class ColorUtils:

@@ -1,5 +1,5 @@
-from lanka_data.how.ColorUtils import ColorUtils
-from lanka_data.how.LabelFitUtils import LabelFitUtils
+from lanka_data.how.map.ColorUtils import ColorUtils
+from lanka_data.how.map.LabelFitUtils import LabelFitUtils
 
 
 class LabelUtils:

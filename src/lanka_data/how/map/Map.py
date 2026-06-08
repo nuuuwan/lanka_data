@@ -1,5 +1,5 @@
 from lanka_data.how.How import How
-from lanka_data.how.MapUtils import MapUtils
+from lanka_data.how.map.MapUtils import MapUtils
 
 
 class Map(How):

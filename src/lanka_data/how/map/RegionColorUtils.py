@@ -2,7 +2,7 @@ import colorsys
 
 import matplotlib.pyplot as plt
 
-from lanka_data.how.OrderColorUtils import OrderColorUtils
+from lanka_data.how.map.OrderColorUtils import OrderColorUtils
 
 
 class RegionColorUtils:

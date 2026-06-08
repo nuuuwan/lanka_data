@@ -1,6 +1,6 @@
 import colorsys
 
-from lanka_data.how.ColorUtils import ColorUtils
+from lanka_data.how.map.ColorUtils import ColorUtils
 
 
 class OrderColorUtils:
