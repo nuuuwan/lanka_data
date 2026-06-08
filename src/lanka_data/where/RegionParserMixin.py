@@ -1,4 +1,3 @@
-
 from lanka_data.where.RegionTypeUtils import RegionTypeUtils
 from utils_future import Log
 from utils_future.GeoUtils import GeoUtils

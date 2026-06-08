@@ -166,7 +166,9 @@ class MapUtils:
             source,
             cmd,
         )
-        image_dir = os.path.join(tempfile.gettempdir(), "lanka_data", "images")
+        image_dir = os.path.join(
+            tempfile.gettempdir(), "lanka_data", "images"
+        )
         os.makedirs(image_dir, exist_ok=True)
         file_name_base = CmdUtils.get_name_base_from_cmd(cmd)
         image_path = os.path.join(image_dir, f"{file_name_base}.png")
