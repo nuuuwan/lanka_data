@@ -28,8 +28,10 @@ class MapUtils:
     MAX_REGIONS_TO_LABEL = 100
     DEFAULT_EDGE_COLOR = "#fff"
     DEFAULT_EDGE_WIDTH = 0.5
-    DIR_CACHE_IMAGES = os.path.join(
-        tempfile.gettempdir(), "lanka_data", "cache", "images"
+    DIR_OUTPUT = os.path.join(
+        tempfile.gettempdir(),
+        "lanka_data",
+        "output",
     )
 
     # flake8: noqa: CFQ002
@@ -168,7 +170,7 @@ class MapUtils:
             source,
             cmd,
         )
-        image_dir = os.path.join(MapUtils.DIR_CACHE_IMAGES, cmd)
+        image_dir = os.path.join(MapUtils.DIR_OUTPUT, cmd)
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, "Image.png")
 

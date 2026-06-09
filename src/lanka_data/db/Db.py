@@ -14,15 +14,15 @@ log = Log("Db")
 
 class Db:
     DIR_TEMP_DATA = os.path.join(tempfile.gettempdir(), "lanka_data")
-    DIR_CACHE = os.path.join(DIR_TEMP_DATA, "cache")
+    DIR_OUTPUT = os.path.join(DIR_TEMP_DATA, "output")
 
     def __init__(self, cmd: str):
         self.cmd = cmd
 
     @classmethod
     def cache_clear(cls):
-        shutil.rmtree(cls.DIR_CACHE, ignore_errors=True)
-        os.makedirs(cls.DIR_CACHE, exist_ok=True)
+        shutil.rmtree(cls.DIR_OUTPUT, ignore_errors=True)
+        os.makedirs(cls.DIR_OUTPUT, exist_ok=True)
         log.warning("Cache cleared.")
 
     def _run_normalized(
@@ -72,7 +72,7 @@ class Db:
 
     def run_unsafe(self, do_open_images, do_use_cache):
         t_start = time.perf_counter()
-        dir_cache_base = os.path.join(self.DIR_CACHE, self.cmd)
+        dir_cache_base = os.path.join(self.DIR_OUTPUT, self.cmd)
         os.makedirs(dir_cache_base, exist_ok=True)
         cache_json_file = os.path.join(dir_cache_base, "Output.json")
 

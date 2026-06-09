@@ -17,10 +17,11 @@ class Example:
     @classmethod
     def get_example_idx(cls):
         idx = JSONFile(cls.EXAMPLES_PATH).read()
-        return {
+        idx = {
             group_name: [Example(cmd) for cmd in cmds]
             for group_name, cmds in idx.items()
         }
+        return dict(list(idx.items())[:2])
 
     @classmethod
     def get_cmd_list(cls):

@@ -12,8 +12,6 @@ class ReadMe:
     PATH = "README.md"
     MAX_LINES_IN_OUTPUT = 40
 
-    DIR_IMAGES_README = os.path.join("images", "readme")
-
     def get_lines_for_sources(self, output_idx):
 
         lines = [
@@ -134,7 +132,7 @@ class ReadMe:
 
         lines = []
         image_path = output["result"]["image_path"]
-        new_image_dir = os.path.join(ReadMe.DIR_IMAGES_README, cmd)
+        new_image_dir = os.path.join(Example.DIR_EXAMPLES_OUTPUT, cmd)
         os.makedirs(new_image_dir, exist_ok=True)
         new_image_path = os.path.join(new_image_dir, "Image.png")
 
