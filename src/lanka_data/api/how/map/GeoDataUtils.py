@@ -2,7 +2,9 @@ import geopandas
 import pandas as pd
 
 from lanka_data.api.where.RegionTypeUtils import RegionTypeUtils
-from utils_future import WWW
+from utils_future import WWW, DCNUtils, Log
+
+log = Log("GeoDataUtils")
 
 
 class GeoDataUtils:
@@ -84,7 +86,7 @@ class GeoDataUtils:
         return gdf.merge(df, on="region_id", how="left")
 
     @staticmethod
-    def get_geopandas_dataframe(data_list):
+    def get_geopandas_dataframe(data_list, is_cartogram):
         region_to_current_ids = GeoDataUtils._build_region_map(data_list)
         all_current_ids = [
             cid
@@ -95,4 +97,16 @@ class GeoDataUtils:
         gdf = GeoDataUtils._dissolve_by_region(gdf, region_to_current_ids)
         if gdf.empty:
             raise ValueError("No map data found.")
+
+        if is_cartogram:
+            region_id_to_weight = {
+                d["region_id"]: d["total_value"] for d in data_list
+            }
+            log.debug(f"{region_id_to_weight=}")
+            gdf = DCNUtils.run_gdf(
+                gdf,
+                region_id_to_weight,
+                n_iterations=100,
+            )
+
         return GeoDataUtils._enrich_from_data_list(gdf, data_list)

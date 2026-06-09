@@ -34,12 +34,19 @@ For each iteration (user controls when done)
 ```
 """
 
+import json
 import math
 
-from utils_future.JSONFile import JSONFile
+from shapely.geometry import shape
+
+from utils_future.Log import Log
+
+log = Log("DCNUtils")
 
 
 class DCNUtils:
+    EPSILON = 0.01
+
     @staticmethod
     def _polygon_area_and_centroid(coords):
         n = len(coords)
@@ -93,14 +100,15 @@ class DCNUtils:
         weights = {}
         for feat in features:
             fid = DCNUtils._get_feature_id(feat)
-            w = region_id_to_weight.get(fid, 0.0)
+            w = region_id_to_weight.get(fid, 1.0)
             if w < 0:
                 raise ValueError(f"Negative PolygonValue for region {fid!r}")
             weights[fid] = w
         total = sum(weights.values())
         if total == 0:
             raise ValueError("TotalValue is zero; all weights are zero.")
-        return weights, total
+        weights = {fid: w / total for fid, w in weights.items()}
+        return weights, 1.0
 
     @staticmethod
     def _compute_geometry_stats(features):
@@ -129,8 +137,9 @@ class DCNUtils:
             size_errors.append(max(a, desired) / denom if denom > 0 else 1.0)
             radius[fid] = r
             mass[fid] = m
-        frf = 1.0 / (1.0 + sum(size_errors) / len(size_errors))
-        return radius, mass, frf
+        mean_size_error = sum(size_errors) / len(size_errors)
+        frf = 1.0 / (1.0 + mean_size_error)
+        return radius, mass, frf, mean_size_error
 
     @staticmethod
     def _fij(dist, r, m):
@@ -169,24 +178,37 @@ class DCNUtils:
                     )
 
     @staticmethod
-    def run(
-        input_geojson_path: str,
-        region_id_to_weight: dict[str, float],
-        output_geojson_path: str,
-        n_iterations: int = 5,
-    ):
-        geojson = JSONFile(input_geojson_path).read()
-        features = geojson["features"]
+    def _run_features(features, region_id_to_weight, n_iterations):
         weights, total_value = DCNUtils._load_weights(
             features, region_id_to_weight
         )
-        for _ in range(n_iterations):
+        for i in range(n_iterations):
             areas, centroids = DCNUtils._compute_geometry_stats(features)
             total_area = sum(areas.values())
             if total_area == 0:
                 break
-            radius, mass, frf = DCNUtils._compute_force_params(
-                features, areas, weights, total_value, total_area
+            radius, mass, frf, mean_size_error = (
+                DCNUtils._compute_force_params(
+                    features, areas, weights, total_value, total_area
+                )
             )
+            error = mean_size_error - 1.0
+            log.debug(f"Iteration {i+1}/{n_iterations}, error={error:.6f}")
+            if error < DCNUtils.EPSILON:
+                log.debug("Converged.")
+                break
             DCNUtils._apply_forces(features, centroids, radius, mass, frf)
-        JSONFile(output_geojson_path).write(geojson)
+
+    @staticmethod
+    def run_gdf(
+        gdf,
+        region_id_to_weight: dict[str, float],
+        n_iterations,
+    ):
+
+        geojson = json.loads(gdf.to_json())
+        features = geojson["features"]
+        DCNUtils._run_features(features, region_id_to_weight, n_iterations)
+        result = gdf.copy()
+        result["geometry"] = [shape(f["geometry"]) for f in features]
+        return result

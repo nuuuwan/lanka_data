@@ -142,12 +142,14 @@ class MapUtils:
 
         return fig
 
-    @staticmethod
-    def draw_map(where, what, when, how, cmd):
+    @classmethod
+    def draw_map(cls, where, what, when, how, cmd, is_cartogram):
         result_data = how.get_data(where, what, when)
         data_list = result_data["data_list"]
         n_regions = len(data_list)
-        gdf_region = GeoDataUtils.get_geopandas_dataframe(data_list).copy()
+        gdf_region = GeoDataUtils.get_geopandas_dataframe(
+            data_list, is_cartogram
+        ).copy()
         region_color_map, value_to_color = (
             RegionColorUtils.get_region_color_map(result_data, how, what)
         )
