@@ -4,9 +4,9 @@ import shutil
 import tempfile
 import time
 
-from lanka_data.how import HowFactory
-from lanka_data.what import WhatFactory
-from lanka_data.where import Regions
+from lanka_data.api.how import HowFactory
+from lanka_data.api.what import WhatFactory
+from lanka_data.api.where import Regions
 from utils_future import Log
 
 log = Log("Db")
