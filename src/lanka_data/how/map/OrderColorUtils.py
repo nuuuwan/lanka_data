@@ -1,5 +1,4 @@
-import colorsys
-import random
+import matplotlib.pyplot as plt
 
 from lanka_data.how.map.ColorUtils import ColorUtils
 
@@ -32,8 +31,7 @@ class OrderColorUtils:
                 if key not in unknown_keys:
                     unknown_keys.append(key)
 
-        n_keys = max(len(unknown_keys), 1)
-        random_offset = random.randint(0, n_keys - 1) if n_keys > 1 else 0
+        _tab20 = plt.get_cmap("tab20")
         for data in data_list:
             key = func_key_getter(data) if func_key_getter else None
             if key not in key_to_base_hex:
@@ -43,8 +41,7 @@ class OrderColorUtils:
                     )
                 else:
                     i_key = unknown_keys.index(key)
-                    hue = ((i_key + random_offset) % n_keys) / n_keys
-                    r, g, b = colorsys.hls_to_rgb(hue, 0.5, 1.0)
+                    r, g, b, _ = _tab20(i_key % 20)
                     key_to_base_hex[key] = ColorUtils.rgb_to_hex((r, g, b))
                 value_to_color[key] = ColorUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0
