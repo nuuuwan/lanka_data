@@ -10,5 +10,5 @@
     "cmd": "ConstructionYear/2012/LK-3:dsd/Map"
   },
   "query_time_ms": 0,
-  "cache_hit": false
+  "cache_hit": true
 }
