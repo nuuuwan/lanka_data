@@ -215,8 +215,8 @@ class ReadMe:
         )
 
     def build(self):
-        example_idx = Example.get_example_idx()
-        output_idx = Example.get_output_idx()
+        example_idx = Example.get_group_to_examples()
+        output_idx = Example.get_cmd_to_output()
         lines = self.get_lines(example_idx, output_idx)
         readme_file = File(self.PATH)
         readme_file.write("\n".join(lines))

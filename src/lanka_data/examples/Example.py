@@ -1,5 +1,4 @@
 import os
-import random
 
 from lanka_data.db import Db
 from utils_future import JSONFile, Log
@@ -10,27 +9,41 @@ log = Log("Example")
 class Example:
     EXAMPLES_PATH = os.path.join("examples", "examples.json")
     DIR_EXAMPLES_OUTPUT = os.path.join("examples", "outputs")
+    MAX_EXAMPLES = 1000
 
     def __init__(self, cmd):
         self.cmd = cmd
 
     @classmethod
-    def get_example_idx(cls, is_test_mode=True):
-        idx = JSONFile(cls.EXAMPLES_PATH).read()
-        idx = {
+    def get_group_to_cmd_list(cls):
+        group_to_cmd_list = JSONFile(cls.EXAMPLES_PATH).read()
+        return group_to_cmd_list
+
+    @classmethod
+    def get_group_to_examples(cls):
+        group_to_cmd_list = cls.get_group_to_cmd_list()
+        group_to_examples = {
             group_name: [Example(cmd) for cmd in cmds]
-            for group_name, cmds in idx.items()
+            for group_name, cmds in group_to_cmd_list.items()
         }
-        if is_test_mode:
-            items = list(idx.items())
-            random.shuffle(items)
-            N_MAX = 5
-            idx = dict(items[:N_MAX])
-        return idx
+        group_to_examples = {}
+        n_examples = 0
+        for group_name, cmds in group_to_cmd_list.items():
+            examples = []
+            for cmd in cmds:
+                example = Example(cmd)
+                examples.append(example)
+                n_examples += 1
+                if n_examples >= cls.MAX_EXAMPLES:
+                    break
+            group_to_examples[group_name] = examples
+            if n_examples >= cls.MAX_EXAMPLES:
+                break
+        return group_to_examples
 
     @classmethod
     def get_cmd_list(cls):
-        idx = cls.get_example_idx()
+        idx = cls.get_group_to_examples()
         cmd_list = []
         for examples in idx.values():
             cmd_list.extend([example.cmd for example in examples])
@@ -38,53 +51,44 @@ class Example:
         return cmd_list
 
     @classmethod
-    def get_output_idx_hot(cls):
-        cmd_list = cls.get_cmd_list()
-        random.shuffle(cmd_list)
-        idx = {}
-        n_cmds = len(cmd_list)
-        for i_cmd, cmd in enumerate(cmd_list, start=1):
-            log.info(f"{i_cmd}/{n_cmds}) Building {cmd}.")
-            output = Db(cmd).run(do_open_images=False, do_use_cache=True)
-            if "result" not in output:
-                raise ValueError(
-                    f"Output for cmd '{cmd}' does not contain 'result'"
-                )
-            output["query_time_ms"] = 0
-            idx[cmd] = output
-        return idx
+    def get_output_hot(cls, cmd):
+        output = Db(cmd).run(do_open_images=False, do_use_cache=True)
+        if "result" not in output:
+            raise ValueError(
+                f"Output for cmd '{cmd}' does not contain 'result'"
+            )
+        return output
 
     @classmethod
-    def build(cls):
-        dir_outputs = os.path.join("examples", "outputs")
-        os.makedirs(dir_outputs, exist_ok=True)
+    def get_output(cls, cmd):
+        output_dir = os.path.join(
+            "examples",
+            "outputs",
+            cmd,
+        )
+        os.makedirs(output_dir, exist_ok=True)
+        output_path = os.path.join(output_dir, "Output.json")
+        output_file = JSONFile(output_path)
 
-        idx = cls.get_output_idx_hot()
-        for cmd, output in idx.items():
-            output_dir = os.path.join(cls.DIR_EXAMPLES_OUTPUT, cmd)
-            os.makedirs(output_dir, exist_ok=True)
-            output_path = os.path.join(output_dir, "Output.json")
-            output_file = JSONFile(output_path)
+        if output_file.exists():
+            output = output_file.read()
+            log.debug(f"Read {output_file}")
+        else:
+            output = cls.get_output_hot(cmd)
             output_file.write(output)
             log.info(f"Wrote {output_file}")
 
-    @classmethod
-    def get_output_idx(cls):
-        cmd_list = cls.get_cmd_list()
-        idx = {}
-        for cmd in cmd_list:
-            output_dir = os.path.join(
-                "examples",
-                "outputs",
-                cmd,
-            )
-            os.makedirs(output_dir, exist_ok=True)
-            output_path = os.path.join(output_dir, "Output.json")
-            output_file = JSONFile(output_path)
-            assert (
-                output_file.exists()
-            ), f"Output file for cmd '{cmd}' does not exist at {output_file}"
-            output = output_file.read()
+        return output
 
-            idx[cmd] = output
-        return idx
+    @classmethod
+    def get_cmd_to_output(cls):
+        cmd_list = cls.get_cmd_list()
+        cmd_to_output = {}
+        for cmd in cmd_list:
+            output = cls.get_output(cmd)
+            cmd_to_output[cmd] = output
+        return cmd_to_output
+
+    @classmethod
+    def build(cls):
+        cls.get_cmd_to_output()
