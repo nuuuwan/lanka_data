@@ -57,7 +57,7 @@ class Db:
         return where_cmd, what_cmd, when_cmd, how_cmd
 
     def _run(self):
-        if self.cmd == "*":
+        if self.cmd == "Help":
             return dict(
                 what_to_whens=WhatFactory.get_what_to_whens(),
                 where=["LK*", "EC-*", "LG-*"],

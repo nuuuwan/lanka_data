@@ -26,7 +26,6 @@ class OrderColorUtils:
         i_color = hash_int % OrderColorUtils.DEFAULT_CMAP_N_COLORS
         cmap = plt.get_cmap(OrderColorUtils.DEFAULT_CMAP)
         r, g, b, _ = cmap(i_color)
-        print(label, i_color, (r, g, b))
         return ColorUtils.rgb_to_hex((r, g, b))
 
     @staticmethod
