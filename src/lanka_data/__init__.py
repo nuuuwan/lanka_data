@@ -12,4 +12,3 @@ from lanka_data.api import (GIG2, JSON, BasicWhat, Census2012, Census2024,
 from lanka_data.db import Db
 from lanka_data.examples import Example
 from lanka_data.readme import ReadMe
-from lanka_data.result import Result
