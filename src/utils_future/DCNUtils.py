@@ -210,5 +210,5 @@ class DCNUtils:
         features = geojson["features"]
         DCNUtils._run_features(features, region_id_to_weight, n_iterations)
         result = gdf.copy()
-        result["geometry"] = [shape(f["geometry"]) for f in features]
+        result["geometry"] = [shape(f["geometry"]).buffer(0) for f in features]
         return result
