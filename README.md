@@ -505,7 +505,36 @@ Source: [examples/outputs/Ethnicity/2024/LK-53:dsd/Map/Output.json](examples/out
 
 Source: [examples/outputs/Ethnicity/2024/LK-53:dsd/Map/Image.png](examples/outputs/Ethnicity/2024/LK-53:dsd/Map/Image.png)
 
-#### 4.02) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (Latest) for Divisional Secretariat Divisions in LK-2.
+#### 4.02) Cartogram of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Divisional Secretariat Divisions in LK-53.
+
+```bash
+Ethnicity/2024/LK-53:dsd/Cartogram
+```
+
+```json
+{
+    "result": {
+        "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+        "when_description": "2024",
+        "where_description": "Divisional Secretariat Divisions in LK-53",
+        "how_description": "Cartogram",
+        "image_path": "/tmp/lanka_data/output/Ethnicity/2024/LK-53:dsd/Cartogram/Image.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Ethnicity/2024/LK-53:dsd/Cartogram"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
+}
+```
+
+Source: [examples/outputs/Ethnicity/2024/LK-53:dsd/Cartogram/Output.json](examples/outputs/Ethnicity/2024/LK-53:dsd/Cartogram/Output.json)
+
+![Ethnicity/2024/LK-53:dsd/Cartogram](examples/outputs/Ethnicity/2024/LK-53:dsd/Cartogram/Image.png)
+
+Source: [examples/outputs/Ethnicity/2024/LK-53:dsd/Cartogram/Image.png](examples/outputs/Ethnicity/2024/LK-53:dsd/Cartogram/Image.png)
+
+#### 4.03) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (Latest) for Divisional Secretariat Divisions in LK-2.
 
 ```bash
 Ethnicity/Latest/LK-2:dsd/Map
@@ -534,7 +563,7 @@ Source: [examples/outputs/Ethnicity/Latest/LK-2:dsd/Map/Output.json](examples/ou
 
 Source: [examples/outputs/Ethnicity/Latest/LK-2:dsd/Map/Image.png](examples/outputs/Ethnicity/Latest/LK-2:dsd/Map/Image.png)
 
-#### 4.03) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Divisional Secretariat Divisions in LK-23.
+#### 4.04) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Divisional Secretariat Divisions in LK-23.
 
 ```bash
 Ethnicity/2024/LK-23:dsd/Map
