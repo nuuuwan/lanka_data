@@ -1,11 +1,33 @@
+import hashlib
+
 import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
 
 from lanka_data.how.map.ColorUtils import ColorUtils
 
 
 class OrderColorUtils:
     _PARAM_IDX = {"Top": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
-    DEFAULT_MATPLOTLIB_CMAP = "Set1"
+    DEFAULT_CMAP_N_COLORS = 10
+    DEFAULT_CMAP = plt.cm.get_cmap("tab10")
+
+    @staticmethod
+    def generate_cmap():
+        n_colors = OrderColorUtils.DEFAULT_CMAP_N_COLORS
+        hues = [1.0 * i / n_colors for i in range(n_colors)]
+        colors = [ColorUtils.hue_to_hex(hue) for hue in hues]
+        cmap = ListedColormap(colors)
+        return cmap
+
+    @staticmethod
+    def get_color_for_label(label):
+        hash = hashlib.md5(label.encode()).hexdigest()
+        hash_int = int(hash, 16) % 999
+        i_color = hash_int % OrderColorUtils.DEFAULT_CMAP_N_COLORS
+        cmap = plt.get_cmap(OrderColorUtils.DEFAULT_CMAP)
+        r, g, b, _ = cmap(i_color)
+        print(label, i_color, (r, g, b))
+        return ColorUtils.rgb_to_hex((r, g, b))
 
     @staticmethod
     def _func_key_getter(how, what):
@@ -32,7 +54,7 @@ class OrderColorUtils:
                 if key not in unknown_keys:
                     unknown_keys.append(key)
 
-        cmap = plt.get_cmap(OrderColorUtils.DEFAULT_MATPLOTLIB_CMAP)
+        plt.get_cmap(OrderColorUtils.DEFAULT_CMAP)
         for data in data_list:
             key = func_key_getter(data) if func_key_getter else None
             if key not in key_to_base_hex:
@@ -41,9 +63,9 @@ class OrderColorUtils:
                         ColorUtils.HUE_IDX[key]
                     )
                 else:
-                    i_key = unknown_keys.index(key)
-                    r, g, b, _ = cmap(i_key % 20)
-                    key_to_base_hex[key] = ColorUtils.rgb_to_hex((r, g, b))
+                    key_to_base_hex[key] = (
+                        OrderColorUtils.get_color_for_label(key)
+                    )
                 value_to_color[key] = ColorUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0
                 )

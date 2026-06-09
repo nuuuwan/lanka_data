@@ -1,7 +1,5 @@
 import colorsys
 
-import matplotlib.pyplot as plt
-
 from lanka_data.how.map.OrderColorUtils import OrderColorUtils
 
 
@@ -9,11 +7,12 @@ class RegionColorUtils:
     @staticmethod
     def _colors_no_values(result_data):
         data_list = result_data["data_list"]
-        cmap = plt.get_cmap(OrderColorUtils.DEFAULT_MATPLOTLIB_CMAP)
         return (
             {
-                data["region_id"]: cmap(i % 20)
-                for i, data in enumerate(data_list)
+                data["region_id"]: OrderColorUtils.get_color_for_label(
+                    data["region_id"]
+                )
+                for data in data_list
             },
             None,
         )
