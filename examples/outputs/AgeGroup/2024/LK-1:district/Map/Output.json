@@ -4,11 +4,11 @@
     "when_description": "2024",
     "where_description": "Districts in LK-1",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/cache/images/AgeGroup/2024/LK-1:district/Map/Image.png",
+    "image_path": "/tmp/lanka_data/output/AgeGroup/2024/LK-1:district/Map/Image.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "AgeGroup/2024/LK-1:district/Map"
   },
   "query_time_ms": 0,
-  "cache_hit": false
+  "cache_hit": true
 }

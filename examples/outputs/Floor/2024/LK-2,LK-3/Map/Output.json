@@ -4,7 +4,7 @@
     "when_description": "2024",
     "where_description": "LK-2, LK-3",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/cache/images/Floor/2024/LK-2,LK-3/Map/Image.png",
+    "image_path": "/tmp/lanka_data/output/Floor/2024/LK-2,LK-3/Map/Image.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Floor/2024/LK-2,LK-3/Map"

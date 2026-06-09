@@ -4,7 +4,7 @@
     "when_description": "2012",
     "where_description": "Divisional Secretariat Divisions in LK-41-pre2019",
     "how_description": "Map (2nd largest value)",
-    "image_path": "/tmp/lanka_data/cache/images/Religion/2012/LK-41:dsd/Map:2nd/Image.png",
+    "image_path": "/tmp/lanka_data/output/Religion/2012/LK-41:dsd/Map:2nd/Image.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Religion/2012/LK-41:dsd/Map:2nd"

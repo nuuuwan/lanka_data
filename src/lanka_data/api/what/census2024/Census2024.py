@@ -15,6 +15,7 @@ class Census2024(What):
         return os.path.join(
             "src",
             "lanka_data",
+            "api",
             "what",
             "census2024",
             "census2024.metadata.json",

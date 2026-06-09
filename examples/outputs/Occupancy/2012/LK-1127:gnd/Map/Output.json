@@ -4,7 +4,7 @@
     "when_description": "2012",
     "where_description": "Grama Niladhari Divisions in LK-1127",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/cache/images/Occupancy/2012/LK-1127:gnd/Map/Image.png",
+    "image_path": "/tmp/lanka_data/output/Occupancy/2012/LK-1127:gnd/Map/Image.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Occupancy/2012/LK-1127:gnd/Map"

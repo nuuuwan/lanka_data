@@ -4,7 +4,7 @@
     "when_description": "2024",
     "where_description": "Districts in LK-3",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/cache/images/Structure/2024/LK-3:district/Map/Image.png",
+    "image_path": "/tmp/lanka_data/output/Structure/2024/LK-3:district/Map/Image.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Structure/2024/LK-3:district/Map"

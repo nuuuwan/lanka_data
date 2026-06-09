@@ -1221,5 +1221,5 @@
     "cmd": "Religion/2012/LK-1103:gnd/JSON"
   },
   "query_time_ms": 0,
-  "cache_hit": false
+  "cache_hit": true
 }

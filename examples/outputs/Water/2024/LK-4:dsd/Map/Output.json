@@ -4,11 +4,11 @@
     "when_description": "2024",
     "where_description": "Divisional Secretariat Divisions in LK-4",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/cache/images/Water/2024/LK-4:dsd/Map/Image.png",
+    "image_path": "/tmp/lanka_data/output/Water/2024/LK-4:dsd/Map/Image.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Water/2024/LK-4:dsd/Map"
   },
   "query_time_ms": 0,
-  "cache_hit": false
+  "cache_hit": true
 }
