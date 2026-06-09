@@ -134,10 +134,10 @@ class ReadMe:
 
         lines = []
         image_path = output["result"]["image_path"]
-        os.makedirs(ReadMe.DIR_IMAGES_README, exist_ok=True)
-        new_image_path = os.path.join(
-            ReadMe.DIR_IMAGES_README, os.path.basename(image_path)
-        )
+        new_image_dir = os.path.join(ReadMe.DIR_IMAGES_README, cmd)
+        os.makedirs(new_image_dir, exist_ok=True)
+        new_image_path = os.path.join(new_image_dir, "Image.png")
+
         shutil.copy2(image_path, new_image_path)
         lines.append(f"![{cmd}]({new_image_path})")
         lines.append("")
