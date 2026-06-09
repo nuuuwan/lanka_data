@@ -10,5 +10,5 @@
     "cmd": "Ethnicity/2012/LK-23-pre2019:dsd/Map"
   },
   "query_time_ms": 0,
-  "cache_hit": false
+  "cache_hit": true
 }

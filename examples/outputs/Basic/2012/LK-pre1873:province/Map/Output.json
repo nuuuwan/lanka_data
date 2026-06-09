@@ -10,5 +10,5 @@
     "cmd": "Basic/2012/LK-pre1873:province/Map"
   },
   "query_time_ms": 0,
-  "cache_hit": false
+  "cache_hit": true
 }

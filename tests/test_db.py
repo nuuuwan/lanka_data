@@ -15,6 +15,9 @@ def make_test(cmd, expected_output):
         actual_output = db.run(do_open_images=False, do_use_cache=False)
 
         actual_output["query_time_ms"] = 0
+        actual_output["cache_hit"] = False
+        expected_output["query_time_ms"] = 0
+        expected_output["cache_hit"] = False
 
         self.assertEqual(expected_output, actual_output)
 
@@ -27,7 +30,7 @@ def make_test(cmd, expected_output):
     return test
 
 
-output_idx = Example.get_output_idx()
+output_idx = Example.get_cmd_to_output()
 MAX_TESTS_TO_RUN = 5
 sampled_items = random.sample(
     list(output_idx.items()), min(MAX_TESTS_TO_RUN, len(output_idx))
