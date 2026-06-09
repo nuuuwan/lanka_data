@@ -207,12 +207,7 @@ class ReadMe:
             + self.get_lines_for_footer()
         )
 
-    def cleanup(self):
-        if os.path.exists(self.DIR_IMAGES_README):
-            shutil.rmtree(self.DIR_IMAGES_README)
-
     def build(self):
-        self.cleanup()
         example_idx = Example.get_example_idx()
         output_idx = Example.get_output_idx()
         lines = self.get_lines(example_idx, output_idx)

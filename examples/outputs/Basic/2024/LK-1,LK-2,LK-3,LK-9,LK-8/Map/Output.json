@@ -10,5 +10,5 @@
     "cmd": "Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map"
   },
   "query_time_ms": 0,
-  "cache_hit": false
+  "cache_hit": true
 }
