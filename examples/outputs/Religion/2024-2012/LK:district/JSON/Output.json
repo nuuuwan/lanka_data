@@ -1,0 +1,2071 @@
+{
+  "result": {
+    "what_description": "Population distributed by religious affiliation (e.g. Buddhist, Hindu, Islam)",
+    "when_description": "2024-2012",
+    "where_description": "Districts in LK",
+    "how_description": "JSON",
+    "data_list": [
+      {
+        "region_id": "LK-11",
+        "region_name": "Colombo",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 688.17,
+        "center_lat": 6.869822,
+        "center_lng": 80.018487,
+        "province_id": "LK-1",
+        "ed_id": "EC-01",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 1682524,
+            "Islam": 298422,
+            "Hindu": 197759,
+            "RomanCatholic": 139882,
+            "OtherChristian": 55624,
+            "Other": 1204
+          },
+          "2012": {
+            "Buddhist": 1632125,
+            "Islam": 274067,
+            "Hindu": 186303,
+            "RomanCatholic": 162260,
+            "OtherChristian": 66947,
+            "Other": 2262
+          }
+        },
+        "total_values_by_when": {
+          "2024": 2375415,
+          "2012": 2323964
+        },
+        "delta_values": {
+          "Buddhist": 50399,
+          "Islam": 24355,
+          "Hindu": 11456,
+          "RomanCatholic": -22378,
+          "OtherChristian": -11323,
+          "Other": -1058
+        },
+        "total_delta": 51451,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.7083,
+            "Islam": 0.1256,
+            "Hindu": 0.0833,
+            "RomanCatholic": 0.0589,
+            "OtherChristian": 0.0234,
+            "Other": 0.0005
+          },
+          "2012": {
+            "Buddhist": 0.7023,
+            "Islam": 0.1179,
+            "Hindu": 0.0802,
+            "RomanCatholic": 0.0698,
+            "OtherChristian": 0.0288,
+            "Other": 0.001
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0309,
+          "Islam": 0.0889,
+          "Hindu": 0.0615,
+          "RomanCatholic": -0.1379,
+          "OtherChristian": -0.1691,
+          "Other": -0.4677
+        },
+        "total_pct_delta": 0.0221,
+        "error_values": {
+          "Buddhist": 3.6e-05,
+          "Islam": 5.929e-05,
+          "Hindu": 9.61e-06,
+          "RomanCatholic": 0.00011881,
+          "OtherChristian": 2.916e-05,
+          "Other": 2.5e-07
+        },
+        "error": 4.219e-05
+      },
+      {
+        "region_id": "LK-12",
+        "region_name": "Gampaha",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 1385.23,
+        "center_lat": 7.123406,
+        "center_lng": 80.018206,
+        "province_id": "LK-1",
+        "ed_id": "EC-02",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 1744475,
+            "RomanCatholic": 442291,
+            "Islam": 134422,
+            "Hindu": 69429,
+            "OtherChristian": 44540,
+            "Other": 985
+          },
+          "2012": {
+            "Buddhist": 1642767,
+            "RomanCatholic": 449398,
+            "Islam": 112746,
+            "Hindu": 52973,
+            "OtherChristian": 46080,
+            "Other": 869
+          }
+        },
+        "total_values_by_when": {
+          "2024": 2436142,
+          "2012": 2304833
+        },
+        "delta_values": {
+          "Buddhist": 101708,
+          "RomanCatholic": -7107,
+          "Islam": 21676,
+          "Hindu": 16456,
+          "OtherChristian": -1540,
+          "Other": 116
+        },
+        "total_delta": 131309,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.7161,
+            "RomanCatholic": 0.1816,
+            "Islam": 0.0552,
+            "Hindu": 0.0285,
+            "OtherChristian": 0.0183,
+            "Other": 0.0004
+          },
+          "2012": {
+            "Buddhist": 0.7127,
+            "RomanCatholic": 0.195,
+            "Islam": 0.0489,
+            "Hindu": 0.023,
+            "OtherChristian": 0.02,
+            "Other": 0.0004
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0619,
+          "RomanCatholic": -0.0158,
+          "Islam": 0.1923,
+          "Hindu": 0.3106,
+          "OtherChristian": -0.0334,
+          "Other": 0.1335
+        },
+        "total_pct_delta": 0.057,
+        "error_values": {
+          "Buddhist": 1.156e-05,
+          "RomanCatholic": 0.00017956,
+          "Islam": 3.969e-05,
+          "Hindu": 3.025e-05,
+          "OtherChristian": 2.89e-06,
+          "Other": 0.0
+        },
+        "error": 4.399e-05
+      },
+      {
+        "region_id": "LK-13",
+        "region_name": "Kalutara",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 1646.99,
+        "center_lat": 6.577185,
+        "center_lng": 80.127744,
+        "province_id": "LK-1",
+        "ed_id": "EC-03",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 1080638,
+            "Islam": 138230,
+            "Hindu": 42528,
+            "RomanCatholic": 36510,
+            "OtherChristian": 7733,
+            "Other": 145
+          },
+          "2012": {
+            "Buddhist": 1018909,
+            "Islam": 114556,
+            "Hindu": 39541,
+            "RomanCatholic": 39774,
+            "OtherChristian": 8956,
+            "Other": 212
+          }
+        },
+        "total_values_by_when": {
+          "2024": 1305784,
+          "2012": 1221948
+        },
+        "delta_values": {
+          "Buddhist": 61729,
+          "Islam": 23674,
+          "Hindu": 2987,
+          "RomanCatholic": -3264,
+          "OtherChristian": -1223,
+          "Other": -67
+        },
+        "total_delta": 83836,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.8276,
+            "Islam": 0.1059,
+            "Hindu": 0.0326,
+            "RomanCatholic": 0.028,
+            "OtherChristian": 0.0059,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Buddhist": 0.8338,
+            "Islam": 0.0937,
+            "Hindu": 0.0324,
+            "RomanCatholic": 0.0325,
+            "OtherChristian": 0.0073,
+            "Other": 0.0002
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0606,
+          "Islam": 0.2067,
+          "Hindu": 0.0755,
+          "RomanCatholic": -0.0821,
+          "OtherChristian": -0.1366,
+          "Other": -0.316
+        },
+        "total_pct_delta": 0.0686,
+        "error_values": {
+          "Buddhist": 3.844e-05,
+          "Islam": 0.00014884,
+          "Hindu": 4e-08,
+          "RomanCatholic": 2.025e-05,
+          "OtherChristian": 1.96e-06,
+          "Other": 1e-08
+        },
+        "error": 3.492e-05
+      },
+      {
+        "region_id": "LK-21",
+        "region_name": "Kandy",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 1927.69,
+        "center_lat": 7.273178,
+        "center_lng": 80.708811,
+        "province_id": "LK-2",
+        "ed_id": "EC-04",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 1063511,
+            "Islam": 223997,
+            "Hindu": 144618,
+            "RomanCatholic": 18623,
+            "OtherChristian": 10919,
+            "Other": 227
+          },
+          "2012": {
+            "Buddhist": 1009220,
+            "Islam": 197076,
+            "Hindu": 133744,
+            "RomanCatholic": 22379,
+            "OtherChristian": 12798,
+            "Other": 165
+          }
+        },
+        "total_values_by_when": {
+          "2024": 1461895,
+          "2012": 1375382
+        },
+        "delta_values": {
+          "Buddhist": 54291,
+          "Islam": 26921,
+          "Hindu": 10874,
+          "RomanCatholic": -3756,
+          "OtherChristian": -1879,
+          "Other": 62
+        },
+        "total_delta": 86513,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.7275,
+            "Islam": 0.1532,
+            "Hindu": 0.0989,
+            "RomanCatholic": 0.0127,
+            "OtherChristian": 0.0075,
+            "Other": 0.0002
+          },
+          "2012": {
+            "Buddhist": 0.7338,
+            "Islam": 0.1433,
+            "Hindu": 0.0972,
+            "RomanCatholic": 0.0163,
+            "OtherChristian": 0.0093,
+            "Other": 0.0001
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0538,
+          "Islam": 0.1366,
+          "Hindu": 0.0813,
+          "RomanCatholic": -0.1678,
+          "OtherChristian": -0.1468,
+          "Other": 0.3758
+        },
+        "total_pct_delta": 0.0629,
+        "error_values": {
+          "Buddhist": 3.969e-05,
+          "Islam": 9.801e-05,
+          "Hindu": 2.89e-06,
+          "RomanCatholic": 1.296e-05,
+          "OtherChristian": 3.24e-06,
+          "Other": 1e-08
+        },
+        "error": 2.613e-05
+      },
+      {
+        "region_id": "LK-22",
+        "region_name": "Matale",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 2058.75,
+        "center_lat": 7.667651,
+        "center_lng": 80.730702,
+        "province_id": "LK-2",
+        "ed_id": "EC-05",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 418608,
+            "Islam": 52224,
+            "Hindu": 46181,
+            "RomanCatholic": 7797,
+            "OtherChristian": 2026,
+            "Other": 34
+          },
+          "2012": {
+            "Buddhist": 385151,
+            "Islam": 45682,
+            "Hindu": 43432,
+            "RomanCatholic": 7899,
+            "OtherChristian": 2342,
+            "Other": 25
+          }
+        },
+        "total_values_by_when": {
+          "2024": 526870,
+          "2012": 484531
+        },
+        "delta_values": {
+          "Buddhist": 33457,
+          "Islam": 6542,
+          "Hindu": 2749,
+          "RomanCatholic": -102,
+          "OtherChristian": -316,
+          "Other": 9
+        },
+        "total_delta": 42339,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.7945,
+            "Islam": 0.0991,
+            "Hindu": 0.0877,
+            "RomanCatholic": 0.0148,
+            "OtherChristian": 0.0038,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Buddhist": 0.7949,
+            "Islam": 0.0943,
+            "Hindu": 0.0896,
+            "RomanCatholic": 0.0163,
+            "OtherChristian": 0.0048,
+            "Other": 0.0001
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0869,
+          "Islam": 0.1432,
+          "Hindu": 0.0633,
+          "RomanCatholic": -0.0129,
+          "OtherChristian": -0.1349,
+          "Other": 0.36
+        },
+        "total_pct_delta": 0.0874,
+        "error_values": {
+          "Buddhist": 1.6e-07,
+          "Islam": 2.304e-05,
+          "Hindu": 3.61e-06,
+          "RomanCatholic": 2.25e-06,
+          "OtherChristian": 1e-06,
+          "Other": 0.0
+        },
+        "error": 5.01e-06
+      },
+      {
+        "region_id": "LK-23",
+        "region_name": "Nuwara Eliya",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 1744.81,
+        "center_lat": 6.974738,
+        "center_lng": 80.711186,
+        "province_id": "LK-2",
+        "ed_id": "EC-06",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Hindu": 377266,
+            "Buddhist": 278828,
+            "RomanCatholic": 31705,
+            "Islam": 21929,
+            "OtherChristian": 15474,
+            "Other": 78
+          },
+          "2012": {
+            "Hindu": 363163,
+            "Buddhist": 278254,
+            "RomanCatholic": 33476,
+            "Islam": 21116,
+            "OtherChristian": 15508,
+            "Other": 127
+          }
+        },
+        "total_values_by_when": {
+          "2024": 725280,
+          "2012": 711644
+        },
+        "delta_values": {
+          "Hindu": 14103,
+          "Buddhist": 574,
+          "RomanCatholic": -1771,
+          "Islam": 813,
+          "OtherChristian": -34,
+          "Other": -49
+        },
+        "total_delta": 13636,
+        "pct_values_by_when": {
+          "2024": {
+            "Hindu": 0.5202,
+            "Buddhist": 0.3844,
+            "RomanCatholic": 0.0437,
+            "Islam": 0.0302,
+            "OtherChristian": 0.0213,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Hindu": 0.5103,
+            "Buddhist": 0.391,
+            "RomanCatholic": 0.047,
+            "Islam": 0.0297,
+            "OtherChristian": 0.0218,
+            "Other": 0.0002
+          }
+        },
+        "pct_delta_values": {
+          "Hindu": 0.0388,
+          "Buddhist": 0.0021,
+          "RomanCatholic": -0.0529,
+          "Islam": 0.0385,
+          "OtherChristian": -0.0022,
+          "Other": -0.3858
+        },
+        "total_pct_delta": 0.0192,
+        "error_values": {
+          "Hindu": 9.801e-05,
+          "Buddhist": 4.356e-05,
+          "RomanCatholic": 1.089e-05,
+          "Islam": 2.5e-07,
+          "OtherChristian": 2.5e-07,
+          "Other": 1e-08
+        },
+        "error": 2.55e-05
+      },
+      {
+        "region_id": "LK-31",
+        "region_name": "Galle",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 1613.49,
+        "center_lat": 6.222792,
+        "center_lng": 80.251811,
+        "province_id": "LK-3",
+        "ed_id": "EC-07",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 1026031,
+            "Islam": 46038,
+            "Hindu": 15600,
+            "OtherChristian": 5377,
+            "RomanCatholic": 4207,
+            "Other": 119
+          },
+          "2012": {
+            "Buddhist": 998647,
+            "Islam": 39267,
+            "Hindu": 15584,
+            "OtherChristian": 5315,
+            "RomanCatholic": 4415,
+            "Other": 106
+          }
+        },
+        "total_values_by_when": {
+          "2024": 1097372,
+          "2012": 1063334
+        },
+        "delta_values": {
+          "Buddhist": 27384,
+          "Islam": 6771,
+          "Hindu": 16,
+          "OtherChristian": 62,
+          "RomanCatholic": -208,
+          "Other": 13
+        },
+        "total_delta": 34038,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.935,
+            "Islam": 0.042,
+            "Hindu": 0.0142,
+            "OtherChristian": 0.0049,
+            "RomanCatholic": 0.0038,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Buddhist": 0.9392,
+            "Islam": 0.0369,
+            "Hindu": 0.0147,
+            "OtherChristian": 0.005,
+            "RomanCatholic": 0.0042,
+            "Other": 0.0001
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0274,
+          "Islam": 0.1724,
+          "Hindu": 0.001,
+          "OtherChristian": 0.0117,
+          "RomanCatholic": -0.0471,
+          "Other": 0.1226
+        },
+        "total_pct_delta": 0.032,
+        "error_values": {
+          "Buddhist": 1.764e-05,
+          "Islam": 2.601e-05,
+          "Hindu": 2.5e-07,
+          "OtherChristian": 1e-08,
+          "RomanCatholic": 1.6e-07,
+          "Other": 0.0
+        },
+        "error": 7.35e-06
+      },
+      {
+        "region_id": "LK-32",
+        "region_name": "Matara",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 1306.37,
+        "center_lat": 6.142725,
+        "center_lng": 80.539846,
+        "province_id": "LK-3",
+        "ed_id": "EC-08",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 787303,
+            "Islam": 29858,
+            "Hindu": 14625,
+            "OtherChristian": 3619,
+            "RomanCatholic": 2445,
+            "Other": 39
+          },
+          "2012": {
+            "Buddhist": 766323,
+            "Islam": 25614,
+            "Hindu": 16421,
+            "OtherChristian": 3208,
+            "RomanCatholic": 2432,
+            "Other": 50
+          }
+        },
+        "total_values_by_when": {
+          "2024": 837889,
+          "2012": 814048
+        },
+        "delta_values": {
+          "Buddhist": 20980,
+          "Islam": 4244,
+          "Hindu": -1796,
+          "OtherChristian": 411,
+          "RomanCatholic": 13,
+          "Other": -11
+        },
+        "total_delta": 23841,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.9396,
+            "Islam": 0.0356,
+            "Hindu": 0.0175,
+            "OtherChristian": 0.0043,
+            "RomanCatholic": 0.0029,
+            "Other": 0.0
+          },
+          "2012": {
+            "Buddhist": 0.9414,
+            "Islam": 0.0315,
+            "Hindu": 0.0202,
+            "OtherChristian": 0.0039,
+            "RomanCatholic": 0.003,
+            "Other": 0.0001
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0274,
+          "Islam": 0.1657,
+          "Hindu": -0.1094,
+          "OtherChristian": 0.1281,
+          "RomanCatholic": 0.0053,
+          "Other": -0.22
+        },
+        "total_pct_delta": 0.0293,
+        "error_values": {
+          "Buddhist": 3.24e-06,
+          "Islam": 1.681e-05,
+          "Hindu": 7.29e-06,
+          "OtherChristian": 1.6e-07,
+          "RomanCatholic": 1e-08,
+          "Other": 1e-08
+        },
+        "error": 4.59e-06
+      },
+      {
+        "region_id": "LK-33",
+        "region_name": "Hambantota",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 2625.06,
+        "center_lat": 6.254039,
+        "center_lng": 81.091281,
+        "province_id": "LK-3",
+        "ed_id": "EC-09",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 649736,
+            "Islam": 17947,
+            "OtherChristian": 1247,
+            "Hindu": 1401,
+            "RomanCatholic": 1017,
+            "Other": 70
+          },
+          "2012": {
+            "Buddhist": 580344,
+            "Islam": 15204,
+            "OtherChristian": 1692,
+            "Hindu": 1222,
+            "RomanCatholic": 1139,
+            "Other": 302
+          }
+        },
+        "total_values_by_when": {
+          "2024": 671418,
+          "2012": 599903
+        },
+        "delta_values": {
+          "Buddhist": 69392,
+          "Islam": 2743,
+          "OtherChristian": -445,
+          "Hindu": 179,
+          "RomanCatholic": -122,
+          "Other": -232
+        },
+        "total_delta": 71515,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.9677,
+            "Islam": 0.0267,
+            "OtherChristian": 0.0019,
+            "Hindu": 0.0021,
+            "RomanCatholic": 0.0015,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Buddhist": 0.9674,
+            "Islam": 0.0253,
+            "OtherChristian": 0.0028,
+            "Hindu": 0.002,
+            "RomanCatholic": 0.0019,
+            "Other": 0.0005
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.1196,
+          "Islam": 0.1804,
+          "OtherChristian": -0.263,
+          "Hindu": 0.1465,
+          "RomanCatholic": -0.1071,
+          "Other": -0.7682
+        },
+        "total_pct_delta": 0.1192,
+        "error_values": {
+          "Buddhist": 9e-08,
+          "Islam": 1.96e-06,
+          "OtherChristian": 8.1e-07,
+          "Hindu": 1e-08,
+          "RomanCatholic": 1.6e-07,
+          "Other": 1.6e-07
+        },
+        "error": 5.3e-07
+      },
+      {
+        "region_id": "LK-41",
+        "region_name": "Jaffna",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 1091.24,
+        "center_lat": 9.687873,
+        "center_lng": 80.116157,
+        "province_id": "LK-4",
+        "ed_id": "EC-10",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Hindu": 489521,
+            "RomanCatholic": 77197,
+            "OtherChristian": 20857,
+            "Islam": 4352,
+            "Buddhist": 2788,
+            "Other": 36
+          },
+          "2012": {
+            "Hindu": 483255,
+            "RomanCatholic": 75474,
+            "OtherChristian": 20511,
+            "Islam": 2363,
+            "Buddhist": 2168,
+            "Other": 111
+          }
+        },
+        "total_values_by_when": {
+          "2024": 594751,
+          "2012": 583882
+        },
+        "delta_values": {
+          "Hindu": 6266,
+          "RomanCatholic": 1723,
+          "OtherChristian": 346,
+          "Islam": 1989,
+          "Buddhist": 620,
+          "Other": -75
+        },
+        "total_delta": 10869,
+        "pct_values_by_when": {
+          "2024": {
+            "Hindu": 0.8231,
+            "RomanCatholic": 0.1298,
+            "OtherChristian": 0.0351,
+            "Islam": 0.0073,
+            "Buddhist": 0.0047,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Hindu": 0.8277,
+            "RomanCatholic": 0.1293,
+            "OtherChristian": 0.0351,
+            "Islam": 0.004,
+            "Buddhist": 0.0037,
+            "Other": 0.0002
+          }
+        },
+        "pct_delta_values": {
+          "Hindu": 0.013,
+          "RomanCatholic": 0.0228,
+          "OtherChristian": 0.0169,
+          "Islam": 0.8417,
+          "Buddhist": 0.286,
+          "Other": -0.6757
+        },
+        "total_pct_delta": 0.0186,
+        "error_values": {
+          "Hindu": 2.116e-05,
+          "RomanCatholic": 2.5e-07,
+          "OtherChristian": 0.0,
+          "Islam": 1.089e-05,
+          "Buddhist": 1e-06,
+          "Other": 1e-08
+        },
+        "error": 5.55e-06
+      },
+      {
+        "region_id": "LK-42",
+        "region_name": "Mannar",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 2010.83,
+        "center_lat": 8.878476,
+        "center_lng": 80.091433,
+        "province_id": "LK-4",
+        "ed_id": "EC-11",
+        "pd_id": "EC-11A",
+        "values_by_when": {
+          "2024": {
+            "RomanCatholic": 57713,
+            "Islam": 33883,
+            "Hindu": 26214,
+            "OtherChristian": 5560,
+            "Buddhist": 382,
+            "Other": 4
+          },
+          "2012": {
+            "RomanCatholic": 52415,
+            "Islam": 16512,
+            "Hindu": 24027,
+            "OtherChristian": 4790,
+            "Buddhist": 1809,
+            "Other": 17
+          }
+        },
+        "total_values_by_when": {
+          "2024": 123756,
+          "2012": 99570
+        },
+        "delta_values": {
+          "RomanCatholic": 5298,
+          "Islam": 17371,
+          "Hindu": 2187,
+          "OtherChristian": 770,
+          "Buddhist": -1427,
+          "Other": -13
+        },
+        "total_delta": 24186,
+        "pct_values_by_when": {
+          "2024": {
+            "RomanCatholic": 0.4663,
+            "Islam": 0.2738,
+            "Hindu": 0.2118,
+            "OtherChristian": 0.0449,
+            "Buddhist": 0.0031,
+            "Other": 0.0
+          },
+          "2012": {
+            "RomanCatholic": 0.5264,
+            "Islam": 0.1658,
+            "Hindu": 0.2413,
+            "OtherChristian": 0.0481,
+            "Buddhist": 0.0182,
+            "Other": 0.0002
+          }
+        },
+        "pct_delta_values": {
+          "RomanCatholic": 0.1011,
+          "Islam": 1.052,
+          "Hindu": 0.091,
+          "OtherChristian": 0.1608,
+          "Buddhist": -0.7888,
+          "Other": -0.7647
+        },
+        "total_pct_delta": 0.2429,
+        "error_values": {
+          "RomanCatholic": 0.00361201,
+          "Islam": 0.011664,
+          "Hindu": 0.00087025,
+          "OtherChristian": 1.024e-05,
+          "Buddhist": 0.00022801,
+          "Other": 4e-08
+        },
+        "error": 0.00273076
+      },
+      {
+        "region_id": "LK-43",
+        "region_name": "Vavuniya",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 1934.91,
+        "center_lat": 8.853162,
+        "center_lng": 80.470869,
+        "province_id": "LK-4",
+        "ed_id": "EC-11",
+        "pd_id": "EC-11B",
+        "values_by_when": {
+          "2024": {
+            "Hindu": 114504,
+            "Buddhist": 18292,
+            "Islam": 17775,
+            "RomanCatholic": 12785,
+            "OtherChristian": 8895,
+            "Other": 61
+          },
+          "2012": {
+            "Hindu": 119400,
+            "Buddhist": 16799,
+            "Islam": 11972,
+            "RomanCatholic": 15305,
+            "OtherChristian": 8498,
+            "Other": 86
+          }
+        },
+        "total_values_by_when": {
+          "2024": 172312,
+          "2012": 172060
+        },
+        "delta_values": {
+          "Hindu": -4896,
+          "Buddhist": 1493,
+          "Islam": 5803,
+          "RomanCatholic": -2520,
+          "OtherChristian": 397,
+          "Other": -25
+        },
+        "total_delta": 252,
+        "pct_values_by_when": {
+          "2024": {
+            "Hindu": 0.6645,
+            "Buddhist": 0.1062,
+            "Islam": 0.1032,
+            "RomanCatholic": 0.0742,
+            "OtherChristian": 0.0516,
+            "Other": 0.0004
+          },
+          "2012": {
+            "Hindu": 0.6939,
+            "Buddhist": 0.0976,
+            "Islam": 0.0696,
+            "RomanCatholic": 0.089,
+            "OtherChristian": 0.0494,
+            "Other": 0.0005
+          }
+        },
+        "pct_delta_values": {
+          "Hindu": -0.041,
+          "Buddhist": 0.0889,
+          "Islam": 0.4847,
+          "RomanCatholic": -0.1647,
+          "OtherChristian": 0.0467,
+          "Other": -0.2907
+        },
+        "total_pct_delta": 0.0015,
+        "error_values": {
+          "Hindu": 0.00086436,
+          "Buddhist": 7.396e-05,
+          "Islam": 0.00112896,
+          "RomanCatholic": 0.00021904,
+          "OtherChristian": 4.84e-06,
+          "Other": 1e-08
+        },
+        "error": 0.00038186
+      },
+      {
+        "region_id": "LK-44",
+        "region_name": "Mullaitivu",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 2681.15,
+        "center_lat": 9.170128,
+        "center_lng": 80.552726,
+        "province_id": "LK-4",
+        "ed_id": "EC-11",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Hindu": 88738,
+            "RomanCatholic": 13982,
+            "Buddhist": 10293,
+            "OtherChristian": 6315,
+            "Islam": 3279,
+            "Other": 12
+          },
+          "2012": {
+            "Hindu": 69377,
+            "RomanCatholic": 9063,
+            "Buddhist": 8140,
+            "OtherChristian": 3664,
+            "Islam": 1880,
+            "Other": 69
+          }
+        },
+        "total_values_by_when": {
+          "2024": 122619,
+          "2012": 92193
+        },
+        "delta_values": {
+          "Hindu": 19361,
+          "RomanCatholic": 4919,
+          "Buddhist": 2153,
+          "OtherChristian": 2651,
+          "Islam": 1399,
+          "Other": -57
+        },
+        "total_delta": 30426,
+        "pct_values_by_when": {
+          "2024": {
+            "Hindu": 0.7237,
+            "RomanCatholic": 0.114,
+            "Buddhist": 0.0839,
+            "OtherChristian": 0.0515,
+            "Islam": 0.0267,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Hindu": 0.7525,
+            "RomanCatholic": 0.0983,
+            "Buddhist": 0.0883,
+            "OtherChristian": 0.0397,
+            "Islam": 0.0204,
+            "Other": 0.0007
+          }
+        },
+        "pct_delta_values": {
+          "Hindu": 0.2791,
+          "RomanCatholic": 0.5428,
+          "Buddhist": 0.2645,
+          "OtherChristian": 0.7235,
+          "Islam": 0.7441,
+          "Other": -0.8261
+        },
+        "total_pct_delta": 0.33,
+        "error_values": {
+          "Hindu": 0.00082944,
+          "RomanCatholic": 0.00024649,
+          "Buddhist": 1.936e-05,
+          "OtherChristian": 0.00013924,
+          "Islam": 3.969e-05,
+          "Other": 3.6e-07
+        },
+        "error": 0.00021243
+      },
+      {
+        "region_id": "LK-45",
+        "region_name": "Kilinochchi",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 1319.29,
+        "center_lat": 9.421424,
+        "center_lng": 80.309356,
+        "province_id": "LK-4",
+        "ed_id": "EC-10",
+        "pd_id": "EC-10K",
+        "values_by_when": {
+          "2024": {
+            "Hindu": 110258,
+            "RomanCatholic": 14446,
+            "OtherChristian": 9074,
+            "Buddhist": 1533,
+            "Islam": 1394,
+            "Other": 5
+          },
+          "2012": {
+            "Hindu": 92986,
+            "RomanCatholic": 12063,
+            "OtherChristian": 6436,
+            "Buddhist": 1275,
+            "Islam": 700,
+            "Other": 50
+          }
+        },
+        "total_values_by_when": {
+          "2024": 136710,
+          "2012": 113510
+        },
+        "delta_values": {
+          "Hindu": 17272,
+          "RomanCatholic": 2383,
+          "OtherChristian": 2638,
+          "Buddhist": 258,
+          "Islam": 694,
+          "Other": -45
+        },
+        "total_delta": 23200,
+        "pct_values_by_when": {
+          "2024": {
+            "Hindu": 0.8065,
+            "RomanCatholic": 0.1057,
+            "OtherChristian": 0.0664,
+            "Buddhist": 0.0112,
+            "Islam": 0.0102,
+            "Other": 0.0
+          },
+          "2012": {
+            "Hindu": 0.8192,
+            "RomanCatholic": 0.1063,
+            "OtherChristian": 0.0567,
+            "Buddhist": 0.0112,
+            "Islam": 0.0062,
+            "Other": 0.0004
+          }
+        },
+        "pct_delta_values": {
+          "Hindu": 0.1857,
+          "RomanCatholic": 0.1975,
+          "OtherChristian": 0.4099,
+          "Buddhist": 0.2024,
+          "Islam": 0.9914,
+          "Other": -0.9
+        },
+        "total_pct_delta": 0.2044,
+        "error_values": {
+          "Hindu": 0.00016129,
+          "RomanCatholic": 3.6e-07,
+          "OtherChristian": 9.409e-05,
+          "Buddhist": 0.0,
+          "Islam": 1.6e-05,
+          "Other": 1.6e-07
+        },
+        "error": 4.532e-05
+      },
+      {
+        "region_id": "LK-51",
+        "region_name": "Batticaloa",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 2480.5,
+        "center_lat": 7.795426,
+        "center_lng": 81.478872,
+        "province_id": "LK-5",
+        "ed_id": "EC-12",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Hindu": 374836,
+            "Islam": 161494,
+            "OtherChristian": 27728,
+            "RomanCatholic": 25803,
+            "Buddhist": 6024,
+            "Other": 33
+          },
+          "2012": {
+            "Hindu": 338882,
+            "Islam": 134065,
+            "OtherChristian": 22833,
+            "RomanCatholic": 24454,
+            "Buddhist": 6281,
+            "Other": 52
+          }
+        },
+        "total_values_by_when": {
+          "2024": 595918,
+          "2012": 526567
+        },
+        "delta_values": {
+          "Hindu": 35954,
+          "Islam": 27429,
+          "OtherChristian": 4895,
+          "RomanCatholic": 1349,
+          "Buddhist": -257,
+          "Other": -19
+        },
+        "total_delta": 69351,
+        "pct_values_by_when": {
+          "2024": {
+            "Hindu": 0.629,
+            "Islam": 0.271,
+            "OtherChristian": 0.0465,
+            "RomanCatholic": 0.0433,
+            "Buddhist": 0.0101,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Hindu": 0.6436,
+            "Islam": 0.2546,
+            "OtherChristian": 0.0434,
+            "RomanCatholic": 0.0464,
+            "Buddhist": 0.0119,
+            "Other": 0.0001
+          }
+        },
+        "pct_delta_values": {
+          "Hindu": 0.1061,
+          "Islam": 0.2046,
+          "OtherChristian": 0.2144,
+          "RomanCatholic": 0.0552,
+          "Buddhist": -0.0409,
+          "Other": -0.3654
+        },
+        "total_pct_delta": 0.1317,
+        "error_values": {
+          "Hindu": 0.00021316,
+          "Islam": 0.00026896,
+          "OtherChristian": 9.61e-06,
+          "RomanCatholic": 9.61e-06,
+          "Buddhist": 3.24e-06,
+          "Other": 0.0
+        },
+        "error": 8.41e-05
+      },
+      {
+        "region_id": "LK-52",
+        "region_name": "Ampara",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 4474.66,
+        "center_lat": 7.233261,
+        "center_lng": 81.553888,
+        "province_id": "LK-5",
+        "ed_id": "EC-13",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Islam": 339896,
+            "Buddhist": 276176,
+            "Hindu": 114586,
+            "RomanCatholic": 7351,
+            "OtherChristian": 6486,
+            "Other": 56
+          },
+          "2012": {
+            "Islam": 281987,
+            "Buddhist": 251427,
+            "Hindu": 102829,
+            "RomanCatholic": 7588,
+            "OtherChristian": 5541,
+            "Other": 30
+          }
+        },
+        "total_values_by_when": {
+          "2024": 744551,
+          "2012": 649402
+        },
+        "delta_values": {
+          "Islam": 57909,
+          "Buddhist": 24749,
+          "Hindu": 11757,
+          "RomanCatholic": -237,
+          "OtherChristian": 945,
+          "Other": 26
+        },
+        "total_delta": 95149,
+        "pct_values_by_when": {
+          "2024": {
+            "Islam": 0.4565,
+            "Buddhist": 0.3709,
+            "Hindu": 0.1539,
+            "RomanCatholic": 0.0099,
+            "OtherChristian": 0.0087,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Islam": 0.4342,
+            "Buddhist": 0.3872,
+            "Hindu": 0.1583,
+            "RomanCatholic": 0.0117,
+            "OtherChristian": 0.0085,
+            "Other": 0.0
+          }
+        },
+        "pct_delta_values": {
+          "Islam": 0.2054,
+          "Buddhist": 0.0984,
+          "Hindu": 0.1143,
+          "RomanCatholic": -0.0312,
+          "OtherChristian": 0.1705,
+          "Other": 0.8667
+        },
+        "total_pct_delta": 0.1465,
+        "error_values": {
+          "Islam": 0.00049729,
+          "Buddhist": 0.00026569,
+          "Hindu": 1.936e-05,
+          "RomanCatholic": 3.24e-06,
+          "OtherChristian": 4e-08,
+          "Other": 1e-08
+        },
+        "error": 0.00013094
+      },
+      {
+        "region_id": "LK-53",
+        "region_name": "Trincomalee",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 2692.11,
+        "center_lat": 8.553962,
+        "center_lng": 81.091548,
+        "province_id": "LK-5",
+        "ed_id": "EC-14",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Islam": 205664,
+            "Hindu": 108050,
+            "Buddhist": 106919,
+            "RomanCatholic": 14353,
+            "OtherChristian": 7714,
+            "Other": 45
+          },
+          "2012": {
+            "Islam": 159418,
+            "Hindu": 98442,
+            "Buddhist": 99344,
+            "RomanCatholic": 14493,
+            "OtherChristian": 7774,
+            "Other": 70
+          }
+        },
+        "total_values_by_when": {
+          "2024": 442745,
+          "2012": 379541
+        },
+        "delta_values": {
+          "Islam": 46246,
+          "Hindu": 9608,
+          "Buddhist": 7575,
+          "RomanCatholic": -140,
+          "OtherChristian": -60,
+          "Other": -25
+        },
+        "total_delta": 63204,
+        "pct_values_by_when": {
+          "2024": {
+            "Islam": 0.4645,
+            "Hindu": 0.244,
+            "Buddhist": 0.2415,
+            "RomanCatholic": 0.0324,
+            "OtherChristian": 0.0174,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Islam": 0.42,
+            "Hindu": 0.2594,
+            "Buddhist": 0.2617,
+            "RomanCatholic": 0.0382,
+            "OtherChristian": 0.0205,
+            "Other": 0.0002
+          }
+        },
+        "pct_delta_values": {
+          "Islam": 0.2901,
+          "Hindu": 0.0976,
+          "Buddhist": 0.0763,
+          "RomanCatholic": -0.0097,
+          "OtherChristian": -0.0077,
+          "Other": -0.3571
+        },
+        "total_pct_delta": 0.1665,
+        "error_values": {
+          "Islam": 0.00198025,
+          "Hindu": 0.00023716,
+          "Buddhist": 0.00040804,
+          "RomanCatholic": 3.364e-05,
+          "OtherChristian": 9.61e-06,
+          "Other": 1e-08
+        },
+        "error": 0.00044479
+      },
+      {
+        "region_id": "LK-61",
+        "region_name": "Kurunegala",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 4905.71,
+        "center_lat": 7.664511,
+        "center_lng": 80.236804,
+        "province_id": "LK-6",
+        "ed_id": "EC-15",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 1557554,
+            "Islam": 143299,
+            "RomanCatholic": 40273,
+            "Hindu": 17487,
+            "OtherChristian": 9413,
+            "Other": 130
+          },
+          "2012": {
+            "Buddhist": 1430958,
+            "Islam": 117810,
+            "RomanCatholic": 43707,
+            "Hindu": 14716,
+            "OtherChristian": 9926,
+            "Other": 170
+          }
+        },
+        "total_values_by_when": {
+          "2024": 1768156,
+          "2012": 1617287
+        },
+        "delta_values": {
+          "Buddhist": 126596,
+          "Islam": 25489,
+          "RomanCatholic": -3434,
+          "Hindu": 2771,
+          "OtherChristian": -513,
+          "Other": -40
+        },
+        "total_delta": 150869,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.8809,
+            "Islam": 0.081,
+            "RomanCatholic": 0.0228,
+            "Hindu": 0.0099,
+            "OtherChristian": 0.0053,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Buddhist": 0.8848,
+            "Islam": 0.0728,
+            "RomanCatholic": 0.027,
+            "Hindu": 0.0091,
+            "OtherChristian": 0.0061,
+            "Other": 0.0001
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0885,
+          "Islam": 0.2164,
+          "RomanCatholic": -0.0786,
+          "Hindu": 0.1883,
+          "OtherChristian": -0.0517,
+          "Other": -0.2353
+        },
+        "total_pct_delta": 0.0933,
+        "error_values": {
+          "Buddhist": 1.521e-05,
+          "Islam": 6.724e-05,
+          "RomanCatholic": 1.764e-05,
+          "Hindu": 6.4e-07,
+          "OtherChristian": 6.4e-07,
+          "Other": 0.0
+        },
+        "error": 1.689e-05
+      },
+      {
+        "region_id": "LK-62",
+        "region_name": "Puttalam",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 3133.88,
+        "center_lat": 7.975263,
+        "center_lng": 79.910874,
+        "province_id": "LK-6",
+        "ed_id": "EC-16",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 361148,
+            "RomanCatholic": 240975,
+            "Islam": 176963,
+            "Hindu": 28832,
+            "OtherChristian": 10619,
+            "Other": 279
+          },
+          "2012": {
+            "Buddhist": 329705,
+            "RomanCatholic": 240221,
+            "Islam": 150404,
+            "Hindu": 28811,
+            "OtherChristian": 12093,
+            "Other": 1162
+          }
+        },
+        "total_values_by_when": {
+          "2024": 818816,
+          "2012": 762396
+        },
+        "delta_values": {
+          "Buddhist": 31443,
+          "RomanCatholic": 754,
+          "Islam": 26559,
+          "Hindu": 21,
+          "OtherChristian": -1474,
+          "Other": -883
+        },
+        "total_delta": 56420,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.4411,
+            "RomanCatholic": 0.2943,
+            "Islam": 0.2161,
+            "Hindu": 0.0352,
+            "OtherChristian": 0.013,
+            "Other": 0.0003
+          },
+          "2012": {
+            "Buddhist": 0.4325,
+            "RomanCatholic": 0.3151,
+            "Islam": 0.1973,
+            "Hindu": 0.0378,
+            "OtherChristian": 0.0159,
+            "Other": 0.0015
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0954,
+          "RomanCatholic": 0.0031,
+          "Islam": 0.1766,
+          "Hindu": 0.0007,
+          "OtherChristian": -0.1219,
+          "Other": -0.7599
+        },
+        "total_pct_delta": 0.074,
+        "error_values": {
+          "Buddhist": 7.396e-05,
+          "RomanCatholic": 0.00043264,
+          "Islam": 0.00035344,
+          "Hindu": 6.76e-06,
+          "OtherChristian": 8.41e-06,
+          "Other": 1.44e-06
+        },
+        "error": 0.00014611
+      },
+      {
+        "region_id": "LK-71",
+        "region_name": "Anuradhapura",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 7218.29,
+        "center_lat": 8.392067,
+        "center_lng": 80.51313,
+        "province_id": "LK-7",
+        "ed_id": "EC-17",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 862807,
+            "Islam": 83979,
+            "RomanCatholic": 5760,
+            "Hindu": 3755,
+            "OtherChristian": 3656,
+            "Other": 123
+          },
+          "2012": {
+            "Buddhist": 775366,
+            "Islam": 71493,
+            "RomanCatholic": 6747,
+            "Hindu": 3231,
+            "OtherChristian": 3660,
+            "Other": 78
+          }
+        },
+        "total_values_by_when": {
+          "2024": 960080,
+          "2012": 860575
+        },
+        "delta_values": {
+          "Buddhist": 87441,
+          "Islam": 12486,
+          "RomanCatholic": -987,
+          "Hindu": 524,
+          "OtherChristian": -4,
+          "Other": 45
+        },
+        "total_delta": 99505,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.8987,
+            "Islam": 0.0875,
+            "RomanCatholic": 0.006,
+            "Hindu": 0.0039,
+            "OtherChristian": 0.0038,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Buddhist": 0.901,
+            "Islam": 0.0831,
+            "RomanCatholic": 0.0078,
+            "Hindu": 0.0038,
+            "OtherChristian": 0.0043,
+            "Other": 0.0001
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.1128,
+          "Islam": 0.1746,
+          "RomanCatholic": -0.1463,
+          "Hindu": 0.1622,
+          "OtherChristian": -0.0011,
+          "Other": 0.5769
+        },
+        "total_pct_delta": 0.1156,
+        "error_values": {
+          "Buddhist": 5.29e-06,
+          "Islam": 1.936e-05,
+          "RomanCatholic": 3.24e-06,
+          "Hindu": 1e-08,
+          "OtherChristian": 2.5e-07,
+          "Other": 0.0
+        },
+        "error": 4.69e-06
+      },
+      {
+        "region_id": "LK-72",
+        "region_name": "Polonnaruwa",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 3469.72,
+        "center_lat": 7.994209,
+        "center_lng": 81.028281,
+        "province_id": "LK-7",
+        "ed_id": "EC-18",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 399488,
+            "Islam": 37097,
+            "Hindu": 7215,
+            "RomanCatholic": 2560,
+            "OtherChristian": 1086,
+            "Other": 84
+          },
+          "2012": {
+            "Buddhist": 364229,
+            "Islam": 30465,
+            "Hindu": 6886,
+            "RomanCatholic": 3192,
+            "OtherChristian": 1276,
+            "Other": 40
+          }
+        },
+        "total_values_by_when": {
+          "2024": 447530,
+          "2012": 406088
+        },
+        "delta_values": {
+          "Buddhist": 35259,
+          "Islam": 6632,
+          "Hindu": 329,
+          "RomanCatholic": -632,
+          "OtherChristian": -190,
+          "Other": 44
+        },
+        "total_delta": 41442,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.8927,
+            "Islam": 0.0829,
+            "Hindu": 0.0161,
+            "RomanCatholic": 0.0057,
+            "OtherChristian": 0.0024,
+            "Other": 0.0002
+          },
+          "2012": {
+            "Buddhist": 0.8969,
+            "Islam": 0.075,
+            "Hindu": 0.017,
+            "RomanCatholic": 0.0079,
+            "OtherChristian": 0.0031,
+            "Other": 0.0001
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0968,
+          "Islam": 0.2177,
+          "Hindu": 0.0478,
+          "RomanCatholic": -0.198,
+          "OtherChristian": -0.1489,
+          "Other": 1.1
+        },
+        "total_pct_delta": 0.1021,
+        "error_values": {
+          "Buddhist": 1.764e-05,
+          "Islam": 6.241e-05,
+          "Hindu": 8.1e-07,
+          "RomanCatholic": 4.84e-06,
+          "OtherChristian": 4.9e-07,
+          "Other": 1e-08
+        },
+        "error": 1.437e-05
+      },
+      {
+        "region_id": "LK-81",
+        "region_name": "Badulla",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 2871.96,
+        "center_lat": 7.073578,
+        "center_lng": 81.044926,
+        "province_id": "LK-8",
+        "ed_id": "EC-19",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 636988,
+            "Hindu": 166380,
+            "Islam": 53563,
+            "RomanCatholic": 9593,
+            "OtherChristian": 5729,
+            "Other": 54
+          },
+          "2012": {
+            "Buddhist": 591799,
+            "Hindu": 157608,
+            "Islam": 47192,
+            "RomanCatholic": 12020,
+            "OtherChristian": 6615,
+            "Other": 171
+          }
+        },
+        "total_values_by_when": {
+          "2024": 872307,
+          "2012": 815405
+        },
+        "delta_values": {
+          "Buddhist": 45189,
+          "Hindu": 8772,
+          "Islam": 6371,
+          "RomanCatholic": -2427,
+          "OtherChristian": -886,
+          "Other": -117
+        },
+        "total_delta": 56902,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.7302,
+            "Hindu": 0.1907,
+            "Islam": 0.0614,
+            "RomanCatholic": 0.011,
+            "OtherChristian": 0.0066,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Buddhist": 0.7258,
+            "Hindu": 0.1933,
+            "Islam": 0.0579,
+            "RomanCatholic": 0.0147,
+            "OtherChristian": 0.0081,
+            "Other": 0.0002
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0764,
+          "Hindu": 0.0557,
+          "Islam": 0.135,
+          "RomanCatholic": -0.2019,
+          "OtherChristian": -0.1339,
+          "Other": -0.6842
+        },
+        "total_pct_delta": 0.0698,
+        "error_values": {
+          "Buddhist": 1.936e-05,
+          "Hindu": 6.76e-06,
+          "Islam": 1.225e-05,
+          "RomanCatholic": 1.369e-05,
+          "OtherChristian": 2.25e-06,
+          "Other": 1e-08
+        },
+        "error": 9.05e-06
+      },
+      {
+        "region_id": "LK-82",
+        "region_name": "Monaragala",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 5757.99,
+        "center_lat": 6.787062,
+        "center_lng": 81.301821,
+        "province_id": "LK-8",
+        "ed_id": "EC-20",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 498436,
+            "Hindu": 14974,
+            "Islam": 12262,
+            "RomanCatholic": 1181,
+            "OtherChristian": 713,
+            "Other": 19
+          },
+          "2012": {
+            "Buddhist": 426762,
+            "Hindu": 11997,
+            "Islam": 9809,
+            "RomanCatholic": 1601,
+            "OtherChristian": 859,
+            "Other": 30
+          }
+        },
+        "total_values_by_when": {
+          "2024": 527585,
+          "2012": 451058
+        },
+        "delta_values": {
+          "Buddhist": 71674,
+          "Hindu": 2977,
+          "Islam": 2453,
+          "RomanCatholic": -420,
+          "OtherChristian": -146,
+          "Other": -11
+        },
+        "total_delta": 76527,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.9448,
+            "Hindu": 0.0284,
+            "Islam": 0.0232,
+            "RomanCatholic": 0.0022,
+            "OtherChristian": 0.0014,
+            "Other": 0.0
+          },
+          "2012": {
+            "Buddhist": 0.9461,
+            "Hindu": 0.0266,
+            "Islam": 0.0217,
+            "RomanCatholic": 0.0035,
+            "OtherChristian": 0.0019,
+            "Other": 0.0001
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.1679,
+          "Hindu": 0.2481,
+          "Islam": 0.2501,
+          "RomanCatholic": -0.2623,
+          "OtherChristian": -0.17,
+          "Other": -0.3667
+        },
+        "total_pct_delta": 0.1697,
+        "error_values": {
+          "Buddhist": 1.69e-06,
+          "Hindu": 3.24e-06,
+          "Islam": 2.25e-06,
+          "RomanCatholic": 1.69e-06,
+          "OtherChristian": 2.5e-07,
+          "Other": 1e-08
+        },
+        "error": 1.52e-06
+      },
+      {
+        "region_id": "LK-91",
+        "region_name": "Ratnapura",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 3287.08,
+        "center_lat": 6.586622,
+        "center_lng": 80.565541,
+        "province_id": "LK-9",
+        "ed_id": "EC-21",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 999682,
+            "Hindu": 103883,
+            "Islam": 26796,
+            "RomanCatholic": 8607,
+            "OtherChristian": 6394,
+            "Other": 61
+          },
+          "2012": {
+            "Buddhist": 943464,
+            "Hindu": 101962,
+            "Islam": 24446,
+            "RomanCatholic": 10844,
+            "OtherChristian": 7212,
+            "Other": 79
+          }
+        },
+        "total_values_by_when": {
+          "2024": 1145423,
+          "2012": 1088007
+        },
+        "delta_values": {
+          "Buddhist": 56218,
+          "Hindu": 1921,
+          "Islam": 2350,
+          "RomanCatholic": -2237,
+          "OtherChristian": -818,
+          "Other": -18
+        },
+        "total_delta": 57416,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.8728,
+            "Hindu": 0.0907,
+            "Islam": 0.0234,
+            "RomanCatholic": 0.0075,
+            "OtherChristian": 0.0056,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Buddhist": 0.8671,
+            "Hindu": 0.0937,
+            "Islam": 0.0225,
+            "RomanCatholic": 0.01,
+            "OtherChristian": 0.0066,
+            "Other": 0.0001
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0596,
+          "Hindu": 0.0188,
+          "Islam": 0.0961,
+          "RomanCatholic": -0.2063,
+          "OtherChristian": -0.1134,
+          "Other": -0.2278
+        },
+        "total_pct_delta": 0.0528,
+        "error_values": {
+          "Buddhist": 3.249e-05,
+          "Hindu": 9e-06,
+          "Islam": 8.1e-07,
+          "RomanCatholic": 6.25e-06,
+          "OtherChristian": 1e-06,
+          "Other": 0.0
+        },
+        "error": 8.26e-06
+      },
+      {
+        "region_id": "LK-92",
+        "region_name": "Kegalle",
+        "region_type": "district",
+        "history_year": "Current",
+        "area_sqkm": 1657.73,
+        "center_lat": 7.104294,
+        "center_lng": 80.342772,
+        "province_id": "LK-9",
+        "ed_id": "EC-22",
+        "pd_id": null,
+        "values_by_when": {
+          "2024": {
+            "Buddhist": 728929,
+            "Islam": 72616,
+            "Hindu": 56199,
+            "RomanCatholic": 7292,
+            "OtherChristian": 5387,
+            "Other": 53
+          },
+          "2012": {
+            "Buddhist": 709917,
+            "Islam": 61164,
+            "Hindu": 54350,
+            "RomanCatholic": 8777,
+            "OtherChristian": 6386,
+            "Other": 54
+          }
+        },
+        "total_values_by_when": {
+          "2024": 870476,
+          "2012": 840648
+        },
+        "delta_values": {
+          "Buddhist": 19012,
+          "Islam": 11452,
+          "Hindu": 1849,
+          "RomanCatholic": -1485,
+          "OtherChristian": -999,
+          "Other": -1
+        },
+        "total_delta": 29828,
+        "pct_values_by_when": {
+          "2024": {
+            "Buddhist": 0.8374,
+            "Islam": 0.0834,
+            "Hindu": 0.0646,
+            "RomanCatholic": 0.0084,
+            "OtherChristian": 0.0062,
+            "Other": 0.0001
+          },
+          "2012": {
+            "Buddhist": 0.8445,
+            "Islam": 0.0728,
+            "Hindu": 0.0647,
+            "RomanCatholic": 0.0104,
+            "OtherChristian": 0.0076,
+            "Other": 0.0001
+          }
+        },
+        "pct_delta_values": {
+          "Buddhist": 0.0268,
+          "Islam": 0.1872,
+          "Hindu": 0.034,
+          "RomanCatholic": -0.1692,
+          "OtherChristian": -0.1564,
+          "Other": -0.0185
+        },
+        "total_pct_delta": 0.0355,
+        "error_values": {
+          "Buddhist": 5.041e-05,
+          "Islam": 0.00011236,
+          "Hindu": 1e-08,
+          "RomanCatholic": 4e-06,
+          "OtherChristian": 1.96e-06,
+          "Other": 0.0
+        },
+        "error": 2.812e-05
+      }
+    ],
+    "aggr_data": {
+      "values_by_when": {
+        "2024": {
+          "Buddhist": 15199093,
+          "Hindu": 2734839,
+          "Islam": 2337379,
+          "RomanCatholic": 1224348,
+          "OtherChristian": 282185,
+          "Other": 3956
+        },
+        "2012": {
+          "Buddhist": 14271183,
+          "Hindu": 2561142,
+          "Islam": 1967008,
+          "RomanCatholic": 1261136,
+          "OtherChristian": 290920,
+          "Other": 6387
+        }
+      },
+      "total_values_by_when": {
+        "2024": 21781800,
+        "2012": 20357776
+      },
+      "delta_values": {
+        "Buddhist": 927910,
+        "Hindu": 173697,
+        "Islam": 370371,
+        "RomanCatholic": -36788,
+        "OtherChristian": -8735,
+        "Other": -2431
+      },
+      "total_delta": 1424024,
+      "pct_values_by_when": {
+        "2024": {
+          "Buddhist": 0.6978,
+          "Hindu": 0.1256,
+          "Islam": 0.1073,
+          "RomanCatholic": 0.0562,
+          "OtherChristian": 0.013,
+          "Other": 0.0002
+        },
+        "2012": {
+          "Buddhist": 0.701,
+          "Hindu": 0.1258,
+          "Islam": 0.0966,
+          "RomanCatholic": 0.0619,
+          "OtherChristian": 0.0143,
+          "Other": 0.0003
+        }
+      },
+      "pct_delta_values": {
+        "Buddhist": 0.065,
+        "Hindu": 0.0678,
+        "Islam": 0.1883,
+        "RomanCatholic": -0.0292,
+        "OtherChristian": -0.03,
+        "Other": -0.3806
+      },
+      "total_pct_delta": 0.0699,
+      "error_values": {
+        "Buddhist": 1.024e-05,
+        "Hindu": 4e-08,
+        "Islam": 0.00011449,
+        "RomanCatholic": 3.249e-05,
+        "OtherChristian": 1.69e-06,
+        "Other": 1e-08
+      },
+      "error": 2.649e-05
+    },
+    "source": "Department of Census and Statistics, Sri Lanka",
+    "source_url": "https://www.statistics.gov.lk/",
+    "source_by_when": {
+      "2024": {
+        "source": "Census of Population and Housing 2024",
+        "source_url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024",
+        "description": "Population distributed by religious affiliation (e.g. Buddhist, Hindu, Islam)"
+      },
+      "2012": {
+        "source": "Census of Population and Housing 2012",
+        "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf",
+        "description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian"
+      }
+    },
+    "cmd": "Religion/2024-2012/LK:district/JSON"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
+}

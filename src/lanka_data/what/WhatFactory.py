@@ -1,4 +1,5 @@
 from lanka_data.what.BasicWhat import BasicWhat
+from lanka_data.what.CompareWhat import CompareWhat
 from lanka_data.what.census2024.Census2024 import Census2024
 from lanka_data.what.gig2.Census2012 import Census2012
 from lanka_data.what.gig2.Elections import Elections
@@ -6,7 +7,7 @@ from lanka_data.what.gig2.Elections import Elections
 
 class WhatFactory:
     @staticmethod
-    def from_what_and_when(title: str, when_label: str):  # noqa: CFQ004
+    def from_single_when(title: str, when_label: str):  # noqa: CFQ004
         if title == "Basic":
             return BasicWhat()
 
@@ -22,6 +23,19 @@ class WhatFactory:
         raise ValueError(
             f"Unknown title: {title} or when_label: {when_label}"
         )
+
+    @staticmethod
+    def from_what_and_when(title: str, when_label: str):
+        if "-" in when_label:
+            when_a, when_b = when_label.split("-", 1)
+            return CompareWhat(
+                title,
+                when_a,
+                when_b,
+                WhatFactory.from_single_when(title, when_a),
+                WhatFactory.from_single_when(title, when_b),
+            )
+        return WhatFactory.from_single_when(title, when_label)
 
     @staticmethod
     def get_what_to_whens():

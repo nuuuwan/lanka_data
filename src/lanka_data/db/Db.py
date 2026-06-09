@@ -28,6 +28,10 @@ class Db:
     def _run_normalized(
         self, where_cmd: str, what_cmd: str, when_cmd: str, how_cmd: str
     ):
+        if "-" in when_cmd and not how_cmd.startswith("JSON"):
+            raise ValueError(
+                "Year comparison is only supported for JSON outputs."
+            )
         where = Regions.from_token(where_cmd)
         what = WhatFactory.from_what_and_when(what_cmd, when_cmd)
         how = HowFactory.from_how_cmd(how_cmd)
@@ -47,7 +51,8 @@ class Db:
 
         what_cmd, when_cmd, where_cmd, how_cmd = tokens
 
-        if when_cmd == "2012":
+        when_tokens = when_cmd.split("-")
+        if "2012" in when_tokens:
             if "-pre" not in where_cmd:
                 tokens = where_cmd.split(":")
                 if len(tokens) == 2 and tokens[1] == "dsd":
