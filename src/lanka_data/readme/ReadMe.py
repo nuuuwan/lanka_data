@@ -72,12 +72,8 @@ class ReadMe:
         ]
 
     @staticmethod
-    def get_lines_for_example(i_group_name, i_cmd, example, output_idx):
+    def get_lines_for_example_title(i_group_name, i_cmd, cmd, result):
         lines = []
-        cmd = example.cmd
-        output = output_idx[cmd]
-        result = output["result"]
-
         if "what_description" in result:
             what_description = result["what_description"]
             when_description = result["when_description"]
@@ -93,12 +89,20 @@ class ReadMe:
 
         lines.append(f"#### {i_group_name}.{i_cmd:02d}) {title_text}")
         lines.append("")
+        return lines
 
-        lines.append("```bash")
-        lines.append(f"{cmd}")
-        lines.append("```")
-        lines.append("")
+    @staticmethod
+    def get_lines_for_command(cmd):
+        return [
+            "```bash",
+            f"{cmd}",
+            "```",
+            "",
+        ]
 
+    @staticmethod
+    def get_lines_for_output(output):
+        lines = []
         lines.append("```json")
         output_json = json.dumps(output, indent=4)
         output_json_lines = output_json.splitlines()
@@ -116,15 +120,40 @@ class ReadMe:
         lines.extend(output_json_lines)
         lines.append("```")
         lines.append("")
-        if "result" in output and "image_path" in output["result"]:
-            image_path = output["result"]["image_path"]
-            os.makedirs(ReadMe.DIR_IMAGES_README, exist_ok=True)
-            new_image_path = os.path.join(
-                ReadMe.DIR_IMAGES_README, os.path.basename(image_path)
+        return lines
+
+    @staticmethod
+    def get_lines_for_image(cmd, output):
+        if not ("result" in output and "image_path" in output["result"]):
+            return []
+
+        lines = []
+        image_path = output["result"]["image_path"]
+        os.makedirs(ReadMe.DIR_IMAGES_README, exist_ok=True)
+        new_image_path = os.path.join(
+            ReadMe.DIR_IMAGES_README, os.path.basename(image_path)
+        )
+        shutil.copy2(image_path, new_image_path)
+        lines.append(f"![{cmd}]({new_image_path})")
+        lines.append("")
+        return lines
+
+    @staticmethod
+    def get_lines_for_example(i_group_name, i_cmd, example, output_idx):
+        lines = []
+        cmd = example.cmd
+        output = output_idx[cmd]
+        result = output["result"]
+
+        lines.extend(
+            ReadMe.get_lines_for_example_title(
+                i_group_name, i_cmd, cmd, result
             )
-            shutil.copy2(image_path, new_image_path)
-            lines.append(f"![{cmd}]({new_image_path})")
-            lines.append("")
+        )
+
+        lines.extend(ReadMe.get_lines_for_command(cmd))
+        lines.extend(ReadMe.get_lines_for_output(output))
+        lines.extend(ReadMe.get_lines_for_image(cmd, output))
 
         return lines
 
