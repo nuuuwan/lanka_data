@@ -21,6 +21,7 @@ class Census2012(GIG2):
         return os.path.join(
             "src",
             "lanka_data",
+            "api",
             "what",
             "gig2",
             "census2012.datasets.json",

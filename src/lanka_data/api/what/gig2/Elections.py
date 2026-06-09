@@ -32,7 +32,12 @@ class Elections(GIG2):
     @classmethod
     def get_title_to_id_file_path(cls):
         return os.path.join(
-            "src", "lanka_data", "what", "gig2", "elections.datasets.json"
+            "src",
+            "lanka_data",
+            "api",
+            "what",
+            "gig2",
+            "elections.datasets.json",
         )
 
     @classmethod
