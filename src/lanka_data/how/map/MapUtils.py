@@ -5,7 +5,6 @@ import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 from PIL import Image, ImageOps
 
-from lanka_data.db.CmdUtils import CmdUtils
 from lanka_data.how.map.GeoDataUtils import GeoDataUtils
 from lanka_data.how.map.LabelUtils import LabelUtils
 from lanka_data.how.map.LegendUtils import LegendUtils
@@ -29,6 +28,9 @@ class MapUtils:
     MAX_REGIONS_TO_LABEL = 100
     DEFAULT_EDGE_COLOR = "#fff"
     DEFAULT_EDGE_WIDTH = 0.5
+    DIR_CACHE_IMAGES = os.path.join(
+        tempfile.gettempdir(), "lanka_data", "cache", "images"
+    )
 
     # flake8: noqa: CFQ002
     @staticmethod
@@ -166,12 +168,10 @@ class MapUtils:
             source,
             cmd,
         )
-        image_dir = os.path.join(
-            tempfile.gettempdir(), "lanka_data", "images"
-        )
+        image_dir = os.path.join(MapUtils.DIR_CACHE_IMAGES, cmd)
         os.makedirs(image_dir, exist_ok=True)
-        file_name_base = CmdUtils.get_name_base_from_cmd(cmd)
-        image_path = os.path.join(image_dir, f"{file_name_base}.png")
+        image_path = os.path.join(image_dir, "Image.png")
+
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
         plt.close(fig)
         with Image.open(image_path) as img:

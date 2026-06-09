@@ -1,7 +1,7 @@
 import os
 import random
 
-from lanka_data.db import CmdUtils, Db
+from lanka_data.db import Db
 from utils_future import JSONFile, Log
 
 log = Log("Example")
@@ -54,8 +54,9 @@ class Example:
 
         idx = cls.get_output_idx_hot()
         for cmd, output in idx.items():
-            file_name_base = CmdUtils.get_name_base_from_cmd(cmd)
-            output_path = os.path.join(dir_outputs, f"{file_name_base}.json")
+            cache_base_dir = os.path.join(Db.DIR_CACHE, cmd)
+            os.makedirs(cache_base_dir, exist_ok=True)
+            output_path = os.path.join(cache_base_dir, "Output.json")
             output_file = JSONFile(output_path)
             output_file.write(output)
             log.info(f"Wrote {output_file}")
@@ -65,11 +66,13 @@ class Example:
         cmd_list = cls.get_cmd_list()
         idx = {}
         for cmd in cmd_list:
-            output_path = os.path.join(
+            output_dir = os.path.join(
                 "examples",
                 "outputs",
-                f"{CmdUtils.get_name_base_from_cmd(cmd)}.json",
+                cmd,
             )
+            os.makedirs(output_dir, exist_ok=True)
+            output_path = os.path.join(output_dir, "Output.json")
             output_file = JSONFile(output_path)
             assert (
                 output_file.exists()

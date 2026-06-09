@@ -3,9 +3,7 @@ import os
 import shutil
 import tempfile
 import time
-from functools import cached_property
 
-from lanka_data.db.CmdUtils import CmdUtils
 from lanka_data.how import HowFactory
 from lanka_data.what import WhatFactory
 from lanka_data.where import Regions
@@ -19,15 +17,7 @@ class Db:
     DIR_CACHE = os.path.join(DIR_TEMP_DATA, "cache")
 
     def __init__(self, cmd: str):
-        if "_" in cmd:
-            raise ValueError("Invalid command: underscores are not allowed.")
         self.cmd = cmd
-
-    @cached_property
-    def cache_file_name_base(self) -> str:
-        os.makedirs(self.DIR_CACHE, exist_ok=True)
-        file_name_base = CmdUtils.get_name_base_from_cmd(self.cmd)
-        return os.path.join(self.DIR_CACHE, file_name_base)
 
     @classmethod
     def cache_clear(cls):
@@ -82,7 +72,9 @@ class Db:
 
     def run_unsafe(self, do_open_images, do_use_cache):
         t_start = time.perf_counter()
-        cache_json_file = os.path.join(self.cache_file_name_base + ".json")
+        dir_cache_base = os.path.join(self.DIR_CACHE, self.cmd)
+        os.makedirs(dir_cache_base, exist_ok=True)
+        cache_json_file = os.path.join(dir_cache_base, "Output.json")
 
         cache_hit = os.path.exists(cache_json_file) and do_use_cache
         if cache_hit:
