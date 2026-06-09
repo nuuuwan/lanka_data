@@ -51,8 +51,12 @@ class Db:
 
         what_cmd, when_cmd, where_cmd, how_cmd = tokens
 
-        when_tokens = when_cmd.split("-")
-        if "2012" in when_tokens:
+        is_2012_query = (
+            when_cmd == "2012"
+            or when_cmd.startswith("2012-")
+            or when_cmd.endswith("-2012")
+        )
+        if is_2012_query:
             if "-pre" not in where_cmd:
                 tokens = where_cmd.split(":")
                 if len(tokens) == 2 and tokens[1] == "dsd":
