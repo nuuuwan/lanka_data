@@ -416,7 +416,36 @@ Source: [examples/outputs/Religion/2012/LK-41:dsd/Map:2nd/Output.json](examples/
 
 Source: [examples/outputs/Religion/2012/LK-41:dsd/Map:2nd/Image.png](examples/outputs/Religion/2012/LK-41:dsd/Map:2nd/Image.png)
 
-#### 3.06) Map (Buddhist) of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Divisional Secretariat Divisions in LK-51-pre2019.
+#### 3.06) Map (Diversity) of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Divisional Secretariat Divisions in LK-11-pre2019.
+
+```bash
+Religion/2012/LK-11:dsd/Map:Diversity
+```
+
+```json
+{
+    "result": {
+        "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
+        "when_description": "2012",
+        "where_description": "Divisional Secretariat Divisions in LK-11-pre2019",
+        "how_description": "Map (Diversity)",
+        "image_path": "/tmp/lanka_data/output/Religion/2012/LK-11:dsd/Map:Diversity/Image.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Religion/2012/LK-11:dsd/Map:Diversity"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
+}
+```
+
+Source: [examples/outputs/Religion/2012/LK-11:dsd/Map:Diversity/Output.json](examples/outputs/Religion/2012/LK-11:dsd/Map:Diversity/Output.json)
+
+![Religion/2012/LK-11:dsd/Map:Diversity](examples/outputs/Religion/2012/LK-11:dsd/Map:Diversity/Image.png)
+
+Source: [examples/outputs/Religion/2012/LK-11:dsd/Map:Diversity/Image.png](examples/outputs/Religion/2012/LK-11:dsd/Map:Diversity/Image.png)
+
+#### 3.07) Map (Buddhist) of Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian (2012) for Divisional Secretariat Divisions in LK-51-pre2019.
 
 ```bash
 Religion/2012/LK-51:dsd/Map:Buddhist

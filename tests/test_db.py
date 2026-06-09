@@ -31,12 +31,8 @@ def make_test(cmd, expected_output):
 
 
 output_idx = Example.get_cmd_to_output()
-MAX_TESTS_TO_RUN = 5
-sampled_items = random.sample(
-    list(output_idx.items()), min(MAX_TESTS_TO_RUN, len(output_idx))
-)
 
-for i, (cmd, expected_output) in enumerate(sampled_items):
+for i, (cmd, expected_output) in enumerate(output_idx.items(), start=1):
     safe_name = cmd.replace("/", "_").replace(":", "_")
     name = f"test_db_{i:03d}_{safe_name}"
     setattr(TestCase, name, make_test(cmd, expected_output))
