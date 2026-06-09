@@ -150,3 +150,7 @@ class Elections(GIG2):
     @classmethod
     def get_values(cls, data):
         return data["votes_by_party"]
+
+    @classmethod
+    def get_values(cls, data):
+        return data["pct_votes_by_party"]

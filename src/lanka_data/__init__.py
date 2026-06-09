@@ -2,7 +2,7 @@
 # flake8: noqa: F408
 
 from lanka_data.api import (GIG2, JSON, BasicWhat, Census2012, Census2024,
-                            ColorUtils, Elections, FieldNameUtils,
+                            ColorUtils, DiffWhat, Elections, FieldNameUtils,
                             GeoDataUtils, How, HowFactory, HueUtils,
                             LabelFitUtils, LabelUtils, LegendUtils, Map,
                             MapUtils, OrderColorUtils, PolyUtils,

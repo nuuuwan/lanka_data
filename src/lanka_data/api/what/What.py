@@ -55,6 +55,10 @@ class What:
         return data.get("values")
 
     @classmethod
+    def get_pct_values(cls, data):
+        return data.get("pct_values")
+
+    @classmethod
     def get_where_to_what_id_map(cls, regions) -> dict:
         if cls.get_region_year() != "Current":
             raise NotImplementedError(

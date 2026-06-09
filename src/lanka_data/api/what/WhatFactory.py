@@ -8,23 +8,27 @@ from lanka_data.api.what.gig2.Elections import Elections
 class WhatFactory:
     @staticmethod
     def from_what_and_when(title: str, when_label: str):  # noqa: CFQ004
+        if "-" in when_label:
+            year1, year2 = when_label.split("-")
+            what1 = WhatFactory.from_what_and_year(title, year1)
+            what2 = WhatFactory.from_what_and_year(title, year2)
+            return DiffWhat(what1, what2)
+
+        return WhatFactory.from_what_and_year(title, when_label)
+
+    @staticmethod
+    def from_what_and_year(title: str, year: str):  # noqa: CFQ004
         if title == "Basic":
             return BasicWhat()
 
         if title in ["Parliamentary", "Presidential", "Local"]:
-            return Elections(title, when_label)
+            return Elections(title, year)
 
-        if when_label == "2012":
+        if year == "2012":
             return Census2012(title)
 
-        if when_label == "2024" or when_label == "Latest":
+        if year == "2024" or year == "Latest":
             return Census2024(title)
-
-        if when_label == "2024-2012":
-            return DiffWhat(
-                Census2024(title),
-                Census2012(title),
-            )
 
         raise ValueError(f"Unknown title: {title} or when_label: {when_label}")
 

@@ -36,7 +36,7 @@ class OrderColorUtils:
             return None
 
         def func_key_getter(data):
-            return list(what.get_values(data).keys())[idx]
+            return list(what.get_pct_values(data).keys())[idx]
 
         return func_key_getter
 
