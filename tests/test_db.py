@@ -1,4 +1,3 @@
-import random
 import unittest
 
 from lanka_data import Db, Example

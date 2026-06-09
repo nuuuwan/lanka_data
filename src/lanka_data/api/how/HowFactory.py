@@ -1,3 +1,4 @@
+from lanka_data.api.how.cartogram.Cartogram import Cartogram
 from lanka_data.api.how.JSON import JSON
 from lanka_data.api.how.map.Map import Map
 
@@ -16,5 +17,8 @@ class HowFactory:
 
         if title == "Map":
             return Map(title, params)
+
+        if title == "Cartogram":
+            return Cartogram(title, params)
 
         raise ValueError(f"Unknown how title: {title}")
