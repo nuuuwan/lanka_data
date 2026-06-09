@@ -9,7 +9,7 @@ class RegionColorUtils:
     @staticmethod
     def _colors_no_values(result_data):
         data_list = result_data["data_list"]
-        cmap = plt.cm.tab20  # pylint: disable=no-member
+        cmap = plt.get_cmap(OrderColorUtils.DEFAULT_MATPLOTLIB_CMAP)
         return (
             {
                 data["region_id"]: cmap(i % 20)

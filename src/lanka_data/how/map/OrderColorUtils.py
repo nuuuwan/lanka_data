@@ -5,6 +5,7 @@ from lanka_data.how.map.ColorUtils import ColorUtils
 
 class OrderColorUtils:
     _PARAM_IDX = {"Top": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
+    DEFAULT_MATPLOTLIB_CMAP = "Set1"
 
     @staticmethod
     def _func_key_getter(how, what):
@@ -31,7 +32,7 @@ class OrderColorUtils:
                 if key not in unknown_keys:
                     unknown_keys.append(key)
 
-        _tab20 = plt.get_cmap("tab20")
+        cmap = plt.get_cmap(OrderColorUtils.DEFAULT_MATPLOTLIB_CMAP)
         for data in data_list:
             key = func_key_getter(data) if func_key_getter else None
             if key not in key_to_base_hex:
@@ -41,7 +42,7 @@ class OrderColorUtils:
                     )
                 else:
                     i_key = unknown_keys.index(key)
-                    r, g, b, _ = _tab20(i_key % 20)
+                    r, g, b, _ = cmap(i_key % 20)
                     key_to_base_hex[key] = ColorUtils.rgb_to_hex((r, g, b))
                 value_to_color[key] = ColorUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0
