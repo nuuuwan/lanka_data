@@ -9,6 +9,7 @@ log = Log("Example")
 
 class Example:
     EXAMPLES_PATH = os.path.join("examples", "examples.json")
+    DIR_EXAMPLES_OUTPUT = os.path.join("examples", "outputs")
 
     def __init__(self, cmd):
         self.cmd = cmd
@@ -54,9 +55,9 @@ class Example:
 
         idx = cls.get_output_idx_hot()
         for cmd, output in idx.items():
-            cache_base_dir = os.path.join(Db.DIR_CACHE, cmd)
-            os.makedirs(cache_base_dir, exist_ok=True)
-            output_path = os.path.join(cache_base_dir, "Output.json")
+            output_dir = os.path.join(cls.DIR_EXAMPLES_OUTPUT, cmd)
+            os.makedirs(output_dir, exist_ok=True)
+            output_path = os.path.join(output_dir, "Output.json")
             output_file = JSONFile(output_path)
             output_file.write(output)
             log.info(f"Wrote {output_file}")
