@@ -4,7 +4,7 @@
     "when_description": "Latest",
     "where_description": "Polling Divisions in LK-11",
     "how_description": "Map",
-    "image_path": "/tmp/lanka_data/cache/images/Presidential/Latest/LK-11:pd/Map/Image.png",
+    "image_path": "/tmp/lanka_data/output/Presidential/Latest/LK-11:pd/Map/Image.png",
     "source": "Department of Census and Statistics, Sri Lanka",
     "source_url": "https://www.statistics.gov.lk/",
     "cmd": "Presidential/Latest/LK-11:pd/Map"

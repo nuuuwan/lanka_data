@@ -1372,5 +1372,5 @@
     "cmd": "Parliamentary/2024/LK/JSON"
   },
   "query_time_ms": 0,
-  "cache_hit": false
+  "cache_hit": true
 }
