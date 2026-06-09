@@ -62,8 +62,8 @@ class OrderColorUtils:
                         ColorUtils.HUE_IDX[key]
                     )
                 else:
-                    key_to_base_hex[key] = OrderColorUtils.get_color_for_label(
-                        key
+                    key_to_base_hex[key] = (
+                        OrderColorUtils.get_color_for_label(key)
                     )
                 value_to_color[key] = ColorUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0
