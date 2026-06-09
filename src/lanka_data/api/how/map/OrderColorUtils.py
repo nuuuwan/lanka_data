@@ -33,7 +33,7 @@ class OrderColorUtils:
     def _func_key_getter(how, what):
         idx = OrderColorUtils._PARAM_TO_IDX.get(how.params or "Top")
         if idx is None:
-            raise ValueError(f"Unknown 'how' parameter: {how.params}")
+            return None
 
         def func_key_getter(data):
             return list(what.get_pct_values(data).keys())[idx]
@@ -62,8 +62,8 @@ class OrderColorUtils:
                         ColorUtils.HUE_IDX[key]
                     )
                 else:
-                    key_to_base_hex[key] = (
-                        OrderColorUtils.get_color_for_label(key)
+                    key_to_base_hex[key] = OrderColorUtils.get_color_for_label(
+                        key
                     )
                 value_to_color[key] = ColorUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0

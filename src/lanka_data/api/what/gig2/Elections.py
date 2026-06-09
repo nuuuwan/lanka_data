@@ -152,5 +152,5 @@ class Elections(GIG2):
         return data["votes_by_party"]
 
     @classmethod
-    def get_values(cls, data):
+    def get_pct_values(cls, data):
         return data["pct_votes_by_party"]
