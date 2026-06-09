@@ -193,7 +193,7 @@ class DCNUtils:
                 )
             )
             error = mean_size_error - 1.0
-            log.debug(f"Iteration {i+1}/{n_iterations}, error={error:.6f}")
+            log.debug(f"Iteration {i + 1}/{n_iterations}, error={error:.6f}")
             if error < DCNUtils.EPSILON:
                 log.debug("Converged.")
                 break
