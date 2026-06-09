@@ -8,7 +8,7 @@ from lanka_data.api.how.map.HueUtils import HueUtils
 
 
 class OrderColorUtils:
-    _PARAM_IDX = {"Top": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
+    _PARAM_TO_IDX = {"Top": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
     DEFAULT_CMAP_N_COLORS = 10
     DEFAULT_CMAP = plt.cm.get_cmap("tab10")
 
@@ -31,9 +31,9 @@ class OrderColorUtils:
 
     @staticmethod
     def _func_key_getter(how, what):
-        idx = OrderColorUtils._PARAM_IDX.get(how.params or "Top")
+        idx = OrderColorUtils._PARAM_TO_IDX.get(how.params or "Top")
         if idx is None:
-            return None
+            raise ValueError(f"Unknown 'how' parameter: {how.params}")
 
         def func_key_getter(data):
             return list(what.get_pct_values(data).keys())[idx]
@@ -62,8 +62,8 @@ class OrderColorUtils:
                         ColorUtils.HUE_IDX[key]
                     )
                 else:
-                    key_to_base_hex[key] = (
-                        OrderColorUtils.get_color_for_label(key)
+                    key_to_base_hex[key] = OrderColorUtils.get_color_for_label(
+                        key
                     )
                 value_to_color[key] = ColorUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0
