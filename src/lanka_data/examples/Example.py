@@ -21,7 +21,11 @@ class Example:
             group_name: [Example(cmd) for cmd in cmds]
             for group_name, cmds in idx.items()
         }
-        return dict(list(idx.items())[:2])
+        items = list(idx.items())
+        random.shuffle(items)
+        N_MAX = 10
+        idx = dict(items[:N_MAX])
+        return idx
 
     @classmethod
     def get_cmd_list(cls):
