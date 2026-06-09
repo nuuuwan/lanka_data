@@ -666,7 +666,7 @@ Basic/2012/LK-pre1845:province/Map
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "Basic/2012/LK-pre1845:province/Map"
     },
-    "query_time_ms": 1,
+    "query_time_ms": 0,
     "cache_hit": true
 }
 ```
@@ -1045,7 +1045,7 @@ AgeGroup/2024/LK-1:district/Map
         "source_url": "https://www.statistics.gov.lk/",
         "cmd": "AgeGroup/2024/LK-1:district/Map"
     },
-    "query_time_ms": 2,
+    "query_time_ms": 0,
     "cache_hit": true
 }
 ```
