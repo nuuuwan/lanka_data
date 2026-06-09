@@ -15,16 +15,17 @@ class Example:
         self.cmd = cmd
 
     @classmethod
-    def get_example_idx(cls):
+    def get_example_idx(cls, is_test_mode=True):
         idx = JSONFile(cls.EXAMPLES_PATH).read()
         idx = {
             group_name: [Example(cmd) for cmd in cmds]
             for group_name, cmds in idx.items()
         }
-        items = list(idx.items())
-        random.shuffle(items)
-        N_MAX = 2
-        idx = dict(items[:N_MAX])
+        if is_test_mode:
+            items = list(idx.items())
+            random.shuffle(items)
+            N_MAX = 5
+            idx = dict(items[:N_MAX])
         return idx
 
     @classmethod
