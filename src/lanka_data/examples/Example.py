@@ -23,7 +23,7 @@ class Example:
         }
         items = list(idx.items())
         random.shuffle(items)
-        N_MAX = 10
+        N_MAX = 2
         idx = dict(items[:N_MAX])
         return idx
 
