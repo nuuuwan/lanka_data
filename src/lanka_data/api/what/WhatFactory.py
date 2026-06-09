@@ -1,5 +1,6 @@
 from lanka_data.api.what.BasicWhat import BasicWhat
 from lanka_data.api.what.census2024.Census2024 import Census2024
+from lanka_data.api.what.DiffWhat import DiffWhat
 from lanka_data.api.what.gig2.Census2012 import Census2012
 from lanka_data.api.what.gig2.Elections import Elections
 
@@ -19,9 +20,13 @@ class WhatFactory:
         if when_label == "2024" or when_label == "Latest":
             return Census2024(title)
 
-        raise ValueError(
-            f"Unknown title: {title} or when_label: {when_label}"
-        )
+        if when_label == "2024-2012":
+            return DiffWhat(
+                Census2024(title),
+                Census2012(title),
+            )
+
+        raise ValueError(f"Unknown title: {title} or when_label: {when_label}")
 
     @staticmethod
     def get_what_to_whens():
