@@ -46,6 +46,7 @@ log = Log("DCNUtils")
 
 class DCNUtils:
     EPSILON = 0.01
+    MAX_ITERATIONS = 20
 
     @staticmethod
     def _polygon_area_and_centroid(coords):
@@ -82,10 +83,7 @@ class DCNUtils:
 
     @staticmethod
     def _get_feature_id(feature):
-        if "id" in feature:
-            return feature["id"]
-        props = feature.get("properties") or {}
-        return props.get("region_id") or props.get("id")
+        return feature["properties"]["region_id"]
 
     @staticmethod
     def _iter_coord_lists(geometry):
@@ -130,11 +128,13 @@ class DCNUtils:
         for feat in features:
             fid = DCNUtils._get_feature_id(feat)
             desired = total_area * (weights[fid] / total_value)
-            a = areas[fid]
-            r = math.sqrt(a / math.pi)
-            m = math.sqrt(desired / math.pi) - math.sqrt(a / math.pi)
-            denom = min(a, desired)
-            size_errors.append(max(a, desired) / denom if denom > 0 else 1.0)
+            actual = areas[fid]
+            r = math.sqrt(actual / math.pi)
+            m = math.sqrt(desired / math.pi) - math.sqrt(actual / math.pi)
+            denom = min(actual, desired)
+            size_errors.append(
+                max(actual, desired) / denom if denom > 0 else 1.0
+            )
             radius[fid] = r
             mass[fid] = m
         mean_size_error = sum(size_errors) / len(size_errors)
@@ -178,11 +178,11 @@ class DCNUtils:
                     )
 
     @staticmethod
-    def _run_features(features, region_id_to_weight, n_iterations):
+    def _run_features(features, region_id_to_weight):
         weights, total_value = DCNUtils._load_weights(
             features, region_id_to_weight
         )
-        for i in range(n_iterations):
+        for i in range(DCNUtils.MAX_ITERATIONS):
             areas, centroids = DCNUtils._compute_geometry_stats(features)
             total_area = sum(areas.values())
             if total_area == 0:
@@ -193,22 +193,25 @@ class DCNUtils:
                 )
             )
             error = mean_size_error - 1.0
-            log.debug(f"Iteration {i + 1}/{n_iterations}, error={error:.6f}")
             if error < DCNUtils.EPSILON:
                 log.debug("Converged.")
                 break
+            log.debug(
+                f"iteration={i + 1} <= {DCNUtils.MAX_ITERATIONS},"
+                + f" error={error:.4f} >= {DCNUtils.EPSILON}"
+            )
+
             DCNUtils._apply_forces(features, centroids, radius, mass, frf)
 
     @staticmethod
     def run_gdf(
         gdf,
         region_id_to_weight: dict[str, float],
-        n_iterations,
     ):
-
+        log.debug(f"{region_id_to_weight=}")
         geojson = json.loads(gdf.to_json())
         features = geojson["features"]
-        DCNUtils._run_features(features, region_id_to_weight, n_iterations)
+        DCNUtils._run_features(features, region_id_to_weight)
         result = gdf.copy()
         result["geometry"] = [shape(f["geometry"]).buffer(0) for f in features]
         return result

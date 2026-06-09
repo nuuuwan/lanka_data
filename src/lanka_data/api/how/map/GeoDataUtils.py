@@ -102,11 +102,9 @@ class GeoDataUtils:
             region_id_to_weight = {
                 d["region_id"]: d["total_value"] for d in data_list
             }
-            log.debug(f"{region_id_to_weight=}")
             gdf = DCNUtils.run_gdf(
                 gdf,
                 region_id_to_weight,
-                n_iterations=100,
             )
 
         return GeoDataUtils._enrich_from_data_list(gdf, data_list)

@@ -12,9 +12,9 @@ class LabelUtils:
         avail_w_pts = frac_w * fig.get_figwidth() * 72
         avail_h_pts = frac_h * fig.get_figheight() * 72
         n_chars = max(len(text), 1)
-        size_from_w = avail_w_pts / (n_chars * 0.6) * 0.3
-        size_from_h = avail_h_pts / 1.2 * 0.3
-        return max(3.0, min(size_from_w, size_from_h, 10.0))
+        size_from_w = avail_w_pts / (n_chars * 0.6)
+        size_from_h = avail_h_pts / 1.2
+        return max(6, min(size_from_w, size_from_h, 18) * 0.4)
 
     @staticmethod
     def _draw_labels(gdf_region, ax):
@@ -41,9 +41,7 @@ class LabelUtils:
                 text_angle = angle_deg + 90.0
             while text_angle > 90.0:
                 text_angle -= 180.0
-            fontsize = LabelUtils._fit_fontsize(
-                label, text_w, text_h, ax, fig
-            )
+            fontsize = LabelUtils._fit_fontsize(label, text_w, text_h, ax, fig)
             ax.annotate(
                 label,
                 xy=(cx, cy),

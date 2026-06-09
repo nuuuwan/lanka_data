@@ -62,7 +62,7 @@ class ColorUtils:
                 return True
             r, g, b = color[0], color[1], color[2]
         luminance = 0.299 * r + 0.587 * g + 0.114 * b
-        return luminance > 0.5
+        return luminance > 0.45
 
     @staticmethod
     def rgb_to_hex(rgb):
