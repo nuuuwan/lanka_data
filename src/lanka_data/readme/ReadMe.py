@@ -104,7 +104,7 @@ class ReadMe:
         ]
 
     @staticmethod
-    def get_lines_for_output(output):
+    def get_lines_for_output(cmd, output):
         lines = []
         lines.append("```json")
         output_json = json.dumps(output, indent=4)
@@ -123,6 +123,11 @@ class ReadMe:
         lines.extend(output_json_lines)
         lines.append("```")
         lines.append("")
+        output_path = os.path.join(
+            Example.DIR_EXAMPLES_OUTPUT, cmd, "Output.json"
+        )
+        lines.append(f"Source: [{output_path}]({output_path})")
+        lines.append("")
         return lines
 
     @staticmethod
@@ -138,6 +143,8 @@ class ReadMe:
 
         shutil.copy2(image_path, new_image_path)
         lines.append(f"![{cmd}]({new_image_path})")
+        lines.append("")
+        lines.append(f"Source: [{new_image_path}]({new_image_path})")
         lines.append("")
         return lines
 
@@ -155,7 +162,7 @@ class ReadMe:
         )
 
         lines.extend(ReadMe.get_lines_for_command(cmd))
-        lines.extend(ReadMe.get_lines_for_output(output))
+        lines.extend(ReadMe.get_lines_for_output(cmd, output))
         lines.extend(ReadMe.get_lines_for_image(cmd, output))
 
         return lines

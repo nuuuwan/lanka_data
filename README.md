@@ -95,6 +95,8 @@ Help
 }
 ```
 
+Source: [examples/outputs/Help/Output.json](examples/outputs/Help/Output.json)
+
 ### 2) Selection
 
 #### 2.01) Map of Basic Information (2024) for Provinces in LK.
@@ -120,7 +122,11 @@ Basic/2024/LK:province/Map
 }
 ```
 
+Source: [examples/outputs/Basic/2024/LK:province/Map/Output.json](examples/outputs/Basic/2024/LK:province/Map/Output.json)
+
 ![Basic/2024/LK:province/Map](examples/outputs/Basic/2024/LK:province/Map/Image.png)
+
+Source: [examples/outputs/Basic/2024/LK:province/Map/Image.png](examples/outputs/Basic/2024/LK:province/Map/Image.png)
 
 #### 2.02) Map of Basic Information (2024) for Districts in LK-1.
 
@@ -145,7 +151,11 @@ Basic/2024/LK-1:district/Map
 }
 ```
 
+Source: [examples/outputs/Basic/2024/LK-1:district/Map/Output.json](examples/outputs/Basic/2024/LK-1:district/Map/Output.json)
+
 ![Basic/2024/LK-1:district/Map](examples/outputs/Basic/2024/LK-1:district/Map/Image.png)
+
+Source: [examples/outputs/Basic/2024/LK-1:district/Map/Image.png](examples/outputs/Basic/2024/LK-1:district/Map/Image.png)
 
 #### 2.03) Map of Basic Information (2024) for LK-1, LK-2, LK-3, LK-9, LK-8.
 
@@ -170,7 +180,11 @@ Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map
 }
 ```
 
+Source: [examples/outputs/Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Output.json](examples/outputs/Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Output.json)
+
 ![Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map](examples/outputs/Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Image.png)
+
+Source: [examples/outputs/Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Image.png](examples/outputs/Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Image.png)
 
 #### 2.04) Map of Basic Information (2024) for LK-5 to LK-8.
 
@@ -195,7 +209,11 @@ Basic/2024/LK-5...LK-8/Map
 }
 ```
 
+Source: [examples/outputs/Basic/2024/LK-5...LK-8/Map/Output.json](examples/outputs/Basic/2024/LK-5...LK-8/Map/Output.json)
+
 ![Basic/2024/LK-5...LK-8/Map](examples/outputs/Basic/2024/LK-5...LK-8/Map/Image.png)
+
+Source: [examples/outputs/Basic/2024/LK-5...LK-8/Map/Image.png](examples/outputs/Basic/2024/LK-5...LK-8/Map/Image.png)
 
 #### 2.05) Map of Basic Information (2024) for Regions within 20.0 km of LK-1127025.
 
@@ -220,7 +238,11 @@ Basic/2024/LK-1127025@20/Map
 }
 ```
 
+Source: [examples/outputs/Basic/2024/LK-1127025@20/Map/Output.json](examples/outputs/Basic/2024/LK-1127025@20/Map/Output.json)
+
 ![Basic/2024/LK-1127025@20/Map](examples/outputs/Basic/2024/LK-1127025@20/Map/Image.png)
+
+Source: [examples/outputs/Basic/2024/LK-1127025@20/Map/Image.png](examples/outputs/Basic/2024/LK-1127025@20/Map/Image.png)
 
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)
