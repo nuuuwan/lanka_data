@@ -22,7 +22,7 @@ class HueUtils:
         if hue is None:
             return HueUtils.DEFAULT_GRAY
         r, g, b = colorsys.hls_to_rgb(
-            hue,
+            hue / 360.0,
             HueUtils.DEFAULT_LIGHTNESS,
             HueUtils.DEFAULT_SATURATION,
         )

@@ -34,10 +34,6 @@ class ColorUtils:
         for label in labels
     }
 
-    @staticmethod
-    def hue_to_hex(hue) -> str:
-        return HueUtils.to_hex(hue)
-
     MIN_ALPHA = 0.33
     MAX_ALPHA = 1.0
     ALPHA_SPAN = MAX_ALPHA - MIN_ALPHA

@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
 from lanka_data.api.how.map.ColorUtils import ColorUtils
+from lanka_data.api.how.map.HueUtils import HueUtils
 
 
 class OrderColorUtils:
@@ -15,7 +16,7 @@ class OrderColorUtils:
     def generate_cmap():
         n_colors = OrderColorUtils.DEFAULT_CMAP_N_COLORS
         hues = [1.0 * i / n_colors for i in range(n_colors)]
-        colors = [ColorUtils.hue_to_hex(hue) for hue in hues]
+        colors = [HueUtils.to_hex(hue) for hue in hues]
         cmap = ListedColormap(colors)
         return cmap
 
@@ -53,12 +54,11 @@ class OrderColorUtils:
                 if key not in unknown_keys:
                     unknown_keys.append(key)
 
-        plt.get_cmap(OrderColorUtils.DEFAULT_CMAP)
         for data in data_list:
             key = func_key_getter(data) if func_key_getter else None
             if key not in key_to_base_hex:
                 if key in ColorUtils.HUE_IDX:
-                    key_to_base_hex[key] = ColorUtils.hue_to_hex(
+                    key_to_base_hex[key] = HueUtils.to_hex(
                         ColorUtils.HUE_IDX[key]
                     )
                 else:
@@ -68,6 +68,7 @@ class OrderColorUtils:
                 value_to_color[key] = ColorUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0
                 )
+
             pct_dict = (
                 data.get("pct_values") or data.get("pct_votes_by_party") or {}
             )
