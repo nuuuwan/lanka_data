@@ -1,0 +1,14 @@
+{
+  "result": {
+    "what_description": "Population cross-tabulated by sex and age group",
+    "when_description": "2024",
+    "where_description": "LK-1103",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/cache/images/GenderAndAgeGroup/2024/LK-1103/Map/Image.png",
+    "source": "Department of Census and Statistics, Sri Lanka",
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "GenderAndAgeGroup/2024/LK-1103/Map"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
+}

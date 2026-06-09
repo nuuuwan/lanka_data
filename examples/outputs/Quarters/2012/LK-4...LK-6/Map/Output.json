@@ -1,0 +1,14 @@
+{
+  "result": {
+    "what_description": "Households classified by the type of living quarters such as housing units, collective living quarters, and makeshift housing",
+    "when_description": "2012",
+    "where_description": "LK-4 to LK-6",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/cache/images/Quarters/2012/LK-4...LK-6/Map/Image.png",
+    "source": "Department of Census and Statistics, Sri Lanka",
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "Quarters/2012/LK-4...LK-6/Map"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
+}

@@ -1,0 +1,14 @@
+{
+  "result": {
+    "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
+    "when_description": "2012",
+    "where_description": "Divisional Secretariat Divisions in LK-51-pre2019",
+    "how_description": "Map (Buddhist)",
+    "image_path": "/tmp/lanka_data/cache/images/Religion/2012/LK-51:dsd/Map:Buddhist/Image.png",
+    "source": "Department of Census and Statistics, Sri Lanka",
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "Religion/2012/LK-51:dsd/Map:Buddhist"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
+}

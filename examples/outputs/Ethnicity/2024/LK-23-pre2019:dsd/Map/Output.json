@@ -1,0 +1,14 @@
+{
+  "result": {
+    "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+    "when_description": "2024",
+    "where_description": "Divisional Secretariat Divisions in LK-23-pre2019",
+    "how_description": "Map",
+    "image_path": "/tmp/lanka_data/cache/images/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png",
+    "source": "Department of Census and Statistics, Sri Lanka",
+    "source_url": "https://www.statistics.gov.lk/",
+    "cmd": "Ethnicity/2024/LK-23-pre2019:dsd/Map"
+  },
+  "query_time_ms": 0,
+  "cache_hit": false
+}

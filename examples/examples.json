@@ -6,5 +6,65 @@
     "Basic/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map",
     "Basic/2024/LK-5...LK-8/Map",
     "Basic/2024/LK-1127025@20/Map"
+  ],
+  "Religion": [
+    "Religion/2012/LK-23:dsd/Map",
+    "Religion/2024/LK-23:dsd/Map",
+    "Religion/2012/LK-1103:gnd/JSON",
+    "Religion/2012/LK-1127:gnd/Map",
+    "Religion/2012/LK-41:dsd/Map:2nd",
+    "Religion/2012/LK-51:dsd/Map:Buddhist"
+  ],
+  "Ethnicity": [
+    "Ethnicity/2024/LK-53:dsd/Map",
+    "Ethnicity/Latest/LK-2:dsd/Map",
+    "Ethnicity/2024/LK-23:dsd/Map"
+  ],
+  "Elections": [
+    "Parliamentary/2024/LK/JSON",
+    "Presidential/Latest/LK-11:pd/Map",
+    "Local/2025/LK:district/Map"
+  ],
+  "History": [
+    "Basic/2012/LK-pre1845:province/Map",
+    "Basic/2012/LK-pre1873:province/Map",
+    "Basic/2012/LK-pre1886:province/Map",
+    "Basic/2012/LK-pre1889:province/Map",
+    "Basic/2012/LK:province/Map",
+
+    "Basic/2012/LK-pre1959:district/Map",
+    "Basic/2012/LK-pre1961:district/Map",
+    "Basic/2012/LK-pre1978:district/Map",
+    "Basic/2012/LK-pre1984:district/Map",
+    "Basic/2012/LK:district/Map",
+
+    "Ethnicity/2012/LK-23-pre2019:dsd/Map",
+    "Ethnicity/2024/LK-23-pre2019:dsd/Map",
+    "Ethnicity/2024/LK-23:dsd/Map"
+  ],
+  "Other-Whats": [
+    "AgeGroup/2024/LK-1:district/Map",
+    "Communication/2012/LK-2:dsd/Map",
+    "ConstructionYear/2012/LK-3:dsd/Map",
+    "Fuel/2024/LK-4:dsd/Map",
+    "Economy/2012/LK-5:dsd/Map",
+    "Education/2012/LK-6:dsd/Map",
+    "Energy/2024/LK-7:dsd/Map",
+    "Floor/2024/LK-2,LK-3/Map",
+    "Gender/2024/LK-1127025@20/Map",
+    "GenderAndAgeGroup/2024/LK-1103/Map",
+    "Lighting/2024/LK-61:dsd/Map",
+    "Marital/2012/LK-3,LK-9,LK-8/Map",
+    "Occupancy/2012/LK-1127:gnd/Map",
+    "Ownership/2012/LK-53:dsd/Map",
+    "Quarters/2012/LK-4...LK-6/Map",
+    "RelationshipToHead/2012/LK-23:dsd/Map",
+    "Roof/2024/LK-9:dsd/Map",
+    "Rooms/2012/LK-2:pd/Map",
+    "Structure/2024/LK-3:district/Map",
+    "Toilet/2024/LK-53:dsd/Map",
+    "Walls/2024/LK-8:dsd/Map",
+    "Waste/2012/LK-1:dsd/Map",
+    "Water/2024/LK-4:dsd/Map"
   ]
 }
