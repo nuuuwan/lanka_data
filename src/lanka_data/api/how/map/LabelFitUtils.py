@@ -1,10 +1,14 @@
+import math
+
+from shapely.affinity import rotate as shapely_rotate
+from shapely.geometry import LineString, Point, box
+
 from lanka_data.api.how.map.PolyUtils import PolyUtils
 
 
 class LabelFitUtils:
     @staticmethod
     def _score_rect_at(rpoly, rboundary, px, py, span):
-        from shapely.geometry import LineString, Point, box
 
         cp = Point(px, py)
 
@@ -25,7 +29,6 @@ class LabelFitUtils:
 
     @staticmethod
     def _coarse_scan(poly, n_angles=36):
-        from shapely.affinity import rotate as shapely_rotate
 
         pole = PolyUtils._pole_of_inaccessibility(poly)
         px0, py0 = pole.x, pole.y
@@ -44,10 +47,6 @@ class LabelFitUtils:
 
     @staticmethod
     def _fine_search(poly, angle_results, span, n_top=5, n_grid=6):
-        import math
-
-        from shapely.affinity import rotate as shapely_rotate
-        from shapely.geometry import Point
 
         b = poly.bounds
         ox, oy = (b[0] + b[2]) / 2.0, (b[1] + b[3]) / 2.0
