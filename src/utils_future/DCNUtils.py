@@ -36,6 +36,7 @@ For each iteration (user controls when done)
 
 import json
 import math
+import time
 
 from shapely.geometry import shape
 
@@ -47,6 +48,7 @@ log = Log("DCNUtils")
 class DCNUtils:
     EPSILON = 0.01
     MAX_ITERATIONS = 20
+    MAX_TIME = 30.0
 
     @staticmethod
     def _polygon_area_and_centroid(coords):
@@ -182,6 +184,7 @@ class DCNUtils:
         weights, total_value = DCNUtils._load_weights(
             features, region_id_to_weight
         )
+        t_start = time.time()
         for i in range(DCNUtils.MAX_ITERATIONS):
             areas, centroids = DCNUtils._compute_geometry_stats(features)
             total_area = sum(areas.values())
@@ -196,9 +199,14 @@ class DCNUtils:
             if error < DCNUtils.EPSILON:
                 log.debug("Converged.")
                 break
+            td = time.time() - t_start
+            if td > DCNUtils.MAX_TIME:
+                log.debug("Max time reached.")
+                break
             log.debug(
                 f"iteration={i + 1} <= {DCNUtils.MAX_ITERATIONS},"
                 + f" error={error:.4f} >= {DCNUtils.EPSILON}"
+                + f" time={td:.2f}s < {DCNUtils.MAX_TIME}s"
             )
 
             DCNUtils._apply_forces(features, centroids, radius, mass, frf)
@@ -208,7 +216,6 @@ class DCNUtils:
         gdf,
         region_id_to_weight: dict[str, float],
     ):
-        log.debug(f"{region_id_to_weight=}")
         geojson = json.loads(gdf.to_json())
         features = geojson["features"]
         DCNUtils._run_features(features, region_id_to_weight)
