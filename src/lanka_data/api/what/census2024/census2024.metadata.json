@@ -1,70 +1,62 @@
-{
-  "GN_population_excel": {
-    "Population-by-Age-Group": {
-      "label": "AgeGroup",
-      "description": "Population distributed across standard age bands"
-    },
-    "Population-by-Sex": {
-      "label": "Gender",
-      "description": "Population broken down by male and female"
-    }
+[
+  {
+    "data_table_id": "Population-Gender",
+    "label": "Gender",
+    "description": "GN-level population disaggregated by sex (male, female)."
   },
-  "HH_GND_excel": {
-    "Number-of-Households": {
-      "label": "Households",
-      "description": "Total number of households"
-    },
-    "Number-of-households-by-main-source-of-drinking-water": {
-      "label": "Water",
-      "description": "Number of households classified by their main source of drinking water"
-    },
-    "Number-of-households-by-main-source-of-energyfuel-used-for-cooking": {
-      "label": "Fuel",
-      "description": "Number of households classified by the main fuel or energy source used for cooking"
-    },
-    "Number-of-households-by-source-of-lighting": {
-      "label": "Lighting",
-      "description": "Number of households classified by their primary source of lighting"
-    },
-    "Number-of-households-using-toilet-facilities": {
-      "label": "Toilet",
-      "description": "Number of households classified by the type of toilet facility used"
-    }
+  {
+    "data_table_id": "Population-Ethnicity",
+    "label": "Ethnicity",
+    "description": "GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other)."
   },
-  "Housing-Preliminary-Report": {
-    "Number-of-households-by-main-material-used-for-floor-construction": {
-      "label": "Floor",
-      "description": "Households classified by the main material used for floor construction (e.g. cement, tile, mud)"
-    },
-    "Number-of-households-by-main-source-of-energyfuel-used-for-cooking": {
-      "label": "Energy",
-      "description": "Households classified by the main energy fuel used for any purpose"
-    },
-    "Number-of-housing-units-by-housing-unit-structure": {
-      "label": "Structure",
-      "description": "Housing units classified by structural type (e.g. permanent, semi-permanent, temporary)"
-    },
-    "Number-of-housing-units-by-main-material-used-for-roof-construction": {
-      "label": "Roof",
-      "description": "Housing units classified by the main material used for roof construction (e.g. tile, sheet, concrete)"
-    },
-    "Number-of-housing-units-by-main-material-used-for-walls-construction": {
-      "label": "Walls",
-      "description": "Housing units classified by the main material used for wall construction (e.g. brick, cabook, cadjan)"
-    }
+  {
+    "data_table_id": "Population-Religion",
+    "label": "Religion",
+    "description": "GN-level population by religion (Buddhist, Hindu, Islam, Roman Catholic, other Christian, other)."
   },
-  "Population-Preliminary-Report": {
-    "Population-by-ethnicity": {
-      "label": "Ethnicity",
-      "description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)"
-    },
-    "Population-by-religion": {
-      "label": "Religion",
-      "description": "Population distributed by religious affiliation (e.g. Buddhist, Hindu, Islam)"
-    },
-    "Population-by-sex-and-age": {
-      "label": "GenderAndAgeGroup",
-      "description": "Population cross-tabulated by sex and age group"
-    }
+  {
+    "data_table_id": "Population-AgeGroup",
+    "label": "AgeGroup",
+    "description": "GN-level population by five-year age groups from 00–04 up to 95 and above."
+  },
+  {
+    "data_table_id": "Housing-Structure",
+    "label": "Structure",
+    "description": "Occupied housing units by building structure type (single/attached houses by storey count, other)."
+  },
+  {
+    "data_table_id": "Housing-Walls",
+    "label": "Walls",
+    "description": "Occupied housing units by wall construction material (bricks, cement block, cabook, mud, cadjan, sheets, other)."
+  },
+  {
+    "data_table_id": "Housing-Floor",
+    "label": "Floor",
+    "description": "Occupied housing units by floor material (cement, terrazzo/tile, concrete, mud, wood, sand, other)."
+  },
+  {
+    "data_table_id": "Housing-Roof",
+    "label": "Roof",
+    "description": "Occupied housing units by roof material (tile, asbestos, concrete, metal sheet, cadjan/straw, other)."
+  },
+  {
+    "data_table_id": "Housing-Water",
+    "label": "Water",
+    "description": "Households by principal drinking water source (wells, tube well, pipe-borne, bottled, RO filter, bowser, other)."
+  },
+  {
+    "data_table_id": "Housing-Cooking-Fuel",
+    "label": "Fuel",
+    "description": "Households by principal cooking fuel (firewood, kerosene, gas, electricity, sawdust, bio-gas, other)."
+  },
+  {
+    "data_table_id": "Housing-Lighting",
+    "label": "Lighting",
+    "description": "Households by principal lighting source (grid electricity, kerosene lamp, solar, bio-gas, generator, other)."
+  },
+  {
+    "data_table_id": "Housing-Toilet",
+    "label": "Toilet",
+    "description": "Households by toilet facility type and exclusivity (within unit/premises, shared, common/public, none)."
   }
-}
+]

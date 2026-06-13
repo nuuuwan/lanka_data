@@ -27,52 +27,40 @@ class Census2024(What):
 
     @classmethod
     @cache
-    def get_title_to_path(cls) -> dict:
+    def get_label_to_data_table_id(cls) -> dict:
         metadata = cls.get_metadata()
-        label_to_path = {}
-        for level1 in metadata:
-            for level2, entry in metadata[level1].items():
-                label = entry["label"]
-                if label in label_to_path:
-                    continue
-                path = f"{level1}/{level2}"
-                label_to_path[label] = path
-        return label_to_path
+        return {entry["label"]: entry["data_table_id"] for entry in metadata}
 
     @classmethod
     @cache
     def get_label_to_description(cls) -> dict:
         metadata = cls.get_metadata()
-        label_to_desc = {}
-        for level1 in metadata:
-            for level2, entry in metadata[level1].items():
-                label = entry["label"]
-                if label not in label_to_desc:
-                    label_to_desc[label] = entry.get("description", "")
-        return label_to_desc
+        return {entry["label"]: entry["description"] for entry in metadata}
 
     def get_description(self):
         return self.get_label_to_description().get(self.title, "")
 
     @classmethod
     def get_what_to_whens(cls) -> dict[str, set[str]]:
-        label_to_path = cls.get_title_to_path()
+        label_to_data_table_id = cls.get_label_to_data_table_id()
         what_to_whens = {}
-        for label in label_to_path:
+        for label in label_to_data_table_id:
             what_to_whens[label] = ["2024"]
         return what_to_whens
 
     @classmethod
+    def extract_source_data_values(cls, d):
+        values = {
+            FieldNameUtils.normalize(k): int(v)
+            for k, v in d['values'].items()
+        }
+
+        return dict(values=values)
+
+    @classmethod
     def clean(cls, d):
-        values = {}
-        for k, v in d.items():
-            if "region" in k:
-                continue
-            if "total" in k:
-                continue
-            values[FieldNameUtils.normalize(k)] = int(float(v))
-        values = dict(sorted(values.items(), key=lambda item: -item[1]))
-        total_value = sum(values.values())
+        values = {k: v for k, v in d.items()}
+        total_value = d['total_value']
         pct_values = {k: round(v / total_value, 4) for k, v in values.items()}
 
         return dict(
@@ -91,12 +79,12 @@ class Census2024(What):
         )
 
     def get_source_data_list(self) -> list[dict]:
-        label_to_path = self.get_title_to_path()
-        path = label_to_path.get(self.title)
+        label_to_data_table_id = self.get_label_to_data_table_id()
+        data_table_id = label_to_data_table_id.get(self.title)
         url = (
             "https://raw.githubusercontent.com"
             + "/nuuuwan/lk_census_2024/refs/heads/main"
-            + f"/data/{path}/data.json"
+            + f"/data/{data_table_id}/data.json"
         )
         raw_data_list = WWW(url).read_json()
 
