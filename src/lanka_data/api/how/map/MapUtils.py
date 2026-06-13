@@ -27,7 +27,7 @@ class MapUtils:
     DELIM_TITLE = " · "
     MAX_REGIONS_TO_LABEL = 100
     DEFAULT_EDGE_COLOR = "#fff"
-    DEFAULT_EDGE_WIDTH = 0.5
+    DEFAULT_EDGE_WIDTH = 0.2
     DIR_OUTPUT = os.path.join(
         tempfile.gettempdir(),
         "lanka_data",
@@ -51,7 +51,7 @@ class MapUtils:
         gs = fig.add_gridspec(1, 2, width_ratios=[5, 1], wspace=0.05)
         ax = fig.add_subplot(gs[0])
         legend_ax = fig.add_subplot(gs[1])
-        if n_regions > 100:
+        if n_regions > 400:
             edge_color, edge_width = "none", 0
         else:
             edge_color, edge_width = (
