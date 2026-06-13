@@ -1,6 +1,6 @@
 {
   "result": {
-    "what_description": "Households classified by the main material used for floor construction (e.g. cement, tile, mud)",
+    "what_description": "Occupied housing units by floor material (cement, terrazzo/tile, concrete, mud, wood, sand, other).",
     "when_description": "2024",
     "where_description": "LK-2, LK-3",
     "how_description": "Map",

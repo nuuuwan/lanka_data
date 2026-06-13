@@ -13,6 +13,7 @@
         "area_sqkm": 65983.58,
         "center_lat": 7.621863,
         "center_lng": 80.698448,
+        "other_names": "இலங்கை,ශ්‍රී ලංකා",
         "summary": {
           "electors": 17140354,
           "polled": 11815246,
@@ -687,7 +688,8 @@
           "IND40-13": 0.0,
           "IND37-13": 0.0,
           "IND33-13": 0.0
-        }
+        },
+        "total_value": 11815246
       }
     ],
     "aggr_data": {
@@ -1365,7 +1367,8 @@
         "IND40-13": 0.0,
         "IND37-13": 0.0,
         "IND33-13": 0.0
-      }
+      },
+      "total_value": 11815246
     },
     "source": "Election Commission of Sri Lanka",
     "source_url": "https://www.elections.gov.lk",

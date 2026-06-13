@@ -70,11 +70,11 @@ Help
             "ConstructionYear": [
                 "2012"
             ],
-            "Economy": [
-                "2012"
+            "CookingFuel": [
+                "2024"
             ],
-            "Education": [
-            ... // 101 lines ...
+            "Economy": [
+            ... // 94 lines ...
             "Water": [
                 "2012",
                 "2024"
@@ -277,7 +277,7 @@ Source: [examples/outputs/Religion/2012/LK-23:dsd/Map/Output.json](examples/outp
 
 Source: [examples/outputs/Religion/2012/LK-23:dsd/Map/Image.png](examples/outputs/Religion/2012/LK-23:dsd/Map/Image.png)
 
-#### 3.02) Map of Population distributed by religious affiliation (e.g. Buddhist, Hindu, Islam) (2024) for Divisional Secretariat Divisions in LK-23.
+#### 3.02) Map of GN-level population by religion (Buddhist, Hindu, Islam, Roman Catholic, other Christian, other). (2024) for Divisional Secretariat Divisions in LK-23.
 
 ```bash
 Religion/2024/LK-23:dsd/Map
@@ -286,7 +286,7 @@ Religion/2024/LK-23:dsd/Map
 ```json
 {
     "result": {
-        "what_description": "Population distributed by religious affiliation (e.g. Buddhist, Hindu, Islam)",
+        "what_description": "GN-level population by religion (Buddhist, Hindu, Islam, Roman Catholic, other Christian, other).",
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-23",
         "how_description": "Map",
@@ -328,12 +328,12 @@ Religion/2012/LK-1103:gnd/JSON
                 "area_sqkm": 0.18,
                 "center_lat": 6.977933,
                 "center_lng": 79.878128,
+                "other_names": "\u0dc3\u0db8\u0dca\u0db8\u0db1\u0dca\u0dad\u0dca\u200d\u0dbb\u0dab\u0db4\u0dd4\u0dbb",
                 "num": " ",
                 "country_id": "LK",
                 "province_id": "LK-1",
                 "district_id": "LK-11",
-                "dsd_id": "LK-1103",
-                ... // 1185 lines ...
+                ... // 1220 lines ...
                 "Other": 251
             },
             "total_value": 323223,
@@ -476,7 +476,7 @@ Source: [examples/outputs/Religion/2012/LK-51:dsd/Map:Buddhist/Image.png](exampl
 
 ### 4) Ethnicity
 
-#### 4.01) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Divisional Secretariat Divisions in LK-53.
+#### 4.01) Map of GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other). (2024) for Divisional Secretariat Divisions in LK-53.
 
 ```bash
 Ethnicity/2024/LK-53:dsd/Map
@@ -485,7 +485,7 @@ Ethnicity/2024/LK-53:dsd/Map
 ```json
 {
     "result": {
-        "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+        "what_description": "GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other).",
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-53",
         "how_description": "Map",
@@ -505,7 +505,7 @@ Source: [examples/outputs/Ethnicity/2024/LK-53:dsd/Map/Output.json](examples/out
 
 Source: [examples/outputs/Ethnicity/2024/LK-53:dsd/Map/Image.png](examples/outputs/Ethnicity/2024/LK-53:dsd/Map/Image.png)
 
-#### 4.02) Cartogram of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Divisional Secretariat Divisions in LK-53.
+#### 4.02) Cartogram of GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other). (2024) for Divisional Secretariat Divisions in LK-53.
 
 ```bash
 Ethnicity/2024/LK-53:dsd/Cartogram
@@ -514,7 +514,7 @@ Ethnicity/2024/LK-53:dsd/Cartogram
 ```json
 {
     "result": {
-        "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+        "what_description": "GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other).",
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-53",
         "how_description": "Cartogram",
@@ -534,7 +534,7 @@ Source: [examples/outputs/Ethnicity/2024/LK-53:dsd/Cartogram/Output.json](exampl
 
 Source: [examples/outputs/Ethnicity/2024/LK-53:dsd/Cartogram/Image.png](examples/outputs/Ethnicity/2024/LK-53:dsd/Cartogram/Image.png)
 
-#### 4.03) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (Latest) for Divisional Secretariat Divisions in LK-2.
+#### 4.03) Map of GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other). (Latest) for Divisional Secretariat Divisions in LK-2.
 
 ```bash
 Ethnicity/Latest/LK-2:dsd/Map
@@ -543,7 +543,7 @@ Ethnicity/Latest/LK-2:dsd/Map
 ```json
 {
     "result": {
-        "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+        "what_description": "GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other).",
         "when_description": "Latest",
         "where_description": "Divisional Secretariat Divisions in LK-2",
         "how_description": "Map",
@@ -563,7 +563,7 @@ Source: [examples/outputs/Ethnicity/Latest/LK-2:dsd/Map/Output.json](examples/ou
 
 Source: [examples/outputs/Ethnicity/Latest/LK-2:dsd/Map/Image.png](examples/outputs/Ethnicity/Latest/LK-2:dsd/Map/Image.png)
 
-#### 4.04) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Divisional Secretariat Divisions in LK-23.
+#### 4.04) Map of GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other). (2024) for Divisional Secretariat Divisions in LK-23.
 
 ```bash
 Ethnicity/2024/LK-23:dsd/Map
@@ -572,7 +572,7 @@ Ethnicity/2024/LK-23:dsd/Map
 ```json
 {
     "result": {
-        "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+        "what_description": "GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other).",
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-23",
         "how_description": "Map",
@@ -616,13 +616,12 @@ Parliamentary/2024/LK/JSON
                 "area_sqkm": 65983.58,
                 "center_lat": 7.621863,
                 "center_lng": 80.698448,
+                "other_names": "\u0b87\u0bb2\u0b99\u0bcd\u0b95\u0bc8,\u0dc1\u0dca\u200d\u0dbb\u0dd3 \u0dbd\u0d82\u0d9a\u0dcf",
                 "summary": {
                     "electors": 17140354,
                     "polled": 11815246,
                     "valid": 11148006,
-                    "rejected": 667240,
-                    ... // 1336 lines ...
-                "IND36-13": 0.0,
+                    ... // 1339 lines ...
                 "IND42-13": 0.0,
                 "IND34-13": 0.0,
                 "IND26-12": 0.0,
@@ -633,7 +632,8 @@ Parliamentary/2024/LK/JSON
                 "IND40-13": 0.0,
                 "IND37-13": 0.0,
                 "IND33-13": 0.0
-            }
+            },
+            "total_value": 11815246
         },
         "source": "Election Commission of Sri Lanka",
         "source_url": "https://www.elections.gov.lk",
@@ -1025,7 +1025,7 @@ Source: [examples/outputs/Ethnicity/2012/LK-23-pre2019:dsd/Map/Output.json](exam
 
 Source: [examples/outputs/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png](examples/outputs/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png)
 
-#### 6.12) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Divisional Secretariat Divisions in LK-23-pre2019.
+#### 6.12) Map of GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other). (2024) for Divisional Secretariat Divisions in LK-23-pre2019.
 
 ```bash
 Ethnicity/2024/LK-23-pre2019:dsd/Map
@@ -1034,7 +1034,7 @@ Ethnicity/2024/LK-23-pre2019:dsd/Map
 ```json
 {
     "result": {
-        "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+        "what_description": "GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other).",
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-23-pre2019",
         "how_description": "Map",
@@ -1054,7 +1054,7 @@ Source: [examples/outputs/Ethnicity/2024/LK-23-pre2019:dsd/Map/Output.json](exam
 
 Source: [examples/outputs/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png](examples/outputs/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png)
 
-#### 6.13) Map of Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor) (2024) for Divisional Secretariat Divisions in LK-23.
+#### 6.13) Map of GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other). (2024) for Divisional Secretariat Divisions in LK-23.
 
 ```bash
 Ethnicity/2024/LK-23:dsd/Map
@@ -1063,7 +1063,7 @@ Ethnicity/2024/LK-23:dsd/Map
 ```json
 {
     "result": {
-        "what_description": "Population distributed by ethnic group (e.g. Sinhalese, Sri Lanka Tamil, Moor)",
+        "what_description": "GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other).",
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-23",
         "how_description": "Map",
@@ -1085,7 +1085,7 @@ Source: [examples/outputs/Ethnicity/2024/LK-23:dsd/Map/Image.png](examples/outpu
 
 ### 7) Other-Whats
 
-#### 7.01) Map of Population distributed across standard age bands (2024) for Districts in LK-1.
+#### 7.01) Map of GN-level population by five-year age groups from 00–04 up to 95 and above. (2024) for Districts in LK-1.
 
 ```bash
 AgeGroup/2024/LK-1:district/Map
@@ -1094,7 +1094,7 @@ AgeGroup/2024/LK-1:district/Map
 ```json
 {
     "result": {
-        "what_description": "Population distributed across standard age bands",
+        "what_description": "GN-level population by five-year age groups from 00\u201304 up to 95 and above.",
         "when_description": "2024",
         "where_description": "Districts in LK-1",
         "how_description": "Map",
@@ -1172,7 +1172,7 @@ Source: [examples/outputs/ConstructionYear/2012/LK-3:dsd/Map/Output.json](exampl
 
 Source: [examples/outputs/ConstructionYear/2012/LK-3:dsd/Map/Image.png](examples/outputs/ConstructionYear/2012/LK-3:dsd/Map/Image.png)
 
-#### 7.04) Map of Number of households classified by the main fuel or energy source used for cooking (2024) for Divisional Secretariat Divisions in LK-4.
+#### 7.04) Map of Households by principal cooking fuel (firewood, kerosene, gas, electricity, sawdust, bio-gas, other). (2024) for Divisional Secretariat Divisions in LK-4.
 
 ```bash
 Fuel/2024/LK-4:dsd/Map
@@ -1181,7 +1181,7 @@ Fuel/2024/LK-4:dsd/Map
 ```json
 {
     "result": {
-        "what_description": "Number of households classified by the main fuel or energy source used for cooking",
+        "what_description": "Households by principal cooking fuel (firewood, kerosene, gas, electricity, sawdust, bio-gas, other).",
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-4",
         "how_description": "Map",
@@ -1259,36 +1259,7 @@ Source: [examples/outputs/Education/2012/LK-6:dsd/Map/Output.json](examples/outp
 
 Source: [examples/outputs/Education/2012/LK-6:dsd/Map/Image.png](examples/outputs/Education/2012/LK-6:dsd/Map/Image.png)
 
-#### 7.07) Map of Households classified by the main energy fuel used for any purpose (2024) for Divisional Secretariat Divisions in LK-7.
-
-```bash
-Energy/2024/LK-7:dsd/Map
-```
-
-```json
-{
-    "result": {
-        "what_description": "Households classified by the main energy fuel used for any purpose",
-        "when_description": "2024",
-        "where_description": "Divisional Secretariat Divisions in LK-7",
-        "how_description": "Map",
-        "image_path": "/tmp/lanka_data/output/Energy/2024/LK-7:dsd/Map/Image.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/",
-        "cmd": "Energy/2024/LK-7:dsd/Map"
-    },
-    "query_time_ms": 0,
-    "cache_hit": true
-}
-```
-
-Source: [examples/outputs/Energy/2024/LK-7:dsd/Map/Output.json](examples/outputs/Energy/2024/LK-7:dsd/Map/Output.json)
-
-![Energy/2024/LK-7:dsd/Map](examples/outputs/Energy/2024/LK-7:dsd/Map/Image.png)
-
-Source: [examples/outputs/Energy/2024/LK-7:dsd/Map/Image.png](examples/outputs/Energy/2024/LK-7:dsd/Map/Image.png)
-
-#### 7.08) Map of Households classified by the main material used for floor construction (e.g. cement, tile, mud) (2024) for LK-2, LK-3.
+#### 7.07) Map of Occupied housing units by floor material (cement, terrazzo/tile, concrete, mud, wood, sand, other). (2024) for LK-2, LK-3.
 
 ```bash
 Floor/2024/LK-2,LK-3/Map
@@ -1297,7 +1268,7 @@ Floor/2024/LK-2,LK-3/Map
 ```json
 {
     "result": {
-        "what_description": "Households classified by the main material used for floor construction (e.g. cement, tile, mud)",
+        "what_description": "Occupied housing units by floor material (cement, terrazzo/tile, concrete, mud, wood, sand, other).",
         "when_description": "2024",
         "where_description": "LK-2, LK-3",
         "how_description": "Map",
@@ -1317,7 +1288,7 @@ Source: [examples/outputs/Floor/2024/LK-2,LK-3/Map/Output.json](examples/outputs
 
 Source: [examples/outputs/Floor/2024/LK-2,LK-3/Map/Image.png](examples/outputs/Floor/2024/LK-2,LK-3/Map/Image.png)
 
-#### 7.09) Map of Population broken down by male and female (2024) for Regions within 20.0 km of LK-1127025.
+#### 7.08) Map of GN-level population disaggregated by sex (male, female). (2024) for Regions within 20.0 km of LK-1127025.
 
 ```bash
 Gender/2024/LK-1127025@20/Map
@@ -1326,7 +1297,7 @@ Gender/2024/LK-1127025@20/Map
 ```json
 {
     "result": {
-        "what_description": "Population broken down by male and female",
+        "what_description": "GN-level population disaggregated by sex (male, female).",
         "when_description": "2024",
         "where_description": "Regions within 20.0 km of LK-1127025",
         "how_description": "Map",
@@ -1346,36 +1317,7 @@ Source: [examples/outputs/Gender/2024/LK-1127025@20/Map/Output.json](examples/ou
 
 Source: [examples/outputs/Gender/2024/LK-1127025@20/Map/Image.png](examples/outputs/Gender/2024/LK-1127025@20/Map/Image.png)
 
-#### 7.10) Map of Population cross-tabulated by sex and age group (2024) for LK-1103.
-
-```bash
-GenderAndAgeGroup/2024/LK-1103/Map
-```
-
-```json
-{
-    "result": {
-        "what_description": "Population cross-tabulated by sex and age group",
-        "when_description": "2024",
-        "where_description": "LK-1103",
-        "how_description": "Map",
-        "image_path": "/tmp/lanka_data/output/GenderAndAgeGroup/2024/LK-1103/Map/Image.png",
-        "source": "Department of Census and Statistics, Sri Lanka",
-        "source_url": "https://www.statistics.gov.lk/",
-        "cmd": "GenderAndAgeGroup/2024/LK-1103/Map"
-    },
-    "query_time_ms": 0,
-    "cache_hit": true
-}
-```
-
-Source: [examples/outputs/GenderAndAgeGroup/2024/LK-1103/Map/Output.json](examples/outputs/GenderAndAgeGroup/2024/LK-1103/Map/Output.json)
-
-![GenderAndAgeGroup/2024/LK-1103/Map](examples/outputs/GenderAndAgeGroup/2024/LK-1103/Map/Image.png)
-
-Source: [examples/outputs/GenderAndAgeGroup/2024/LK-1103/Map/Image.png](examples/outputs/GenderAndAgeGroup/2024/LK-1103/Map/Image.png)
-
-#### 7.11) Map of Number of households classified by their primary source of lighting (2024) for Divisional Secretariat Divisions in LK-61.
+#### 7.09) Map of Households by principal lighting source (grid electricity, kerosene lamp, solar, bio-gas, generator, other). (2024) for Divisional Secretariat Divisions in LK-61.
 
 ```bash
 Lighting/2024/LK-61:dsd/Map
@@ -1384,7 +1326,7 @@ Lighting/2024/LK-61:dsd/Map
 ```json
 {
     "result": {
-        "what_description": "Number of households classified by their primary source of lighting",
+        "what_description": "Households by principal lighting source (grid electricity, kerosene lamp, solar, bio-gas, generator, other).",
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-61",
         "how_description": "Map",
@@ -1404,7 +1346,7 @@ Source: [examples/outputs/Lighting/2024/LK-61:dsd/Map/Output.json](examples/outp
 
 Source: [examples/outputs/Lighting/2024/LK-61:dsd/Map/Image.png](examples/outputs/Lighting/2024/LK-61:dsd/Map/Image.png)
 
-#### 7.12) Map of Population classified by marital status such as never married, married, widowed, and divorced (2012) for LK-3, LK-9, LK-8.
+#### 7.10) Map of Population classified by marital status such as never married, married, widowed, and divorced (2012) for LK-3, LK-9, LK-8.
 
 ```bash
 Marital/2012/LK-3,LK-9,LK-8/Map
@@ -1433,7 +1375,7 @@ Source: [examples/outputs/Marital/2012/LK-3,LK-9,LK-8/Map/Output.json](examples/
 
 Source: [examples/outputs/Marital/2012/LK-3,LK-9,LK-8/Map/Image.png](examples/outputs/Marital/2012/LK-3,LK-9,LK-8/Map/Image.png)
 
-#### 7.13) Map of Housing units classified by occupancy status, distinguishing occupied from vacant units (2012) for Grama Niladhari Divisions in LK-1127.
+#### 7.11) Map of Housing units classified by occupancy status, distinguishing occupied from vacant units (2012) for Grama Niladhari Divisions in LK-1127.
 
 ```bash
 Occupancy/2012/LK-1127:gnd/Map
@@ -1462,7 +1404,7 @@ Source: [examples/outputs/Occupancy/2012/LK-1127:gnd/Map/Output.json](examples/o
 
 Source: [examples/outputs/Occupancy/2012/LK-1127:gnd/Map/Image.png](examples/outputs/Occupancy/2012/LK-1127:gnd/Map/Image.png)
 
-#### 7.14) Map of Households classified by the ownership status of their dwelling, such as owned or rented (2012) for Divisional Secretariat Divisions in LK-53-pre2019.
+#### 7.12) Map of Households classified by the ownership status of their dwelling, such as owned or rented (2012) for Divisional Secretariat Divisions in LK-53-pre2019.
 
 ```bash
 Ownership/2012/LK-53:dsd/Map
@@ -1491,7 +1433,7 @@ Source: [examples/outputs/Ownership/2012/LK-53:dsd/Map/Output.json](examples/out
 
 Source: [examples/outputs/Ownership/2012/LK-53:dsd/Map/Image.png](examples/outputs/Ownership/2012/LK-53:dsd/Map/Image.png)
 
-#### 7.15) Map of Households classified by the type of living quarters such as housing units, collective living quarters, and makeshift housing (2012) for LK-4 to LK-6.
+#### 7.13) Map of Households classified by the type of living quarters such as housing units, collective living quarters, and makeshift housing (2012) for LK-4 to LK-6.
 
 ```bash
 Quarters/2012/LK-4...LK-6/Map
@@ -1520,7 +1462,7 @@ Source: [examples/outputs/Quarters/2012/LK-4...LK-6/Map/Output.json](examples/ou
 
 Source: [examples/outputs/Quarters/2012/LK-4...LK-6/Map/Image.png](examples/outputs/Quarters/2012/LK-4...LK-6/Map/Image.png)
 
-#### 7.16) Map of Population classified by their relationship to the head of the household (2012) for Divisional Secretariat Divisions in LK-23-pre2019.
+#### 7.14) Map of Population classified by their relationship to the head of the household (2012) for Divisional Secretariat Divisions in LK-23-pre2019.
 
 ```bash
 RelationshipToHead/2012/LK-23:dsd/Map
@@ -1549,7 +1491,7 @@ Source: [examples/outputs/RelationshipToHead/2012/LK-23:dsd/Map/Output.json](exa
 
 Source: [examples/outputs/RelationshipToHead/2012/LK-23:dsd/Map/Image.png](examples/outputs/RelationshipToHead/2012/LK-23:dsd/Map/Image.png)
 
-#### 7.17) Map of Housing units classified by the main material used for roof construction (e.g. tile, sheet, concrete) (2024) for Divisional Secretariat Divisions in LK-9.
+#### 7.15) Map of Occupied housing units by roof material (tile, asbestos, concrete, metal sheet, cadjan/straw, other). (2024) for Divisional Secretariat Divisions in LK-9.
 
 ```bash
 Roof/2024/LK-9:dsd/Map
@@ -1558,7 +1500,7 @@ Roof/2024/LK-9:dsd/Map
 ```json
 {
     "result": {
-        "what_description": "Housing units classified by the main material used for roof construction (e.g. tile, sheet, concrete)",
+        "what_description": "Occupied housing units by roof material (tile, asbestos, concrete, metal sheet, cadjan/straw, other).",
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-9",
         "how_description": "Map",
@@ -1578,7 +1520,7 @@ Source: [examples/outputs/Roof/2024/LK-9:dsd/Map/Output.json](examples/outputs/R
 
 Source: [examples/outputs/Roof/2024/LK-9:dsd/Map/Image.png](examples/outputs/Roof/2024/LK-9:dsd/Map/Image.png)
 
-#### 7.18) Map of Households classified by the number of rooms in the dwelling (2012) for Polling Divisions in LK-2.
+#### 7.16) Map of Households classified by the number of rooms in the dwelling (2012) for Polling Divisions in LK-2.
 
 ```bash
 Rooms/2012/LK-2:pd/Map
@@ -1607,7 +1549,7 @@ Source: [examples/outputs/Rooms/2012/LK-2:pd/Map/Output.json](examples/outputs/R
 
 Source: [examples/outputs/Rooms/2012/LK-2:pd/Map/Image.png](examples/outputs/Rooms/2012/LK-2:pd/Map/Image.png)
 
-#### 7.19) Map of Housing units classified by structural type (e.g. permanent, semi-permanent, temporary) (2024) for Districts in LK-3.
+#### 7.17) Map of Occupied housing units by building structure type (single/attached houses by storey count, other). (2024) for Districts in LK-3.
 
 ```bash
 Structure/2024/LK-3:district/Map
@@ -1616,7 +1558,7 @@ Structure/2024/LK-3:district/Map
 ```json
 {
     "result": {
-        "what_description": "Housing units classified by structural type (e.g. permanent, semi-permanent, temporary)",
+        "what_description": "Occupied housing units by building structure type (single/attached houses by storey count, other).",
         "when_description": "2024",
         "where_description": "Districts in LK-3",
         "how_description": "Map",
@@ -1636,7 +1578,7 @@ Source: [examples/outputs/Structure/2024/LK-3:district/Map/Output.json](examples
 
 Source: [examples/outputs/Structure/2024/LK-3:district/Map/Image.png](examples/outputs/Structure/2024/LK-3:district/Map/Image.png)
 
-#### 7.20) Map of Number of households classified by the type of toilet facility used (2024) for Divisional Secretariat Divisions in LK-53.
+#### 7.18) Map of Households by toilet facility type and exclusivity (within unit/premises, shared, common/public, none). (2024) for Divisional Secretariat Divisions in LK-53.
 
 ```bash
 Toilet/2024/LK-53:dsd/Map
@@ -1645,7 +1587,7 @@ Toilet/2024/LK-53:dsd/Map
 ```json
 {
     "result": {
-        "what_description": "Number of households classified by the type of toilet facility used",
+        "what_description": "Households by toilet facility type and exclusivity (within unit/premises, shared, common/public, none).",
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-53",
         "how_description": "Map",
@@ -1665,7 +1607,7 @@ Source: [examples/outputs/Toilet/2024/LK-53:dsd/Map/Output.json](examples/output
 
 Source: [examples/outputs/Toilet/2024/LK-53:dsd/Map/Image.png](examples/outputs/Toilet/2024/LK-53:dsd/Map/Image.png)
 
-#### 7.21) Map of Housing units classified by the main material used for wall construction (e.g. brick, cabook, cadjan) (2024) for Divisional Secretariat Divisions in LK-8.
+#### 7.19) Map of Occupied housing units by wall construction material (bricks, cement block, cabook, mud, cadjan, sheets, other). (2024) for Divisional Secretariat Divisions in LK-8.
 
 ```bash
 Walls/2024/LK-8:dsd/Map
@@ -1674,7 +1616,7 @@ Walls/2024/LK-8:dsd/Map
 ```json
 {
     "result": {
-        "what_description": "Housing units classified by the main material used for wall construction (e.g. brick, cabook, cadjan)",
+        "what_description": "Occupied housing units by wall construction material (bricks, cement block, cabook, mud, cadjan, sheets, other).",
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-8",
         "how_description": "Map",
@@ -1694,7 +1636,7 @@ Source: [examples/outputs/Walls/2024/LK-8:dsd/Map/Output.json](examples/outputs/
 
 Source: [examples/outputs/Walls/2024/LK-8:dsd/Map/Image.png](examples/outputs/Walls/2024/LK-8:dsd/Map/Image.png)
 
-#### 7.22) Map of Households classified by the method used for solid waste disposal (2012) for Divisional Secretariat Divisions in LK-1-pre2019.
+#### 7.20) Map of Households classified by the method used for solid waste disposal (2012) for Divisional Secretariat Divisions in LK-1-pre2019.
 
 ```bash
 Waste/2012/LK-1:dsd/Map
@@ -1723,7 +1665,7 @@ Source: [examples/outputs/Waste/2012/LK-1:dsd/Map/Output.json](examples/outputs/
 
 Source: [examples/outputs/Waste/2012/LK-1:dsd/Map/Image.png](examples/outputs/Waste/2012/LK-1:dsd/Map/Image.png)
 
-#### 7.23) Map of Number of households classified by their main source of drinking water (2024) for Divisional Secretariat Divisions in LK-4.
+#### 7.21) Map of Households by principal drinking water source (wells, tube well, pipe-borne, bottled, RO filter, bowser, other). (2024) for Divisional Secretariat Divisions in LK-4.
 
 ```bash
 Water/2024/LK-4:dsd/Map
@@ -1732,7 +1674,7 @@ Water/2024/LK-4:dsd/Map
 ```json
 {
     "result": {
-        "what_description": "Number of households classified by their main source of drinking water",
+        "what_description": "Households by principal drinking water source (wells, tube well, pipe-borne, bottled, RO filter, bowser, other).",
         "when_description": "2024",
         "where_description": "Divisional Secretariat Divisions in LK-4",
         "how_description": "Map",

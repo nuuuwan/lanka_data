@@ -1,6 +1,6 @@
 {
   "result": {
-    "what_description": "Housing units classified by the main material used for wall construction (e.g. brick, cabook, cadjan)",
+    "what_description": "Occupied housing units by wall construction material (bricks, cement block, cabook, mud, cadjan, sheets, other).",
     "when_description": "2024",
     "where_description": "Divisional Secretariat Divisions in LK-8",
     "how_description": "Map",

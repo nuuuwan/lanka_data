@@ -1,6 +1,6 @@
 {
   "result": {
-    "what_description": "Housing units classified by the main material used for roof construction (e.g. tile, sheet, concrete)",
+    "what_description": "Occupied housing units by roof material (tile, asbestos, concrete, metal sheet, cadjan/straw, other).",
     "when_description": "2024",
     "where_description": "Divisional Secretariat Divisions in LK-9",
     "how_description": "Map",

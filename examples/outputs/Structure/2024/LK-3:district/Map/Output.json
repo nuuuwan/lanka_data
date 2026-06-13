@@ -1,6 +1,6 @@
 {
   "result": {
-    "what_description": "Housing units classified by structural type (e.g. permanent, semi-permanent, temporary)",
+    "what_description": "Occupied housing units by building structure type (single/attached houses by storey count, other).",
     "when_description": "2024",
     "where_description": "Districts in LK-3",
     "how_description": "Map",

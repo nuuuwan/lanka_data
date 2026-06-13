@@ -1,6 +1,6 @@
 {
   "result": {
-    "what_description": "Number of households classified by the type of toilet facility used",
+    "what_description": "Households by toilet facility type and exclusivity (within unit/premises, shared, common/public, none).",
     "when_description": "2024",
     "where_description": "Divisional Secretariat Divisions in LK-53",
     "how_description": "Map",
