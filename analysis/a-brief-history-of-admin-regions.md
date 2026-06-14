@@ -94,7 +94,7 @@ The last district, split from Jaffna [14]. No district has been created in over 
 
 ## Divisional Secretariats and Grama Niladhari Divisions
 
-Below the district, there are two further tiers: **331 Divisional Secretariat Divisions (DSDs)** and roughly **14,000 Grama Niladhari Divisions (GNDs)** [17].
+Below the district, there are two further tiers: **340 Divisional Secretariat Divisions (DSDs)** and **14,000+ Grama Niladhari Divisions (GNDs)** [17].
 
 ![Basic/2024/LK:dsd/Map](../examples/outputs/Basic/2024/LK:dsd/Map/Image.png)
 
