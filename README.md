@@ -70,11 +70,11 @@ Help
             "ConstructionYear": [
                 "2012"
             ],
-            "CookingFuel": [
-                "2024"
-            ],
             "Economy": [
-            ... // 94 lines ...
+                "2012"
+            ],
+            "Education": [
+            ... // 92 lines ...
             "Water": [
                 "2012",
                 "2024"
@@ -1082,6 +1082,64 @@ Source: [examples/outputs/Ethnicity/2024/LK-23:dsd/Map/Output.json](examples/out
 ![Ethnicity/2024/LK-23:dsd/Map](examples/outputs/Ethnicity/2024/LK-23:dsd/Map/Image.png)
 
 Source: [examples/outputs/Ethnicity/2024/LK-23:dsd/Map/Image.png](examples/outputs/Ethnicity/2024/LK-23:dsd/Map/Image.png)
+
+#### 6.14) Map of Basic Information (2024) for Divisional Secretariat Divisions in LK.
+
+```bash
+Basic/2024/LK:dsd/Map
+```
+
+```json
+{
+    "result": {
+        "what_description": "Basic Information",
+        "when_description": "2024",
+        "where_description": "Divisional Secretariat Divisions in LK",
+        "how_description": "Map",
+        "image_path": "/tmp/lanka_data/output/Basic/2024/LK:dsd/Map/Image.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2024/LK:dsd/Map"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
+}
+```
+
+Source: [examples/outputs/Basic/2024/LK:dsd/Map/Output.json](examples/outputs/Basic/2024/LK:dsd/Map/Output.json)
+
+![Basic/2024/LK:dsd/Map](examples/outputs/Basic/2024/LK:dsd/Map/Image.png)
+
+Source: [examples/outputs/Basic/2024/LK:dsd/Map/Image.png](examples/outputs/Basic/2024/LK:dsd/Map/Image.png)
+
+#### 6.15) Map of Basic Information (2024) for Grama Niladhari Divisions in LK.
+
+```bash
+Basic/2024/LK:gnd/Map
+```
+
+```json
+{
+    "result": {
+        "what_description": "Basic Information",
+        "when_description": "2024",
+        "where_description": "Grama Niladhari Divisions in LK",
+        "how_description": "Map",
+        "image_path": "/tmp/lanka_data/output/Basic/2024/LK:gnd/Map/Image.png",
+        "source": "Department of Census and Statistics, Sri Lanka",
+        "source_url": "https://www.statistics.gov.lk/",
+        "cmd": "Basic/2024/LK:gnd/Map"
+    },
+    "query_time_ms": 0,
+    "cache_hit": true
+}
+```
+
+Source: [examples/outputs/Basic/2024/LK:gnd/Map/Output.json](examples/outputs/Basic/2024/LK:gnd/Map/Output.json)
+
+![Basic/2024/LK:gnd/Map](examples/outputs/Basic/2024/LK:gnd/Map/Image.png)
+
+Source: [examples/outputs/Basic/2024/LK:gnd/Map/Image.png](examples/outputs/Basic/2024/LK:gnd/Map/Image.png)
 
 ### 7) Other-Whats
 
