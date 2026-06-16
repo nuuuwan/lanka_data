@@ -42,7 +42,21 @@ class RegionColorUtils:
         return RegionColorUtils._colors_values_key(result_data, how)
 
     @staticmethod
-    def _compute_diversity(pct_values):
+    def _compute_diversity(pct_values, is_pew=False):
+        if is_pew:
+            # See
+            # https://www.pewresearch.org/religion/2026/02/12/religious-diversity-around-the-world/
+            pct_values = {
+                "Christians": pct_values['RomanCatholic']
+                + pct_values['OtherChristian'],
+                'Hindus': pct_values['Hindu'],
+                'Muslims': pct_values['Islam'],
+                'Buddhists': pct_values['Buddhist'],
+                'Jews': 0,
+                'ReligiouslyUnaffiliated': pct_values['Unaffiliated'],
+                'OtherReligions': pct_values['Other'],
+            }
+
         values_only = pct_values.values()
         # normalised Herfindahl-Simpson concentration measure
         return (
@@ -68,14 +82,14 @@ class RegionColorUtils:
         raise ValueError(f"Diversity value {diversity} out of expected range")
 
     @staticmethod
-    def _colors_with_diversity(result_data):
+    def _colors_with_diversity(result_data, is_pew=False):
 
         data_list = result_data["data_list"]
         region_color_map = {}
         value_to_color = {}
         for data in data_list:
             diversity = RegionColorUtils._compute_diversity(
-                data["pct_values"]
+                data["pct_values"], is_pew=False
             )
             label, color, low, high = (
                 RegionColorUtils._get_diversity_label_and_color(diversity)
@@ -96,6 +110,12 @@ class RegionColorUtils:
         if how.params == "Diversity":
             return RegionColorUtils._colors_with_diversity(
                 result_data,
+                is_pew=False,
+            )
+        if how.params == "DiversityPew":
+            return RegionColorUtils._colors_with_diversity(
+                result_data,
+                is_pew=True,
             )
 
         return RegionColorUtils._colors_with_values(result_data, how, what)
