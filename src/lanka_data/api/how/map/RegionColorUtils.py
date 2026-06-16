@@ -102,6 +102,27 @@ class RegionColorUtils:
         return region_color_map, value_to_color
 
     @staticmethod
+    def _colors_with_change(result_data):
+        data_list = result_data["data_list"]
+
+        changes = [data["change"] for data in data_list]
+        sorted_changes = sorted(changes)
+
+        region_color_map = {}
+        value_to_color = {}
+        for data in data_list:
+            change = data["change"]
+            rank_error = sorted_changes.index(change)
+            hue = (1 - rank_error / (len(sorted_changes) - 1)) * 0.67
+            color = colorsys.hls_to_rgb(hue, 0.5, 1.0)
+            region_color_map[data["region_id"]] = color
+
+            legend_label = f"{change:.4f}"
+            value_to_color[legend_label] = color
+
+        return region_color_map, value_to_color
+
+    @staticmethod
     def get_region_color_map(result_data, how, what):
         data_list = result_data["data_list"]
         if what.get_values(data_list[0]) is None:
@@ -117,5 +138,8 @@ class RegionColorUtils:
                 result_data,
                 is_pew=True,
             )
+
+        if how.params == "Change":
+            return RegionColorUtils._colors_with_change(result_data)
 
         return RegionColorUtils._colors_with_values(result_data, how, what)

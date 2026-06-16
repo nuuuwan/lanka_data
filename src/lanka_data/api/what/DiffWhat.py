@@ -7,7 +7,7 @@ log = Log("DiffWhat")
 class DiffWhat(What):
     def __init__(self, what1: What, what2: What):
         if what1.title != what2.title:
-            raise ValueError(
+            raise Valuechange(
                 "what1 and what2 should have the same title,"
                 + f" but got {what1.title} and {what2.title}"
             )
@@ -31,7 +31,7 @@ class DiffWhat(What):
 
         values = {}
         p_values = {}
-        error2_sum = 0
+        change1_sum = 0
         for k in keys_union:
             value1 = values1.get(k, 0)
             value2 = values2.get(k, 0)
@@ -43,10 +43,9 @@ class DiffWhat(What):
             pct_change = round(pct_value1 - pct_value2, 4)
             p_values[k] = pct_change
 
-            error2 = pct_change**2
-            error2_sum += error2
+            change1_sum += abs(pct_change)
 
-        error = round(error2_sum**0.5 / len(keys_union), 4)
+        change = round(change1_sum / len(keys_union), 4)
 
         values = dict(sorted(values.items(), key=lambda item: -item[1]))
         total_value = sum(values.values())
@@ -67,7 +66,7 @@ class DiffWhat(What):
             values=values,
             pct_values=p_values,
             total_value=total_value,
-            error=error,
+            change=change,
         )
 
         return data
