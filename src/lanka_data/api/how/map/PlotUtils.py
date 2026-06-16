@@ -4,7 +4,6 @@ import tempfile
 import matplotlib.font_manager as fm
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
-from PIL import Image, ImageOps
 
 from lanka_data.api.how.map.GeoDataUtils import GeoDataUtils
 from lanka_data.api.how.map.LabelUtils import LabelUtils
@@ -35,9 +34,56 @@ class PlotUtils:
         "output",
     )
 
+    @staticmethod
+    def get_figure_specs(where, what, when, how):
+        from lanka_data.api.how.HowFactory import HowFactory
+        from lanka_data.api.what.WhatFactory import WhatFactory
+
+        if '-' in when:
+            when_parts = when.split('-')
+            if how.params:
+                how_label = how.how_label.split(":")[0]
+                how_without_params = HowFactory.from_how_cmd(how_label)
+            return {
+                when_parts[1]: (
+                    where,
+                    WhatFactory.from_what_and_when(what.title, when_parts[1]),
+                    when_parts[1],
+                    how_without_params,
+                ),
+                when_parts[0]: (
+                    where,
+                    WhatFactory.from_what_and_when(what.title, when_parts[0]),
+                    when_parts[0],
+                    how_without_params,
+                ),
+                'diff': (where, what, when, how),
+            }
+
+        return {"Fig": (where, what, when, how)}
+
     # flake8: noqa: CFQ002
     @staticmethod
-    def plot_figure(subfig, gdf_region, n_regions, value_to_color, i_fig):
+    def plot_figure(
+        figure_label,
+        figure_spec,
+        cmd,
+        is_cartogram,
+        subfig,
+    ):
+        where, what, when, how = figure_spec
+        print(figure_spec)
+        result_data = how.get_data(where, what, when)
+        data_list = result_data["data_list"]
+        n_regions = len(data_list)
+        gdf_region = GeoDataUtils.get_geopandas_dataframe(
+            data_list, is_cartogram
+        ).copy()
+        region_color_map, value_to_color = (
+            RegionColorUtils.get_region_color_map(result_data, how, what)
+        )
+        gdf_region["color"] = gdf_region["region_id"].map(region_color_map)
+
         gs = subfig.add_gridspec(1, 2, width_ratios=[5, 1], wspace=0.05)
         ax = subfig.add_subplot(gs[0])
         legend_ax = subfig.add_subplot(gs[1])
@@ -64,7 +110,7 @@ class PlotUtils:
         subfig.text(
             0.5,
             0.85,
-            f"Fig {i_fig + 1}",
+            figure_label,
             transform=subfig.transSubfigure,
             ha="center",
             va="bottom",
@@ -73,18 +119,11 @@ class PlotUtils:
         )
 
     @staticmethod
-    def plot_figures(
-        gdf_region,
-        n_regions,
-        value_to_color,
-        how_description,
-        what_description,
-        when_description,
-        where_description,
-        source,
-        cmd,
-    ):
-        n_figs = 1
+    def plot_figures(where, what, when, how, cmd, is_cartogram):
+
+        figure_specs = PlotUtils.get_figure_specs(where, what, when, how)
+
+        n_figs = len(figure_specs)
         rows, cols = 1, n_figs
         fig = plt.figure(figsize=(8 * cols, 8 * rows))
 
@@ -96,98 +135,25 @@ class PlotUtils:
             for i in range(rows)
             for j in range(cols)
         ]
-        for i_fig, subfig in enumerate(subfigs_flat[:n_figs]):
+        for (figure_label, figure_spec), subfig in zip(
+            figure_specs.items(), subfigs_flat[:n_figs]
+        ):
+
             PlotUtils.plot_figure(
-                subfig, gdf_region, n_regions, value_to_color, i_fig
+                figure_label,
+                figure_spec,
+                cmd,
+                is_cartogram,
+                subfig,
             )
 
-        t = fig.transFigure
-        fig.text(
-            0.5,
-            0.97,
-            (
-                f"{what_description} ({when_description})"
-                if what_description != "Basic Information"
-                else "Geo Boundaries"
-            ),
-            transform=t,
-            ha="center",
-            va="bottom",
-            fontsize=18,
-            fontweight="bold",
-            color="black",
-        )
-        fig.text(
-            0.5,
-            0.93,
-            where_description,
-            transform=t,
-            ha="center",
-            va="bottom",
-            fontsize=14,
-            color="black",
-        )
-        fig.text(
-            0.5,
-            0.90,
-            how_description,
-            transform=t,
-            ha="center",
-            va="bottom",
-            fontsize=12,
-            color="grey",
-        )
-        if source:
-            fig.text(
-                0.5,
-                0.10,
-                f"Source: {source}",
-                transform=t,
-                ha="center",
-                fontsize=10,
-                color="darkgray",
-            )
-        if cmd:
-            fig.text(
-                0.5,
-                0.05,
-                "Command: /" + cmd,
-                transform=t,
-                ha="center",
-                fontsize=7,
-                color="gray",
-            )
         return fig
 
     @classmethod
     def draw_plot(cls, where, what, when, how, cmd, is_cartogram):
-        result_data = how.get_data(where, what, when)
-        data_list = result_data["data_list"]
-        n_regions = len(data_list)
-        gdf_region = GeoDataUtils.get_geopandas_dataframe(
-            data_list, is_cartogram
-        ).copy()
-        region_color_map, value_to_color = (
-            RegionColorUtils.get_region_color_map(result_data, how, what)
-        )
-        gdf_region["color"] = gdf_region["region_id"].map(region_color_map)
-
-        where_description = where.get_description()
-        what_description = what.get_description()
-        when_description = when
-        how_description = how.get_description()
-        source = result_data.get("source", "")
 
         fig = PlotUtils.plot_figures(
-            gdf_region,
-            n_regions,
-            value_to_color,
-            how_description,
-            what_description,
-            when_description,
-            where_description,
-            source,
-            cmd,
+            where, what, when, how, cmd, is_cartogram
         )
 
         image_dir = os.path.join(PlotUtils.DIR_OUTPUT, cmd)
@@ -196,9 +162,7 @@ class PlotUtils:
 
         fig.savefig(image_path, dpi=200, bbox_inches="tight")
         plt.close(fig)
-        with Image.open(image_path) as img:
-            bordered = ImageOps.expand(img, border=2, fill="#404040")
-            bordered.save(image_path)
+
         log.debug(f"Wrote {image_path}")
         return {
             "image_path": image_path,
