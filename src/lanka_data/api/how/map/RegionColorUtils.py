@@ -43,11 +43,12 @@ class RegionColorUtils:
 
     @staticmethod
     def _compute_diversity(pct_values):
+        values_only = pct_values.values()
         # normalised Herfindahl-Simpson concentration measure
         return (
             10
-            * (1 - sum(s**2 for s in pct_values))
-            / (1 - 1 / len(pct_values))
+            * (1 - sum(s**2 for s in values_only))
+            / (1 - 1 / len(values_only))
         )
 
     RDI_BANDS = [
@@ -74,7 +75,7 @@ class RegionColorUtils:
         value_to_color = {}
         for data in data_list:
             diversity = RegionColorUtils._compute_diversity(
-                list(data["pct_values"].values())
+                data["pct_values"]
             )
             label, color, low, high = (
                 RegionColorUtils._get_diversity_label_and_color(diversity)
