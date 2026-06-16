@@ -4,11 +4,12 @@ from functools import cache
 class FieldNameUtils:
     NORMALIZED_TO_ORIGINAL = {
         "SLTamil": {"SriLankaTamil", "SLTamil"},
-        "IndTamil": {
+        "IndMalaiyagaTamil": {
             "IndTamil",
             "IndianTamilOrMalaiyagaThamilar",
+            "IndianMalaiyagaTamil",
         },
-        "SLMoor": {"SriLankaMoorOrMuslim", "SLMoor"},
+        "SLMoor": {"SriLankaMoorOrMuslim", "SLMoor", "SriLankaMoorMuslim"},
         "SLChetty": {"SriLankaChetty", "SLChetty"},
     }
     NAME_IDX = {
