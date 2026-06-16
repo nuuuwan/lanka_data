@@ -56,6 +56,9 @@ class DiffWhat(What):
             if k not in ["values", "pct_values"]:
                 data[k] = v
 
+        max1 = list(values1.keys())[0]
+        max2 = list(values2.keys())[0]
+
         data |= dict(
             values1=values1,
             values2=values2,
@@ -65,6 +68,9 @@ class DiffWhat(What):
             pct_values=p_values,
             total_value=total_value,
             change=change,
+            max1=max1,
+            max2=max2,
+            is_flipped=max1 != max2,
         )
 
         return data
