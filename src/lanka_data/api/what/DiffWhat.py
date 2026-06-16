@@ -7,7 +7,7 @@ log = Log("DiffWhat")
 class DiffWhat(What):
     def __init__(self, what1: What, what2: What):
         if what1.title != what2.title:
-            raise Valuechange(
+            raise ValueError(
                 "what1 and what2 should have the same title,"
                 + f" but got {what1.title} and {what2.title}"
             )
