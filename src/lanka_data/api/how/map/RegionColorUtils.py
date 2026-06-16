@@ -1,6 +1,7 @@
 import colorsys
 
 from lanka_data.api.how.map.OrderColorUtils import OrderColorUtils
+from utils_future import GeoUtils
 
 
 class RegionColorUtils:
@@ -101,6 +102,82 @@ class RegionColorUtils:
 
         return region_color_map, value_to_color
 
+    MAX_NEIGHBOR_DISTANCE_KM = 5
+
+    @staticmethod
+    def _colors_with_segregation(result_data):
+        region_to_neighbours = {}
+        region_idx = {
+            result["region_id"]: result for result in result_data["data_list"]
+        }
+        region_ids = list(region_idx.keys())
+        for region_id1 in region_ids:
+            lat1, lng1 = (
+                region_idx[region_id1]["center_lat"],
+                region_idx[region_id1]["center_lng"],
+            )
+            for region_id2 in region_ids:
+                if region_id1 == region_id2:
+                    continue
+                lat2, lng2 = (
+                    region_idx[region_id2]["center_lat"],
+                    region_idx[region_id2]["center_lng"],
+                )
+                distance = GeoUtils.haversine_distance(lat1, lng1, lat2, lng2)
+                if distance <= RegionColorUtils.MAX_NEIGHBOR_DISTANCE_KM:
+                    region_to_neighbours.setdefault(region_id1, []).append(
+                        region_id2
+                    )
+
+        region_to_segregation = {}
+        for region_id in region_ids:
+
+            neighbors = region_to_neighbours.get(region_id, [])
+            if neighbors:
+                pct_values = region_idx[region_id]["pct_values"]
+                sum_values = {}
+                for neighbor_id in neighbors:
+                    neighbor_values = region_idx[neighbor_id]["values"]
+                    for k, v in neighbor_values.items():
+                        sum_values[k] = sum_values.get(k, 0) + v
+
+                total_value = sum(sum_values.values())
+                pct_values_for_neighbours = {
+                    k: v / total_value for k, v in sum_values.items()
+                }
+
+                key_union = set(pct_values.keys()) | set(
+                    pct_values_for_neighbours.keys()
+                )
+                error1_sum = 0
+                for k in key_union:
+                    pct_value = pct_values.get(k, 0)
+                    pct_value_neighbors = pct_values_for_neighbours.get(k, 0)
+                    error1 = abs(pct_value - pct_value_neighbors)
+                    error1_sum += error1
+                segregation = round(error1_sum / len(key_union), 4)
+            else:
+                segregation = 0
+
+            region_to_segregation[region_id] = segregation
+        print(f'{region_to_segregation=}')
+
+        segregations = list(region_to_segregation.values())
+        sorted_segregations = sorted(segregations)
+
+        region_color_map = {}
+        value_to_color = {}
+        for region_id, segregation in region_to_segregation.items():
+            rank_error = sorted_segregations.index(segregation)
+            hue = (1 - rank_error / (len(sorted_segregations) - 1)) * 0.67
+            color = colorsys.hls_to_rgb(hue, 0.5, 1.0)
+            region_color_map[region_id] = color
+
+            legend_label = f"{segregation:.4f}"
+            value_to_color[legend_label] = color
+
+        return region_color_map, value_to_color
+
     @staticmethod
     def _colors_with_change(result_data):
         data_list = result_data["data_list"]
@@ -141,5 +218,8 @@ class RegionColorUtils:
 
         if how.params == "Change":
             return RegionColorUtils._colors_with_change(result_data)
+
+        if how.params == "Segregation":
+            return RegionColorUtils._colors_with_segregation(result_data)
 
         return RegionColorUtils._colors_with_values(result_data, how, what)
