@@ -31,6 +31,7 @@ class DiffWhat(What):
 
         values = {}
         p_values = {}
+        error2_sum = 0
         for k in keys_union:
             value1 = values1.get(k, 0)
             value2 = values2.get(k, 0)
@@ -41,6 +42,12 @@ class DiffWhat(What):
             pct_value2 = pct_values2.get(k, 0)
             pct_change = round(pct_value1 - pct_value2, 4)
             p_values[k] = pct_change
+
+            error2 = pct_change**2
+            error2_sum += error2
+
+        error = round(error2_sum**0.5 / len(keys_union), 4)
+
         values = dict(sorted(values.items(), key=lambda item: -item[1]))
         total_value = sum(values.values())
         p_values = dict(sorted(p_values.items(), key=lambda item: -item[1]))
@@ -60,6 +67,7 @@ class DiffWhat(What):
             values=values,
             pct_values=p_values,
             total_value=total_value,
+            error=error,
         )
 
         return data
