@@ -30,9 +30,7 @@ class WhatFactory:
         if year == "2024" or year == "Latest":
             return Census2024(title)
 
-        raise ValueError(
-            f"Unknown title: {title} or when_label: {when_label}"
-        )
+        raise ValueError(f"Unknown title/year: {title}/{year}")
 
     @staticmethod
     def get_what_to_whens():
