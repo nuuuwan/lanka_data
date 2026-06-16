@@ -11,7 +11,7 @@ from lanka_data.api.how.map.LegendUtils import LegendUtils
 from lanka_data.api.how.map.RegionColorUtils import RegionColorUtils
 from utils_future import Log
 
-log = Log("MapUtils")
+log = Log("PlotUtils")
 
 _ubuntu_font = next(
     (f.fname for f in fm.fontManager.ttflist if "Ubuntu" in f.name),
@@ -23,7 +23,7 @@ else:
     log.warning("Ubuntu font not found; using default font.")
 
 
-class MapUtils:
+class PlotUtils:
     DELIM_TITLE = " · "
     MAX_REGIONS_TO_LABEL = 100
     DEFAULT_EDGE_COLOR = "#fff"
@@ -55,8 +55,8 @@ class MapUtils:
             edge_color, edge_width = "none", 0
         else:
             edge_color, edge_width = (
-                MapUtils.DEFAULT_EDGE_COLOR,
-                MapUtils.DEFAULT_EDGE_WIDTH,
+                PlotUtils.DEFAULT_EDGE_COLOR,
+                PlotUtils.DEFAULT_EDGE_WIDTH,
             )
 
         gdf_region.plot(
@@ -66,7 +66,7 @@ class MapUtils:
             edgecolor=edge_color,
             linewidth=edge_width,
         )
-        if n_regions <= MapUtils.MAX_REGIONS_TO_LABEL:
+        if n_regions <= PlotUtils.MAX_REGIONS_TO_LABEL:
             LabelUtils._draw_labels(gdf_region, ax)
         LegendUtils._draw_legend(value_to_color, ax, legend_ax)
 
@@ -161,7 +161,7 @@ class MapUtils:
         how_description = how.get_description()
 
         source = result_data.get("source", "")
-        fig = MapUtils._render_figure(
+        fig = PlotUtils._render_figure(
             gdf_region,
             n_regions,
             value_to_color,
@@ -172,7 +172,7 @@ class MapUtils:
             source,
             cmd,
         )
-        image_dir = os.path.join(MapUtils.DIR_OUTPUT, cmd)
+        image_dir = os.path.join(PlotUtils.DIR_OUTPUT, cmd)
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, "Image.png")
 
