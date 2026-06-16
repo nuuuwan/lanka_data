@@ -143,7 +143,7 @@ class PlotUtils:
         return fig
 
     @classmethod
-    def draw_map(cls, where, what, when, how, cmd, is_cartogram):
+    def draw_plot(cls, where, what, when, how, cmd, is_cartogram):
         result_data = how.get_data(where, what, when)
         data_list = result_data["data_list"]
         n_regions = len(data_list)
