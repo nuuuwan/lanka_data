@@ -9,8 +9,9 @@ class LabelUtils:
         y_min, y_max = ax.get_ylim()
         frac_w = rect_w / (x_max - x_min)
         frac_h = rect_h / (y_max - y_min)
-        avail_w_pts = frac_w * fig.get_figwidth() * 72
-        avail_h_pts = frac_h * fig.get_figheight() * 72
+        root_fig = getattr(fig, "figure", fig)
+        avail_w_pts = frac_w * root_fig.get_figwidth() * 72
+        avail_h_pts = frac_h * root_fig.get_figheight() * 72
         n_chars = max(len(text), 1)
         size_from_w = avail_w_pts / (n_chars * 0.6)
         size_from_h = avail_h_pts / 1.2

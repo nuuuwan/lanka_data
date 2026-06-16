@@ -2,6 +2,7 @@ import os
 import tempfile
 
 import matplotlib.font_manager as fm
+import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 from PIL import Image, ImageOps
 
@@ -36,21 +37,10 @@ class PlotUtils:
 
     # flake8: noqa: CFQ002
     @staticmethod
-    def _render_figure(
-        gdf_region,
-        n_regions,
-        value_to_color,
-        how_description,
-        what_description,
-        when_description,
-        where_description,
-        source,
-        cmd,
-    ):
-        fig = plt.figure(figsize=(12, 8))
-        gs = fig.add_gridspec(1, 2, width_ratios=[5, 1], wspace=0.05)
-        ax = fig.add_subplot(gs[0])
-        legend_ax = fig.add_subplot(gs[1])
+    def plot_figure(subfig, gdf_region, n_regions, value_to_color, i_fig):
+        gs = subfig.add_gridspec(1, 2, width_ratios=[5, 1], wspace=0.05)
+        ax = subfig.add_subplot(gs[0])
+        legend_ax = subfig.add_subplot(gs[1])
         if n_regions > 400:
             edge_color, edge_width = "none", 0
         else:
@@ -70,19 +60,50 @@ class PlotUtils:
             LabelUtils._draw_labels(gdf_region, ax)
         LegendUtils._draw_legend(value_to_color, ax, legend_ax)
 
-        ax.set_title("")  # clear default title space
-        # Centre x over the visible content (map ax only, or map+legend)
-        ax_pos = ax.get_position()
-        right_x = (
-            legend_ax.get_position().x1
-            if legend_ax.get_visible()
-            else ax_pos.x1
+        ax.set_axis_off()
+        subfig.text(
+            0.5,
+            0.85,
+            f"Fig {i_fig + 1}",
+            transform=subfig.transSubfigure,
+            ha="center",
+            va="bottom",
+            fontsize=10,
+            color="gray",
         )
-        center_x = (ax_pos.x0 + right_x) / 2
-        t = fig.transFigure
 
+    @staticmethod
+    def plot_figures(
+        gdf_region,
+        n_regions,
+        value_to_color,
+        how_description,
+        what_description,
+        when_description,
+        where_description,
+        source,
+        cmd,
+    ):
+        n_figs = 1
+        rows, cols = 1, n_figs
+        fig = plt.figure(figsize=(8 * cols, 8 * rows))
+
+        outer_gs = gridspec.GridSpec(
+            rows, cols, figure=fig, top=0.85, bottom=0.15
+        )
+        subfigs_flat = [
+            fig.add_subfigure(outer_gs[i, j])
+            for i in range(rows)
+            for j in range(cols)
+        ]
+        for i_fig, subfig in enumerate(subfigs_flat[:n_figs]):
+            PlotUtils.plot_figure(
+                subfig, gdf_region, n_regions, value_to_color, i_fig
+            )
+
+        t = fig.transFigure
         fig.text(
-            center_x,
+            0.5,
             0.97,
             (
                 f"{what_description} ({when_description})"
@@ -97,8 +118,8 @@ class PlotUtils:
             color="black",
         )
         fig.text(
-            center_x,
-            0.92,
+            0.5,
+            0.93,
             where_description,
             transform=t,
             ha="center",
@@ -106,10 +127,9 @@ class PlotUtils:
             fontsize=14,
             color="black",
         )
-
         fig.text(
-            center_x,
-            0.87,
+            0.5,
+            0.90,
             how_description,
             transform=t,
             ha="center",
@@ -117,12 +137,10 @@ class PlotUtils:
             fontsize=12,
             color="grey",
         )
-
-        ax.set_axis_off()
         if source:
             fig.text(
-                center_x,
-                0.08,
+                0.5,
+                0.10,
                 f"Source: {source}",
                 transform=t,
                 ha="center",
@@ -131,15 +149,14 @@ class PlotUtils:
             )
         if cmd:
             fig.text(
-                center_x,
-                0.04,
+                0.5,
+                0.05,
                 "Command: /" + cmd,
                 transform=t,
                 ha="center",
                 fontsize=7,
                 color="gray",
             )
-
         return fig
 
     @classmethod
@@ -159,9 +176,9 @@ class PlotUtils:
         what_description = what.get_description()
         when_description = when
         how_description = how.get_description()
-
         source = result_data.get("source", "")
-        fig = PlotUtils._render_figure(
+
+        fig = PlotUtils.plot_figures(
             gdf_region,
             n_regions,
             value_to_color,
@@ -172,6 +189,7 @@ class PlotUtils:
             source,
             cmd,
         )
+
         image_dir = os.path.join(PlotUtils.DIR_OUTPUT, cmd)
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, "Image.png")
