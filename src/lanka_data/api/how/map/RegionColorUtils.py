@@ -28,7 +28,8 @@ class RegionColorUtils:
         for data in data_list:
             value = data["pct_values"][how.params]
             rank = value_to_rank[value]
-            color = colorsys.hls_to_rgb((1 - rank / (n - 1)) * 0.67, 0.5, 1.0)
+            p = 1 - rank / (n - 1)
+            color = colorsys.hls_to_rgb(p * 0.5, 0.5 + p * 0.4, 1.0)
             value_to_color[value] = color
             region_color_map[data["region_id"]] = color
         return region_color_map, value_to_color
