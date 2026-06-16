@@ -201,6 +201,22 @@ class RegionColorUtils:
         return region_color_map, value_to_color
 
     @staticmethod
+    def _colors_with_flips(result_data):
+        data_list = result_data["data_list"]
+
+        region_color_map = {}
+        value_to_color = {}
+        for data in data_list:
+            is_flipped = data["is_flipped"]
+            color = (1.0, 0.5, 0.5) if is_flipped else (0.5, 0.5, 1.0)
+            region_color_map[data["region_id"]] = color
+
+            legend_label = "Flipped" if is_flipped else "Not Flipped"
+            value_to_color[legend_label] = color
+
+        return region_color_map, value_to_color
+
+    @staticmethod
     def get_region_color_map(result_data, how, what):
         data_list = result_data["data_list"]
         if what.get_values(data_list[0]) is None:
@@ -222,5 +238,8 @@ class RegionColorUtils:
 
         if how.params == "Segregation":
             return RegionColorUtils._colors_with_segregation(result_data)
+
+        if how.params == 'Flips':
+            return RegionColorUtils._colors_with_flips(result_data)
 
         return RegionColorUtils._colors_with_values(result_data, how, what)
