@@ -56,8 +56,6 @@ class DiffWhat(What):
             if k not in ["values", "pct_values"]:
                 data[k] = v
 
-        total_value = sum(p_values.values())
-
         data |= dict(
             values1=values1,
             values2=values2,

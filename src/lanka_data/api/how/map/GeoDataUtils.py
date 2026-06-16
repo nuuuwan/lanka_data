@@ -100,7 +100,7 @@ class GeoDataUtils:
 
         if is_cartogram:
             region_id_to_weight = {
-                d["region_id"]: d["total_value"] for d in data_list
+                d["region_id"]: abs(d["total_value"]) for d in data_list
             }
             gdf = DCNUtils.run_gdf(
                 gdf,
