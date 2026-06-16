@@ -18,6 +18,7 @@ class DiffWhat(What):
     def get_description(self):
         return self.what1.get_description()
 
+    # flake8: noqa: CFQ001
     @staticmethod
     def _remap_data(data1, data2):
         values1 = data1["values"]

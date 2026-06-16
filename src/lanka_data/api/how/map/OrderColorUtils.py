@@ -40,6 +40,7 @@ class OrderColorUtils:
 
         return func_key_getter
 
+    # flake8: noqa: C901
     @staticmethod
     def _build_key_pcts(data_list, func_key_getter):
         key_to_base_hex = {}
