@@ -128,3 +128,12 @@ class RegionRawDataMixin:
             if cls.is_parent(parent_region_id, region_id):
                 return True
         return False
+
+    @classmethod
+    def get_full_name(cls, region_id):
+        region_type = RegionTypeUtils.get_region_type(region_id)
+        raw_data = cls._get_raw_region_data_for_region_id(region_id)
+        region_name = raw_data["region_name"]
+        if region_type == "country":
+            return region_name
+        return f"{region_name} {region_type.title()}"

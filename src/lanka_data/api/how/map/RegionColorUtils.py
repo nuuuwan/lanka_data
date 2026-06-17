@@ -351,7 +351,6 @@ class RegionColorUtils:
         region_color_map = {}
         value_to_color = {}
         sorted_flips = sorted(list(set([data["flip"] for data in data_list])))
-        print(f'{sorted_flips=}')
 
         n_flips = len(sorted_flips)
         for data in data_list:

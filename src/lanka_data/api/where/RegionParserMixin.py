@@ -80,7 +80,9 @@ class RegionParserMixin:
                 from_region_id, to_region_id
             )
             region_year = cls._get_region_year(parent_region_ids[0])
-            description = f"{from_region_id} to {to_region_id}"
+            from_region_full_name = cls.get_full_name(from_region_id)
+            to_region_full_name = cls.get_full_name(to_region_id)
+            description = f"{from_region_full_name} to {to_region_full_name}"
             return parent_region_ids, region_year, description
 
         if "@" in parent_part:
@@ -90,12 +92,18 @@ class RegionParserMixin:
                 region_id, radius_km
             )
             region_year = cls._get_region_year(parent_region_ids[0])
-            description = f"Regions within {radius_km} km of {region_id}"
+            region_full_name = cls.get_full_name(region_id)
+            description = (
+                f"Regions within {radius_km} km of {region_full_name}"
+            )
             return parent_region_ids, region_year, description
 
         parent_region_ids = parent_part.split(",")
         region_year = cls._get_region_year(parent_region_ids[0])
-        description = ", ".join(parent_region_ids)
+        parent_region_full_names = [
+            cls.get_full_name(rid) for rid in parent_region_ids
+        ]
+        description = ", ".join(parent_region_full_names)
         return parent_region_ids, region_year, description
 
     @classmethod
