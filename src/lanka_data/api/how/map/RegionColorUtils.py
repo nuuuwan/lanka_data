@@ -25,7 +25,7 @@ class RegionColorUtils:
     def _colors_with_values(result_data, how, what):
         func_key_getter = OrderColorUtils._func_key_getter(how, what)
         if func_key_getter:
-            return OrderColorUtils.get_region_colors_by_key(
+            return OrderColorUtils.get_category_color_from_custom_key(
                 result_data, func_key_getter
             )
         return RegionColorUtils._colors_values_key(result_data, how)
@@ -360,7 +360,7 @@ class RegionColorUtils:
         is_diff = isinstance(what, DiffWhat)
 
         if what.get_values(data_list[0]) is None:
-            return OrderColorUtils.get_region_colors_by_key(
+            return OrderColorUtils.get_category_color_from_custom_key(
                 result_data, lambda data: data["region_id"]
             )
 
