@@ -21,7 +21,7 @@ def parse_float(value):
 
 def hex_to_rgb(hex_color):
     hex_color = hex_color.lstrip("#")
-    return tuple(int(hex_color[i : i + 2], 16) / 256.0 for i in (0, 2, 4))
+    return tuple(int(hex_color[i: i + 2], 16) / 256.0 for i in (0, 2, 4))
 
 
 @dataclass
@@ -31,7 +31,7 @@ class ColorSpec:
 
     DEFAULT_CMAP_ABS = plt.cm.get_cmap("YlGn")
     DEFAULT_CMAP_DIFF = plt.cm.get_cmap("coolwarm")
-    DEFAULT_CMAP_CAT = plt.cm.get_cmap("turbo")
+    DEFAULT_CMAP_CAT = plt.cm.get_cmap("tab20")
 
     COLOR_TO_LABELS = {
         # Religion & Ethnicity
@@ -42,7 +42,9 @@ class ColorSpec:
         "#2000c0": ["OtherChristian"],
         "#c000c0": ["RomanCatholic"],
         # Null
-        "#888888": ["(No Flip)", "(No Data)", "Other"],
+        "#cccccc": ["Other"],
+        "#aaaaaa": ["(No Flip)"],
+        "#444444": ["(No Data)"],
     }
 
     LABEL_TO_COLOR = {
@@ -79,7 +81,9 @@ class ColorSpec:
         return self.region_to_color, sorted_value_to_color
 
     @classmethod
-    def by_custom_category_key(cls, result_data, func_key_getter, hide_legend):
+    def by_custom_category_key(
+        cls, result_data, func_key_getter, hide_legend
+    ):
         data_list = result_data["data_list"]
         sorted_color_keys = sorted(
             list(set([func_key_getter(data) for data in data_list]))
@@ -135,7 +139,9 @@ class ColorSpec:
 
     @classmethod
     def by_region_to_custom_value(cls, region_to_custom_value, is_diff):
-        sorted_custom_values = list(sorted(region_to_custom_value.values()))
+        sorted_custom_values = list(
+            sorted(set(region_to_custom_value.values()))
+        )
         has_non_float_values = any(
             [parse_float(value) is None for value in sorted_custom_values]
         )
@@ -148,7 +154,10 @@ class ColorSpec:
             p = i_values / (n - 1) if n > 1 else 0
             if has_non_float_values:
                 value = str(custom_value)
-                color = ColorSpec.p_to_color_for_category(p)
+                if custom_value in cls.LABEL_TO_COLOR:
+                    color = cls.LABEL_TO_COLOR[custom_value]
+                else:
+                    color = ColorSpec.p_to_color_for_category(p)
             else:
 
                 if is_diff:
