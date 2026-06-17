@@ -49,9 +49,7 @@ class ColorSpec:
         return self.region_to_color, sorted_value_to_color
 
     @classmethod
-    def by_custom_category_key(
-        cls, result_data, func_key_getter, hide_legend
-    ):
+    def by_custom_category_key(cls, result_data, func_key_getter, hide_legend):
         data_list = result_data["data_list"]
         sorted_color_keys = sorted(
             list(set([func_key_getter(data) for data in data_list]))
@@ -102,21 +100,27 @@ class ColorSpec:
     @classmethod
     def by_region_to_custom_value(cls, region_to_custom_value, is_diff):
         sorted_custom_values = list(sorted(region_to_custom_value.values()))
+        has_non_float_values = any(
+            [parse_float(value) is None for value in sorted_custom_values]
+        )
+
         n = len(sorted_custom_values)
         region_to_color = {}
         value_to_color = {}
         for region_id, custom_value in region_to_custom_value.items():
             i_values = sorted_custom_values.index(custom_value)
             p = i_values / (n - 1) if n > 1 else 0
-            if is_diff:
-                if parse_float(custom_value) is not None:
-                    value = f"{custom_value:+.4f}"
-                else:
-                    value = str(custom_value)
-                color = ColorSpec.p_to_color_for_diff(p)
+            if has_non_float_values:
+                value = str(custom_value)
+                color = ColorSpec.p_to_color_for_category(p)
             else:
-                value = f"{custom_value:.4f}"
-                color = ColorSpec.p_to_color_for_abs(p)
+
+                if is_diff:
+                    value = f"{custom_value:+.4f}"
+                    color = ColorSpec.p_to_color_for_diff(p)
+                else:
+                    value = f"{custom_value:.4f}"
+                    color = ColorSpec.p_to_color_for_abs(p)
 
             region_to_color[region_id] = color
             value_to_color[value] = color
