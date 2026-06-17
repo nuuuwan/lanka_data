@@ -157,34 +157,19 @@ class PlotUtils:
 
     @staticmethod
     def _draw_header(fig, where, what, when, how):
-        x = 0.5
         PlotUtils._plot_text(
             fig,
-            (x, 0.973),
-            f'{what.title} ({when})',
+            (0.5, 0.975),
+            f'{what.title} ({when}) - {where.get_description()} - {how.get_description()}',
             16,
             "#fff",
-        )
-        PlotUtils._plot_text(
-            fig,
-            (x, 0.944),
-            f"{where.get_description()} - {how.get_description()}",
-            12,
-            "#ccc",
         )
 
     @staticmethod
     def _draw_footer(fig, cmd, source, source_url):
-        x = 0.5
+
         PlotUtils._plot_text(
-            fig,
-            (x, 0.056),
-            cmd,
-            12,
-            "#ccc",
-        )
-        PlotUtils._plot_text(
-            fig, (x, 0.027), f"Data Source: {source}", 12, "#fff"
+            fig, (0.5, 0.025), f"Data Source: {source}", 16, "#fff"
         )
 
     @staticmethod
@@ -192,7 +177,7 @@ class PlotUtils:
         rect = Rectangle(
             (0, 0),
             1,
-            0.08,
+            0.05,
             transform=fig.transFigure,
             facecolor='grey',
             edgecolor='none',
@@ -200,9 +185,9 @@ class PlotUtils:
         )
         fig.patches.append(rect)
         rect = Rectangle(
-            (0, 0.92),
+            (0, 0.95),
             1,
-            0.08,
+            0.05,
             transform=fig.transFigure,
             facecolor='grey',
             edgecolor='none',
