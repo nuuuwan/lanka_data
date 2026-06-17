@@ -20,6 +20,8 @@ class PlotUtils:
     DEFAULT_EDGE_COLOR = "#fff"
     DEFAULT_EDGE_WIDTH = 0.2
     ASPECT_RATIO = 16 / 9
+    FIG_WIDTH = 16
+    FIG_HEIGHT = 9
     DIR_OUTPUT = os.path.join(
         tempfile.gettempdir(),
         "lanka_data",
@@ -129,9 +131,7 @@ class PlotUtils:
 
         n_figs = len(figure_specs)
         rows, cols = 1, n_figs
-        figsize_width = 8 * cols
-        figsize_height = figsize_width / PlotUtils.ASPECT_RATIO
-        fig = plt.figure(figsize=(figsize_width, figsize_height))
+        fig = plt.figure(figsize=(PlotUtils.FIG_WIDTH, PlotUtils.FIG_HEIGHT))
 
         outer_gs = gridspec.GridSpec(
             rows, cols, figure=fig, top=0.85, bottom=0.15
@@ -203,7 +203,7 @@ class PlotUtils:
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, "Image.png")
 
-        fig.savefig(image_path, dpi=200, bbox_inches="tight")
+        fig.savefig(image_path, dpi=200, bbox_inches=0)
         plt.close(fig)
 
         log.debug(f"Wrote {image_path}")
