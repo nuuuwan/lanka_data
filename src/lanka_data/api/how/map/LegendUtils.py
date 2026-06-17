@@ -21,16 +21,7 @@ class LegendUtils:
         if value_to_color is None:
             return
 
-        value_and_color = list(
-            sorted(
-                value_to_color.items(),
-                key=lambda item: (
-                    item[0] if not is_float(item[0]) else float(item[0])
-                ),
-                reverse=True,
-            )
-        )
-
+        value_and_color = list(value_to_color.items())
         trimmed = value_and_color
         if len(value_and_color) > LegendUtils.MAX_LEGEND_ITEMS:
             n_actual = len(value_and_color)
@@ -53,5 +44,5 @@ class LegendUtils:
             handles=handles,
             labels=labels,
             fontsize=12,
-            loc='best',
+            loc="best",
         )

@@ -4,6 +4,15 @@ from dataclasses import dataclass
 import matplotlib.pyplot as plt
 
 
+def parse_float(value):
+    value_str = str(value).replace(",", "").replace("+", "").replace("%", "")
+
+    try:
+        return float(value_str)
+    except ValueError:
+        return None
+
+
 @dataclass
 class ColorSpec:
     region_to_color: dict[str, str]
@@ -26,7 +35,19 @@ class ColorSpec:
         return ColorSpec.DEFAULT_CMAP_CAT(p)
 
     def unpack(self):
-        return self.region_to_color, self.value_to_color
+        sorted_value_to_color = dict(
+            sorted(
+                self.value_to_color.items(),
+                key=lambda item: (
+                    parse_float(item[0])
+                    if parse_float(item[0]) is not None
+                    else item[0]
+                ),
+                reverse=True,
+            )
+        )
+        print(list(sorted_value_to_color.keys()))
+        return self.region_to_color, sorted_value_to_color
 
     @classmethod
     def by_custom_key(cls, result_data, func_key_getter, hide_legend):
@@ -55,6 +76,7 @@ class ColorSpec:
 
     @classmethod
     def by_single_pct_value(cls, result_data, how):
+        is_diff = "flip" in result_data["data_list"][0]
         single_pct_value = how.params
         data_list = result_data["data_list"]
         pct_values = [
@@ -66,8 +88,13 @@ class ColorSpec:
         for data in data_list:
             value = data["pct_values"][single_pct_value]
             rank = value_to_rank[value]
-            color = ColorSpec.p_to_color_for_abs(1 - rank / (n - 1))
-            value_to_color[value] = color
+            color = (
+                ColorSpec.p_to_color_for_abs(1 - rank / (n - 1))
+                if not is_diff
+                else ColorSpec.p_to_color_for_diff(rank / (n - 1))
+            )
+            value_str = f"{value:+.1%}" if is_diff else f"{value:.1%}"
+            value_to_color[value_str] = color
             region_to_color[data["region_id"]] = color
         return cls(region_to_color, value_to_color)
 
