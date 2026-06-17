@@ -70,11 +70,11 @@ class PlotUtils:
                 'diff': (where, what, when, how),
             }
 
-        return {"Fig": (where, what, when, how)}
+        return {"": (where, what, when, how)}
 
     # flake8: noqa: CFQ002
     @staticmethod
-    def plot_figure(
+    def plot_subfigure(
         figure_label,
         figure_spec,
         cmd,
@@ -118,7 +118,7 @@ class PlotUtils:
         ax.set_axis_off()
         PlotUtils._plot_text(
             subfig,
-            (0.5, 0.85),
+            (0.5, 0.9),
             figure_label,
             fontsize=16,
             color="#000",
@@ -133,9 +133,7 @@ class PlotUtils:
         rows, cols = 1, n_figs
         fig = plt.figure(figsize=(PlotUtils.FIG_WIDTH, PlotUtils.FIG_HEIGHT))
 
-        outer_gs = gridspec.GridSpec(
-            rows, cols, figure=fig, top=0.85, bottom=0.15
-        )
+        outer_gs = gridspec.GridSpec(rows, cols, figure=fig, top=1, bottom=0)
         subfigs_flat = [
             fig.add_subfigure(outer_gs[i, j])
             for i in range(rows)
@@ -145,7 +143,7 @@ class PlotUtils:
             figure_specs.items(), subfigs_flat[:n_figs]
         ):
 
-            PlotUtils.plot_figure(
+            PlotUtils.plot_subfigure(
                 figure_label,
                 figure_spec,
                 cmd,
@@ -167,7 +165,6 @@ class PlotUtils:
 
     @staticmethod
     def _draw_footer(fig, cmd, source, source_url):
-
         PlotUtils._plot_text(
             fig, (0.5, 0.025), f"Data Source: {source}", 16, "#fff"
         )
