@@ -77,6 +77,6 @@ class ColorUtils:
 
     @staticmethod
     def p_to_color(p):
-        hue = p * 0.67
+        hue = p * 0.5
         color = colorsys.hls_to_rgb(hue, 0.5, 1.0)
         return color
