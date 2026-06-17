@@ -1,4 +1,3 @@
-import random
 from dataclasses import dataclass
 
 import matplotlib.pyplot as plt
@@ -31,7 +30,7 @@ class ColorSpec:
 
     DEFAULT_CMAP_ABS = plt.cm.get_cmap("YlGn")
     DEFAULT_CMAP_DIFF = plt.cm.get_cmap("coolwarm")
-    DEFAULT_CMAP_CAT = plt.cm.get_cmap("tab20")
+    DEFAULT_CMAP_CAT = plt.cm.get_cmap("turbo")
 
     COLOR_TO_LABELS = {
         # Religion & Ethnicity
@@ -66,22 +65,23 @@ class ColorSpec:
         return ColorSpec.DEFAULT_CMAP_CAT(p)
 
     def unpack(self):
-        first_value = list(self.value_to_color)[0]
+        color_to_count = {}
+        for region, color in self.region_to_color.items():
+            color_to_count[color] = color_to_count.get(color, 0) + 1
+
         sorted_value_to_color = dict(
             sorted(
                 self.value_to_color.items(),
                 key=lambda item: (
-                    parse_float(item[0])
-                    if parse_float(item[0]) is not None
-                    else item[0]
+                    -color_to_count[item[1]],
+                    -(
+                        parse_float(item[0])
+                        if parse_float(item[0]) is not None
+                        else 0
+                    ),
                 ),
-                reverse=parse_float(first_value) is not None,
             )
         )
-
-        color_to_count = {}
-        for region, color in self.region_to_color.items():
-            color_to_count[color] = color_to_count.get(color, 0) + 1
 
         expanded_value_to_color = {}
         for value, color in sorted_value_to_color.items():
@@ -99,8 +99,6 @@ class ColorSpec:
         sorted_color_keys = sorted(
             list(set([func_key_getter(data) for data in data_list]))
         )
-        if hide_legend:
-            random.shuffle(sorted_color_keys)
 
         n_keys = len(sorted_color_keys)
         region_to_color = {}

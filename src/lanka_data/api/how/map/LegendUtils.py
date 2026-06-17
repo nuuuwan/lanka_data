@@ -22,7 +22,7 @@ def parse_float(value):
 
 
 class LegendUtils:
-    MAX_LEGEND_ITEMS = 5
+    MAX_LEGEND_ITEMS = 7
 
     @staticmethod
     def _format_legend_label(value):
@@ -37,10 +37,8 @@ class LegendUtils:
             return
 
         value_and_color = list(value_to_color.items())
-        first_value = list(value_to_color.keys())[0]
-        is_float = parse_float(first_value) is not None
         trimmed = value_and_color
-        if len(value_and_color) > LegendUtils.MAX_LEGEND_ITEMS and is_float:
+        if len(value_and_color) > LegendUtils.MAX_LEGEND_ITEMS:
             n_actual = len(value_and_color)
             n_req = LegendUtils.MAX_LEGEND_ITEMS - 1
             trimmed = [
