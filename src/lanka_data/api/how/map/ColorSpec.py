@@ -46,7 +46,6 @@ class ColorSpec:
                 reverse=True,
             )
         )
-        print(list(sorted_value_to_color.keys()))
         return self.region_to_color, sorted_value_to_color
 
     @classmethod
