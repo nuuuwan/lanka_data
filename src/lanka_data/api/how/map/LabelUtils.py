@@ -15,7 +15,7 @@ class LabelUtils:
         n_chars = max(len(text), 1)
         size_from_w = avail_w_pts / (n_chars * 0.6)
         size_from_h = avail_h_pts / 1.2
-        return max(6, min(size_from_w, size_from_h, 18) * 0.4)
+        return min(size_from_w, size_from_h, 18) * 0.3
 
     @staticmethod
     def _draw_labels(gdf_region, ax):
@@ -29,7 +29,7 @@ class LabelUtils:
                 "black" if ColorUtils._is_light_color(bg_color) else "white"
             )
             label = (
-                f'{row.get("region_name")}\n{row.get("region_id")}'
+                f'{row.get("region_name")}'
                 if row.get("region_name")
                 else str(row.get("region_id"))
             )
