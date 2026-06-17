@@ -84,9 +84,9 @@ class PlotUtils:
         gdf_region = GeoDataUtils.get_geopandas_dataframe(
             data_list, is_cartogram
         ).copy()
-        region_color_map, value_to_color = (
-            RegionColorUtils.get_region_color_map(what, when, where, how)
-        )
+        region_color_map, value_to_color = RegionColorUtils.get_color_spec(
+            what, when, where, how
+        ).unpack()
         gdf_region["color"] = gdf_region["region_id"].map(region_color_map)
 
         gs = subfig.add_gridspec(1, 2, width_ratios=[5, 1], wspace=0.05)

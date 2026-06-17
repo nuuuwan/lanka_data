@@ -1,5 +1,4 @@
 from lanka_data.api.how.map import ColorSpec
-from lanka_data.api.how.map.ColorUtils import ColorUtils
 from lanka_data.api.how.map.OrderColorUtils import OrderColorUtils
 from lanka_data.api.what.DiffWhat import DiffWhat
 from utils_future import GeoUtils
@@ -8,10 +7,12 @@ from utils_future import GeoUtils
 class RegionColorUtils:
 
     @staticmethod
-    def get_color_spec(result_data, how, what) -> ColorSpec:
+    def get_color_spec_generic(result_data, how, what) -> ColorSpec:
         func_key_getter = OrderColorUtils._func_key_getter(how, what)
         if func_key_getter:
-            return ColorSpec.by_custom_key(result_data, func_key_getter)
+            return ColorSpec.by_custom_key(
+                result_data, func_key_getter, False
+            )
         return ColorSpec.by_single_pct_value(result_data, how)
 
     @staticmethod
@@ -72,22 +73,12 @@ class RegionColorUtils:
         result_data, is_pew=False, pct_values_key='pct_values'
     ):
 
-        region_to_diversity = RegionColorUtils.get_region_to_diversity(
-            result_data, is_pew, pct_values_key
+        return ColorSpec.by_region_to_custom_value(
+            RegionColorUtils.get_region_to_diversity(
+                result_data, is_pew, pct_values_key
+            ),
+            False,
         )
-
-        region_color_map = {}
-        value_to_color = {}
-        for region_id, diversity in region_to_diversity.items():
-            label, color, low, high = (
-                RegionColorUtils._get_diversity_label_and_color(diversity)
-            )
-            region_color_map[region_id] = color
-
-            legend_label = f"{label} ({low:.1f} - {high:.1f})"
-            value_to_color[legend_label] = color
-
-        return region_color_map, value_to_color
 
     @staticmethod
     def get_region_to_diversity_change(result_data, is_pew=False):
@@ -126,7 +117,7 @@ class RegionColorUtils:
             )
         )
         return ColorSpec.by_region_to_custom_value(
-            region_to_diversity_change, is_diff=True
+            region_to_diversity_change, True
         )
 
     MAX_NEIGHBOR_DISTANCE_KM = 5
@@ -201,7 +192,7 @@ class RegionColorUtils:
     @staticmethod
     def get_color_spec_for_segregation(result_data):
         return ColorSpec.by_region_to_custom_value(
-            RegionColorUtils.get_region_to_segregation(result_data)
+            RegionColorUtils.get_region_to_segregation(result_data), False
         )
 
     @staticmethod
@@ -234,7 +225,7 @@ class RegionColorUtils:
     def get_color_spec_for_segregation_change(result_data):
 
         return ColorSpec.by_region_to_custom_value(
-            RegionColorUtils.get_segregation_change(result_data), is_diff=True
+            RegionColorUtils.get_segregation_change(result_data), True
         )
 
     @staticmethod
@@ -247,32 +238,19 @@ class RegionColorUtils:
     @staticmethod
     def get_color_spec_for_change(result_data):
         return ColorSpec.by_region_to_custom_value(
-            RegionColorUtils.get_region_to_change(result_data), is_diff=True
+            RegionColorUtils.get_region_to_change(result_data), True
         )
 
     @staticmethod
     def get_colors_from_flips(result_data):
-        data_list = result_data["data_list"]
-
-        region_color_map = {}
-        value_to_color = {}
-        sorted_flips = sorted(list(set([data["flip"] for data in data_list])))
-
-        n_flips = len(sorted_flips)
-        for data in data_list:
-            flip = data["flip"]
-            i_flip = sorted_flips.index(flip)
-            color = ColorUtils.p_to_color_for_abs(
-                i_flip / (n_flips - 1) if n_flips > 1 else 0.5
-            )
-            region_color_map[data["region_id"]] = color
-
-            value_to_color[flip] = color
-
-        return region_color_map, value_to_color
+        region_to_flip = {
+            data["region_id"]: data["flips"]
+            for data in result_data["data_list"]
+        }
+        return ColorSpec.by_region_to_custom_value(region_to_flip, True)
 
     @staticmethod
-    def get_region_color_map(what, when, where, how):
+    def get_color_spec(what, when, where, how) -> ColorSpec:
         result_data = how.get_data(what, when, where)
         data_list = result_data["data_list"]
         is_diff = isinstance(what, DiffWhat)
@@ -281,7 +259,7 @@ class RegionColorUtils:
             return ColorSpec.by_custom_key(
                 result_data,
                 lambda data: data["region_id"],
-                hide_legend=True,
+                True,
             )
 
         if how.params == "Diversity":
@@ -330,4 +308,4 @@ class RegionColorUtils:
                 result_data, how.without_params(), what
             )
 
-        return RegionColorUtils.get_color(result_data, how, what)
+        return RegionColorUtils.get_color_spec_generic(result_data, how, what)

@@ -1,5 +1,3 @@
-
-
 class OrderColorUtils:
     _PARAM_TO_IDX = {"Top": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
 
