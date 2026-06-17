@@ -162,7 +162,11 @@ class PlotUtils:
     @staticmethod
     def _draw_footer(fig, cmd, source, source_url):
         PlotUtils._plot_text(
-            fig, (0.5, 0.025), f"Data Source: {source}", 16, "#fff"
+            fig,
+            (0.5, 0.025),
+            f"Data Source: {source} ({source_url})",
+            16,
+            "#fff",
         )
 
     @staticmethod
@@ -195,9 +199,9 @@ class PlotUtils:
             what, when, where, how, cmd, is_cartogram
         )
 
-        source = "Department of Census and Statistics, Sri Lanka"
-        source_url = "https://www.statistics.gov.lk/"
-
+        region_data = how.get_data(what, when, where)
+        source = region_data["source"]
+        source_url = region_data["source_url"]
         PlotUtils._plot_rects(fig)
         PlotUtils._draw_header(fig, what, when, where, how)
         PlotUtils._draw_footer(fig, cmd, source, source_url)
