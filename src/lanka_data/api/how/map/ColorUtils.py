@@ -5,7 +5,7 @@ class ColorUtils:
 
     DEFAULT_CMAP_ABS = plt.cm.get_cmap("RdYlGn")
     DEFAULT_CMAP_DIFF = plt.cm.get_cmap("bwr")
-    DEFAULT_CMAP_CAT = plt.cm.get_cmap("tab20")
+    DEFAULT_CMAP_CAT = plt.cm.get_cmap("tab10")
 
     MIN_ALPHA = 0.33
     MAX_ALPHA = 1.0
