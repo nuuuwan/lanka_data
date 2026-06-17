@@ -7,14 +7,17 @@ from utils_future import GeoUtils
 class RegionColorUtils:
 
     @staticmethod
-    def _colors_values_key(result_data, how):
+    def get_absolute_value_color_from_single_pct_value(result_data, how):
+        single_pct_value = how.params
         data_list = result_data["data_list"]
-        pct_values = [data["pct_values"][how.params] for data in data_list]
+        pct_values = [
+            data["pct_values"][single_pct_value] for data in data_list
+        ]
         value_to_rank = {v: r for r, v in enumerate(sorted(set(pct_values)))}
         n = len(value_to_rank)
         value_to_color, region_color_map = {}, {}
         for data in data_list:
-            value = data["pct_values"][how.params]
+            value = data["pct_values"][single_pct_value]
             rank = value_to_rank[value]
             color = ColorUtils.p_to_color_for_abs(1 - rank / (n - 1))
             value_to_color[value] = color
@@ -22,13 +25,17 @@ class RegionColorUtils:
         return region_color_map, value_to_color
 
     @staticmethod
-    def _colors_with_values(result_data, how, what):
+    def get_color(result_data, how, what):
         func_key_getter = OrderColorUtils._func_key_getter(how, what)
         if func_key_getter:
             return OrderColorUtils.get_category_color_from_custom_key(
                 result_data, func_key_getter
             )
-        return RegionColorUtils._colors_values_key(result_data, how)
+        return (
+            RegionColorUtils.get_absolute_value_color_from_single_pct_value(
+                result_data, how
+            )
+        )
 
     @staticmethod
     def _compute_diversity(pct_values, is_pew=False):
@@ -84,7 +91,7 @@ class RegionColorUtils:
         return region_to_diversity
 
     @staticmethod
-    def _colors_with_diversity(
+    def get_colors_from_diversity(
         result_data, is_pew=False, pct_values_key='pct_values'
     ):
 
@@ -106,7 +113,7 @@ class RegionColorUtils:
         return region_color_map, value_to_color
 
     @staticmethod
-    def _colors_with_diversity_change(result_data, is_pew=False):
+    def get_colors_from_diversity_change(result_data, is_pew=False):
 
         region_to_diversity1 = RegionColorUtils.get_region_to_diversity(
             result_data, is_pew, 'pct_values1'
@@ -230,7 +237,7 @@ class RegionColorUtils:
         return region_to_segregation
 
     @staticmethod
-    def _colors_with_segregation(result_data):
+    def get_colors_from_segregation(result_data):
 
         region_to_segregation = RegionColorUtils.get_region_to_segregation(
             result_data
@@ -254,7 +261,7 @@ class RegionColorUtils:
         return region_color_map, value_to_color
 
     @staticmethod
-    def _colors_with_segregation_change(result_data):
+    def get_colors_from_segregation_change(result_data):
         region1_to_segregation = RegionColorUtils.get_region_to_segregation(
             result_data, 'pct_values1', 'values1'
         )
@@ -311,7 +318,7 @@ class RegionColorUtils:
         return region_to_color, value_to_color
 
     @staticmethod
-    def _colors_with_change(result_data):
+    def get_colors_from_change(result_data):
         data_list = result_data["data_list"]
 
         changes = [data["change"] for data in data_list]
@@ -333,7 +340,7 @@ class RegionColorUtils:
         return region_color_map, value_to_color
 
     @staticmethod
-    def _colors_with_flips(result_data):
+    def get_colors_from_flips(result_data):
         data_list = result_data["data_list"]
 
         region_color_map = {}
@@ -366,23 +373,23 @@ class RegionColorUtils:
 
         if how.params == "Diversity":
             if is_diff:
-                return RegionColorUtils._colors_with_diversity_change(
+                return RegionColorUtils.get_colors_from_diversity_change(
                     result_data,
                     is_pew=False,
                 )
 
-            return RegionColorUtils._colors_with_diversity(
+            return RegionColorUtils.get_colors_from_diversity(
                 result_data,
                 is_pew=False,
             )
 
         if how.params == "DiversityPew":
             if is_diff:
-                return RegionColorUtils._colors_with_diversity_change(
+                return RegionColorUtils.get_colors_from_diversity_change(
                     result_data,
                     is_pew=True,
                 )
-            return RegionColorUtils._colors_with_diversity(
+            return RegionColorUtils.get_colors_from_diversity(
                 result_data,
                 is_pew=True,
             )
@@ -390,7 +397,7 @@ class RegionColorUtils:
         if how.params == "Change":
             if is_diff:
                 return RegionColorUtils._colors_with_change(result_data)
-            return RegionColorUtils._colors_with_values(
+            return RegionColorUtils.get_color(
                 result_data, how.without_params(), what
             )
 
@@ -399,13 +406,13 @@ class RegionColorUtils:
                 return RegionColorUtils._colors_with_segregation_change(
                     result_data
                 )
-            return RegionColorUtils._colors_with_segregation(result_data)
+            return RegionColorUtils.get_colors_from_segregation(result_data)
 
         if how.params == 'Flips':
             if is_diff:
-                return RegionColorUtils._colors_with_flips(result_data)
-            return RegionColorUtils._colors_with_values(
+                return RegionColorUtils.get_colors_from_flips(result_data)
+            return RegionColorUtils.get_color(
                 result_data, how.without_params(), what
             )
 
-        return RegionColorUtils._colors_with_values(result_data, how, what)
+        return RegionColorUtils.get_color(result_data, how, what)
