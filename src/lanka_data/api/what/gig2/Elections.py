@@ -147,6 +147,8 @@ class Elections(GIG2):
             votes_by_party=votes_by_party,
             pct_votes_by_party=pct_votes_by_party,
             total_value=summary["polled"],
+            values=votes_by_party,
+            pct_values=pct_votes_by_party,
         )
 
     @classmethod
