@@ -71,7 +71,7 @@ class DiffWhat(What):
             change=change,
             max1=max1,
             max2=max2,
-            is_flipped=max1 != max2,
+            flip=f'{max1} to {max2}' if max1 != max2 else 'No Flip',
         )
 
         return data

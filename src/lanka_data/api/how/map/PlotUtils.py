@@ -51,15 +51,15 @@ class PlotUtils:
         if '-' in when:
             when_parts = when.split('-')
             return {
-                when_parts[1]: (
-                    WhatFactory.from_what_and_when(what.title, when_parts[1]),
-                    when_parts[1],
-                    where,
-                    how,
-                ),
                 when_parts[0]: (
                     WhatFactory.from_what_and_when(what.title, when_parts[0]),
                     when_parts[0],
+                    where,
+                    how,
+                ),
+                when_parts[1]: (
+                    WhatFactory.from_what_and_when(what.title, when_parts[1]),
+                    when_parts[1],
                     where,
                     how,
                 ),

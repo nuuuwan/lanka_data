@@ -350,13 +350,19 @@ class RegionColorUtils:
 
         region_color_map = {}
         value_to_color = {}
+        sorted_flips = sorted(list(set([data["flip"] for data in data_list])))
+        print(f'{sorted_flips=}')
+
+        n_flips = len(sorted_flips)
         for data in data_list:
-            is_flipped = data["is_flipped"]
-            color = ColorUtils.p_to_color(1 if is_flipped else 0.5)
+            flip = data["flip"]
+            i_flip = sorted_flips.index(flip)
+            color = ColorUtils.p_to_color(
+                i_flip / (n_flips - 1) if n_flips > 1 else 0.5
+            )
             region_color_map[data["region_id"]] = color
 
-            legend_label = "Flipped" if is_flipped else "Not Flipped"
-            value_to_color[legend_label] = color
+            value_to_color[flip] = color
 
         return region_color_map, value_to_color
 
