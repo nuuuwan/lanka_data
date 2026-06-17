@@ -4,15 +4,15 @@ class How:
         self.params = params
 
     def get_description(self):
-        description = self.__class__.__name__
+        description = ""
         param_description = {
-            "2nd": "2nd largest value",
-            "3rd": "3rd largest value",
-            "Bottom": "Bottom value",
-            "Top": "Top value",
+            "2nd": "2nd largest category",
+            "3rd": "3rd largest category",
+            "Bottom": "Smallest category",
+            "Top": "Largest category",
         }.get(self.params, self.params)
         if param_description:
-            description += f" ({param_description})"
+            description += param_description
         return description
 
     def get_title(self):
