@@ -45,57 +45,28 @@ class PlotUtils:
         )
 
     @staticmethod
-    def get_figure_specs(where, what, when, how):
-        from lanka_data.api.how.HowFactory import HowFactory
+    def get_figure_specs(what, when, where, how):
         from lanka_data.api.what.WhatFactory import WhatFactory
 
         if '-' in when:
-            if how.params is None or how.params in ['Change']:
-                when_parts = when.split('-')
-                if how.params:
-                    how_label = how.how_label.split(":")[0]
-                    how_without_params = HowFactory.from_how_cmd(how_label)
-                return {
-                    when_parts[1]: (
-                        where,
-                        WhatFactory.from_what_and_when(
-                            what.title, when_parts[1]
-                        ),
-                        when_parts[1],
-                        how_without_params,
-                    ),
-                    when_parts[0]: (
-                        where,
-                        WhatFactory.from_what_and_when(
-                            what.title, when_parts[0]
-                        ),
-                        when_parts[0],
-                        how_without_params,
-                    ),
-                    'diff': (where, what, when, how),
-                }
-            elif how.params in ['DiversityPew']:
-                when_parts = when.split('-')
-                return {
-                    when_parts[1]: (
-                        where,
-                        WhatFactory.from_what_and_when(
-                            what.title, when_parts[1]
-                        ),
-                        when_parts[1],
-                        how,
-                    ),
-                    when_parts[0]: (
-                        where,
-                        WhatFactory.from_what_and_when(
-                            what.title, when_parts[0]
-                        ),
-                        when_parts[0],
-                        how,
-                    ),
-                }
+            when_parts = when.split('-')
+            return {
+                when_parts[1]: (
+                    WhatFactory.from_what_and_when(what.title, when_parts[1]),
+                    when_parts[1],
+                    where,
+                    how,
+                ),
+                when_parts[0]: (
+                    WhatFactory.from_what_and_when(what.title, when_parts[0]),
+                    when_parts[0],
+                    where,
+                    how,
+                ),
+                'Change': (what, when, where, how),
+            }
 
-        return {"": (where, what, when, how)}
+        return {"": (what, when, where, how)}
 
     # flake8: noqa: CFQ002
     @staticmethod
@@ -106,15 +77,15 @@ class PlotUtils:
         is_cartogram,
         subfig,
     ):
-        where, what, when, how = figure_spec
-        result_data = how.get_data(where, what, when)
+        what, when, where, how = figure_spec
+        result_data = how.get_data(what, when, where)
         data_list = result_data["data_list"]
         n_regions = len(data_list)
         gdf_region = GeoDataUtils.get_geopandas_dataframe(
             data_list, is_cartogram
         ).copy()
         region_color_map, value_to_color = (
-            RegionColorUtils.get_region_color_map(result_data, how, what)
+            RegionColorUtils.get_region_color_map(what, when, where, how)
         )
         gdf_region["color"] = gdf_region["region_id"].map(region_color_map)
 
@@ -150,9 +121,9 @@ class PlotUtils:
         )
 
     @staticmethod
-    def plot_subfigures(where, what, when, how, cmd, is_cartogram):
+    def plot_subfigures(what, when, where, how, cmd, is_cartogram):
 
-        figure_specs = PlotUtils.get_figure_specs(where, what, when, how)
+        figure_specs = PlotUtils.get_figure_specs(what, when, where, how)
 
         n_figs = len(figure_specs)
         rows, cols = 1, n_figs
@@ -179,7 +150,7 @@ class PlotUtils:
         return fig
 
     @staticmethod
-    def _draw_header(fig, where, what, when, how):
+    def _draw_header(fig, what, when, where, how):
         PlotUtils._plot_text(
             fig,
             (0.5, 0.975),
@@ -218,17 +189,17 @@ class PlotUtils:
         fig.patches.append(rect)
 
     @classmethod
-    def draw_plot(cls, where, what, when, how, cmd, is_cartogram):
+    def draw_plot(cls, what, when, where, how, cmd, is_cartogram):
         FontUtils.install_font(cls.FONT_FAMILY)
         fig = PlotUtils.plot_subfigures(
-            where, what, when, how, cmd, is_cartogram
+            what, when, where, how, cmd, is_cartogram
         )
 
         source = "Department of Census and Statistics, Sri Lanka"
         source_url = "https://www.statistics.gov.lk/"
 
         PlotUtils._plot_rects(fig)
-        PlotUtils._draw_header(fig, where, what, when, how)
+        PlotUtils._draw_header(fig, what, when, where, how)
         PlotUtils._draw_footer(fig, cmd, source, source_url)
 
         image_dir = os.path.join(PlotUtils.DIR_OUTPUT, cmd)

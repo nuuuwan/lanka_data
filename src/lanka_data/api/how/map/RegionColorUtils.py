@@ -1,5 +1,6 @@
 from lanka_data.api.how.map.ColorUtils import ColorUtils
 from lanka_data.api.how.map.OrderColorUtils import OrderColorUtils
+from lanka_data.api.what.DiffWhat import DiffWhat
 from utils_future import GeoUtils
 
 
@@ -216,8 +217,10 @@ class RegionColorUtils:
         return region_color_map, value_to_color
 
     @staticmethod
-    def get_region_color_map(result_data, how, what):
+    def get_region_color_map(what, when, where, how):
+        result_data = how.get_data(what, when, where)
         data_list = result_data["data_list"]
+
         if what.get_values(data_list[0]) is None:
             return RegionColorUtils._colors_no_values(result_data)
 
@@ -233,7 +236,12 @@ class RegionColorUtils:
             )
 
         if how.params == "Change":
-            return RegionColorUtils._colors_with_change(result_data)
+            if isinstance(what, DiffWhat):
+                return RegionColorUtils._colors_with_change(result_data)
+            else:
+                return RegionColorUtils._colors_with_values(
+                    result_data, how.without_params(), what
+                )
 
         if how.params == "Segregation":
             return RegionColorUtils._colors_with_segregation(result_data)

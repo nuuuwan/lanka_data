@@ -22,7 +22,7 @@ class How:
             else self.how_label
         )
 
-    def get_data(self, where, what, when):
+    def get_data(self, what, when, where):
         data_list = what.get_data_list(where)
         if len(data_list) == 0:
             raise ValueError(
@@ -42,10 +42,10 @@ class How:
 
         return result_data
 
-    def get_inner(self, where, what, when, cmd):
+    def get_inner(self, what, when, where, cmd):
         raise NotImplementedError("Subclasses should implement this method.")
 
-    def get_descriptions(self, where, what, when):
+    def get_descriptions(self, what, when, where):
         return dict(
             what_description=what.get_description(),
             when_description=when,
@@ -53,15 +53,15 @@ class How:
             how_description=self.get_description(),
         )
 
-    def get_result(self, where, what, when, cmd):
+    def get_result(self, what, when, where, cmd):
         return (
-            self.get_descriptions(where, what, when)
-            | self.get_inner(where, what, when, cmd)
+            self.get_descriptions(what, when, where)
+            | self.get_inner(what, when, where, cmd)
             | dict(cmd=cmd)
         )
 
-    def get_descriptions_title(self, where, what, when):
-        descriptions = self.get_descriptions(where, what, when)
+    def get_descriptions_title(self, what, when, where):
+        descriptions = self.get_descriptions(what, when, where)
         what_description = descriptions["what_description"]
         when_description = descriptions["when_description"]
         where_description = descriptions["where_description"]
@@ -71,3 +71,6 @@ class How:
             f"{how_description} of\n{what_description}"
             + f" ({when_description}) for\n{where_description}"
         )
+
+    def without_params(self):
+        return How(self.how_label, "")
