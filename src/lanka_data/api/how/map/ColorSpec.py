@@ -49,7 +49,9 @@ class ColorSpec:
         return self.region_to_color, sorted_value_to_color
 
     @classmethod
-    def by_custom_key(cls, result_data, func_key_getter, hide_legend):
+    def by_custom_category_key(
+        cls, result_data, func_key_getter, hide_legend
+    ):
         data_list = result_data["data_list"]
         sorted_color_keys = sorted(
             list(set([func_key_getter(data) for data in data_list]))

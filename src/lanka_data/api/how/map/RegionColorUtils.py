@@ -11,7 +11,7 @@ class RegionColorUtils:
     def get_color_spec_generic(result_data, how, what) -> ColorSpec:
         func_key_getter = OrderColorUtils._func_key_getter(how, what)
         if func_key_getter:
-            return ColorSpec.by_custom_key(
+            return ColorSpec.by_custom_category_key(
                 result_data, func_key_getter, False
             )
         return ColorSpec.by_single_pct_value(result_data, how)
@@ -77,7 +77,7 @@ class RegionColorUtils:
         is_diff = isinstance(what, DiffWhat)
 
         if what.get_values(data_list[0]) is None:
-            return ColorSpec.by_custom_key(
+            return ColorSpec.by_custom_category_key(
                 result_data,
                 lambda data: data["region_id"],
                 True,
