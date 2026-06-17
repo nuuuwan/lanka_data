@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 
 class ColorUtils:
 
-    DEFAULT_CMAP = plt.cm.get_cmap("viridis")
+    DEFAULT_CMAP_ABS = plt.cm.get_cmap("RdYlGn")
+    DEFAULT_CMAP_DIFF = plt.cm.get_cmap("bwr")
 
     MIN_ALPHA = 0.33
     MAX_ALPHA = 1.0
@@ -36,7 +37,13 @@ class ColorUtils:
         return f"#{part(r)}{part(g)}{part(b)}"
 
     @staticmethod
-    def p_to_color(p):
-        rgb = ColorUtils.DEFAULT_CMAP(p)
+    def p_to_color_for_abs(p):
+        rgb = ColorUtils.DEFAULT_CMAP_ABS(p)
+        hex = ColorUtils.rgb_to_hex(rgb[:3])
+        return hex
+
+    @staticmethod
+    def p_to_color_for_diff(p):
+        rgb = ColorUtils.DEFAULT_CMAP_DIFF(p)
         hex = ColorUtils.rgb_to_hex(rgb[:3])
         return hex

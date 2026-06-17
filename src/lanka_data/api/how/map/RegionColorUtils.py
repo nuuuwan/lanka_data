@@ -28,7 +28,7 @@ class RegionColorUtils:
         for data in data_list:
             value = data["pct_values"][how.params]
             rank = value_to_rank[value]
-            color = ColorUtils.p_to_color(1 - rank / (n - 1))
+            color = ColorUtils.p_to_color_for_abs(1 - rank / (n - 1))
             value_to_color[value] = color
             region_color_map[data["region_id"]] = color
         return region_color_map, value_to_color
@@ -162,7 +162,7 @@ class RegionColorUtils:
                     + 0.5
                 )
                 value = f"{diversity_change:+.4f}"
-                color = ColorUtils.p_to_color(p)
+                color = ColorUtils.p_to_color_for_diff(p)
 
                 region_to_color[region_id] = color
                 value_to_color[value] = color
@@ -255,7 +255,7 @@ class RegionColorUtils:
         value_to_color = {}
         for region_id, segregation in region_to_segregation.items():
             rank_error = sorted_segregations.index(segregation)
-            color = ColorUtils.p_to_color(
+            color = ColorUtils.p_to_color_for_abs(
                 (1 - rank_error / (len(sorted_segregations) - 1))
             )
             region_color_map[region_id] = color
@@ -313,7 +313,7 @@ class RegionColorUtils:
                     else 0.5
                 )
                 value = f"{segregation_change:+.4f}"
-                color = ColorUtils.p_to_color(p)
+                color = ColorUtils.p_to_color_for_diff(p)
                 region_to_color[region_id] = color
                 value_to_color[value] = color
         value_to_color = dict(
@@ -334,12 +334,12 @@ class RegionColorUtils:
         for data in data_list:
             change = data["change"]
             rank_error = sorted_changes.index(change)
-            color = ColorUtils.p_to_color(
+            color = ColorUtils.p_to_color_for_diff(
                 1 - rank_error / (len(sorted_changes) - 1)
             )
             region_color_map[data["region_id"]] = color
 
-            legend_label = f"{change:.4f}"
+            legend_label = f"{change:+.4f}"
             value_to_color[legend_label] = color
 
         return region_color_map, value_to_color
@@ -356,7 +356,7 @@ class RegionColorUtils:
         for data in data_list:
             flip = data["flip"]
             i_flip = sorted_flips.index(flip)
-            color = ColorUtils.p_to_color(
+            color = ColorUtils.p_to_color_for_abs(
                 i_flip / (n_flips - 1) if n_flips > 1 else 0.5
             )
             region_color_map[data["region_id"]] = color
