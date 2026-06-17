@@ -42,7 +42,9 @@ class LabelUtils:
                 text_angle = angle_deg + 90.0
             while text_angle > 90.0:
                 text_angle -= 180.0
-            fontsize = LabelUtils._fit_fontsize(label, text_w, text_h, ax, fig)
+            fontsize = LabelUtils._fit_fontsize(
+                label, text_w, text_h, ax, fig
+            )
             ax.annotate(
                 label,
                 xy=(cx, cy),

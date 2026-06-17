@@ -121,8 +121,8 @@ class ColorSpecFactory:
 
         if how.params == "Change":
             if is_diff:
-                return ColorSpecFactory._colors_with_change(result_data)
-            return ColorSpecFactory.get_color(
+                return ColorSpecFactory.get_color_spec_for_change(result_data)
+            return ColorSpecFactory.get_color_spec_generic(
                 result_data, how.without_params(), what
             )
 
