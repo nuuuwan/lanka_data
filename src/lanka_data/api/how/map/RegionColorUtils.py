@@ -161,7 +161,6 @@ class RegionColorUtils:
                 segregation = 0
 
             region_to_segregation[region_id] = segregation
-        print(f'{region_to_segregation=}')
 
         segregations = list(region_to_segregation.values())
         sorted_segregations = sorted(segregations)
