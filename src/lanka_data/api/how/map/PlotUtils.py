@@ -117,6 +117,7 @@ class PlotUtils:
             fontsize=16,
             color="#000",
         )
+        return result_data
 
     @staticmethod
     def plot_subfigures(what, when, where, how, cmd, is_cartogram):
@@ -133,19 +134,22 @@ class PlotUtils:
             for i in range(rows)
             for j in range(cols)
         ]
+
+        result_data_list = []
         for (figure_label, figure_spec), subfig in zip(
             figure_specs.items(), subfigs_flat[:n_figs]
         ):
 
-            PlotUtils.plot_subfigure(
+            result_data = PlotUtils.plot_subfigure(
                 figure_label,
                 figure_spec,
                 cmd,
                 is_cartogram,
                 subfig,
             )
+            result_data_list.append(result_data)
 
-        return fig
+        return fig, result_data_list
 
     @staticmethod
     def _draw_header(fig, what, when, where, how):
@@ -158,11 +162,11 @@ class PlotUtils:
         )
 
     @staticmethod
-    def _draw_footer(fig, cmd, source, source_url):
+    def _draw_footer(fig, cmd, source_list):
         PlotUtils._plot_text(
             fig,
             (0.5, 0.025),
-            f"Data Source: {source} ({source_url})",
+            "Data Sources: " + ", ".join(source_list),
             16,
             "#fff",
         )
@@ -193,16 +197,17 @@ class PlotUtils:
     @classmethod
     def draw_plot(cls, what, when, where, how, cmd, is_cartogram):
         FontUtils.install_font(cls.FONT_FAMILY)
-        fig = PlotUtils.plot_subfigures(
+        fig, result_data_list = PlotUtils.plot_subfigures(
             what, when, where, how, cmd, is_cartogram
         )
 
-        region_data = how.get_data(what, when, where)
-        source = region_data["source"]
-        source_url = region_data["source_url"]
+        source_set = set()
+        for result_data in result_data_list:
+            source_set.add(result_data["source"])
+        source_list = sorted(source_set)
         PlotUtils._plot_rects(fig)
         PlotUtils._draw_header(fig, what, when, where, how)
-        PlotUtils._draw_footer(fig, cmd, source, source_url)
+        PlotUtils._draw_footer(fig, cmd, source_list)
 
         image_dir = os.path.join(PlotUtils.DIR_OUTPUT, cmd)
         os.makedirs(image_dir, exist_ok=True)
@@ -214,6 +219,5 @@ class PlotUtils:
         log.debug(f"Wrote {image_path}")
         return {
             "image_path": image_path,
-            "source": source,
-            "source_url": source_url,
+            "source_list": source_list,
         }
