@@ -160,16 +160,16 @@ class PlotUtils:
         x = 0.5
         PlotUtils._plot_text(
             fig,
-            (x, 0.94),
+            (x, 0.95),
             f'{what.title} ({when})',
-            8,
+            12,
             "#000",
         )
         PlotUtils._plot_text(
-            fig, (x, 0.92), f"{where.get_description()}", 16, "#444"
+            fig, (x, 0.925), f"{where.get_description()}", 16, "#444"
         )
         PlotUtils._plot_text(
-            fig, (x, 0.89), f"{how.get_description()}", 12, "#888"
+            fig, (x, 0.9), f"{how.get_description()}", 12, "#888"
         )
 
     @staticmethod
@@ -177,13 +177,13 @@ class PlotUtils:
         x = 0.5
         PlotUtils._plot_text(
             fig,
-            (x, 0.09),
+            (x, 0.075),
             cmd,
-            8,
+            12,
             "#ccc",
         )
         PlotUtils._plot_text(
-            fig, (x, 0.06), f"Data Source: {source}", 10, "#888"
+            fig, (x, 0.05), f"Data Source: {source}", 12, "#888"
         )
 
     @classmethod
