@@ -65,7 +65,7 @@ class RegionColorUtils:
     @staticmethod
     def get_colors_from_flips(result_data):
         region_to_flip = {
-            data["region_id"]: data["flips"]
+            data["region_id"]: data["flip"]
             for data in result_data["data_list"]
         }
         return ColorSpec.by_region_to_custom_value(region_to_flip, True)

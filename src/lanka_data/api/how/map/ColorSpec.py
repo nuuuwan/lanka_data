@@ -109,7 +109,10 @@ class ColorSpec:
             i_values = sorted_custom_values.index(custom_value)
             p = i_values / (n - 1) if n > 1 else 0
             if is_diff:
-                value = f"{custom_value:+.4f}"
+                if parse_float(custom_value) is not None:
+                    value = f"{custom_value:+.4f}"
+                else:
+                    value = str(custom_value)
                 color = ColorSpec.p_to_color_for_diff(p)
             else:
                 value = f"{custom_value:.4f}"
