@@ -120,8 +120,8 @@ class PlotUtils:
             subfig,
             (0.5, 0.85),
             figure_label,
-            fontsize=10,
-            color="gray",
+            fontsize=16,
+            color="#000",
         )
 
     @staticmethod
