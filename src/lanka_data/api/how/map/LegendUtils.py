@@ -6,6 +6,21 @@ def is_float(x):
         return False
 
 
+def parse_float(value):
+    value_str = (
+        str(value)
+        .replace(",", "")
+        .replace("+", "")
+        .replace("%", "")
+        .replace("pp", "")
+    )
+
+    try:
+        return float(value_str)
+    except ValueError:
+        return None
+
+
 class LegendUtils:
     MAX_LEGEND_ITEMS = 5
 
@@ -22,8 +37,10 @@ class LegendUtils:
             return
 
         value_and_color = list(value_to_color.items())
+        first_value = list(value_to_color.keys())[0]
+        is_float = parse_float(first_value) is not None
         trimmed = value_and_color
-        if len(value_and_color) > LegendUtils.MAX_LEGEND_ITEMS:
+        if len(value_and_color) > LegendUtils.MAX_LEGEND_ITEMS and is_float:
             n_actual = len(value_and_color)
             n_req = LegendUtils.MAX_LEGEND_ITEMS - 1
             trimmed = [
