@@ -1,6 +1,3 @@
-
-
-
 def is_float(x):
     try:
         float(x)
@@ -20,7 +17,7 @@ class LegendUtils:
 
     @staticmethod
     def _draw_legend(value_to_color, ax, legend_ax):
-        legend_ax.set_visible(False)
+        legend_ax.set_axis_off()
         if value_to_color is None:
             return
 
@@ -43,11 +40,17 @@ class LegendUtils:
             ]
             trimmed.append(value_and_color[-1])
 
-        for value, color in trimmed:
-            ax.scatter(
-                [],
-                [],
-                color=color,
-                label=LegendUtils._format_legend_label(value),
-            )
-        ax.legend(fontsize=12, loc='best')
+        handles = [
+            legend_ax.scatter([], [], color=color, s=100)
+            for value, color in trimmed
+        ]
+        labels = [
+            LegendUtils._format_legend_label(value)
+            for value, color in trimmed
+        ]
+        legend_ax.legend(
+            handles=handles,
+            labels=labels,
+            fontsize=12,
+            loc='best',
+        )
