@@ -136,4 +136,4 @@ class RegionRawDataMixin:
         region_name = raw_data["region_name"]
         if region_type == "country":
             return region_name
-        return f"{region_name} {region_type.title()}"
+        return f"the {region_name} {region_type.title()}"
