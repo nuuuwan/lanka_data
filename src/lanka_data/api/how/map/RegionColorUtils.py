@@ -28,6 +28,7 @@ class RegionColorUtils:
             False,
         )
 
+    @staticmethod
     def get_color_spec_for_diversity_change(result_data, is_pew=False):
         region_to_diversity_change = Diversity.get_region_to_diversity_change(
             result_data, is_pew
@@ -118,9 +119,7 @@ class RegionColorUtils:
                 return RegionColorUtils.get_color_spec_for_segregation_change(
                     result_data
                 )
-            return RegionColorUtils.get_color_spec_for_segregation(
-                result_data
-            )
+            return RegionColorUtils.get_color_spec_for_segregation(result_data)
 
         if how.params == "Flips":
             if is_diff:
