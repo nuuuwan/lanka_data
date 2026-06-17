@@ -94,9 +94,7 @@ class RegionRawDataMixin:
                         )
                     region_id_to_raw_region[region_id] = raw_region
 
-        return [
-            region_id_to_raw_region[region_id] for region_id in region_ids
-        ]
+        return [region_id_to_raw_region[region_id] for region_id in region_ids]
 
     # flake8: noqa: C901
     @classmethod
@@ -136,4 +134,4 @@ class RegionRawDataMixin:
         region_name = raw_data["region_name"]
         if region_type == "country":
             return region_name
-        return f"the {region_name} {region_type.title()}"
+        return f"the {region_name} {region_type.upper()}"
