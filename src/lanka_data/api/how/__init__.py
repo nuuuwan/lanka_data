@@ -8,5 +8,4 @@ from lanka_data.api.how.JSON import JSON
 from lanka_data.api.how.map import (ColorSpec, ColorSpecFactory, ColorUtils,
                                     Diversity, FontUtils, GeoDataUtils,
                                     LabelFitUtils, LabelUtils, LegendUtils,
-                                    Map, OrderColorUtils, PlotUtils, PolyUtils,
-                                    Segregation)
+                                    Map, PlotUtils, PolyUtils, Segregation)

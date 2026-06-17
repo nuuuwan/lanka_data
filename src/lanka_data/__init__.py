@@ -6,10 +6,10 @@ from lanka_data.api import (GIG2, JSON, BasicWhat, Cartogram, Census2012,
                             ColorUtils, DiffWhat, Diversity, Elections,
                             FieldNameUtils, FontUtils, GeoDataUtils, How,
                             HowFactory, LabelFitUtils, LabelUtils, LegendUtils,
-                            Map, OrderColorUtils, PlotUtils, PolyUtils,
-                            RegionLoadersMixin, RegionParserMixin,
-                            RegionRawDataMixin, Regions, RegionTypeUtils,
-                            Segregation, What, WhatFactory, Where)
+                            Map, PlotUtils, PolyUtils, RegionLoadersMixin,
+                            RegionParserMixin, RegionRawDataMixin, Regions,
+                            RegionTypeUtils, Segregation, What, WhatFactory,
+                            Where)
 from lanka_data.db import Db
 from lanka_data.examples import Example
 from lanka_data.readme import ReadMe

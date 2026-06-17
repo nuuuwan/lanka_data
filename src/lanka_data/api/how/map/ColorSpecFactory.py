@@ -1,15 +1,27 @@
 from lanka_data.api.how.map import ColorSpec
 from lanka_data.api.how.map.Diversity import Diversity
-from lanka_data.api.how.map.OrderColorUtils import OrderColorUtils
 from lanka_data.api.how.map.Segregation import Segregation
 from lanka_data.api.what.DiffWhat import DiffWhat
 
 
 class ColorSpecFactory:
+    _PARAM_TO_IDX = {"Top": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
+
+    @staticmethod
+    def func_key_getter(how, what):
+        idx = ColorSpecFactory._PARAM_TO_IDX.get(how.params or "Top")
+        if idx is None:
+            return None
+
+        def func_key_getter(data):
+            values = list(what.get_pct_values(data).keys())
+            return values[idx] if idx < len(values) else "(No Data)"
+
+        return func_key_getter
 
     @staticmethod
     def get_color_spec_generic(result_data, how, what) -> ColorSpec:
-        func_key_getter = OrderColorUtils.func_key_getter(how, what)
+        func_key_getter = ColorSpecFactory.func_key_getter(how, what)
         if func_key_getter:
             return ColorSpec.by_custom_category_key(
                 result_data, func_key_getter, False
@@ -119,7 +131,9 @@ class ColorSpecFactory:
                 return ColorSpecFactory.get_color_spec_for_segregation_change(
                     result_data
                 )
-            return ColorSpecFactory.get_color_spec_for_segregation(result_data)
+            return ColorSpecFactory.get_color_spec_for_segregation(
+                result_data
+            )
 
         if how.params == "Flips":
             if is_diff:
