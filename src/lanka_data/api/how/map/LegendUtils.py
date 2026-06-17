@@ -16,7 +16,7 @@ class LegendUtils:
         return str(value)
 
     @staticmethod
-    def _draw_legend(value_to_color, ax, legend_ax):
+    def draw_legend(value_to_color, legend_ax):
         legend_ax.set_axis_off()
         if value_to_color is None:
             return
@@ -37,8 +37,7 @@ class LegendUtils:
             for value, color in trimmed
         ]
         labels = [
-            LegendUtils._format_legend_label(value)
-            for value, color in trimmed
+            LegendUtils._format_legend_label(value) for value, color in trimmed
         ]
         legend_ax.legend(
             handles=handles,

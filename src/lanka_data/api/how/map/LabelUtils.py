@@ -18,7 +18,7 @@ class LabelUtils:
         return min(size_from_w, size_from_h, 18) * 0.3
 
     @staticmethod
-    def _draw_labels(gdf_region, ax):
+    def draw_labels(gdf_region, ax):
         fig = ax.get_figure()
         for _, row in gdf_region.iterrows():
             cx, cy, rect_w, rect_h, angle_deg = LabelFitUtils._best_label_fit(
@@ -42,9 +42,7 @@ class LabelUtils:
                 text_angle = angle_deg + 90.0
             while text_angle > 90.0:
                 text_angle -= 180.0
-            fontsize = LabelUtils._fit_fontsize(
-                label, text_w, text_h, ax, fig
-            )
+            fontsize = LabelUtils._fit_fontsize(label, text_w, text_h, ax, fig)
             ax.annotate(
                 label,
                 xy=(cx, cy),

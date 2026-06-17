@@ -106,8 +106,8 @@ class PlotUtils:
             linewidth=edge_width,
         )
         if n_regions <= PlotUtils.MAX_REGIONS_TO_LABEL:
-            LabelUtils._draw_labels(gdf_region, ax)
-        LegendUtils._draw_legend(value_to_color, ax, legend_ax)
+            LabelUtils.draw_labels(gdf_region, ax)
+        LegendUtils.draw_legend(value_to_color, legend_ax)
 
         ax.set_axis_off()
         PlotUtils._plot_text(
