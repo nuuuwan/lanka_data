@@ -24,7 +24,7 @@ class ColorSpec:
     region_to_color: dict[str, str]
     value_to_color: dict[str, str]
 
-    DEFAULT_CMAP_ABS = plt.cm.get_cmap("Greens")
+    DEFAULT_CMAP_ABS = plt.cm.get_cmap("YlGn")
     DEFAULT_CMAP_DIFF = plt.cm.get_cmap("coolwarm")
     DEFAULT_CMAP_CAT = plt.cm.get_cmap("tab20")
 
