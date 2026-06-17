@@ -19,6 +19,7 @@ class PlotUtils:
     MAX_REGIONS_TO_LABEL = 100
     DEFAULT_EDGE_COLOR = "#fff"
     DEFAULT_EDGE_WIDTH = 0.2
+    ASPECT_RATIO = 16 / 9
     DIR_OUTPUT = os.path.join(
         tempfile.gettempdir(),
         "lanka_data",
@@ -128,7 +129,9 @@ class PlotUtils:
 
         n_figs = len(figure_specs)
         rows, cols = 1, n_figs
-        fig = plt.figure(figsize=(8 * cols, 8 * rows))
+        figsize_width = 8 * cols
+        figsize_height = figsize_width / PlotUtils.ASPECT_RATIO
+        fig = plt.figure(figsize=(figsize_width, figsize_height))
 
         outer_gs = gridspec.GridSpec(
             rows, cols, figure=fig, top=0.85, bottom=0.15
