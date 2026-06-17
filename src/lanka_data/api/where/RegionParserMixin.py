@@ -100,6 +100,10 @@ class RegionParserMixin:
 
         parent_region_ids = parent_part.split(",")
         region_year = cls._get_region_year(parent_region_ids[0])
+        parent_region_ids = [
+            parent_region_id.split("-pre")[0]
+            for parent_region_id in parent_region_ids
+        ]
         parent_region_full_names = [
             cls.get_full_name(rid) for rid in parent_region_ids
         ]
