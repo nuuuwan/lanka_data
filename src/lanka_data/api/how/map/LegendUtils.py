@@ -3,6 +3,14 @@ import numpy as np
 from lanka_data.api.how.map.ColorUtils import ColorUtils
 
 
+def is_float(x):
+    try:
+        float(x)
+        return True
+    except ValueError:
+        return False
+
+
 class LegendUtils:
     MAX_LEGEND_ITEMS = 7
     LEGEND_2D_N_COLS = 3
@@ -49,14 +57,14 @@ class LegendUtils:
         for spine in inset.spines.values():
             spine.set_visible(False)
         inset.set_xticks(range(LegendUtils.LEGEND_2D_N_COLS))
-        inset.set_xticklabels([f"{p:.0%}" for p in pct_levels], fontsize=7)
+        inset.set_xticklabels([f"{p:.0%}" for p in pct_levels], fontsize=12)
         inset.xaxis.set_ticks_position("top")
         inset.xaxis.set_label_position("top")
-        inset.set_xlabel("% share", fontsize=7, labelpad=3)
+        inset.set_xlabel("% share", fontsize=12, labelpad=3)
         n_rows = len(categories)
         inset.set_yticks(range(n_rows))
         inset.set_yticklabels(
-            [str(c) for c in reversed(categories)], fontsize=7
+            [str(c) for c in reversed(categories)], fontsize=12
         )
         inset.tick_params(axis="both", length=0, pad=2)
         for x in [i - 0.5 for i in range(LegendUtils.LEGEND_2D_N_COLS + 1)]:
@@ -104,13 +112,6 @@ class LegendUtils:
         colors = list(value_to_color.values())
         values = list(value_to_color.keys())
 
-        def is_float(x):
-            try:
-                float(x)
-                return True
-            except ValueError:
-                return False
-
         if (
             colors
             and isinstance(colors[0], tuple)
@@ -121,7 +122,19 @@ class LegendUtils:
             return
 
         legend_ax.set_visible(False)
-        value_and_color = sorted(value_to_color.items(), reverse=True)
+
+        value_and_color = list(
+            sorted(
+                value_to_color.items(),
+                key=lambda item: (
+                    item[0] if not is_float(item[0]) else float(item[0])
+                ),
+                reverse=True,
+            )
+        )
+        print(value_and_color)
+
+        trimmed = value_and_color
         if len(value_and_color) > LegendUtils.MAX_LEGEND_ITEMS:
             n_actual = len(value_and_color)
             n_req = LegendUtils.MAX_LEGEND_ITEMS - 1
@@ -130,12 +143,12 @@ class LegendUtils:
                 for i in range(n_req)
             ]
             trimmed.append(value_and_color[-1])
-            value_and_color = trimmed
-        for value, color in value_and_color:
+
+        for value, color in trimmed:
             ax.scatter(
                 [],
                 [],
                 color=color,
                 label=LegendUtils._format_legend_label(value),
             )
-        ax.legend(fontsize=6)
+        ax.legend(fontsize=12)

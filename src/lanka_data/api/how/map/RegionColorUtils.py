@@ -83,24 +83,94 @@ class RegionColorUtils:
         raise ValueError(f"Diversity value {diversity} out of expected range")
 
     @staticmethod
-    def _colors_with_diversity(result_data, is_pew=False):
-
+    def get_region_to_diversity(
+        result_data, is_pew=False, pct_values_key='pct_values'
+    ):
         data_list = result_data["data_list"]
-        region_color_map = {}
-        value_to_color = {}
+        region_to_diversity = {}
         for data in data_list:
             diversity = RegionColorUtils._compute_diversity(
-                data["pct_values"], is_pew=False
+                data[pct_values_key], is_pew
             )
+            region_to_diversity[data["region_id"]] = diversity
+        return region_to_diversity
+
+    @staticmethod
+    def _colors_with_diversity(
+        result_data, is_pew=False, pct_values_key='pct_values'
+    ):
+
+        region_to_diversity = RegionColorUtils.get_region_to_diversity(
+            result_data, is_pew, pct_values_key
+        )
+
+        region_color_map = {}
+        value_to_color = {}
+        for region_id, diversity in region_to_diversity.items():
             label, color, low, high = (
                 RegionColorUtils._get_diversity_label_and_color(diversity)
             )
-            region_color_map[data["region_id"]] = color
+            region_color_map[region_id] = color
 
             legend_label = f"{label} ({low:.1f} - {high:.1f})"
             value_to_color[legend_label] = color
 
         return region_color_map, value_to_color
+
+    @staticmethod
+    def _colors_with_diversity_change(result_data, is_pew=False):
+
+        region_to_diversity1 = RegionColorUtils.get_region_to_diversity(
+            result_data, is_pew, 'pct_values1'
+        )
+        region_to_diversity2 = RegionColorUtils.get_region_to_diversity(
+            result_data, is_pew, 'pct_values2'
+        )
+
+        common_regions = set(region_to_diversity1.keys()) & set(
+            region_to_diversity2.keys()
+        )
+        uncommon_regions = set(region_to_diversity1.keys()) ^ set(
+            region_to_diversity2.keys()
+        )
+
+        region_to_diversity_change = {}
+        for region_id in common_regions:
+            diversity_change = (
+                region_to_diversity2[region_id]
+                - region_to_diversity1[region_id]
+            )
+            region_to_diversity_change[region_id] = diversity_change
+
+        for region_id in uncommon_regions:
+            region_to_diversity_change[region_id] = None
+
+        region_to_color = {}
+        value_to_color = {}
+        max_abs_change = max(
+            abs(change)
+            for change in region_to_diversity_change.values()
+            if change is not None
+        )
+        for region_id, diversity_change in region_to_diversity_change.items():
+            if diversity_change is not None:
+                p = (
+                    max(
+                        -max_abs_change, min(max_abs_change, diversity_change)
+                    )
+                    / (2 * max_abs_change)
+                    + 0.5
+                )
+                value = f"{diversity_change:+.4f}"
+                color = ColorUtils.p_to_color(p)
+
+                region_to_color[region_id] = color
+                value_to_color[value] = color
+
+        value_to_color = dict(
+            sorted(value_to_color.items(), key=lambda x: float(x[0]))
+        )
+        return region_to_color, value_to_color
 
     MAX_NEIGHBOR_DISTANCE_KM = 5
 
@@ -225,11 +295,23 @@ class RegionColorUtils:
             return RegionColorUtils._colors_no_values(result_data)
 
         if how.params == "Diversity":
+            if isinstance(what, DiffWhat):
+                return RegionColorUtils._colors_with_diversity_change(
+                    result_data,
+                    is_pew=False,
+                )
+
             return RegionColorUtils._colors_with_diversity(
                 result_data,
                 is_pew=False,
             )
+
         if how.params == "DiversityPew":
+            if isinstance(what, DiffWhat):
+                return RegionColorUtils._colors_with_diversity_change(
+                    result_data,
+                    is_pew=True,
+                )
             return RegionColorUtils._colors_with_diversity(
                 result_data,
                 is_pew=True,
@@ -238,10 +320,9 @@ class RegionColorUtils:
         if how.params == "Change":
             if isinstance(what, DiffWhat):
                 return RegionColorUtils._colors_with_change(result_data)
-            else:
-                return RegionColorUtils._colors_with_values(
-                    result_data, how.without_params(), what
-                )
+            return RegionColorUtils._colors_with_values(
+                result_data, how.without_params(), what
+            )
 
         if how.params == "Segregation":
             return RegionColorUtils._colors_with_segregation(result_data)
