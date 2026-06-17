@@ -352,7 +352,7 @@ class RegionColorUtils:
         value_to_color = {}
         for data in data_list:
             is_flipped = data["is_flipped"]
-            color = ColorUtils.p_to_color(1 if is_flipped else 0)
+            color = ColorUtils.p_to_color(1 if is_flipped else 0.5)
             region_color_map[data["region_id"]] = color
 
             legend_label = "Flipped" if is_flipped else "Not Flipped"
@@ -407,6 +407,10 @@ class RegionColorUtils:
             return RegionColorUtils._colors_with_segregation(result_data)
 
         if how.params == 'Flips':
-            return RegionColorUtils._colors_with_flips(result_data)
+            if is_diff:
+                return RegionColorUtils._colors_with_flips(result_data)
+            return RegionColorUtils._colors_with_values(
+                result_data, how.without_params(), what
+            )
 
         return RegionColorUtils._colors_with_values(result_data, how, what)
