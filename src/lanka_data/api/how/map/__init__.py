@@ -2,6 +2,7 @@
 # flake8: noqa: F408
 
 from lanka_data.api.how.map.ColorUtils import ColorUtils
+from lanka_data.api.how.map.FontUtils import FontUtils
 from lanka_data.api.how.map.GeoDataUtils import GeoDataUtils
 from lanka_data.api.how.map.HueUtils import HueUtils
 from lanka_data.api.how.map.LabelFitUtils import LabelFitUtils

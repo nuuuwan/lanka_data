@@ -1,10 +1,10 @@
 import os
 import tempfile
 
-import matplotlib.font_manager as fm
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 
+from lanka_data.api.how.map.FontUtils import FontUtils
 from lanka_data.api.how.map.GeoDataUtils import GeoDataUtils
 from lanka_data.api.how.map.LabelUtils import LabelUtils
 from lanka_data.api.how.map.LegendUtils import LegendUtils
@@ -12,15 +12,6 @@ from lanka_data.api.how.map.RegionColorUtils import RegionColorUtils
 from utils_future import Log
 
 log = Log("PlotUtils")
-
-_ubuntu_font = next(
-    (f.fname for f in fm.fontManager.ttflist if "Ubuntu" in f.name),
-    None,
-)
-if _ubuntu_font:
-    plt.rcParams["font.family"] = "Ubuntu"
-else:
-    log.warning("Ubuntu font not found; using default font.")
 
 
 class PlotUtils:
@@ -33,6 +24,7 @@ class PlotUtils:
         "lanka_data",
         "output",
     )
+    FONT_FAMILY = 'Fira Sans'
 
     @staticmethod
     def get_figure_specs(where, what, when, how):
@@ -107,19 +99,16 @@ class PlotUtils:
         LegendUtils._draw_legend(value_to_color, ax, legend_ax)
 
         ax.set_axis_off()
-        subfig.text(
-            0.5,
-            0.85,
+        PlotUtils._plot_text(
+            subfig,
+            (0.5, 0.85),
             figure_label,
-            transform=subfig.transSubfigure,
-            ha="center",
-            va="bottom",
             fontsize=10,
             color="gray",
         )
 
     @staticmethod
-    def plot_figures(where, what, when, how, cmd, is_cartogram):
+    def plot_subfigures(where, what, when, how, cmd, is_cartogram):
 
         figure_specs = PlotUtils.get_figure_specs(where, what, when, how)
 
@@ -149,12 +138,61 @@ class PlotUtils:
 
         return fig
 
+    @staticmethod
+    def _plot_text(fig, xy, text, fontsize, color, **kwargs):
+        x, y = xy
+        fig.text(
+            x,
+            y,
+            text,
+            ha="center",
+            va="top",
+            fontsize=fontsize,
+            color=color,
+            **kwargs,
+        )
+
+    @staticmethod
+    def _draw_header(fig, where, what, when):
+        x = 0.5
+        PlotUtils._plot_text(
+            fig,
+            (x, 0.94),
+            what.title,
+            16,
+            "#000",
+        )
+        PlotUtils._plot_text(fig, (0.5, 0.91), when, 13, "#444")
+        PlotUtils._plot_text(
+            fig, (x, 0.88), f"{where.title} · {where.region_year}", 10, "#888"
+        )
+
+    @staticmethod
+    def _draw_footer(fig, cmd, source, source_url):
+        x = 0.5
+        PlotUtils._plot_text(
+            fig,
+            (x, 0.09),
+            cmd,
+            8,
+            "#ccc",
+        )
+        PlotUtils._plot_text(
+            fig, (x, 0.06), f"Data Source: {source}", 10, "#888"
+        )
+
     @classmethod
     def draw_plot(cls, where, what, when, how, cmd, is_cartogram):
-
-        fig = PlotUtils.plot_figures(
+        FontUtils.install_font(cls.FONT_FAMILY)
+        fig = PlotUtils.plot_subfigures(
             where, what, when, how, cmd, is_cartogram
         )
+
+        source = "Department of Census and Statistics, Sri Lanka"
+        source_url = "https://www.statistics.gov.lk/"
+
+        PlotUtils._draw_header(fig, where, what, when)
+        PlotUtils._draw_footer(fig, cmd, source, source_url)
 
         image_dir = os.path.join(PlotUtils.DIR_OUTPUT, cmd)
         os.makedirs(image_dir, exist_ok=True)
@@ -166,6 +204,6 @@ class PlotUtils:
         log.debug(f"Wrote {image_path}")
         return {
             "image_path": image_path,
-            "source": "Department of Census and Statistics, Sri Lanka",
-            "source_url": "https://www.statistics.gov.lk/",
+            "source": source,
+            "source_url": source_url,
         }
