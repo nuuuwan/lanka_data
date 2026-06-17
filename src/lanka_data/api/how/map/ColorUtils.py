@@ -1,33 +1,9 @@
 import matplotlib.pyplot as plt
 
-from lanka_data.api.how.map.HueUtils import HueUtils
-
 
 class ColorUtils:
-    GROUP_TO_HUE_TO_LABEL_LIST = {
-        "Religion": {
-            HueUtils.GOLD: ["Buddhist"],
-            HueUtils.ORANGE: ["Hindu"],
-            HueUtils.GREEN: ["Islam"],
-            HueUtils.BLUE: ["OtherChristian"],
-            HueUtils.PURPLE: ["RomanCatholic"],
-            HueUtils.GRAY: ["Other"],
-        },
-        "Ethnicity": {
-            HueUtils.RED: ["Sinhalese"],
-            HueUtils.ORANGE: ["SLTamil"],
-            HueUtils.BLUE: ["IndMalaiyagaTamil"],
-            HueUtils.GREEN: ["SLMoor"],
-            HueUtils.TEAL: ["Malay"],
-        },
-        "Political Party": {
-            HueUtils.PURPLE: ["SLPP", "SLMP"],
-            HueUtils.BLUE: ["UPFA", "PA", "SLFP"],
-            HueUtils.RED: ["NPP"],
-            HueUtils.GREEN: ["SJB", "UNP", "NDF"],
-            HueUtils.ORANGE: ["IND9", "ACTC", "ITAK"],
-        },
-    }
+    GROUP_TO_HUE_TO_LABEL_LIST = {}
+    DEFAULT_CMAP = plt.cm.get_cmap("inferno")
 
     HUE_IDX = {
         label: hue
@@ -77,4 +53,4 @@ class ColorUtils:
 
     @staticmethod
     def p_to_color(p):
-        return plt.cm.viridis(p)
+        return ColorUtils.DEFAULT_CMAP(p)

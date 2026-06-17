@@ -1,6 +1,5 @@
 import hashlib
 
-import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
 from lanka_data.api.how.map.ColorUtils import ColorUtils
@@ -9,8 +8,8 @@ from lanka_data.api.how.map.HueUtils import HueUtils
 
 class OrderColorUtils:
     _PARAM_TO_IDX = {"Top": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
-    DEFAULT_CMAP_N_COLORS = 10
-    DEFAULT_CMAP = plt.cm.get_cmap("tab10")
+    DEFAULT_CMAP_N_COLORS = 30
+    DEFAULT_CMAP = ColorUtils.DEFAULT_CMAP
 
     @staticmethod
     def generate_cmap():
@@ -24,11 +23,12 @@ class OrderColorUtils:
     @staticmethod
     def get_color_for_label(label):
         hash = hashlib.md5(label.encode()).hexdigest()
-        hash_int = int(hash, 16) % 999
+        hash_int = int(hash, 16) // 999
         i_color = hash_int % OrderColorUtils.DEFAULT_CMAP_N_COLORS
-        cmap = plt.get_cmap(OrderColorUtils.DEFAULT_CMAP)
-        r, g, b, _ = cmap(i_color)
-        return ColorUtils.rgb_to_hex((r, g, b))
+        p = i_color / OrderColorUtils.DEFAULT_CMAP_N_COLORS
+        color = ColorUtils.p_to_color(p)
+        hex_color = ColorUtils.rgb_to_hex(color[:3])
+        return hex_color
 
     @staticmethod
     def _func_key_getter(how, what):

@@ -102,9 +102,24 @@ class LegendUtils:
             legend_ax.set_visible(False)
             return
         colors = list(value_to_color.values())
-        if colors and isinstance(colors[0], tuple) and len(colors[0]) == 4:
+        values = list(value_to_color.keys())
+
+        def is_float(x):
+            try:
+                float(x)
+                return True
+            except ValueError:
+                return False
+
+        if (
+            colors
+            and isinstance(colors[0], tuple)
+            and len(colors[0]) == 4
+            and not is_float(values[0])
+        ):
             LegendUtils._draw_legend_2d(value_to_color, legend_ax)
             return
+
         legend_ax.set_visible(False)
         value_and_color = sorted(value_to_color.items(), reverse=True)
         if len(value_and_color) > LegendUtils.MAX_LEGEND_ITEMS:

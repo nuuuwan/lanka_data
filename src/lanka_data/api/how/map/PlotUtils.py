@@ -82,7 +82,6 @@ class PlotUtils:
         subfig,
     ):
         where, what, when, how = figure_spec
-        print(figure_spec)
         result_data = how.get_data(where, what, when)
         data_list = result_data["data_list"]
         n_regions = len(data_list)
