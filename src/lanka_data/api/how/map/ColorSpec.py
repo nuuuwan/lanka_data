@@ -19,6 +19,11 @@ def parse_float(value):
         return None
 
 
+def hex_to_rgb(hex_color):
+    hex_color = hex_color.lstrip("#")
+    return tuple(int(hex_color[i: i + 2], 16) / 256.0 for i in (0, 2, 4))
+
+
 @dataclass
 class ColorSpec:
     region_to_color: dict[str, str]
@@ -27,6 +32,24 @@ class ColorSpec:
     DEFAULT_CMAP_ABS = plt.cm.get_cmap("YlGn")
     DEFAULT_CMAP_DIFF = plt.cm.get_cmap("coolwarm")
     DEFAULT_CMAP_CAT = plt.cm.get_cmap("tab20")
+
+    COLOR_TO_LABELS = {
+        # Religion & Ethnicity
+        "#FFBE29": ["Buddhist"],
+        "#EB7400": ["Hindu", "SLTamil"],
+        "#00534E": ["Islam", "SLMuslim"],
+        "#8D153A": ["Sinhalese"],
+        "#2000c0": ["OtherChristian"],
+        "#c000c0": ["RomanCatholic"],
+        # Null
+        "#888888": ["(No Flip)", "(No Data)", "Other"],
+    }
+
+    LABEL_TO_COLOR = {
+        label: hex_to_rgb(color)
+        for color, labels in COLOR_TO_LABELS.items()
+        for label in labels
+    }
 
     @staticmethod
     def p_to_color_for_abs(p):
@@ -70,9 +93,13 @@ class ColorSpec:
         value_to_color = {}
         for data in data_list:
             key = func_key_getter(data)
-            i_key = sorted_color_keys.index(key)
-            p = i_key / (n_keys - 1) if n_keys > 1 else 0
-            color = ColorSpec.p_to_color_for_category(p)
+            if key in cls.LABEL_TO_COLOR:
+                color = cls.LABEL_TO_COLOR[key]
+            else:
+                i_key = sorted_color_keys.index(key)
+                p = i_key / (n_keys - 1) if n_keys > 1 else 0
+                color = ColorSpec.p_to_color_for_category(p)
+
             region_id = data["region_id"]
             region_to_color[region_id] = color
             value_to_color[key] = color
