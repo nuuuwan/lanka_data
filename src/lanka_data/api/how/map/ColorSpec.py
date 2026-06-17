@@ -24,7 +24,7 @@ class ColorSpec:
 
     @staticmethod
     def p_to_color_for_abs(p):
-        return ColorSpec.DEFAULT_CMAP_ABS(1 - p)
+        return ColorSpec.DEFAULT_CMAP_ABS(p)
 
     @staticmethod
     def p_to_color_for_diff(p):
