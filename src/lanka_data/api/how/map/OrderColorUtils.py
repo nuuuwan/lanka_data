@@ -18,7 +18,7 @@ class OrderColorUtils:
         return func_key_getter
 
     @staticmethod
-    def get_order_color_map(result_data, how, what, func_key_getter):
+    def get_region_colors_by_key(result_data, how, what, func_key_getter):
         data_list = result_data["data_list"]
         sorted_color_keys = sorted(
             list(set([func_key_getter(data) for data in data_list]))
