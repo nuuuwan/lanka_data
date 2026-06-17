@@ -31,7 +31,7 @@ class ColorSpec:
 
     DEFAULT_CMAP_ABS = plt.cm.get_cmap("YlGn")
     DEFAULT_CMAP_DIFF = plt.cm.get_cmap("coolwarm")
-    DEFAULT_CMAP_CAT = plt.cm.get_cmap("tab20")
+    DEFAULT_CMAP_CAT = plt.cm.get_cmap("tab10")
 
     COLOR_TO_LABELS = {
         # Religion & Ethnicity
@@ -64,6 +64,7 @@ class ColorSpec:
         return ColorSpec.DEFAULT_CMAP_CAT(p)
 
     def unpack(self):
+        first_value = list(self.value_to_color)[0]
         sorted_value_to_color = dict(
             sorted(
                 self.value_to_color.items(),
@@ -72,7 +73,7 @@ class ColorSpec:
                     if parse_float(item[0]) is not None
                     else item[0]
                 ),
-                reverse=True,
+                reverse=parse_float(first_value) is not None,
             )
         )
         return self.region_to_color, sorted_value_to_color
