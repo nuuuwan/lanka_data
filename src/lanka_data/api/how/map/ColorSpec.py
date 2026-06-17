@@ -90,7 +90,7 @@ class ColorSpec:
             value = data["pct_values"][single_pct_value]
             rank = value_to_rank[value]
             color = (
-                ColorSpec.p_to_color_for_abs(1 - rank / (n - 1))
+                ColorSpec.p_to_color_for_abs(rank / (n - 1))
                 if not is_diff
                 else ColorSpec.p_to_color_for_diff(rank / (n - 1))
             )

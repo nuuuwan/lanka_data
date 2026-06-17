@@ -1,3 +1,7 @@
+import hashlib
+import os
+import tempfile
+
 import geopandas
 import pandas as pd
 
@@ -86,7 +90,26 @@ class GeoDataUtils:
         return gdf.merge(df, on="region_id", how="left")
 
     @staticmethod
+    def get_temp_gdf_path(data_list, is_cartogram):
+        hash = hashlib.md5(
+            str(data_list).encode() + str(is_cartogram).encode()
+        ).hexdigest()
+        dir_temp = os.path.join(
+            tempfile.gettempdir(),
+            "lanka_data",
+            "gdf_cache",
+        )
+        os.makedirs(dir_temp, exist_ok=True)
+        return os.path.join(dir_temp, f"gdf_{hash}.geojson")
+
+    @staticmethod
     def get_geopandas_dataframe(data_list, is_cartogram):
+        temp_gdf_path = GeoDataUtils.get_temp_gdf_path(
+            data_list, is_cartogram
+        )
+        if os.path.exists(temp_gdf_path):
+            log.info(f"Loading GeoDataFrame from cache: {temp_gdf_path}")
+            return geopandas.read_file(temp_gdf_path)
         region_to_current_ids = GeoDataUtils._build_region_map(data_list)
         all_current_ids = [
             cid
@@ -107,4 +130,9 @@ class GeoDataUtils:
                 region_id_to_weight,
             )
 
-        return GeoDataUtils._enrich_from_data_list(gdf, data_list)
+        gnd_enriched = GeoDataUtils._enrich_from_data_list(gdf, data_list)
+        geopandas.GeoDataFrame(gnd_enriched).to_file(
+            temp_gdf_path, driver="GeoJSON"
+        )
+        log.debug(f"Wrote {temp_gdf_path}")
+        return gnd_enriched
