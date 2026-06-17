@@ -9,13 +9,13 @@ class ColorSpec:
     region_to_color: dict[str, str]
     value_to_color: dict[str, str]
 
-    DEFAULT_CMAP_ABS = plt.cm.get_cmap("RdYlGn")
+    DEFAULT_CMAP_ABS = plt.cm.get_cmap("Greens")
     DEFAULT_CMAP_DIFF = plt.cm.get_cmap("bwr")
     DEFAULT_CMAP_CAT = plt.cm.get_cmap("tab20")
 
     @staticmethod
     def p_to_color_for_abs(p):
-        return ColorSpec.DEFAULT_CMAP_ABS(p)
+        return ColorSpec.DEFAULT_CMAP_ABS(1 - p)
 
     @staticmethod
     def p_to_color_for_diff(p):
