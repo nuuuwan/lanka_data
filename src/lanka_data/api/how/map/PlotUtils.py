@@ -17,7 +17,7 @@ log = Log("PlotUtils")
 
 class PlotUtils:
     DELIM_TITLE = " · "
-    MAX_REGIONS_TO_LABEL = 100
+    MAX_REGIONS_TO_LABEL = 30
     DEFAULT_EDGE_COLOR = "#fff"
     DEFAULT_EDGE_WIDTH = 0.2
     ASPECT_RATIO = 16 / 9
@@ -92,13 +92,11 @@ class PlotUtils:
         gs = subfig.add_gridspec(1, 2, width_ratios=[5, 1], wspace=0.05)
         ax = subfig.add_subplot(gs[0])
         legend_ax = subfig.add_subplot(gs[1])
-        if n_regions > 400:
-            edge_color, edge_width = "none", 0
-        else:
-            edge_color, edge_width = (
-                PlotUtils.DEFAULT_EDGE_COLOR,
-                PlotUtils.DEFAULT_EDGE_WIDTH,
-            )
+
+        edge_color, edge_width = (
+            PlotUtils.DEFAULT_EDGE_COLOR,
+            PlotUtils.DEFAULT_EDGE_WIDTH,
+        )
 
         gdf_region.plot(
             ax=ax,
