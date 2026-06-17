@@ -21,7 +21,7 @@ def parse_float(value):
 
 def hex_to_rgb(hex_color):
     hex_color = hex_color.lstrip("#")
-    return tuple(int(hex_color[i: i + 2], 16) / 256.0 for i in (0, 2, 4))
+    return tuple(int(hex_color[i : i + 2], 16) / 256.0 for i in (0, 2, 4))
 
 
 @dataclass
@@ -42,9 +42,9 @@ class ColorSpec:
         "#2000c0": ["OtherChristian"],
         "#c000c0": ["RomanCatholic"],
         # Null
-        "#cccccc": ["Other"],
-        "#aaaaaa": ["(No Flip)"],
-        "#444444": ["(No Data)"],
+        "#eeeeee": ["(No Data)"],
+        "#dddddd": ["Other"],
+        "#cccccc": ["(No Flip)"],
     }
 
     LABEL_TO_COLOR = {
@@ -81,9 +81,7 @@ class ColorSpec:
         return self.region_to_color, sorted_value_to_color
 
     @classmethod
-    def by_custom_category_key(
-        cls, result_data, func_key_getter, hide_legend
-    ):
+    def by_custom_category_key(cls, result_data, func_key_getter, hide_legend):
         data_list = result_data["data_list"]
         sorted_color_keys = sorted(
             list(set([func_key_getter(data) for data in data_list]))
