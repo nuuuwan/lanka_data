@@ -3,6 +3,7 @@ import tempfile
 
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
 
 from lanka_data.api.how.map.FontUtils import FontUtils
 from lanka_data.api.how.map.GeoDataUtils import GeoDataUtils
@@ -37,7 +38,7 @@ class PlotUtils:
             y,
             text,
             ha="center",
-            va="top",
+            va="center",
             fontsize=fontsize,
             color=color,
             **kwargs,
@@ -160,16 +161,17 @@ class PlotUtils:
         x = 0.5
         PlotUtils._plot_text(
             fig,
-            (x, 0.95),
+            (x, 0.973),
             f'{what.title} ({when})',
+            16,
+            "#fff",
+        )
+        PlotUtils._plot_text(
+            fig,
+            (x, 0.944),
+            f"{where.get_description()} - {how.get_description()}",
             12,
-            "#000",
-        )
-        PlotUtils._plot_text(
-            fig, (x, 0.925), f"{where.get_description()}", 16, "#444"
-        )
-        PlotUtils._plot_text(
-            fig, (x, 0.9), f"{how.get_description()}", 12, "#888"
+            "#ccc",
         )
 
     @staticmethod
@@ -177,14 +179,37 @@ class PlotUtils:
         x = 0.5
         PlotUtils._plot_text(
             fig,
-            (x, 0.075),
+            (x, 0.056),
             cmd,
             12,
             "#ccc",
         )
         PlotUtils._plot_text(
-            fig, (x, 0.05), f"Data Source: {source}", 12, "#888"
+            fig, (x, 0.027), f"Data Source: {source}", 12, "#fff"
         )
+
+    @staticmethod
+    def _plot_rects(fig):
+        rect = Rectangle(
+            (0, 0),
+            1,
+            0.08,
+            transform=fig.transFigure,
+            facecolor='grey',
+            edgecolor='none',
+            zorder=0,
+        )
+        fig.patches.append(rect)
+        rect = Rectangle(
+            (0, 0.92),
+            1,
+            0.08,
+            transform=fig.transFigure,
+            facecolor='grey',
+            edgecolor='none',
+            zorder=0,
+        )
+        fig.patches.append(rect)
 
     @classmethod
     def draw_plot(cls, where, what, when, how, cmd, is_cartogram):
@@ -196,6 +221,7 @@ class PlotUtils:
         source = "Department of Census and Statistics, Sri Lanka"
         source_url = "https://www.statistics.gov.lk/"
 
+        PlotUtils._plot_rects(fig)
         PlotUtils._draw_header(fig, where, what, when, how)
         PlotUtils._draw_footer(fig, cmd, source, source_url)
 
