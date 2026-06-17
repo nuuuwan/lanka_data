@@ -2,15 +2,8 @@ import matplotlib.pyplot as plt
 
 
 class ColorUtils:
-    GROUP_TO_HUE_TO_LABEL_LIST = {}
-    DEFAULT_CMAP = plt.cm.get_cmap("inferno")
 
-    HUE_IDX = {
-        label: hue
-        for group in GROUP_TO_HUE_TO_LABEL_LIST.values()
-        for hue, labels in group.items()
-        for label in labels
-    }
+    DEFAULT_CMAP = plt.cm.get_cmap("viridis")
 
     MIN_ALPHA = 0.33
     MAX_ALPHA = 1.0
@@ -53,4 +46,6 @@ class ColorUtils:
 
     @staticmethod
     def p_to_color(p):
-        return ColorUtils.DEFAULT_CMAP(p)
+        rgb = ColorUtils.DEFAULT_CMAP(p)
+        hex = ColorUtils.rgb_to_hex(rgb[:3])
+        return hex

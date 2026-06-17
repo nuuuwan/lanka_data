@@ -3,7 +3,6 @@ import hashlib
 from matplotlib.colors import ListedColormap
 
 from lanka_data.api.how.map.ColorUtils import ColorUtils
-from lanka_data.api.how.map.HueUtils import HueUtils
 
 
 class OrderColorUtils:
@@ -48,25 +47,18 @@ class OrderColorUtils:
         value_to_color = {}
         all_pcts, raw_pcts = [], {}
 
-        # First pass: collect all unknown keys in order of first appearance
-        unknown_keys = []
+        keys = set()
         for data in data_list:
             key = func_key_getter(data) if func_key_getter else None
-            if key not in key_to_base_hex and key not in ColorUtils.HUE_IDX:
-                if key not in unknown_keys:
-                    unknown_keys.append(key)
-
+            keys.add(key)
+        keys = list(sorted(keys))
+        n_keys = len(keys)
         for data in data_list:
             key = func_key_getter(data) if func_key_getter else None
+            i_key = keys.index(key)
             if key not in key_to_base_hex:
-                if key in ColorUtils.HUE_IDX:
-                    key_to_base_hex[key] = HueUtils.to_hex(
-                        ColorUtils.HUE_IDX[key]
-                    )
-                else:
-                    key_to_base_hex[key] = (
-                        OrderColorUtils.get_color_for_label(key)
-                    )
+                p = (i_key) / (n_keys - 1)
+                key_to_base_hex[key] = ColorUtils.p_to_color(p)
                 value_to_color[key] = ColorUtils._color_with_opacity(
                     key_to_base_hex[key], 1.0
                 )
