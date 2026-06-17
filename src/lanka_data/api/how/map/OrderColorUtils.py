@@ -41,55 +41,23 @@ class OrderColorUtils:
 
         return func_key_getter
 
-    # flake8: noqa: C901
-    @staticmethod
-    def _build_key_pcts(data_list, func_key_getter):
-        key_to_base_hex = {}
-        value_to_color = {}
-        all_pcts, raw_pcts = [], {}
-
-        keys = set()
-        for data in data_list:
-            key = func_key_getter(data) if func_key_getter else None
-            keys.add(key)
-        keys = list(sorted(keys))
-        n_keys = len(keys)
-        for data in data_list:
-            key = func_key_getter(data) if func_key_getter else None
-            i_key = keys.index(key)
-            if key not in key_to_base_hex:
-                p = (i_key) / (n_keys - 1)
-                key_to_base_hex[key] = ColorUtils.p_to_color(p)
-                value_to_color[key] = ColorUtils._color_with_opacity(
-                    key_to_base_hex[key], 1.0
-                )
-
-            pct_dict = (
-                data.get("pct_values") or data.get("pct_votes_by_party") or {}
-            )
-            pct = pct_dict.get(key, 0.5)
-            all_pcts.append(pct)
-            raw_pcts[data["region_id"]] = (key, pct)
-        return key_to_base_hex, value_to_color, all_pcts, raw_pcts
-
     @staticmethod
     def get_order_color_map(result_data, how, what, func_key_getter):
         data_list = result_data["data_list"]
-        key_to_base_hex, value_to_color, all_pcts, raw_pcts = (
-            OrderColorUtils._build_key_pcts(data_list, func_key_getter)
+        sorted_color_keys = sorted(
+            list(set([func_key_getter(data) for data in data_list]))
         )
-        pct_min, pct_max = min(all_pcts), max(all_pcts)
-        pct_span = pct_max - pct_min if pct_max > pct_min else 1.0
-        region_color_map = {}
-        for region_id, (key, pct) in raw_pcts.items():
-            normalised = (pct - pct_min) / pct_span
-            region_color_map[region_id] = ColorUtils._color_with_opacity(
-                key_to_base_hex[key], normalised
-            )
-        cat_pct_ranges = {}
-        for key, pct in raw_pcts.values():
-            lo, hi = cat_pct_ranges.get(key, (pct, pct))
-            cat_pct_ranges[key] = (min(lo, pct), max(hi, pct))
-        value_to_color["__pct_range__"] = (pct_min, pct_max)
-        value_to_color["__cat_pct_ranges__"] = cat_pct_ranges
-        return region_color_map, value_to_color
+
+        n_keys = len(sorted_color_keys)
+        region_to_color = {}
+        value_to_color = {}
+        for data in data_list:
+            key = func_key_getter(data)
+            i_key = sorted_color_keys.index(key)
+            p = i_key / (n_keys - 1) if n_keys > 1 else 0
+            color = ColorUtils.p_to_color(p)
+            region_id = data["region_id"]
+            region_to_color[region_id] = color
+            value_to_color[key] = color
+
+        return region_to_color, value_to_color

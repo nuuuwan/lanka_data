@@ -10,15 +10,6 @@ class ColorUtils:
     ALPHA_SPAN = MAX_ALPHA - MIN_ALPHA
 
     @staticmethod
-    def _color_with_opacity(hex_color, pct):
-        hex_color = hex_color.lstrip("#")
-        r = int(hex_color[0:2], 16) / 255
-        g = int(hex_color[2:4], 16) / 255
-        b = int(hex_color[4:6], 16) / 255
-        alpha = ColorUtils.MIN_ALPHA + pct * ColorUtils.ALPHA_SPAN
-        return (r, g, b, alpha)
-
-    @staticmethod
     def _is_light_color(color):
         if isinstance(color, str):
             color = color.lstrip("#")
