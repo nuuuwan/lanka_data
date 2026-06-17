@@ -30,7 +30,7 @@ class ColorSpec:
 
     DEFAULT_CMAP_ABS = plt.cm.get_cmap("YlGn")
     DEFAULT_CMAP_DIFF = plt.cm.get_cmap("coolwarm")
-    DEFAULT_CMAP_CAT = plt.cm.get_cmap("turbo")
+    DEFAULT_CMAP_CAT = plt.cm.get_cmap("rainbow")
 
     COLOR_TO_LABELS = {
         # Religion & Ethnicity
