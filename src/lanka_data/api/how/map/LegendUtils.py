@@ -37,7 +37,8 @@ class LegendUtils:
             for value, color in trimmed
         ]
         labels = [
-            LegendUtils._format_legend_label(value) for value, color in trimmed
+            LegendUtils._format_legend_label(value)
+            for value, color in trimmed
         ]
         legend_ax.legend(
             handles=handles,
