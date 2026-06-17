@@ -12,7 +12,8 @@
     "Religion/2024-2012/LK:district/Map:Change",
     "Religion/2024-2012/LK:district/Cartogram:Change",
     "Religion/2024-2012/LK:district/Map:DiversityPew",
-    "Religion/2024-2012/LK:district/Map:Segregation"
+    "Religion/2024-2012/LK:district/Map:Segregation",
+    "Religion/2024-2012/LK:district/Map:Flips"
   ],
   "Ethnicity": [
     "Ethnicity/2024/LK-53:dsd/Map",

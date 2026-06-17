@@ -27,6 +27,7 @@ class LegendUtils:
                 key=lambda item: (
                     item[0] if not is_float(item[0]) else float(item[0])
                 ),
+                reverse=True,
             )
         )
 
