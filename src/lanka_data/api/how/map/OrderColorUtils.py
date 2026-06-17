@@ -15,8 +15,9 @@ class OrderColorUtils:
     @staticmethod
     def generate_cmap():
         n_colors = OrderColorUtils.DEFAULT_CMAP_N_COLORS
-        hues = [1.0 * i / n_colors for i in range(n_colors)]
-        colors = [HueUtils.to_hex(hue) for hue in hues]
+        colors = [
+            ColorUtils.p_to_color(i / n_colors) for i in range(n_colors)
+        ]
         cmap = ListedColormap(colors)
         return cmap
 

@@ -1,3 +1,5 @@
+import colorsys
+
 from lanka_data.api.how.map.HueUtils import HueUtils
 
 
@@ -72,3 +74,9 @@ class ColorUtils:
             return f"{round(x * 255):02X}"
 
         return f"#{part(r)}{part(g)}{part(b)}"
+
+    @staticmethod
+    def p_to_color(p):
+        hue = p * 0.67
+        color = colorsys.hls_to_rgb(hue, 0.5, 1.0)
+        return color

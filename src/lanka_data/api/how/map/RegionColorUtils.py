@@ -1,5 +1,6 @@
 import colorsys
 
+from lanka_data.api.how.map.ColorUtils import ColorUtils
 from lanka_data.api.how.map.OrderColorUtils import OrderColorUtils
 from utils_future import GeoUtils
 
@@ -169,8 +170,9 @@ class RegionColorUtils:
         value_to_color = {}
         for region_id, segregation in region_to_segregation.items():
             rank_error = sorted_segregations.index(segregation)
-            hue = (1 - rank_error / (len(sorted_segregations) - 1)) * 0.67
-            color = colorsys.hls_to_rgb(hue, 0.5, 1.0)
+            color = ColorUtils.p_to_color(
+                (1 - rank_error / (len(sorted_segregations) - 1))
+            )
             region_color_map[region_id] = color
 
             legend_label = f"{segregation:.4f}"
@@ -190,8 +192,9 @@ class RegionColorUtils:
         for data in data_list:
             change = data["change"]
             rank_error = sorted_changes.index(change)
-            hue = (1 - rank_error / (len(sorted_changes) - 1)) * 0.67
-            color = colorsys.hls_to_rgb(hue, 0.5, 1.0)
+            color = ColorUtils.p_to_color(
+                1 - rank_error / (len(sorted_changes) - 1)
+            )
             region_color_map[data["region_id"]] = color
 
             legend_label = f"{change:.4f}"
@@ -207,7 +210,7 @@ class RegionColorUtils:
         value_to_color = {}
         for data in data_list:
             is_flipped = data["is_flipped"]
-            color = (1.0, 0.5, 0.5) if is_flipped else (0.5, 0.5, 1.0)
+            color = ColorUtils.p_to_color(1 if is_flipped else 0)
             region_color_map[data["region_id"]] = color
 
             legend_label = "Flipped" if is_flipped else "Not Flipped"
