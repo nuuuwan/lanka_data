@@ -5,6 +5,7 @@ class ColorUtils:
 
     DEFAULT_CMAP_ABS = plt.cm.get_cmap("RdYlGn")
     DEFAULT_CMAP_DIFF = plt.cm.get_cmap("bwr")
+    DEFAULT_CMAP_CAT = plt.cm.get_cmap("tab20")
 
     MIN_ALPHA = 0.33
     MAX_ALPHA = 1.0
@@ -45,5 +46,11 @@ class ColorUtils:
     @staticmethod
     def p_to_color_for_diff(p):
         rgb = ColorUtils.DEFAULT_CMAP_DIFF(p)
+        hex = ColorUtils.rgb_to_hex(rgb[:3])
+        return hex
+
+    @staticmethod
+    def p_to_color_for_category(p):
+        rgb = ColorUtils.DEFAULT_CMAP_CAT(p)
         hex = ColorUtils.rgb_to_hex(rgb[:3])
         return hex

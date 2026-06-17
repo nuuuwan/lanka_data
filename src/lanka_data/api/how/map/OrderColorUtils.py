@@ -31,7 +31,7 @@ class OrderColorUtils:
             key = func_key_getter(data)
             i_key = sorted_color_keys.index(key)
             p = i_key / (n_keys - 1) if n_keys > 1 else 0
-            color = ColorUtils.p_to_color_for_abs(p)
+            color = ColorUtils.p_to_color_for_category(p)
             region_id = data["region_id"]
             region_to_color[region_id] = color
             value_to_color[key] = color

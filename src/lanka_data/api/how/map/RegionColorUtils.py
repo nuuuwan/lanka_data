@@ -5,18 +5,6 @@ from utils_future import GeoUtils
 
 
 class RegionColorUtils:
-    @staticmethod
-    def _colors_no_values(result_data):
-        data_list = result_data["data_list"]
-        region_color_map = {
-            data["region_id"]: OrderColorUtils.get_color_for_label(
-                data["region_id"]
-            )
-            for data in data_list
-        }
-        value_to_color = None
-
-        return region_color_map, value_to_color
 
     @staticmethod
     def _colors_values_key(result_data, how):
@@ -372,7 +360,9 @@ class RegionColorUtils:
         is_diff = isinstance(what, DiffWhat)
 
         if what.get_values(data_list[0]) is None:
-            return RegionColorUtils._colors_no_values(result_data)
+            return OrderColorUtils.get_region_colors_by_key(
+                result_data, lambda data: data["region_id"]
+            )
 
         if how.params == "Diversity":
             if is_diff:
