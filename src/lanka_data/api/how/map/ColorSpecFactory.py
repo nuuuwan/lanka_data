@@ -5,7 +5,7 @@ from lanka_data.api.how.map.Segregation import Segregation
 from lanka_data.api.what.DiffWhat import DiffWhat
 
 
-class RegionColorUtils:
+class ColorSpecFactory:
 
     @staticmethod
     def get_color_spec_generic(result_data, how, what) -> ColorSpec:
@@ -60,7 +60,7 @@ class RegionColorUtils:
     @staticmethod
     def get_color_spec_for_change(result_data):
         return ColorSpec.by_region_to_custom_value(
-            RegionColorUtils.get_region_to_change(result_data), True
+            ColorSpecFactory.get_region_to_change(result_data), True
         )
 
     @staticmethod
@@ -86,48 +86,48 @@ class RegionColorUtils:
 
         if how.params == "Diversity":
             if is_diff:
-                return RegionColorUtils.get_color_spec_for_diversity_change(
+                return ColorSpecFactory.get_color_spec_for_diversity_change(
                     result_data,
                     is_pew=False,
                 )
 
-            return RegionColorUtils.get_colors_from_diversity(
+            return ColorSpecFactory.get_colors_from_diversity(
                 result_data,
                 is_pew=False,
             )
 
         if how.params == "DiversityPew":
             if is_diff:
-                return RegionColorUtils.get_color_spec_for_diversity_change(
+                return ColorSpecFactory.get_color_spec_for_diversity_change(
                     result_data,
                     is_pew=True,
                 )
-            return RegionColorUtils.get_colors_from_diversity(
+            return ColorSpecFactory.get_colors_from_diversity(
                 result_data,
                 is_pew=True,
             )
 
         if how.params == "Change":
             if is_diff:
-                return RegionColorUtils._colors_with_change(result_data)
-            return RegionColorUtils.get_color(
+                return ColorSpecFactory._colors_with_change(result_data)
+            return ColorSpecFactory.get_color(
                 result_data, how.without_params(), what
             )
 
         if how.params == "Segregation":
             if is_diff:
-                return RegionColorUtils.get_color_spec_for_segregation_change(
+                return ColorSpecFactory.get_color_spec_for_segregation_change(
                     result_data
                 )
-            return RegionColorUtils.get_color_spec_for_segregation(
+            return ColorSpecFactory.get_color_spec_for_segregation(
                 result_data
             )
 
         if how.params == "Flips":
             if is_diff:
-                return RegionColorUtils.get_colors_from_flips(result_data)
-            return RegionColorUtils.get_color_spec_generic(
+                return ColorSpecFactory.get_colors_from_flips(result_data)
+            return ColorSpecFactory.get_color_spec_generic(
                 result_data, how.without_params(), what
             )
 
-        return RegionColorUtils.get_color_spec_generic(result_data, how, what)
+        return ColorSpecFactory.get_color_spec_generic(result_data, how, what)

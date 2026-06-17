@@ -5,11 +5,11 @@ import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
+from lanka_data.api.how.map.ColorSpecFactory import ColorSpecFactory
 from lanka_data.api.how.map.FontUtils import FontUtils
 from lanka_data.api.how.map.GeoDataUtils import GeoDataUtils
 from lanka_data.api.how.map.LabelUtils import LabelUtils
 from lanka_data.api.how.map.LegendUtils import LegendUtils
-from lanka_data.api.how.map.RegionColorUtils import RegionColorUtils
 from utils_future import Log
 
 log = Log("PlotUtils")
@@ -28,7 +28,7 @@ class PlotUtils:
         "lanka_data",
         "output",
     )
-    FONT_FAMILY = 'Fira Sans'
+    FONT_FAMILY = "Fira Sans"
 
     @staticmethod
     def _plot_text(fig, xy, text, fontsize, color, **kwargs):
@@ -48,8 +48,8 @@ class PlotUtils:
     def get_figure_specs(what, when, where, how):
         from lanka_data.api.what.WhatFactory import WhatFactory
 
-        if '-' in when:
-            when_parts = when.split('-')
+        if "-" in when:
+            when_parts = when.split("-")
             return {
                 when_parts[0]: (
                     WhatFactory.from_what_and_when(what.title, when_parts[0]),
@@ -63,7 +63,7 @@ class PlotUtils:
                     where,
                     how,
                 ),
-                'Change': (what, when, where, how),
+                "Change": (what, when, where, how),
             }
 
         return {"": (what, when, where, how)}
@@ -84,7 +84,7 @@ class PlotUtils:
         gdf_region = GeoDataUtils.get_geopandas_dataframe(
             data_list, is_cartogram
         ).copy()
-        region_color_map, value_to_color = RegionColorUtils.get_color_spec(
+        region_color_map, value_to_color = ColorSpecFactory.get_color_spec(
             what, when, where, how
         ).unpack()
         gdf_region["color"] = gdf_region["region_id"].map(region_color_map)
@@ -154,7 +154,7 @@ class PlotUtils:
         PlotUtils._plot_text(
             fig,
             (0.5, 0.975),
-            f'{what.title} ({when}) - {where.get_description()} - {how.get_description()}',
+            f"{what.title} ({when}) - {where.get_description()} - {how.get_description()}",
             16,
             "#fff",
         )
@@ -176,8 +176,8 @@ class PlotUtils:
             1,
             0.05,
             transform=fig.transFigure,
-            facecolor='grey',
-            edgecolor='none',
+            facecolor="grey",
+            edgecolor="none",
             zorder=0,
         )
         fig.patches.append(rect)
@@ -186,8 +186,8 @@ class PlotUtils:
             1,
             0.05,
             transform=fig.transFigure,
-            facecolor='grey',
-            edgecolor='none',
+            facecolor="grey",
+            edgecolor="none",
             zorder=0,
         )
         fig.patches.append(rect)
