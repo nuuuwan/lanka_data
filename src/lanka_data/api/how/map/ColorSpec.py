@@ -5,7 +5,13 @@ import matplotlib.pyplot as plt
 
 
 def parse_float(value):
-    value_str = str(value).replace(",", "").replace("+", "").replace("%", "")
+    value_str = (
+        str(value)
+        .replace(",", "")
+        .replace("+", "")
+        .replace("%", "")
+        .replace("pp", "")
+    )
 
     try:
         return float(value_str)
@@ -19,7 +25,7 @@ class ColorSpec:
     value_to_color: dict[str, str]
 
     DEFAULT_CMAP_ABS = plt.cm.get_cmap("Greens")
-    DEFAULT_CMAP_DIFF = plt.cm.get_cmap("bwr")
+    DEFAULT_CMAP_DIFF = plt.cm.get_cmap("coolwarm")
     DEFAULT_CMAP_CAT = plt.cm.get_cmap("tab20")
 
     @staticmethod
@@ -95,6 +101,8 @@ class ColorSpec:
                 else ColorSpec.p_to_color_for_diff(rank / (n - 1))
             )
             value_str = f"{value:+.1%}" if is_diff else f"{value:.1%}"
+            if is_diff:
+                value_str = value_str.replace("%", "pp")
             value_to_color[value_str] = color
             region_to_color[data["region_id"]] = color
         return cls(region_to_color, value_to_color)

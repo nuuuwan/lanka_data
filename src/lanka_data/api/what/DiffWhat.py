@@ -36,12 +36,12 @@ class DiffWhat(What):
         for k in keys_union:
             value1 = values1.get(k, 0)
             value2 = values2.get(k, 0)
-            value_change = round(value1 - value2, 0)
+            value_change = round(value2 - value1, 0)
             values[k] = value_change
 
             pct_value1 = pct_values1.get(k, 0)
             pct_value2 = pct_values2.get(k, 0)
-            pct_change = round(pct_value1 - pct_value2, 4)
+            pct_change = round(pct_value2 - pct_value1, 4)
             p_values[k] = pct_change
 
             change1_sum += abs(pct_change)
@@ -57,8 +57,8 @@ class DiffWhat(What):
             if k not in ["values", "pct_values"]:
                 data[k] = v
 
-        max1 = list(values1.keys())[0] if values1 else '(No Data)'
-        max2 = list(values2.keys())[0] if values2 else '(No Data)'
+        max1 = list(values1.keys())[0] if values1 else "(No Data)"
+        max2 = list(values2.keys())[0] if values2 else "(No Data)"
 
         data |= dict(
             values1=values1,
@@ -71,7 +71,7 @@ class DiffWhat(What):
             change=change,
             max1=max1,
             max2=max2,
-            flip=f'{max1} to {max2}' if max1 != max2 else '(No Flip)',
+            flip=f"{max1} to {max2}" if max1 != max2 else "(No Flip)",
         )
 
         return data
