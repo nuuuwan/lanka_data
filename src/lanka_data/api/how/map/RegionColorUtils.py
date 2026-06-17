@@ -175,7 +175,7 @@ class RegionColorUtils:
     MAX_NEIGHBOR_DISTANCE_KM = 5
 
     @staticmethod
-    def _colors_with_segregation(result_data):
+    def get_region_to_neighbours(result_data):
         region_to_neighbours = {}
         region_idx = {
             result["region_id"]: result for result in result_data["data_list"]
@@ -198,16 +198,24 @@ class RegionColorUtils:
                     region_to_neighbours.setdefault(region_id1, []).append(
                         region_id2
                     )
+        return region_to_neighbours, region_idx
 
+    @staticmethod
+    def get_region_to_segregation(
+        result_data, pct_values_key='pct_values', values_key='values'
+    ):
+
+        region_to_neighbours, region_idx = (
+            RegionColorUtils.get_region_to_neighbours(result_data)
+        )
         region_to_segregation = {}
-        for region_id in region_ids:
-
+        for region_id in region_idx.keys():
             neighbors = region_to_neighbours.get(region_id, [])
             if neighbors:
-                pct_values = region_idx[region_id]["pct_values"]
+                pct_values = region_idx[region_id][pct_values_key]
                 sum_values = {}
                 for neighbor_id in neighbors:
-                    neighbor_values = region_idx[neighbor_id]["values"]
+                    neighbor_values = region_idx[neighbor_id][values_key]
                     for k, v in neighbor_values.items():
                         sum_values[k] = sum_values.get(k, 0) + v
 
@@ -231,6 +239,15 @@ class RegionColorUtils:
 
             region_to_segregation[region_id] = segregation
 
+        return region_to_segregation
+
+    @staticmethod
+    def _colors_with_segregation(result_data):
+
+        region_to_segregation = RegionColorUtils.get_region_to_segregation(
+            result_data
+        )
+
         segregations = list(region_to_segregation.values())
         sorted_segregations = sorted(segregations)
 
@@ -247,6 +264,63 @@ class RegionColorUtils:
             value_to_color[legend_label] = color
 
         return region_color_map, value_to_color
+
+    @staticmethod
+    def _colors_with_segregation_change(result_data):
+        region1_to_segregation = RegionColorUtils.get_region_to_segregation(
+            result_data, 'pct_values1', 'values1'
+        )
+        region2_to_segregation = RegionColorUtils.get_region_to_segregation(
+            result_data, 'pct_values2', 'values2'
+        )
+        common_regions = set(region1_to_segregation.keys()) & set(
+            region2_to_segregation.keys()
+        )
+        uncommon_regions = set(region1_to_segregation.keys()) ^ set(
+            region2_to_segregation.keys()
+        )
+        region_to_segregation_change = {}
+        for region_id in common_regions:
+            segregation_change = (
+                region2_to_segregation[region_id]
+                - region1_to_segregation[region_id]
+            )
+            region_to_segregation_change[region_id] = segregation_change
+        for region_id in uncommon_regions:
+            region_to_segregation_change[region_id] = None
+        region_to_color = {}
+        value_to_color = {}
+        max_abs_change = max(
+            abs(change)
+            for change in region_to_segregation_change.values()
+            if change is not None
+        )
+        for (
+            region_id,
+            segregation_change,
+        ) in region_to_segregation_change.items():
+            if segregation_change is not None:
+                p = (
+                    (
+                        max(
+                            -max_abs_change,
+                            min(max_abs_change, segregation_change),
+                        )
+                        / (2 * max_abs_change)
+                        + 0.5
+                    )
+                    if max_abs_change > 0
+                    else 0.5
+                )
+                value = f"{segregation_change:+.4f}"
+                color = ColorUtils.p_to_color(p)
+                region_to_color[region_id] = color
+                value_to_color[value] = color
+        value_to_color = dict(
+            sorted(value_to_color.items(), key=lambda x: float(x[0]))
+        )
+
+        return region_to_color, value_to_color
 
     @staticmethod
     def _colors_with_change(result_data):
@@ -290,12 +364,13 @@ class RegionColorUtils:
     def get_region_color_map(what, when, where, how):
         result_data = how.get_data(what, when, where)
         data_list = result_data["data_list"]
+        is_diff = isinstance(what, DiffWhat)
 
         if what.get_values(data_list[0]) is None:
             return RegionColorUtils._colors_no_values(result_data)
 
         if how.params == "Diversity":
-            if isinstance(what, DiffWhat):
+            if is_diff:
                 return RegionColorUtils._colors_with_diversity_change(
                     result_data,
                     is_pew=False,
@@ -307,7 +382,7 @@ class RegionColorUtils:
             )
 
         if how.params == "DiversityPew":
-            if isinstance(what, DiffWhat):
+            if is_diff:
                 return RegionColorUtils._colors_with_diversity_change(
                     result_data,
                     is_pew=True,
@@ -318,13 +393,17 @@ class RegionColorUtils:
             )
 
         if how.params == "Change":
-            if isinstance(what, DiffWhat):
+            if is_diff:
                 return RegionColorUtils._colors_with_change(result_data)
             return RegionColorUtils._colors_with_values(
                 result_data, how.without_params(), what
             )
 
         if how.params == "Segregation":
+            if is_diff:
+                return RegionColorUtils._colors_with_segregation_change(
+                    result_data
+                )
             return RegionColorUtils._colors_with_segregation(result_data)
 
         if how.params == 'Flips':
