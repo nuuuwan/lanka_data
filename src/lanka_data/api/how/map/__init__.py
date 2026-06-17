@@ -4,7 +4,6 @@
 from lanka_data.api.how.map.ColorUtils import ColorUtils
 from lanka_data.api.how.map.FontUtils import FontUtils
 from lanka_data.api.how.map.GeoDataUtils import GeoDataUtils
-from lanka_data.api.how.map.HueUtils import HueUtils
 from lanka_data.api.how.map.LabelFitUtils import LabelFitUtils
 from lanka_data.api.how.map.LabelUtils import LabelUtils
 from lanka_data.api.how.map.LegendUtils import LegendUtils
