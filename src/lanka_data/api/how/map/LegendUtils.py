@@ -132,7 +132,6 @@ class LegendUtils:
                 reverse=True,
             )
         )
-        print(value_and_color)
 
         trimmed = value_and_color
         if len(value_and_color) > LegendUtils.MAX_LEGEND_ITEMS:

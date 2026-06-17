@@ -54,7 +54,7 @@ class RegionColorUtils:
                 'Muslims': pct_values['Islam'],
                 'Buddhists': pct_values['Buddhist'],
                 'Jews': 0,
-                'ReligiouslyUnaffiliated': pct_values['Unaffiliated'],
+                'ReligiouslyUnaffiliated': 0,
                 'OtherReligions': pct_values['Other'],
             }
 
