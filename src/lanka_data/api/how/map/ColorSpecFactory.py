@@ -9,7 +9,7 @@ class ColorSpecFactory:
 
     @staticmethod
     def get_color_spec_generic(result_data, how, what) -> ColorSpec:
-        func_key_getter = OrderColorUtils._func_key_getter(how, what)
+        func_key_getter = OrderColorUtils.func_key_getter(how, what)
         if func_key_getter:
             return ColorSpec.by_custom_category_key(
                 result_data, func_key_getter, False
@@ -119,9 +119,7 @@ class ColorSpecFactory:
                 return ColorSpecFactory.get_color_spec_for_segregation_change(
                     result_data
                 )
-            return ColorSpecFactory.get_color_spec_for_segregation(
-                result_data
-            )
+            return ColorSpecFactory.get_color_spec_for_segregation(result_data)
 
         if how.params == "Flips":
             if is_diff:
