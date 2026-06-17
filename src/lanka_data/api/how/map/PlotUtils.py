@@ -50,25 +50,50 @@ class PlotUtils:
         from lanka_data.api.what.WhatFactory import WhatFactory
 
         if '-' in when:
-            when_parts = when.split('-')
-            if how.params:
-                how_label = how.how_label.split(":")[0]
-                how_without_params = HowFactory.from_how_cmd(how_label)
-            return {
-                when_parts[1]: (
-                    where,
-                    WhatFactory.from_what_and_when(what.title, when_parts[1]),
-                    when_parts[1],
-                    how_without_params,
-                ),
-                when_parts[0]: (
-                    where,
-                    WhatFactory.from_what_and_when(what.title, when_parts[0]),
-                    when_parts[0],
-                    how_without_params,
-                ),
-                'diff': (where, what, when, how),
-            }
+            if how.params is None or how.params in ['Change']:
+                when_parts = when.split('-')
+                if how.params:
+                    how_label = how.how_label.split(":")[0]
+                    how_without_params = HowFactory.from_how_cmd(how_label)
+                return {
+                    when_parts[1]: (
+                        where,
+                        WhatFactory.from_what_and_when(
+                            what.title, when_parts[1]
+                        ),
+                        when_parts[1],
+                        how_without_params,
+                    ),
+                    when_parts[0]: (
+                        where,
+                        WhatFactory.from_what_and_when(
+                            what.title, when_parts[0]
+                        ),
+                        when_parts[0],
+                        how_without_params,
+                    ),
+                    'diff': (where, what, when, how),
+                }
+            elif how.params in ['DiversityPew']:
+                when_parts = when.split('-')
+                return {
+                    when_parts[1]: (
+                        where,
+                        WhatFactory.from_what_and_when(
+                            what.title, when_parts[1]
+                        ),
+                        when_parts[1],
+                        how,
+                    ),
+                    when_parts[0]: (
+                        where,
+                        WhatFactory.from_what_and_when(
+                            what.title, when_parts[0]
+                        ),
+                        when_parts[0],
+                        how,
+                    ),
+                }
 
         return {"": (where, what, when, how)}
 
