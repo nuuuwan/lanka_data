@@ -27,6 +27,20 @@ class PlotUtils:
     FONT_FAMILY = 'Fira Sans'
 
     @staticmethod
+    def _plot_text(fig, xy, text, fontsize, color, **kwargs):
+        x, y = xy
+        fig.text(
+            x,
+            y,
+            text,
+            ha="center",
+            va="top",
+            fontsize=fontsize,
+            color=color,
+            **kwargs,
+        )
+
+    @staticmethod
     def get_figure_specs(where, what, when, how):
         from lanka_data.api.how.HowFactory import HowFactory
         from lanka_data.api.what.WhatFactory import WhatFactory
@@ -139,32 +153,20 @@ class PlotUtils:
         return fig
 
     @staticmethod
-    def _plot_text(fig, xy, text, fontsize, color, **kwargs):
-        x, y = xy
-        fig.text(
-            x,
-            y,
-            text,
-            ha="center",
-            va="top",
-            fontsize=fontsize,
-            color=color,
-            **kwargs,
-        )
-
-    @staticmethod
-    def _draw_header(fig, where, what, when):
+    def _draw_header(fig, where, what, when, how):
         x = 0.5
         PlotUtils._plot_text(
             fig,
             (x, 0.94),
-            what.title,
-            16,
+            f'{what.title} ({when})',
+            8,
             "#000",
         )
-        PlotUtils._plot_text(fig, (0.5, 0.91), when, 13, "#444")
         PlotUtils._plot_text(
-            fig, (x, 0.88), f"{where.title} · {where.region_year}", 10, "#888"
+            fig, (x, 0.92), f"{where.get_description()}", 16, "#444"
+        )
+        PlotUtils._plot_text(
+            fig, (x, 0.89), f"{how.get_description()}", 12, "#888"
         )
 
     @staticmethod
@@ -191,7 +193,7 @@ class PlotUtils:
         source = "Department of Census and Statistics, Sri Lanka"
         source_url = "https://www.statistics.gov.lk/"
 
-        PlotUtils._draw_header(fig, where, what, when)
+        PlotUtils._draw_header(fig, where, what, when, how)
         PlotUtils._draw_footer(fig, cmd, source, source_url)
 
         image_dir = os.path.join(PlotUtils.DIR_OUTPUT, cmd)
