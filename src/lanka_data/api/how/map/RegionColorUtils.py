@@ -1,5 +1,3 @@
-import colorsys
-
 from lanka_data.api.how.map.ColorUtils import ColorUtils
 from lanka_data.api.how.map.OrderColorUtils import OrderColorUtils
 from utils_future import GeoUtils
@@ -29,8 +27,7 @@ class RegionColorUtils:
         for data in data_list:
             value = data["pct_values"][how.params]
             rank = value_to_rank[value]
-            p = 1 - rank / (n - 1)
-            color = colorsys.hls_to_rgb(p * 0.5, 0.5 + p * 0.4, 1.0)
+            color = ColorUtils.p_to_color(1 - rank / (n - 1))
             value_to_color[value] = color
             region_color_map[data["region_id"]] = color
         return region_color_map, value_to_color

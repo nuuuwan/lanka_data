@@ -1,4 +1,4 @@
-import colorsys
+import matplotlib.pyplot as plt
 
 from lanka_data.api.how.map.HueUtils import HueUtils
 
@@ -77,6 +77,4 @@ class ColorUtils:
 
     @staticmethod
     def p_to_color(p):
-        hue = p * 0.5
-        color = colorsys.hls_to_rgb(hue, 0.5, 1.0)
-        return color
+        return plt.cm.viridis(p)
