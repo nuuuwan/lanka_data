@@ -7,7 +7,7 @@ def is_float(x):
 
 
 class LegendUtils:
-    MAX_LEGEND_ITEMS = 9
+    MAX_LEGEND_ITEMS = 5
 
     @staticmethod
     def _format_legend_label(value):
@@ -37,8 +37,7 @@ class LegendUtils:
             for value, color in trimmed
         ]
         labels = [
-            LegendUtils._format_legend_label(value)
-            for value, color in trimmed
+            LegendUtils._format_legend_label(value) for value, color in trimmed
         ]
         legend_ax.legend(
             handles=handles,
