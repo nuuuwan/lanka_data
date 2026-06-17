@@ -38,7 +38,7 @@ class RegionColorUtils:
         func_key_getter = OrderColorUtils._func_key_getter(how, what)
         if func_key_getter:
             return OrderColorUtils.get_region_colors_by_key(
-                result_data, how, what, func_key_getter
+                result_data, func_key_getter
             )
         return RegionColorUtils._colors_values_key(result_data, how)
 
