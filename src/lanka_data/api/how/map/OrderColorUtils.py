@@ -36,7 +36,8 @@ class OrderColorUtils:
             return None
 
         def func_key_getter(data):
-            return list(what.get_pct_values(data).keys())[idx]
+            values = list(what.get_pct_values(data).keys())
+            return values[idx] if idx < len(values) else '(No Data)'
 
         return func_key_getter
 

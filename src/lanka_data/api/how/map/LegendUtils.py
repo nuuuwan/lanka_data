@@ -39,7 +39,10 @@ class LegendUtils:
             r, g, b = value_to_color[cat][:3]
             cat_lo, cat_hi = cat_pct_ranges.get(cat, (pct_min, pct_max))
             for col_j, pct in enumerate(pct_levels):
-                if pct < cat_lo - col_width or pct > cat_hi + col_width:
+                if (
+                    pct < cat_lo - col_width / 2
+                    or pct > cat_hi + col_width / 2
+                ):
                     img[row_i, col_j] = [0, 0, 0, 0]
                 else:
                     normalised = (pct - pct_min) / pct_span

@@ -46,7 +46,7 @@ class DiffWhat(What):
 
             change1_sum += abs(pct_change)
 
-        change = round(change1_sum / len(keys_union), 4)
+        change = round(change1_sum / len(keys_union), 4) if keys_union else 0
 
         values = dict(sorted(values.items(), key=lambda item: -item[1]))
         total_value = sum(values.values())
@@ -57,8 +57,8 @@ class DiffWhat(What):
             if k not in ["values", "pct_values"]:
                 data[k] = v
 
-        max1 = list(values1.keys())[0]
-        max2 = list(values2.keys())[0]
+        max1 = list(values1.keys())[0] if values1 else '(No Data)'
+        max2 = list(values2.keys())[0] if values2 else '(No Data)'
 
         data |= dict(
             values1=values1,
@@ -71,7 +71,7 @@ class DiffWhat(What):
             change=change,
             max1=max1,
             max2=max2,
-            flip=f'{max1} to {max2}' if max1 != max2 else 'No Flip',
+            flip=f'{max1} to {max2}' if max1 != max2 else '(No Flip)',
         )
 
         return data

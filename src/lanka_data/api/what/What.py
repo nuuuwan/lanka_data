@@ -1,4 +1,7 @@
 from lanka_data.api.what.FieldNameUtils import FieldNameUtils
+from utils_future import Log
+
+log = Log("What")
 
 
 class What:
@@ -81,10 +84,11 @@ class What:
         for current_id in current_ids:
             data_for_current = source_data_idx.get(current_id)
             if not data_for_current:
-                raise ValueError(
+                log.warning(
                     f"No data found for {current_id=}"
                     + f" (mapped from {region_id=})."
                 )
+                continue
             source_data_list_for_region.append(data_for_current)
 
         source_data_list_for_region_with_values = [
