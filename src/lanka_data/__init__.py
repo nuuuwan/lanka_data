@@ -6,7 +6,7 @@ from lanka_data.api import (GIG2, JSON, BasicWhat, Cartogram, Census2012,
                             ColorSpecFactory, DiffWhat, Diversity, Elections,
                             FieldNameUtils, FontUtils, GeoDataUtils, How,
                             HowFactory, LabelFitUtils, LabelUtils, LegendUtils,
-                            Map, PlotUtils, PolyUtils, RegionLoadersMixin,
+                            Map, PlotUtils, RegionLoadersMixin,
                             RegionParserMixin, RegionRawDataMixin, Regions,
                             RegionTypeUtils, Segregation, What, WhatFactory,
                             Where)

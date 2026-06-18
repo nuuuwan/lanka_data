@@ -1,27 +1,28 @@
-class PolyUtils:
+from shapely.geometry import Point, Polygon
+
+
+class PolygonUtils:
     @staticmethod
     def _collect_polygons(g):
-        from shapely.geometry import Polygon
 
         if isinstance(g, Polygon):
             return [g]
         if hasattr(g, "geoms"):
             polys = []
             for sub in g.geoms:
-                polys.extend(PolyUtils._collect_polygons(sub))
+                polys.extend(PolygonUtils._collect_polygons(sub))
             return polys
         return []
 
     @staticmethod
     def _largest_polygon(geom):
-        polys = PolyUtils._collect_polygons(geom)
+        polys = PolygonUtils._collect_polygons(geom)
         if not polys:
             return geom
         return max(polys, key=lambda g: g.area)
 
     @staticmethod
     def _pole_of_inaccessibility(poly, n_cells=32):
-        from shapely.geometry import Point
 
         minx, miny, maxx, maxy = poly.bounds
         boundary = poly.boundary
@@ -45,7 +46,6 @@ class PolyUtils:
 
     @staticmethod
     def _interior_candidates(poly, n_cells=6):
-        from shapely.geometry import Point
 
         minx, miny, maxx, maxy = poly.bounds
         pts = []

@@ -3,7 +3,7 @@ import math
 from shapely.affinity import rotate as shapely_rotate
 from shapely.geometry import LineString, Point, box
 
-from lanka_data.api.how.map.PolyUtils import PolyUtils
+from utils_future.PolygonUtils import PolygonUtils
 
 
 class LabelFitUtils:
@@ -30,7 +30,7 @@ class LabelFitUtils:
     @staticmethod
     def _coarse_scan(poly, n_angles=36):
 
-        pole = PolyUtils._pole_of_inaccessibility(poly)
+        pole = PolygonUtils._pole_of_inaccessibility(poly)
         px0, py0 = pole.x, pole.y
         b = poly.bounds
         span = max(b[2] - b[0], b[3] - b[1]) * 2
@@ -50,7 +50,7 @@ class LabelFitUtils:
 
         b = poly.bounds
         ox, oy = (b[0] + b[2]) / 2.0, (b[1] + b[3]) / 2.0
-        candidates = PolyUtils._interior_candidates(poly, n_cells=n_grid)
+        candidates = PolygonUtils._interior_candidates(poly, n_cells=n_grid)
         best_score, best_angle, best_cx, best_cy, best_rw, best_rh = (
             angle_results[0]
         )
@@ -79,6 +79,6 @@ class LabelFitUtils:
 
     @staticmethod
     def _best_label_fit(geom):
-        poly = PolyUtils._largest_polygon(geom)
+        poly = PolygonUtils._largest_polygon(geom)
         angle_results, span = LabelFitUtils._coarse_scan(poly)
         return LabelFitUtils._fine_search(poly, angle_results, span)
