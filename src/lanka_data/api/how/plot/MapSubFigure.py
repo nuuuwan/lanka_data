@@ -3,6 +3,7 @@ from lanka_data.api.how.map.GeoData import GeoData
 from lanka_data.api.how.plot.Label import Label
 from lanka_data.api.how.plot.Legend import Legend
 from lanka_data.api.how.plot.Text import Text
+from lanka_data.api.what.DiffWhat import DiffWhat
 
 
 class MapSubFigure:
@@ -17,6 +18,16 @@ class MapSubFigure:
         self.subfigure = subfigure
 
     def draw(self):
+        if isinstance(self.command.get_what(), DiffWhat):
+            from lanka_data.api.how.plot.ChartSubFigure import ChartSubFigure
+
+            return ChartSubFigure(
+                self.figure_label,
+                self.command,
+                self.is_cartogram,
+                self.subfigure,
+            ).draw()
+
         how = self.command.get_how()
         what = self.command.get_what()
         when = self.command.get_when()

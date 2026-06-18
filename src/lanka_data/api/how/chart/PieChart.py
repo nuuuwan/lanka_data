@@ -430,19 +430,14 @@ class PieChart(AbstractChart):
             ax.set_axis_off()
             return
 
-        is_change = self._is_change_chart(subregions)
-        centers = chart_data["centers"]
-        bounds = chart_data["bounds"]
-
-        if centers and bounds:
-            if is_change:
-                self._draw_map_centered_change_bars(ax, chart_data)
-            else:
-                self._draw_map_centered_pies(ax, chart_data)
+        if self._is_change_chart(subregions):
+            BarChart(self.how_label, self.params).draw_axis(ax, chart_data)
             return
 
-        if is_change:
-            BarChart(self.how_label, self.params).draw_axis(ax, chart_data)
+        centers = chart_data["centers"]
+        bounds = chart_data["bounds"]
+        if centers and bounds:
+            self._draw_map_centered_pies(ax, chart_data)
             return
 
         self._draw_grid_pies(ax, chart_data)
