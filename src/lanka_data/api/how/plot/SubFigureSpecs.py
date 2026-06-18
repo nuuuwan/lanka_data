@@ -24,8 +24,7 @@ class SubFigureSpecs:
                 when_parts[1]: command2,
             }
 
-            if "Flips" in command.how_cmd:
-                spec |= {"Change": command}
+            spec |= {"Change": command}
             return spec
 
         return {"": command}
