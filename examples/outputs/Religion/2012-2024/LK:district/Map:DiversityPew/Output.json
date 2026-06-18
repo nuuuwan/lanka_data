@@ -1,0 +1,16 @@
+{
+  "result": {
+    "what_description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian",
+    "when_description": "2012-2024",
+    "where_description": "Districts in Sri Lanka",
+    "how_description": "DiversityPew",
+    "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png",
+    "source_list": [
+      "Census of Population and Housing 2012",
+      "Census of Population and Housing 2024"
+    ],
+    "cmd": "Religion/2012-2024/LK:district/Map:DiversityPew"
+  },
+  "query_time_ms": 0,
+  "cache_hit": true
+}
