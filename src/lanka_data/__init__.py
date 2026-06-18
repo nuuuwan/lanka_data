@@ -12,4 +12,5 @@ from lanka_data.api import (GIG2, JSON, BasicWhat, Cartogram, Census2012,
 from lanka_data.command import (Command, CommandBase, CommandHelp,
                                 CommandLoaderMixin, CommandRunnerMixin)
 from lanka_data.examples import Example
-from lanka_data.readme import ReadMe
+from lanka_data.readme import (ReadMe, ReadMeExamplesMixin, ReadMeFooterMixin,
+                               ReadMeSourcesMixin, ReadMeUsageMixin)

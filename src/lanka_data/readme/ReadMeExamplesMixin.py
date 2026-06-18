@@ -1,0 +1,124 @@
+import json
+import os
+import shutil
+
+from lanka_data.examples import Example
+from lanka_data.readme.ReadMe import ReadMe
+
+
+class ReadMeExamplesMixin:
+    MAX_LINES_IN_OUTPUT = 40
+
+    @staticmethod
+    def get_lines_for_example_title(i_group_name, i_cmd, cmd, result):
+        lines = []
+        if "what_description" in result:
+            what_description = result["what_description"]
+            when_description = result["when_description"]
+            where_description = result["where_description"]
+            how_description = result["how_description"]
+            title_text = (
+                f"{how_description} of"
+                + f" {what_description} ({when_description}) for"
+                + f" {where_description}."
+            )
+        else:
+            title_text = cmd
+
+        lines.append(f"#### {i_group_name}.{i_cmd:02d}) {title_text}")
+        lines.append("")
+        return lines
+
+    @staticmethod
+    def get_lines_for_command(cmd):
+        return [
+            "```bash",
+            f"{cmd}",
+            "```",
+            "",
+        ]
+
+    @staticmethod
+    def get_lines_for_output(cmd, output):
+        lines = []
+        lines.append("```json")
+        output_json = json.dumps(output, indent=4)
+        output_json_lines = output_json.splitlines()
+        if len(output_json_lines) > ReadMe.MAX_LINES_IN_OUTPUT:
+            i_split = ReadMe.MAX_LINES_IN_OUTPUT // 2
+            n_spaces = len(output_json_lines[i_split - 1]) - len(
+                output_json_lines[i_split - 1].lstrip(" ")
+            )
+            n_cut = len(output_json_lines) - ReadMe.MAX_LINES_IN_OUTPUT
+            output_json_lines = (
+                output_json_lines[:i_split]
+                + [" " * n_spaces + f"... // {n_cut} lines ..."]
+                + output_json_lines[-i_split:]
+            )
+        lines.extend(output_json_lines)
+        lines.append("```")
+        lines.append("")
+        output_path = os.path.join(
+            Example.DIR_EXAMPLES_OUTPUT, cmd, "Output.json"
+        )
+        lines.append(f"Source: [{output_path}]({output_path})")
+        lines.append("")
+        return lines
+
+    @staticmethod
+    def get_lines_for_image(cmd, output):
+        if not ("result" in output and "image_path" in output["result"]):
+            return []
+
+        lines = []
+        image_path = output["result"]["image_path"]
+        new_image_dir = os.path.join(Example.DIR_EXAMPLES_OUTPUT, cmd)
+        os.makedirs(new_image_dir, exist_ok=True)
+        new_image_path = os.path.join(new_image_dir, "Image.png")
+
+        shutil.copy2(image_path, new_image_path)
+        lines.append(f"![{cmd}]({new_image_path})")
+        lines.append("")
+        lines.append(f"Source: [{new_image_path}]({new_image_path})")
+        lines.append("")
+        return lines
+
+    @staticmethod
+    def get_lines_for_example(i_group_name, i_cmd, example, output_idx):
+        lines = []
+        cmd = example.cmd
+        output = output_idx[cmd]
+        result = output["result"]
+
+        lines.extend(
+            ReadMe.get_lines_for_example_title(
+                i_group_name, i_cmd, cmd, result
+            )
+        )
+
+        lines.extend(ReadMe.get_lines_for_command(cmd))
+        lines.extend(ReadMe.get_lines_for_output(cmd, output))
+        lines.extend(ReadMe.get_lines_for_image(cmd, output))
+
+        return lines
+
+    def get_lines_for_examples(self, example_idx, output_idx):
+        lines = [
+            "## Example cmds (`<cmd>`)",
+            "",
+        ]
+
+        for i_group_name, (group_name, examples) in enumerate(
+            example_idx.items(), start=1
+        ):
+
+            lines.append(f"### {i_group_name}) {group_name}")
+            lines.append("")
+            for i_cmd, example in enumerate(examples, start=1):
+                lines.extend(
+                    self.get_lines_for_example(
+                        i_group_name, i_cmd, example, output_idx
+                    )
+                )
+
+        return lines
