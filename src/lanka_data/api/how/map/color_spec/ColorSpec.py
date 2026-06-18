@@ -37,7 +37,7 @@ class ColorSpec:
             sorted(
                 self.value_to_color.items(),
                 key=lambda item: (
-                    -color_to_count[item[1]],
+                    -color_to_count.get(item[1], 0),
                     -(
                         Parse.float(item[0])
                         if Parse.float(item[0]) is not None
@@ -79,6 +79,12 @@ class ColorSpec:
             region_id = data["region_id"]
             region_to_color[region_id] = color
             value_to_color[key] = color
+
+        for k, v in data_list[0]["values"].items():
+            if k not in value_to_color:
+                if k in cls.LABEL_TO_COLOR:
+                    color = cls.LABEL_TO_COLOR[k]
+                    value_to_color[k] = color
 
         if hide_legend:
             value_to_color = None
