@@ -160,15 +160,40 @@ class PieChart(AbstractChart):
         return label
 
     @staticmethod
+    def _order_positive_values_with_top_first(values_map):
+        items = [
+            (label, value) for label, value in values_map.items() if value > 0
+        ]
+        if not items:
+            return []
+
+        top_label, _ = max(items, key=lambda item: item[1])
+        return [
+            (label, value) for label, value in items if label == top_label
+        ] + [(label, value) for label, value in items if label != top_label]
+
+    @staticmethod
+    def _get_startangle_with_top_half(top_value, total_value):
+        if total_value <= 0:
+            return 90
+        top_angle = 360.0 * top_value / total_value
+        return 90 + top_angle / 2
+
+    @staticmethod
     def _draw_pie_at(ax, center, radius, values_map, color_map):
-        total_value = sum(values_map.values())
+        ordered_items = PieChart._order_positive_values_with_top_first(
+            values_map
+        )
+        total_value = sum(value for _, value in ordered_items)
         if total_value <= 0:
             return
 
-        theta = 90
-        for label, value in values_map.items():
-            if value <= 0:
-                continue
+        top_value = ordered_items[0][1]
+        theta = PieChart._get_startangle_with_top_half(
+            top_value,
+            total_value,
+        )
+        for label, value in ordered_items:
             angle = 360.0 * value / total_value
             next_theta = theta - angle
             wedge = Wedge(
@@ -354,13 +379,24 @@ class PieChart(AbstractChart):
                 ]
             )
 
-            labels = list(subregion["values"].keys())
-            values = [subregion["values"][label] for label in labels]
+            ordered_items = cls._order_positive_values_with_top_first(
+                subregion["values"]
+            )
+            if not ordered_items:
+                inset.set_axis_off()
+                continue
+
+            labels = [label for label, _ in ordered_items]
+            values = [value for _, value in ordered_items]
             colors = [category_to_color[label] for label in labels]
+            startangle = cls._get_startangle_with_top_half(
+                values[0],
+                sum(values),
+            )
             inset.pie(
                 values,
                 colors=colors,
-                startangle=90,
+                startangle=startangle,
                 counterclock=False,
                 wedgeprops={"linewidth": 0.2, "edgecolor": "white"},
             )
