@@ -2,7 +2,7 @@ from utils_future import GeoUtils
 
 
 class Segregation:
-    MAX_NEIGHBOR_DISTANCE_KM = 5
+    MAX_NEIGHBOR_DISTANCE_KM = 20
 
     @staticmethod
     def get_region_to_neighbours(result_data):

@@ -8,6 +8,7 @@ class Parse:
             .replace("%", "")
             .replace("pp", "")
         )
+        value_str = value_str.split("(")[0].strip()
 
         try:
             return float(value_str)

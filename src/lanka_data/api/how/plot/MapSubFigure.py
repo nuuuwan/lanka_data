@@ -4,6 +4,7 @@ from lanka_data.api.how.plot.Label import Label
 from lanka_data.api.how.plot.Legend import Legend
 from lanka_data.api.how.plot.Text import Text
 from lanka_data.api.what.DiffWhat import DiffWhat
+from utils_future import Parse
 
 
 class MapSubFigure:
@@ -67,8 +68,14 @@ class MapSubFigure:
         skip_colors = {
             color
             for value, color in (value_to_color or {}).items()
-            if value.startswith("(No Data)") or value.startswith("(No Flip)")
+            if value.startswith("(No Data)")
+            or value.startswith("(No Flip)")
+            or (
+                Parse.float(value) is not None
+                and abs(Parse.float(value)) < 0.001
+            )
         }
+
         labeled_gdf = gdf_region[~gdf_region["color"].isin(skip_colors)]
         if len(labeled_gdf) < self.MAX_REGIONS_TO_LABEL:
             Label.draw(labeled_gdf, ax)
