@@ -1,5 +1,6 @@
 from lanka_data.api.how.cartogram.Cartogram import Cartogram
 from lanka_data.api.how.chart.BarChart import BarChart
+from lanka_data.api.how.chart.BumpChart import BumpChart
 from lanka_data.api.how.chart.PieChart import PieChart
 from lanka_data.api.how.JSON import JSON
 from lanka_data.api.how.map.Map import Map
@@ -21,6 +22,7 @@ class HowFactory:
             "Cartogram": Cartogram,
             "PieChart": PieChart,
             "BarChart": BarChart,
+            "BumpChart": BumpChart,
         }
         how_class = title_to_how.get(title)
         if how_class is not None:

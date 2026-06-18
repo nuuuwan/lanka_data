@@ -4,6 +4,11 @@ class SubFigureSpecs:
         from lanka_data.command.Command import Command
 
         when_cmd = command.when_cmd
+        how_title = command.how_cmd.split(":")[0]
+
+        if how_title == "BumpChart":
+            return {"": command}
+
         if "-" in when_cmd:
             when_parts = when_cmd.split("-")
             command1 = Command(

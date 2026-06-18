@@ -43,6 +43,8 @@ class ChartSubFigure:
                     "region_name": data.get("region_name")
                     or str(data.get("region_id")),
                     "values": values,
+                    "values1": data.get("values1"),
+                    "values2": data.get("values2"),
                     "total_value": total_value,
                     "pct_values": pct_values,
                 }
@@ -143,6 +145,11 @@ class ChartSubFigure:
         ]
         category_to_color = self._get_category_to_color(category_labels)
         geo_context = self._get_geo_context(result_data)
+        when_labels = None
+        if "-" in self.command.when_cmd:
+            tokens = self.command.when_cmd.split("-")
+            if len(tokens) == 2:
+                when_labels = tokens
 
         return {
             "subregions": subregions,
@@ -151,6 +158,7 @@ class ChartSubFigure:
             "gdf": geo_context["gdf"],
             "centers": geo_context["centers"],
             "bounds": geo_context["bounds"],
+            "when_labels": when_labels,
         }
 
     def draw(self):
