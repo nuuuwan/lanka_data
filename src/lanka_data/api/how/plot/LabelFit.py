@@ -6,10 +6,15 @@ from shapely.geometry import LineString, Point, box
 from utils_future.PolygonUtils import PolygonUtils
 
 
-class LabelFitUtils:
+class LabelFit:
+    POLE_OF_INACCESSIBILITY = getattr(
+        PolygonUtils, "_pole_of_inaccessibility"
+    )
+    INTERIOR_CANDIDATES = getattr(PolygonUtils, "_interior_candidates")
+    LARGEST_POLYGON = getattr(PolygonUtils, "_largest_polygon")
+
     @staticmethod
     def _score_rect_at(rpoly, rboundary, px, py, span):
-
         cp = Point(px, py)
 
         def ray(ddx, ddy):
@@ -27,10 +32,9 @@ class LabelFitUtils:
         score = rect_geom.intersection(rpoly).area
         return hw, hh, score
 
-    @staticmethod
-    def _coarse_scan(poly, n_angles=36):
-
-        pole = PolygonUtils._pole_of_inaccessibility(poly)
+    @classmethod
+    def _coarse_scan(cls, poly, n_angles=36):
+        pole = cls.POLE_OF_INACCESSIBILITY(poly)
         px0, py0 = pole.x, pole.y
         b = poly.bounds
         span = max(b[2] - b[0], b[3] - b[1]) * 2
@@ -38,19 +42,18 @@ class LabelFitUtils:
         for i in range(n_angles):
             angle_deg = i * 180.0 / n_angles
             rpoly = shapely_rotate(poly, -angle_deg, origin=(px0, py0))
-            hw, hh, score = LabelFitUtils._score_rect_at(
+            hw, hh, score = cls._score_rect_at(
                 rpoly, rpoly.boundary, px0, py0, span
             )
             results.append((score, angle_deg, px0, py0, 2 * hw, 2 * hh))
         results.sort(reverse=True)
         return results, span
 
-    @staticmethod
-    def _fine_search(poly, angle_results, span, n_top=5, n_grid=6):
-
+    @classmethod
+    def _fine_search(cls, poly, angle_results, span, n_top=5, n_grid=6):
         b = poly.bounds
         ox, oy = (b[0] + b[2]) / 2.0, (b[1] + b[3]) / 2.0
-        candidates = PolygonUtils._interior_candidates(poly, n_cells=n_grid)
+        candidates = cls.INTERIOR_CANDIDATES(poly, n_cells=n_grid)
         best_score, best_angle, best_cx, best_cy, best_rw, best_rh = (
             angle_results[0]
         )
@@ -65,7 +68,7 @@ class LabelFitUtils:
                 rpy = oy + dx * sin_t + dy * cos_t
                 if not rpoly.contains(Point(rpx, rpy)):
                     continue
-                hw, hh, score = LabelFitUtils._score_rect_at(
+                hw, hh, score = cls._score_rect_at(
                     rpoly, rboundary, rpx, rpy, span
                 )
                 if score > best_score:
@@ -77,8 +80,8 @@ class LabelFitUtils:
                     best_cy = oy - dx2 * sin_t + dy2 * cos_t
         return best_cx, best_cy, best_rw, best_rh, best_angle
 
-    @staticmethod
-    def _best_label_fit(geom):
-        poly = PolygonUtils._largest_polygon(geom)
-        angle_results, span = LabelFitUtils._coarse_scan(poly)
-        return LabelFitUtils._fine_search(poly, angle_results, span)
+    @classmethod
+    def best_label_fit(cls, geom):
+        poly = cls.LARGEST_POLYGON(geom)
+        angle_results, span = cls._coarse_scan(poly)
+        return cls._fine_search(poly, angle_results, span)

@@ -8,10 +8,10 @@ import pandas as pd
 from lanka_data.api.where.RegionTypeUtils import RegionTypeUtils
 from utils_future import WWW, DCNUtils, Log
 
-log = Log("GeoDataUtils")
+log = Log("GeoData")
 
 
-class GeoDataUtils:
+class GeoData:
     @staticmethod
     def _load_raw_gdf(all_current_ids):
         precision_label = "e4_medium"
@@ -52,11 +52,6 @@ class GeoDataUtils:
         return gdf_dissolved.rename(columns={"region_id": "region_id"})
 
     @staticmethod
-    def _sort_by_region_ids(gdf, region_ids):
-        gdf["region_id"] = gdf["region_id"].astype(str)
-        return gdf.set_index("region_id").loc[region_ids].reset_index()
-
-    @staticmethod
     def _build_region_map(data_list):
         region_to_current_ids = {}
         for d in data_list:
@@ -67,7 +62,6 @@ class GeoDataUtils:
 
     @staticmethod
     def _enrich_from_data_list(gdf, data_list):
-
         rows = []
         for d in data_list:
             row = {
@@ -89,8 +83,8 @@ class GeoDataUtils:
         return gdf.merge(df, on="region_id", how="left")
 
     @staticmethod
-    def get_temp_gdf_path(data_list, is_cartogram):
-        hash = hashlib.md5(
+    def _get_temp_gdf_path(data_list, is_cartogram):
+        hash_value = hashlib.md5(
             str(data_list).encode() + str(is_cartogram).encode()
         ).hexdigest()
         dir_temp = os.path.join(
@@ -99,24 +93,23 @@ class GeoDataUtils:
             "gdf_cache",
         )
         os.makedirs(dir_temp, exist_ok=True)
-        return os.path.join(dir_temp, f"gdf_{hash}.geojson")
+        return os.path.join(dir_temp, f"gdf_{hash_value}.geojson")
 
-    @staticmethod
-    def get_geopandas_dataframe(data_list, is_cartogram):
-        temp_gdf_path = GeoDataUtils.get_temp_gdf_path(
-            data_list, is_cartogram
-        )
+    @classmethod
+    def get_geopandas_dataframe(cls, data_list, is_cartogram):
+        temp_gdf_path = cls._get_temp_gdf_path(data_list, is_cartogram)
         if os.path.exists(temp_gdf_path):
             log.debug(f"Read {temp_gdf_path}")
             return geopandas.read_file(temp_gdf_path)
-        region_to_current_ids = GeoDataUtils._build_region_map(data_list)
+
+        region_to_current_ids = cls._build_region_map(data_list)
         all_current_ids = [
             cid
             for current_ids in region_to_current_ids.values()
             for cid in current_ids
         ]
-        gdf = GeoDataUtils._load_raw_gdf(all_current_ids)
-        gdf = GeoDataUtils._dissolve_by_region(gdf, region_to_current_ids)
+        gdf = cls._load_raw_gdf(all_current_ids)
+        gdf = cls._dissolve_by_region(gdf, region_to_current_ids)
         if gdf.empty:
             raise ValueError("No map data found.")
 
@@ -129,9 +122,9 @@ class GeoDataUtils:
                 region_id_to_weight,
             )
 
-        gnd_enriched = GeoDataUtils._enrich_from_data_list(gdf, data_list)
-        geopandas.GeoDataFrame(gnd_enriched).to_file(
+        gdf_enriched = cls._enrich_from_data_list(gdf, data_list)
+        geopandas.GeoDataFrame(gdf_enriched).to_file(
             temp_gdf_path, driver="GeoJSON"
         )
         log.debug(f"Wrote {temp_gdf_path}")
-        return gnd_enriched
+        return gdf_enriched

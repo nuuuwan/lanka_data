@@ -6,6 +6,6 @@ from lanka_data.api.how.How import How
 from lanka_data.api.how.HowFactory import HowFactory
 from lanka_data.api.how.JSON import JSON
 from lanka_data.api.how.map import (ColorSpec, ColorSpecConstants,
-                                    ColorSpecFactory, FontUtils, GeoDataUtils,
-                                    LabelFitUtils, LabelUtils, LegendUtils,
-                                    Map, PlotUtils)
+                                    ColorSpecFactory, GeoData, Map)
+from lanka_data.api.how.plot import (Font, Footer, Header, Label, LabelFit,
+                                     Legend, Plot, SubFigure)

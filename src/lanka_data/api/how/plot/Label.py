@@ -1,8 +1,10 @@
-from lanka_data.api.how.map.LabelFitUtils import LabelFitUtils
+from lanka_data.api.how.plot.LabelFit import LabelFit
 from utils_future import ColorUtils
 
 
-class LabelUtils:
+class Label:
+    IS_LIGHT_COLOR = getattr(ColorUtils, "_is_light_color")
+
     @staticmethod
     def _fit_fontsize(text, rect_w, rect_h, ax, fig):
         x_min, x_max = ax.get_xlim()
@@ -17,17 +19,15 @@ class LabelUtils:
         size_from_h = avail_h_pts / 1.2
         return min(size_from_w, size_from_h, 18) * 0.3
 
-    @staticmethod
-    def draw_labels(gdf_region, ax):
+    @classmethod
+    def draw(cls, gdf_region, ax):
         fig = ax.get_figure()
         for _, row in gdf_region.iterrows():
-            cx, cy, rect_w, rect_h, angle_deg = LabelFitUtils._best_label_fit(
+            cx, cy, rect_w, rect_h, angle_deg = LabelFit.best_label_fit(
                 row.geometry
             )
             bg_color = row.get("color", "black")
-            text_color = (
-                "black" if ColorUtils._is_light_color(bg_color) else "white"
-            )
+            text_color = "black" if cls.IS_LIGHT_COLOR(bg_color) else "white"
             label = (
                 f'{row.get("region_name")}'
                 if row.get("region_name")
@@ -42,9 +42,7 @@ class LabelUtils:
                 text_angle = angle_deg + 90.0
             while text_angle > 90.0:
                 text_angle -= 180.0
-            fontsize = LabelUtils._fit_fontsize(
-                label, text_w, text_h, ax, fig
-            )
+            fontsize = cls._fit_fontsize(label, text_w, text_h, ax, fig)
             ax.annotate(
                 label,
                 xy=(cx, cy),
