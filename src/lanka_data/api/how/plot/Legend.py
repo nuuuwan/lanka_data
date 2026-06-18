@@ -37,5 +37,5 @@ class Legend:
             handles=handles,
             labels=labels,
             fontsize=12,
-            loc="best",
+            loc="bottom center",
         )
