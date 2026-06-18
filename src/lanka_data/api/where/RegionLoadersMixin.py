@@ -11,11 +11,11 @@ class RegionLoadersMixin(RegionParserMixin, RegionRawDataMixin):
         return f" (pre-{region_year} Map)" if region_year != "Current" else ""
 
     @classmethod
-    def from_token(cls, token: str):
-        raw_regions, region_year, description = cls.parse(token)
+    def from_command(cls, command):
+        raw_regions, region_year, description = cls.parse(command.where_cmd)
 
         if len(raw_regions) == 0:
-            raise ValueError(f"No regions found for token: {token}")
+            raise ValueError(f"No regions found for token: {command}")
 
         return cls(
             raw_regions,

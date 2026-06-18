@@ -18,7 +18,7 @@ class CommandRunnerMixin:
     DIR_OUTPUT = os.path.join(DIR_TEMP_DATA, "output")
 
     def get_where(self):
-        return Regions.from_token(self.where_cmd)
+        return Regions.from_command(self)
 
     def get_what(self):
         return WhatFactory.from_what_and_when(self.what_cmd, self.when_cmd)
