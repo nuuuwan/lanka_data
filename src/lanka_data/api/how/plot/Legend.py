@@ -30,9 +30,7 @@ class Legend:
             legend_ax.scatter([], [], color=color, s=100)
             for value, color in value_and_color
         ]
-        labels = [
-            cls._format_label(value) for value, color in value_and_color
-        ]
+        labels = [cls._format_label(value) for value, color in value_and_color]
         legend_ax.legend(
             handles=handles,
             labels=labels,
