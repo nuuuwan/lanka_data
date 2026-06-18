@@ -17,20 +17,28 @@ class CommandRunnerMixin:
     DIR_TEMP_DATA = os.path.join(tempfile.gettempdir(), "lanka_data")
     DIR_OUTPUT = os.path.join(DIR_TEMP_DATA, "output")
 
-    def _run_normalized(
-        self, where_cmd: str, what_cmd: str, when_cmd: str, how_cmd: str
-    ):
-        where = Regions.from_token(where_cmd)
-        what = WhatFactory.from_what_and_when(what_cmd, when_cmd)
-        how = HowFactory.from_how_cmd(how_cmd)
-        return how.get_result(what, when_cmd, where, self.cmd_id)
+    def get_where(self):
+        return Regions.from_token(self.where_cmd)
+
+    def get_what(self):
+        return WhatFactory.from_what_and_when(self.what_cmd, self.when_cmd)
+
+    def get_when(self):
+        return self.when_cmd
+
+    def get_how(self):
+        return HowFactory.from_how_cmd(self.how_cmd)
+
+    def get_result(self):
+        return self.get_how().get_result(
+            self.get_what(), self.get_when(), self.get_where(), self.cmd_id
+        )
 
     def _run(self):
         if self.where_cmd == "Help":
             return CommandHelp.get_help_result()
 
-        where_cmd, what_cmd, when_cmd, how_cmd = self.unpack()
-        return self._run_normalized(where_cmd, what_cmd, when_cmd, how_cmd)
+        return self.get_result()
 
     def run_unsafe(self, do_open_images, do_use_cache):
         t_start = time.perf_counter()
