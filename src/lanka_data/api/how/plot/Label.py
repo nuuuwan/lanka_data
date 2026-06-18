@@ -65,7 +65,7 @@ class Label:
         # Clean up temporary text object
         temp_text.remove()
 
-        return max(6, final_fontsize * 0.7)
+        return max(12, final_fontsize * 0.7)
 
     @classmethod
     def draw(cls, gdf_region, ax):
