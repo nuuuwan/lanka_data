@@ -37,7 +37,6 @@ class CommandRunnerMixin:
     def _run(self):
         if self.where_cmd == "Help":
             return CommandHelp.get_help_result()
-
         return self.get_result()
 
     def run_unsafe(self, do_open_images, do_use_cache):
