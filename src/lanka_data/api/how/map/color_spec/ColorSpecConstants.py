@@ -17,7 +17,7 @@ class ColorSpecConstants:
         # Null
         "#eeeeee": ["(No Data)"],
         "#dddddd": ["Other"],
-        "#cccccc": ["(No Flip)"],
+        "#cccccc": ["(No Flip)", "(Insufficient Data)", "(No Segregation)"],
         # Political Parties
         "#222288": ["SLFP", "PA", "UPFA"],
         "#004400": ["ACMC", "MNA", "NC", "SLMC", "NUA"],
@@ -55,4 +55,6 @@ class ColorSpecConstants:
         # Validation only
         "#0088f1": ["A"],
         "#ff4401": ["B"],
+        # Segregation
+        "#fe0000": ["Segregated"],
     }

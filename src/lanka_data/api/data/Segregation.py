@@ -2,7 +2,9 @@ from utils_future import GeoUtils
 
 
 class Segregation:
-    MAX_NEIGHBOR_DISTANCE_KM = 20
+    MAX_NEIGHBOR_DISTANCE_KM = 30
+    MIN_NEIGHBORS = 3
+    SEGREGATION_LIMIT = 0.2
 
     @staticmethod
     def get_region_to_neighbours(result_data):
@@ -41,7 +43,7 @@ class Segregation:
         region_to_segregation = {}
         for region_id in region_idx.keys():
             neighbors = region_to_neighbours.get(region_id, [])
-            if neighbors:
+            if neighbors and len(neighbors) >= Segregation.MIN_NEIGHBORS:
                 pct_values = region_idx[region_id][pct_values_key]
                 sum_values = {}
                 for neighbor_id in neighbors:
@@ -63,9 +65,13 @@ class Segregation:
                     pct_value_neighbors = pct_values_for_neighbours.get(k, 0)
                     error1 = abs(pct_value - pct_value_neighbors)
                     error1_sum += error1
-                segregation = round(error1_sum / len(key_union), 4)
+                mean_error1 = error1_sum / len(key_union) if key_union else 0
+                if mean_error1 < Segregation.SEGREGATION_LIMIT:
+                    segregation = "(No Segregation)"
+                else:
+                    segregation = "Segregated"
             else:
-                segregation = 0
+                segregation = "(Insufficient Data)"
 
             region_to_segregation[region_id] = segregation
 
@@ -87,10 +93,19 @@ class Segregation:
         )
         region_to_segregation_change = {}
         for region_id in common_regions:
-            segregation_change = (
-                region2_to_segregation[region_id]
-                - region1_to_segregation[region_id]
-            )
+            region1_segregation = region1_to_segregation[region_id]
+            region2_segregation = region2_to_segregation[region_id]
+            if (
+                region1_segregation == "(Insufficient Data)"
+                or region2_segregation == ("(Insufficient Data)")
+            ):
+                segregation_change = "(Insufficient Data)"
+            else:
+                segregation_change = (
+                    "Change"
+                    if region2_segregation != region1_segregation
+                    else "(No Change)"
+                )
             region_to_segregation_change[region_id] = segregation_change
         for region_id in uncommon_regions:
             region_to_segregation_change[region_id] = None

@@ -34,9 +34,6 @@ class ColorSpec:
         is_float_values = Parse.float(first_value) is not None
 
         if is_float_values:
-            color_to_count = {}
-            for region, color in self.region_to_color.items():
-                color_to_count[color] = color_to_count.get(color, 0) + 1
 
             sorted_value_to_color = dict(
                 sorted(
@@ -53,6 +50,10 @@ class ColorSpec:
 
             expanded_value_to_color = sorted_value_to_color
         else:
+            color_to_count = {}
+            for region, color in self.region_to_color.items():
+                color_to_count[color] = color_to_count.get(color, 0) + 1
+
             sorted_value_to_color = dict(
                 sorted(
                     self.value_to_color.items(),
@@ -134,7 +135,14 @@ class ColorSpec:
     @classmethod
     def by_region_to_custom_value(cls, region_to_custom_value, is_diff):
         sorted_custom_values = list(
-            sorted(set(region_to_custom_value.values()))
+            sorted(
+                set(region_to_custom_value.values()),
+                key=lambda v: (
+                    Parse.float(v)
+                    if Parse.float(v) is not None
+                    else float("-inf")
+                ),
+            )
         )
         has_non_float_values = any(
             [Parse.float(value) is None for value in sorted_custom_values]
