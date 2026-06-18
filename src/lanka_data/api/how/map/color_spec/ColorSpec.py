@@ -149,3 +149,32 @@ class ColorSpec:
             region_to_color[region_id] = color
             value_to_color[value] = color
         return cls(region_to_color, value_to_color)
+
+    @classmethod
+    def by_region_to_custom_value_with_custom_color_config(
+        cls, region_to_custom_value, custom_color_config
+    ):
+        region_to_color = {}
+        value_to_color = {}
+        for region_id, custom_value in region_to_custom_value.items():
+            color = None
+            value_label = None
+            for (
+                low,
+                high,
+                custom_color,
+                custom_value_label,
+            ) in custom_color_config:
+                if low <= custom_value < high:
+                    color = custom_color
+                    value_label = custom_value_label
+                    break
+            if color is None:
+                raise ValueError(
+                    f"Custom value {custom_value} for region {region_id}"
+                    + " does not fall into any specified range."
+                )
+
+            region_to_color[region_id] = color
+            value_to_color[value_label] = color
+        return cls(region_to_color, value_to_color)
