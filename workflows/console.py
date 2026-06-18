@@ -17,7 +17,9 @@ def main():
             Command.cache_clear()
             continue
 
-        output = Command(cmd).run(do_open_images=True, do_use_cache=True)
+        output = Command.from_str(cmd).run(
+            do_open_images=True, do_use_cache=True
+        )
         print(json.dumps(output, indent=2))
 
 
