@@ -33,7 +33,7 @@ class CommandRunnerMixin:
         return self.get_how().get_result(self)
 
     def _run(self):
-        if self.where_cmd == "Help":
+        if self.what_cmd == "Help":
             return CommandHelp.get_help_result()
         return self.get_result()
 
@@ -68,7 +68,7 @@ class CommandRunnerMixin:
             return self.run_unsafe(do_open_images, do_use_cache)
 
         except Exception as e:
-            log.error(f"Error running command '{self.cmd}': {e}")
+            log.error(f"Error running command '{self}': {e}")
             return {"error": str(e)}
 
     @classmethod

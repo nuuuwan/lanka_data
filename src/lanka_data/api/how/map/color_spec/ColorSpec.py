@@ -29,9 +29,10 @@ class ColorSpec:
         return ColorSpecConstants.DEFAULT_CMAP_CAT(p)
 
     def unpack(self):
-
-        first_value = next(iter(self.value_to_color))
-        is_float_values = Parse.float(first_value) is not None
+        is_float_values = False
+        if self.value_to_color:
+            first_value = next(iter(self.value_to_color))
+            is_float_values = Parse.float(first_value) is not None
 
         if is_float_values:
 
@@ -54,20 +55,23 @@ class ColorSpec:
             for region, color in self.region_to_color.items():
                 color_to_count[color] = color_to_count.get(color, 0) + 1
 
-            sorted_value_to_color = dict(
-                sorted(
-                    self.value_to_color.items(),
-                    key=lambda item: (
-                        (-color_to_count.get(item[1], 0), item[1])
-                    ),
+            sorted_value_to_color = None
+            if self.value_to_color:
+                sorted_value_to_color = dict(
+                    sorted(
+                        self.value_to_color.items(),
+                        key=lambda item: (
+                            (-color_to_count.get(item[1], 0), item[1])
+                        ),
+                    )
                 )
-            )
-
-            expanded_value_to_color = {}
-            for value, color in sorted_value_to_color.items():
-                count = color_to_count.get(color, 0)
-                expanded_value = f"{value} ({count})"
-                expanded_value_to_color[expanded_value] = color
+            expanded_value_to_color = None
+            if sorted_value_to_color:
+                expanded_value_to_color = {}
+                for value, color in sorted_value_to_color.items():
+                    count = color_to_count.get(color, 0)
+                    expanded_value = f"{value} ({count})"
+                    expanded_value_to_color[expanded_value] = color
 
         return self.region_to_color, expanded_value_to_color
 
@@ -96,11 +100,12 @@ class ColorSpec:
             region_to_color[region_id] = color
             value_to_color[key] = color
 
-        for k, v in data_list[0]["values"].items():
-            if k not in value_to_color:
-                if k in cls.LABEL_TO_COLOR:
-                    color = cls.LABEL_TO_COLOR[k]
-                    value_to_color[k] = color
+        if "values" in data_list[0]:
+            for k, v in data_list[0]["values"].items():
+                if k not in value_to_color:
+                    if k in cls.LABEL_TO_COLOR:
+                        color = cls.LABEL_TO_COLOR[k]
+                        value_to_color[k] = color
 
         if hide_legend:
             value_to_color = None

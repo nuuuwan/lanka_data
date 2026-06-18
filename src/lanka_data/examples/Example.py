@@ -52,7 +52,9 @@ class Example:
 
     @classmethod
     def get_output_hot(cls, cmd):
-        output = Command(cmd).run(do_open_images=False, do_use_cache=True)
+        output = Command.from_str(cmd).run(
+            do_open_images=False, do_use_cache=True
+        )
         if "result" not in output:
             raise ValueError(
                 f"Output for cmd '{cmd}' does not contain 'result'"
