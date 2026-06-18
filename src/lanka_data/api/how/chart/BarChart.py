@@ -203,6 +203,55 @@ class BarChart(AbstractChart):
             if value_to_color:
                 Legend.draw(value_to_color, ax)
 
+    def _add_bar_labels(self, ax):
+        for container in ax.containers:
+            for bar in container:
+                height = bar.get_height()
+                if height == 0:
+                    continue
+                p0 = ax.transData.transform((bar.get_x(), bar.get_y()))
+                p1 = ax.transData.transform(
+                    (
+                        bar.get_x() + bar.get_width(),
+                        bar.get_y() + height,
+                    )
+                )
+                bar_h_px = abs(p1[1] - p0[1])
+                bar_w_px = abs(p1[0] - p0[0])
+                text = self._format_millions(height, None)
+                n_chars = max(len(text), 1)
+                # Labels are rotated 90° (bottom-to-top) to follow bar
+                # orientation.  With rotation=90:
+                #   - text length runs along the bar HEIGHT → constrain by
+                #     bar_h_px / (n_chars * 0.6)
+                #   - text height (one em) runs across bar WIDTH → constrain
+                #     by bar_w_px / 1.2
+                # Apply 0.85 margin so text stays well within the bar.
+                fontsize = min(
+                    9,
+                    bar_h_px * 0.85 / (n_chars * 0.6),
+                    bar_w_px * 0.85 / 1.2,
+                )
+                if fontsize < 3:
+                    continue
+                x_c = bar.get_x() + bar.get_width() / 2
+                y_c = bar.get_y() + height / 2
+                fc = bar.get_facecolor()
+                r, g, b = fc[0], fc[1], fc[2]
+                lum = 0.299 * r + 0.587 * g + 0.114 * b
+                text_color = "#333" if lum > 0.5 else "#eee"
+                ax.text(
+                    x_c,
+                    y_c,
+                    text,
+                    ha="center",
+                    va="center",
+                    fontsize=fontsize,
+                    color=text_color,
+                    rotation=90,
+                    clip_on=True,
+                )
+
     def draw_axis(self, ax, chart_data):
         subregions = self._sort_subregions(chart_data["subregions"])
         category_labels = chart_data["category_labels"]
@@ -238,6 +287,8 @@ class BarChart(AbstractChart):
             y_max,
             chart_data.get("y_label", "Population"),
         )
+
+        self._add_bar_labels(ax)
 
         self._draw_category_legend(
             ax,
