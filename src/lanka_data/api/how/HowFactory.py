@@ -1,4 +1,6 @@
 from lanka_data.api.how.cartogram.Cartogram import Cartogram
+from lanka_data.api.how.chart.BarChart import BarChart
+from lanka_data.api.how.chart.PieChart import PieChart
 from lanka_data.api.how.JSON import JSON
 from lanka_data.api.how.map.Map import Map
 
@@ -13,13 +15,15 @@ class HowFactory:
         if len(tokens) > 1:
             params = tokens[1]
 
-        if title == "JSON":
-            return JSON(title, params)
-
-        if title == "Map":
-            return Map(title, params)
-
-        if title == "Cartogram":
-            return Cartogram(title, params)
+        title_to_how = {
+            "JSON": JSON,
+            "Map": Map,
+            "Cartogram": Cartogram,
+            "PieChart": PieChart,
+            "BarChart": BarChart,
+        }
+        how_class = title_to_how.get(title)
+        if how_class is not None:
+            return how_class(title, params)
 
         raise ValueError(f"Unknown how title: {title}")

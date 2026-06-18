@@ -1,12 +1,13 @@
 # lanka_data (auto generate by build_inits.py)
 # flake8: noqa: F408
 
-from lanka_data.api import (GIG2, JSON, BasicWhat, Cartogram, Census2012,
-                            Census2024, ColorSpec, ColorSpecConstants,
-                            ColorSpecFactory, ColorSpecHelpers, DiffWhat,
-                            Diversity, Elections, FieldNameUtils, Font, Footer,
-                            GeoData, Header, HeaderFooterBars, How, HowFactory,
-                            Label, LabelFit, Legend, Map, Plot,
+from lanka_data.api import (GIG2, JSON, AbstractChart, BarChart, BasicWhat,
+                            Cartogram, Census2012, Census2024, ChartSubFigure,
+                            ColorSpec, ColorSpecConstants, ColorSpecFactory,
+                            ColorSpecHelpers, DiffWhat, Diversity, Elections,
+                            FieldNameUtils, Font, Footer, GeoData, Header,
+                            HeaderFooterBars, How, HowFactory, Label, LabelFit,
+                            Legend, Map, MapSubFigure, PieChart, Plot,
                             RegionLoadersMixin, RegionParserMixin,
                             RegionRawDataMixin, Regions, RegionTypeUtils,
                             Segregation, SubFigure, SubFigureSpecs, Text, What,

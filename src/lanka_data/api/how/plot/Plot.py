@@ -8,7 +8,6 @@ from lanka_data.api.how.plot.Font import Font
 from lanka_data.api.how.plot.Footer import Footer
 from lanka_data.api.how.plot.Header import Header
 from lanka_data.api.how.plot.HeaderFooterBars import HeaderFooterBars
-from lanka_data.api.how.plot.SubFigure import SubFigure
 from lanka_data.api.how.plot.SubFigureSpecs import SubFigureSpecs
 from lanka_data.api.how.plot.Text import Text
 from utils_future import Log
@@ -22,32 +21,32 @@ class Plot:
     FONT_FAMILY = "Fira Sans"
     DIR_OUTPUT = os.path.join(tempfile.gettempdir(), "lanka_data", "output")
 
-    def __init__(self, command, is_cartogram):
+    def __init__(self, command, is_cartogram, renderer_class):
         self.command = command
         self.is_cartogram = is_cartogram
+        self.renderer_class = renderer_class
 
     def _draw_subfigures(self):
         figure_specs = SubFigureSpecs.get(self.command)
         n_figs = len(figure_specs)
         fig = plt.figure(figsize=(self.FIG_WIDTH, self.FIG_HEIGHT))
 
-        outer_gs = gridspec.GridSpec(1, n_figs, figure=fig, top=1, bottom=0)
-        subfigs_flat = [
-            fig.add_subfigure(outer_gs[0, j]) for j in range(n_figs)
-        ]
+        outer_gs = gridspec.GridSpec(
+            1, n_figs, figure=fig, top=0.92, bottom=0.08, wspace=0.25
+        )
 
         result_data_list = []
-        for (figure_label, command_for_subfigure), subfigure in zip(
-            figure_specs.items(), subfigs_flat[:n_figs]
+        for j, (figure_label, command_for_subfigure) in enumerate(
+            figure_specs.items()
         ):
-            sub_figure = SubFigure(
+            subfigure = fig.add_subfigure(outer_gs[0, j])
+            renderer = self.renderer_class(
                 figure_label,
                 command_for_subfigure,
                 self.is_cartogram,
                 subfigure,
             )
-
-            result_data = sub_figure.draw()
+            result_data = renderer.draw()
             result_data_list.append(result_data)
 
         return fig, result_data_list
@@ -96,5 +95,5 @@ class Plot:
         }
 
     @classmethod
-    def draw_plot(cls, command, is_cartogram):
-        return cls(command, is_cartogram).draw()
+    def draw_plot(cls, command, is_cartogram, renderer_class):
+        return cls(command, is_cartogram, renderer_class).draw()
