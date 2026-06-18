@@ -6,7 +6,7 @@ from lanka_data.api.how import (JSON, Cartogram, ColorSpec, ColorSpecConstants,
                                 ColorSpecFactory, ColorSpecHelpers, Font,
                                 Footer, GeoData, Header, HeaderFooterBars, How,
                                 HowFactory, Label, LabelFit, Legend, Map, Plot,
-                                SubFigure, Text)
+                                SubFigure, SubFigureSpecs, Text)
 from lanka_data.api.what import (GIG2, BasicWhat, Census2012, Census2024,
                                  DiffWhat, Elections, FieldNameUtils, What,
                                  WhatFactory)

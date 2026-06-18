@@ -9,6 +9,7 @@ from lanka_data.api.how.plot.Footer import Footer
 from lanka_data.api.how.plot.Header import Header
 from lanka_data.api.how.plot.HeaderFooterBars import HeaderFooterBars
 from lanka_data.api.how.plot.SubFigure import SubFigure
+from lanka_data.api.how.plot.SubFigureSpecs import SubFigureSpecs
 from lanka_data.api.how.plot.Text import Text
 from utils_future import Log
 
@@ -19,18 +20,14 @@ class Plot:
     FIG_WIDTH = 16
     FIG_HEIGHT = 9
     FONT_FAMILY = "Fira Sans"
-    DIR_OUTPUT = os.path.join(
-        tempfile.gettempdir(),
-        "lanka_data",
-        "output",
-    )
+    DIR_OUTPUT = os.path.join(tempfile.gettempdir(), "lanka_data", "output")
 
     def __init__(self, command, is_cartogram):
         self.command = command
         self.is_cartogram = is_cartogram
 
     def _draw_subfigures(self):
-        figure_specs = SubFigure.get_figure_specs(self.command)
+        figure_specs = SubFigureSpecs.get(self.command)
         n_figs = len(figure_specs)
         fig = plt.figure(figsize=(self.FIG_WIDTH, self.FIG_HEIGHT))
 

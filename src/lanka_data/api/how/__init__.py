@@ -10,4 +10,4 @@ from lanka_data.api.how.map import (ColorSpec, ColorSpecConstants,
                                     GeoData, Map)
 from lanka_data.api.how.plot import (Font, Footer, Header, HeaderFooterBars,
                                      Label, LabelFit, Legend, Plot, SubFigure,
-                                     Text)
+                                     SubFigureSpecs, Text)

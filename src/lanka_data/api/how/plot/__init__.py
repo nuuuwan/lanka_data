@@ -10,4 +10,5 @@ from lanka_data.api.how.plot.LabelFit import LabelFit
 from lanka_data.api.how.plot.Legend import Legend
 from lanka_data.api.how.plot.Plot import Plot
 from lanka_data.api.how.plot.SubFigure import SubFigure
+from lanka_data.api.how.plot.SubFigureSpecs import SubFigureSpecs
 from lanka_data.api.how.plot.Text import Text
