@@ -67,7 +67,6 @@ class GeoDataUtils:
 
     @staticmethod
     def _enrich_from_data_list(gdf, data_list):
-        import pandas as pd
 
         rows = []
         for d in data_list:
@@ -104,9 +103,7 @@ class GeoDataUtils:
 
     @staticmethod
     def get_geopandas_dataframe(data_list, is_cartogram):
-        temp_gdf_path = GeoDataUtils.get_temp_gdf_path(
-            data_list, is_cartogram
-        )
+        temp_gdf_path = GeoDataUtils.get_temp_gdf_path(data_list, is_cartogram)
         if os.path.exists(temp_gdf_path):
             log.info(f"Loading GeoDataFrame from cache: {temp_gdf_path}")
             return geopandas.read_file(temp_gdf_path)
