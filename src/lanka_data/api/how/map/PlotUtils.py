@@ -159,12 +159,20 @@ class PlotUtils:
 
     @staticmethod
     def _draw_header(fig, command):
+        HEADER_TITLE_DELIM = " · "
+        header_title_items = [
+            f"{command.get_what().title} ({command.get_when()})",
+            command.get_where().get_description(),
+            command.get_how().get_description(),
+        ]
+        header_title_items = [
+            item.strip() for item in header_title_items if item.strip()
+        ]
+
         PlotUtils._plot_text(
             fig,
             (0.5, 0.975),
-            f"{command.get_what().title} ({command.get_when()})"
-            + f" - {command.get_where().get_description()}"
-            + f" - {command.get_how().get_description()}",
+            HEADER_TITLE_DELIM.join(header_title_items),
             16,
             "#fff",
         )
