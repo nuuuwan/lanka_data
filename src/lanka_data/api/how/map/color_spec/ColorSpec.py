@@ -50,6 +50,8 @@ class ColorSpec:
                     ),
                 )
             )
+
+            expanded_value_to_color = sorted_value_to_color
         else:
             sorted_value_to_color = dict(
                 sorted(
@@ -60,11 +62,11 @@ class ColorSpec:
                 )
             )
 
-        expanded_value_to_color = {}
-        for value, color in sorted_value_to_color.items():
-            count = color_to_count.get(color, 0)
-            expanded_value = f"{value} ({count})"
-            expanded_value_to_color[expanded_value] = color
+            expanded_value_to_color = {}
+            for value, color in sorted_value_to_color.items():
+                count = color_to_count.get(color, 0)
+                expanded_value = f"{value} ({count})"
+                expanded_value_to_color[expanded_value] = color
 
         return self.region_to_color, expanded_value_to_color
 
