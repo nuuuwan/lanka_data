@@ -79,14 +79,32 @@ class ColorSpecHelpers:
 
     @staticmethod
     def get_color_spec_for_change(result_data):
+        # change is always >= 0 (mean absolute pct-change), so use the
+        # sequential (absolute) colour ramp instead of the diverging one.
         return ColorSpec.by_region_to_custom_value(
-            ColorSpecHelpers.get_region_to_change(result_data), True
+            ColorSpecHelpers.get_region_to_change(result_data), False
         )
 
     @staticmethod
-    def get_colors_from_flips(result_data):
-        region_to_flip = {
-            data["region_id"]: data["flip"]
-            for data in result_data["data_list"]
-        }
+    def get_colors_from_flips(result_data, idx=0):
+        """Colour regions by which category changed at the given rank index.
+
+        idx=0  → top category (same as the pre-computed ``flip`` field)
+        idx=1  → 2nd, idx=2 → 3rd, idx=-1 → bottom
+        """
+        region_to_flip = {}
+        for data in result_data["data_list"]:
+            keys1 = list(data.get("values1", {}).keys())
+            keys2 = list(data.get("values2", {}).keys())
+            try:
+                k1 = keys1[idx]
+            except IndexError:
+                k1 = "(No Data)"
+            try:
+                k2 = keys2[idx]
+            except IndexError:
+                k2 = "(No Data)"
+            region_to_flip[data["region_id"]] = (
+                f"{k1} to {k2}" if k1 != k2 else "(No Flip)"
+            )
         return ColorSpec.by_region_to_custom_value(region_to_flip, True)

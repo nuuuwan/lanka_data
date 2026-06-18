@@ -25,7 +25,7 @@ class Legend:
         return trimmed
 
     @classmethod
-    def draw(cls, value_to_color, legend_ax):
+    def draw(cls, value_to_color, legend_ax, title=None):
         if not legend_ax.has_data():
             legend_ax.set_axis_off()
         if value_to_color is None:
@@ -40,8 +40,11 @@ class Legend:
             cls._format_label(value) for value, color in value_and_color
         ]
 
+        legend_kwargs = dict(cls.LEGEND_KWARGS)
+        if title:
+            legend_kwargs["title"] = title
         legend_ax.legend(
             handles=handles,
             labels=labels,
-            **cls.LEGEND_KWARGS,
+            **legend_kwargs,
         )

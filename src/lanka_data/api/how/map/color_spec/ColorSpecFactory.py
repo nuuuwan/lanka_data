@@ -69,4 +69,9 @@ class ColorSpecFactory:
                 result_data, how.without_params(), what
             )
 
+        if is_diff:
+            idx = ColorSpecHelpers._PARAM_TO_IDX.get(how.params or "Top", 0)
+            return ColorSpecHelpers.get_colors_from_flips(
+                result_data, idx=idx
+            )
         return ColorSpecHelpers.get_color_spec_generic(result_data, how, what)

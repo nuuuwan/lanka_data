@@ -18,21 +18,24 @@ class MapSubFigure:
         self.is_cartogram = is_cartogram
         self.subfigure = subfigure
 
+    @staticmethod
+    def _legend_title(command):
+        """Return a short title describing what the legend colours represent."""
+        if not isinstance(command.get_what(), DiffWhat):
+            return None
+        params = getattr(command.get_how(), "params", None)
+        label_map = {
+            "Flips": "Flip",
+            "Segregation": "Segregation Δ",
+            "Diversity": "Diversity Δ",
+            "DiversityPew": "Diversity Δ (Pew)",
+            "Change": "Change",
+        }
+        if params in label_map:
+            return label_map[params]
+        return f"{command.get_what().title} Δ"
+
     def draw(self):
-        params = getattr(self.command.get_how(), "params", None)
-        if isinstance(self.command.get_what(), DiffWhat) and params not in (
-            "Flips",
-            "Segregation",
-        ):
-            from lanka_data.api.how.plot.ChartSubFigure import ChartSubFigure
-
-            return ChartSubFigure(
-                self.figure_label,
-                self.command,
-                self.is_cartogram,
-                self.subfigure,
-            ).draw()
-
         how = self.command.get_how()
         what = self.command.get_what()
         when = self.command.get_when()
@@ -79,7 +82,9 @@ class MapSubFigure:
         labeled_gdf = gdf_region[~gdf_region["color"].isin(skip_colors)]
         if len(labeled_gdf) < self.MAX_REGIONS_TO_LABEL:
             Label.draw(labeled_gdf, ax)
-        Legend.draw(value_to_color, legend_ax)
+        Legend.draw(
+            value_to_color, legend_ax, title=self._legend_title(self.command)
+        )
 
         ax.set_axis_off()
         Text.plot(
