@@ -1,8 +1,9 @@
 import math
 
-from matplotlib.patches import Patch, Rectangle, Wedge
+from matplotlib.patches import Rectangle, Wedge
 
 from lanka_data.api.how.chart.AbstractChart import AbstractChart
+from lanka_data.api.how.plot.Legend import Legend
 
 
 class PieChart(AbstractChart):
@@ -251,17 +252,14 @@ class PieChart(AbstractChart):
         category_labels = chart_data["category_labels"]
         legend_items = category_labels[: min(len(category_labels), 10)]
         if legend_items:
-            handles = [
-                Patch(facecolor=category_to_color[label], label=label)
+            value_to_color = {
+                label: category_to_color[label]
                 for label in legend_items
-            ]
-            ax.legend(
-                handles=handles,
-                loc="center left",
-                bbox_to_anchor=(1.02, 0.5),
-                fontsize=7,
-                frameon=False,
-                ncol=2,
+                if label in category_to_color
+            }
+            Legend.draw(
+                value_to_color,
+                ax,
             )
 
     @classmethod
@@ -317,17 +315,14 @@ class PieChart(AbstractChart):
         category_to_color = chart_data["category_to_color"]
         legend_items = category_labels[: min(len(category_labels), 10)]
         if legend_items:
-            handles = [
-                Patch(facecolor=category_to_color[label], label=label)
+            value_to_color = {
+                label: category_to_color[label]
                 for label in legend_items
-            ]
-            ax.legend(
-                handles=handles,
-                loc="center left",
-                bbox_to_anchor=(1.02, 0.5),
-                fontsize=7,
-                frameon=False,
-                ncol=2,
+                if label in category_to_color
+            }
+            Legend.draw(
+                value_to_color,
+                ax,
             )
 
     @classmethod

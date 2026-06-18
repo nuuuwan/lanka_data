@@ -1,5 +1,10 @@
 class Legend:
     MAX_ITEMS = 7
+    MARKER_SIZE = 100
+    LEGEND_KWARGS = {
+        "fontsize": 12,
+        "loc": "best",
+    }
 
     @staticmethod
     def _format_label(value):
@@ -21,19 +26,22 @@ class Legend:
 
     @classmethod
     def draw(cls, value_to_color, legend_ax):
-        legend_ax.set_axis_off()
+        if not legend_ax.has_data():
+            legend_ax.set_axis_off()
         if value_to_color is None:
             return
 
         value_and_color = cls._trim(list(value_to_color.items()))
         handles = [
-            legend_ax.scatter([], [], color=color, s=100)
+            legend_ax.scatter([], [], color=color, s=cls.MARKER_SIZE)
             for value, color in value_and_color
         ]
-        labels = [cls._format_label(value) for value, color in value_and_color]
+        labels = [
+            cls._format_label(value) for value, color in value_and_color
+        ]
+
         legend_ax.legend(
             handles=handles,
             labels=labels,
-            fontsize=12,
-            loc="bottom center",
+            **cls.LEGEND_KWARGS,
         )

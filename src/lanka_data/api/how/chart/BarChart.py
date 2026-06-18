@@ -1,6 +1,7 @@
 from matplotlib.ticker import FuncFormatter
 
 from lanka_data.api.how.chart.AbstractChart import AbstractChart
+from lanka_data.api.how.plot.Legend import Legend
 
 
 class BarChart(AbstractChart):
@@ -157,26 +158,16 @@ class BarChart(AbstractChart):
         ax.set_ylabel("Population")
 
     @staticmethod
-    def _draw_category_legend(ax, category_labels):
+    def _draw_category_legend(ax, category_labels, category_to_color):
         legend_labels = category_labels[: min(len(category_labels), 10)]
         if legend_labels:
-            handles, labels = ax.get_legend_handles_labels()
-            selected = [
-                (h, l)
-                for h, l in zip(handles, labels)
-                if l in set(legend_labels)
-            ]
-            if selected:
-                sel_handles = [h for h, _ in selected]
-                sel_labels = [l for _, l in selected]
-                ax.legend(
-                    sel_handles,
-                    sel_labels,
-                    fontsize=7,
-                    frameon=False,
-                    ncol=2,
-                    loc="upper right",
-                )
+            value_to_color = {
+                label: category_to_color[label]
+                for label in legend_labels
+                if label in category_to_color
+            }
+            if value_to_color:
+                Legend.draw(value_to_color, ax)
 
     def draw_axis(self, ax, chart_data):
         subregions = self._sort_subregions(chart_data["subregions"])
@@ -208,4 +199,4 @@ class BarChart(AbstractChart):
 
         self._style_axis(ax, subregions, y_min, y_max)
 
-        self._draw_category_legend(ax, category_labels)
+        self._draw_category_legend(ax, category_labels, category_to_color)
