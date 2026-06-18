@@ -7,5 +7,5 @@ from lanka_data.api.how.HowFactory import HowFactory
 from lanka_data.api.how.JSON import JSON
 from lanka_data.api.how.map import (ColorSpec, ColorSpecConstants,
                                     ColorSpecFactory, GeoData, Map)
-from lanka_data.api.how.plot import (Font, Footer, Header, Label, LabelFit,
-                                     Legend, Plot, SubFigure)
+from lanka_data.api.how.plot import (Font, Footer, Header, HeaderFooterBars,
+                                     Label, LabelFit, Legend, Plot, SubFigure)

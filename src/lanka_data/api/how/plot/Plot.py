@@ -3,43 +3,15 @@ import tempfile
 
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
 
 from lanka_data.api.how.plot.Font import Font
 from lanka_data.api.how.plot.Footer import Footer
 from lanka_data.api.how.plot.Header import Header
+from lanka_data.api.how.plot.HeaderFooterBars import HeaderFooterBars
 from lanka_data.api.how.plot.SubFigure import SubFigure
 from utils_future import Log
 
 log = Log("Plot")
-
-
-class HeaderFooterBars:
-
-    @staticmethod
-    def _draw_bars(fig):
-        fig.patches.append(
-            Rectangle(
-                (0, 0),
-                1,
-                0.05,
-                transform=fig.transFigure,
-                facecolor="grey",
-                edgecolor="none",
-                zorder=0,
-            )
-        )
-        fig.patches.append(
-            Rectangle(
-                (0, 0.95),
-                1,
-                0.05,
-                transform=fig.transFigure,
-                facecolor="grey",
-                edgecolor="none",
-                zorder=0,
-            )
-        )
 
 
 class Plot:
@@ -122,7 +94,7 @@ class Plot:
             source_set.add(result_data["source"])
         source_list = sorted(source_set)
 
-        HeaderFooterBars._draw_bars(fig)
+        HeaderFooterBars.draw_bars(fig)
         Header(self.command).draw(
             lambda xy, text, fontsize, color, **kwargs: self._plot_text(
                 fig,
