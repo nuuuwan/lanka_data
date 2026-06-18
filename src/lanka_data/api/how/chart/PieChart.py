@@ -3,11 +3,20 @@ import math
 from matplotlib.patches import Rectangle, Wedge
 
 from lanka_data.api.how.chart.AbstractChart import AbstractChart
+from lanka_data.api.how.chart.BarChart import BarChart
 from lanka_data.api.how.plot.Legend import Legend
 
 
 class PieChart(AbstractChart):
     CHART_TYPE = "PieChart"
+
+    @staticmethod
+    def _is_change_chart(subregions):
+        return any(
+            value < 0
+            for subregion in subregions
+            for value in subregion["values"].values()
+        )
 
     @staticmethod
     def _is_change_with_both_signs(subregions):
@@ -421,12 +430,13 @@ class PieChart(AbstractChart):
             ax.set_axis_off()
             return
 
+        if self._is_change_chart(subregions):
+            BarChart(self.how_label, self.params).draw_axis(ax, chart_data)
+            return
+
         centers = chart_data["centers"]
         bounds = chart_data["bounds"]
         if centers and bounds:
-            if self._is_change_with_both_signs(subregions):
-                self._draw_map_centered_change_bars(ax, chart_data)
-                return
             self._draw_map_centered_pies(ax, chart_data)
             return
 
