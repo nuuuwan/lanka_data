@@ -2,6 +2,7 @@ from lanka_data.api.how.map.color_spec import ColorSpecFactory
 from lanka_data.api.how.map.GeoData import GeoData
 from lanka_data.api.how.plot.Label import Label
 from lanka_data.api.how.plot.Legend import Legend
+from lanka_data.api.how.plot.Text import Text
 
 
 class SubFigure:
@@ -10,7 +11,7 @@ class SubFigure:
     MAX_REGIONS_TO_LABEL = 30
 
     @staticmethod
-    def _get_figure_specs(command):
+    def get_figure_specs(command):
         from lanka_data.command.Command import Command
 
         when_cmd = command.when_cmd
@@ -43,7 +44,7 @@ class SubFigure:
         self.is_cartogram = is_cartogram
         self.subfigure = subfigure
 
-    def draw(self, subfigure_text):
+    def draw(self):
         how = self.command.get_how()
         what = self.command.get_what()
         when = self.command.get_when()
@@ -82,7 +83,8 @@ class SubFigure:
         Legend.draw(value_to_color, legend_ax)
 
         ax.set_axis_off()
-        subfigure_text(
+        Text.plot(
+            self.subfigure,
             (0.5, 0.9),
             self.figure_label,
             fontsize=16,

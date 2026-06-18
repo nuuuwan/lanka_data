@@ -9,6 +9,7 @@ from lanka_data.api.how.plot.Footer import Footer
 from lanka_data.api.how.plot.Header import Header
 from lanka_data.api.how.plot.HeaderFooterBars import HeaderFooterBars
 from lanka_data.api.how.plot.SubFigure import SubFigure
+from lanka_data.api.how.plot.Text import Text
 from utils_future import Log
 
 log = Log("Plot")
@@ -28,22 +29,8 @@ class Plot:
         self.command = command
         self.is_cartogram = is_cartogram
 
-    @staticmethod
-    def _plot_text(fig, xy, text, fontsize, color, **kwargs):
-        x, y = xy
-        fig.text(
-            x,
-            y,
-            text,
-            ha="center",
-            va="center",
-            fontsize=fontsize,
-            color=color,
-            **kwargs,
-        )
-
     def _draw_subfigures(self):
-        figure_specs = SubFigure._get_figure_specs(self.command)
+        figure_specs = SubFigure.get_figure_specs(self.command)
         n_figs = len(figure_specs)
         fig = plt.figure(figsize=(self.FIG_WIDTH, self.FIG_HEIGHT))
 
@@ -63,24 +50,7 @@ class Plot:
                 subfigure,
             )
 
-            def subfigure_text(
-                xy,
-                text,
-                fontsize,
-                color,
-                sf=subfigure,
-                **kwargs,
-            ):
-                return self._plot_text(
-                    sf,
-                    xy,
-                    text,
-                    fontsize,
-                    color,
-                    **kwargs,
-                )
-
-            result_data = sub_figure.draw(subfigure_text)
+            result_data = sub_figure.draw()
             result_data_list.append(result_data)
 
         return fig, result_data_list
@@ -96,7 +66,7 @@ class Plot:
 
         HeaderFooterBars.draw_bars(fig)
         Header(self.command).draw(
-            lambda xy, text, fontsize, color, **kwargs: self._plot_text(
+            lambda xy, text, fontsize, color, **kwargs: Text.plot(
                 fig,
                 xy,
                 text,
@@ -106,7 +76,7 @@ class Plot:
             )
         )
         Footer(source_list).draw(
-            lambda xy, text, fontsize, color, **kwargs: self._plot_text(
+            lambda xy, text, fontsize, color, **kwargs: Text.plot(
                 fig,
                 xy,
                 text,
