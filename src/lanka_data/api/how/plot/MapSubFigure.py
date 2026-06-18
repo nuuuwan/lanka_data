@@ -20,9 +20,9 @@ class MapSubFigure:
 
     def draw(self):
         params = getattr(self.command.get_how(), "params", None)
-        if (
-            isinstance(self.command.get_what(), DiffWhat)
-            and params != "Flips"
+        if isinstance(self.command.get_what(), DiffWhat) and params not in (
+            "Flips",
+            "Segregation",
         ):
             from lanka_data.api.how.plot.ChartSubFigure import ChartSubFigure
 

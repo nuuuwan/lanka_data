@@ -15,9 +15,16 @@ class ColorSpecConstants:
         "#2000c0": ["OtherChristian"],
         "#c000c0": ["RomanCatholic"],
         # Null
-        "#eeeeee": ["(No Data)"],
+        "#eeeeee": [
+            "(No Data)",
+            "(Insufficient Data)",
+        ],
         "#dddddd": ["Other"],
-        "#cccccc": ["(No Flip)", "(Insufficient Data)", "(No Segregation)"],
+        "#cccccc": [
+            "(No Flip)",
+            "(No Segregation)",
+            "(No Change)",
+        ],
         # Political Parties
         "#222288": ["SLFP", "PA", "UPFA"],
         "#004400": ["ACMC", "MNA", "NC", "SLMC", "NUA"],
