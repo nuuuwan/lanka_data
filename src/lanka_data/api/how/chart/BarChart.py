@@ -59,7 +59,9 @@ class BarChart(AbstractChart):
         # Reserve vertical space for rotated labels
         # above the global footer.
         pos = ax.get_position()
-        padded_height = max(pos.height - self.BOTTOM_PADDING, pos.height * 0.7)
+        padded_height = max(
+            pos.height - self.BOTTOM_PADDING, pos.height * 0.7
+        )
         ax.set_position(
             [
                 pos.x0,

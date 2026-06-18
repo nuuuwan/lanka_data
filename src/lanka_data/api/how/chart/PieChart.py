@@ -9,6 +9,27 @@ class PieChart(AbstractChart):
     CHART_TYPE = "PieChart"
 
     @staticmethod
+    def _distance_to_bounds(center, bounds):
+        x_min, y_min, x_max, y_max = bounds
+        x, y = center
+        return min(x - x_min, x_max - x, y - y_min, y_max - y)
+
+    @staticmethod
+    def _pair_radius_cap(center, all_centers, fallback):
+        min_dist = None
+        for other_center in all_centers:
+            if other_center == center:
+                continue
+            dx = center[0] - other_center[0]
+            dy = center[1] - other_center[1]
+            dist = math.sqrt(dx * dx + dy * dy)
+            if min_dist is None or dist < min_dist:
+                min_dist = dist
+        if min_dist is None:
+            return fallback
+        return min_dist / 2
+
+    @staticmethod
     def _format_population(total_value):
         label = ""
         if total_value is not None:
@@ -66,6 +87,8 @@ class PieChart(AbstractChart):
         )
         min_radius = span_min * 0.015
         max_radius = span_min * 0.08
+        radius_gap = span_min * 0.004
+        all_centers = list(centers.values())
 
         for subregion in subregions:
             center = centers.get(subregion["region_id"])
@@ -73,7 +96,16 @@ class PieChart(AbstractChart):
                 continue
             total_value = max(subregion["total_value"], 0)
             scale = math.sqrt(total_value / max_total) if max_total > 0 else 0
-            radius = min_radius + (max_radius - min_radius) * scale
+            base_radius = min_radius + (max_radius - min_radius) * scale
+            pair_cap = cls._pair_radius_cap(center, all_centers, max_radius)
+            bound_cap = cls._distance_to_bounds(center, bounds)
+            radius = min(
+                base_radius,
+                max(pair_cap - radius_gap, 0),
+                max(bound_cap - radius_gap, 0),
+            )
+            if radius <= 0:
+                continue
             cls._draw_pie_at(
                 ax,
                 center,
@@ -108,8 +140,8 @@ class PieChart(AbstractChart):
             ]
             ax.legend(
                 handles=handles,
-                loc="lower left",
-                bbox_to_anchor=(0.0, -0.02),
+                loc="center left",
+                bbox_to_anchor=(1.02, 0.5),
                 fontsize=7,
                 frameon=False,
                 ncol=2,
