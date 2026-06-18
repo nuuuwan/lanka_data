@@ -39,7 +39,6 @@ class MapSubFigure:
 
         result_data = how.get_data(what, when, where)
         data_list = result_data["data_list"]
-        n_regions = len(data_list)
         gdf_region = GeoData.get_geopandas_dataframe(
             data_list,
             self.is_cartogram,
@@ -65,8 +64,14 @@ class MapSubFigure:
             edgecolor=self.DEFAULT_EDGE_COLOR,
             linewidth=self.DEFAULT_EDGE_WIDTH,
         )
-        if n_regions <= self.MAX_REGIONS_TO_LABEL:
-            Label.draw(gdf_region, ax)
+        skip_colors = {
+            color
+            for value, color in (value_to_color or {}).items()
+            if value.startswith("(No Data)") or value.startswith("(No Flip)")
+        }
+        labeled_gdf = gdf_region[~gdf_region["color"].isin(skip_colors)]
+        if len(labeled_gdf) < self.MAX_REGIONS_TO_LABEL:
+            Label.draw(labeled_gdf, ax)
         Legend.draw(value_to_color, legend_ax)
 
         ax.set_axis_off()
