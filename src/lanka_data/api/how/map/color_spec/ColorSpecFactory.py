@@ -1,6 +1,5 @@
+from lanka_data.api.data import Diversity, Segregation
 from lanka_data.api.how.map.color_spec import ColorSpec
-from lanka_data.api.how.map.Diversity import Diversity
-from lanka_data.api.how.map.Segregation import Segregation
 from lanka_data.api.what.DiffWhat import DiffWhat
 
 
