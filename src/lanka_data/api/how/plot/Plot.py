@@ -14,61 +14,7 @@ from utils_future import Log
 log = Log("Plot")
 
 
-class Plot:
-    FIG_WIDTH = 16
-    FIG_HEIGHT = 9
-    FONT_FAMILY = "Fira Sans"
-    DIR_OUTPUT = os.path.join(
-        tempfile.gettempdir(),
-        "lanka_data",
-        "output",
-    )
-
-    def __init__(self, command, is_cartogram):
-        self.command = command
-        self.is_cartogram = is_cartogram
-
-    @staticmethod
-    def _get_figure_specs(command):
-        from lanka_data.command.Command import Command
-
-        when_cmd = command.when_cmd
-        if "-" in when_cmd:
-            when_parts = when_cmd.split("-")
-            command1 = Command(
-                command.what_cmd,
-                when_parts[0],
-                command.where_cmd,
-                command.how_cmd,
-            )
-            command2 = Command(
-                command.what_cmd,
-                when_parts[1],
-                command.where_cmd,
-                command.how_cmd,
-            )
-
-            return {
-                when_parts[0]: command1,
-                when_parts[1]: command2,
-                "Change": command,
-            }
-
-        return {"": command}
-
-    @staticmethod
-    def _plot_text(fig, xy, text, fontsize, color, **kwargs):
-        x, y = xy
-        fig.text(
-            x,
-            y,
-            text,
-            ha="center",
-            va="center",
-            fontsize=fontsize,
-            color=color,
-            **kwargs,
-        )
+class HeaderFooterBars:
 
     @staticmethod
     def _draw_bars(fig):
@@ -95,8 +41,37 @@ class Plot:
             )
         )
 
+
+class Plot:
+    FIG_WIDTH = 16
+    FIG_HEIGHT = 9
+    FONT_FAMILY = "Fira Sans"
+    DIR_OUTPUT = os.path.join(
+        tempfile.gettempdir(),
+        "lanka_data",
+        "output",
+    )
+
+    def __init__(self, command, is_cartogram):
+        self.command = command
+        self.is_cartogram = is_cartogram
+
+    @staticmethod
+    def _plot_text(fig, xy, text, fontsize, color, **kwargs):
+        x, y = xy
+        fig.text(
+            x,
+            y,
+            text,
+            ha="center",
+            va="center",
+            fontsize=fontsize,
+            color=color,
+            **kwargs,
+        )
+
     def _draw_subfigures(self):
-        figure_specs = self._get_figure_specs(self.command)
+        figure_specs = SubFigure._get_figure_specs(self.command)
         n_figs = len(figure_specs)
         fig = plt.figure(figsize=(self.FIG_WIDTH, self.FIG_HEIGHT))
 
@@ -147,7 +122,7 @@ class Plot:
             source_set.add(result_data["source"])
         source_list = sorted(source_set)
 
-        self._draw_bars(fig)
+        HeaderFooterBars._draw_bars(fig)
         Header(self.command).draw(
             lambda xy, text, fontsize, color, **kwargs: self._plot_text(
                 fig,

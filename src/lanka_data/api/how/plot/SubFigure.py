@@ -9,6 +9,34 @@ class SubFigure:
     DEFAULT_EDGE_WIDTH = 0.2
     MAX_REGIONS_TO_LABEL = 30
 
+    @staticmethod
+    def _get_figure_specs(command):
+        from lanka_data.command.Command import Command
+
+        when_cmd = command.when_cmd
+        if "-" in when_cmd:
+            when_parts = when_cmd.split("-")
+            command1 = Command(
+                command.what_cmd,
+                when_parts[0],
+                command.where_cmd,
+                command.how_cmd,
+            )
+            command2 = Command(
+                command.what_cmd,
+                when_parts[1],
+                command.where_cmd,
+                command.how_cmd,
+            )
+
+            return {
+                when_parts[0]: command1,
+                when_parts[1]: command2,
+                "Change": command,
+            }
+
+        return {"": command}
+
     def __init__(self, figure_label, command, is_cartogram, subfigure):
         self.figure_label = figure_label
         self.command = command
