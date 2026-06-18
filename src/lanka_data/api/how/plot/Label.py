@@ -65,7 +65,7 @@ class Label:
         # Clean up temporary text object
         temp_text.remove()
 
-        return final_fontsize
+        return final_fontsize * 0.7
 
     @classmethod
     def draw(cls, gdf_region, ax):
