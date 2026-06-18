@@ -3,7 +3,6 @@ import os
 import shutil
 
 from lanka_data.examples import Example
-from lanka_data.readme.ReadMe import ReadMe
 
 
 class ReadMeExamplesMixin:
@@ -44,12 +43,15 @@ class ReadMeExamplesMixin:
         lines.append("```json")
         output_json = json.dumps(output, indent=4)
         output_json_lines = output_json.splitlines()
-        if len(output_json_lines) > ReadMe.MAX_LINES_IN_OUTPUT:
-            i_split = ReadMe.MAX_LINES_IN_OUTPUT // 2
+        if len(output_json_lines) > ReadMeExamplesMixin.MAX_LINES_IN_OUTPUT:
+            i_split = ReadMeExamplesMixin.MAX_LINES_IN_OUTPUT // 2
             n_spaces = len(output_json_lines[i_split - 1]) - len(
                 output_json_lines[i_split - 1].lstrip(" ")
             )
-            n_cut = len(output_json_lines) - ReadMe.MAX_LINES_IN_OUTPUT
+            n_cut = (
+                len(output_json_lines)
+                - ReadMeExamplesMixin.MAX_LINES_IN_OUTPUT
+            )
             output_json_lines = (
                 output_json_lines[:i_split]
                 + [" " * n_spaces + f"... // {n_cut} lines ..."]
@@ -91,14 +93,14 @@ class ReadMeExamplesMixin:
         result = output["result"]
 
         lines.extend(
-            ReadMe.get_lines_for_example_title(
+            ReadMeExamplesMixin.get_lines_for_example_title(
                 i_group_name, i_cmd, cmd, result
             )
         )
 
-        lines.extend(ReadMe.get_lines_for_command(cmd))
-        lines.extend(ReadMe.get_lines_for_output(cmd, output))
-        lines.extend(ReadMe.get_lines_for_image(cmd, output))
+        lines.extend(ReadMeExamplesMixin.get_lines_for_command(cmd))
+        lines.extend(ReadMeExamplesMixin.get_lines_for_output(cmd, output))
+        lines.extend(ReadMeExamplesMixin.get_lines_for_image(cmd, output))
 
         return lines
 
