@@ -5,7 +5,8 @@ from lanka_data.api.how.map.Map import Map
 
 class HowFactory:
     @staticmethod
-    def from_how_cmd(how_cmd: str):
+    def from_command(command):
+        how_cmd = command.how_cmd
         tokens = how_cmd.split(":")
         title = tokens[0]
         params = None

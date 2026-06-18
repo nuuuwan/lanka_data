@@ -27,7 +27,7 @@ class CommandRunnerMixin:
         return self.when_cmd
 
     def get_how(self):
-        return HowFactory.from_how_cmd(self.how_cmd)
+        return HowFactory.from_command(self)
 
     def get_result(self):
         return self.get_how().get_result(

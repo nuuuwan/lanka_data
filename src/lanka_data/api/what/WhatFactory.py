@@ -10,6 +10,7 @@ class WhatFactory:
     def from_command(command):  # noqa: CFQ004
         title = command.what_cmd
         when_label = command.when_cmd
+
         if "-" in when_label:
             year1, year2 = when_label.split("-")
             what1 = WhatFactory.from_what_and_year(title, year1)
