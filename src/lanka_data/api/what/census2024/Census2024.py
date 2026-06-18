@@ -52,7 +52,7 @@ class Census2024(What):
     def extract_source_data_values(cls, d):
         values = {
             FieldNameUtils.normalize(k): int(v)
-            for k, v in d['values'].items()
+            for k, v in d["values"].items()
         }
 
         return dict(values=values)
@@ -60,7 +60,7 @@ class Census2024(What):
     @classmethod
     def clean(cls, d):
         values = {k: v for k, v in d.items()}
-        total_value = d['total_value']
+        total_value = d["total_value"]
         pct_values = {k: round(v / total_value, 4) for k, v in values.items()}
 
         return dict(
@@ -69,14 +69,16 @@ class Census2024(What):
             pct_values=pct_values,
         )
 
-    def get_source_info(self):
+    def get_source_info_list(self):
         description = self.get_label_to_description().get(self.title, "")
-        return dict(
-            source="Census of Population and Housing 2024",
-            source_url="https://www.statistics.gov.lk"
-            + "/Population/StaticalInformation/CPH2024",
-            description=description,
-        )
+        return [
+            dict(
+                label="Census of Population and Housing 2024",
+                url="https://www.statistics.gov.lk"
+                + "/Population/StaticalInformation/CPH2024",
+                description=description,
+            )
+        ]
 
     def get_source_data_list(self) -> list[dict]:
         label_to_data_table_id = self.get_label_to_data_table_id()

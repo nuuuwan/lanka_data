@@ -24,11 +24,13 @@ class BasicWhat(What):
     def get_data_list(self, regions) -> list[dict]:
         return [self.clean(region) for region in regions.raw_region_data_list]
 
-    def get_source_info(self) -> dict:
-        return dict(
-            source="Department of Census and Statistics, Sri Lanka",
-            source_url="https://www.statistics.gov.lk/",
-        )
+    def get_source_info_list(self) -> dict:
+        return [
+            dict(
+                label="Department of Census and Statistics, Sri Lanka",
+                url="https://www.statistics.gov.lk/",
+            )
+        ]
 
     @classmethod
     def get_what_to_whens(cls) -> dict[str, set[str]]:

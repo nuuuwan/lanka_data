@@ -2,11 +2,12 @@
   "result": {
     "what_description": "Households classified by the method used for solid waste disposal",
     "when_description": "2012",
-    "where_description": "Divisional Secretariat Divisions in LK-1-pre2019",
-    "how_description": "Map",
+    "where_description": "Divisional Secretariat Divisions in the Western PROVINCE",
+    "how_description": "",
     "image_path": "/tmp/lanka_data/output/Waste/2012/LK-1:dsd/Map/Image.png",
-    "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/",
+    "source_list": [
+      "Census of Population and Housing 2012"
+    ],
     "cmd": "Waste/2012/LK-1:dsd/Map"
   },
   "query_time_ms": 0,

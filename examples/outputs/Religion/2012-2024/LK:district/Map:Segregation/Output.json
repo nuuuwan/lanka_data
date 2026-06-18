@@ -5,8 +5,10 @@
     "where_description": "Districts in Sri Lanka",
     "how_description": "Segregation",
     "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:Segregation/Image.png",
-    "source": "Census of Population and Housing 2012",
-    "source_url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf",
+    "source_list": [
+      "Census of Population and Housing 2012",
+      "Census of Population and Housing 2024"
+    ],
     "cmd": "Religion/2012-2024/LK:district/Map:Segregation"
   },
   "query_time_ms": 0,

@@ -2,11 +2,12 @@
   "result": {
     "what_description": "Basic Information",
     "when_description": "2012",
-    "where_description": "Districts in LK",
-    "how_description": "Map",
+    "where_description": "Districts in Sri Lanka",
+    "how_description": "",
     "image_path": "/tmp/lanka_data/output/Basic/2012/LK:district/Map/Image.png",
-    "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/",
+    "source_list": [
+      "Department of Census and Statistics, Sri Lanka"
+    ],
     "cmd": "Basic/2012/LK:district/Map"
   },
   "query_time_ms": 0,

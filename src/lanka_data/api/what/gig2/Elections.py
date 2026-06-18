@@ -41,11 +41,13 @@ class Elections(GIG2):
         )
 
     @classmethod
-    def get_source_info(cls):
-        return dict(
-            source="Election Commission of Sri Lanka",
-            source_url="https://www.elections.gov.lk",
-        )
+    def get_source_info_list(cls):
+        return [
+            dict(
+                label="Election Commission of Sri Lanka",
+                url="https://www.elections.gov.lk",
+            )
+        ]
 
     @classmethod
     def get_what_to_whens_path(cls):

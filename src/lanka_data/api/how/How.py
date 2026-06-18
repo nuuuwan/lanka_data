@@ -28,7 +28,7 @@ class How:
             raise ValueError(
                 f"No data found for the specified region: {where}."
             )
-        source_info = what.get_source_info()
+        source_info_list = what.get_source_info_list()
 
         result_data = dict(
             data_list=data_list,
@@ -38,7 +38,7 @@ class How:
                 data_list
             )
 
-        result_data = result_data | source_info
+        result_data = result_data | dict(source_info_list=source_info_list)
 
         return result_data
 

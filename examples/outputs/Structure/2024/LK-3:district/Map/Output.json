@@ -2,11 +2,12 @@
   "result": {
     "what_description": "Occupied housing units by building structure type (single/attached houses by storey count, other).",
     "when_description": "2024",
-    "where_description": "Districts in LK-3",
-    "how_description": "Map",
+    "where_description": "Districts in the Southern PROVINCE",
+    "how_description": "",
     "image_path": "/tmp/lanka_data/output/Structure/2024/LK-3:district/Map/Image.png",
-    "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/",
+    "source_list": [
+      "Census of Population and Housing 2024"
+    ],
     "cmd": "Structure/2024/LK-3:district/Map"
   },
   "query_time_ms": 0,

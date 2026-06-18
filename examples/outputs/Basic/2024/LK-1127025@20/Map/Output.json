@@ -2,11 +2,12 @@
   "result": {
     "what_description": "Basic Information",
     "when_description": "2024",
-    "where_description": "Regions within 20.0 km of LK-1127025",
-    "how_description": "Map",
+    "where_description": "Regions within 20.0 km of the Kuppiyawatta East GND",
+    "how_description": "",
     "image_path": "/tmp/lanka_data/output/Basic/2024/LK-1127025@20/Map/Image.png",
-    "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/",
+    "source_list": [
+      "Department of Census and Statistics, Sri Lanka"
+    ],
     "cmd": "Basic/2024/LK-1127025@20/Map"
   },
   "query_time_ms": 0,

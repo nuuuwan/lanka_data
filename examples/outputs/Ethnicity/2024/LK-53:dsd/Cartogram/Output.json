@@ -2,11 +2,12 @@
   "result": {
     "what_description": "GN-level population by ethnic group (Sinhalese, Sri Lanka Tamil, Indian Tamil, Moor, Burgher, Malay, Chetty, Bharatha, Veddha, other).",
     "when_description": "2024",
-    "where_description": "Divisional Secretariat Divisions in LK-53",
-    "how_description": "Cartogram",
+    "where_description": "Divisional Secretariat Divisions in the Trincomalee DISTRICT",
+    "how_description": "",
     "image_path": "/tmp/lanka_data/output/Ethnicity/2024/LK-53:dsd/Cartogram/Image.png",
-    "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/",
+    "source_list": [
+      "Census of Population and Housing 2024"
+    ],
     "cmd": "Ethnicity/2024/LK-53:dsd/Cartogram"
   },
   "query_time_ms": 0,

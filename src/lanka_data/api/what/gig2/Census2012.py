@@ -27,15 +27,15 @@ class Census2012(GIG2):
             "census2012.datasets.json",
         )
 
-    def get_source_info(self):
-        description = self.get_title_to_description().get(self.title, "")
-        return dict(
-            source="Census of Population and Housing 2012",
-            source_url="https://www.statistics.gov.lk"
-            + "/Resource/en/Population"
-            + "/CPH_2011/CPH_2012_5Per_Rpt.pdf",
-            description=description,
-        )
+    def get_source_info_list(self):
+        return [
+            dict(
+                label="Census of Population and Housing 2012",
+                url="https://www.statistics.gov.lk"
+                + "/Resource/en/Population"
+                + "/CPH_2011/CPH_2012_5Per_Rpt.pdf",
+            )
+        ]
 
     @classmethod
     def get_what_to_whens(cls) -> dict[str, set[str]]:

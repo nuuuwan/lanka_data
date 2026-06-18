@@ -10,7 +10,7 @@ class TestCase(unittest.TestCase):
 def make_test(cmd, expected_output):
 
     def test(self):
-        db = Command(cmd)
+        db = Command.from_str(cmd)
         actual_output = db.run(do_open_images=False, do_use_cache=False)
 
         actual_output["query_time_ms"] = 0
@@ -22,9 +22,6 @@ def make_test(cmd, expected_output):
 
         self.assertTrue(actual_output.get("result"))
         self.assertIsNone(actual_output.get("error"))
-        if actual_output.get("result"):
-            self.assertTrue(actual_output["result"]["source"])
-            self.assertTrue(actual_output["result"]["source_url"])
 
     return test
 

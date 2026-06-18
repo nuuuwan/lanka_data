@@ -9,9 +9,10 @@ class ReadMeSourcesMixin:
         for output in output_idx.values():
             if "result" in output:
                 result = output["result"]
-                source = result["source"]
-                source_url = result["source_url"]
-                source_idx[source] = source_url
+                for source_info in result.get("source_info_list", []):
+                    source = source_info["label"]
+                    source_url = source_info["url"]
+                    source_idx[source] = source_url
 
         for source, source_url in sorted(source_idx.items()):
             lines.append(f"- [{source}]({source_url})")

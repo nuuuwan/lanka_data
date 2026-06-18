@@ -2,11 +2,12 @@
   "result": {
     "what_description": "Results of the 2025 Sri Lankan Local Election",
     "when_description": "2025",
-    "where_description": "Districts in LK",
-    "how_description": "Map",
+    "where_description": "Districts in Sri Lanka",
+    "how_description": "",
     "image_path": "/tmp/lanka_data/output/Local/2025/LK:district/Map/Image.png",
-    "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/",
+    "source_list": [
+      "Election Commission of Sri Lanka"
+    ],
     "cmd": "Local/2025/LK:district/Map"
   },
   "query_time_ms": 0,

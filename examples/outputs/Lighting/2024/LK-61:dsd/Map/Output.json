@@ -2,11 +2,12 @@
   "result": {
     "what_description": "Households by principal lighting source (grid electricity, kerosene lamp, solar, bio-gas, generator, other).",
     "when_description": "2024",
-    "where_description": "Divisional Secretariat Divisions in LK-61",
-    "how_description": "Map",
+    "where_description": "Divisional Secretariat Divisions in the Kurunegala DISTRICT",
+    "how_description": "",
     "image_path": "/tmp/lanka_data/output/Lighting/2024/LK-61:dsd/Map/Image.png",
-    "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/",
+    "source_list": [
+      "Census of Population and Housing 2024"
+    ],
     "cmd": "Lighting/2024/LK-61:dsd/Map"
   },
   "query_time_ms": 0,

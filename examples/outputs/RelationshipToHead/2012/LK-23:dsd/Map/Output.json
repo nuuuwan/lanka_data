@@ -2,11 +2,12 @@
   "result": {
     "what_description": "Population classified by their relationship to the head of the household",
     "when_description": "2012",
-    "where_description": "Divisional Secretariat Divisions in LK-23-pre2019",
-    "how_description": "Map",
+    "where_description": "Divisional Secretariat Divisions in the Nuwara Eliya DISTRICT",
+    "how_description": "",
     "image_path": "/tmp/lanka_data/output/RelationshipToHead/2012/LK-23:dsd/Map/Image.png",
-    "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/",
+    "source_list": [
+      "Census of Population and Housing 2012"
+    ],
     "cmd": "RelationshipToHead/2012/LK-23:dsd/Map"
   },
   "query_time_ms": 0,

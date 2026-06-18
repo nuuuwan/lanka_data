@@ -57,7 +57,8 @@ class Plot:
 
         source_set = set()
         for result_data in result_data_list:
-            source_set.add(result_data["source"])
+            for source_info in result_data.get("source_info_list", []):
+                source_set.add(source_info["label"])
         source_list = sorted(source_set)
 
         HeaderFooterBars.draw_bars(fig)

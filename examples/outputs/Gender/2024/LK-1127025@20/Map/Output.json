@@ -2,11 +2,12 @@
   "result": {
     "what_description": "GN-level population disaggregated by sex (male, female).",
     "when_description": "2024",
-    "where_description": "Regions within 20.0 km of LK-1127025",
-    "how_description": "Map",
+    "where_description": "Regions within 20.0 km of the Kuppiyawatta East GND",
+    "how_description": "",
     "image_path": "/tmp/lanka_data/output/Gender/2024/LK-1127025@20/Map/Image.png",
-    "source": "Department of Census and Statistics, Sri Lanka",
-    "source_url": "https://www.statistics.gov.lk/",
+    "source_list": [
+      "Census of Population and Housing 2024"
+    ],
     "cmd": "Gender/2024/LK-1127025@20/Map"
   },
   "query_time_ms": 0,

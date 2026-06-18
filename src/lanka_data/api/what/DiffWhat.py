@@ -102,8 +102,11 @@ class DiffWhat(What):
         combined_data_list.sort(key=lambda d: d["region_id"])
         return combined_data_list
 
-    def get_source_info(self):
-        return self.what1.get_source_info()
+    def get_source_info_list(self):
+        return (
+            self.what1.get_source_info_list()
+            + self.what2.get_source_info_list()
+        )
 
     @classmethod
     def get_aggregated_value_data(cls, data_list):
