@@ -31,6 +31,16 @@ class ColorSpecHelpers:
         result_data, is_pew=False, pct_values_key="pct_values"
     ):
 
+        if is_pew:
+            return (
+                ColorSpec.by_region_to_custom_value_with_custom_color_config(
+                    Diversity.get_region_to_diversity(
+                        result_data, is_pew, pct_values_key
+                    ),
+                    Diversity.RDI_BANDS,
+                )
+            )
+
         return ColorSpec.by_region_to_custom_value(
             Diversity.get_region_to_diversity(
                 result_data, is_pew, pct_values_key
