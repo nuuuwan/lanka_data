@@ -60,7 +60,7 @@ class PieChart(AbstractChart):
             span_min * 0.006,
         )
         bar_max_height = max(
-            min(pair_cap * 0.8, bound_cap * 0.75, span_min * 0.12),
+            min(pair_cap * 0.95, bound_cap * 0.9, span_min * 0.2),
             span_min * 0.01,
         )
         return bar_half_width, bar_max_height

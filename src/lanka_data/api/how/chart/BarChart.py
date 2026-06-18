@@ -190,7 +190,7 @@ class BarChart(AbstractChart):
 
         x_values = list(range(len(subregions)))
         if is_change_chart:
-            y_min, y_max = self._draw_change_grouped_bars(
+            y_min, y_max = self._draw_stacked_bars(
                 ax,
                 subregions,
                 x_values,
