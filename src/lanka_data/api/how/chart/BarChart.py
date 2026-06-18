@@ -220,17 +220,15 @@ class BarChart(AbstractChart):
                 bar_w_px = abs(p1[0] - p0[0])
                 text = self._format_millions(height, None)
                 n_chars = max(len(text), 1)
-                # Labels are rotated 90° (bottom-to-top) to follow bar
-                # orientation.  With rotation=90:
-                #   - text length runs along the bar HEIGHT → constrain by
-                #     bar_h_px / (n_chars * 0.6)
-                #   - text height (one em) runs across bar WIDTH → constrain
-                #     by bar_w_px / 1.2
-                # Apply 0.85 margin so text stays well within the bar.
+                # Labels are rotated 90°. Font size is proportional to the
+                # smaller bar dimension so it never overflows either edge, then
+                # additionally capped so the full string fits within the bar
+                # height (each char takes ~1.2 px per pt at typical DPI).
+                bar_min_px = min(bar_w_px, bar_h_px)
                 fontsize = min(
                     9,
-                    bar_h_px * 0.85 / (n_chars * 0.6),
-                    bar_w_px * 0.85 / 1.2,
+                    bar_min_px * 0.6,
+                    bar_h_px / (n_chars * 1.2),
                 )
                 if fontsize < 3:
                     continue
@@ -256,29 +254,20 @@ class BarChart(AbstractChart):
         subregions = self._sort_subregions(chart_data["subregions"])
         category_labels = chart_data["category_labels"]
         category_to_color = chart_data["category_to_color"]
-        is_change_chart = self._is_change_chart(subregions)
+        self._is_change_chart(subregions)
 
         if not subregions or not category_labels:
             ax.set_axis_off()
             return
 
         x_values = list(range(len(subregions)))
-        if is_change_chart:
-            y_min, y_max = self._draw_stacked_bars(
-                ax,
-                subregions,
-                x_values,
-                category_labels,
-                category_to_color,
-            )
-        else:
-            y_min, y_max = self._draw_stacked_bars(
-                ax,
-                subregions,
-                x_values,
-                category_labels,
-                category_to_color,
-            )
+        y_min, y_max = self._draw_stacked_bars(
+            ax,
+            subregions,
+            x_values,
+            category_labels,
+            category_to_color,
+        )
 
         self._style_axis(
             ax,

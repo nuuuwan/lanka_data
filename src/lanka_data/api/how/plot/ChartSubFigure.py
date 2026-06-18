@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 from lanka_data.api.data.Diversity import Diversity
-from lanka_data.api.how.map.color_spec import ColorSpecFactory
+from lanka_data.api.how.map.color_spec import ColorSpec, ColorSpecFactory
 from lanka_data.api.how.map.GeoData import GeoData
 from lanka_data.api.how.plot.Text import Text
 
@@ -95,6 +95,8 @@ class ChartSubFigure:
                     if key.startswith(f"{label} ("):
                         color = key_color
                         break
+            if color is None:
+                color = ColorSpec.LABEL_TO_COLOR.get(label)
             if color is None:
                 color = cmap(i / n_labels)
             category_to_color[label] = color
