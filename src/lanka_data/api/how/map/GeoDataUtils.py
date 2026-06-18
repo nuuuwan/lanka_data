@@ -105,7 +105,7 @@ class GeoDataUtils:
     def get_geopandas_dataframe(data_list, is_cartogram):
         temp_gdf_path = GeoDataUtils.get_temp_gdf_path(data_list, is_cartogram)
         if os.path.exists(temp_gdf_path):
-            log.info(f"Loading GeoDataFrame from cache: {temp_gdf_path}")
+            log.debug(f"Read {temp_gdf_path}")
             return geopandas.read_file(temp_gdf_path)
         region_to_current_ids = GeoDataUtils._build_region_map(data_list)
         all_current_ids = [
