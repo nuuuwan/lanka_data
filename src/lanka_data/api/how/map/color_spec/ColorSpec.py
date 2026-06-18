@@ -2,12 +2,8 @@ from dataclasses import dataclass
 
 from lanka_data.api.how.map.color_spec.ColorSpecConstants import \
     ColorSpecConstants
+from lanka_data.api.how.map.ColorUtils import ColorUtils
 from utils_future import Parse
-
-
-def hex_to_rgb(hex_color):
-    hex_color = hex_color.lstrip("#")
-    return tuple(int(hex_color[i: i + 2], 16) / 256.0 for i in (0, 2, 4))
 
 
 @dataclass
@@ -16,7 +12,7 @@ class ColorSpec:
     value_to_color: dict[str, str]
 
     LABEL_TO_COLOR = {
-        label: hex_to_rgb(color)
+        label: ColorUtils.hex_to_rgb(color)
         for color, labels in ColorSpecConstants.COLOR_TO_LABELS.items()
         for label in labels
     }
