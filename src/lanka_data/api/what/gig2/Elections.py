@@ -1,7 +1,7 @@
 import os
 
 from lanka_data.api.what.gig2.GIG2 import GIG2
-from utils_future import Log
+from utils_future import JSONFile, Log
 
 log = Log("Elections")
 
@@ -48,32 +48,19 @@ class Elections(GIG2):
         )
 
     @classmethod
+    def get_what_to_whens_path(cls):
+        return os.path.join(
+            "src",
+            "lanka_data",
+            "api",
+            "what",
+            "gig2",
+            "elections.datasets.json",
+        )
+
+    @classmethod
     def get_what_to_whens(cls) -> dict[str, set[str]]:
-        return {
-            "Presidential": [
-                "1982",
-                "1988",
-                "1994",
-                "1999",
-                "2005",
-                "2010",
-                "2015",
-                "2024",
-            ],
-            "Parliamentary": [
-                "1989",
-                "1994",
-                "2000",
-                "2001",
-                "2004",
-                "2010",
-                "2015",
-                "2020",
-            ],
-            "Local": [
-                "2025",
-            ],
-        }
+        return JSONFile(cls.get_what_to_whens_path()).read()
 
     @classmethod
     def extract_source_data_values(cls, d):
