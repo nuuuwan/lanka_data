@@ -15,6 +15,10 @@ class BarChart(AbstractChart):
             for value in subregion["values"].values()
         )
 
+    @staticmethod
+    def _get_net_change_values(subregions):
+        return [sum(subregion["values"].values()) for subregion in subregions]
+
     @classmethod
     def _sort_subregions(cls, subregions):
         is_change_chart = cls._is_change_chart(subregions)
@@ -44,16 +48,50 @@ class BarChart(AbstractChart):
                 label = f"{value:.0f}"
         return label
 
-    def draw_axis(self, ax, chart_data):
-        subregions = self._sort_subregions(chart_data["subregions"])
-        category_labels = chart_data["category_labels"]
-        category_to_color = chart_data["category_to_color"]
+    @staticmethod
+    def _draw_change_grouped_bars(
+        ax,
+        subregions,
+        x_values,
+        category_labels,
+        category_to_color,
+    ):
+        n_categories = max(len(category_labels), 1)
+        slot_width = 0.84
+        bar_width = slot_width / n_categories
+        y_max = 0
+        y_min = 0
 
-        if not subregions or not category_labels:
-            ax.set_axis_off()
-            return
+        for category_index, category in enumerate(category_labels):
+            offset = (
+                -slot_width / 2 + bar_width * category_index + bar_width / 2
+            )
+            y_values = [
+                subregion["values"].get(category, 0)
+                for subregion in subregions
+            ]
+            x_positions = [x + offset for x in x_values]
+            ax.bar(
+                x_positions,
+                y_values,
+                color=category_to_color[category],
+                label=category,
+                width=bar_width * 0.92,
+            )
+            if y_values:
+                y_max = max([y_max] + y_values)
+                y_min = min([y_min] + y_values)
 
-        x_values = list(range(len(subregions)))
+        return y_min, y_max
+
+    @staticmethod
+    def _draw_stacked_bars(
+        ax,
+        subregions,
+        x_values,
+        category_labels,
+        category_to_color,
+    ):
         pos_bottoms = [0 for _ in subregions]
         neg_bottoms = [0 for _ in subregions]
         for category in category_labels:
@@ -78,7 +116,12 @@ class BarChart(AbstractChart):
                 label=category,
                 width=0.85,
             )
+        y_max = max(pos_bottoms) if pos_bottoms else 0
+        y_min = min(neg_bottoms) if neg_bottoms else 0
+        return y_min, y_max
 
+    def _style_axis(self, ax, subregions, y_min, y_max):
+        x_values = list(range(len(subregions)))
         ax.set_xticks(x_values)
         x_labels = [subregion["region_name"] for subregion in subregions]
         rotation = 90 if len(x_labels) > 12 else 45
@@ -104,8 +147,6 @@ class BarChart(AbstractChart):
         )
         ax.grid(False)
         ax.margins(x=0.06, y=0.12)
-        y_max = max(pos_bottoms) if pos_bottoms else 0
-        y_min = min(neg_bottoms) if neg_bottoms else 0
         y_span = y_max - y_min
         if y_span <= 0:
             y_span = 1
@@ -115,6 +156,8 @@ class BarChart(AbstractChart):
         ax.yaxis.set_major_formatter(FuncFormatter(self._format_millions))
         ax.set_ylabel("Population")
 
+    @staticmethod
+    def _draw_category_legend(ax, category_labels):
         legend_labels = category_labels[: min(len(category_labels), 10)]
         if legend_labels:
             handles, labels = ax.get_legend_handles_labels()
@@ -134,3 +177,35 @@ class BarChart(AbstractChart):
                     ncol=2,
                     loc="upper right",
                 )
+
+    def draw_axis(self, ax, chart_data):
+        subregions = self._sort_subregions(chart_data["subregions"])
+        category_labels = chart_data["category_labels"]
+        category_to_color = chart_data["category_to_color"]
+        is_change_chart = self._is_change_chart(subregions)
+
+        if not subregions or not category_labels:
+            ax.set_axis_off()
+            return
+
+        x_values = list(range(len(subregions)))
+        if is_change_chart:
+            y_min, y_max = self._draw_change_grouped_bars(
+                ax,
+                subregions,
+                x_values,
+                category_labels,
+                category_to_color,
+            )
+        else:
+            y_min, y_max = self._draw_stacked_bars(
+                ax,
+                subregions,
+                x_values,
+                category_labels,
+                category_to_color,
+            )
+
+        self._style_axis(ax, subregions, y_min, y_max)
+
+        self._draw_category_legend(ax, category_labels)

@@ -1,12 +1,129 @@
 import math
 
-from matplotlib.patches import Patch, Wedge
+from matplotlib.patches import Patch, Rectangle, Wedge
 
 from lanka_data.api.how.chart.AbstractChart import AbstractChart
 
 
 class PieChart(AbstractChart):
     CHART_TYPE = "PieChart"
+
+    @staticmethod
+    def _is_change_with_both_signs(subregions):
+        has_positive = False
+        has_negative = False
+        for subregion in subregions:
+            for value in subregion["values"].values():
+                if value > 0:
+                    has_positive = True
+                elif value < 0:
+                    has_negative = True
+        return has_positive and has_negative
+
+    @staticmethod
+    def _format_signed_population(total_value):
+        label = ""
+        if total_value is not None:
+            sign = "+" if total_value > 0 else ""
+            abs_value = abs(total_value)
+            if abs_value >= 1_000_000:
+                label = f"{sign}{total_value / 1_000_000:.2f}M"
+            elif abs_value >= 1_000:
+                label = f"{sign}{total_value / 1_000:.1f}K"
+            else:
+                label = f"{sign}{total_value:.0f}"
+        return label
+
+    @staticmethod
+    def _get_max_abs_category_change(subregions):
+        max_abs_change = 0
+        for subregion in subregions:
+            for value in subregion["values"].values():
+                max_abs_change = max(max_abs_change, abs(value))
+        return max(max_abs_change, 1)
+
+    @staticmethod
+    def _get_change_bar_geometry(
+        center,
+        all_centers,
+        bounds,
+        span_min,
+    ):
+        pair_cap = PieChart._pair_radius_cap(
+            center,
+            all_centers,
+            span_min * 0.1,
+        )
+        bound_cap = PieChart._distance_to_bounds(center, bounds)
+        bar_half_width = max(
+            min(pair_cap * 0.25, span_min * 0.03),
+            span_min * 0.006,
+        )
+        bar_max_height = max(
+            min(pair_cap * 0.8, bound_cap * 0.75, span_min * 0.12),
+            span_min * 0.01,
+        )
+        return bar_half_width, bar_max_height
+
+    @classmethod
+    def _draw_change_bar_for_subregion(
+        cls,
+        ax,
+        subregion,
+        center,
+        draw_ctx,
+    ):
+        bar_half_width = draw_ctx["bar_half_width"]
+        bar_max_height = draw_ctx["bar_max_height"]
+        max_abs_net_change = draw_ctx["max_abs_net_change"]
+        category_labels = draw_ctx["category_labels"]
+        category_to_color = draw_ctx["category_to_color"]
+        span_min = draw_ctx["span_min"]
+
+        x_center, y_center = center
+        n_categories = max(len(category_labels), 1)
+        full_width = 2 * bar_half_width
+        slot_width = full_width / n_categories
+        bar_width = slot_width * 0.92
+        min_label_y = y_center
+        for category_index, category in enumerate(category_labels):
+            value = subregion["values"].get(category, 0)
+            height = abs(value) / max_abs_net_change * bar_max_height
+            x0 = (
+                x_center
+                - bar_half_width
+                + slot_width * category_index
+                + (slot_width - bar_width) / 2
+            )
+            y0 = y_center if value >= 0 else y_center - height
+            rect = Rectangle(
+                (x0, y0),
+                bar_width,
+                height,
+                facecolor=category_to_color.get(category, "#999"),
+                edgecolor="#fff",
+                linewidth=0.2,
+            )
+            ax.add_patch(rect)
+            min_label_y = min(min_label_y, y0)
+
+        ax.plot(
+            [x_center - bar_half_width, x_center + bar_half_width],
+            [y_center, y_center],
+            color="#444",
+            linewidth=0.7,
+        )
+
+        label_y = min_label_y - span_min * 0.008
+        ax.text(
+            x_center,
+            label_y,
+            f"{subregion['region_name']}",
+            ha="center",
+            va="top",
+            fontsize=6,
+            color="#111",
+        )
 
     @staticmethod
     def _distance_to_bounds(center, bounds):
@@ -148,6 +265,72 @@ class PieChart(AbstractChart):
             )
 
     @classmethod
+    def _draw_map_centered_change_bars(cls, ax, chart_data):
+        subregions = chart_data["subregions"]
+        centers = chart_data["centers"]
+        bounds = chart_data["bounds"]
+        gdf = chart_data["gdf"]
+
+        if gdf is not None and not gdf.empty:
+            gdf.boundary.plot(ax=ax, color="#999", linewidth=0.4, alpha=0.4)
+
+        x_min, y_min, x_max, y_max = bounds
+        span_x = max(x_max - x_min, 1e-9)
+        span_y = max(y_max - y_min, 1e-9)
+        span_min = min(span_x, span_y)
+
+        all_centers = list(centers.values())
+        max_abs_net_change = cls._get_max_abs_category_change(subregions)
+
+        for subregion in subregions:
+            center = centers.get(subregion["region_id"])
+            if center is None:
+                continue
+
+            bar_half_width, bar_max_height = cls._get_change_bar_geometry(
+                center,
+                all_centers,
+                bounds,
+                span_min,
+            )
+            draw_ctx = {
+                "bar_half_width": bar_half_width,
+                "bar_max_height": bar_max_height,
+                "max_abs_net_change": max_abs_net_change,
+                "category_labels": chart_data["category_labels"],
+                "category_to_color": chart_data["category_to_color"],
+                "span_min": span_min,
+            }
+            cls._draw_change_bar_for_subregion(
+                ax,
+                subregion,
+                center,
+                draw_ctx,
+            )
+
+        ax.set_xlim(x_min, x_max)
+        ax.set_ylim(y_min, y_max)
+        ax.set_aspect("equal", adjustable="box")
+        ax.set_axis_off()
+
+        category_labels = chart_data["category_labels"]
+        category_to_color = chart_data["category_to_color"]
+        legend_items = category_labels[: min(len(category_labels), 10)]
+        if legend_items:
+            handles = [
+                Patch(facecolor=category_to_color[label], label=label)
+                for label in legend_items
+            ]
+            ax.legend(
+                handles=handles,
+                loc="center left",
+                bbox_to_anchor=(1.02, 0.5),
+                fontsize=7,
+                frameon=False,
+                ncol=2,
+            )
+
+    @classmethod
     def _draw_grid_pies(cls, ax, chart_data):
         subregions = chart_data["subregions"]
         category_to_color = chart_data["category_to_color"]
@@ -210,6 +393,9 @@ class PieChart(AbstractChart):
         centers = chart_data["centers"]
         bounds = chart_data["bounds"]
         if centers and bounds:
+            if self._is_change_with_both_signs(subregions):
+                self._draw_map_centered_change_bars(ax, chart_data)
+                return
             self._draw_map_centered_pies(ax, chart_data)
             return
 
