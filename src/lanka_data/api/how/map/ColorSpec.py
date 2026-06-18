@@ -2,20 +2,7 @@ from dataclasses import dataclass
 
 import matplotlib.pyplot as plt
 
-
-def parse_float(value):
-    value_str = (
-        str(value)
-        .replace(",", "")
-        .replace("+", "")
-        .replace("%", "")
-        .replace("pp", "")
-    )
-
-    try:
-        return float(value_str)
-    except ValueError:
-        return None
+from utils_future import Parse
 
 
 def hex_to_rgb(hex_color):
@@ -112,8 +99,8 @@ class ColorSpec:
                 key=lambda item: (
                     -color_to_count[item[1]],
                     -(
-                        parse_float(item[0])
-                        if parse_float(item[0]) is not None
+                        Parse.float_float(item[0])
+                        if Parse.float_float(item[0]) is not None
                         else 0
                     ),
                 ),
@@ -189,7 +176,10 @@ class ColorSpec:
             sorted(set(region_to_custom_value.values()))
         )
         has_non_float_values = any(
-            [parse_float(value) is None for value in sorted_custom_values]
+            [
+                Parse.float_float(value) is None
+                for value in sorted_custom_values
+            ]
         )
 
         n = len(sorted_custom_values)

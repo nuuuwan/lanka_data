@@ -1,26 +1,3 @@
-def is_float(x):
-    try:
-        float(x)
-        return True
-    except ValueError:
-        return False
-
-
-def parse_float(value):
-    value_str = (
-        str(value)
-        .replace(",", "")
-        .replace("+", "")
-        .replace("%", "")
-        .replace("pp", "")
-    )
-
-    try:
-        return float(value_str)
-    except ValueError:
-        return None
-
-
 class LegendUtils:
     MAX_LEGEND_ITEMS = 7
 
