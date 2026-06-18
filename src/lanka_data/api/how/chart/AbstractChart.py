@@ -5,7 +5,7 @@ from lanka_data.api.how.plot import ChartSubFigure, Plot
 class AbstractChart(How):
     CHART_TYPE = "Chart"
 
-    def draw_axis(self, ax, labels, values, pct_values, colors):
+    def draw_axis(self, ax, chart_data):
         raise NotImplementedError("Subclasses should implement this method.")
 
     def get_inner(self, command):
