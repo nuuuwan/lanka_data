@@ -93,32 +93,64 @@ class BarChart(AbstractChart):
         category_labels,
         category_to_color,
     ):
-        pos_bottoms = [0 for _ in subregions]
-        neg_bottoms = [0 for _ in subregions]
-        for category in category_labels:
-            y_values = [
-                subregion["values"].get(category, 0)
-                for subregion in subregions
-            ]
-            bar_bottoms = []
-            for i, value in enumerate(y_values):
-                if value >= 0:
-                    bar_bottoms.append(pos_bottoms[i])
-                    pos_bottoms[i] += value
-                else:
-                    bar_bottoms.append(neg_bottoms[i])
-                    neg_bottoms[i] += value
+        y_max = 0
+        y_min = 0
+        for i, subregion in enumerate(subregions):
+            x_value = x_values[i]
+            values = subregion["values"]
+            pos_bottom = 0
+            neg_bottom = 0
 
-            ax.bar(
-                x_values,
-                y_values,
-                bottom=bar_bottoms,
-                color=category_to_color[category],
-                label=category,
-                width=0.85,
+            positive_categories = sorted(
+                [
+                    category
+                    for category in category_labels
+                    if values.get(category, 0) >= 0
+                ],
+                key=lambda category, value_map=values: value_map.get(
+                    category, 0
+                ),
             )
-        y_max = max(pos_bottoms) if pos_bottoms else 0
-        y_min = min(neg_bottoms) if neg_bottoms else 0
+            negative_categories = sorted(
+                [
+                    category
+                    for category in category_labels
+                    if values.get(category, 0) < 0
+                ],
+                key=lambda category, value_map=values: value_map.get(
+                    category, 0
+                ),
+                reverse=True,
+            )
+
+            for category in positive_categories:
+                value = values.get(category, 0)
+                if value == 0:
+                    continue
+                ax.bar(
+                    [x_value],
+                    [value],
+                    bottom=[pos_bottom],
+                    color=category_to_color[category],
+                    label=category,
+                    width=0.85,
+                )
+                pos_bottom += value
+
+            for category in negative_categories:
+                value = values.get(category, 0)
+                ax.bar(
+                    [x_value],
+                    [value],
+                    bottom=[neg_bottom],
+                    color=category_to_color[category],
+                    label=category,
+                    width=0.85,
+                )
+                neg_bottom += value
+
+            y_max = max(y_max, pos_bottom)
+            y_min = min(y_min, neg_bottom)
         return y_min, y_max
 
     def _style_axis(self, ax, subregions, y_min, y_max):
@@ -199,4 +231,8 @@ class BarChart(AbstractChart):
 
         self._style_axis(ax, subregions, y_min, y_max)
 
-        self._draw_category_legend(ax, category_labels, category_to_color)
+        self._draw_category_legend(
+            ax,
+            category_labels,
+            category_to_color,
+        )
