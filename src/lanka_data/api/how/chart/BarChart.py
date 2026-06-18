@@ -8,6 +8,31 @@ class BarChart(AbstractChart):
     BOTTOM_PADDING = 0.08
 
     @staticmethod
+    def _is_change_chart(subregions):
+        return any(
+            value < 0
+            for subregion in subregions
+            for value in subregion["values"].values()
+        )
+
+    @classmethod
+    def _sort_subregions(cls, subregions):
+        is_change_chart = cls._is_change_chart(subregions)
+        if is_change_chart:
+            return sorted(
+                subregions,
+                key=lambda subregion: sum(subregion["values"].values()),
+                reverse=True,
+            )
+        return sorted(
+            subregions,
+            key=lambda subregion: subregion.get(
+                "total_value", sum(subregion["values"].values())
+            ),
+            reverse=True,
+        )
+
+    @staticmethod
     def _format_millions(value, _):
         label = "0"
         if value != 0:
@@ -20,7 +45,7 @@ class BarChart(AbstractChart):
         return label
 
     def draw_axis(self, ax, chart_data):
-        subregions = chart_data["subregions"]
+        subregions = self._sort_subregions(chart_data["subregions"])
         category_labels = chart_data["category_labels"]
         category_to_color = chart_data["category_to_color"]
 
@@ -29,23 +54,30 @@ class BarChart(AbstractChart):
             return
 
         x_values = list(range(len(subregions)))
-        bottoms = [0 for _ in subregions]
+        pos_bottoms = [0 for _ in subregions]
+        neg_bottoms = [0 for _ in subregions]
         for category in category_labels:
             y_values = [
                 subregion["values"].get(category, 0)
                 for subregion in subregions
             ]
+            bar_bottoms = []
+            for i, value in enumerate(y_values):
+                if value >= 0:
+                    bar_bottoms.append(pos_bottoms[i])
+                    pos_bottoms[i] += value
+                else:
+                    bar_bottoms.append(neg_bottoms[i])
+                    neg_bottoms[i] += value
+
             ax.bar(
                 x_values,
                 y_values,
-                bottom=bottoms,
+                bottom=bar_bottoms,
                 color=category_to_color[category],
                 label=category,
                 width=0.85,
             )
-            bottoms = [
-                bottom + value for bottom, value in zip(bottoms, y_values)
-            ]
 
         ax.set_xticks(x_values)
         x_labels = [subregion["region_name"] for subregion in subregions]
@@ -72,9 +104,14 @@ class BarChart(AbstractChart):
         )
         ax.grid(False)
         ax.margins(x=0.06, y=0.12)
-        y_max = max(bottoms) if bottoms else 0
-        if y_max > 0:
-            ax.set_ylim(0, y_max * 1.12)
+        y_max = max(pos_bottoms) if pos_bottoms else 0
+        y_min = min(neg_bottoms) if neg_bottoms else 0
+        y_span = y_max - y_min
+        if y_span <= 0:
+            y_span = 1
+        y_pad = y_span * 0.12
+        ax.set_ylim(y_min - y_pad, y_max + y_pad)
+        ax.axhline(0, color="#666", linewidth=0.8)
         ax.yaxis.set_major_formatter(FuncFormatter(self._format_millions))
         ax.set_ylabel("Population")
 
