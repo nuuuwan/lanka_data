@@ -24,16 +24,20 @@ class CommandRunnerMixin:
         how = HowFactory.from_how_cmd(how_cmd)
         return how.get_result(what, when_cmd, where, self.cmd_id)
 
+    @staticmethod
+    def get_help_result():
+        return dict(
+            what_to_whens=WhatFactory.get_what_to_whens(),
+            where=["LK*", "EC-*", "LG-*"],
+            how=["JSON", "Map"],
+            source="lanka_data",
+            source_url="https://github.com"
+            + "/nuuuwan/lanka_data/blob/main/README.md",
+        )
+
     def _run(self):
         if self.where_cmd == "Help":
-            return dict(
-                what_to_whens=WhatFactory.get_what_to_whens(),
-                where=["LK*", "EC-*", "LG-*"],
-                how=["JSON", "Map"],
-                source="lanka_data",
-                source_url="https://github.com"
-                + "/nuuuwan/lanka_data/blob/main/README.md",
-            )
+            return self.get_help_result()
 
         where_cmd, what_cmd, when_cmd, how_cmd = self.unpack()
         return self._run_normalized(where_cmd, what_cmd, when_cmd, how_cmd)
