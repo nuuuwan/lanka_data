@@ -29,23 +29,36 @@ class ColorSpec:
         return ColorSpecConstants.DEFAULT_CMAP_CAT(p)
 
     def unpack(self):
-        color_to_count = {}
-        for region, color in self.region_to_color.items():
-            color_to_count[color] = color_to_count.get(color, 0) + 1
 
-        sorted_value_to_color = dict(
-            sorted(
-                self.value_to_color.items(),
-                key=lambda item: (
-                    -color_to_count.get(item[1], 0),
-                    -(
-                        Parse.float(item[0])
-                        if Parse.float(item[0]) is not None
-                        else 0
+        first_value = next(iter(self.value_to_color))
+        is_float_values = Parse.float(first_value) is not None
+
+        if is_float_values:
+            color_to_count = {}
+            for region, color in self.region_to_color.items():
+                color_to_count[color] = color_to_count.get(color, 0) + 1
+
+            sorted_value_to_color = dict(
+                sorted(
+                    self.value_to_color.items(),
+                    key=lambda item: (
+                        -(
+                            Parse.float(item[0])
+                            if Parse.float(item[0]) is not None
+                            else float("-inf")
+                        )
                     ),
-                ),
+                )
             )
-        )
+        else:
+            sorted_value_to_color = dict(
+                sorted(
+                    self.value_to_color.items(),
+                    key=lambda item: (
+                        (-color_to_count.get(item[1], 0), item[1])
+                    ),
+                )
+            )
 
         expanded_value_to_color = {}
         for value, color in sorted_value_to_color.items():
