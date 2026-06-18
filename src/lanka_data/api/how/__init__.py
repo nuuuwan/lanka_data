@@ -5,7 +5,8 @@ from lanka_data.api.how.cartogram import Cartogram
 from lanka_data.api.how.How import How
 from lanka_data.api.how.HowFactory import HowFactory
 from lanka_data.api.how.JSON import JSON
-from lanka_data.api.how.map import (ColorSpec, ColorSpecFactory, ColorUtils,
-                                    Diversity, FontUtils, GeoDataUtils,
-                                    LabelFitUtils, LabelUtils, LegendUtils,
-                                    Map, PlotUtils, PolyUtils, Segregation)
+from lanka_data.api.how.map import (ColorSpec, ColorSpecConstants,
+                                    ColorSpecFactory, ColorUtils, Diversity,
+                                    FontUtils, GeoDataUtils, LabelFitUtils,
+                                    LabelUtils, LegendUtils, Map, PlotUtils,
+                                    PolyUtils, Segregation)
