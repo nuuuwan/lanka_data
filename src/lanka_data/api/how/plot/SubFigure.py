@@ -29,7 +29,7 @@ class SubFigure:
             self.is_cartogram,
         ).copy()
         region_color_map, value_to_color = ColorSpecFactory.get_color_spec(
-            what, when, where, how
+            self.command
         ).unpack()
         gdf_region["color"] = gdf_region["region_id"].map(region_color_map)
 

@@ -83,8 +83,13 @@ class ColorSpecFactory:
         return ColorSpec.by_region_to_custom_value(region_to_flip, True)
 
     @staticmethod
-    def get_color_spec(what, when, where, how) -> ColorSpec:
+    def get_color_spec(command) -> ColorSpec:
+        how = command.get_how()
+        what = command.get_what()
+        when = command.get_when()
+        where = command.get_where()
         result_data = how.get_data(what, when, where)
+
         data_list = result_data["data_list"]
         is_diff = isinstance(what, DiffWhat)
 
