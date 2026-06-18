@@ -9,10 +9,10 @@ from lanka_data.api.what import WhatFactory
 from lanka_data.api.where import Regions
 from utils_future import Log
 
-log = Log("Db")
+log = Log("Command")
 
 
-class Db:
+class Command:
     DIR_TEMP_DATA = os.path.join(tempfile.gettempdir(), "lanka_data")
     DIR_OUTPUT = os.path.join(DIR_TEMP_DATA, "output")
 

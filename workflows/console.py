@@ -1,6 +1,6 @@
 import json
 
-from lanka_data import Db
+from lanka_data import Command
 
 
 def main():
@@ -14,10 +14,10 @@ def main():
             break
 
         if cmd in ["c"]:
-            Db.cache_clear()
+            Command.cache_clear()
             continue
 
-        output = Db(cmd).run(do_open_images=True, do_use_cache=True)
+        output = Command(cmd).run(do_open_images=True, do_use_cache=True)
         print(json.dumps(output, indent=2))
 
 

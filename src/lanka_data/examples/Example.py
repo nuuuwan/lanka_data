@@ -1,6 +1,6 @@
 import os
 
-from lanka_data.db import Db
+from lanka_data.command import Command
 from utils_future import JSONFile, Log
 
 log = Log("Example")
@@ -52,7 +52,7 @@ class Example:
 
     @classmethod
     def get_output_hot(cls, cmd):
-        output = Db(cmd).run(do_open_images=False, do_use_cache=True)
+        output = Command(cmd).run(do_open_images=False, do_use_cache=True)
         if "result" not in output:
             raise ValueError(
                 f"Output for cmd '{cmd}' does not contain 'result'"

@@ -1,6 +1,6 @@
 import unittest
 
-from lanka_data import Db, Example
+from lanka_data import Command, Example
 
 
 class TestCase(unittest.TestCase):
@@ -10,7 +10,7 @@ class TestCase(unittest.TestCase):
 def make_test(cmd, expected_output):
 
     def test(self):
-        db = Db(cmd)
+        db = Command(cmd)
         actual_output = db.run(do_open_images=False, do_use_cache=False)
 
         actual_output["query_time_ms"] = 0
