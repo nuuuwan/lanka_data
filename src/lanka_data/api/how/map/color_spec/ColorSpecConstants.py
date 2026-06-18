@@ -64,4 +64,5 @@ class ColorSpecConstants:
         "#ff4401": ["B"],
         # Segregation
         "#fe0000": ["Segregated"],
+        "#ff8800": ["Change"],
     }

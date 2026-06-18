@@ -2,8 +2,8 @@ from utils_future import GeoUtils
 
 
 class Segregation:
-    MAX_NEIGHBOR_DISTANCE_KM = 30
-    MIN_NEIGHBORS = 3
+    MAX_NEIGHBOR_DISTANCE_KM = 5
+    MIN_NEIGHBORS = 5
     SEGREGATION_LIMIT = 0.2
 
     @staticmethod
