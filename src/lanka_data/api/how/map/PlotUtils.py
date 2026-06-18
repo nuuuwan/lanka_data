@@ -45,39 +45,46 @@ class PlotUtils:
         )
 
     @staticmethod
-    def get_figure_specs(what, when, where, how):
-        from lanka_data.api.what.WhatFactory import WhatFactory
+    def get_figure_specs(command):
+        from lanka_data.command.Command import Command
 
-        if "-" in when:
-            when_parts = when.split("-")
+        when_cmd = command.when_cmd
+        if "-" in when_cmd:
+            when_parts = when_cmd.split("-")
+            command1 = Command(
+                command.what_cmd,
+                when_parts[0],
+                command.where_cmd,
+                command.how_cmd,
+            )
+            command2 = Command(
+                command.what_cmd,
+                when_parts[1],
+                command.where_cmd,
+                command.how_cmd,
+            )
+
             return {
-                when_parts[0]: (
-                    WhatFactory.from_what_and_when(what.title, when_parts[0]),
-                    when_parts[0],
-                    where,
-                    how,
-                ),
-                when_parts[1]: (
-                    WhatFactory.from_what_and_when(what.title, when_parts[1]),
-                    when_parts[1],
-                    where,
-                    how,
-                ),
-                "Change": (what, when, where, how),
+                when_parts[0]: command1,
+                when_parts[1]: command2,
+                "Change": command,
             }
 
-        return {"": (what, when, where, how)}
+        return {"": command}
 
     # flake8: noqa: CFQ002
     @staticmethod
     def plot_subfigure(
         figure_label,
-        figure_spec,
-        cmd,
+        command_for_subfigure,
         is_cartogram,
         subfig,
     ):
-        what, when, where, how = figure_spec
+        how = command_for_subfigure.get_how()
+        what = command_for_subfigure.get_what()
+        when = command_for_subfigure.get_when()
+        where = command_for_subfigure.get_where()
+
         result_data = how.get_data(what, when, where)
         data_list = result_data["data_list"]
         n_regions = len(data_list)
@@ -120,9 +127,9 @@ class PlotUtils:
         return result_data
 
     @staticmethod
-    def plot_subfigures(what, when, where, how, cmd, is_cartogram):
+    def plot_subfigures(command, is_cartogram):
 
-        figure_specs = PlotUtils.get_figure_specs(what, when, where, how)
+        figure_specs = PlotUtils.get_figure_specs(command)
 
         n_figs = len(figure_specs)
         rows, cols = 1, n_figs
@@ -136,14 +143,13 @@ class PlotUtils:
         ]
 
         result_data_list = []
-        for (figure_label, figure_spec), subfig in zip(
+        for (figure_label, command_for_subfigure), subfig in zip(
             figure_specs.items(), subfigs_flat[:n_figs]
         ):
 
             result_data = PlotUtils.plot_subfigure(
                 figure_label,
-                figure_spec,
-                cmd,
+                command_for_subfigure,
                 is_cartogram,
                 subfig,
             )
@@ -152,17 +158,19 @@ class PlotUtils:
         return fig, result_data_list
 
     @staticmethod
-    def _draw_header(fig, what, when, where, how):
+    def _draw_header(fig, command):
         PlotUtils._plot_text(
             fig,
             (0.5, 0.975),
-            f"{what.title} ({when}) - {where.get_description()} - {how.get_description()}",
+            f"{command.get_what().title} ({command.get_when()})"
+            + f" - {command.get_where().get_description()}"
+            + f" - {command.get_how().get_description()}",
             16,
             "#fff",
         )
 
     @staticmethod
-    def _draw_footer(fig, cmd, source_list):
+    def _draw_footer(fig, source_list):
         PlotUtils._plot_text(
             fig,
             (0.5, 0.025),
@@ -195,10 +203,11 @@ class PlotUtils:
         fig.patches.append(rect)
 
     @classmethod
-    def draw_plot(cls, what, when, where, how, cmd, is_cartogram):
+    def draw_plot(cls, command, is_cartogram):
         FontUtils.install_font(cls.FONT_FAMILY)
         fig, result_data_list = PlotUtils.plot_subfigures(
-            what, when, where, how, cmd, is_cartogram
+            command,
+            is_cartogram,
         )
 
         source_set = set()
@@ -206,10 +215,10 @@ class PlotUtils:
             source_set.add(result_data["source"])
         source_list = sorted(source_set)
         PlotUtils._plot_rects(fig)
-        PlotUtils._draw_header(fig, what, when, where, how)
-        PlotUtils._draw_footer(fig, cmd, source_list)
+        PlotUtils._draw_header(fig, command)
+        PlotUtils._draw_footer(fig, source_list)
 
-        image_dir = os.path.join(PlotUtils.DIR_OUTPUT, cmd)
+        image_dir = os.path.join(PlotUtils.DIR_OUTPUT, command.cmd_id)
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, "Image.png")
 

@@ -9,7 +9,7 @@ class CommandLoaderMixin:
 
         if cmd_str == "Help":
             return cls(
-                where_cmd=cmd_str, what_cmd="", when_cmd="", how_cmd=""
+                what_cmd=cmd_str, when_cmd="", where_cmd="", how_cmd=""
             )
 
         tokens = cmd_str.split("/")
@@ -25,4 +25,4 @@ class CommandLoaderMixin:
         what_cmd, when_cmd, where_cmd, how_cmd = tokens
 
         log.debug(f"{what_cmd=}, {when_cmd=}, {where_cmd=}, {how_cmd=}")
-        return cls(where_cmd, what_cmd, when_cmd, how_cmd)
+        return cls(what_cmd, when_cmd, where_cmd, how_cmd)

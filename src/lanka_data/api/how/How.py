@@ -42,26 +42,26 @@ class How:
 
         return result_data
 
-    def get_inner(self, what, when, where, cmd):
+    def get_inner(self, command):
         raise NotImplementedError("Subclasses should implement this method.")
 
-    def get_descriptions(self, what, when, where):
+    def get_descriptions(self, command):
         return dict(
-            what_description=what.get_description(),
-            when_description=when,
-            where_description=where.get_description(),
+            what_description=command.get_what().get_description(),
+            when_description=command.get_when(),
+            where_description=command.get_where().get_description(),
             how_description=self.get_description(),
         )
 
-    def get_result(self, what, when, where, cmd):
+    def get_result(self, command):
         return (
-            self.get_descriptions(what, when, where)
-            | self.get_inner(what, when, where, cmd)
-            | dict(cmd=cmd)
+            self.get_descriptions(command)
+            | self.get_inner(command)
+            | dict(cmd=command.cmd_id)
         )
 
-    def get_descriptions_title(self, what, when, where):
-        descriptions = self.get_descriptions(what, when, where)
+    def get_descriptions_title(self, command):
+        descriptions = self.get_descriptions(command)
         what_description = descriptions["what_description"]
         when_description = descriptions["when_description"]
         where_description = descriptions["where_description"]

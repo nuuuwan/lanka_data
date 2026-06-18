@@ -30,9 +30,7 @@ class CommandRunnerMixin:
         return HowFactory.from_command(self)
 
     def get_result(self):
-        return self.get_how().get_result(
-            self.get_what(), self.get_when(), self.get_where(), self.cmd_id
-        )
+        return self.get_how().get_result(self)
 
     def _run(self):
         if self.where_cmd == "Help":
