@@ -99,8 +99,8 @@ class ColorSpec:
                 key=lambda item: (
                     -color_to_count[item[1]],
                     -(
-                        Parse.float_float(item[0])
-                        if Parse.float_float(item[0]) is not None
+                        Parse.float(item[0])
+                        if Parse.float(item[0]) is not None
                         else 0
                     ),
                 ),
@@ -176,10 +176,7 @@ class ColorSpec:
             sorted(set(region_to_custom_value.values()))
         )
         has_non_float_values = any(
-            [
-                Parse.float_float(value) is None
-                for value in sorted_custom_values
-            ]
+            [Parse.float(value) is None for value in sorted_custom_values]
         )
 
         n = len(sorted_custom_values)

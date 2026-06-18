@@ -12,7 +12,7 @@ class RegionLoadersMixin(RegionParserMixin, RegionRawDataMixin):
 
     @classmethod
     def from_token(cls, token: str):
-        raw_regions, region_year, description = cls.Parse.float(token)
+        raw_regions, region_year, description = cls.parse(token)
 
         if len(raw_regions) == 0:
             raise ValueError(f"No regions found for token: {token}")

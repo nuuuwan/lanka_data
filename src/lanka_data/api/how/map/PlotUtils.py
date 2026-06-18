@@ -5,7 +5,7 @@ import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
-from lanka_data.api.how.map.ColorSpecFactory import ColorSpecFactory
+from lanka_data.api.how.map.color_spec import ColorSpecFactory
 from lanka_data.api.how.map.FontUtils import FontUtils
 from lanka_data.api.how.map.GeoDataUtils import GeoDataUtils
 from lanka_data.api.how.map.LabelUtils import LabelUtils
