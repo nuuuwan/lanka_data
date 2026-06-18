@@ -2,8 +2,7 @@ from dataclasses import dataclass
 
 from lanka_data.api.how.map.color_spec.ColorSpecConstants import \
     ColorSpecConstants
-from lanka_data.api.how.map.ColorUtils import ColorUtils
-from utils_future import Parse
+from utils_future import ColorUtils, Parse
 
 
 @dataclass

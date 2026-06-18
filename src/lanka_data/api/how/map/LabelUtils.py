@@ -1,5 +1,5 @@
-from lanka_data.api.how.map.ColorUtils import ColorUtils
 from lanka_data.api.how.map.LabelFitUtils import LabelFitUtils
+from utils_future import ColorUtils
 
 
 class LabelUtils:

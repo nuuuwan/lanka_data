@@ -3,7 +3,6 @@
 
 from lanka_data.api.how.map.color_spec import (ColorSpec, ColorSpecConstants,
                                                ColorSpecFactory)
-from lanka_data.api.how.map.ColorUtils import ColorUtils
 from lanka_data.api.how.map.Diversity import Diversity
 from lanka_data.api.how.map.FontUtils import FontUtils
 from lanka_data.api.how.map.GeoDataUtils import GeoDataUtils

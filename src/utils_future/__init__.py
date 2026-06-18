@@ -2,6 +2,7 @@
 # flake8: noqa: F408
 
 from utils_future.BinaryFile import BinaryFile
+from utils_future.ColorUtils import ColorUtils
 from utils_future.DCNUtils import DCNUtils
 from utils_future.File import File
 from utils_future.GeoUtils import GeoUtils
