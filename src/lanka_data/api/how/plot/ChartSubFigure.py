@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 
+from lanka_data.api.data.Diversity import Diversity
 from lanka_data.api.how.map.color_spec import ColorSpecFactory
 from lanka_data.api.how.map.GeoData import GeoData
 from lanka_data.api.how.plot.Text import Text
@@ -151,6 +152,23 @@ class ChartSubFigure:
             if len(tokens) == 2:
                 when_labels = tokens
 
+        y_label = "Population"
+        is_diff = when_labels is not None
+        params = getattr(self.command.get_how(), "params", None)
+        if is_diff and params in ("Diversity", "DiversityPew"):
+            is_pew = params == "DiversityPew"
+            region_to_div = Diversity.get_region_to_diversity_change(
+                result_data, is_pew
+            )
+            for sub in subregions:
+                d = region_to_div.get(sub["region_id"]) or 0
+                sub["values"] = {"Diversity": d}
+                sub["total_value"] = d
+                sub["values1"] = None
+            category_labels = ["Diversity"]
+            category_to_color = {"Diversity": "#1d6614"}
+            y_label = "Diversity Index Change"
+
         return {
             "subregions": subregions,
             "category_labels": category_labels,
@@ -159,6 +177,7 @@ class ChartSubFigure:
             "centers": geo_context["centers"],
             "bounds": geo_context["bounds"],
             "when_labels": when_labels,
+            "y_label": y_label,
         }
 
     def draw(self):

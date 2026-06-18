@@ -45,8 +45,10 @@ class BarChart(AbstractChart):
                 label = f"{value / 1_000_000:.1f}M"
             elif abs(value) >= 1_000:
                 label = f"{value / 1_000:.0f}K"
-            else:
+            elif abs(value) >= 10:
                 label = f"{value:.0f}"
+            else:
+                label = f"{value:.2f}"
         return label
 
     @staticmethod
@@ -153,7 +155,7 @@ class BarChart(AbstractChart):
             y_min = min(y_min, neg_bottom)
         return y_min, y_max
 
-    def _style_axis(self, ax, subregions, y_min, y_max):
+    def _style_axis(self, ax, subregions, y_min, y_max, y_label="Population"):
         x_values = list(range(len(subregions)))
         ax.set_xticks(x_values)
         x_labels = [subregion["region_name"] for subregion in subregions]
@@ -187,7 +189,7 @@ class BarChart(AbstractChart):
         ax.set_ylim(y_min - y_pad, y_max + y_pad)
         ax.axhline(0, color="#666", linewidth=0.8)
         ax.yaxis.set_major_formatter(FuncFormatter(self._format_millions))
-        ax.set_ylabel("Population")
+        ax.set_ylabel(y_label)
 
     @staticmethod
     def _draw_category_legend(ax, category_labels, category_to_color):
@@ -229,7 +231,13 @@ class BarChart(AbstractChart):
                 category_to_color,
             )
 
-        self._style_axis(ax, subregions, y_min, y_max)
+        self._style_axis(
+            ax,
+            subregions,
+            y_min,
+            y_max,
+            chart_data.get("y_label", "Population"),
+        )
 
         self._draw_category_legend(
             ax,
