@@ -103,7 +103,9 @@ class GeoDataUtils:
 
     @staticmethod
     def get_geopandas_dataframe(data_list, is_cartogram):
-        temp_gdf_path = GeoDataUtils.get_temp_gdf_path(data_list, is_cartogram)
+        temp_gdf_path = GeoDataUtils.get_temp_gdf_path(
+            data_list, is_cartogram
+        )
         if os.path.exists(temp_gdf_path):
             log.debug(f"Read {temp_gdf_path}")
             return geopandas.read_file(temp_gdf_path)
