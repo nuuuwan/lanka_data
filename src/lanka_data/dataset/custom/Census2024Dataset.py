@@ -48,10 +48,14 @@ class Census2024Dataset(Dataset):
             )
         ]
 
-    def get_source_data(self) -> list[dict]:
+    def get_source_data_table(self) -> list[dict]:
         url = (
             "https://raw.githubusercontent.com"
             + "/nuuuwan/lk_census_2024/refs/heads/main"
             + f"/data/{self.table_id}/data.json"
         )
         return WWW(url).read_json()
+
+    @classmethod
+    def clean_data_row(cls, data: dict) -> dict:
+        return data
