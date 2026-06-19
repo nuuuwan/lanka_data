@@ -14,14 +14,14 @@ class Dataset:
     def __str__(self):
         return f"Dataset({self.what_cmd}/{self.when_cmd}/{self.where_cmd})"
 
-    @staticmethod
-    def list_from_command(command):
+    @classmethod
+    def list_from_command(cls, command):
         what_cmd, when_cmd, where_cmd, _ = command.unpack()
         data_sets = []
         if "-" in when_cmd:
             when_cmd_parts = when_cmd.split("-")
             for when_cmd_part in when_cmd_parts:
-                dataset = Dataset(what_cmd, when_cmd_part, where_cmd)
+                dataset = cls(what_cmd, when_cmd_part, where_cmd)
                 data_sets.append(dataset)
         data_sets.append(Dataset(what_cmd, when_cmd, where_cmd))
         log.debug(

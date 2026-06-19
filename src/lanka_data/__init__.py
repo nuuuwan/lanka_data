@@ -18,3 +18,4 @@ from lanka_data.dataset import Dataset
 from lanka_data.examples import Example
 from lanka_data.readme import (ReadMe, ReadMeExamplesMixin, ReadMeFooterMixin,
                                ReadMeSourcesMixin, ReadMeUsageMixin)
+from lanka_data.visual import Visual
