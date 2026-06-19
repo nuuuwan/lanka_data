@@ -1,13 +1,13 @@
-import json
 import sys
 
-from lanka_data import Command
+from lanka_data import Command, Dataset, Visual
 
 
-def main(cmd):
-    db = Command.from_str(cmd)
-    result = db.run_unsafe(do_open_images=True, do_use_cache=False)
-    print(json.dumps(result, indent=2))
+def main(command_str):
+    command = Command.from_str(command_str)
+    datasets = Dataset.list_from_command(command)
+    visual = Visual.from_commmand_and_datasets(command, datasets)
+    visual.build()
 
 
 if __name__ == "__main__":
