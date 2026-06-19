@@ -14,19 +14,18 @@ class Dataset:
     def __str__(self):
         return f"Dataset({self.what_cmd}/{self.when_cmd}/{self.where_cmd})"
 
+    def __repr__(self):
+        return self.__str__()
+
     @classmethod
     def list_from_command(cls, command):
         what_cmd, when_cmd, where_cmd, _ = command.unpack()
-        data_sets = []
+        datasets = []
         if "-" in when_cmd:
             when_cmd_parts = when_cmd.split("-")
             for when_cmd_part in when_cmd_parts:
-                dataset = cls(what_cmd, when_cmd_part, where_cmd)
-                data_sets.append(dataset)
-        data_sets.append(Dataset(what_cmd, when_cmd, where_cmd))
-        log.debug(
-            f"from {command} c'ed {[str(ds) for ds in data_sets]}",
-            data_sets=data_sets,
-            command=command,
-        )
-        return data_sets
+                datasets.append(cls(what_cmd, when_cmd_part, where_cmd))
+
+        datasets.append(cls(what_cmd, when_cmd, where_cmd))
+        log.debug(f"Built {datasets}")
+        return datasets
