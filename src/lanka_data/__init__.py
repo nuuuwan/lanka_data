@@ -15,7 +15,7 @@ from lanka_data.api import (GIG2, JSON, AbstractChart, BarChart, BasicWhat,
 from lanka_data.command import (Command, CommandBase, CommandHelp,
                                 CommandLoaderMixin, CommandRunnerMixin)
 from lanka_data.dataset import (Census2024Dataset, Dataset, DatasetFactory,
-                                DiffDataset, ValueDataset)
+                                DiffDataset, RegionValueDataset)
 from lanka_data.examples import Example
 from lanka_data.readme import (ReadMe, ReadMeExamplesMixin, ReadMeFooterMixin,
                                ReadMeSourcesMixin, ReadMeUsageMixin)

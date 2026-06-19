@@ -1,7 +1,7 @@
 from lanka_data.dataset.Dataset import Dataset
 
 
-class ValueDataset(Dataset):
+class RegionValueDataset(Dataset):
     def __init__(self, region_ids):
         Dataset.__init__(self)
         self.region_ids = region_ids

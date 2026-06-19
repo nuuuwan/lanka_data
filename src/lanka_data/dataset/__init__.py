@@ -5,4 +5,4 @@ from lanka_data.dataset.custom import Census2024Dataset
 from lanka_data.dataset.Dataset import Dataset
 from lanka_data.dataset.DatasetFactory import DatasetFactory
 from lanka_data.dataset.DiffDataset import DiffDataset
-from lanka_data.dataset.ValueDataset import ValueDataset
+from lanka_data.dataset.RegionValueDataset import RegionValueDataset

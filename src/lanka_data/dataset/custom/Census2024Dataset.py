@@ -1,14 +1,14 @@
 import os
 
-from lanka_data.dataset.ValueDataset import ValueDataset
+from lanka_data.dataset.RegionValueDataset import RegionValueDataset
 from utils_future import WWW, JSONFile, Log
 
 log = Log("Census2024")
 
 
-class Census2024Dataset(ValueDataset):
+class Census2024Dataset(RegionValueDataset):
     def __init__(self, region_ids: list[str], table_id: str):
-        ValueDataset.__init__(self, region_ids)
+        RegionValueDataset.__init__(self, region_ids)
         self.table_id = table_id
 
     @classmethod
