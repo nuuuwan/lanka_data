@@ -23,6 +23,4 @@ class CommandLoaderMixin:
             )
 
         what_cmd, when_cmd, where_cmd, how_cmd = tokens
-
-        log.debug(f"{what_cmd=}, {when_cmd=}, {where_cmd=}, {how_cmd=}")
         return cls(what_cmd, when_cmd, where_cmd, how_cmd)
