@@ -12,7 +12,7 @@ class Visual:
     how_cmd: str
 
     def __str__(self):
-        return f"Visual({self.datasets} -> {self.how_cmd})"
+        return f"{self.__class__.__name__}({self.datasets} -> {self.how_cmd})"
 
     def __repr__(self):
         return self.__str__()
@@ -24,4 +24,4 @@ class Visual:
         return visual
 
     def build(self):
-        pass
+        raise NotImplementedError("Subclasses must implement build() method.")
