@@ -1,0 +1,50 @@
+[
+  {
+    "table_id": "Population-Gender",
+    "label": "Gender"
+  },
+  {
+    "table_id": "Population-Ethnicity",
+    "label": "Ethnicity"
+  },
+  {
+    "table_id": "Population-Religion",
+    "label": "Religion"
+  },
+  {
+    "table_id": "Population-AgeGroup",
+    "label": "AgeGroup"
+  },
+  {
+    "table_id": "Housing-Structure",
+    "label": "Structure"
+  },
+  {
+    "table_id": "Housing-Walls",
+    "label": "Walls"
+  },
+  {
+    "table_id": "Housing-Floor",
+    "label": "Floor"
+  },
+  {
+    "table_id": "Housing-Roof",
+    "label": "Roof"
+  },
+  {
+    "table_id": "Housing-Water",
+    "label": "Water"
+  },
+  {
+    "table_id": "Housing-Cooking-Fuel",
+    "label": "Fuel"
+  },
+  {
+    "table_id": "Housing-Lighting",
+    "label": "Lighting"
+  },
+  {
+    "table_id": "Housing-Toilet",
+    "label": "Toilet"
+  }
+]

@@ -1,4 +1,4 @@
-from lanka_data.dataset.Dataset import Dataset
+from lanka_data.dataset.custom.Census2024Dataset import Census2024Dataset
 from lanka_data.dataset.DiffDataset import DiffDataset
 from utils_future import Log
 
@@ -9,10 +9,13 @@ class DatasetFactory:
 
     @staticmethod
     def from_command(command):
-        if command.what_cmd == "Religion":
-            return Dataset()
+        if (
+            command.when_cmd == "2024"
+            and command.what_cmd in Census2024Dataset.get_labels()
+        ):
+            return Census2024Dataset.from_label(command.what_cmd)
 
-        raise ValueError(f"Unknown dataset for: {command}")
+        raise ValueError(f"Dataset unknown for: {command}")
 
     @staticmethod
     def list_from_command(command):
