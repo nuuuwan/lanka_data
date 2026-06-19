@@ -20,3 +20,6 @@ class CommandBase:
 
     def __str__(self):
         return f"Command({self.cmd_id})"
+
+    def __repr__(self):
+        return self.__str__()
