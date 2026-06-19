@@ -2,3 +2,6 @@
 # flake8: noqa: F408
 
 from lanka_data.dataset.Dataset import Dataset
+from lanka_data.dataset.DatasetFactory import DatasetFactory
+from lanka_data.dataset.DiffDataset import DiffDataset
+from lanka_data.dataset.ValueDataset import ValueDataset
