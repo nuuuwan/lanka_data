@@ -1,23 +1,25 @@
 import os
 
-from lanka_data.dataset.Dataset import Dataset
+from lanka_data.dataset.ValueDataset import ValueDataset
 from utils_future import WWW, JSONFile, Log
 
 log = Log("Census2024")
 
 
-class Census2024Dataset(Dataset):
-    def __init__(self, table_id: str):
-        super().__init__()
+class Census2024Dataset(ValueDataset):
+    def __init__(self, region_ids: list[str], table_id: str):
+        ValueDataset.__init__(self, region_ids)
         self.table_id = table_id
 
     @classmethod
-    def from_label(cls, label: str) -> "Census2024Dataset":
+    def from_label_and_region_ids(
+        cls, label: str, region_ids: list[str]
+    ) -> "Census2024Dataset":
         label_to_table_id = cls.get_label_to_table_id()
         if label not in label_to_table_id:
             raise ValueError(f"Label '{label}' not found in metadata.")
         table_id = label_to_table_id[label]
-        return cls(table_id)
+        return cls(region_ids, table_id)
 
     @classmethod
     def metadata_file_path(cls) -> str:
@@ -38,8 +40,7 @@ class Census2024Dataset(Dataset):
     def get_labels(cls) -> list[str]:
         return list(cls.get_label_to_table_id().keys())
 
-    @classmethod
-    def get_source_info_list(cls) -> list[dict]:
+    def get_source_info_list(self) -> list[dict]:
         return [
             dict(
                 label="Census of Population and Housing 2024",
@@ -56,6 +57,5 @@ class Census2024Dataset(Dataset):
         )
         return WWW(url).read_json()
 
-    @classmethod
-    def clean_data_row(cls, data: dict) -> dict:
+    def clean_data_row(self, data: dict) -> dict:
         return data

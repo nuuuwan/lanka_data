@@ -1,3 +1,4 @@
+from lanka_data.api.where.Regions import Regions
 from lanka_data.dataset.custom.Census2024Dataset import Census2024Dataset
 from lanka_data.dataset.DiffDataset import DiffDataset
 from utils_future import Log
@@ -8,12 +9,19 @@ log = Log("DatasetFactory")
 class DatasetFactory:
 
     @staticmethod
+    def get_region_ids(command):
+        return Regions.from_command(command).region_ids
+
+    @staticmethod
     def from_command(command):
+        region_ids = DatasetFactory.get_region_ids(command)
         if (
             command.when_cmd == "2024"
             and command.what_cmd in Census2024Dataset.get_labels()
         ):
-            return Census2024Dataset.from_label(command.what_cmd)
+            return Census2024Dataset.from_label_and_region_ids(
+                command.what_cmd, region_ids
+            )
 
         raise ValueError(f"Dataset unknown for: {command}")
 

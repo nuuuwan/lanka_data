@@ -1,8 +1,9 @@
 from lanka_data.dataset.Dataset import Dataset
+from lanka_data.dataset.ValueDataset import ValueDataset
 
 
 class DiffDataset(Dataset):
-    def __init__(self, dataset1: Dataset, dataset2: Dataset):
+    def __init__(self, dataset1: ValueDataset, dataset2: ValueDataset):
         Dataset.__init__(self)
         self.dataset1 = dataset1
         self.dataset2 = dataset2

@@ -36,6 +36,10 @@ class Regions(Where, RegionLoadersMixin):
         return f"{n_regions} {region_type.title()}s"
 
     @cached_property
+    def region_ids(self):
+        return [d["region_id"] for d in self.raw_region_data_list]
+
+    @cached_property
     def region_type(self):
         return RegionTypeUtils.get_region_type(
             self.raw_region_data_list[0]["region_id"]
