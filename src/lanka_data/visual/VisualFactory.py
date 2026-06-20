@@ -24,7 +24,11 @@ class VisualFactory:
                 how_cmd=command.how_cmd,
             )
 
-        if how_without_params == "Map" or how_without_params == "Cartogram":
+        if (
+            how_without_params == "Map"
+            or how_without_params == "Cartogram"
+            or how_without_params == "Basic"
+        ):
             return MapVisual(
                 command=command,
                 datasets=datasets,
