@@ -12,9 +12,17 @@ class VisualFactory:
     @staticmethod
     def from_commmand_and_datasets(command, datasets):
         if command.how_cmd == "JSON":
-            return JSONVisual(datasets=datasets, how_cmd=command.how_cmd)
+            return JSONVisual(
+                command=command,
+                datasets=datasets,
+                how_cmd=command.how_cmd,
+            )
 
         if command.how_cmd == "Map":
-            return MapVisual(datasets=datasets, how_cmd=command.how_cmd)
+            return MapVisual(
+                command=command,
+                datasets=datasets,
+                how_cmd=command.how_cmd,
+            )
 
         raise ValueError(f"Unknown how_cmd: {command.how_cmd}")

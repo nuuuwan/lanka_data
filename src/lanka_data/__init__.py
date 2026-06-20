@@ -20,4 +20,8 @@ from lanka_data.dataset import (Census2024Dataset, Dataset, DatasetFactory,
 from lanka_data.examples import Example
 from lanka_data.readme import (ReadMe, ReadMeExamplesMixin, ReadMeFooterMixin,
                                ReadMeSourcesMixin, ReadMeUsageMixin)
-from lanka_data.visual import JSONVisual, MapVisual, Visual, VisualFactory
+from lanka_data.visual import (ChartSubFigure, Font, Footer, Header,
+                               HeaderFooterBars, JSONVisual, Label, LabelFit,
+                               Legend, MapSubFigure, MapVisual, Plot,
+                               SubFigure, SubFigureSpecs, Text, Visual,
+                               VisualFactory)
