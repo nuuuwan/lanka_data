@@ -1,9 +1,11 @@
+from abc import ABC, abstractmethod
+
 from utils_future import Log
 
 log = Log("Dataset")
 
 
-class Dataset:
+class Dataset(ABC):
 
     def __str__(self):
         return self.__class__.__name__
@@ -11,11 +13,17 @@ class Dataset:
     def __repr__(self):
         return self.__str__()
 
-    def clean_data_row(self, data: dict) -> dict:
-        raise NotImplementedError("Subclasses must implement this method.")
+    @abstractmethod
+    def get_source_data_table(self):
+        pass
 
-    def get_source_data_table(self) -> list[dict]:
-        raise NotImplementedError("Subclasses must implement this method.")
+    @abstractmethod
+    def clean_data_row(self, row):
+        pass
+
+    @abstractmethod
+    def get_source_info_list(self):
+        pass
 
     def get_complete_data_table(self) -> list[dict]:
         source_data_table = self.get_source_data_table()
