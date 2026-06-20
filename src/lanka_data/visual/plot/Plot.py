@@ -37,6 +37,7 @@ class Plot:
         return fig
 
     def draw(self):
+        plt.close()
         Font(self.FONT_FAMILY).install()
         fig = self._draw_subfigures()
 

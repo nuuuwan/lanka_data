@@ -38,7 +38,11 @@ class RegionValueDataset(Dataset):
         total_value = sum(values.values())
         expanded_data["total_value"] = total_value
         pct_values = {
-            k: round(v / total_value, self.PCT_VALUE_PRECISION)
+            k: (
+                round(v / total_value, self.PCT_VALUE_PRECISION)
+                if total_value > 0
+                else 0
+            )
             for k, v in values.items()
         }
         expanded_data["pct_values"] = pct_values
