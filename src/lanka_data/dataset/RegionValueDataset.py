@@ -33,6 +33,7 @@ class RegionValueDataset(Dataset):
         values = {
             FieldNameUtils.normalize(k): v for k, v in data["values"].items()
         }
+        values = dict(sorted(values.items(), key=lambda item: -item[1]))
         expanded_data["values"] = values
 
         total_value = sum(values.values())
@@ -45,8 +46,17 @@ class RegionValueDataset(Dataset):
         return expanded_data
 
     @abstractmethod
-    def get_complete_data_table(self):
+    def get_source_data_table(self) -> list[dict]:
         pass
+
+    @abstractmethod
+    def clean_data_row(self, row: dict) -> dict:
+        pass
+
+    def get_complete_data_table(self) -> list[dict]:
+        return [
+            self.clean_data_row(row) for row in self.get_source_data_table()
+        ]
 
     def get_data_table(self):
         complete_data_table = self.get_complete_data_table()

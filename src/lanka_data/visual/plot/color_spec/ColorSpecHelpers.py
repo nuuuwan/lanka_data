@@ -7,7 +7,6 @@ class ColorSpecHelpers:
 
     @staticmethod
     def func_key_getter(how_cmd):
-
         if ":" not in how_cmd:
             how_params = None
         else:

@@ -1,6 +1,5 @@
 from abc import abstractmethod
 
-from lanka_data.data.FieldNameUtils import FieldNameUtils
 from lanka_data.dataset.RegionValueDataset import RegionValueDataset
 from utils_future import WWW, JSONFile, Log
 
@@ -65,12 +64,7 @@ class GIG2Dataset(RegionValueDataset):
                 continue
             if "total" in k:
                 continue
-            values[FieldNameUtils.normalize(k)] = int(float(v))
+            values[k] = int(float(v))
 
         d["values"] = values
         return d
-
-    def get_complete_data_table(self) -> list[dict]:
-        return [
-            self.clean_data_row(row) for row in self.get_source_data_table()
-        ]
