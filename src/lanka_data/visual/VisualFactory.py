@@ -18,7 +18,7 @@ class VisualFactory:
                 how_cmd=command.how_cmd,
             )
 
-        if command.how_cmd == "Map":
+        if command.how_cmd == "Map" or command.how_cmd == "Cartogram":
             return MapVisual(
                 command=command,
                 datasets=datasets,
