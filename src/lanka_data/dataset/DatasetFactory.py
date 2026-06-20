@@ -1,6 +1,7 @@
 from lanka_data.api.where.Regions import Regions
 from lanka_data.dataset.custom.Census2012Dataset import Census2012Dataset
 from lanka_data.dataset.custom.Census2024Dataset import Census2024Dataset
+from lanka_data.dataset.custom.ElectionDataset import ElectionDataset
 from lanka_data.dataset.DiffDataset import DiffDataset
 from utils_future import Log
 
@@ -30,6 +31,11 @@ class DatasetFactory:
         ):
             return Census2012Dataset.from_label_and_region_data_list(
                 command.what_cmd, region_data_list
+            )
+
+        if command.what_cmd in ElectionDataset.get_labels():
+            return ElectionDataset.from_label_and_region_data_list_and_year(
+                command.what_cmd, region_data_list, command.when_cmd
             )
 
         raise ValueError(f"Dataset unknown for: {command}")

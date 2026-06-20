@@ -1,5 +1,6 @@
 import os
 
+from lanka_data.data import FieldNameUtils
 from lanka_data.dataset.RegionValueDataset import RegionValueDataset
 from utils_future import WWW, JSONFile, Log
 
@@ -58,4 +59,8 @@ class Census2024Dataset(RegionValueDataset):
         return WWW(url).read_json()
 
     def clean_data_row(self, row: dict) -> dict:
+        row["values"] = {
+            FieldNameUtils.normalize(k): int(float(v))
+            for k, v in row["values"].items()
+        }
         return row

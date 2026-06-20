@@ -1,7 +1,6 @@
 from abc import abstractmethod
 from functools import cached_property
 
-from lanka_data.data import FieldNameUtils
 from lanka_data.dataset.Dataset import Dataset
 
 
@@ -30,9 +29,7 @@ class RegionValueDataset(Dataset):
             region_id=data["region_id"],
             region_name=region["region_name"],
         )
-        values = {
-            FieldNameUtils.normalize(k): v for k, v in data["values"].items()
-        }
+        values = {k: v for k, v in data["values"].items()}
         values = dict(sorted(values.items(), key=lambda item: -item[1]))
         expanded_data["values"] = values
 
