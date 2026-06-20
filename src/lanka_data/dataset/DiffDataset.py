@@ -12,3 +12,6 @@ class DiffDataset(Dataset):
 
     def __str__(self):
         return f"DiffDataset({self.dataset1} - {self.dataset2})"
+
+    def is_diff(self):
+        return True

@@ -52,7 +52,7 @@ class ColorSpec:
             expanded_value_to_color = sorted_value_to_color
         else:
             color_to_count = {}
-            for region, color in self.region_to_color.items():
+            for color in self.region_to_color.values():
                 color_to_count[color] = color_to_count.get(color, 0) + 1
 
             sorted_value_to_color = None
@@ -76,10 +76,8 @@ class ColorSpec:
         return self.region_to_color, expanded_value_to_color
 
     @classmethod
-    def by_custom_category_key(
-        cls, result_data, func_key_getter, hide_legend
-    ):
-        data_list = result_data["data_list"]
+    def by_custom_category_key(cls, dataset, func_key_getter, hide_legend):
+        data_list = dataset.get_data_table()
         sorted_color_keys = sorted(
             list(set([func_key_getter(data) for data in data_list]))
         )
@@ -112,10 +110,11 @@ class ColorSpec:
         return cls(region_to_color, value_to_color)
 
     @classmethod
-    def by_single_pct_value(cls, result_data, how):
-        is_diff = "flip" in result_data["data_list"][0]
+    def by_single_pct_value(cls, dataset, how):
+        data_list = dataset.get_data_table()
+        is_diff = dataset.is_diff()
         single_pct_value = how.params
-        data_list = result_data["data_list"]
+
         pct_values = [
             data["pct_values"][single_pct_value] for data in data_list
         ]

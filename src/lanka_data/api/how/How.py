@@ -23,7 +23,7 @@ class How:
         )
 
     def get_data(self, what, when, where):
-        data_list = what.get_data_list(where)
+        data_list = what.get_data_table(where)
         if len(data_list) == 0:
             raise ValueError(
                 f"No data found for the specified region: {where}."

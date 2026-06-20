@@ -9,6 +9,6 @@ from lanka_data.visual.plot import (AbstractChart, BarChart, BumpChart,
                                     ColorSpecHelpers, Font, Footer, GeoData,
                                     Header, HeaderFooterBars, Label, LabelFit,
                                     Legend, MapSubFigure, PieChart, Plot,
-                                    SubFigure, SubFigureSpecs, Text)
+                                    SubFigure, Text)
 from lanka_data.visual.Visual import Visual
 from lanka_data.visual.VisualFactory import VisualFactory

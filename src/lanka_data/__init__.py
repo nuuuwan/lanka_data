@@ -20,5 +20,4 @@ from lanka_data.visual import (AbstractChart, BarChart, BumpChart,
                                Footer, GeoData, Header, HeaderFooterBars,
                                JSONVisual, Label, LabelFit, Legend,
                                MapSubFigure, MapVisual, PieChart, Plot,
-                               SubFigure, SubFigureSpecs, Text, Visual,
-                               VisualFactory)
+                               SubFigure, Text, Visual, VisualFactory)

@@ -13,6 +13,9 @@ class Dataset(ABC):
     def __repr__(self):
         return self.__str__()
 
+    def is_diff(self):
+        return False
+
     @abstractmethod
     def get_source_data_table(self):
         pass

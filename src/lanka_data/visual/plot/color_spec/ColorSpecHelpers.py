@@ -6,20 +6,26 @@ class ColorSpecHelpers:
     _PARAM_TO_IDX = {"Top": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
 
     @staticmethod
-    def func_key_getter(how, what):
-        idx = ColorSpecHelpers._PARAM_TO_IDX.get(how.params or "Top")
+    def func_key_getter(how_cmd):
+
+        if ":" not in how_cmd:
+            how_params = None
+        else:
+            _, how_params = how_cmd.split(":")
+
+        idx = ColorSpecHelpers._PARAM_TO_IDX.get(how_params or "Top")
         if idx is None:
             return None
 
         def func_key_getter(data):
-            values = list(what.get_pct_values(data).keys())
+            values = list(data["pct_values"].keys())
             return values[idx] if idx < len(values) else "(No Data)"
 
         return func_key_getter
 
     @staticmethod
-    def get_color_spec_generic(result_data, how, what) -> ColorSpec:
-        func_key_getter = ColorSpecHelpers.func_key_getter(how, what)
+    def get_color_spec_generic(result_data, how_cmd) -> ColorSpec:
+        func_key_getter = ColorSpecHelpers.func_key_getter(how_cmd)
         if func_key_getter:
             return ColorSpec.by_custom_category_key(
                 result_data, func_key_getter, False

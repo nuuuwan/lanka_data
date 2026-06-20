@@ -18,5 +18,4 @@ from lanka_data.visual.plot.map import GeoData
 from lanka_data.visual.plot.MapSubFigure import MapSubFigure
 from lanka_data.visual.plot.Plot import Plot
 from lanka_data.visual.plot.SubFigure import SubFigure
-from lanka_data.visual.plot.SubFigureSpecs import SubFigureSpecs
 from lanka_data.visual.plot.Text import Text

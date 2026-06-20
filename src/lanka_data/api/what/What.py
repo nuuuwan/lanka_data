@@ -109,7 +109,7 @@ class What:
         )
         return mapped_data
 
-    def get_data_list(self, regions) -> list[dict]:
+    def get_data_table(self, regions) -> list[dict]:
         source_data_list = self.get_source_data_list()
         source_data_idx = {d["region_id"]: d for d in source_data_list}
 

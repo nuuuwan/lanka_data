@@ -1,4 +1,3 @@
-from lanka_data.api.what.DiffWhat import DiffWhat
 from lanka_data.visual.plot.color_spec import ColorSpec
 from lanka_data.visual.plot.color_spec.ColorSpecHelpers import ColorSpecHelpers
 
@@ -6,72 +5,75 @@ from lanka_data.visual.plot.color_spec.ColorSpecHelpers import ColorSpecHelpers
 class ColorSpecFactory:
 
     @staticmethod
-    def get_color_spec(command) -> ColorSpec:
-        how = command.get_how()
-        what = command.get_what()
-        when = command.get_when()
-        where = command.get_where()
-        result_data = how.get_data(what, when, where)
+    def get_color_spec(dataset, how_cmd) -> ColorSpec:
+        is_diff = dataset.is_diff()
+        if ":" in how_cmd:
+            how_without_params, how_params = how_cmd.split(":")
 
-        data_list = result_data["data_list"]
-        is_diff = isinstance(what, DiffWhat)
+        else:
+            how_without_params = how_cmd
+            how_params = None
 
-        if what.get_values(data_list[0]) is None:
+        values = (
+            dataset.get_data_table()[0].get("values")
+            if dataset.get_data_table()
+            else None
+        )
+
+        if values is None:
             return ColorSpec.by_custom_category_key(
-                result_data,
+                dataset,
                 lambda data: data["region_id"],
                 True,
             )
 
-        if how.params == "Diversity":
+        if how_params == "Diversity":
             if is_diff:
                 return ColorSpecHelpers.get_color_spec_for_diversity_change(
-                    result_data,
+                    dataset,
                     is_pew=False,
                 )
 
             return ColorSpecHelpers.get_colors_from_diversity(
-                result_data,
+                dataset,
                 is_pew=False,
             )
 
-        if how.params == "DiversityPew":
+        if how_params == "DiversityPew":
             if is_diff:
                 return ColorSpecHelpers.get_color_spec_for_diversity_change(
-                    result_data,
+                    dataset,
                     is_pew=True,
                 )
             return ColorSpecHelpers.get_colors_from_diversity(
-                result_data,
+                dataset,
                 is_pew=True,
             )
 
-        if how.params == "Change":
+        if how_params == "Change":
             if is_diff:
-                return ColorSpecHelpers.get_color_spec_for_change(result_data)
+                return ColorSpecHelpers.get_color_spec_for_change(dataset)
             return ColorSpecHelpers.get_color_spec_generic(
-                result_data, how.without_params(), what
+                dataset,
+                how_without_params,
             )
 
-        if how.params == "Segregation":
+        if how_params == "Segregation":
             if is_diff:
                 return ColorSpecHelpers.get_color_spec_for_segregation_change(
-                    result_data
+                    dataset
                 )
-            return ColorSpecHelpers.get_color_spec_for_segregation(
-                result_data
-            )
+            return ColorSpecHelpers.get_color_spec_for_segregation(dataset)
 
-        if how.params == "Flips":
+        if how_params == "Flips":
             if is_diff:
-                return ColorSpecHelpers.get_colors_from_flips(result_data)
+                return ColorSpecHelpers.get_colors_from_flips(dataset)
             return ColorSpecHelpers.get_color_spec_generic(
-                result_data, how.without_params(), what
+                dataset,
+                how_without_params,
             )
 
         if is_diff:
-            idx = ColorSpecHelpers._PARAM_TO_IDX.get(how.params or "Top", 0)
-            return ColorSpecHelpers.get_colors_from_flips(
-                result_data, idx=idx
-            )
-        return ColorSpecHelpers.get_color_spec_generic(result_data, how, what)
+            idx = ColorSpecHelpers._PARAM_TO_IDX.get(how_params or "Top", 0)
+            return ColorSpecHelpers.get_colors_from_flips(dataset, idx=idx)
+        return ColorSpecHelpers.get_color_spec_generic(dataset, how_cmd)

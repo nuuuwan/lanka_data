@@ -8,7 +8,7 @@ from lanka_data.visual.plot.Font import Font
 from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
 from lanka_data.visual.plot.HeaderFooterBars import HeaderFooterBars
-from lanka_data.visual.plot.SubFigureSpecs import SubFigureSpecs
+from lanka_data.visual.plot.SubFigure import SubFigure
 from lanka_data.visual.plot.Text import Text
 from utils_future import Log
 
@@ -25,34 +25,22 @@ class Plot:
         self.visual = visual
 
     def _draw_subfigures(self):
-        figure_specs = SubFigureSpecs.get(self.command)
-        n_figs = len(figure_specs)
+        n_figs = len(self.visual.datasets)
         fig = plt.figure(figsize=(self.FIG_WIDTH, self.FIG_HEIGHT))
 
         outer_gs = gridspec.GridSpec(
             1, n_figs, figure=fig, top=0.92, bottom=0.08, wspace=0.25
         )
 
-        result_data_list = []
-        for j, (figure_label, command_for_subfigure) in enumerate(
-            figure_specs.items()
-        ):
-            subfigure = fig.add_subfigure(outer_gs[0, j])
-            renderer = self.renderer_class(
-                figure_label,
-                command_for_subfigure,
-                self.is_cartogram,
-                subfigure,
-            )
-            result_data = renderer.draw()
-            result_data_list.append(result_data)
-
-        return fig, result_data_list
+        for i_dataset, dataset in enumerate(self.visual.datasets):
+            sub_fig = fig.add_subfigure(outer_gs[0, i_dataset])
+            SubFigure(dataset, self.visual.how_cmd).draw(sub_fig)
+        return fig
 
     def draw(self):
         Font(self.FONT_FAMILY).install()
 
-        fig = plt.gcf()
+        fig = self._draw_subfigures()
 
         HeaderFooterBars.draw_bars(fig)
         Header(self.visual).draw(

@@ -76,9 +76,9 @@ class DiffWhat(What):
 
         return data
 
-    def get_data_list(self, where):
-        data_list1 = self.what1.get_data_list(where)
-        data_list2 = self.what2.get_data_list(where)
+    def get_data_table(self, where):
+        data_list1 = self.what1.get_data_table(where)
+        data_list2 = self.what2.get_data_table(where)
 
         data_idx1 = {data["region_id"]: data for data in data_list1}
         data_idx2 = {data["region_id"]: data for data in data_list2}

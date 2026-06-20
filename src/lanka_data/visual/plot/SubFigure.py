@@ -10,38 +10,30 @@ class SubFigure:
     DEFAULT_EDGE_WIDTH = 0.2
     MAX_REGIONS_TO_LABEL = 30
 
-    def __init__(self, figure_label, command, is_cartogram, subfigure):
-        self.figure_label = figure_label
-        self.command = command
-        self.is_cartogram = is_cartogram
-        self.subfigure = subfigure
+    def __init__(self, dataset, how_cmd):
+        self.dataset = dataset
+        self.how_cmd = how_cmd
 
-    def draw(self):
-        how = self.command.get_how()
-        what = self.command.get_what()
-        when = self.command.get_when()
-        where = self.command.get_where()
-
-        result_data = how.get_data(what, when, where)
-        data_list = result_data["data_list"]
+    def draw(self, fig):
+        data_list = self.dataset.get_data_table()
         n_regions = len(data_list)
         gdf_region = GeoData.get_geopandas_dataframe(
             data_list,
-            self.is_cartogram,
+            "Cartogram" in self.how_cmd,
         ).copy()
         region_color_map, value_to_color = ColorSpecFactory.get_color_spec(
-            self.command
+            self.dataset, self.how_cmd
         ).unpack()
         gdf_region["color"] = gdf_region["region_id"].map(region_color_map)
 
-        gs = self.subfigure.add_gridspec(
+        gs = fig.add_gridspec(
             1,
             2,
             width_ratios=[5, 1],
             wspace=0.05,
         )
-        ax = self.subfigure.add_subplot(gs[0])
-        legend_ax = self.subfigure.add_subplot(gs[1])
+        ax = fig.add_subplot(gs[0])
+        legend_ax = fig.add_subplot(gs[1])
 
         gdf_region.plot(
             ax=ax,
@@ -56,10 +48,9 @@ class SubFigure:
 
         ax.set_axis_off()
         Text.plot(
-            self.subfigure,
+            fig,
             (0.5, 0.9),
-            self.figure_label,
+            "Fig",
             fontsize=16,
             color="#000",
         )
-        return result_data
