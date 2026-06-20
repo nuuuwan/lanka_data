@@ -1,4 +1,4 @@
-from lanka_data.api.data import Diversity, Segregation
+from lanka_data.data import Diversity, Segregation
 from lanka_data.visual.plot.color_spec import ColorSpec
 
 
