@@ -27,9 +27,6 @@ class ColorSpecFactory:
                 True,
             )
 
-        if not how_params:
-            return ColorSpecHelpers.get_color_spec_generic(dataset, how_cmd)
-
         if how_params == "Diversity":
             if is_diff:
                 return ColorSpecHelpers.get_color_spec_for_diversity_change(
@@ -80,4 +77,4 @@ class ColorSpecFactory:
             idx = ColorSpecHelpers._PARAM_TO_IDX.get(how_params or "Top", 0)
             return ColorSpecHelpers.get_colors_from_flips(dataset, idx=idx)
 
-        raise ValueError(f"Unknown how_params: {how_params}")
+        return ColorSpecHelpers.get_color_spec_generic(dataset, how_cmd)
