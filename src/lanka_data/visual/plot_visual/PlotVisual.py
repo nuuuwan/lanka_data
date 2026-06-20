@@ -1,4 +1,3 @@
-import os
 from abc import abstractmethod
 
 import matplotlib.pyplot as plt
@@ -15,10 +14,7 @@ class PlotVisual(Visual):
         pass
 
     def build(self):
-        result = Plot(self).draw()
-        image_path = result["image_path"]
-        os.system(f"open {image_path}")
-        return result
+        return Plot(self).draw()
 
     @staticmethod
     def _build_subregions(data_list):
