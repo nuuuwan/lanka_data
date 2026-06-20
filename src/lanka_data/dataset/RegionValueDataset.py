@@ -15,7 +15,8 @@ class RegionValueDataset(Dataset):
         }
         data["values"] = values
 
-        total_value = data["total_value"]
+        total_value = sum(values.values())
+        data["total_value"] = total_value
         pct_values = {
             k: round(v / total_value, self.PCT_VALUE_PRECISION)
             for k, v in values.items()

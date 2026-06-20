@@ -57,5 +57,5 @@ class Census2024Dataset(RegionValueDataset):
         )
         return WWW(url).read_json()
 
-    def clean_data_row(self, data: dict) -> dict:
-        return data
+    def clean_data_row(self, row: dict) -> dict:
+        return row

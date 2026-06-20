@@ -1,4 +1,5 @@
 from lanka_data.api.where.Regions import Regions
+from lanka_data.dataset.custom.Census2012Dataset import Census2012Dataset
 from lanka_data.dataset.custom.Census2024Dataset import Census2024Dataset
 from lanka_data.dataset.DiffDataset import DiffDataset
 from utils_future import Log
@@ -20,6 +21,14 @@ class DatasetFactory:
             and command.what_cmd in Census2024Dataset.get_labels()
         ):
             return Census2024Dataset.from_label_and_region_ids(
+                command.what_cmd, region_ids
+            )
+
+        if (
+            command.when_cmd == "2012"
+            and command.what_cmd in Census2012Dataset.get_labels()
+        ):
+            return Census2012Dataset.from_label_and_region_ids(
                 command.what_cmd, region_ids
             )
 
