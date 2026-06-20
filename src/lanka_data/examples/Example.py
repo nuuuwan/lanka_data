@@ -1,6 +1,8 @@
 import os
 
 from lanka_data.command import Command
+from lanka_data.dataset.DatasetFactory import DatasetFactory
+from lanka_data.visual.VisualFactory import VisualFactory
 from utils_future import JSONFile, Log
 
 log = Log("Example")
@@ -51,13 +53,14 @@ class Example:
         return cmd_list
 
     @classmethod
-    def get_output_hot(cls, cmd):
-        output = Command.from_str(cmd).run(
-            do_open_images=False, do_use_cache=True
-        )
+    def get_output_hot(cls, command_str):
+        command = Command.from_str(command_str)
+        datasets = DatasetFactory.list_from_command(command)
+        visual = VisualFactory.from_commmand_and_datasets(command, datasets)
+        output = visual.build()
         if "result" not in output:
             raise ValueError(
-                f"Output for cmd '{cmd}' does not contain 'result'"
+                f"Output for cmd '{command_str}' does not contain 'result'"
             )
 
         # Hack to prevent git diffs
