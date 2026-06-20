@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
 from lanka_data.dataset.Dataset import Dataset
@@ -7,7 +8,7 @@ log = Log("Visual")
 
 
 @dataclass
-class Visual:
+class Visual(ABC):
     datasets: list[Dataset]
     how_cmd: str
 
@@ -23,5 +24,6 @@ class Visual:
         log.debug(f"Built {visual}")
         return visual
 
+    @abstractmethod
     def build(self):
-        raise NotImplementedError("Subclasses must implement build() method.")
+        pass
