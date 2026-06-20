@@ -1,7 +1,6 @@
 # lanka_data.visual.plot (auto generate by build_inits.py)
 # flake8: noqa: F408
 
-from lanka_data.visual.plot.ChartSubFigure import ChartSubFigure
 from lanka_data.visual.plot.color_spec import (ColorSpec, ColorSpecConstants,
                                                ColorSpecFactory,
                                                ColorSpecHelpers)
