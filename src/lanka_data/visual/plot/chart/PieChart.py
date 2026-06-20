@@ -431,7 +431,7 @@ class PieChart(AbstractChart):
             return
 
         if self._is_change_chart(subregions):
-            BarChart(self.how_label, self.params).draw_axis(ax, chart_data)
+            BarChart().draw_axis(ax, chart_data)
             return
 
         centers = chart_data["centers"]

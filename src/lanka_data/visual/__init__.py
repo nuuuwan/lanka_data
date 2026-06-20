@@ -2,8 +2,10 @@
 # flake8: noqa: F408
 
 from lanka_data.visual.BarChartVisual import BarChartVisual
+from lanka_data.visual.BumpChartVisual import BumpChartVisual
 from lanka_data.visual.JSONVisual import JSONVisual
 from lanka_data.visual.MapVisual import MapVisual
+from lanka_data.visual.PieChartVisual import PieChartVisual
 from lanka_data.visual.plot import (AbstractChart, BarChart, BumpChart,
                                     ChartSubFigure, ColorSpec,
                                     ColorSpecConstants, ColorSpecFactory,
