@@ -69,3 +69,8 @@ class GIG2Dataset(RegionValueDataset):
 
         d["values"] = values
         return d
+
+    def get_complete_data_table(self) -> list[dict]:
+        return [
+            self.clean_data_row(row) for row in self.get_source_data_table()
+        ]

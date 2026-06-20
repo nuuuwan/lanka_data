@@ -17,20 +17,9 @@ class Dataset(ABC):
         return False
 
     @abstractmethod
-    def get_source_data_table(self):
-        pass
-
-    @abstractmethod
-    def clean_data_row(self, row):
-        pass
-
-    @abstractmethod
     def get_source_info_list(self):
         pass
 
-    def get_complete_data_table(self) -> list[dict]:
-        source_data_table = self.get_source_data_table()
-        cleaned_data_table = [
-            self.clean_data_row(row) for row in source_data_table
-        ]
-        return cleaned_data_table
+    @abstractmethod
+    def get_data_table(self) -> list[dict]:
+        pass
