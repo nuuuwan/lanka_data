@@ -1,8 +1,8 @@
 from functools import cached_property
 
-from lanka_data.api.where.RegionLoadersMixin import RegionLoadersMixin
-from lanka_data.api.where.RegionTypeUtils import RegionTypeUtils
-from lanka_data.api.where.Where import Where
+from lanka_data.region.RegionLoadersMixin import RegionLoadersMixin
+from lanka_data.region.RegionTypeUtils import RegionTypeUtils
+from lanka_data.region.Where import Where
 from utils_future import Log
 
 log = Log("Regions")

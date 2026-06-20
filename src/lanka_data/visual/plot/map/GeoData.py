@@ -5,7 +5,7 @@ import tempfile
 import geopandas
 import pandas as pd
 
-from lanka_data.api.where.RegionTypeUtils import RegionTypeUtils
+from lanka_data.region.RegionTypeUtils import RegionTypeUtils
 from utils_future import WWW, DCNUtils, Log
 
 log = Log("GeoData")

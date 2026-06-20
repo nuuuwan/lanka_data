@@ -1,8 +1,8 @@
-from lanka_data.api.where.Regions import Regions
 from lanka_data.dataset.custom.Census2012Dataset import Census2012Dataset
 from lanka_data.dataset.custom.Census2024Dataset import Census2024Dataset
 from lanka_data.dataset.custom.ElectionDataset import ElectionDataset
 from lanka_data.dataset.DiffDataset import DiffDataset
+from lanka_data.region.Regions import Regions
 from utils_future import Log
 
 log = Log("DatasetFactory")
