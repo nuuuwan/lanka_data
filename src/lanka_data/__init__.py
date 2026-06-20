@@ -14,11 +14,9 @@ from lanka_data.dataset import (Census2012Dataset, Census2024Dataset, Dataset,
 from lanka_data.examples import Example
 from lanka_data.readme import (ReadMe, ReadMeExamplesMixin, ReadMeFooterMixin,
                                ReadMeSourcesMixin, ReadMeUsageMixin)
-from lanka_data.visual import (AbstractChart, BarChart, BarChartVisual,
-                               BumpChart, BumpChartVisual, ChartSubFigure,
+from lanka_data.visual import (BarChartVisual, BumpChartVisual, ChartSubFigure,
                                ColorSpec, ColorSpecConstants, ColorSpecFactory,
                                ColorSpecHelpers, Font, Footer, GeoData, Header,
                                HeaderFooterBars, JSONVisual, Label, LabelFit,
-                               Legend, MapSubFigure, MapVisual, PieChart,
-                               PieChartVisual, Plot, PlotVisual, Text, Visual,
-                               VisualFactory)
+                               Legend, MapSubFigure, MapVisual, PieChartVisual,
+                               Plot, PlotVisual, Text, Visual, VisualFactory)
