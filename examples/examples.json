@@ -12,14 +12,7 @@
     "Religion/2012-2024/LK:district/Map:Change",
     "Religion/2012-2024/LK:district/Cartogram:Change",
     "Religion/2012-2024/LK:district/Map:DiversityPew",
-    "Religion/2012-2024/LK:district/Map:Segregation",
-    "Religion/2012-2024/LK:district/Map:Flips"
-  ],
-  "Ethnicity": [
-    "Ethnicity/2024/LK-53:dsd/Map",
-    "Ethnicity/2024/LK-53:dsd/Cartogram",
-    "Ethnicity/Latest/LK-2:dsd/Map",
-    "Ethnicity/2024/LK-23:dsd/Map"
+    "Religion/2012-2024/LK:district/Map:Segregation"
   ],
   "Elections": [
     "Parliamentary/2024/LK/JSON",
@@ -44,28 +37,5 @@
     "Ethnicity/2024/LK-23:dsd/Map",
     "Basic/2024/LK:dsd/Map",
     "Basic/2024/LK:gnd/Map"
-  ],
-  "Other-Whats": [
-    "AgeGroup/2024/LK-1:district/Map",
-    "Communication/2012/LK-2:dsd/Map",
-    "ConstructionYear/2012/LK-3:dsd/Map",
-    "Fuel/2024/LK-4:dsd/Map",
-    "Economy/2012/LK-5:dsd/Map",
-    "Education/2012/LK-6:dsd/Map",
-    "Floor/2024/LK-2,LK-3/Map",
-    "Gender/2024/LK-1127025@20/Map",
-    "Lighting/2024/LK-61:dsd/Map",
-    "Marital/2012/LK-3,LK-9,LK-8/Map",
-    "Occupancy/2012/LK-1127:gnd/Map",
-    "Ownership/2012/LK-53:dsd/Map",
-    "Quarters/2012/LK-4...LK-6/Map",
-    "RelationshipToHead/2012/LK-23:dsd/Map",
-    "Roof/2024/LK-9:dsd/Map",
-    "Rooms/2012/LK-2:pd/Map",
-    "Structure/2024/LK-3:district/Map",
-    "Toilet/2024/LK-53:dsd/Map",
-    "Walls/2024/LK-8:dsd/Map",
-    "Waste/2012/LK-1:dsd/Map",
-    "Water/2024/LK-4:dsd/Map"
   ]
 }
