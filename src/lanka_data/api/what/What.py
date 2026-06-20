@@ -1,4 +1,4 @@
-from lanka_data.api.what.FieldNameUtils import FieldNameUtils
+from lanka_data.data.FieldNameUtils import FieldNameUtils
 from utils_future import Log
 
 log = Log("What")

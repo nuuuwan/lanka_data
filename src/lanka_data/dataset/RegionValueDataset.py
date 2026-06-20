@@ -1,3 +1,4 @@
+from lanka_data.data import FieldNameUtils
 from lanka_data.dataset.Dataset import Dataset
 
 
@@ -8,11 +9,16 @@ class RegionValueDataset(Dataset):
         Dataset.__init__(self)
         self.region_ids = region_ids
 
-    def expand(self, data):
+    def expand_and_clean(self, data):
+        values = {
+            FieldNameUtils.normalize(k): v for k, v in data["values"].items()
+        }
+        data["values"] = values
+
         total_value = data["total_value"]
         pct_values = {
             k: round(v / total_value, self.PCT_VALUE_PRECISION)
-            for k, v in data["values"].items()
+            for k, v in values.items()
         }
         data["pct_values"] = pct_values
         return data
@@ -29,6 +35,6 @@ class RegionValueDataset(Dataset):
             key=lambda row: self.region_ids.index(row["region_id"]),
         )
         expanded_data_table = [
-            self.expand(data) for data in sorted_data_table
+            self.expand_and_clean(data) for data in sorted_data_table
         ]
         return expanded_data_table

@@ -1,7 +1,7 @@
 import os
 
-from lanka_data.api.what.FieldNameUtils import FieldNameUtils
 from lanka_data.api.what.gig2.GIG2 import GIG2
+from lanka_data.data.FieldNameUtils import FieldNameUtils
 from utils_future import Log
 
 log = Log("Census2012")

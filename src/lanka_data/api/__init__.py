@@ -11,8 +11,7 @@ from lanka_data.api.how import (JSON, AbstractChart, BarChart, BumpChart,
                                 PieChart, Plot, SubFigure, SubFigureSpecs,
                                 Text)
 from lanka_data.api.what import (GIG2, BasicWhat, Census2012, Census2024,
-                                 DiffWhat, Elections, FieldNameUtils, What,
-                                 WhatFactory)
+                                 DiffWhat, Elections, What, WhatFactory)
 from lanka_data.api.where import (RegionLoadersMixin, RegionParserMixin,
                                   RegionRawDataMixin, Regions, RegionTypeUtils,
                                   Where)

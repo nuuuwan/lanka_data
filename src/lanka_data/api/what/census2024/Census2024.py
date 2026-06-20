@@ -1,8 +1,8 @@
 import os
 from functools import cache
 
-from lanka_data.api.what.FieldNameUtils import FieldNameUtils
 from lanka_data.api.what.What import What
+from lanka_data.data.FieldNameUtils import FieldNameUtils
 from utils_future import WWW, JSONFile, Log
 
 log = Log("Census2024")
