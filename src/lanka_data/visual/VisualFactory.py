@@ -11,14 +11,17 @@ log = Log("VisualFactory")
 class VisualFactory:
     @staticmethod
     def from_commmand_and_datasets(command, datasets):
-        if command.how_cmd == "JSON":
+        how_cmd = command.how_cmd
+        how_without_params = how_cmd.split(":")[0]
+
+        if how_without_params == "JSON":
             return JSONVisual(
                 command=command,
                 datasets=datasets,
                 how_cmd=command.how_cmd,
             )
 
-        if command.how_cmd == "Map" or command.how_cmd == "Cartogram":
+        if how_without_params == "Map" or how_without_params == "Cartogram":
             return MapVisual(
                 command=command,
                 datasets=datasets,
