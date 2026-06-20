@@ -10,4 +10,7 @@ log = Log("VisualFactory")
 class VisualFactory:
     @staticmethod
     def from_commmand_and_datasets(command, datasets):
-        return JSONVisual(datasets=datasets, how_cmd=command.how_cmd)
+        if command.how_cmd == "JSON":
+            return JSONVisual(datasets=datasets, how_cmd=command.how_cmd)
+
+        raise ValueError(f"Unknown how_cmd: {command.how_cmd}")
