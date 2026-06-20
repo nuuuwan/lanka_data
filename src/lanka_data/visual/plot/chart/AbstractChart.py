@@ -1,5 +1,5 @@
 from lanka_data.api.how.How import How
-from lanka_data.api.how.plot import ChartSubFigure, Plot
+from lanka_data.visual.plot import ChartSubFigure, Plot
 
 
 class AbstractChart(How):

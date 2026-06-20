@@ -1,8 +1,8 @@
-from lanka_data.api.how.map.color_spec import ColorSpecFactory
-from lanka_data.api.how.map.GeoData import GeoData
-from lanka_data.api.how.plot.Label import Label
-from lanka_data.api.how.plot.Legend import Legend
-from lanka_data.api.how.plot.Text import Text
+from lanka_data.visual.plot.color_spec import ColorSpecFactory
+from lanka_data.visual.plot.Label import Label
+from lanka_data.visual.plot.Legend import Legend
+from lanka_data.visual.plot.map.GeoData import GeoData
+from lanka_data.visual.plot.Text import Text
 
 
 class SubFigure:

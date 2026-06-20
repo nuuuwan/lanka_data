@@ -1,4 +1,4 @@
-from lanka_data.api.how.chart.AbstractChart import AbstractChart
+from lanka_data.visual.plot.chart.AbstractChart import AbstractChart
 
 
 class BumpChart(AbstractChart):

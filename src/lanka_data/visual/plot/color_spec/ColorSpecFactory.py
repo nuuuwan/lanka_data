@@ -1,6 +1,6 @@
-from lanka_data.api.how.map.color_spec import ColorSpec
-from lanka_data.api.how.map.color_spec.ColorSpecHelpers import ColorSpecHelpers
 from lanka_data.api.what.DiffWhat import DiffWhat
+from lanka_data.visual.plot.color_spec import ColorSpec
+from lanka_data.visual.plot.color_spec.ColorSpecHelpers import ColorSpecHelpers
 
 
 class ColorSpecFactory:

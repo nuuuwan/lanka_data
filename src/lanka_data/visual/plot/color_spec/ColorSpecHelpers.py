@@ -1,5 +1,5 @@
 from lanka_data.api.data import Diversity, Segregation
-from lanka_data.api.how.map.color_spec import ColorSpec
+from lanka_data.visual.plot.color_spec import ColorSpec
 
 
 class ColorSpecHelpers:

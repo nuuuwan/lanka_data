@@ -1,7 +1,7 @@
 from matplotlib.ticker import FuncFormatter
 
-from lanka_data.api.how.chart.AbstractChart import AbstractChart
-from lanka_data.api.how.plot.Legend import Legend
+from lanka_data.visual.plot.chart.AbstractChart import AbstractChart
+from lanka_data.visual.plot.Legend import Legend
 
 
 class BarChart(AbstractChart):

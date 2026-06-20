@@ -15,9 +15,6 @@ class CommandBase:
             [self.what_cmd, self.when_cmd, self.where_cmd, self.how_cmd]
         )
 
-    def unpack(self):
-        return self.what_cmd, self.when_cmd, self.where_cmd, self.how_cmd
-
     def __str__(self):
         return f"Command({self.cmd_id})"
 

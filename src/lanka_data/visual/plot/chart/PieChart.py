@@ -2,9 +2,9 @@ import math
 
 from matplotlib.patches import Rectangle, Wedge
 
-from lanka_data.api.how.chart.AbstractChart import AbstractChart
-from lanka_data.api.how.chart.BarChart import BarChart
-from lanka_data.api.how.plot.Legend import Legend
+from lanka_data.visual.plot.chart.AbstractChart import AbstractChart
+from lanka_data.visual.plot.chart.BarChart import BarChart
+from lanka_data.visual.plot.Legend import Legend
 
 
 class PieChart(AbstractChart):

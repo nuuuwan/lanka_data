@@ -1,4 +1,4 @@
-from lanka_data.api.how.plot.LabelFit import LabelFit
+from lanka_data.visual.plot.LabelFit import LabelFit
 from utils_future import ColorUtils
 
 

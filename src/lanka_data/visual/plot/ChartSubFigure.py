@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 
 from lanka_data.api.data.Diversity import Diversity
-from lanka_data.api.how.map.color_spec import ColorSpec, ColorSpecFactory
-from lanka_data.api.how.map.GeoData import GeoData
-from lanka_data.api.how.plot.Text import Text
+from lanka_data.visual.plot.color_spec import ColorSpec, ColorSpecFactory
+from lanka_data.visual.plot.map.GeoData import GeoData
+from lanka_data.visual.plot.Text import Text
 
 
 class ChartSubFigure:
