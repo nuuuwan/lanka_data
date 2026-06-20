@@ -9,6 +9,9 @@ class RegionValueDataset(Dataset):
         Dataset.__init__(self)
         self.region_ids = region_ids
 
+    def get_complete_data_table(self):
+        raise NotImplementedError
+
     def expand_and_clean(self, data):
         values = {
             FieldNameUtils.normalize(k): v for k, v in data["values"].items()
