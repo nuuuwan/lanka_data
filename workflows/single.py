@@ -7,8 +7,9 @@ from lanka_data.command.CommandRunner import CommandRunner
 
 def main(command_str):
     output = CommandRunner.run(command_str)
-    image_path = output.get("result", {}).get("image_path")
-    if image_path:
+    result = output.get("result")
+    if result and "image_path" in result:
+        image_path = result["image_path"]
         os.system(f"open {image_path}")
     print(json.dumps(output, indent=2))
 
