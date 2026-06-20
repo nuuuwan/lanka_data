@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 from lanka_data.visual.JSONVisual import JSONVisual
+from lanka_data.visual.MapVisual import MapVisual
 from utils_future import Log
 
 log = Log("VisualFactory")
@@ -12,5 +13,8 @@ class VisualFactory:
     def from_commmand_and_datasets(command, datasets):
         if command.how_cmd == "JSON":
             return JSONVisual(datasets=datasets, how_cmd=command.how_cmd)
+
+        if command.how_cmd == "Map":
+            return MapVisual(datasets=datasets, how_cmd=command.how_cmd)
 
         raise ValueError(f"Unknown how_cmd: {command.how_cmd}")
