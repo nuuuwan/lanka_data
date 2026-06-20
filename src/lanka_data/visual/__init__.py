@@ -9,8 +9,7 @@ from lanka_data.visual.PieChartVisual import PieChartVisual
 from lanka_data.visual.plot import (ColorSpec, ColorSpecConstants,
                                     ColorSpecFactory, ColorSpecHelpers, Font,
                                     Footer, GeoData, Header, HeaderFooterBars,
-                                    Label, LabelFit, Legend, MapSubFigure,
-                                    Plot, Text)
+                                    Label, LabelFit, Legend, Plot, Text)
 from lanka_data.visual.PlotVisual import PlotVisual
 from lanka_data.visual.Visual import Visual
 from lanka_data.visual.VisualFactory import VisualFactory

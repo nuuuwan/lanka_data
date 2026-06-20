@@ -18,5 +18,5 @@ from lanka_data.visual import (BarChartVisual, BumpChartVisual, ColorSpec,
                                ColorSpecConstants, ColorSpecFactory,
                                ColorSpecHelpers, Font, Footer, GeoData, Header,
                                HeaderFooterBars, JSONVisual, Label, LabelFit,
-                               Legend, MapSubFigure, MapVisual, PieChartVisual,
-                               Plot, PlotVisual, Text, Visual, VisualFactory)
+                               Legend, MapVisual, PieChartVisual, Plot,
+                               PlotVisual, Text, Visual, VisualFactory)
