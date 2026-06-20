@@ -1,3 +1,4 @@
+import random
 from dataclasses import dataclass
 
 from lanka_data.visual.plot.color_spec.ColorSpecConstants import \
@@ -81,6 +82,7 @@ class ColorSpec:
         sorted_color_keys = sorted(
             list(set([func_key_getter(data) for data in data_list]))
         )
+        random.shuffle(sorted_color_keys)
 
         n_keys = len(sorted_color_keys)
         region_to_color = {}
