@@ -7,11 +7,9 @@ class Segregation:
     SEGREGATION_LIMIT = 0.2
 
     @staticmethod
-    def get_region_to_neighbours(result_data):
+    def get_region_to_neighbours(dataset):
         region_to_neighbours = {}
-        region_idx = {
-            result["region_id"]: result for result in result_data["data_list"]
-        }
+        region_idx = dataset.get_data_idx()
         region_ids = list(region_idx.keys())
         for region_id1 in region_ids:
             lat1, lng1 = (

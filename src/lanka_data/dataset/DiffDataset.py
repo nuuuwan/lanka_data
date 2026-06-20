@@ -1,12 +1,11 @@
-from lanka_data.dataset.Dataset import Dataset
 from lanka_data.dataset.RegionValueDataset import RegionValueDataset
 
 
-class DiffDataset(Dataset):
+class DiffDataset(RegionValueDataset):
     def __init__(
         self, dataset1: RegionValueDataset, dataset2: RegionValueDataset
     ):
-        Dataset.__init__(self)
+        RegionValueDataset.__init__(self, dataset1.region_data_list)
         self.dataset1 = dataset1
         self.dataset2 = dataset2
 
@@ -51,13 +50,18 @@ class DiffDataset(Dataset):
             values = {}
             pct_values = {}
             for k in common_keys:
-                values[k] = values2[k] - values1[k]
-                pct_values[k] = pct_values2[k] - pct_values1[k]
+                values[k] = int(values2[k] - values1[k])
+                pct_values[k] = round(
+                    pct_values2[k] - pct_values1[k],
+                    RegionValueDataset.PCT_VALUE_PRECISION,
+                )
             total_value = sum(values.values())
 
             d = dict(
                 region_id=data1["region_id"],
                 region_name=data1["region_name"],
+                center_lat=data1["center_lat"],
+                center_lng=data1["center_lng"],
                 values1=values1,
                 pct_values1=pct_values1,
                 total_value1=data1["total_value"],
@@ -70,3 +74,9 @@ class DiffDataset(Dataset):
             )
             d_list.append(d)
         return d_list
+
+    def get_source_data_table(self) -> list[dict]:
+        raise NotImplementedError
+
+    def clean_data_row(self, row: dict) -> dict:
+        raise NotImplementedError

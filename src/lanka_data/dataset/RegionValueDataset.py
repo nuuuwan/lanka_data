@@ -28,6 +28,8 @@ class RegionValueDataset(Dataset):
         expanded_data = dict(
             region_id=data["region_id"],
             region_name=region["region_name"],
+            center_lat=region["center_lat"],
+            center_lng=region["center_lng"],
         )
         values = {k: v for k, v in data["values"].items()}
         values = dict(sorted(values.items(), key=lambda item: -item[1]))
