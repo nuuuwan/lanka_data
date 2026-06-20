@@ -2,7 +2,7 @@
 # flake8: noqa: F408
 
 from lanka_data.command import (Command, CommandBase, CommandHelp,
-                                CommandLoaderMixin)
+                                CommandLoaderMixin, CommandRunner)
 from lanka_data.data import Diversity, FieldNameUtils, Segregation
 from lanka_data.dataset import (Census2012Dataset, Census2024Dataset, Dataset,
                                 DatasetFactory, DiffDataset, ElectionDataset,
