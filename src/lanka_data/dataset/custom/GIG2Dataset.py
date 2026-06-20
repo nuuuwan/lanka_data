@@ -1,23 +1,26 @@
 from abc import abstractmethod
 
+from lanka_data.data.FieldNameUtils import FieldNameUtils
 from lanka_data.dataset.RegionValueDataset import RegionValueDataset
 from utils_future import WWW, JSONFile, Log
 
-log = Log("Census2024")
+log = Log("GIG2Dataset")
 
 
 class GIG2Dataset(RegionValueDataset):
-    def __init__(self, region_ids: list[str], table_id: str):
-        RegionValueDataset.__init__(self, region_ids)
+    def __init__(self, region_data_list: list[dict], table_id: str):
+        RegionValueDataset.__init__(self, region_data_list)
         self.table_id = table_id
 
     @classmethod
-    def from_label_and_region_ids(cls, label: str, region_ids: list[str]):
+    def from_label_and_region_data_list(
+        cls, label: str, region_data_list: list[dict]
+    ):
         label_to_table_id = cls.get_label_to_table_id()
         if label not in label_to_table_id:
             raise ValueError(f"Label '{label}' not found in metadata.")
         table_id = label_to_table_id[label]
-        return cls(region_ids, table_id)
+        return cls(region_data_list, table_id)
 
     @classmethod
     @abstractmethod
@@ -55,4 +58,14 @@ class GIG2Dataset(RegionValueDataset):
         return WWW(url).read_tsv()
 
     def clean_data_row(self, row: dict) -> dict:
-        return row
+        d = {"region_id": row["entity_id"]}
+        values = {}
+        for k, v in row.items():
+            if k in ["entity_id"]:
+                continue
+            if "total" in k:
+                continue
+            values[FieldNameUtils.normalize(k)] = int(float(v))
+
+        d["values"] = values
+        return d

@@ -3,23 +3,23 @@ import os
 from lanka_data.dataset.RegionValueDataset import RegionValueDataset
 from utils_future import WWW, JSONFile, Log
 
-log = Log("Census2024")
+log = Log("Census2024Dataset")
 
 
 class Census2024Dataset(RegionValueDataset):
-    def __init__(self, region_ids: list[str], table_id: str):
-        RegionValueDataset.__init__(self, region_ids)
+    def __init__(self, region_data_list: list[dict], table_id: str):
+        RegionValueDataset.__init__(self, region_data_list)
         self.table_id = table_id
 
     @classmethod
-    def from_label_and_region_ids(
-        cls, label: str, region_ids: list[str]
+    def from_label_and_region_data_list(
+        cls, label: str, region_data_list: list[dict]
     ) -> "Census2024Dataset":
         label_to_table_id = cls.get_label_to_table_id()
         if label not in label_to_table_id:
             raise ValueError(f"Label '{label}' not found in metadata.")
         table_id = label_to_table_id[label]
-        return cls(region_ids, table_id)
+        return cls(region_data_list, table_id)
 
     @classmethod
     def metadata_file_path(cls) -> str:

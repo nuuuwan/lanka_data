@@ -10,26 +10,26 @@ log = Log("DatasetFactory")
 class DatasetFactory:
 
     @staticmethod
-    def get_region_ids(command):
-        return Regions.from_command(command).region_ids
+    def get_region_data_list(command):
+        return Regions.from_command(command).raw_region_data_list
 
     @staticmethod
     def from_command(command):
-        region_ids = DatasetFactory.get_region_ids(command)
+        region_data_list = DatasetFactory.get_region_data_list(command)
         if (
             command.when_cmd == "2024"
             and command.what_cmd in Census2024Dataset.get_labels()
         ):
-            return Census2024Dataset.from_label_and_region_ids(
-                command.what_cmd, region_ids
+            return Census2024Dataset.from_label_and_region_data_list(
+                command.what_cmd, region_data_list
             )
 
         if (
             command.when_cmd == "2012"
             and command.what_cmd in Census2012Dataset.get_labels()
         ):
-            return Census2012Dataset.from_label_and_region_ids(
-                command.what_cmd, region_ids
+            return Census2012Dataset.from_label_and_region_data_list(
+                command.what_cmd, region_data_list
             )
 
         raise ValueError(f"Dataset unknown for: {command}")

@@ -1,6 +1,5 @@
 import os
 
-from lanka_data.data.FieldNameUtils import FieldNameUtils
 from lanka_data.dataset.custom.GIG2Dataset import GIG2Dataset
 from utils_future import Log
 
@@ -34,14 +33,3 @@ class Census2012Dataset(GIG2Dataset):
 
     def get_year(self) -> str:
         return "2012"
-
-    def clean_data_row(self, row: dict) -> dict:
-        d = {"region_id": row["entity_id"]}
-        values = {}
-        for k, v in row.items():
-            if k in ["entity_id"]:
-                continue
-            values[FieldNameUtils.normalize(k)] = int(float(v))
-
-        d["values"] = values
-        return d
