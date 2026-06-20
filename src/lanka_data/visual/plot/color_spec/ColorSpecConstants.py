@@ -10,6 +10,7 @@ class ColorSpecConstants:
         # Religion & Ethnicity
         "#FFBE29": ["Buddhist"],
         "#EB7400": ["Hindu", "SLTamil"],
+        "#cc8800": ["IndMalaiyagaTamil"],
         "#00534E": ["Islam", "SLMuslim"],
         "#8D153A": ["Sinhalese"],
         "#2000c0": ["OtherChristian"],
