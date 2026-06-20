@@ -71,9 +71,9 @@ class Diversity:
 
     @staticmethod
     def get_region_to_diversity(
-        result_data, is_pew=False, pct_values_key="pct_values"
+        dataset, is_pew=False, pct_values_key="pct_values"
     ):
-        data_list = result_data["data_list"]
+        data_list = dataset.get_data_table()
         region_to_diversity = {}
         for data in data_list:
             diversity = Diversity._compute_diversity(
