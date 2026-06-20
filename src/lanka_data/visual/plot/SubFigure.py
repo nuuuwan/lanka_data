@@ -18,8 +18,7 @@ class SubFigure:
         data_list = self.dataset.get_data_table()
         n_regions = len(data_list)
         gdf_region = GeoData.get_geopandas_dataframe(
-            data_list,
-            "Cartogram" in self.how_cmd,
+            data_list, "Cartogram" in self.how_cmd
         ).copy()
         region_color_map, value_to_color = ColorSpecFactory.get_color_spec(
             self.dataset, self.how_cmd

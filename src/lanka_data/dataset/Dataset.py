@@ -23,3 +23,7 @@ class Dataset(ABC):
     @abstractmethod
     def get_data_table(self) -> list[dict]:
         pass
+
+    @abstractmethod
+    def has_values(self) -> bool:
+        pass

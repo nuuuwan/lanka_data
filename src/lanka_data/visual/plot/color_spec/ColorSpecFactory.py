@@ -1,5 +1,8 @@
 from lanka_data.visual.plot.color_spec import ColorSpec
 from lanka_data.visual.plot.color_spec.ColorSpecHelpers import ColorSpecHelpers
+from utils_future import Log
+
+log = Log("ColorSpecFactory")
 
 
 class ColorSpecFactory:
@@ -9,18 +12,15 @@ class ColorSpecFactory:
         is_diff = dataset.is_diff()
         if ":" in how_cmd:
             how_without_params, how_params = how_cmd.split(":")
-
         else:
             how_without_params = how_cmd
             how_params = None
 
-        values = (
-            dataset.get_data_table()[0].get("values")
-            if dataset.get_data_table()
-            else None
-        )
+        log.debug(f"{how_without_params=}, {how_params=}, {is_diff=}")
 
-        if values is None:
+        has_values = dataset.has_values()
+
+        if not has_values:
             return ColorSpec.by_custom_category_key(
                 dataset,
                 lambda data: data["region_id"],

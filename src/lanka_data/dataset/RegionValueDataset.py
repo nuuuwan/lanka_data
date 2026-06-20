@@ -1,3 +1,4 @@
+from abc import abstractmethod
 from functools import cached_property
 
 from lanka_data.data import FieldNameUtils
@@ -43,6 +44,10 @@ class RegionValueDataset(Dataset):
         expanded_data["pct_values"] = pct_values
         return expanded_data
 
+    @abstractmethod
+    def get_complete_data_table(self):
+        pass
+
     def get_data_table(self):
         complete_data_table = self.get_complete_data_table()
         filtered_data_table = [
@@ -58,3 +63,6 @@ class RegionValueDataset(Dataset):
             self.expand_and_clean(data) for data in sorted_data_table
         ]
         return expanded_data_table
+
+    def has_values(self) -> bool:
+        return True
