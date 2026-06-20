@@ -35,7 +35,10 @@ class GeoData:
             )
             gdfs.append(gdf[gdf["region_id"].isin(ids)])
 
-        return geopandas.GeoDataFrame(pd.concat(gdfs, ignore_index=True))
+        combined = geopandas.GeoDataFrame(pd.concat(gdfs, ignore_index=True))
+        if combined.crs is None and gdfs:
+            combined = combined.set_crs(gdfs[0].crs)
+        return combined
 
     @staticmethod
     def _dissolve_by_region(gdf, region_to_current_ids):
@@ -123,8 +126,9 @@ class GeoData:
             )
 
         gdf_enriched = cls._enrich_from_data_list(gdf, data_list)
-        geopandas.GeoDataFrame(gdf_enriched).to_file(
-            temp_gdf_path, driver="GeoJSON"
-        )
+        gdf_out = geopandas.GeoDataFrame(gdf_enriched)
+        if gdf_out.crs is None:
+            gdf_out = gdf_out.set_crs("EPSG:4326")
+        gdf_out.to_file(temp_gdf_path, driver="GeoJSON")
         log.debug(f"Wrote {temp_gdf_path}")
         return gdf_enriched
