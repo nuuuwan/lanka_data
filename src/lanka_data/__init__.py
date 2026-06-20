@@ -6,8 +6,8 @@ from lanka_data.command import (Command, CommandBase, CommandHelp,
 from lanka_data.data import Diversity, FieldNameUtils, Segregation
 from lanka_data.dataset import (Census2012Dataset, Census2024Dataset, Dataset,
                                 DatasetFactory, DiffDataset, ElectionDataset,
-                                ElectionSummaryDataset, GIG2Dataset,
-                                RegionValueDataset)
+                                ElectionSummaryDataset, EmptyDataset,
+                                GIG2Dataset, RegionValueDataset)
 from lanka_data.examples import Example
 from lanka_data.readme import (ReadMe, ReadMeExamplesMixin, ReadMeFooterMixin,
                                ReadMeSourcesMixin, ReadMeUsageMixin)

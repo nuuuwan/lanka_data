@@ -2,6 +2,7 @@ from lanka_data.dataset.custom.Census2012Dataset import Census2012Dataset
 from lanka_data.dataset.custom.Census2024Dataset import Census2024Dataset
 from lanka_data.dataset.custom.ElectionDataset import ElectionDataset
 from lanka_data.dataset.DiffDataset import DiffDataset
+from lanka_data.dataset.EmptyDataset import EmptyDataset
 from lanka_data.region.Regions import Regions
 from utils_future import Log
 
@@ -17,6 +18,10 @@ class DatasetFactory:
     @staticmethod
     def from_command(command):
         region_data_list = DatasetFactory.get_region_data_list(command)
+
+        if command.what_cmd == "Empty":
+            return EmptyDataset(region_data_list)
+
         if (
             command.when_cmd == "2024"
             and command.what_cmd in Census2024Dataset.get_labels()

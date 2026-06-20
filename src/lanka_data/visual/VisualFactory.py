@@ -27,7 +27,7 @@ class VisualFactory:
         if (
             how_without_params == "Map"
             or how_without_params == "Cartogram"
-            or how_without_params == "Basic"
+            or how_without_params == "None"
         ):
             return MapVisual(
                 command=command,
