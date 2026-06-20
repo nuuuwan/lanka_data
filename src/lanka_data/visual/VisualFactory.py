@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from lanka_data.visual.BarChartVisual import BarChartVisual
 from lanka_data.visual.JSONVisual import JSONVisual
 from lanka_data.visual.MapVisual import MapVisual
 from utils_future import Log
@@ -23,6 +24,13 @@ class VisualFactory:
 
         if how_without_params == "Map" or how_without_params == "Cartogram":
             return MapVisual(
+                command=command,
+                datasets=datasets,
+                how_cmd=command.how_cmd,
+            )
+
+        if how_without_params == "BarChart":
+            return BarChartVisual(
                 command=command,
                 datasets=datasets,
                 how_cmd=command.how_cmd,

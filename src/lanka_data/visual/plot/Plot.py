@@ -8,7 +8,6 @@ from lanka_data.visual.plot.Font import Font
 from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
 from lanka_data.visual.plot.HeaderFooterBars import HeaderFooterBars
-from lanka_data.visual.plot.SubFigure import SubFigure
 from lanka_data.visual.plot.Text import Text
 from utils_future import Log
 
@@ -34,7 +33,7 @@ class Plot:
 
         for i_dataset, dataset in enumerate(self.visual.datasets):
             sub_fig = fig.add_subfigure(outer_gs[0, i_dataset])
-            SubFigure(dataset, self.visual.how_cmd).draw(sub_fig)
+            self.visual.draw(dataset, sub_fig)
         return fig
 
     def draw(self):

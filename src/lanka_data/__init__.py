@@ -14,10 +14,10 @@ from lanka_data.dataset import (Census2012Dataset, Census2024Dataset, Dataset,
 from lanka_data.examples import Example
 from lanka_data.readme import (ReadMe, ReadMeExamplesMixin, ReadMeFooterMixin,
                                ReadMeSourcesMixin, ReadMeUsageMixin)
-from lanka_data.visual import (AbstractChart, BarChart, BumpChart,
-                               ChartSubFigure, ColorSpec, ColorSpecConstants,
-                               ColorSpecFactory, ColorSpecHelpers, Font,
-                               Footer, GeoData, Header, HeaderFooterBars,
-                               JSONVisual, Label, LabelFit, Legend,
-                               MapSubFigure, MapVisual, PieChart, Plot,
-                               SubFigure, Text, Visual, VisualFactory)
+from lanka_data.visual import (AbstractChart, BarChart, BarChartVisual,
+                               BumpChart, ChartSubFigure, ColorSpec,
+                               ColorSpecConstants, ColorSpecFactory,
+                               ColorSpecHelpers, Font, Footer, GeoData, Header,
+                               HeaderFooterBars, JSONVisual, Label, LabelFit,
+                               Legend, MapSubFigure, MapVisual, PieChart, Plot,
+                               PlotVisual, Text, Visual, VisualFactory)
