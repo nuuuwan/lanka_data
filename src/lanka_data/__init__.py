@@ -1,11 +1,9 @@
 # lanka_data (auto generate by build_inits.py)
 # flake8: noqa: F408
 
-from lanka_data.api import (GIG2, BasicWhat, Census2012, Census2024, DiffWhat,
-                            Diversity, Elections, How, RegionLoadersMixin,
+from lanka_data.api import (Diversity, How, RegionLoadersMixin,
                             RegionParserMixin, RegionRawDataMixin, Regions,
-                            RegionTypeUtils, Segregation, What, WhatFactory,
-                            Where)
+                            RegionTypeUtils, Segregation, What, Where)
 from lanka_data.command import (Command, CommandBase, CommandHelp,
                                 CommandLoaderMixin)
 from lanka_data.data import FieldNameUtils

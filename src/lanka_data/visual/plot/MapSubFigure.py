@@ -1,4 +1,3 @@
-from lanka_data.api.what.DiffWhat import DiffWhat
 from lanka_data.visual.plot.color_spec import ColorSpecFactory
 from lanka_data.visual.plot.Label import Label
 from lanka_data.visual.plot.Legend import Legend
@@ -21,8 +20,6 @@ class MapSubFigure:
     @staticmethod
     def _legend_title(command):
         """Return a short title describing what the legend colours represent."""
-        if not isinstance(command.get_what(), DiffWhat):
-            return None
         params = getattr(command.get_how(), "params", None)
         label_map = {
             "Flips": "Flip",
