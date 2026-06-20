@@ -1,0 +1,102 @@
+{
+  "AgeGroup": {
+    "id": "population-age_group",
+    "description": "Population distributed across standard age bands"
+  },
+  "Communication": {
+    "id": "social-household-communication_items",
+    "description": "Households classified by ownership of communication items such as telephone, radio, and television"
+  },
+  "ConstructionYear": {
+    "id": "social-household-year_of_construction",
+    "description": "Housing units classified by the decade or period in which they were constructed"
+  },
+  "Economy": {
+    "id": "economy-economic-activity",
+    "description": "Population classified by economic activity status including employed, unemployed, and economically inactive"
+  },
+  "Education": {
+    "id": "education-educational-attainment",
+    "description": "Population classified by the highest level of educational qualification attained"
+  },
+  "Ethnicity": {
+    "id": "population-ethnicity",
+    "description": "Population distributed by ethnic group such as Sinhalese, Sri Lanka Tamil, Moor, and others"
+  },
+  "Floor": {
+    "id": "social-household-floor_type",
+    "description": "Housing units classified by the main material used for floor construction"
+  },
+  "Fuel": {
+    "id": "social-household-cooking_fuel",
+    "description": "Households classified by the primary fuel used for cooking"
+  },
+  "Gender": {
+    "id": "population-gender",
+    "description": "Population broken down by male and female"
+  },
+  "Lighting": {
+    "id": "social-household-lighting",
+    "description": "Households classified by their primary source of lighting"
+  },
+  "Marital": {
+    "id": "population-marital_status",
+    "description": "Population classified by marital status such as never married, married, widowed, and divorced"
+  },
+  "Occupancy": {
+    "id": "social-household-occupation_status",
+    "description": "Housing units classified by occupancy status, distinguishing occupied from vacant units"
+  },
+  "Ownership": {
+    "id": "social-household-ownership-status",
+    "description": "Households classified by the ownership status of their dwelling, such as owned or rented"
+  },
+  "Persons": {
+    "id": "social-household-number_of_persons",
+    "description": "Households classified by the number of persons living in the dwelling"
+  },
+  "Quarters": {
+    "id": "social-household-living_quarters",
+    "description": "Households classified by the type of living quarters such as housing units, collective living quarters, and makeshift housing"
+  },
+  "RelationshipToHead": {
+    "id": "social-household-relationship_to_head",
+    "description": "Population classified by their relationship to the head of the household"
+  },
+  "Religion": {
+    "id": "population-religion",
+    "description": "Population distributed by religious affiliation such as Buddhist, Hindu, Islam, and Christian"
+  },
+  "Roof": {
+    "id": "social-household-roof_type",
+    "description": "Housing units classified by the main material used for roof construction"
+  },
+  "Rooms": {
+    "id": "social-household-number_of_rooms",
+    "description": "Households classified by the number of rooms in the dwelling"
+  },
+  "Structure": {
+    "id": "social-household-structure",
+    "description": "Housing units classified by structural type such as permanent, semi-permanent, and temporary"
+  },
+  "Toilet": {
+    "id": "social-household-toilet_facilities",
+    "description": "Households classified by the type of toilet facility available"
+  },
+  "Unit": {
+    "id": "social-household-type_of_unit",
+    "description": "Housing units classified by type such as house, flat, annexe, or room"
+  },
+  "Walls": {
+    "id": "social-household-wall_type",
+    "description": "Housing units classified by the main material used for wall construction"
+  },
+  "Waste": {
+    "id": "social-household-solid_waste_disposal",
+    "description": "Households classified by the method used for solid waste disposal"
+  },
+  "Water": {
+    "id": "social-household-source_of_drinking_water",
+    "description": "Households classified by their main source of drinking water"
+  }
+}

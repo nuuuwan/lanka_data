@@ -9,8 +9,10 @@ from lanka_data.api import (GIG2, BasicWhat, Census2012, Census2024, DiffWhat,
 from lanka_data.command import (Command, CommandBase, CommandHelp,
                                 CommandLoaderMixin)
 from lanka_data.data import FieldNameUtils
-from lanka_data.dataset import (Census2024Dataset, Dataset, DatasetFactory,
-                                DiffDataset, RegionValueDataset)
+from lanka_data.dataset import (Census2012Dataset, Census2024Dataset, Dataset,
+                                DatasetFactory, DiffDataset, ElectionDataset,
+                                ElectionSummaryDataset, GIG2Dataset,
+                                RegionValueDataset)
 from lanka_data.examples import Example
 from lanka_data.readme import (ReadMe, ReadMeExamplesMixin, ReadMeFooterMixin,
                                ReadMeSourcesMixin, ReadMeUsageMixin)
