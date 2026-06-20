@@ -11,40 +11,22 @@ class BumpChartVisual(PlotVisual):
 
     @classmethod
     def _add_segmented_line(cls, ax, rank1, rank2, color):
-        start = (0.0, rank1)
-        end = (1.0, rank2)
-
-        start_px = ax.transData.transform(start)
-        end_px = ax.transData.transform(end)
-        dx_total = end_px[0] - start_px[0]
-        dy_total = end_px[1] - start_px[1]
-
-        abs_dx_total = abs(dx_total)
-        abs_dy_total = abs(dy_total)
-
-        if abs_dy_total < abs_dx_total:
-            horizontal_px = (abs_dx_total - abs_dy_total) / 2
-            x_direction = 1 if dx_total >= 0 else -1
-            elbow1_px = (
-                start_px[0] + x_direction * horizontal_px,
-                start_px[1],
-            )
-            elbow2_px = (
-                end_px[0] - x_direction * horizontal_px,
-                end_px[1],
-            )
+        start, end = (0.0, rank1), (1.0, rank2)
+        sp = ax.transData.transform(start)
+        ep = ax.transData.transform(end)
+        dx, dy = ep[0] - sp[0], ep[1] - sp[1]
+        if abs(dy) < abs(dx):
+            h = (abs(dx) - abs(dy)) / 2
+            xd = 1 if dx >= 0 else -1
             inv = ax.transData.inverted()
-            elbow1 = tuple(inv.transform(elbow1_px))
-            elbow2 = tuple(inv.transform(elbow2_px))
-            points = [start, elbow1, elbow2, end]
+            e1 = tuple(inv.transform((sp[0] + xd * h, sp[1])))
+            e2 = tuple(inv.transform((ep[0] - xd * h, ep[1])))
+            points = [start, e1, e2, end]
         else:
             points = [start, end]
-
-        x_vals = [point[0] for point in points]
-        y_vals = [point[1] for point in points]
         ax.plot(
-            x_vals,
-            y_vals,
+            [p[0] for p in points],
+            [p[1] for p in points],
             color=color,
             linewidth=cls.LINE_WIDTH,
             alpha=0.95,
@@ -55,85 +37,58 @@ class BumpChartVisual(PlotVisual):
     @staticmethod
     def _has_diff_values(subregions):
         return any(
-            subregion.get("values1") is not None
-            and subregion.get("values2") is not None
-            for subregion in subregions
+            s.get("values1") is not None and s.get("values2") is not None
+            for s in subregions
         )
 
     @staticmethod
     def _get_region_totals(subregions, value_key):
-        region_to_total = {}
-        for subregion in subregions:
-            region_id = subregion.get("region_id")
-            if region_id is None:
-                continue
-            values = subregion.get(value_key) or {}
-            region_to_total[region_id] = sum(values.values())
-        return region_to_total
+        return {
+            s["region_id"]: sum((s.get(value_key) or {}).values())
+            for s in subregions
+            if s.get("region_id") is not None
+        }
 
     @staticmethod
     def _get_rank_map(region_to_total):
-        ranked_regions = sorted(
-            region_to_total.items(),
-            key=lambda item: (-item[1], item[0]),
-        )
-        return {
-            region_id: rank
-            for rank, (region_id, _) in enumerate(ranked_regions, start=1)
-        }
+        ranked = sorted(region_to_total.items(), key=lambda x: (-x[1], x[0]))
+        return {rid: rank for rank, (rid, _) in enumerate(ranked, start=1)}
 
     @classmethod
     def _get_selected_region_ids(cls, rank_map1, rank_map2):
-        all_region_ids = set(rank_map1.keys()) | set(rank_map2.keys())
         return sorted(
-            all_region_ids,
-            key=lambda region_id: (
-                min(
-                    rank_map1.get(region_id, 10**6),
-                    rank_map2.get(region_id, 10**6),
-                ),
-                region_id,
+            set(rank_map1) | set(rank_map2),
+            key=lambda rid: (
+                min(rank_map1.get(rid, 10**6), rank_map2.get(rid, 10**6)),
+                rid,
             ),
         )
 
-    @staticmethod
-    def _get_region_id_to_name(subregions):
-        return {
-            subregion.get("region_id"): subregion.get("region_name")
-            or str(subregion.get("region_id"))
-            for subregion in subregions
-            if subregion.get("region_id") is not None
-        }
-
     @classmethod
     def _draw_bump_lines(
-        cls, ax, region_ids, rank_map1, rank_map2, region_id_to_name
+        cls, ax, region_ids, rank_map1, rank_map2, id_to_name
     ):
-        n_regions = len(region_ids)
-        fallback_rank = n_regions + 1
-        for region_id in region_ids:
-            rank1 = rank_map1.get(region_id, fallback_rank)
-            rank2 = rank_map2.get(region_id, fallback_rank)
-            rank_delta = rank2 - rank1
-            if rank_delta < 0:
-                color = cls.COLOR_INCREASE
-            elif rank_delta > 0:
-                color = cls.COLOR_DECREASE
-            else:
-                color = cls.COLOR_UNCHANGED
-            region_name = region_id_to_name.get(region_id, str(region_id))
-            cls._add_segmented_line(ax, rank1, rank2, color)
+        fallback = len(region_ids) + 1
+        for rid in region_ids:
+            r1 = rank_map1.get(rid, fallback)
+            r2 = rank_map2.get(rid, fallback)
+            delta = r2 - r1
+            color = (
+                cls.COLOR_INCREASE
+                if delta < 0
+                else (
+                    cls.COLOR_DECREASE if delta > 0 else cls.COLOR_UNCHANGED
+                )
+            )
+            name = id_to_name.get(rid, str(rid))
+            cls._add_segmented_line(ax, r1, r2, color)
             ax.scatter(
-                [0, 1],
-                [rank1, rank2],
-                color=color,
-                s=cls.MARKER_SIZE,
-                zorder=3,
+                [0, 1], [r1, r2], color=color, s=cls.MARKER_SIZE, zorder=3
             )
             ax.text(
                 -0.03,
-                rank1,
-                f"{region_name} ({rank1})",
+                r1,
+                f"{name} ({r1})",
                 ha="right",
                 va="center",
                 fontsize=cls.LABEL_FONTSIZE,
@@ -141,8 +96,8 @@ class BumpChartVisual(PlotVisual):
             )
             ax.text(
                 1.03,
-                rank2,
-                f"{region_name} ({rank2})",
+                r2,
+                f"{name} ({r2})",
                 ha="left",
                 va="center",
                 fontsize=cls.LABEL_FONTSIZE,
@@ -163,40 +118,10 @@ class BumpChartVisual(PlotVisual):
         ax.spines["right"].set_visible(False)
 
     def draw(self, dataset, fig):
-        data_list = dataset.get_data_table()
-
-        subregions = []
-        for data in data_list:
-            values = data.get("values") or {}
-            if not values:
-                continue
-            values = dict(sorted(values.items(), key=lambda item: -item[1]))
-            total_value = data.get("total_value")
-            if total_value is None:
-                total_value = sum(values.values())
-            pct_values = data.get("pct_values") or {
-                k: (v / total_value if total_value else 0)
-                for k, v in values.items()
-            }
-            subregions.append(
-                {
-                    "region_id": data.get("region_id"),
-                    "region_name": data.get("region_name")
-                    or str(data.get("region_id")),
-                    "values": values,
-                    "values1": data.get("values1"),
-                    "values2": data.get("values2"),
-                    "total_value": total_value,
-                    "pct_values": pct_values,
-                }
-            )
-
-        when_labels = None
+        subregions = self._build_subregions(dataset.get_data_table())
         when_cmd = getattr(self.command, "when_cmd", None)
-        if when_cmd and "-" in when_cmd:
-            tokens = when_cmd.split("-")
-            if len(tokens) == 2:
-                when_labels = tokens
+        tokens = when_cmd.split("-") if when_cmd and "-" in when_cmd else []
+        when_labels = tokens if len(tokens) == 2 else ["Start", "End"]
 
         gs = fig.add_gridspec(1, 1)
         ax = fig.add_subplot(gs[0])
@@ -219,20 +144,24 @@ class BumpChartVisual(PlotVisual):
             )
             return
 
-        region_to_total1 = self._get_region_totals(subregions, "values1")
-        region_to_total2 = self._get_region_totals(subregions, "values2")
-        rank_map1 = self._get_rank_map(region_to_total1)
-        rank_map2 = self._get_rank_map(region_to_total2)
+        rank_map1 = self._get_rank_map(
+            self._get_region_totals(subregions, "values1")
+        )
+        rank_map2 = self._get_rank_map(
+            self._get_region_totals(subregions, "values2")
+        )
         region_ids = self._get_selected_region_ids(rank_map1, rank_map2)
-        region_id_to_name = self._get_region_id_to_name(subregions)
+        id_to_name = {
+            s["region_id"]: s.get("region_name") or str(s["region_id"])
+            for s in subregions
+            if s.get("region_id") is not None
+        }
 
         if not region_ids:
             ax.set_axis_off()
             return
 
-        if when_labels is None or len(when_labels) != 2:
-            when_labels = ["Start", "End"]
         self._style_bump_axis(ax, len(region_ids), when_labels)
         self._draw_bump_lines(
-            ax, region_ids, rank_map1, rank_map2, region_id_to_name
+            ax, region_ids, rank_map1, rank_map2, id_to_name
         )
