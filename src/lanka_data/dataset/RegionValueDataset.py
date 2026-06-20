@@ -74,5 +74,8 @@ class RegionValueDataset(Dataset):
         ]
         return expanded_data_table
 
+    def get_data_idx(self):
+        return {d["region_id"]: d for d in self.get_data_table()}
+
     def has_values(self) -> bool:
         return True

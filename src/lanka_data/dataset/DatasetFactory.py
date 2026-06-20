@@ -40,10 +40,15 @@ class DatasetFactory:
             when_cmd_parts = command.when_cmd.split("-")
             if len(when_cmd_parts) != 2:
                 raise ValueError(f"Invalid format: {command}")
+
             when_cmd_start, when_cmd_end = when_cmd_parts
-            dataset_start = command.copy(when_cmd=when_cmd_start)
-            dataset_end = command.copy(when_cmd=when_cmd_end)
+            command_start = command.copy(when_cmd=when_cmd_start)
+            command_end = command.copy(when_cmd=when_cmd_end)
+
+            dataset_start = DatasetFactory.from_command(command_start)
+            dataset_end = DatasetFactory.from_command(command_end)
             diff_dataset = DiffDataset(dataset_start, dataset_end)
+
             return [dataset_start, dataset_end, diff_dataset]
 
         return [DatasetFactory.from_command(command)]

@@ -3,7 +3,7 @@ from lanka_data.visual.plot.color_spec import ColorSpec
 
 
 class ColorSpecHelpers:
-    _PARAM_TO_IDX = {"Top": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
+    PARAM_TO_IDX = {"Top": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
 
     @staticmethod
     def func_key_getter(how_cmd):
@@ -12,7 +12,7 @@ class ColorSpecHelpers:
         else:
             _, how_params = how_cmd.split(":")
 
-        idx = ColorSpecHelpers._PARAM_TO_IDX.get(how_params or "Top")
+        idx = ColorSpecHelpers.PARAM_TO_IDX.get(how_params or "Top")
         if idx is None:
             return None
 
@@ -91,24 +91,13 @@ class ColorSpecHelpers:
         )
 
     @staticmethod
-    def get_colors_from_flips(result_data, idx=0):
-        """Colour regions by which category changed at the given rank index.
-
-        idx=0  → top category (same as the pre-computed ``flip`` field)
-        idx=1  → 2nd, idx=2 → 3rd, idx=-1 → bottom
-        """
+    def get_colors_from_flips(dataset, idx=0):
         region_to_flip = {}
-        for data in result_data["data_list"]:
+        for data in dataset.get_data_table():
             keys1 = list(data.get("values1", {}).keys())
             keys2 = list(data.get("values2", {}).keys())
-            try:
-                k1 = keys1[idx]
-            except IndexError:
-                k1 = "(No Data)"
-            try:
-                k2 = keys2[idx]
-            except IndexError:
-                k2 = "(No Data)"
+            k1 = keys1[idx]
+            k2 = keys2[idx]
             region_to_flip[data["region_id"]] = (
                 f"{k1} to {k2}" if k1 != k2 else "(No Flip)"
             )
