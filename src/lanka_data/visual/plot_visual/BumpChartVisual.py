@@ -1,4 +1,4 @@
-from lanka_data.visual.PlotVisual import PlotVisual
+from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 
 
 class BumpChartVisual(PlotVisual):

@@ -3,7 +3,7 @@ from matplotlib.ticker import FuncFormatter
 
 from lanka_data.visual.plot.color_spec import ColorSpec, ColorSpecFactory
 from lanka_data.visual.plot.Legend import Legend
-from lanka_data.visual.PlotVisual import PlotVisual
+from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 
 
 class BarChartVisual(PlotVisual):
