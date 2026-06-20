@@ -39,7 +39,6 @@ class Plot:
 
     def draw(self):
         Font(self.FONT_FAMILY).install()
-
         fig = self._draw_subfigures()
 
         HeaderFooterBars.draw_bars(fig)
@@ -69,8 +68,7 @@ class Plot:
         image_path = os.path.join(image_dir, "Image.png")
         fig.savefig(image_path, dpi=200, bbox_inches=0)
         plt.close(fig)
-
-        log.debug(f"Wrote {image_path}")
+        log.info(f"Wrote {image_path}")
         return {
             "image_path": image_path,
             "source_list": self.visual.get_source_list(),
