@@ -12,6 +12,7 @@ class HowFormatter:
     }
 
     PARAM_LABELS = {
+        "1st": "Most common",
         "2nd": "2nd most common",
         "3rd": "3rd most common",
         "Bottom": "Least common",
