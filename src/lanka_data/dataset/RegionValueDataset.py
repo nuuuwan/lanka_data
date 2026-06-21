@@ -100,6 +100,10 @@ class RegionValueDataset(Dataset):
                     values[k] = values.get(k, 0) + v
             values = dict(sorted(values.items(), key=lambda item: -item[1]))
 
+            for current_id in current_ids:
+                if "-pre" in current_id:
+                    raise ValueError(f"Invalid current_id: {current_id}")
+
             region = self.get_region(region_id)
             d = dict(
                 region_id=region_id,

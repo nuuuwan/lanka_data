@@ -122,6 +122,7 @@ class GeoData:
             return geopandas.read_file(temp_gdf_path)
 
         region_to_current_ids = cls._build_region_map(data_list)
+        log.debug(f"{region_to_current_ids=}")
         all_current_ids = [
             cid
             for current_ids in region_to_current_ids.values()
@@ -130,7 +131,9 @@ class GeoData:
         gdf = cls._load_raw_gdf(all_current_ids)
         gdf = cls._dissolve_by_region(gdf, region_to_current_ids)
         if gdf.empty:
-            raise ValueError("No map data found.")
+            raise ValueError(
+                f"No map data found: all_current_ids={all_current_ids}"
+            )
 
         if is_cartogram:
             gdf = DCNUtils.run_gdf(
