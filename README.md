@@ -585,6 +585,38 @@ Source: [examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Output.json](exa
 
 Source: [examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Image.png)
 
+#### 3.13) Religion/2012-2024/LK:district/Map:DiversityPew
+
+```bash
+Religion/2012-2024/LK:district/Map:DiversityPew
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK:district/Map:DiversityPew",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Output.json)
+
+![Religion/2012-2024/LK:district/Map:DiversityPew](examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
+
 ### 4) Elections
 
 #### 4.01) Parliamentary/2024/LK/JSON
