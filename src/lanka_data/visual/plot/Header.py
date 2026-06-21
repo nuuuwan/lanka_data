@@ -1,3 +1,6 @@
+from lanka_data.visual.formatters.WhereFormatter import WhereFormatter
+
+
 class Header:
     TITLE_DELIM = " · "
     TEXT_COLOR = "#000"
@@ -8,7 +11,7 @@ class Header:
     def draw(self, figure_text):
         header_title_items = [
             f"{self.visual.command.what_cmd} ({self.visual.command.when_cmd})",
-            self.visual.command.where_cmd,
+            WhereFormatter(self.visual.command.where_cmd).format(),
             self.visual.command.how_cmd,
         ]
         header_title_items = [
