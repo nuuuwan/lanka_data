@@ -11,4 +11,5 @@ from utils_future.JSONFile import JSONFile
 from utils_future.Log import Log
 from utils_future.Parse import Parse
 from utils_future.PolygonUtils import PolygonUtils
+from utils_future.timer import timer
 from utils_future.WWW import WWW
