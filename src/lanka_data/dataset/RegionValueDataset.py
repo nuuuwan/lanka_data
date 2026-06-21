@@ -88,10 +88,11 @@ class RegionValueDataset(Dataset):
                     data_list.append(complete_data_idx[current_id])
 
             if not data_list:
-                raise ValueError(
+                log.error(
                     f"No data found for region_id={region_id} "
                     f"with current_ids={current_ids}"
                 )
+                continue
 
             values = {}
             for data in data_list:

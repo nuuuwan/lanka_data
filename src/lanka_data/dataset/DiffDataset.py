@@ -1,5 +1,8 @@
 from lanka_data.data.DataSource import DataSource
 from lanka_data.dataset.RegionValueDataset import RegionValueDataset
+from utils_future import Log
+
+log = Log("DiffDataset")
 
 
 class DiffDataset(RegionValueDataset):
@@ -42,16 +45,20 @@ class DiffDataset(RegionValueDataset):
 
         d_list = []
         for region_id in common_region_ids:
-            data1 = data_idx1[region_id]
-            data2 = data_idx2[region_id]
+            data1 = data_idx1.get(region_id)
+            data2 = data_idx2.get(region_id)
+
+            if not data1 or not data2:
+                log.error(
+                    f"Data missing for region_id={region_id} in one of the datasets"
+                )
+                continue
 
             values1 = data1["values"]
             values2 = data2["values"]
             pct_values1 = data1["pct_values"]
             pct_values2 = data2["pct_values"]
-            common_keys = set(values1.keys()).intersection(
-                set(values2.keys())
-            )
+            common_keys = set(values1.keys()).intersection(set(values2.keys()))
 
             values = {}
             pct_values = {}
