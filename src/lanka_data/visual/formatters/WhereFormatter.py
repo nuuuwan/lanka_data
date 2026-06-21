@@ -28,12 +28,12 @@ class WhereFormatter:
     def format(self) -> str:
         if ":" in self.where_cmd:
             parent_part, child_region_type = self.where_cmd.split(":", 1)
-            child_region_long_name = RegionTypeUtils.get_long_name(
+            child_region_long_name = RegionTypeUtils.get_long_name_plural(
                 child_region_type
             )
             parent_region_ids = self.parse_parent_part(parent_part)
             parent_regions_long_name = self.format_regions(parent_region_ids)
-            return f"{child_region_long_name}s in {parent_regions_long_name}"
+            return f"{child_region_long_name} in {parent_regions_long_name}"
 
         if "@" in self.where_cmd:
             region_id, radius = self.where_cmd.split("@", 1)
