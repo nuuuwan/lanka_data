@@ -2,6 +2,7 @@ from matplotlib.patches import Rectangle
 
 
 class HeaderFooterBars:
+    BACK_COLOR = "#eee"
 
     @staticmethod
     def draw_bars(fig):
@@ -11,8 +12,8 @@ class HeaderFooterBars:
                 1,
                 0.05,
                 transform=fig.transFigure,
-                facecolor="grey",
-                edgecolor="none",
+                facecolor=HeaderFooterBars.BACK_COLOR,
+                edgecolor=HeaderFooterBars.BACK_COLOR,
                 zorder=0,
             )
         )
@@ -22,8 +23,8 @@ class HeaderFooterBars:
                 1,
                 0.05,
                 transform=fig.transFigure,
-                facecolor="grey",
-                edgecolor="none",
+                facecolor=HeaderFooterBars.BACK_COLOR,
+                edgecolor=HeaderFooterBars.BACK_COLOR,
                 zorder=0,
             )
         )
