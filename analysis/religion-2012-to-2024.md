@@ -1,10 +1,10 @@
-# Religion in Sri lanka - 2012 to 2024
+# Religion in Sri Lanka - 2012 to 2024
 
 ![Author](https://img.shields.io/badge/author-nuuuwan-red)
 
-The [Department of Census and Statistics Sri Lanka](https://www.statistics.gov.lk), have released several datasets pertaining to the 2024 Census of Population and Housing ([CPH2024](https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024)).
+The [Department of Census and Statistics of Sri Lanka](https://www.statistics.gov.lk) has released several datasets relating to the 2024 Census of Population and Housing ([CPH2024](https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024)).
 
-In this analaysis, we look at how **Religion** has change in the country, compared to the previous census ([CPH2012](https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf)).
+In this analysis, we look at how **Religion** has changed in the country, compared to the previous census ([CPH2012](https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf)).
 
 ## Most Common Religions
 
@@ -37,7 +37,7 @@ The rightmost map shows the sum of the absolute percentage point changes to popu
 
 ### Mannar District
 
-Mannar District with 22.24pp change is the most significant, and breakdows as follows:
+Mannar District with 22.24pp change is the most significant, and breaks down as follows:
 
 - "Islam": +10.7pp
 - "Other: +0.4pp
@@ -86,7 +86,7 @@ The reduction in "Roman Catholic" and "Other Christian" is significant, and this
 
 ### Urban Decline?
 
-In the Kandy District, the Gangawata Korale DSD (which includes Kandy Town), saw the most significant decline in population in the district, including a significnat decline in the "Roman Catholic" population.
+In the Kandy District, the Gangawata Korale DSD (which includes Kandy Town), saw the most significant decline in population in the district, including a significant decline in the "Roman Catholic" population.
 
 ![](../examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Image.png)
 
@@ -100,7 +100,7 @@ But conversely, in the Galle District, the Galle 4 Gravets DSD (which includes G
 
 ### *Religious Diversity Index* by Pew Research
 
-By the [Religious Diversity Index](https://www.pewresearch.org/religion/2026/02/12/religious-diversity-around-the-world), designed by Pew Research,  in 2012 Sri Lanka's administrative districts ranged from Very Low (Hambantota) to Very High (Puttalam, Ampara, Trincomalee) Diversity. Only Mannar's score significant changed from 2012 to 2024 to move it into a new category (High to Very High).
+By the [Religious Diversity Index](https://www.pewresearch.org/religion/2026/02/12/religious-diversity-around-the-world), designed by Pew Research, in 2012 Sri Lanka's administrative districts ranged from Very Low (Hambantota) to Very High (Puttalam, Ampara, Trincomalee) Diversity. Only Mannar's score significantly changed from 2012 to 2024 to move it into a new category (High to Very High).
 
 ![](../examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
 
@@ -124,7 +124,7 @@ Trincomalee District has the 3rd most common (also "Buddhist") with the highest 
 
 - [Census of Population and Housing 2012](https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf)
 - [Census of Population and Housing 2024](https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024)
-- [Geophracial Maps from Survey Department of Sri Lanka](https://survey.gov.lk/)
+- [Geospatial Maps from Survey Department of Sri Lanka](https://survey.gov.lk/)
 - *[One Island, Many Maps: The Hidden Geography of Religious Diversity in Sri Lanka](https://github.com/nuuuwan/lk_diversity/blob/main/ANALYSIS.md)* by @nuuuwan
 - *[Religious Diversity Around the World](https://www.pewresearch.org/religion/2026/02/12/religious-diversity-around-the-world/)* by Pew Research
 
