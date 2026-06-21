@@ -83,6 +83,7 @@ class ColorSpec:
         sorted_color_keys = sorted(
             list(set([func_key_getter(data) for data in data_list]))
         )
+        random.seed(0)
         random.shuffle(sorted_color_keys)
 
         n_keys = len(sorted_color_keys)
