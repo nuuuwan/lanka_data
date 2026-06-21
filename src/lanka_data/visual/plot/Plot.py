@@ -34,6 +34,13 @@ class Plot:
         for i_dataset, dataset in enumerate(self.visual.datasets):
             sub_fig = fig.add_subfigure(outer_gs[0, i_dataset])
             self.visual.draw(dataset, sub_fig)
+            Text.plot(
+                sub_fig,
+                (0.5, 0.9),
+                dataset.get_year(),
+                fontsize=16,
+                color="#000",
+            )
         return fig
 
     def draw(self):

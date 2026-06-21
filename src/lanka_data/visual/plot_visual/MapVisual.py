@@ -51,10 +51,3 @@ class MapVisual(PlotVisual):
             Label.draw(gdf_region, ax)
         Legend.draw(value_to_color, legend_ax)
         ax.set_axis_off()
-        Text.plot(
-            fig,
-            (0.5, 0.9),
-            dataset.get_year(),
-            fontsize=16,
-            color="#000",
-        )
