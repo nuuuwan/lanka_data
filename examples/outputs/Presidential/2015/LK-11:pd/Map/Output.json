@@ -1,0 +1,15 @@
+{
+  "command_str": "Presidential/2015/LK-11:pd/Map",
+  "result": {
+    "image_path": "/tmp/lanka_data/output/Presidential/2015/LK-11:pd/Map/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Election Commission of Sri lanka",
+      "url": "https://www.elections.gov.lk"
+    }
+  ],
+  "time_elapsed_ms": 458,
+  "cache_hit": true,
+  "query_time_ms": 0
+}

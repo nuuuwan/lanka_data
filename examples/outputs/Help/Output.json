@@ -1,207 +1,9 @@
 {
+  "command_str": "Help",
   "result": {
-    "what_to_whens": {
-      "AgeGroup": [
-        "2012",
-        "2024"
-      ],
-      "Basic": [
-        "2024"
-      ],
-      "Communication": [
-        "2012"
-      ],
-      "ConstructionYear": [
-        "2012"
-      ],
-      "Economy": [
-        "2012"
-      ],
-      "Education": [
-        "2012"
-      ],
-      "Ethnicity": [
-        "2012",
-        "2024"
-      ],
-      "Floor": [
-        "2012",
-        "2024"
-      ],
-      "Fuel": [
-        "2012",
-        "2024"
-      ],
-      "Gender": [
-        "2012",
-        "2024"
-      ],
-      "Lighting": [
-        "2012",
-        "2024"
-      ],
-      "Local": [
-        "-",
-        "-",
-        "-",
-        "a",
-        "c",
-        "c",
-        "e",
-        "e",
-        "e",
-        "e",
-        "e",
-        "e",
-        "g",
-        "g",
-        "i",
-        "l",
-        "l",
-        "l",
-        "m",
-        "m",
-        "n",
-        "n",
-        "n",
-        "n",
-        "n",
-        "o",
-        "o",
-        "o",
-        "o",
-        "r",
-        "r",
-        "s",
-        "t",
-        "t",
-        "t",
-        "v",
-        "v"
-      ],
-      "Marital": [
-        "2012"
-      ],
-      "Occupancy": [
-        "2012"
-      ],
-      "Ownership": [
-        "2012"
-      ],
-      "Parliamentary": [
-        "-",
-        "-",
-        "a",
-        "a",
-        "a",
-        "c",
-        "e",
-        "e",
-        "e",
-        "e",
-        "e",
-        "g",
-        "i",
-        "i",
-        "l",
-        "l",
-        "m",
-        "m",
-        "n",
-        "n",
-        "n",
-        "n",
-        "o",
-        "o",
-        "p",
-        "r",
-        "r",
-        "r",
-        "s",
-        "t",
-        "t",
-        "t",
-        "v",
-        "y"
-      ],
-      "Persons": [
-        "2012"
-      ],
-      "Presidential": [
-        "-",
-        "-",
-        "a",
-        "c",
-        "d",
-        "e",
-        "e",
-        "e",
-        "e",
-        "e",
-        "e",
-        "g",
-        "i",
-        "i",
-        "i",
-        "l",
-        "l",
-        "m",
-        "n",
-        "n",
-        "n",
-        "n",
-        "o",
-        "o",
-        "p",
-        "r",
-        "r",
-        "s",
-        "s",
-        "t",
-        "t",
-        "t",
-        "v"
-      ],
-      "Quarters": [
-        "2012"
-      ],
-      "RelationshipToHead": [
-        "2012"
-      ],
-      "Religion": [
-        "2012",
-        "2024"
-      ],
-      "Roof": [
-        "2012",
-        "2024"
-      ],
-      "Rooms": [
-        "2012"
-      ],
-      "Structure": [
-        "2012",
-        "2024"
-      ],
-      "Toilet": [
-        "2012",
-        "2024"
-      ],
-      "Unit": [
-        "2012"
-      ],
-      "Walls": [
-        "2012",
-        "2024"
-      ],
-      "Waste": [
-        "2012"
-      ],
-      "Water": [
-        "2012",
-        "2024"
-      ]
-    },
+    "what_to_whens": [
+      "TODO"
+    ],
     "where": [
       "LK*",
       "EC-*",
@@ -214,6 +16,13 @@
     "source": "lanka_data",
     "source_url": "https://github.com/nuuuwan/lanka_data/blob/main/README.md"
   },
-  "query_time_ms": 0,
-  "cache_hit": true
+  "sources": [
+    {
+      "name": "Lanka Data",
+      "url": "https://github.com/nuuuwan/lanka_data/blob/main/README.md"
+    }
+  ],
+  "time_elapsed_ms": 0,
+  "cache_hit": true,
+  "query_time_ms": 0
 }

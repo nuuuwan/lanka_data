@@ -1,15 +1,15 @@
 {
+  "command_str": "Ethnicity/2012/LK-23-pre2019:dsd/Map",
   "result": {
-    "what_description": "Population distributed by ethnic group such as Sinhalese, Sri Lanka Tamil, Moor, and others",
-    "when_description": "2012",
-    "where_description": "Divisional Secretariat Divisions in the Nuwara Eliya DISTRICT",
-    "how_description": "",
-    "image_path": "/tmp/lanka_data/output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png",
-    "source_list": [
-      "Census of Population and Housing 2012"
-    ],
-    "cmd": "Ethnicity/2012/LK-23-pre2019:dsd/Map"
+    "image_path": "/tmp/lanka_data/output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png"
   },
-  "query_time_ms": 0,
-  "cache_hit": true
+  "sources": [
+    {
+      "name": "Census of Population and Housing 2012",
+      "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+    }
+  ],
+  "time_elapsed_ms": 264,
+  "cache_hit": true,
+  "query_time_ms": 0
 }

@@ -1,0 +1,15 @@
+{
+  "command_str": "Empty/2024/LK-5...LK-8/Map",
+  "result": {
+    "image_path": "/tmp/lanka_data/output/Empty/2024/LK-5...LK-8/Map/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Survey Department of Sri Lanka",
+      "url": "https://survey.gov.lk/"
+    }
+  ],
+  "time_elapsed_ms": 191,
+  "cache_hit": true,
+  "query_time_ms": 0
+}

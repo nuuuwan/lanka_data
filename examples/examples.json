@@ -2,21 +2,19 @@
   "Help": ["Help"],
   "Selection": [
     "Empty/2024/LK:province/Map",
-    "Empty/2024/LK-1:district/Map",
     "Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map",
     "Empty/2024/LK-5...LK-8/Map",
     "Empty/2024/LK-1127025@20/Map"
   ],
   "Religion": [
     "Religion/2012-2024/LK:district/Map",
-    "Religion/2012-2024/LK:district/Map:Change",
-    "Religion/2012-2024/LK:district/Cartogram:Change",
+    "Religion/2012-2024/LK:district/Cartogram",
     "Religion/2012-2024/LK:district/Map:DiversityPew",
     "Religion/2012-2024/LK:district/Map:Segregation"
   ],
   "Elections": [
     "Parliamentary/2024/LK/JSON",
-    "Presidential/Latest/LK-11:pd/Map",
+    "Presidential/2015/LK-11:pd/Map",
     "Local/2025/LK:district/Map"
   ],
   "History": [
