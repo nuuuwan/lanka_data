@@ -1,3 +1,4 @@
+from lanka_data.visual.formatters.HowFormatter import HowFormatter
 from lanka_data.visual.formatters.WhereFormatter import WhereFormatter
 
 
@@ -12,7 +13,7 @@ class Header:
         header_title_items = [
             f"{self.visual.command.what_cmd} ({self.visual.command.when_cmd})",
             WhereFormatter(self.visual.command.where_cmd).format(),
-            self.visual.command.how_cmd,
+            HowFormatter(self.visual.command.how_cmd).format(),
         ]
         header_title_items = [
             item.strip() for item in header_title_items if item.strip()
