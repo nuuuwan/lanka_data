@@ -1,8 +1,9 @@
 import random
 from dataclasses import dataclass
 
-from lanka_data.visual.plot.color_spec.ColorSpecConstants import \
-    ColorSpecConstants
+from lanka_data.visual.plot.color_spec.ColorSpecConstants import (
+    ColorSpecConstants,
+)
 from utils_future import ColorUtils, Parse
 
 
@@ -100,7 +101,7 @@ class ColorSpec:
             region_to_color[region_id] = color
             value_to_color[key] = color
 
-        if "values" in data_list[0]:
+        if len(data_list) >= 1 and "values" in data_list[0]:
             for k, v in data_list[0]["values"].items():
                 if k not in value_to_color:
                     if k in cls.LABEL_TO_COLOR:
