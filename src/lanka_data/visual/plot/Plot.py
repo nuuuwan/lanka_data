@@ -70,5 +70,4 @@ class Plot:
         log.debug(f"Wrote {File(image_path)}")
         return {
             "image_path": image_path,
-            "source_list": self.visual.get_source_list(),
         }
