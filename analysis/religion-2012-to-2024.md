@@ -1,1 +1,103 @@
 # Religion in Sri lanka - 2012 to 2024
+
+The Department of Census and Statistics Sri Lanka, have released several datasets pertaining to the 2024 Census of Population and Housing (CPH2024). In this analaysis, we look at how religion has change in the country, compared to the previous census (2012).
+
+## Most Common Religions
+
+!()[examples/outputs/Religion/2012-2024/LK:district/Map:1st]
+
+In 2012, "Buddhist" was the most common religion in 16 of the 25 administrative districts of Sri Lanka, "Hindu" was the most common in 6, "Islam" in 2, and "Roman Catholic" in 1. This overall picture has not changed.
+
+However, we do see changes in the 2nd and 3rd most common religions by district.
+
+!()[examples/outputs/Religion/2012-2024/LK:district/Map:2nd]
+
+The 2nd most common religion has changed in 2 districts. From "Hindu" to "Islam" in Mannar, and from "Buddhist" to "Hindu" in Trincomalee.
+
+!()[examples/outputs/Religion/2012-2024/LK:district/Map:3rd]
+
+The 3rd most common religion has changed in 6 districts.
+
+- "Islam" to "Hindu" in Mannar
+- "Hindu" to "Buddhist" in Trincomalee
+- "Roman Catholic" to "Islam" in Vavuniya
+- "Roman Catholic" to "Other Christian" in Batticaloa
+- "Roman Catholic" to "Hindu" in Kalutara
+- "Other Christian" to "Other" in Hambantota".
+
+## Changes to population distribution
+
+!()[examples/outputs/Religion/2012-2024/LK:district/Map:Change]
+
+The rightmost map shows the sum of the absolute percentage point changes to population by religion.
+
+### Mannar District
+
+!()[examples/outputs/Religion/2012-2024/LK-42:district/BarChart]
+
+Mannar District with 22.24pp change is the most significant, and breakdows as follows:
+
+- "Islam": +10.7pp
+- "Other: +0.4pp
+- "Other Christian": -0.4pp
+- "Buddhist": -1.6pp
+- "Hindu": -3.0pp
+- "Roman Catholic": -6.0pp
+
+!()[examples/outputs/Religion/2012-2024/LK-43:dsd/BarChart]
+
+Drilling down to the Divisional Secretariat Division (DSD) level, we see the changes are mostly driven by the Musali DSD where "Islam" has grown from 59.7% to 74.8%, and in Mannar Town, where "Islam" has overtaken "Hindu" as the 2nd most common religion (reflecting the trend in the district as a whole).
+
+### Trincomalee District
+
+!()[examples/outputs/Religion/2012-2024/LK-53:district/BarChart]
+
+Trincomalee also showed significant changes to overall population distribution, with "Islam" gaining +4.4pp, and "Hindu" and "Buddhist" losing -1.6pp and -2.1pp respectively. Despite the reduction in population share, "Hindu" overtook "Buddhist" as the 2nd most common religion.
+
+### Hambantota, Moneragala and Matara Districts
+
+The Hambantota, Moneragala and Matara Districts, saw the least change to population distribution.
+
+!()[examples/outputs/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart]
+
+## Changes to population
+
+!()[examples/outputs/Religion/2012-2024/LK:district/BarChart]
+
+In absolute numbers, the largest population growth was in the Kurunegala, Gampaha, and Anuradhapura Districts respectively. Gampaha also overtook Colombo to become the largest district by population. Colombo also stands out as an outlier with a significant reduction in "Roman Catholic" and "Other Christian" Population.
+
+### Colombo District
+
+!()[examples/outputs/Religion/2012-2024/LK-11:dsd/BarChart]
+
+Looking at Colombo District at the DSD level, Colombo DSD, Thimbiriyasyaya DSD, Sri Jayawardanapura Kotte DSD, Moratuwa DSD, and Ratmalana DSD all showed reductions in Population, while other remaining DSDs, saw increases in population.
+
+!()[examples/outputs/Religion/2012-2024/LK-11:lg/BarChart]
+
+This is a similar drill-down of Colombo District, by Local Authority. Colombo MC (which is the sum of the Colombo DSD and Thimbiriyasyaya DSD), showed a decline of 51,764 in population, with all religious groups seeing reductions.
+
+The reduction in "Roman Catholic" and "Other Christian" is significant, and this trend is also seen in the rest of the Western Province.
+
+!()[examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart]
+
+This trend is mirrored in several DSDs in the neighbouring Gampaha District too.
+
+### Diversity of Population
+
+By the Diversity metric designed by Pew Research,  in 2012 Sri Lanka's administrative districts ranged from Very Low (Hambantota) to Very High (Puttalam, Ampara, Trincomalee) Diversity. Only Mannar's score significant changed from 2012 to 2024 to move it into a new category (High to Very High).
+
+!()[examples/outputs/Religion/2012-2024/LK-42:district/BarChart]
+
+Mannar's "upgrade" can be primarily explained by a population decrease "Roman Catholic" (most common) and an increase in "Islam" (2nd most common).
+
+---
+
+## References
+
+- [Census of Population and Housing 2012](https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf)
+- [Census of Population and Housing 2024](https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024)
+- [Geophracial Maps from Survey Department of Sri Lanka](https://survey.gov.lk/)
+
+## Code & Analysis
+
+- [Lanka Data](https://github.com/nuuuwan/lanka_data/blob/main/README.md)
