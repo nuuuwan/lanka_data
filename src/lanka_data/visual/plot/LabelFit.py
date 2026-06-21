@@ -1,82 +1,94 @@
 import math
 
-from shapely.affinity import rotate as shapely_rotate
-from shapely.geometry import LineString, Point, box
+import numpy as np
 
 from utils_future import timer
 from utils_future.PolygonUtils import PolygonUtils
 
 
 class LabelFit:
-    POLE_OF_INACCESSIBILITY = getattr(PolygonUtils, "_pole_of_inaccessibility")
     INTERIOR_CANDIDATES = getattr(PolygonUtils, "_interior_candidates")
     LARGEST_POLYGON = getattr(PolygonUtils, "_largest_polygon")
 
     @staticmethod
-    def _score_rect_at(rpoly, rboundary, px, py, span):
-        cp = Point(px, py)
+    def _edges(poly):
+        """Pre-computed edge arrays (ax, ay, ex, ey) for ray casting."""
+        coords = np.array(poly.exterior.coords)
+        ax, ay = coords[:-1, 0], coords[:-1, 1]
+        bx, by = coords[1:, 0], coords[1:, 1]
+        return ax, ay, bx - ax, by - ay
 
-        def ray(ddx, ddy):
-            ln = LineString([(px, py), (px + ddx * span, py + ddy * span)])
-            inter = rboundary.intersection(ln)
-            if inter.is_empty:
-                return span
-            pts = list(inter.geoms) if hasattr(inter, "geoms") else [inter]
-            dists = [cp.distance(p) for p in pts]
-            return min(dists) if dists else span
+    @staticmethod
+    def _ray_dist(cx, cy, dx, dy, edges, span):
+        """Distance from (cx,cy) to polygon boundary in direction (dx,dy)."""
+        ax, ay, ex, ey = edges
+        denom = dx * ey - dy * ex
+        valid = np.abs(denom) > 1e-12
+        safe = np.where(valid, denom, 1.0)
+        t = np.where(
+            valid,
+            ((ax - cx) * ey - (ay - cy) * ex) / safe,
+            np.inf,
+        )
+        s = np.where(
+            valid,
+            ((ax - cx) * dy - (ay - cy) * dx) / safe,
+            np.inf,
+        )
+        hit = valid & (t > 1e-9) & (s >= -1e-9) & (s <= 1.0 + 1e-9)
+        t_hit = np.where(hit, t, np.inf)
+        d = float(t_hit.min())
+        return d if np.isfinite(d) else span
 
-        hw = min(ray(-1, 0), ray(1, 0))
-        hh = min(ray(0, -1), ray(0, 1))
-        rect_geom = box(px - hw, py - hh, px + hw, py + hh)
-        score = rect_geom.intersection(rpoly).area
-        return hw, hh, score
+    @staticmethod
+    def _hw_hh(cx, cy, cos_a, sin_a, edges, span):
+        """Half-width/height of the best-fit rect at the given angle."""
+        rd = LabelFit._ray_dist
+        hw = min(
+            rd(cx, cy, cos_a, sin_a, edges, span),
+            rd(cx, cy, -cos_a, -sin_a, edges, span),
+        )
+        hh = min(
+            rd(cx, cy, -sin_a, cos_a, edges, span),
+            rd(cx, cy, sin_a, -cos_a, edges, span),
+        )
+        return hw, hh
 
     @classmethod
-    def _coarse_scan(cls, poly, n_angles=36):
-        pole = cls.POLE_OF_INACCESSIBILITY(poly)
-        px0, py0 = pole.x, pole.y
+    def _coarse_scan(cls, poly, n_angles=18):
+        edges = cls._edges(poly)
         b = poly.bounds
         span = max(b[2] - b[0], b[3] - b[1]) * 2
+        rp = poly.representative_point()
+        px0, py0 = rp.x, rp.y
         results = []
         for i in range(n_angles):
             angle_deg = i * 180.0 / n_angles
-            rpoly = shapely_rotate(poly, -angle_deg, origin=(px0, py0))
-            hw, hh, score = cls._score_rect_at(
-                rpoly, rpoly.boundary, px0, py0, span
-            )
-            results.append((score, angle_deg, px0, py0, 2 * hw, 2 * hh))
+            theta = math.radians(angle_deg)
+            cos_a, sin_a = math.cos(theta), math.sin(theta)
+            hw, hh = cls._hw_hh(px0, py0, cos_a, sin_a, edges, span)
+            results.append((4 * hw * hh, angle_deg, px0, py0, 2 * hw, 2 * hh))
         results.sort(reverse=True)
         return results, span
 
     @classmethod
-    def _fine_search(cls, poly, angle_results, span, n_top=5, n_grid=6):
-        b = poly.bounds
-        ox, oy = (b[0] + b[2]) / 2.0, (b[1] + b[3]) / 2.0
+    def _fine_search(cls, poly, angle_results, span, n_top=3, n_grid=6):
+        edges = cls._edges(poly)
         candidates = cls.INTERIOR_CANDIDATES(poly, n_cells=n_grid)
         best_score, best_angle, best_cx, best_cy, best_rw, best_rh = (
             angle_results[0]
         )
         for _, angle_deg, _, _, _, _ in angle_results[:n_top]:
-            theta = math.radians(-angle_deg)
-            cos_t, sin_t = math.cos(theta), math.sin(theta)
-            rpoly = shapely_rotate(poly, -angle_deg, origin=(ox, oy))
-            rboundary = rpoly.boundary
+            theta = math.radians(angle_deg)
+            cos_a, sin_a = math.cos(theta), math.sin(theta)
             for px, py in candidates:
-                dx, dy = px - ox, py - oy
-                rpx = ox + dx * cos_t - dy * sin_t
-                rpy = oy + dx * sin_t + dy * cos_t
-                if not rpoly.contains(Point(rpx, rpy)):
-                    continue
-                hw, hh, score = cls._score_rect_at(
-                    rpoly, rboundary, rpx, rpy, span
-                )
+                hw, hh = cls._hw_hh(px, py, cos_a, sin_a, edges, span)
+                score = 4 * hw * hh
                 if score > best_score:
                     best_score = score
                     best_rw, best_rh = 2 * hw, 2 * hh
                     best_angle = angle_deg
-                    dx2, dy2 = rpx - ox, rpy - oy
-                    best_cx = ox + dx2 * cos_t + dy2 * sin_t
-                    best_cy = oy - dx2 * sin_t + dy2 * cos_t
+                    best_cx, best_cy = px, py
         return best_cx, best_cy, best_rw, best_rh, best_angle
 
     @classmethod
