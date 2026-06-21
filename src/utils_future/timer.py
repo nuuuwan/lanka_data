@@ -3,6 +3,10 @@ import os
 import time
 from typing import Any
 
+from utils_future.Log import Log
+
+log = Log("timer")
+
 
 def timer(func):
 
@@ -23,7 +27,7 @@ def timer(func):
 
         time_str = f"{elapsed * 1000:.2f}ms"
 
-        print(f"⌛️ [{filename}{func.__name__}] {time_str}")
+        log.debug(f"⌛️ [{filename}{func.__name__}] {time_str}")
         return result
 
     return wrapper
