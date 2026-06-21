@@ -14,6 +14,10 @@ class RegionValueDataset(Dataset):
         Dataset.__init__(self)
         self.region_data_list = region_data_list
 
+    @abstractmethod
+    def get_year(self):
+        pass
+
     @cached_property
     def region_ids(self):
         return [d["region_id"] for d in self.region_data_list]

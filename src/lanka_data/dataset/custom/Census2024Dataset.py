@@ -13,6 +13,9 @@ class Census2024Dataset(RegionValueDataset):
         RegionValueDataset.__init__(self, region_data_list)
         self.table_id = table_id
 
+    def get_year(self):
+        return "2024"
+
     @classmethod
     def from_label_and_region_data_list(
         cls, label: str, region_data_list: list[dict]

@@ -54,7 +54,7 @@ class MapVisual(PlotVisual):
         Text.plot(
             fig,
             (0.5, 0.9),
-            "Fig",
+            dataset.get_year(),
             fontsize=16,
             color="#000",
         )
