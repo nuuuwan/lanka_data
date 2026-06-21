@@ -6,6 +6,7 @@ class Label:
     IS_LIGHT_COLOR = getattr(ColorUtils, "_is_light_color")
 
     @staticmethod
+    @timer
     def _fit_fontsize(text, rect_w, rect_h, ax, fig):
         """
         Calculate font size to fit text within a rectangle.
