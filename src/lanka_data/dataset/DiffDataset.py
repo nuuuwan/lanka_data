@@ -62,12 +62,17 @@ class DiffDataset(RegionValueDataset):
 
             values = {}
             pct_values = {}
+            error1_sum = 0
             for k in common_keys:
                 values[k] = int(values2[k] - values1[k])
+                pct_diff = pct_values2[k] - pct_values1[k]
                 pct_values[k] = round(
-                    pct_values2[k] - pct_values1[k],
+                    pct_diff,
                     RegionValueDataset.PCT_VALUE_PRECISION,
                 )
+                error1 = abs(pct_diff)
+                error1_sum += error1
+
             total_value = sum(values.values())
 
             d = dict(
@@ -84,6 +89,7 @@ class DiffDataset(RegionValueDataset):
                 values=values,
                 total_value=total_value,
                 pct_values=pct_values,
+                change=error1_sum,
             )
             d_list.append(d)
         return d_list

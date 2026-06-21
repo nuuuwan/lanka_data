@@ -86,8 +86,13 @@ class ColorSpecHelpers:
     def get_color_spec_for_change(result_data):
         # change is always >= 0 (mean absolute pct-change), so use the
         # sequential (absolute) colour ramp instead of the diverging one.
+        def value_mapper(change):
+            return f"{change * 100:.2f}pp"
+
         return ColorSpec.by_region_to_custom_value(
-            ColorSpecHelpers.get_region_to_change(result_data), False
+            ColorSpecHelpers.get_region_to_change(result_data),
+            False,
+            value_mapper,
         )
 
     @staticmethod
