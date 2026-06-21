@@ -3,11 +3,9 @@ import time
 from lanka_data.command.Command import Command
 from lanka_data.dataset.DatasetFactory import DatasetFactory
 from lanka_data.visual.VisualFactory import VisualFactory
-from utils_future import timer
 
 
 class CommandRunner:
-    @timer
     @staticmethod
     def run(command_str: str):
         t_start = time.perf_counter()

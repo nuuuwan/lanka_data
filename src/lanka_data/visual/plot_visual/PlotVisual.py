@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from lanka_data.visual.plot import Plot
 from lanka_data.visual.plot.color_spec import ColorSpec, ColorSpecFactory
 from lanka_data.visual.Visual import Visual
-from utils_future import timer
 
 
 class PlotVisual(Visual):
@@ -14,7 +13,6 @@ class PlotVisual(Visual):
     def draw(self, dataset, fig):
         pass
 
-    @timer
     def build(self):
         return Plot(self).draw()
 

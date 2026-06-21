@@ -9,7 +9,7 @@ from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
 from lanka_data.visual.plot.HeaderFooterBars import HeaderFooterBars
 from lanka_data.visual.plot.Text import Text
-from utils_future import File, Log
+from utils_future import File, Log, timer
 
 log = Log("Plot")
 
@@ -23,6 +23,7 @@ class Plot:
     def __init__(self, visual):
         self.visual = visual
 
+    @timer
     def _draw_subfigures(self):
         n_figs = len(self.visual.datasets)
         fig = plt.figure(figsize=(self.FIG_WIDTH, self.FIG_HEIGHT))
