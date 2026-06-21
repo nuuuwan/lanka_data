@@ -7,7 +7,6 @@ from lanka_data.visual.plot.color_spec import (ColorSpec, ColorSpecConstants,
 from lanka_data.visual.plot.Font import Font
 from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
-from lanka_data.visual.plot.HeaderFooterBars import HeaderFooterBars
 from lanka_data.visual.plot.Label import Label
 from lanka_data.visual.plot.LabelFit import LabelFit
 from lanka_data.visual.plot.Legend import Legend

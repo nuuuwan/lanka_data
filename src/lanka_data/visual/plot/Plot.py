@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 from lanka_data.visual.plot.Font import Font
 from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
-from lanka_data.visual.plot.HeaderFooterBars import HeaderFooterBars
 from lanka_data.visual.plot.Text import Text
 from utils_future import File, Log, timer
 
@@ -41,27 +40,8 @@ class Plot:
         Font(self.FONT_FAMILY).install()
         fig = self._draw_subfigures()
 
-        HeaderFooterBars.draw_bars(fig)
-        Header(self.visual).draw(
-            lambda xy, text, fontsize, color, **kwargs: Text.plot(
-                fig,
-                xy,
-                text,
-                fontsize,
-                color,
-                **kwargs,
-            )
-        )
-        Footer(self.visual).draw(
-            lambda xy, text, fontsize, color, **kwargs: Text.plot(
-                fig,
-                xy,
-                text,
-                fontsize,
-                color,
-                **kwargs,
-            )
-        )
+        Header(self.visual).draw()
+        Footer(self.visual).draw()
 
         image_dir = os.path.join(self.DIR_OUTPUT, self.visual.command.cmd_id)
         os.makedirs(image_dir, exist_ok=True)

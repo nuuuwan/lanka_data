@@ -3,7 +3,7 @@
 
 from lanka_data.command import (Command, CommandBase, CommandHelp,
                                 CommandLoaderMixin, CommandRunner)
-from lanka_data.data import Diversity, FieldNameUtils, Segregation
+from lanka_data.data import DataSource, Diversity, FieldNameUtils, Segregation
 from lanka_data.dataset import (Census2012Dataset, Census2024Dataset, Dataset,
                                 DatasetFactory, DiffDataset, ElectionDataset,
                                 ElectionSummaryDataset, EmptyDataset,
@@ -17,6 +17,7 @@ from lanka_data.region import (RegionLoadersMixin, RegionParserMixin,
 from lanka_data.visual import (BarChartVisual, BumpChartVisual, ColorSpec,
                                ColorSpecConstants, ColorSpecFactory,
                                ColorSpecHelpers, Font, Footer, GeoData, Header,
-                               HeaderFooterBars, JSONVisual, Label, LabelFit,
+                               HowFormatter, JSONVisual, Label, LabelFit,
                                Legend, MapVisual, PieChartVisual, Plot,
-                               PlotVisual, Text, Visual, VisualFactory)
+                               PlotVisual, Text, Visual, VisualFactory,
+                               WhereFormatter)

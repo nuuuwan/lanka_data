@@ -49,7 +49,9 @@ class DiffDataset(RegionValueDataset):
             values2 = data2["values"]
             pct_values1 = data1["pct_values"]
             pct_values2 = data2["pct_values"]
-            common_keys = set(values1.keys()).intersection(set(values2.keys()))
+            common_keys = set(values1.keys()).intersection(
+                set(values2.keys())
+            )
 
             values = {}
             pct_values = {}

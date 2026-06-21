@@ -1,15 +1,34 @@
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+
 from lanka_data.visual.formatters.HowFormatter import HowFormatter
 from lanka_data.visual.formatters.WhereFormatter import WhereFormatter
+from lanka_data.visual.plot.Text import Text
 
 
 class Header:
     TITLE_DELIM = " · "
     TEXT_COLOR = "#000"
+    BACK_COLOR = "#ccc"
 
     def __init__(self, visual):
         self.visual = visual
 
-    def draw(self, figure_text):
+    def draw(self):
+        fig = plt.gcf()
+
+        fig.patches.append(
+            Rectangle(
+                (0, 0.95),
+                1,
+                0.05,
+                transform=fig.transFigure,
+                facecolor=self.BACK_COLOR,
+                edgecolor=self.BACK_COLOR,
+                zorder=0,
+            )
+        )
+
         header_title_items = [
             f"{self.visual.command.what_cmd} ({self.visual.command.when_cmd})",
             WhereFormatter(self.visual.command.where_cmd).format(),
@@ -18,7 +37,8 @@ class Header:
         header_title_items = [
             item.strip() for item in header_title_items if item.strip()
         ]
-        figure_text(
+        Text.plot(
+            fig,
             (0.5, 0.975),
             self.TITLE_DELIM.join(header_title_items),
             fontsize=16,
