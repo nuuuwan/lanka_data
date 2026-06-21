@@ -617,6 +617,134 @@ Source: [examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Output
 
 Source: [examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
 
+#### 3.14) Religion/2012-2024/LK:district/Map:2ndPct
+
+```bash
+Religion/2012-2024/LK:district/Map:2ndPct
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK:district/Map:2ndPct",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:2ndPct/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:2ndPct/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:2ndPct/Output.json)
+
+![Religion/2012-2024/LK:district/Map:2ndPct](examples/outputs/Religion/2012-2024/LK:district/Map:2ndPct/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:2ndPct/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:2ndPct/Image.png)
+
+#### 3.15) Religion/2012-2024/LK:district/Map:3rdPct
+
+```bash
+Religion/2012-2024/LK:district/Map:3rdPct
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK:district/Map:3rdPct",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:3rdPct/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:3rdPct/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:3rdPct/Output.json)
+
+![Religion/2012-2024/LK:district/Map:3rdPct](examples/outputs/Religion/2012-2024/LK:district/Map:3rdPct/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:3rdPct/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:3rdPct/Image.png)
+
+#### 3.16) Religion/2012-2024/LK-21:dsd/BarChart
+
+```bash
+Religion/2012-2024/LK-21:dsd/BarChart
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK-21:dsd/BarChart",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-21:dsd/BarChart/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Output.json)
+
+![Religion/2012-2024/LK-21:dsd/BarChart](examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Image.png)
+
+#### 3.17) Religion/2012-2024/LK-31:dsd/BarChart
+
+```bash
+Religion/2012-2024/LK-31:dsd/BarChart
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK-31:dsd/BarChart",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-31:dsd/BarChart/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK-31:dsd/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-31:dsd/BarChart/Output.json)
+
+![Religion/2012-2024/LK-31:dsd/BarChart](examples/outputs/Religion/2012-2024/LK-31:dsd/BarChart/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK-31:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-31:dsd/BarChart/Image.png)
+
 ### 4) Elections
 
 #### 4.01) Parliamentary/2024/LK/JSON
