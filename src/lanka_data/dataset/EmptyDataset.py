@@ -20,3 +20,6 @@ class EmptyDataset(Dataset):
 
     def has_values(self):
         return False
+
+    def get_year(self):
+        return ""
