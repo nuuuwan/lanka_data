@@ -3,8 +3,8 @@ import re
 
 class HowFormatter:
     BASE_LABELS = {
-        "JSON": "JSON",
-        "Map": "Basic Map",
+        "JSON": None,
+        "Map": None,
         "Cartogram": "Cartogram (Population based)",
         "BarChart": "Bar Chart",
         "PieChart": "Pie Chart",

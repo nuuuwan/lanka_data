@@ -35,7 +35,9 @@ class Header:
             HowFormatter(self.visual.command.how_cmd).format(),
         ]
         header_title_items = [
-            item.strip() for item in header_title_items if item.strip()
+            item.strip()
+            for item in header_title_items
+            if item and item.strip()
         ]
         Text.plot(
             fig,
