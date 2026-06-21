@@ -27,7 +27,7 @@ def timer(func):
 
         time_str = f"{elapsed * 1000:.0f}ms"
 
-        log.debug(f"⌛️ [{filename}{func.__name__}] {time_str}")
+        log.debug(f"⌛️ [{filename}: {func.__name__}] {time_str}")
         return result
 
     return wrapper
