@@ -142,7 +142,7 @@ class ColorSpec:
 
     @classmethod
     def by_region_to_custom_value(
-        cls, region_to_custom_value, is_diff, value_mapper=None
+        cls, region_to_custom_value, is_diff, value_formatter=None
     ):
         sorted_custom_values = list(
             sorted(
@@ -175,15 +175,15 @@ class ColorSpec:
                 if is_diff:
                     value = (
                         f"{custom_value:+.4f}"
-                        if not value_mapper
-                        else value_mapper(custom_value)
+                        if not value_formatter
+                        else value_formatter(custom_value)
                     )
                     color = ColorSpec.p_to_color_for_diff(p)
                 else:
                     value = (
                         f"{custom_value:.4f}"
-                        if not value_mapper
-                        else value_mapper(custom_value)
+                        if not value_formatter
+                        else value_formatter(custom_value)
                     )
                     color = ColorSpec.p_to_color_for_abs(p)
 
