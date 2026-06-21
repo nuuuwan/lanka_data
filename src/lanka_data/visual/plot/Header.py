@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
 from lanka_data.visual.formatters.HowFormatter import HowFormatter
+from lanka_data.visual.formatters.WhatFormatter import WhatFormatter
 from lanka_data.visual.formatters.WhereFormatter import WhereFormatter
 from lanka_data.visual.plot.Text import Text
 
@@ -30,7 +31,7 @@ class Header:
         )
 
         header_title_items = [
-            f"{self.visual.command.what_cmd} ({self.visual.command.when_cmd})",
+            WhatFormatter(self.visual.command.what_cmd).format(),
             WhereFormatter(self.visual.command.where_cmd).format(),
             HowFormatter(self.visual.command.how_cmd).format(),
         ]
