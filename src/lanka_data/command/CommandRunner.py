@@ -13,7 +13,7 @@ class CommandRunner:
         t_start = time.perf_counter()
 
         if command_str == "Help":
-            result = CommandHelp.get_help_result()r
+            result = CommandHelp.get_help_result()
             sources = [
                 DataSource(
                     name="Lanka Data",
