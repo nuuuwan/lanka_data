@@ -1,3 +1,4 @@
+import os
 from abc import abstractmethod
 
 from lanka_data.data.DataSource import DataSource
@@ -48,6 +49,20 @@ class GIG2Dataset(RegionValueDataset):
     def get_year(self) -> str:
         pass
 
+    def fix_lg_id_bug(self, d_list: dict) -> dict:
+        corrections_path = os.path.join(
+            "src", "lanka_data", "dataset", "custom", "lg.corrections.json"
+        )
+        corrections_file = JSONFile(corrections_path)
+        old_id_to_new_id = corrections_file.read()
+        new_d_list = []
+        for d in d_list:
+            old_id = d["entity_id"]
+            new_id = old_id_to_new_id.get(old_id, old_id)
+            d["entity_id"] = new_id
+            new_d_list.append(d)
+        return new_d_list
+
     def get_source_data_table(self) -> list[dict]:
         url = (
             "https://raw.githubusercontent.com"
@@ -56,7 +71,10 @@ class GIG2Dataset(RegionValueDataset):
             + f"/{self.table_id}.{self.get_region_group()}.{self.get_year()}"
             + ".tsv"
         )
-        return WWW(url).read_tsv()
+
+        d_list = WWW(url).read_tsv()
+        d_list = self.fix_lg_id_bug(d_list)
+        return d_list
 
     def clean_data_row(self, row: dict) -> dict:
         d = {"region_id": row["entity_id"]}
