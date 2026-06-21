@@ -115,8 +115,28 @@ class BarChartVisual(PlotVisual):
         if items:
             Legend.draw(items, ax)
 
-    def _add_bar_labels(self, ax):
+    # horizontal text: chars run along bar width, lines stack along bar height
+    _CHAR_W_RATIO = 0.6
+    _LINE_H_RATIO = 1.4
+    _MAX_FONT = 8
+    _MIN_FONT = 3
+
+    @classmethod
+    def _fit_fontsize(cls, bar_h_px, bar_w_px, n_chars, n_lines=1):
+        return min(
+            cls._MAX_FONT,
+            bar_w_px / max(n_chars * cls._CHAR_W_RATIO, 1),
+            bar_h_px / max(n_lines * cls._LINE_H_RATIO, 1),
+        )
+
+    def _add_bar_labels(self, ax, subregions):
+        is_change = self._is_change_chart(subregions)
+        totals = {
+            i: sum(abs(v) for v in s["values"].values()) or 1
+            for i, s in enumerate(subregions)
+        }
         for container in ax.containers:
+            cat = container.get_label()
             for bar in container:
                 height = bar.get_height()
                 if height == 0:
@@ -127,14 +147,27 @@ class BarChartVisual(PlotVisual):
                 )
                 bar_h_px = abs(p1[1] - p0[1])
                 bar_w_px = abs(p1[0] - p0[0])
-                text = self._format_millions(height, None)
-                fontsize = min(
-                    9,
-                    min(bar_w_px, bar_h_px) * 0.6,
-                    bar_h_px / (max(len(text), 1) * 1.2),
-                )
-                if fontsize < 3:
-                    continue
+                idx = round(bar.get_x() + bar.get_width() / 2)
+                abs_label = self._format_millions(height, None)
+                if is_change:
+                    pct_val = subregions[idx]["pct_values"].get(cat, 0)
+                    pct_label = f"{pct_val * 100:+.0f}pp"
+                else:
+                    total = totals.get(idx, 1)
+                    pct_label = f"{abs(height) / total:.0%}"
+                full_text = f"{abs_label}\n{pct_label}"
+                max_line = max(len(abs_label), len(pct_label))
+                fontsize = self._fit_fontsize(bar_h_px, bar_w_px, max_line, 2)
+                if fontsize < self._MIN_FONT:
+                    # try pct only (1 line)
+                    fontsize = self._fit_fontsize(
+                        bar_h_px, bar_w_px, len(pct_label), 1
+                    )
+                    if fontsize < self._MIN_FONT:
+                        continue
+                    text = pct_label
+                else:
+                    text = full_text
                 fc = bar.get_facecolor()
                 lum = 0.299 * fc[0] + 0.587 * fc[1] + 0.114 * fc[2]
                 ax.text(
@@ -145,7 +178,6 @@ class BarChartVisual(PlotVisual):
                     va="center",
                     fontsize=fontsize,
                     color="#333" if lum > 0.5 else "#eee",
-                    rotation=90,
                     clip_on=True,
                 )
 
@@ -169,5 +201,5 @@ class BarChartVisual(PlotVisual):
             ax, subregions, x_values, category_labels, category_to_color
         )
         self._style_axis(ax, subregions, y_min, y_max, "Population")
-        self._add_bar_labels(ax)
+        self._add_bar_labels(ax, subregions)
         self._draw_category_legend(ax, category_labels, category_to_color)
