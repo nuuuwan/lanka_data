@@ -90,7 +90,7 @@ By the Diversity metric designed by Pew Research,  in 2012 Sri Lanka's administr
 
 ![](../examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
 
-Mannar's "upgrade" can be primarily explained by a population decrease "Roman Catholic" (most common) and an increase in "Islam" (2nd most common).
+Mannar's "upgrade" can be primarily explained by a population share decrease "Roman Catholic" (most common) and an increase in "Islam" (2nd most common).
 
 ![](../examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Image.png)
 
