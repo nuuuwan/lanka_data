@@ -11,7 +11,10 @@ class DiffDataset(RegionValueDataset):
         self.dataset2 = dataset2
 
     def get_year(self):
-        return f"{self.dataset2.get_year()} - {self.dataset1.get_year()}"
+        return (
+            "Change between"
+            + f" {self.dataset1.get_year()} and {self.dataset2.get_year()}"
+        )
 
     def __str__(self):
         return f"DiffDataset({self.dataset1} - {self.dataset2})"
