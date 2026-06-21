@@ -39,7 +39,7 @@ class ColorSpecHelpers:
     @staticmethod
     def get_color_spec_generic(dataset, how_cmd) -> ColorSpec:
 
-        params = how_cmd.split(":")[1] if ":" in how_cmd else None
+        params = how_cmd.split(":")[1] if ":" in how_cmd else "1st"
 
         if params in ColorSpecHelpers.KEY_PARAM_TO_I_RANK:
             i_rank = ColorSpecHelpers.KEY_PARAM_TO_I_RANK[params]
@@ -60,9 +60,8 @@ class ColorSpecHelpers:
                 func_value,
             )
 
-        func_value = ColorSpecHelpers.func_key_from_rank(0)
-        return ColorSpec.by_custom_category_key(
-            dataset, func_value, hide_legend=False
+        raise ValueError(
+            f"Unknown how_cmd params: {params} in how_cmd: {how_cmd}"
         )
 
     @staticmethod

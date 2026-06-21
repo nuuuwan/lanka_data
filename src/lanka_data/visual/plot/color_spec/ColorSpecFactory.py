@@ -19,7 +19,6 @@ class ColorSpecFactory:
         log.debug(f"{how_without_params=}, {how_params=}, {is_diff=}")
 
         has_values = dataset.has_values()
-
         if not has_values:
             return ColorSpec.by_custom_category_key(
                 dataset,
@@ -66,7 +65,10 @@ class ColorSpecFactory:
             return ColorSpecHelpers.get_color_spec_for_segregation(dataset)
 
         if is_diff:
-            if how_params in ColorSpecHelpers.KEY_PARAM_TO_I_RANK:
+            if (
+                how_params in ColorSpecHelpers.KEY_PARAM_TO_I_RANK
+                or how_params is None
+            ):
                 idx = ColorSpecHelpers.KEY_PARAM_TO_I_RANK.get(how_params, 0)
                 return ColorSpecHelpers.get_colors_from_flips(dataset, idx=idx)
 
