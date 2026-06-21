@@ -5,9 +5,11 @@ from lanka_data.command.CommandHelp import CommandHelp
 from lanka_data.data.DataSource import DataSource
 from lanka_data.dataset.DatasetFactory import DatasetFactory
 from lanka_data.visual.VisualFactory import VisualFactory
+from utils_future.timer import timer
 
 
 class CommandRunner:
+    @timer
     @staticmethod
     def run(command_str: str):
         t_start = time.perf_counter()

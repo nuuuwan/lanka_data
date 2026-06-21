@@ -8,12 +8,14 @@ from lanka_data.dataset.DiffDataset import DiffDataset
 from lanka_data.dataset.EmptyDataset import EmptyDataset
 from lanka_data.region.Regions import Regions
 from utils_future import Log
+from utils_future.timer import timer
 
 log = Log("DatasetFactory")
 
 
 class DatasetFactory:
 
+    @timer
     @staticmethod
     def get_region_data_list(command):
         return Regions.from_command(command).raw_region_data_list

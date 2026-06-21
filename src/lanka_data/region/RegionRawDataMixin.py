@@ -6,6 +6,7 @@ from utils_future import WWW
 
 class RegionRawDataMixin:
     @classmethod
+    @cache
     def _get_url(cls, region_type, region_year):
         if region_year == "Current":
             return (
@@ -50,6 +51,7 @@ class RegionRawDataMixin:
         return remapped_data_list
 
     @classmethod
+    @cache
     def _get_raw_region_data_idx_for_region_type(
         cls, region_type: str, region_year: str
     ):
@@ -59,12 +61,14 @@ class RegionRawDataMixin:
         return {d["region_id"]: d for d in raw_region_data_list}
 
     @classmethod
+    @cache
     def _get_region_year(cls, region_id):
         if "-pre" in region_id:
             return region_id.split("-pre")[1]
         return "Current"
 
     @classmethod
+    @cache
     def _get_raw_region_data_for_region_id(cls, region_id: str):
         return cls._get_raw_region_data_list_for_region_ids([region_id])[0]
 
@@ -94,12 +98,11 @@ class RegionRawDataMixin:
                         )
                     region_id_to_raw_region[region_id] = raw_region
 
-        return [
-            region_id_to_raw_region[region_id] for region_id in region_ids
-        ]
+        return [region_id_to_raw_region[region_id] for region_id in region_ids]
 
     # flake8: noqa: C901
     @classmethod
+    @cache
     def is_parent(cls, parent_region_id: str, child_region_id: str) -> bool:
         parent_region_id = parent_region_id.split("-pre")[0]
         if parent_region_id == "LK":
@@ -130,6 +133,7 @@ class RegionRawDataMixin:
         return False
 
     @classmethod
+    @cache
     def get_full_name(cls, region_id):
         region_type = RegionTypeUtils.get_region_type(region_id)
         raw_data = cls._get_raw_region_data_for_region_id(region_id)

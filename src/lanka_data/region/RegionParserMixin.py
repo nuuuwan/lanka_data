@@ -1,6 +1,7 @@
 from lanka_data.region.RegionTypeUtils import RegionTypeUtils
 from utils_future import Log
 from utils_future.GeoUtils import GeoUtils
+from utils_future.timer import timer
 
 log = Log("RegionParserMixin")
 
@@ -100,6 +101,7 @@ class RegionParserMixin:
         return parent_region_ids, region_year
 
     @classmethod
+    @timer
     def get_raw_regions(
         cls, parent_region_ids, child_region_type, region_year
     ):
