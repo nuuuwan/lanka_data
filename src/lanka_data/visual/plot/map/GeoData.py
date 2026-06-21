@@ -96,9 +96,9 @@ class GeoData:
         return gdf.merge(df, on="region_id", how="left")
 
     @staticmethod
-    def _get_temp_gdf_path(data_list, is_cartogram):
+    def _get_temp_gdf_path(region_id_to_weight, is_cartogram):
         hash_value = hashlib.md5(
-            str(data_list).encode() + str(is_cartogram).encode()
+            str(region_id_to_weight).encode() + str(is_cartogram).encode()
         ).hexdigest()
         dir_temp = os.path.join(
             tempfile.gettempdir(),
@@ -110,7 +110,13 @@ class GeoData:
 
     @classmethod
     def get_geopandas_dataframe(cls, data_list, is_cartogram):
-        temp_gdf_path = cls._get_temp_gdf_path(data_list, is_cartogram)
+        region_id_to_weight = {
+            d["region_id"]: abs(d.get("total_value", 1)) for d in data_list
+        }
+
+        temp_gdf_path = cls._get_temp_gdf_path(
+            region_id_to_weight, is_cartogram
+        )
         if os.path.exists(temp_gdf_path):
             log.debug(f"Read {temp_gdf_path}")
             return geopandas.read_file(temp_gdf_path)
@@ -127,9 +133,6 @@ class GeoData:
             raise ValueError("No map data found.")
 
         if is_cartogram:
-            region_id_to_weight = {
-                d["region_id"]: abs(d["total_value"]) for d in data_list
-            }
             gdf = DCNUtils.run_gdf(
                 gdf,
                 region_id_to_weight,

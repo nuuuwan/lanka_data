@@ -13,7 +13,7 @@ log = Log("DCNUtilsRunner")
 class DCNUtilsRunner:
     EPSILON = 0.01
     MAX_ITERATIONS = 20
-    MAX_TIME = 30.0
+    MAX_TIME = 10.0
 
     @staticmethod
     def _run_features(features, region_id_to_weight):
@@ -58,7 +58,5 @@ class DCNUtilsRunner:
         features = geojson["features"]
         DCNUtilsRunner._run_features(features, region_id_to_weight)
         result = gdf.copy()
-        result["geometry"] = [
-            shape(f["geometry"]).buffer(0) for f in features
-        ]
+        result["geometry"] = [shape(f["geometry"]).buffer(0) for f in features]
         return result
