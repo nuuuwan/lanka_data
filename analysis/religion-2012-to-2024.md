@@ -92,7 +92,9 @@ In the Kandy District, the Gangawata Korale DSD (which includes Kandy Town), saw
 
 But conversely, in the Galle District, the Galle 4 Gravets DSD (which includes Galle Town), saw an increase in population, mostly driven by an increase in the "Islam" population. But similar to Colombo and Galle, there was a significant decline in the "Roman Catholic" and "Other Christian" populations.
 
-![](../examples/outputs/Religion/2012-2024/LK-31:dsd/BarChart/Image.png)
+![](../examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png)
+
+*Note: Since in 2019, DSD boundaries in Galle was revised, we use the old (pre 2019) boundaries in the above maps.*
 
 ## Diversity of Population
 
