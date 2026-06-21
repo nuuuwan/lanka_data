@@ -2,6 +2,9 @@ from abc import abstractmethod
 from functools import cached_property
 
 from lanka_data.dataset.Dataset import Dataset
+from utils_future import Log
+
+log = Log("RegionValueDataset")
 
 
 class RegionValueDataset(Dataset):
@@ -14,6 +17,13 @@ class RegionValueDataset(Dataset):
     @cached_property
     def region_ids(self):
         return [d["region_id"] for d in self.region_data_list]
+
+    @cached_property
+    def region_id_to_current_ids(self):
+        return {
+            d["region_id"]: d.get("current_ids", [d["region_id"]])
+            for d in self.region_data_list
+        }
 
     @cached_property
     def region_idx(self):
@@ -30,6 +40,7 @@ class RegionValueDataset(Dataset):
             region_name=region["region_name"],
             center_lat=region["center_lat"],
             center_lng=region["center_lng"],
+            current_ids=region.get("current_ids", [region_id]),
         )
         values = {k: v for k, v in data["values"].items()}
         values = dict(sorted(values.items(), key=lambda item: -item[1]))
@@ -63,11 +74,38 @@ class RegionValueDataset(Dataset):
 
     def get_data_table(self):
         complete_data_table = self.get_complete_data_table()
-        filtered_data_table = [
-            row
-            for row in complete_data_table
-            if row["region_id"] in self.region_ids
-        ]
+        complete_data_idx = {d["region_id"]: d for d in complete_data_table}
+
+        filtered_data_table = []
+        for region_id, current_ids in self.region_id_to_current_ids.items():
+            data_list = []
+            for current_id in current_ids:
+                if current_id in complete_data_idx:
+                    data_list.append(complete_data_idx[current_id])
+
+            if not data_list:
+                raise ValueError(
+                    f"No data found for region_id={region_id} "
+                    f"with current_ids={current_ids}"
+                )
+
+            values = {}
+            for data in data_list:
+                for k, v in data["values"].items():
+                    values[k] = values.get(k, 0) + v
+            values = dict(sorted(values.items(), key=lambda item: -item[1]))
+
+            region = self.get_region(region_id)
+            d = dict(
+                region_id=region_id,
+                region_name=region["region_name"],
+                center_lat=region["center_lat"],
+                center_lng=region["center_lng"],
+                current_ids=current_ids,
+                values=values,
+            )
+            filtered_data_table.append(d)
+
         sorted_data_table = sorted(
             filtered_data_table,
             key=lambda row: row["region_id"],
@@ -75,6 +113,11 @@ class RegionValueDataset(Dataset):
         expanded_data_table = [
             self.expand_and_clean(data) for data in sorted_data_table
         ]
+        if len(expanded_data_table) == 0:
+            raise ValueError(
+                "No data available for the specified regions. "
+                "Please check the region IDs and data source."
+            )
         return expanded_data_table
 
     def get_data_idx(self):
