@@ -76,9 +76,9 @@ class ColorSpecHelpers:
         )
 
     @staticmethod
-    def get_region_to_change(result_data):
+    def get_region_to_change(dataset):
         region_to_change = {}
-        for data in result_data["data_list"]:
+        for data in dataset.get_data_table():
             region_to_change[data["region_id"]] = data["change"]
         return region_to_change
 
