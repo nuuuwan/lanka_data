@@ -79,8 +79,6 @@ Help
             "url": "https://github.com/nuuuwan/lanka_data/blob/main/README.md"
         }
     ],
-    "time_elapsed_ms": 0,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -107,8 +105,6 @@ Empty/2024/LK:province/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 377,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -137,8 +133,6 @@ Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 232,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -167,8 +161,6 @@ Empty/2024/LK-5...LK-8/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 191,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -197,8 +189,6 @@ Empty/2024/LK-1127025@20/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 469,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -233,8 +223,6 @@ Religion/2012-2024/LK:district/Map
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "time_elapsed_ms": 4383,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -267,8 +255,6 @@ Religion/2012-2024/LK:district/Cartogram
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "time_elapsed_ms": 9398,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -301,8 +287,6 @@ Religion/2012-2024/LK:district/Map:DiversityPew
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "time_elapsed_ms": 4278,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -335,8 +319,6 @@ Religion/2012-2024/LK:district/Map:Segregation
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "time_elapsed_ms": 3868,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -376,7 +358,9 @@ Parliamentary/2024/LK/JSON
                 "SB": 178006,
                 "SLMC": 87038,
                 "UDV": 83488,
-                ... // 650 lines ...
+                ... // 648 lines ...
+                "IND34-13": 0.0,
+                "IND26-12": 0.0,
                 "IND05-13": 0.0,
                 "IND07-13": 0.0,
                 "IND08-14": 0.0,
@@ -393,8 +377,6 @@ Parliamentary/2024/LK/JSON
             "url": "https://www.elections.gov.lk"
         }
     ],
-    "time_elapsed_ms": 598,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -419,8 +401,6 @@ Presidential/2015/LK-11:pd/Map
             "url": "https://www.elections.gov.lk"
         }
     ],
-    "time_elapsed_ms": 458,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -449,8 +429,6 @@ Local/2025/LK:district/Map
             "url": "https://www.elections.gov.lk"
         }
     ],
-    "time_elapsed_ms": 2648,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -481,8 +459,6 @@ Empty/2012/LK-pre1845:province/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 355,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -511,8 +487,6 @@ Empty/2012/LK-pre1873:province/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 296,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -541,8 +515,6 @@ Empty/2012/LK-pre1886:province/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 318,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -571,8 +543,6 @@ Empty/2012/LK-pre1889:province/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 343,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -601,8 +571,6 @@ Empty/2012/LK:province/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 377,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -631,8 +599,6 @@ Empty/2012/LK-pre1959:district/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 700,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -661,8 +627,6 @@ Empty/2012/LK-pre1961:district/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 720,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -691,8 +655,6 @@ Empty/2012/LK-pre1978:district/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 749,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -721,8 +683,6 @@ Empty/2012/LK-pre1984:district/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 797,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -751,8 +711,6 @@ Empty/2012/LK:district/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 838,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -781,8 +739,6 @@ Ethnicity/2012/LK-23-pre2019:dsd/Map
             "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
         }
     ],
-    "time_elapsed_ms": 264,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -811,8 +767,6 @@ Ethnicity/2024/LK-23-pre2019:dsd/Map
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "time_elapsed_ms": 239,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -841,8 +795,6 @@ Ethnicity/2024/LK-23:dsd/Map
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "time_elapsed_ms": 319,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -871,8 +823,6 @@ Empty/2024/LK:dsd/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 244,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
@@ -901,8 +851,6 @@ Empty/2024/LK:gnd/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "time_elapsed_ms": 2143,
-    "cache_hit": true,
     "query_time_ms": 0
 }
 ```
