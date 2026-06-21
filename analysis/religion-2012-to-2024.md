@@ -84,15 +84,37 @@ The reduction in "Roman Catholic" and "Other Christian" is significant, and this
 
 ![](../examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Image.png)
 
-### Diversity of Population
+### Urban Decline?
 
-By the Diversity metric designed by Pew Research,  in 2012 Sri Lanka's administrative districts ranged from Very Low (Hambantota) to Very High (Puttalam, Ampara, Trincomalee) Diversity. Only Mannar's score significant changed from 2012 to 2024 to move it into a new category (High to Very High).
+In the Kandy District, the Gangawata Korale DSD (which includes Kandy Town), saw the most significant decline in population in the district, including a significnat decline in the "Roman Catholic" population.
+
+![](../examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Image.png)
+
+But conversely, in the Galle District, the Galle 4 Gravets DSD (which includes Galle Town), saw an increase in population, mostly driven by an increase in the "Islam" population. But similar to Colombo and Galle, there was a significant decline in the "Roman Catholic" and "Other Christian" populations.
+
+![](../examples/outputs/Religion/2012-2024/LK-31:dsd/BarChart/Image.png)
+
+## Diversity of Population
+
+### *Religious Diversity Index* by Pew Research
+
+By the [Religious Diversity Index](https://www.pewresearch.org/religion/2026/02/12/religious-diversity-around-the-world), designed by Pew Research,  in 2012 Sri Lanka's administrative districts ranged from Very Low (Hambantota) to Very High (Puttalam, Ampara, Trincomalee) Diversity. Only Mannar's score significant changed from 2012 to 2024 to move it into a new category (High to Very High).
 
 ![](../examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
 
 Mannar's "upgrade" can be primarily explained by a population share decrease "Roman Catholic" (most common) and an increase in "Islam" (2nd most common).
 
 ![](../examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Image.png)
+
+### 2nd Most Common and 3rd Most Common
+
+As an alternative diversity metric, we also looked at the population share of the 2nd and 3rd most common religion. Nuwara Eliya District has the 2nd most common religion ("Buddhist") with the highest population share (38.4% in 2024).
+
+![](../examples/outputs/Religion/2012-2024/LK:district/Map:2ndPct/Image.png)
+
+Trincomalee District has the 3rd most common (also "Buddhist") with the highest (24.1% in 2024).
+
+![](../examples/outputs/Religion/2012-2024/LK:district/Map:3rdPct/Image.png)
 
 ---
 
@@ -101,6 +123,8 @@ Mannar's "upgrade" can be primarily explained by a population share decrease "Ro
 - [Census of Population and Housing 2012](https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf)
 - [Census of Population and Housing 2024](https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024)
 - [Geophracial Maps from Survey Department of Sri Lanka](https://survey.gov.lk/)
+- *[One Island, Many Maps: The Hidden Geography of Religious Diversity in Sri Lanka](https://github.com/nuuuwan/lk_diversity/blob/main/ANALYSIS.md)* by @nuuuwan
+- *[Religious Diversity Around the World](https://www.pewresearch.org/religion/2026/02/12/religious-diversity-around-the-world/)* by Pew Research
 
 ## Code & Analysis
 

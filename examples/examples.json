@@ -19,7 +19,11 @@
     "Religion/2012-2024/LK-11:dsd/BarChart",
     "Religion/2012-2024/LK-11:lg/BarChart",
     "Religion/2012-2024/LK-12:dsd/BarChart",
-    "Religion/2012-2024/LK:district/Map:DiversityPew"
+    "Religion/2012-2024/LK:district/Map:DiversityPew",
+    "Religion/2012-2024/LK:district/Map:2ndPct",
+    "Religion/2012-2024/LK:district/Map:3rdPct",
+    "Religion/2012-2024/LK-21:dsd/BarChart",
+    "Religion/2012-2024/LK-31:dsd/BarChart"
   ],
   "Elections": [
     "Parliamentary/2024/LK/JSON",
