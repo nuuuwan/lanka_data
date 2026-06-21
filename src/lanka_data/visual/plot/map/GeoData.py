@@ -129,6 +129,8 @@ class GeoData:
         gdf_out = geopandas.GeoDataFrame(gdf_enriched)
         if gdf_out.crs is None:
             gdf_out = gdf_out.set_crs("EPSG:4326")
+
         gdf_out.to_file(temp_gdf_path, driver="GeoJSON")
+
         log.debug(f"Wrote {temp_gdf_path}")
         return gdf_enriched

@@ -9,7 +9,7 @@ from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
 from lanka_data.visual.plot.HeaderFooterBars import HeaderFooterBars
 from lanka_data.visual.plot.Text import Text
-from utils_future import Log
+from utils_future import File, Log
 
 log = Log("Plot")
 
@@ -37,7 +37,6 @@ class Plot:
         return fig
 
     def draw(self):
-        plt.close()
         Font(self.FONT_FAMILY).install()
         fig = self._draw_subfigures()
 
@@ -66,9 +65,9 @@ class Plot:
         image_dir = os.path.join(self.DIR_OUTPUT, self.visual.command.cmd_id)
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, "Image.png")
-        fig.savefig(image_path, dpi=200, bbox_inches=0)
-        plt.close(fig)
-        log.info(f"Wrote {image_path}")
+        plt.savefig(image_path, dpi=200, bbox_inches=0)
+        plt.close("all")
+        log.debug(f"Wrote {File(image_path)}")
         return {
             "image_path": image_path,
             "source_list": self.visual.get_source_list(),
