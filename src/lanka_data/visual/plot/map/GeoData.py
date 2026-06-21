@@ -6,15 +6,32 @@ import geopandas
 import pandas as pd
 
 from lanka_data.region.RegionTypeUtils import RegionTypeUtils
-from utils_future import WWW, DCNUtils, Log
+from utils_future import WWW, DCNUtils, Log, timer
 
 log = Log("GeoData")
 
 
 class GeoData:
+
+    @timer
+    @staticmethod
+    def _load_raw_gdf_for_region_type(region_type, ids):
+        precision_label = "e4_medium"
+        url = (
+            "https://raw.githubusercontent.com"
+            + "/nuuuwan/lk_admin_regions/refs/heads/main"
+            + "/data/geo/topojson"
+            + f"/{precision_label}/{region_type}s.topojson"
+        )
+        temp_topojson_file_path = WWW(url).download()
+        gdf = geopandas.read_file(temp_topojson_file_path)
+        gdf = gdf.rename(columns={"id": "region_id", "name": "region_name"})
+        gdf = gdf[gdf["region_id"].isin(ids)]
+        return gdf
+
     @staticmethod
     def _load_raw_gdf(all_current_ids):
-        precision_label = "e4_medium"
+
         ids_by_type = {}
         for region_id in all_current_ids:
             region_type = RegionTypeUtils.get_region_type(region_id)
@@ -22,18 +39,11 @@ class GeoData:
 
         gdfs = []
         for region_type, ids in ids_by_type.items():
-            url = (
-                "https://raw.githubusercontent.com"
-                + "/nuuuwan/lk_admin_regions/refs/heads/main"
-                + "/data/geo/topojson"
-                + f"/{precision_label}/{region_type}s.topojson"
-            )
-            temp_topojson_file_path = WWW(url).download()
-            gdf = geopandas.read_file(temp_topojson_file_path)
-            gdf = gdf.rename(
-                columns={"id": "region_id", "name": "region_name"}
-            )
-            gdfs.append(gdf[gdf["region_id"].isin(ids)])
+            gdf = GeoData._load_raw_gdf_for_region_type(region_type, ids)
+            gdfs.append(gdf)
+
+        if len(gdfs) == 1:
+            return gdfs[0]
 
         combined = geopandas.GeoDataFrame(pd.concat(gdfs, ignore_index=True))
         if combined.crs is None and gdfs:
