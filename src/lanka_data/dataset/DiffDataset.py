@@ -80,6 +80,7 @@ class DiffDataset(RegionValueDataset):
                 region_name=data1["region_name"],
                 center_lat=data1["center_lat"],
                 center_lng=data1["center_lng"],
+                current_ids=data1["current_ids"],
                 values1=values1,
                 pct_values1=pct_values1,
                 total_value1=data1["total_value"],
