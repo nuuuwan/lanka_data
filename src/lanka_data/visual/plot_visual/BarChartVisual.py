@@ -118,15 +118,16 @@ class BarChartVisual(PlotVisual):
     # horizontal text: chars run along bar width, lines stack along bar height
     _CHAR_W_RATIO = 0.6
     _LINE_H_RATIO = 1.4
-    _MAX_FONT = 8
     _MIN_FONT = 3
+    _MAX_FONT = 24
 
     @classmethod
-    def _fit_fontsize(cls, bar_h_px, bar_w_px, n_chars, n_lines=1):
+    def _fit_fontsize(cls, bar_h_px, bar_w_px, n_chars, n_lines, dpi):
+        pt_per_px = 72 / dpi
         return min(
             cls._MAX_FONT,
-            bar_w_px / max(n_chars * cls._CHAR_W_RATIO, 1),
-            bar_h_px / max(n_lines * cls._LINE_H_RATIO, 1),
+            bar_w_px * pt_per_px / max(n_chars * cls._CHAR_W_RATIO, 1),
+            bar_h_px * pt_per_px / max(n_lines * cls._LINE_H_RATIO, 1),
         )
 
     def _add_bar_labels(self, ax, subregions):
@@ -151,17 +152,20 @@ class BarChartVisual(PlotVisual):
                 abs_label = self._format_millions(height, None)
                 if is_change:
                     pct_val = subregions[idx]["pct_values"].get(cat, 0)
-                    pct_label = f"{pct_val * 100:+.0f}pp"
+                    pct_label = f"{pct_val * 100:+.1f}pp"
                 else:
                     total = totals.get(idx, 1)
                     pct_label = f"{abs(height) / total:.0%}"
+                dpi = ax.get_figure().dpi
                 full_text = f"{abs_label}\n{pct_label}"
                 max_line = max(len(abs_label), len(pct_label))
-                fontsize = self._fit_fontsize(bar_h_px, bar_w_px, max_line, 2)
+                fontsize = self._fit_fontsize(
+                    bar_h_px, bar_w_px, max_line, 2, dpi
+                )
                 if fontsize < self._MIN_FONT:
                     # try pct only (1 line)
                     fontsize = self._fit_fontsize(
-                        bar_h_px, bar_w_px, len(pct_label), 1
+                        bar_h_px, bar_w_px, len(pct_label), 1, dpi
                     )
                     if fontsize < self._MIN_FONT:
                         continue
