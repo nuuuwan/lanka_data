@@ -108,7 +108,7 @@ Mannar's "upgrade" from "High" Diversity to "Very High" can be primarily explain
 
 ![](../examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Image.png)
 
-Conversely, Colombo's "downgrade" from "High" to "Moderate" can be explained by the decreases in "Roman Catholic" and "Other Christian" population shares, and increases in "Buddhist" and "Islam", which were already the 2 most common religions.
+Conversely, Colombo's "downgrade" from "High" to "Moderate" can be explained by the decreases in "Roman Catholic" and "Other Christian" population shares, and increases in "Buddhist", "Islam" and "Hindu" which were already the 3 most common religions.
 
 ![](../examples/outputs/Religion/2012-2024/LK-11:district/BarChart/Image.png)
 
