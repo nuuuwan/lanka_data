@@ -129,10 +129,7 @@ class RegionParserMixin:
             parent_part = token
             child_region_type = None
 
-        log.debug(f"{parent_part=},{child_region_type=}")
         parent_region_ids, region_year = cls.parse_parent_part(parent_part)
-        log.debug(f"{parent_region_ids=},{region_year=}")
-
         regions, region_year = cls.get_raw_regions(
             parent_region_ids, child_region_type, region_year
         )
