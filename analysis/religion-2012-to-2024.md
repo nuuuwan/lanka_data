@@ -100,13 +100,17 @@ But conversely, in the Galle District, the Galle 4 Gravets DSD (which includes G
 
 ### *Religious Diversity Index* by Pew Research
 
-By the [Religious Diversity Index](https://www.pewresearch.org/religion/2026/02/12/religious-diversity-around-the-world), designed by Pew Research, in 2012 Sri Lanka's administrative districts ranged from Very Low (Hambantota) to Very High (Puttalam, Ampara, Trincomalee) Diversity. Only Mannar's score significantly changed from 2012 to 2024 to move it into a new category (High to Very High).
+By the [Religious Diversity Index](https://www.pewresearch.org/religion/2026/02/12/religious-diversity-around-the-world), designed by Pew Research, in 2012 Sri Lanka's administrative districts ranged from Very Low (Hambantota) to Very High (Puttalam, Ampara, Trincomalee) Diversity. Only Mannar District and Colombos District's score changed significantly enough between 2012 and 2024, to move them into different categories.
 
 ![](../examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
 
-Mannar's "upgrade" can be primarily explained by a population share decrease "Roman Catholic" (most common) and an increase in "Islam" (2nd most common).
+Mannar's "upgrade" from "High" Diversity to "Very High" can be primarily explained by a population share decrease "Roman Catholic" (most common) and an increase in "Islam" (2nd most common).
 
 ![](../examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Image.png)
+
+Conversely, Colombo's "downgrade" from "High" to "Moderate" can be explained by the decreases in "Roman Catholic" and "Other Christian" population shares, and increases in "Buddhist" and "Islam", which were already the 2 most common religions.
+
+![](../examples/outputs/Religion/2012-2024/LK-11:district/BarChart/Image.png)
 
 ### 2nd Most Common and 3rd Most Common
 
