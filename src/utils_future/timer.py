@@ -25,14 +25,16 @@ def timer(func):
         end = time.perf_counter()
         elapsed = end - start
 
-        if elapsed > 2:
-            logger = log.error
-        elif elapsed > 1:
-            logger = log.warning
-        else:
-            logger = log.debug
+        if elapsed > 0.1:
 
-        logger(f"⌛️ [{filename}: {func.__name__}] {elapsed * 1000:.0f}ms")
+            if elapsed > 2:
+                logger = log.error
+            elif elapsed > 1:
+                logger = log.warning
+            else:
+                logger = log.debug
+
+            logger(f"⌛️ [{filename}: {func.__name__}] {elapsed * 1000:.0f}ms")
         return result
 
     return wrapper
