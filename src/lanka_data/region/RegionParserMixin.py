@@ -80,10 +80,7 @@ class RegionParserMixin:
                 from_region_id, to_region_id
             )
             region_year = cls._get_region_year(parent_region_ids[0])
-            from_region_full_name = cls.get_full_name(from_region_id)
-            to_region_full_name = cls.get_full_name(to_region_id)
-            description = f"{from_region_full_name} to {to_region_full_name}"
-            return parent_region_ids, region_year, description
+            return parent_region_ids, region_year
 
         if "@" in parent_part:
             region_id, radius_km_str = parent_part.split("@")
@@ -92,11 +89,7 @@ class RegionParserMixin:
                 region_id, radius_km
             )
             region_year = cls._get_region_year(parent_region_ids[0])
-            region_full_name = cls.get_full_name(region_id)
-            description = (
-                f"Regions within {radius_km} km of {region_full_name}"
-            )
-            return parent_region_ids, region_year, description
+            return parent_region_ids, region_year
 
         parent_region_ids = parent_part.split(",")
         region_year = cls._get_region_year(parent_region_ids[0])
@@ -104,11 +97,7 @@ class RegionParserMixin:
             parent_region_id.split("-pre")[0]
             for parent_region_id in parent_region_ids
         ]
-        parent_region_full_names = [
-            cls.get_full_name(rid) for rid in parent_region_ids
-        ]
-        description = ", ".join(parent_region_full_names)
-        return parent_region_ids, region_year, description
+        return parent_region_ids, region_year
 
     @classmethod
     def get_raw_regions(
@@ -141,18 +130,10 @@ class RegionParserMixin:
             child_region_type = None
 
         log.debug(f"{parent_part=},{child_region_type=}")
-        parent_region_ids, region_year, parent_description = (
-            cls.parse_parent_part(parent_part)
-        )
+        parent_region_ids, region_year = cls.parse_parent_part(parent_part)
         log.debug(f"{parent_region_ids=},{region_year=}")
 
         regions, region_year = cls.get_raw_regions(
             parent_region_ids, child_region_type, region_year
         )
-        description = (
-            f"{RegionTypeUtils.get_long_name_plural(child_region_type)}"
-            + f" in {parent_description}"
-            if child_region_type
-            else parent_description
-        )
-        return regions, region_year, description
+        return regions, region_year

@@ -14,10 +14,10 @@ class Regions(Where, RegionLoadersMixin):
         self,
         raw_region_data_list: list[str],
         region_year: str,
-        description: str,
     ):
         super().__init__(
-            self.build_title(raw_region_data_list), region_year, description
+            self.build_title(raw_region_data_list),
+            region_year,
         )
         self.raw_region_data_list = raw_region_data_list
 

@@ -1,11 +1,7 @@
 class Where:
-    def __init__(self, title: str, region_year: str, description: str):
+    def __init__(self, title: str, region_year: str):
         self.title = title
         self.region_year = region_year
-        self.description = description
-
-    def get_description(self):
-        return self.description
 
     def get_title(self):
         return self.title

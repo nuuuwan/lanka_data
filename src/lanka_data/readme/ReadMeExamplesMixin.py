@@ -11,18 +11,7 @@ class ReadMeExamplesMixin:
     @staticmethod
     def get_lines_for_example_title(i_group_name, i_cmd, cmd, result):
         lines = []
-        if "what_description" in result:
-            what_description = result["what_description"]
-            when_description = result["when_description"]
-            where_description = result["where_description"]
-            how_description = result["how_description"]
-            title_text = (
-                f"{how_description} of"
-                + f" {what_description} ({when_description}) for"
-                + f" {where_description}."
-            )
-        else:
-            title_text = cmd
+        title_text = cmd
 
         lines.append(f"#### {i_group_name}.{i_cmd:02d}) {title_text}")
         lines.append("")
