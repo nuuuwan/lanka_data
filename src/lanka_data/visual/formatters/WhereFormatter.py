@@ -12,16 +12,28 @@ class WhereFormatter:
             RegionRawDataMixin.get_full_name(region_id.strip())
             for region_id in region_ids
         ]
-        return ", ".join(region_full_names)
+        if len(region_full_names) == 1:
+            return region_full_names[0]
+        elif len(region_full_names) == 2:
+            return f"{region_full_names[0]} & {region_full_names[1]}"
+        else:
+            return (
+                ", ".join(region_full_names[:-1])
+                + f", & {region_full_names[-1]}"
+            )
+
+    def parse_parent_part(self, parent_part):
+        return [id.strip() for id in parent_part.split(",") if id.strip()]
 
     def format(self) -> str:
         if ":" in self.where_cmd:
-            parent_region_id, child_region_type = self.where_cmd.split(":", 1)
+            parent_part, child_region_type = self.where_cmd.split(":", 1)
             child_region_long_name = RegionTypeUtils.get_long_name(
                 child_region_type
             )
-            parent_region_long_name = self.format_regions([parent_region_id])
-            return f"{child_region_long_name}s in {parent_region_long_name}"
+            parent_region_ids = self.parse_parent_part(parent_part)
+            parent_regions_long_name = self.format_regions(parent_region_ids)
+            return f"{child_region_long_name}s in {parent_regions_long_name}"
 
         if "@" in self.where_cmd:
             region_id, radius = self.where_cmd.split("@", 1)
