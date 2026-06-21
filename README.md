@@ -713,17 +713,17 @@ Source: [examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Output.json](exa
 
 Source: [examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Image.png)
 
-#### 3.17) Religion/2012-2024/LK-31:dsd/BarChart
+#### 3.17) Religion/2012-2024/LK-31-pre2019:dsd/BarChart
 
 ```bash
-Religion/2012-2024/LK-31:dsd/BarChart
+Religion/2012-2024/LK-31-pre2019:dsd/BarChart
 ```
 
 ```json
 {
-    "command_str": "Religion/2012-2024/LK-31:dsd/BarChart",
+    "command_str": "Religion/2012-2024/LK-31-pre2019:dsd/BarChart",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-31:dsd/BarChart/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png"
     },
     "sources": [
         {
@@ -739,11 +739,11 @@ Religion/2012-2024/LK-31:dsd/BarChart
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK-31:dsd/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-31:dsd/BarChart/Output.json)
+Source: [examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Output.json)
 
-![Religion/2012-2024/LK-31:dsd/BarChart](examples/outputs/Religion/2012-2024/LK-31:dsd/BarChart/Image.png)
+![Religion/2012-2024/LK-31-pre2019:dsd/BarChart](examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK-31:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-31:dsd/BarChart/Image.png)
+Source: [examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png)
 
 ### 4) Elections
 

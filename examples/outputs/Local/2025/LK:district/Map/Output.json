@@ -1,0 +1,13 @@
+{
+  "command_str": "Local/2025/LK:district/Map",
+  "result": {
+    "image_path": "/tmp/lanka_data/output/Local/2025/LK:district/Map/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Election Commission of Sri lanka",
+      "url": "https://www.elections.gov.lk"
+    }
+  ],
+  "query_time_ms": 0
+}
