@@ -88,7 +88,12 @@ class Example:
     def get_cmd_to_output(cls):
         cmd_list = cls.get_cmd_list()
         cmd_to_output = {}
-        for cmd in cmd_list:
+        n_cmds = len(cmd_list)
+        for i_cmd, cmd in enumerate(cmd_list, start=1):
+            log.debug("-" * 40)
+            log.debug(f"{i_cmd:02d}/{n_cmds:02d}) {cmd}")
+            log.debug("-" * 40)
+
             output = cls.get_output(cmd)
             cmd_to_output[cmd] = output
         return cmd_to_output
