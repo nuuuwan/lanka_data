@@ -29,7 +29,7 @@ class ColorSpecHelpers:
             return ColorSpec.by_custom_category_key(
                 result_data, func_key_getter, False
             )
-        return ColorSpec.by_single_pct_value(result_data, how)
+        return ColorSpec.by_single_pct_value(result_data, how_cmd)
 
     @staticmethod
     def get_colors_from_diversity(

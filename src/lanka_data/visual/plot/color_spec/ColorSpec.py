@@ -1,8 +1,9 @@
 import random
 from dataclasses import dataclass
 
-from lanka_data.visual.plot.color_spec.ColorSpecConstants import \
-    ColorSpecConstants
+from lanka_data.visual.plot.color_spec.ColorSpecConstants import (
+    ColorSpecConstants,
+)
 from utils_future import ColorUtils, Parse
 
 
@@ -113,10 +114,10 @@ class ColorSpec:
         return cls(region_to_color, value_to_color)
 
     @classmethod
-    def by_single_pct_value(cls, dataset, how):
+    def by_single_pct_value(cls, dataset, how_cmd):
         data_list = dataset.get_data_table()
         is_diff = dataset.is_diff()
-        single_pct_value = how.params
+        single_pct_value = how_cmd.split(":")[1] if ":" in how_cmd else how_cmd
 
         pct_values = [
             data["pct_values"][single_pct_value] for data in data_list
