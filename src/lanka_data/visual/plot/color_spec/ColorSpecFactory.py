@@ -66,7 +66,8 @@ class ColorSpecFactory:
             return ColorSpecHelpers.get_color_spec_for_segregation(dataset)
 
         if is_diff:
-            idx = ColorSpecHelpers.PARAM_TO_IDX.get(how_params, 0)
-            return ColorSpecHelpers.get_colors_from_flips(dataset, idx=idx)
+            if how_params in ColorSpecHelpers.PARAM_TO_IDX:
+                idx = ColorSpecHelpers.PARAM_TO_IDX.get(how_params, 0)
+                return ColorSpecHelpers.get_colors_from_flips(dataset, idx=idx)
 
         return ColorSpecHelpers.get_color_spec_generic(dataset, how_cmd)
