@@ -745,6 +745,38 @@ Source: [examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Output.j
 
 Source: [examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png)
 
+#### 3.18) Religion/2012-2024/LK-11:district/BarChart
+
+```bash
+Religion/2012-2024/LK-11:district/BarChart
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK-11:district/BarChart",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-11:district/BarChart/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK-11:district/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-11:district/BarChart/Output.json)
+
+![Religion/2012-2024/LK-11:district/BarChart](examples/outputs/Religion/2012-2024/LK-11:district/BarChart/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK-11:district/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-11:district/BarChart/Image.png)
+
 ### 4) Elections
 
 #### 4.01) Parliamentary/2024/LK/JSON
