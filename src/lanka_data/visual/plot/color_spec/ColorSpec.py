@@ -114,19 +114,16 @@ class ColorSpec:
         return cls(region_to_color, value_to_color)
 
     @classmethod
-    def by_single_pct_value(cls, dataset, how_cmd):
+    def by_single_pct_value(cls, dataset, value_mapper):
         data_list = dataset.get_data_table()
         is_diff = dataset.is_diff()
-        single_pct_value = how_cmd.split(":")[1] if ":" in how_cmd else how_cmd
 
-        pct_values = [
-            data["pct_values"][single_pct_value] for data in data_list
-        ]
+        pct_values = [value_mapper(data) for data in data_list]
         value_to_rank = {v: r for r, v in enumerate(sorted(set(pct_values)))}
         n = len(value_to_rank)
         value_to_color, region_to_color = {}, {}
         for data in data_list:
-            value = data["pct_values"][single_pct_value]
+            value = value_mapper(data)
             rank = value_to_rank[value]
             color = (
                 ColorSpec.p_to_color_for_abs(rank / (n - 1))

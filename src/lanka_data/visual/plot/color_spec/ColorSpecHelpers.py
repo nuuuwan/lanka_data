@@ -3,33 +3,67 @@ from lanka_data.visual.plot.color_spec import ColorSpec
 
 
 class ColorSpecHelpers:
-    PARAM_TO_IDX = {"Top": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
+    KEY_PARAM_TO_I_RANK = {"1st": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
+    PCT_VALUE_PARAM_TO_KEY = {
+        "1stPct": 0,
+        "2ndPct": 1,
+        "3rdPct": 2,
+    }
 
     @staticmethod
-    def func_key_getter(how_cmd):
-        if ":" not in how_cmd:
-            how_params = None
-        else:
-            _, how_params = how_cmd.split(":")
+    def func_key_from_rank(i_rank):
+        def f(data):
+            pct_values = data["pct_values"]
+            keys = list(pct_values.keys())
+            return keys[i_rank]
 
-        idx = ColorSpecHelpers.PARAM_TO_IDX.get(how_params or "Top")
-        if idx is None:
-            return None
-
-        def func_key_getter(data):
-            values = list(data["pct_values"].keys())
-            return values[idx] if idx < len(values) else "(No Data)"
-
-        return func_key_getter
+        return f
 
     @staticmethod
-    def get_color_spec_generic(result_data, how_cmd) -> ColorSpec:
-        func_key_getter = ColorSpecHelpers.func_key_getter(how_cmd)
-        if func_key_getter:
+    def func_pct_value_from_rank(i_rank):
+        def f(data):
+            pct_values = data["pct_values"]
+            values = list(pct_values.values())
+            return values[i_rank]
+
+        return f
+
+    @staticmethod
+    def func_pct_value_from_key(key):
+        def f(data):
+            pct_values = data["pct_values"]
+            return pct_values[key]
+
+        return f
+
+    @staticmethod
+    def get_color_spec_generic(dataset, how_cmd) -> ColorSpec:
+
+        params = how_cmd.split(":")[1] if ":" in how_cmd else None
+
+        if params in ColorSpecHelpers.KEY_PARAM_TO_I_RANK:
+            i_rank = ColorSpecHelpers.KEY_PARAM_TO_I_RANK[params]
+            func_key = ColorSpecHelpers.func_key_from_rank(i_rank)
             return ColorSpec.by_custom_category_key(
-                result_data, func_key_getter, False
+                dataset, func_key, hide_legend=False
             )
-        return ColorSpec.by_single_pct_value(result_data, how_cmd)
+
+        if params in ColorSpecHelpers.PCT_VALUE_PARAM_TO_KEY:
+            key = ColorSpecHelpers.PCT_VALUE_PARAM_TO_KEY[params]
+            func_value = ColorSpecHelpers.func_pct_value_from_rank(key)
+            return ColorSpec.by_single_pct_value(dataset, func_value)
+
+        if params:
+            func_value = ColorSpecHelpers.func_pct_value_from_key(params)
+            return ColorSpec.by_single_pct_value(
+                dataset,
+                func_value,
+            )
+
+        func_value = ColorSpecHelpers.func_key_from_rank(0)
+        return ColorSpec.by_custom_category_key(
+            dataset, func_value, hide_legend=False
+        )
 
     @staticmethod
     def get_colors_from_diversity(
