@@ -155,7 +155,7 @@ class BarChartVisual(PlotVisual):
                     pct_label = f"{pct_val * 100:+.1f}pp"
                 else:
                     total = totals.get(idx, 1)
-                    pct_label = f"{abs(height) / total:.0%}"
+                    pct_label = f"{abs(height) / total:.1%}"
                 dpi = ax.get_figure().dpi
                 full_text = f"{abs_label}\n{pct_label}"
                 max_line = max(len(abs_label), len(pct_label))
