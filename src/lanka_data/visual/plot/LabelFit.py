@@ -3,13 +3,12 @@ import math
 from shapely.affinity import rotate as shapely_rotate
 from shapely.geometry import LineString, Point, box
 
+from utils_future import timer
 from utils_future.PolygonUtils import PolygonUtils
 
 
 class LabelFit:
-    POLE_OF_INACCESSIBILITY = getattr(
-        PolygonUtils, "_pole_of_inaccessibility"
-    )
+    POLE_OF_INACCESSIBILITY = getattr(PolygonUtils, "_pole_of_inaccessibility")
     INTERIOR_CANDIDATES = getattr(PolygonUtils, "_interior_candidates")
     LARGEST_POLYGON = getattr(PolygonUtils, "_largest_polygon")
 
@@ -81,6 +80,7 @@ class LabelFit:
         return best_cx, best_cy, best_rw, best_rh, best_angle
 
     @classmethod
+    @timer
     def best_label_fit(cls, geom):
         poly = cls.LARGEST_POLYGON(geom)
         angle_results, span = cls._coarse_scan(poly)

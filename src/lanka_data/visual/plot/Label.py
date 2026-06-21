@@ -1,5 +1,5 @@
 from lanka_data.visual.plot.LabelFit import LabelFit
-from utils_future import ColorUtils
+from utils_future import ColorUtils, timer
 
 
 class Label:
@@ -68,6 +68,7 @@ class Label:
         return final_fontsize * 0.7
 
     @classmethod
+    @timer
     def draw(cls, gdf_region, ax):
         fig = ax.get_figure()
         for _, row in gdf_region.iterrows():
