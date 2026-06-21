@@ -66,4 +66,8 @@ class ColorSpecConstants:
         # Segregation
         "#fe0000": ["Segregated"],
         "#ff8800": ["Change"],
+        # Election Summary
+        "#008801": ["Valid"],
+        "#cc0001": ["DidNotVote"],
+        "#ff8801": ["Rejected"],
     }
