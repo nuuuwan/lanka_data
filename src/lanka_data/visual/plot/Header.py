@@ -1,5 +1,6 @@
 class Header:
     TITLE_DELIM = " · "
+    TEXT_COLOR = "#000"
 
     def __init__(self, visual):
         self.visual = visual
@@ -17,5 +18,5 @@ class Header:
             (0.5, 0.975),
             self.TITLE_DELIM.join(header_title_items),
             fontsize=16,
-            color="#fff",
+            color=self.TEXT_COLOR,
         )

@@ -1,4 +1,6 @@
 class Footer:
+    TEXT_COLOR = "#000"
+
     def __init__(self, visual):
         self.visual = visual
 
@@ -8,5 +10,5 @@ class Footer:
             "Data Sources: "
             + ", ".join([source.name for source in self.visual.get_sources()]),
             fontsize=16,
-            color="#fff",
+            color=self.TEXT_COLOR,
         )
