@@ -201,17 +201,17 @@ Source: [examples/outputs/Empty/2024/LK-1127025@20/Map/Image.png](examples/outpu
 
 ### 3) Religion
 
-#### 3.01) Religion/2012-2024/LK:district/Map
+#### 3.01) Religion/2012-2024/LK:district/Map:1st
 
 ```bash
-Religion/2012-2024/LK:district/Map
+Religion/2012-2024/LK:district/Map:1st
 ```
 
 ```json
 {
-    "command_str": "Religion/2012-2024/LK:district/Map",
+    "command_str": "Religion/2012-2024/LK:district/Map:1st",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:1st/Image.png"
     },
     "sources": [
         {
@@ -227,23 +227,23 @@ Religion/2012-2024/LK:district/Map
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map/Output.json)
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:1st/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:1st/Output.json)
 
-![Religion/2012-2024/LK:district/Map](examples/outputs/Religion/2012-2024/LK:district/Map/Image.png)
+![Religion/2012-2024/LK:district/Map:1st](examples/outputs/Religion/2012-2024/LK:district/Map:1st/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map/Image.png)
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:1st/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:1st/Image.png)
 
-#### 3.02) Religion/2012-2024/LK:district/Cartogram
+#### 3.02) Religion/2012-2024/LK:district/Map:2nd
 
 ```bash
-Religion/2012-2024/LK:district/Cartogram
+Religion/2012-2024/LK:district/Map:2nd
 ```
 
 ```json
 {
-    "command_str": "Religion/2012-2024/LK:district/Cartogram",
+    "command_str": "Religion/2012-2024/LK:district/Map:2nd",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Cartogram/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:2nd/Image.png"
     },
     "sources": [
         {
@@ -259,23 +259,23 @@ Religion/2012-2024/LK:district/Cartogram
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Cartogram/Output.json](examples/outputs/Religion/2012-2024/LK:district/Cartogram/Output.json)
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:2nd/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:2nd/Output.json)
 
-![Religion/2012-2024/LK:district/Cartogram](examples/outputs/Religion/2012-2024/LK:district/Cartogram/Image.png)
+![Religion/2012-2024/LK:district/Map:2nd](examples/outputs/Religion/2012-2024/LK:district/Map:2nd/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Cartogram/Image.png](examples/outputs/Religion/2012-2024/LK:district/Cartogram/Image.png)
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:2nd/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:2nd/Image.png)
 
-#### 3.03) Religion/2012-2024/LK:district/Map:DiversityPew
+#### 3.03) Religion/2012-2024/LK:district/Map:3rd
 
 ```bash
-Religion/2012-2024/LK:district/Map:DiversityPew
+Religion/2012-2024/LK:district/Map:3rd
 ```
 
 ```json
 {
-    "command_str": "Religion/2012-2024/LK:district/Map:DiversityPew",
+    "command_str": "Religion/2012-2024/LK:district/Map:3rd",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:3rd/Image.png"
     },
     "sources": [
         {
@@ -291,23 +291,23 @@ Religion/2012-2024/LK:district/Map:DiversityPew
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Output.json)
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:3rd/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:3rd/Output.json)
 
-![Religion/2012-2024/LK:district/Map:DiversityPew](examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
+![Religion/2012-2024/LK:district/Map:3rd](examples/outputs/Religion/2012-2024/LK:district/Map:3rd/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:3rd/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:3rd/Image.png)
 
-#### 3.04) Religion/2012-2024/LK:district/Map:Segregation
+#### 3.04) Religion/2012-2024/LK:district/Map:Change
 
 ```bash
-Religion/2012-2024/LK:district/Map:Segregation
+Religion/2012-2024/LK:district/Map:Change
 ```
 
 ```json
 {
-    "command_str": "Religion/2012-2024/LK:district/Map:Segregation",
+    "command_str": "Religion/2012-2024/LK:district/Map:Change",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:Segregation/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:Change/Image.png"
     },
     "sources": [
         {
@@ -323,11 +323,267 @@ Religion/2012-2024/LK:district/Map:Segregation
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:Segregation/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:Segregation/Output.json)
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:Change/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:Change/Output.json)
 
-![Religion/2012-2024/LK:district/Map:Segregation](examples/outputs/Religion/2012-2024/LK:district/Map:Segregation/Image.png)
+![Religion/2012-2024/LK:district/Map:Change](examples/outputs/Religion/2012-2024/LK:district/Map:Change/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:Segregation/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:Segregation/Image.png)
+Source: [examples/outputs/Religion/2012-2024/LK:district/Map:Change/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:Change/Image.png)
+
+#### 3.05) Religion/2012-2024/LK-42:district/BarChart
+
+```bash
+Religion/2012-2024/LK-42:district/BarChart
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK-42:district/BarChart",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-42:district/BarChart/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Output.json)
+
+![Religion/2012-2024/LK-42:district/BarChart](examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Image.png)
+
+#### 3.06) Religion/2012-2024/LK-43:dsd/BarChart
+
+```bash
+Religion/2012-2024/LK-43:dsd/BarChart
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK-43:dsd/BarChart",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-43:dsd/BarChart/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK-43:dsd/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-43:dsd/BarChart/Output.json)
+
+![Religion/2012-2024/LK-43:dsd/BarChart](examples/outputs/Religion/2012-2024/LK-43:dsd/BarChart/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK-43:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-43:dsd/BarChart/Image.png)
+
+#### 3.07) Religion/2012-2024/LK-53:district/BarChart
+
+```bash
+Religion/2012-2024/LK-53:district/BarChart
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK-53:district/BarChart",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-53:district/BarChart/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK-53:district/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-53:district/BarChart/Output.json)
+
+![Religion/2012-2024/LK-53:district/BarChart](examples/outputs/Religion/2012-2024/LK-53:district/BarChart/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK-53:district/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-53:district/BarChart/Image.png)
+
+#### 3.08) Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
+
+```bash
+Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Output.json)
+
+![Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart](examples/outputs/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png)
+
+#### 3.09) Religion/2012-2024/LK:district/BarChart
+
+```bash
+Religion/2012-2024/LK:district/BarChart
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK:district/BarChart",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/BarChart/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK:district/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK:district/BarChart/Output.json)
+
+![Religion/2012-2024/LK:district/BarChart](examples/outputs/Religion/2012-2024/LK:district/BarChart/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK:district/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK:district/BarChart/Image.png)
+
+#### 3.10) Religion/2012-2024/LK-11:dsd/BarChart
+
+```bash
+Religion/2012-2024/LK-11:dsd/BarChart
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK-11:dsd/BarChart",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-11:dsd/BarChart/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK-11:dsd/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-11:dsd/BarChart/Output.json)
+
+![Religion/2012-2024/LK-11:dsd/BarChart](examples/outputs/Religion/2012-2024/LK-11:dsd/BarChart/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK-11:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-11:dsd/BarChart/Image.png)
+
+#### 3.11) Religion/2012-2024/LK-11:lg/BarChart
+
+```bash
+Religion/2012-2024/LK-11:lg/BarChart
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK-11:lg/BarChart",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-11:lg/BarChart/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK-11:lg/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-11:lg/BarChart/Output.json)
+
+![Religion/2012-2024/LK-11:lg/BarChart](examples/outputs/Religion/2012-2024/LK-11:lg/BarChart/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK-11:lg/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-11:lg/BarChart/Image.png)
+
+#### 3.12) Religion/2012-2024/LK-12:dsd/BarChart
+
+```bash
+Religion/2012-2024/LK-12:dsd/BarChart
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK-12:dsd/BarChart",
+    "result": {
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-12:dsd/BarChart/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Output.json)
+
+![Religion/2012-2024/LK-12:dsd/BarChart](examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Image.png)
+
+Source: [examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Image.png)
 
 ### 4) Elections
 

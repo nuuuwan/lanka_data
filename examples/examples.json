@@ -7,21 +7,18 @@
     "Empty/2024/LK-1127025@20/Map"
   ],
   "Religion": [
-    "Religion/2012-2024/LK:district/Map",
+    "Religion/2012-2024/LK:district/Map:1st",
     "Religion/2012-2024/LK:district/Map:2nd",
     "Religion/2012-2024/LK:district/Map:3rd",
+    "Religion/2012-2024/LK:district/Map:Change",
+    "Religion/2012-2024/LK-42:district/BarChart",
+    "Religion/2012-2024/LK-43:dsd/BarChart",
+    "Religion/2012-2024/LK-53:district/BarChart",
+    "Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart",
     "Religion/2012-2024/LK:district/BarChart",
     "Religion/2012-2024/LK-11:dsd/BarChart",
-    "Religion/2012-2024/LK-12:dsd/BarChart",
-    "Religion/2012-2024/LK-21:dsd/BarChart",
-    "Religion/2012-2024/LK-61:dsd/BarChart",
-    "Religion/2012-2024/LK-43:dsd/BarChart",
-    "Religion/2012-2024/LK:district/Map:DiversityPew",
-    "Religion/2012-2024/LK-42/BarChart",
-    "Religion/2012-2024/LK-42:dsd/BarChart",
-    "Religion/2012-2024/LK-53/BarChart",
-    "Religion/2012-2024/LK-53:dsd/BarChart",
-    "Religion/2012-2024/LK-32,LK-33,LK-82:district/BarChart"
+    "Religion/2012-2024/LK-11:lg/BarChart",
+    "Religion/2012-2024/LK-12:dsd/BarChart"
   ],
   "Elections": [
     "Parliamentary/2024/LK/JSON",
