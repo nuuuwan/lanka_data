@@ -1,6 +1,7 @@
 import os
 
 from lanka_data.data import FieldNameUtils
+from lanka_data.data.DataSource import DataSource
 from lanka_data.dataset.RegionValueDataset import RegionValueDataset
 from utils_future import WWW, JSONFile, Log
 
@@ -41,10 +42,10 @@ class Census2024Dataset(RegionValueDataset):
     def get_labels(cls) -> list[str]:
         return list(cls.get_label_to_table_id().keys())
 
-    def get_source_info_list(self) -> list[dict]:
+    def get_sources(self):
         return [
-            dict(
-                label="Census of Population and Housing 2024",
+            DataSource(
+                name="Census of Population and Housing 2024",
                 url="https://www.statistics.gov.lk"
                 + "/Population/StaticalInformation/CPH2024",
             )

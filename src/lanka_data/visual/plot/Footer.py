@@ -5,7 +5,8 @@ class Footer:
     def draw(self, figure_text):
         figure_text(
             (0.5, 0.025),
-            "Data Sources: " + ", ".join(self.visual.get_source_list()),
+            "Data Sources: "
+            + ", ".join([source.name for source in self.visual.get_sources()]),
             fontsize=16,
             color="#fff",
         )

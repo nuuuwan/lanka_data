@@ -1,5 +1,6 @@
 from abc import abstractmethod
 
+from lanka_data.data.DataSource import DataSource
 from lanka_data.data.FieldNameUtils import FieldNameUtils
 from lanka_data.dataset.RegionValueDataset import RegionValueDataset
 from utils_future import WWW, JSONFile, Log
@@ -36,7 +37,7 @@ class GIG2Dataset(RegionValueDataset):
         return list(cls.get_label_to_table_id().keys())
 
     @abstractmethod
-    def get_source_info_list(self) -> list[dict]:
+    def get_sources(self) -> list[DataSource]:
         pass
 
     @abstractmethod

@@ -1,3 +1,4 @@
+from lanka_data.data.DataSource import DataSource
 from lanka_data.dataset.Dataset import Dataset
 
 
@@ -6,10 +7,10 @@ class EmptyDataset(Dataset):
         Dataset.__init__(self)
         self.region_data_list = region_data_list
 
-    def get_source_info_list(self):
+    def get_sources(self):
         return [
-            dict(
-                label="Survey Department of Sri Lanka",
+            DataSource(
+                name="Survey Department of Sri Lanka",
                 url="https://survey.gov.lk/",
             )
         ]

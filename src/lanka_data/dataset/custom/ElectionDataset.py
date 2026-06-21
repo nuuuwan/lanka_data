@@ -1,5 +1,6 @@
 import os
 
+from lanka_data.data.DataSource import DataSource
 from lanka_data.dataset.custom.GIG2Dataset import GIG2Dataset
 from utils_future import Log
 
@@ -8,9 +9,7 @@ log = Log("ElectionDataset")
 
 class ElectionDataset(GIG2Dataset):
 
-    def __init__(
-        self, region_data_list: list[dict], table_id: str, year: str
-    ):
+    def __init__(self, region_data_list: list[dict], table_id: str, year: str):
         GIG2Dataset.__init__(self, region_data_list, table_id)
         self.year = year
 
@@ -34,10 +33,10 @@ class ElectionDataset(GIG2Dataset):
             "elections.datasets.json",
         )
 
-    def get_source_info_list(self) -> list[dict]:
+    def get_sources(self) -> list[dict]:
         return [
-            dict(
-                label="Election Commission of Sri lanka",
+            DataSource(
+                name="Election Commission of Sri lanka",
                 url="https://www.elections.gov.lk",
             )
         ]

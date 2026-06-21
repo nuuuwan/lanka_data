@@ -1,3 +1,4 @@
+from lanka_data.data.DataSource import DataSource
 from lanka_data.dataset.RegionValueDataset import RegionValueDataset
 
 
@@ -15,10 +16,9 @@ class DiffDataset(RegionValueDataset):
     def is_diff(self):
         return True
 
-    def get_source_info_list(self) -> list:
-        return (
-            self.dataset1.get_source_info_list()
-            + self.dataset2.get_source_info_list()
+    def get_sources(self) -> list:
+        return DataSource.merge_datasource_list_of_lists(
+            [self.dataset1.get_sources(), self.dataset2.get_sources()]
         )
 
     def has_values(self):
@@ -43,9 +43,7 @@ class DiffDataset(RegionValueDataset):
             values2 = data2["values"]
             pct_values1 = data1["pct_values"]
             pct_values2 = data2["pct_values"]
-            common_keys = set(values1.keys()).intersection(
-                set(values2.keys())
-            )
+            common_keys = set(values1.keys()).intersection(set(values2.keys()))
 
             values = {}
             pct_values = {}

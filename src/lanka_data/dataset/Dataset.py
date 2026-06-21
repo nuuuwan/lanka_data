@@ -17,7 +17,7 @@ class Dataset(ABC):
         return False
 
     @abstractmethod
-    def get_source_info_list(self):
+    def get_sources(self):
         pass
 
     @abstractmethod

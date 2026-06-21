@@ -1,5 +1,6 @@
 import os
 
+from lanka_data.data.DataSource import DataSource
 from lanka_data.dataset.custom.GIG2Dataset import GIG2Dataset
 from utils_future import Log
 
@@ -18,10 +19,10 @@ class Census2012Dataset(GIG2Dataset):
             "census2012.datasets.json",
         )
 
-    def get_source_info_list(self) -> list[dict]:
+    def get_sources(self):
         return [
-            dict(
-                label="Census of Population and Housing 2012",
+            DataSource(
+                name="Census of Population and Housing 2012",
                 url="https://www.statistics.gov.lk"
                 + "/Resource/en/Population"
                 + "/CPH_2011/CPH_2012_5Per_Rpt.pdf",

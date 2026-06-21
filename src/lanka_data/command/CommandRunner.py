@@ -2,6 +2,7 @@ import time
 
 from lanka_data.command.Command import Command
 from lanka_data.command.CommandHelp import CommandHelp
+from lanka_data.data.DataSource import DataSource
 from lanka_data.dataset.DatasetFactory import DatasetFactory
 from lanka_data.visual.VisualFactory import VisualFactory
 
@@ -13,8 +14,11 @@ class CommandRunner:
 
         if command_str == "Help":
             result = CommandHelp.get_help_result()
-            source_list = [
-                "https://github.com/nuuuwan/lanka_data/blob/main/README.md"
+            sources = [
+                DataSource(
+                    name="Lanka Data",
+                    url="https://github.com/nuuuwan/lanka_data/blob/main/README.md",
+                )
             ]
         else:
             command = Command.from_str(command_str)
@@ -23,12 +27,12 @@ class CommandRunner:
                 command, datasets
             )
             result = visual.build()
-            source_list = visual.get_source_list()
+            sources = visual.get_sources()
 
         time_elapsed = time.perf_counter() - t_start
         return dict(
             command_str=command_str,
             result=result,
-            source_list=source_list,
+            sources=[source.__dict__ for source in sources],
             time_elapsed_ms=int(time_elapsed * 1000),
         )

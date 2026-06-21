@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
 from lanka_data.command.Command import Command
+from lanka_data.data.DataSource import DataSource
 from lanka_data.dataset.Dataset import Dataset
 from utils_future import Log
 
@@ -34,9 +35,7 @@ class Visual(ABC):
     def build(self):
         pass
 
-    def get_source_list(self):
-        source_set = set()
-        for dataset in self.datasets:
-            for source_info in dataset.get_source_info_list():
-                source_set.add(source_info["label"])
-        return list(sorted(source_set))
+    def get_sources(self):
+        return DataSource.merge_datasource_list_of_lists(
+            [dataset.get_sources() for dataset in self.datasets]
+        )
