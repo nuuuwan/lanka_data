@@ -59,7 +59,6 @@ class Example:
             )
 
         # Hack to prevent git diffs
-        output["cache_hit"] = True
         output["query_time_ms"] = 0
         return output
 

@@ -34,5 +34,5 @@ class CommandRunner:
             command_str=command_str,
             result=result,
             sources=[source.__dict__ for source in sources],
-            time_elapsed_ms=int(time_elapsed * 1000),
+            query_time_ms=int(time_elapsed * 1000),
         )
