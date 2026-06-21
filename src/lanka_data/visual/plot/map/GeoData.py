@@ -122,7 +122,6 @@ class GeoData:
             return geopandas.read_file(temp_gdf_path)
 
         region_to_current_ids = cls._build_region_map(data_list)
-        log.debug(f"{region_to_current_ids=}")
         all_current_ids = [
             cid
             for current_ids in region_to_current_ids.values()

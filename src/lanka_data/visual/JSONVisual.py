@@ -3,4 +3,4 @@ from lanka_data.visual.Visual import Visual
 
 class JSONVisual(Visual):
     def build(self):
-        return self.datasets[0].get_data_table()
+        return self.datasets[-1].get_data_table()
