@@ -15,7 +15,7 @@ class ColorSpecHelpers:
         def f(data):
             pct_values = data["pct_values"]
             keys = list(pct_values.keys())
-            return keys[i_rank]
+            return keys[i_rank] if i_rank < len(keys) else "(No Data)"
 
         return f
 
