@@ -30,7 +30,9 @@ class Footer:
             fig,
             (0.5, 0.025),
             "Data Sources: "
-            + ", ".join([source.name for source in self.visual.get_sources()]),
+            + ", ".join(
+                [source.name for source in self.visual.get_sources()]
+            ),
             fontsize=16,
             color=self.TEXT_COLOR,
         )

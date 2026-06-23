@@ -4,8 +4,9 @@
 from lanka_data.command import (Command, CommandBase, CommandHelp,
                                 CommandLoaderMixin, CommandRunner)
 from lanka_data.data import DataSource, Diversity, FieldNameUtils, Segregation
-from lanka_data.dataset import (Census2012Dataset, Census2024Dataset, Dataset,
-                                DatasetFactory, DiffDataset, ElectionDataset,
+from lanka_data.dataset import (Census2001Dataset, Census2012Dataset,
+                                Census2024Dataset, Dataset, DatasetFactory,
+                                DiffDataset, ElectionDataset,
                                 ElectionSummaryDataset, EmptyDataset,
                                 GIG2Dataset, RegionValueDataset)
 from lanka_data.examples import Example
@@ -20,4 +21,4 @@ from lanka_data.visual import (BarChartVisual, BumpChartVisual, ColorSpec,
                                HowFormatter, JSONVisual, Label, LabelFit,
                                Legend, MapVisual, PieChartVisual, Plot,
                                PlotVisual, Text, Visual, VisualFactory,
-                               WhereFormatter)
+                               WhatFormatter, WhereFormatter)

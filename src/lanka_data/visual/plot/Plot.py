@@ -45,7 +45,7 @@ class Plot:
 
     def draw(self):
         Font(self.FONT_FAMILY).install()
-        fig = self._draw_subfigures()
+        self._draw_subfigures()
 
         Header(self.visual).draw()
         Footer(self.visual).draw()

@@ -20,7 +20,12 @@ class FieldNameUtils:
 
     @staticmethod
     def from_snake_case_to_pascal_case(snake_str):
-        return snake_str.replace("_", " ").title().replace(" ", "")
+        return (
+            snake_str.replace("_", " ")
+            .title()
+            .replace(" ", "")
+            .replace("-", "")
+        )
 
     @staticmethod
     @cache

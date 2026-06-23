@@ -1,3 +1,4 @@
+from lanka_data.dataset.custom.Census2001Dataset import Census2001Dataset
 from lanka_data.dataset.custom.Census2012Dataset import Census2012Dataset
 from lanka_data.dataset.custom.Census2024Dataset import Census2024Dataset
 from lanka_data.dataset.custom.ElectionDataset import ElectionDataset
@@ -39,6 +40,14 @@ class DatasetFactory:
             and command.what_cmd in Census2012Dataset.get_labels()
         ):
             return Census2012Dataset.from_label_and_region_data_list(
+                command.what_cmd, region_data_list
+            )
+
+        if (
+            command.when_cmd == "2001"
+            and command.what_cmd in Census2001Dataset.get_labels()
+        ):
+            return Census2001Dataset.from_label_and_region_data_list(
                 command.what_cmd, region_data_list
             )
 

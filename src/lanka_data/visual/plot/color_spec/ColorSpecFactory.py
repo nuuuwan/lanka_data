@@ -70,6 +70,8 @@ class ColorSpecFactory:
                 or how_params is None
             ):
                 idx = ColorSpecHelpers.KEY_PARAM_TO_I_RANK.get(how_params, 0)
-                return ColorSpecHelpers.get_colors_from_flips(dataset, idx=idx)
+                return ColorSpecHelpers.get_colors_from_flips(
+                    dataset, idx=idx
+                )
 
         return ColorSpecHelpers.get_color_spec_generic(dataset, how_cmd)
