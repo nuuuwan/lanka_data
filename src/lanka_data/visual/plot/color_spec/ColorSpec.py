@@ -202,6 +202,13 @@ class ColorSpec:
                 custom_color,
                 custom_value_label,
             ) in custom_color_config:
+                if custom_value == "(No Data)":
+                    color = ColorUtils.rgb_to_hex(
+                        cls.LABEL_TO_COLOR[custom_value]
+                    )
+                    value_label = custom_value
+                    break
+
                 if low <= custom_value < high:
                     color = custom_color
                     value_label = custom_value_label

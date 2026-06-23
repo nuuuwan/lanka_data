@@ -5,11 +5,17 @@ class FieldNameUtils:
     NORMALIZED_TO_ORIGINAL = {
         "SLTamil": {"SriLankaTamil", "SLTamil"},
         "IndMalaiyagaTamil": {
+            "IndianTamil",
             "IndTamil",
             "IndianTamilOrMalaiyagaThamilar",
             "IndianMalaiyagaTamil",
         },
-        "SLMoor": {"SriLankaMoorOrMuslim", "SLMoor", "SriLankaMoorMuslim"},
+        "SLMoor": {
+            "SriLankaMoorOrMuslim",
+            "SLMoor",
+            "SriLankaMoorMuslim",
+            "SriLankaMoor",
+        },
         "SLChetty": {"SriLankaChetty", "SLChetty"},
     }
     NAME_IDX = {

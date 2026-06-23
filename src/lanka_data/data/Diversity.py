@@ -1,6 +1,8 @@
 class Diversity:
     @staticmethod
     def _compute_diversity(pct_values, is_pew=False):
+        if not pct_values:
+            return "(No Data)"
         if is_pew:
             # See
             # https://www.pewresearch.org/religion/2026/02/12/religious-diversity-around-the-world/
@@ -59,9 +61,16 @@ class Diversity:
         region_to_diversity_change = {}
         for region_id in common_regions:
             diversity_change = (
-                region_to_diversity2[region_id]
-                - region_to_diversity1[region_id]
+                (
+                    region_to_diversity2[region_id]
+                    - region_to_diversity1[region_id]
+                )
+                if region_to_diversity2[region_id] != "(No Data)"
+                and region_to_diversity1[region_id] != "(No Data)"
+                else "(No Data)"
             )
+            if diversity_change != "(No Data)":
+                diversity_change = round(diversity_change, 4)
             region_to_diversity_change[region_id] = diversity_change
 
         for region_id in uncommon_regions:
