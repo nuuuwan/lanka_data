@@ -134,8 +134,8 @@ class ColorSpecHelpers:
         for data in dataset.get_data_table():
             keys1 = list(data.get("values1", {}).keys())
             keys2 = list(data.get("values2", {}).keys())
-            k1 = keys1[idx]
-            k2 = keys2[idx]
+            k1 = keys1[idx] if idx < len(keys1) else "(No Data)"
+            k2 = keys2[idx] if idx < len(keys2) else "(No Data)"
             region_to_flip[data["region_id"]] = (
                 f"{k1} to {k2}" if k1 != k2 else "(No Flip)"
             )

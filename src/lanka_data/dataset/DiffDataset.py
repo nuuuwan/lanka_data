@@ -39,25 +39,17 @@ class DiffDataset(RegionValueDataset):
 
         region_ids1 = self.dataset1.region_ids
         region_ids2 = self.dataset2.region_ids
-        common_region_ids = list(
-            sorted(set(region_ids1).intersection(set(region_ids2)))
-        )
+        union_region_ids = set(region_ids1).union(set(region_ids2))
 
         d_list = []
-        for region_id in common_region_ids:
-            data1 = data_idx1.get(region_id)
-            data2 = data_idx2.get(region_id)
+        for region_id in union_region_ids:
+            data1 = data_idx1.get(region_id, {})
+            data2 = data_idx2.get(region_id, {})
 
-            if not data1 or not data2:
-                log.error(
-                    f"Data missing for region_id={region_id} in one of the datasets"
-                )
-                continue
-
-            values1 = data1["values"]
-            values2 = data2["values"]
-            pct_values1 = data1["pct_values"]
-            pct_values2 = data2["pct_values"]
+            values1 = data1.get("values", {})
+            values2 = data2.get("values", {})
+            pct_values1 = data1.get("pct_values", {})
+            pct_values2 = data2.get("pct_values", {})
             common_keys = set(values1.keys()).intersection(set(values2.keys()))
 
             values = {}
@@ -83,10 +75,10 @@ class DiffDataset(RegionValueDataset):
                 current_ids=data1["current_ids"],
                 values1=values1,
                 pct_values1=pct_values1,
-                total_value1=data1["total_value"],
+                total_value1=data1.get("total_value", 0),
                 values2=values2,
                 pct_values2=pct_values2,
-                total_value2=data2["total_value"],
+                total_value2=data2.get("total_value", 0),
                 values=values,
                 total_value=total_value,
                 pct_values=pct_values,
