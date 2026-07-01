@@ -1,5 +1,5 @@
 class Legend:
-    MAX_ITEMS = 7
+    MAX_ITEMS = 10
     MARKER_SIZE = 100
     LEGEND_KWARGS = {
         "fontsize": 12,
@@ -36,9 +36,7 @@ class Legend:
             legend_ax.scatter([], [], color=color, s=cls.MARKER_SIZE)
             for value, color in value_and_color
         ]
-        labels = [
-            cls._format_label(value) for value, color in value_and_color
-        ]
+        labels = [cls._format_label(value) for value, color in value_and_color]
 
         legend_kwargs = dict(cls.LEGEND_KWARGS)
         if title:
