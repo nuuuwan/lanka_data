@@ -2,9 +2,9 @@ import matplotlib.pyplot as plt
 
 
 class ColorSpecConstants:
-    DEFAULT_CMAP_ABS = plt.cm.get_cmap("YlGn")
-    DEFAULT_CMAP_DIFF = plt.cm.get_cmap("coolwarm")
-    DEFAULT_CMAP_CAT = plt.cm.get_cmap("rainbow")
+    DEFAULT_CMAP_ABS = plt.colormaps["YlGn"]
+    DEFAULT_CMAP_DIFF = plt.colormaps["coolwarm"]
+    DEFAULT_CMAP_CAT = plt.colormaps["rainbow"]
 
     COLOR_TO_LABELS = {
         # Religion & Ethnicity

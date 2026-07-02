@@ -4,4 +4,4 @@
 from lanka_data.data.DataSource import DataSource
 from lanka_data.data.Diversity import Diversity
 from lanka_data.data.FieldNameUtils import FieldNameUtils
-from lanka_data.data.Segregation import Segregation
+from lanka_data.data.Segregation import Segregation, SegregationComputeMixin
