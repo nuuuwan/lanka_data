@@ -31,6 +31,26 @@ class Segregation:
         return region_to_neighbours, region_idx
 
     @staticmethod
+    def _compute_neighbour_pct_values(region_idx, neighbors, values_key):
+        sum_values = {}
+        for neighbor_id in neighbors:
+            for k, v in region_idx[neighbor_id][values_key].items():
+                sum_values[k] = sum_values.get(k, 0) + v
+        total_value = sum(sum_values.values())
+        return {k: v / total_value for k, v in sum_values.items()}
+
+    @staticmethod
+    def _compute_mean_error(pct_values, pct_values_for_neighbours):
+        key_union = set(pct_values.keys()) | set(
+            pct_values_for_neighbours.keys()
+        )
+        error1_sum = sum(
+            abs(pct_values.get(k, 0) - pct_values_for_neighbours.get(k, 0))
+            for k in key_union
+        )
+        return error1_sum / len(key_union) if key_union else 0
+
+    @staticmethod
     def get_region_to_segregation(
         result_data, pct_values_key="pct_values", values_key="values"
     ):
@@ -43,27 +63,14 @@ class Segregation:
             neighbors = region_to_neighbours.get(region_id, [])
             if neighbors and len(neighbors) >= Segregation.MIN_NEIGHBORS:
                 pct_values = region_idx[region_id][pct_values_key]
-                sum_values = {}
-                for neighbor_id in neighbors:
-                    neighbor_values = region_idx[neighbor_id][values_key]
-                    for k, v in neighbor_values.items():
-                        sum_values[k] = sum_values.get(k, 0) + v
-
-                total_value = sum(sum_values.values())
-                pct_values_for_neighbours = {
-                    k: v / total_value for k, v in sum_values.items()
-                }
-
-                key_union = set(pct_values.keys()) | set(
-                    pct_values_for_neighbours.keys()
+                pct_values_for_neighbours = (
+                    Segregation._compute_neighbour_pct_values(
+                        region_idx, neighbors, values_key
+                    )
                 )
-                error1_sum = 0
-                for k in key_union:
-                    pct_value = pct_values.get(k, 0)
-                    pct_value_neighbors = pct_values_for_neighbours.get(k, 0)
-                    error1 = abs(pct_value - pct_value_neighbors)
-                    error1_sum += error1
-                mean_error1 = error1_sum / len(key_union) if key_union else 0
+                mean_error1 = Segregation._compute_mean_error(
+                    pct_values, pct_values_for_neighbours
+                )
                 if mean_error1 < Segregation.SEGREGATION_LIMIT:
                     segregation = "(No Segregation)"
                 else:

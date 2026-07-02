@@ -8,6 +8,14 @@ from utils_future.Log import Log
 log = Log("timer")
 
 
+def _get_logger(elapsed):
+    if elapsed > 2:
+        return log.error
+    if elapsed > 1:
+        return log.warning
+    return log.debug
+
+
 def timer(func):
 
     actual_func = func
@@ -22,19 +30,11 @@ def timer(func):
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         start = time.perf_counter()
         result = func(*args, **kwargs)
-        end = time.perf_counter()
-        elapsed = end - start
-
+        elapsed = time.perf_counter() - start
         if elapsed > 0.1:
-
-            if elapsed > 2:
-                logger = log.error
-            elif elapsed > 1:
-                logger = log.warning
-            else:
-                logger = log.debug
-
-            logger(f"⌛️ [{filename}: {func.__name__}] {elapsed * 1000:.0f}ms")
+            _get_logger(elapsed)(
+                f"⌛️ [{filename}: {func.__name__}] {elapsed * 1000:.0f}ms"
+            )
         return result
 
     return wrapper

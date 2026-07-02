@@ -130,6 +130,31 @@ class BarChartVisual(PlotVisual):
             bar_h_px * pt_per_px / max(n_lines * cls._LINE_H_RATIO, 1),
         )
 
+    @staticmethod
+    def _compute_pct_label(subregions, is_change, totals, cat, bar):
+        height = bar.get_height()
+        idx = round(bar.get_x() + bar.get_width() / 2)
+        if is_change:
+            pct_val = subregions[idx]["pct_values"].get(cat, 0)
+            return f"{pct_val * 100:+.1f}pp"
+        total = totals.get(idx, 1)
+        return f"{abs(height) / total:.1%}"
+
+    def _resolve_bar_label(
+        self, bar_h_px, bar_w_px, abs_label, pct_label, dpi
+    ):
+        full_text = f"{abs_label}\n{pct_label}"
+        max_line = max(len(abs_label), len(pct_label))
+        fontsize = self._fit_fontsize(bar_h_px, bar_w_px, max_line, 2, dpi)
+        if fontsize < self._MIN_FONT:
+            fontsize = self._fit_fontsize(
+                bar_h_px, bar_w_px, len(pct_label), 1, dpi
+            )
+            if fontsize < self._MIN_FONT:
+                return None, None
+            return pct_label, fontsize
+        return full_text, fontsize
+
     def _add_bar_labels(self, ax, subregions):
         is_change = self._is_change_chart(subregions)
         totals = {
@@ -144,34 +169,26 @@ class BarChartVisual(PlotVisual):
                     continue
                 p0 = ax.transData.transform((bar.get_x(), bar.get_y()))
                 p1 = ax.transData.transform(
-                    (bar.get_x() + bar.get_width(), bar.get_y() + height)
+                    (
+                        bar.get_x() + bar.get_width(),
+                        bar.get_y() + height,
+                    )
                 )
                 bar_h_px = abs(p1[1] - p0[1])
                 bar_w_px = abs(p1[0] - p0[0])
-                idx = round(bar.get_x() + bar.get_width() / 2)
                 abs_label = self._format_millions(height, None)
-                if is_change:
-                    pct_val = subregions[idx]["pct_values"].get(cat, 0)
-                    pct_label = f"{pct_val * 100:+.1f}pp"
-                else:
-                    total = totals.get(idx, 1)
-                    pct_label = f"{abs(height) / total:.1%}"
-                dpi = ax.get_figure().dpi
-                full_text = f"{abs_label}\n{pct_label}"
-                max_line = max(len(abs_label), len(pct_label))
-                fontsize = self._fit_fontsize(
-                    bar_h_px, bar_w_px, max_line, 2, dpi
+                pct_label = self._compute_pct_label(
+                    subregions, is_change, totals, cat, bar
                 )
-                if fontsize < self._MIN_FONT:
-                    # try pct only (1 line)
-                    fontsize = self._fit_fontsize(
-                        bar_h_px, bar_w_px, len(pct_label), 1, dpi
-                    )
-                    if fontsize < self._MIN_FONT:
-                        continue
-                    text = pct_label
-                else:
-                    text = full_text
+                text, fontsize = self._resolve_bar_label(
+                    bar_h_px,
+                    bar_w_px,
+                    abs_label,
+                    pct_label,
+                    ax.get_figure().dpi,
+                )
+                if text is None:
+                    continue
                 fc = bar.get_facecolor()
                 lum = 0.299 * fc[0] + 0.587 * fc[1] + 0.114 * fc[2]
                 ax.text(

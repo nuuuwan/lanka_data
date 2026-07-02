@@ -25,6 +25,15 @@ class WhereFormatter:
     def parse_parent_part(self, parent_part):
         return [id.strip() for id in parent_part.split(",") if id.strip()]
 
+    def _format_without_parent(self) -> str:
+        if "..." in self.where_cmd:
+            region_id_from, region_id_to = self.where_cmd.split("...", 1)
+            return (
+                f"From {self.format_regions([region_id_from])}"
+                f" to {self.format_regions([region_id_to])}"
+            )
+        return self.format_regions(self.where_cmd.split(","))
+
     def format(self) -> str:
         if ":" in self.where_cmd:
             parent_part, child_region_type = self.where_cmd.split(":", 1)
@@ -40,12 +49,4 @@ class WhereFormatter:
             region_full_name = self.format_regions([region_id])
             return f"Within {radius}km of {region_full_name}"
 
-        if "..." in self.where_cmd:
-            region_id_from, region_id_to = self.where_cmd.split("...", 1)
-            region_full_name_from = self.format_regions([region_id_from])
-            region_full_name_to = self.format_regions([region_id_to])
-
-            return f"From {region_full_name_from} to {region_full_name_to}"
-
-        region_ids = self.where_cmd.split(",")
-        return self.format_regions(region_ids)
+        return self._format_without_parent()

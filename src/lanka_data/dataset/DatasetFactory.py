@@ -21,50 +21,50 @@ class DatasetFactory:
         return Regions.from_command(command).raw_region_data_list
 
     @staticmethod
+    def _try_census_dataset(command, region_data_list):
+        census_map = {
+            "2024": Census2024Dataset,
+            "2012": Census2012Dataset,
+            "2001": Census2001Dataset,
+        }
+        cls = census_map.get(command.when_cmd)
+        if cls and command.what_cmd in cls.get_labels():
+            return cls.from_label_and_region_data_list(
+                command.what_cmd, region_data_list
+            )
+        return None
+
+    @staticmethod
+    def _try_election_dataset(command, region_data_list):
+        if command.what_cmd in ElectionDataset.get_labels():
+            return ElectionDataset.from_label_and_region_data_list_and_year(
+                command.what_cmd, region_data_list, command.when_cmd
+            )
+        base_label = command.what_cmd.replace("Summary", "")
+        if base_label in ElectionDataset.get_labels():
+            return ElectionSummaryDataset.from_label_and_region_data_list_and_year(
+                base_label,
+                region_data_list,
+                command.when_cmd,
+            )
+        return None
+
+    @staticmethod
     def from_command(command):
         region_data_list = DatasetFactory.get_region_data_list(command)
 
         if command.what_cmd == "Empty":
             return EmptyDataset(region_data_list)
 
-        if (
-            command.when_cmd == "2024"
-            and command.what_cmd in Census2024Dataset.get_labels()
-        ):
-            return Census2024Dataset.from_label_and_region_data_list(
-                command.what_cmd, region_data_list
-            )
+        result = DatasetFactory._try_census_dataset(command, region_data_list)
+        if result is not None:
+            return result
 
-        if (
-            command.when_cmd == "2012"
-            and command.what_cmd in Census2012Dataset.get_labels()
-        ):
-            return Census2012Dataset.from_label_and_region_data_list(
-                command.what_cmd, region_data_list
-            )
-
-        if (
-            command.when_cmd == "2001"
-            and command.what_cmd in Census2001Dataset.get_labels()
-        ):
-            return Census2001Dataset.from_label_and_region_data_list(
-                command.what_cmd, region_data_list
-            )
-
-        if command.what_cmd in ElectionDataset.get_labels():
-            return ElectionDataset.from_label_and_region_data_list_and_year(
-                command.what_cmd, region_data_list, command.when_cmd
-            )
-
-        if (
-            command.what_cmd.replace("Summary", "")
-            in ElectionDataset.get_labels()
-        ):
-            return ElectionSummaryDataset.from_label_and_region_data_list_and_year(
-                command.what_cmd.replace("Summary", ""),
-                region_data_list,
-                command.when_cmd,
-            )
+        result = DatasetFactory._try_election_dataset(
+            command, region_data_list
+        )
+        if result is not None:
+            return result
 
         raise ValueError(f"Dataset unknown for: {command}")
 

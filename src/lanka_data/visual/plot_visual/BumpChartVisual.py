@@ -117,6 +117,23 @@ class BumpChartVisual(PlotVisual):
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
 
+    def _get_rank_maps(self, subregions):
+        rank_map1 = self._get_rank_map(
+            self._get_region_totals(subregions, "values1")
+        )
+        rank_map2 = self._get_rank_map(
+            self._get_region_totals(subregions, "values2")
+        )
+        return rank_map1, rank_map2
+
+    @staticmethod
+    def _build_id_to_name(subregions):
+        return {
+            s["region_id"]: s.get("region_name") or str(s["region_id"])
+            for s in subregions
+            if s.get("region_id") is not None
+        }
+
     def draw(self, dataset, fig):
         subregions = self._build_subregions(dataset.get_data_table())
         when_cmd = getattr(self.command, "when_cmd", None)
@@ -144,18 +161,9 @@ class BumpChartVisual(PlotVisual):
             )
             return
 
-        rank_map1 = self._get_rank_map(
-            self._get_region_totals(subregions, "values1")
-        )
-        rank_map2 = self._get_rank_map(
-            self._get_region_totals(subregions, "values2")
-        )
+        rank_map1, rank_map2 = self._get_rank_maps(subregions)
         region_ids = self._get_selected_region_ids(rank_map1, rank_map2)
-        id_to_name = {
-            s["region_id"]: s.get("region_name") or str(s["region_id"])
-            for s in subregions
-            if s.get("region_id") is not None
-        }
+        id_to_name = self._build_id_to_name(subregions)
 
         if not region_ids:
             ax.set_axis_off()

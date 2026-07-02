@@ -62,25 +62,32 @@ class PlotVisual(Visual):
             )
         ]
 
+    @staticmethod
+    def _find_label_color(label, value_to_color, cmap, i, n_labels):
+        color = value_to_color.get(label)
+        if color is None:
+            color = next(
+                (
+                    v
+                    for k, v in value_to_color.items()
+                    if k.startswith(f"{label} (")
+                ),
+                None,
+            )
+        if color is None:
+            color = ColorSpec.LABEL_TO_COLOR.get(label)
+        return color if color is not None else cmap(i / n_labels)
+
     def _build_category_to_color(self, dataset, category_labels):
         _, value_to_color = ColorSpecFactory.get_color_spec(
             dataset, self.how_cmd
         ).unpack()
-        if value_to_color is None:
-            value_to_color = {}
+        value_to_color = value_to_color or {}
         cmap = plt.get_cmap("tab20")
         n_labels = max(len(category_labels), 1)
-        category_to_color = {}
-        for i, label in enumerate(category_labels):
-            color = value_to_color.get(label)
-            if color is None:
-                for key, key_color in value_to_color.items():
-                    if key.startswith(f"{label} ("):
-                        color = key_color
-                        break
-            if color is None:
-                color = ColorSpec.LABEL_TO_COLOR.get(label)
-            if color is None:
-                color = cmap(i / n_labels)
-            category_to_color[label] = color
-        return category_to_color
+        return {
+            label: self._find_label_color(
+                label, value_to_color, cmap, i, n_labels
+            )
+            for i, label in enumerate(category_labels)
+        }

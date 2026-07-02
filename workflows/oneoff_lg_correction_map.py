@@ -8,6 +8,56 @@ from utils_future import WWW, JSONFile, Log
 log = Log("oneoff_lg_correction_map")
 
 
+_NAME_CORRECTIONS = {
+    "Manmunai West (Vavunativu) PS": "Manmunai West PS",
+    "Porativepattu PS": "Porthivu Pattu PS",
+}
+
+
+def _correct_name(name):
+    return _NAME_CORRECTIONS.get(name, name)
+
+
+def _find_best_fuzzy_match(name, old_name_to_d):
+    scores = [
+        (old_name, fuzz.ratio(name, old_name)) for old_name in old_name_to_d
+    ]
+    return max(scores, key=lambda x: x[1])
+
+
+def _find_exact_matches(new_name_to_d, old_name_to_d):
+    matches = {}
+    for new_name, d in new_name_to_d.items():
+        corrected = _correct_name(new_name)
+        if corrected in old_name_to_d:
+            old_id = old_name_to_d[corrected]["id"]
+            matches[old_id] = d["region_id"]
+            log.debug(f"✅ {d['region_id']}: Exact ")
+    return matches
+
+
+def _find_fuzzy_matches(new_name_to_d, old_name_to_d):
+    matches = {}
+    for new_name, d in new_name_to_d.items():
+        corrected = _correct_name(new_name)
+        if corrected in old_name_to_d:
+            continue
+        new_id = d["region_id"]
+        best_old_name, best_score = _find_best_fuzzy_match(
+            corrected, old_name_to_d
+        )
+        if best_score >= 80:
+            old_id = old_name_to_d[best_old_name]["id"]
+            matches[old_id] = new_id
+            log.debug(
+                f"☑️ {new_id}: "
+                + f'"{corrected}" ~= "{best_old_name}" ({best_score:.1f})'
+            )
+        else:
+            raise ValueError(f"❌ {new_id}: No good match.")
+    return matches
+
+
 def get_old_id_to_new_id():
     url_old = (
         "https://raw.githubusercontent.com"
@@ -21,45 +71,8 @@ def get_old_id_to_new_id():
     new_name_to_d = {
         d["region_name"].split("/")[0].strip(): d for d in d_list_new
     }
-
-    old_id_to_new_id = {}
-    for new_name, d in new_name_to_d.items():
-        new_name = {
-            "Manmunai West (Vavunativu) PS": "Manmunai West PS",
-            "Porativepattu PS": "Porthivu Pattu PS",
-        }.get(new_name, new_name)
-        new_id = d["region_id"]
-        if new_name in old_name_to_d:
-            old_d = old_name_to_d[new_name]
-            old_id = old_d["id"]
-            old_id_to_new_id[old_id] = new_id
-            log.debug(f"✅ {new_id}: Exact ")
-
-    for new_name, d in new_name_to_d.items():
-        new_name = {
-            "Manmunai West (Vavunativu) PS": "Manmunai West PS",
-            "Porativepattu PS": "Porthivu Pattu PS",
-        }.get(new_name, new_name)
-        new_id = d["region_id"]
-        if new_name in old_name_to_d:
-            continue
-        old_name_and_score = []
-        for old_name, old_d in old_name_to_d.items():
-            fuzz_ratio = fuzz.ratio(new_name, old_name)
-            old_name_and_score.append((old_name, fuzz_ratio))
-
-        old_name_and_score.sort(key=lambda x: x[1], reverse=True)
-        best_old_name, best_score = old_name_and_score[0]
-        if best_score >= 80:
-            old_id = old_name_to_d[best_old_name]["id"]
-            old_id_to_new_id[old_id] = new_id
-            log.debug(
-                f"☑️ {new_id}: "
-                + f'"{new_name}" ~= "{best_old_name}" ({best_score:.1f})'
-            )
-        else:
-            raise ValueError(f"❌ {new_id}: No good match.")
-
+    old_id_to_new_id = _find_exact_matches(new_name_to_d, old_name_to_d)
+    old_id_to_new_id.update(_find_fuzzy_matches(new_name_to_d, old_name_to_d))
     return old_id_to_new_id
 
 

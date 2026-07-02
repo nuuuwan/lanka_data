@@ -6,67 +6,37 @@ class Label:
     IS_LIGHT_COLOR = getattr(ColorUtils, "_is_light_color")
 
     @staticmethod
-    @timer
-    def _fit_fontsize(text, rect_w, rect_h, ax, fig):
-        """
-        Calculate font size to fit text within a rectangle.
-
-        Args:
-            text: String to fit
-            rect_w: Rectangle width (in data coordinates)
-            rect_h: Rectangle height (in data coordinates)
-            ax: matplotlib axes object
-            fig: matplotlib figure object
-
-        Returns:
-            Font size in points
-        """
-        # Start with provisional font size
-        provisional_fontsize = 12
-
-        # Create temporary text object
-        temp_text = ax.text(0, 0, text, fontsize=provisional_fontsize)
-
-        # Render to get accurate bounding box measurements
+    def _measure_text_size(ax, fig, text, fontsize):
+        temp_text = ax.text(0, 0, text, fontsize=fontsize)
         fig.canvas.draw()
-
-        # Get bounding box in display (pixel) coordinates
         renderer = fig.canvas.get_renderer()
         bbox = temp_text.get_window_extent(renderer=renderer)
-        text_width_px = bbox.width
-        text_height_px = bbox.height
+        temp_text.remove()
+        return bbox.width, bbox.height, renderer
 
-        # Get axes bounding box in display coordinates
+    @staticmethod
+    def _rect_to_pixel_dims(ax, renderer, rect_w, rect_h):
         axes_bbox = ax.get_window_extent(renderer=renderer)
-        axes_width_px = axes_bbox.width
-        axes_height_px = axes_bbox.height
-
-        # Get data coordinate limits
         xlim = ax.get_xlim()
         ylim = ax.get_ylim()
+        rect_width_px = axes_bbox.width * rect_w / (xlim[1] - xlim[0])
+        rect_height_px = axes_bbox.height * rect_h / (ylim[1] - ylim[0])
+        return rect_width_px, rect_height_px
 
-        # Convert rectangle dimensions from data coordinates to pixels
-        rect_width_px = axes_width_px * rect_w / (xlim[1] - xlim[0])
-        rect_height_px = axes_height_px * rect_h / (ylim[1] - ylim[0])
-
-        # Calculate scale factors needed to fit text in rectangle
-        width_scale = (
-            rect_width_px / text_width_px if text_width_px > 0 else 1.0
+    @staticmethod
+    @timer
+    def _fit_fontsize(text, rect_w, rect_h, ax, fig):
+        provisional_fontsize = 12
+        text_w_px, text_h_px, renderer = Label._measure_text_size(
+            ax, fig, text, provisional_fontsize
         )
-        height_scale = (
-            rect_height_px / text_height_px if text_height_px > 0 else 1.0
+        rect_w_px, rect_h_px = Label._rect_to_pixel_dims(
+            ax, renderer, rect_w, rect_h
         )
-
-        # Use the limiting scale factor with safety margin
+        width_scale = rect_w_px / text_w_px if text_w_px > 0 else 1.0
+        height_scale = rect_h_px / text_h_px if text_h_px > 0 else 1.0
         scale = min(width_scale, height_scale) * 0.95
-
-        # Calculate final font size
-        final_fontsize = max(1, provisional_fontsize * scale)
-
-        # Clean up temporary text object
-        temp_text.remove()
-
-        return final_fontsize * 0.7
+        return max(1, provisional_fontsize * scale) * 0.7
 
     @classmethod
     @timer
