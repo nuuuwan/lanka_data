@@ -35,13 +35,13 @@ enough to reach every corner of the query space by composition.
 The public interface to Lanka Data is a single string parsed into four
 positional fields, delimited by slashes:
 
-```
+```bash
 What / When / Where / How
 ```
 
 For example:
 
-```
+```bash
 Religion/2012-2024/LK:district/Map:Change
 ```
 
@@ -66,7 +66,7 @@ Orthogonality is what allows a small vocabulary to generate a large query space.
 **What** identifies the quantity being retrieved. It is a measurement. It is independent of time,
 region, and presentation.
 
-```
+```bash
 Religion/...
 Ethnicity/...
 Roof/...
@@ -91,7 +91,7 @@ without expanding the vocabulary.
 
 A single year:
 
-```
+```bash
 Parliamentary/2024/...
 Presidential/2015/...
 Local/2025/...
@@ -100,7 +100,7 @@ Religion/2012/...
 
 An interval:
 
-```
+```bash
 Religion/2012-2024/...
 ```
 
@@ -119,7 +119,7 @@ The following forms are supported.
 
 **Single region.** A region identifier:
 
-```
+```bash
 Parliamentary/2024/LK/JSON
 ```
 
@@ -127,7 +127,7 @@ Parliamentary/2024/LK/JSON
 its constituent units of a given type. `LK:province` is Sri Lanka as its nine
 provinces; `LK:district` as its twenty-five districts:
 
-```
+```bash
 Empty/2024/LK:province/Map
 Religion/2012-2024/LK:district/Map:1st
 ```
@@ -136,7 +136,7 @@ Religion/2012-2024/LK:district/Map:1st
 composes down the hierarchy — province, district, DSD, PD, LG — with no
 additional syntax:
 
-```
+```bash
 Religion/2012-2024/LK-42:district/BarChart
 Religion/2012-2024/LK-43:dsd/BarChart
 Religion/2012-2024/LK-11:lg/BarChart
@@ -145,7 +145,7 @@ Presidential/2015/LK-11:pd/Map
 
 **Explicit set.** A comma-separated list selects exactly the named regions:
 
-```
+```bash
 Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map
 Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
 ```
@@ -153,21 +153,21 @@ Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
 **Contiguous range.** The ellipsis operator expands to all regions between two
 endpoints:
 
-```
+```bash
 Empty/2024/LK-5...LK-8/Map
 ```
 
 **Explicit zoom.** The `@` operator assigns a region an explicit scale, for
 framing regions that automatic bounds would render too small or too large:
 
-```
+```bash
 Empty/2024/LK-1127025@20/Map
 ```
 
 **Historical boundary variant.** A `pre<year>` suffix selects the region's
 boundaries as they existed before a given boundary redesign:
 
-```
+```bash
 Empty/2012/LK-pre1845:province/Map
 Empty/2012/LK-pre1873:province/Map
 Empty/2012/LK-pre1886:province/Map
@@ -191,7 +191,7 @@ geometry.
 The same measurement can be emitted as a choropleth map, a bar chart, or raw
 JSON without any change to **What**:
 
-```
+```bash
 Religion/2012-2024/LK:district/Map:2nd
 Religion/2012-2024/LK-42:district/BarChart
 Parliamentary/2024/LK/JSON
@@ -200,7 +200,7 @@ Parliamentary/2024/LK/JSON
 Because presentation is separated from measurement, **How** carries its own
 modifier grammar after a colon. Modifiers refine the view, not the data:
 
-```
+```bash
 Map:1st            largest category per region
 Map:2nd            second largest category
 Map:3rd            third largest category
@@ -236,7 +236,7 @@ The design keeps a single mental model across usage contexts.
 
 - **Uniform surface.** The string passed on the command line —
 
-  ```
+  ```bash
   python workflows/console.py <cmd>
   ```
 
@@ -298,7 +298,7 @@ Coverage is obtained by composition, not by adding endpoints.
 
 The interface reduces to four independent fields:
 
-```
+```bash
 What / When / Where / How
 ```
 
