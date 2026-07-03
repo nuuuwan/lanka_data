@@ -3,6 +3,14 @@ class ReadMeUsageMixin:
         return (
             ["## 2. Usage", ""]
             + [
+                "### Install Library",
+                "",
+                "```bash",
+                "pip install lanka-data",
+                "```",
+                "",
+            ]
+            + [
                 "### Run Code",
                 "",
                 "```python",
