@@ -25,7 +25,7 @@ class ReadMe(
                 + " a single interface that can express"
                 + " *any* query to access public data about Sri Lanka 🇱🇰.",
                 "",
-                "## Design Philosophy",
+                "## 0. Design Philosophy",
                 "",
                 "See [README.philosophy.md](README.philosophy.md).",
                 "",

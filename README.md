@@ -2,11 +2,11 @@
 
 This repo implements "one API to rule them all": a single interface that can express *any* query to access public data about Sri Lanka 🇱🇰.
 
-## Design Philosophy
+## 0. Design Philosophy
 
 See [README.philosophy.md](README.philosophy.md).
 
-## Data Sources
+## 1. Data Sources
 
 - [Census of Population and Housing 2012](https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf)
 - [Census of Population and Housing 2024](https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024)
@@ -14,7 +14,7 @@ See [README.philosophy.md](README.philosophy.md).
 - [Lanka Data](https://github.com/nuuuwan/lanka_data/blob/main/README.md)
 - [Survey Department of Sri Lanka](https://survey.gov.lk/)
 
-## Usage
+## 2. Usage
 
 ### Run Code
 
@@ -42,7 +42,7 @@ Runs single command.
 python workflows/single.py <cmd>
 ```
 
-## Example cmds (`<cmd>`)
+## 3. Example cmds (`<cmd>`)
 
 ### 1) Help
 

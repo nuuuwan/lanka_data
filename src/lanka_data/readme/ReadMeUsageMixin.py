@@ -1,7 +1,7 @@
 class ReadMeUsageMixin:
     def get_lines_for_usage(self):
         return (
-            ["## Usage", ""]
+            ["## 2. Usage", ""]
             + [
                 "### Run Code",
                 "",

@@ -1,5 +1,6 @@
-from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import \
-    ReadMeExamplesItemMixin
+from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import (
+    ReadMeExamplesItemMixin,
+)
 
 
 class ReadMeExamplesMixin(ReadMeExamplesItemMixin):
@@ -20,7 +21,7 @@ class ReadMeExamplesMixin(ReadMeExamplesItemMixin):
         return lines
 
     def get_lines_for_examples(self, example_idx, output_idx):
-        lines = ["## Example cmds (`<cmd>`)", ""]
+        lines = ["## 3. Example cmds (`<cmd>`)", ""]
         for i_group_name, (group_name, examples) in enumerate(
             example_idx.items(), start=1
         ):

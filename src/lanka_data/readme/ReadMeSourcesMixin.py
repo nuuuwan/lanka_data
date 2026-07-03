@@ -2,7 +2,7 @@ class ReadMeSourcesMixin:
     def get_lines_for_sources(self, output_idx):
 
         lines = [
-            "## Data Sources",
+            "## 1. Data Sources",
             "",
         ]
         source_idx = {}
