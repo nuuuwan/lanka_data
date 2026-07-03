@@ -9,12 +9,17 @@ from utils_future.timer import timer
 
 
 class CommandRunner:
+    _cache: dict = {}
+
     @timer
     @staticmethod
     def run(command_str: str):
         t_start = time.perf_counter()
 
-        if command_str == "Help":
+        cached = CommandRunner._cache.get(command_str)
+        if cached is not None:
+            result, sources = cached
+        elif command_str == "Help":
             result = CommandHelp.get_help_result()
             sources = [
                 DataSource(
@@ -25,6 +30,7 @@ class CommandRunner:
                     ),
                 )
             ]
+            CommandRunner._cache[command_str] = (result, sources)
         else:
             command = Command.from_str(command_str)
             datasets = DatasetFactory.list_from_command(command)
@@ -33,6 +39,7 @@ class CommandRunner:
             )
             result = visual.build()
             sources = visual.get_sources()
+            CommandRunner._cache[command_str] = (result, sources)
 
         time_elapsed = time.perf_counter() - t_start
         return dict(

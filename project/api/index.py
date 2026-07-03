@@ -5,6 +5,10 @@ from http.server import BaseHTTPRequestHandler
 from lanka_data import CommandRunner
 
 IMAGE_SUFFIX = "/Image.png"
+CACHE_CONTROL_JSON = (
+    "public, max-age=300, s-maxage=86400, " "stale-while-revalidate=86400"
+)
+CACHE_CONTROL_IMAGE = "public, max-age=86400, s-maxage=31536000, immutable"
 
 
 class handler(BaseHTTPRequestHandler):
@@ -32,6 +36,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-Type", "image/png")
         self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", CACHE_CONTROL_IMAGE)
         self.end_headers()
         self.wfile.write(data)
 
@@ -42,7 +47,7 @@ class handler(BaseHTTPRequestHandler):
             if isinstance(inner, dict) and "image_path" in inner:
                 del inner["image_path"]
                 inner["image_url"] = self._public_url(f"{path}{IMAGE_SUFFIX}")
-            self._write_json(200, result)
+            self._write_json(200, result, CACHE_CONTROL_JSON)
         except Exception as e:
             self._write_json(400, {"error": str(e)})
 
@@ -51,9 +56,10 @@ class handler(BaseHTTPRequestHandler):
         scheme = self.headers.get("X-Forwarded-Proto", "https")
         return f"{scheme}://{host}/{path}"
 
-    def _write_json(self, status, obj):
+    def _write_json(self, status, obj, cache_control="no-store"):
         body = json.dumps(obj).encode()
         self.send_response(status)
         self.send_header("Content-Type", "application/json")
+        self.send_header("Cache-Control", cache_control)
         self.end_headers()
         self.wfile.write(body)
