@@ -15,6 +15,17 @@ class ReadMeUsageMixin:
                 "",
             ]
             + [
+                "### HTTP Request (via Vercel App)",
+                "",
+                "Runs single command over HTTP.",
+                "",
+                "```bash",
+                "https://lanka-data-phi.vercel.app"
+                + "/Religion/2024/LK/Map/Image.png",
+                "```",
+                "",
+            ]
+            + [
                 "### workflows/single.py",
                 "",
                 "Runs single command.",
