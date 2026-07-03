@@ -1,3 +1,4 @@
+import os
 import time
 
 from lanka_data.command.Command import Command
@@ -11,13 +12,20 @@ from utils_future.timer import timer
 class CommandRunner:
     _cache: dict = {}
 
+    @staticmethod
+    def _is_cache_valid(cached) -> bool:
+        result, _ = cached
+        if isinstance(result, dict) and "image_path" in result:
+            return os.path.exists(result["image_path"])
+        return True
+
     @timer
     @staticmethod
     def run(command_str: str):
         t_start = time.perf_counter()
 
         cached = CommandRunner._cache.get(command_str)
-        if cached is not None:
+        if cached is not None and CommandRunner._is_cache_valid(cached):
             result, sources = cached
         elif command_str == "Help":
             result = CommandHelp.get_help_result()
