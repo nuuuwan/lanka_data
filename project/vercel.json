@@ -1,7 +1,1 @@
-{
-  "functions": {
-    "api/[...slug].py": {
-      "runtime": "python3.9"
-    }
-  }
-}
+{}
