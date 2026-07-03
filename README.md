@@ -15,12 +15,10 @@ This repo implements a simple interface to query data about Sri Lanka.
 ### Run Code
 
 ```python
-from lanka_data import Command
+from lanka_data import CommandRunner
 
 
-db = Command("<cmd>")
-output = db.run()
-print(output)
+output = CommandRunner.run("<cmd>")
 
 ```
 
@@ -30,18 +28,6 @@ Runs single command.
 
 ```bash
 python workflows/single.py <cmd>
-```
-
-### workflows/console.py
-
-Console tool for running commands.
-
-```bash
-python workflows/console.py <cmd>
-
-/Where/What/When/How
-
-> /<cmd>
 ```
 
 ## Example cmds (`<cmd>`)
@@ -792,8 +778,8 @@ Parliamentary/2024/LK/JSON
         {
             "region_id": "LK",
             "region_name": "Sri Lanka",
-            "center_lat": 7.621863,
-            "center_lng": 80.698448,
+            "center_lat": 7.621831,
+            "center_lng": 80.6983,
             "current_ids": [
                 "LK"
             ],
