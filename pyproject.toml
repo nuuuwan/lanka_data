@@ -20,3 +20,4 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 "lanka_data.dataset.custom" = ["*.json"]
+"lanka_data.visual.plot" = ["fonts/*.ttf"]

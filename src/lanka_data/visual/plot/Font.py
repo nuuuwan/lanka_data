@@ -9,7 +9,11 @@ class Font:
         self.font_family = font_family
 
     def install(self):
-        font_file_path = os.path.join("fonts", self.font_family + ".ttf")
+        font_file_path = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "fonts",
+            self.font_family + ".ttf",
+        )
         if not os.path.exists(font_file_path):
             raise FileNotFoundError(
                 f"'{font_file_path}' not found for '{self.font_family}'."
