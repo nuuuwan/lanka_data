@@ -4,36 +4,19 @@
 
 ## The Problem We Wanted to Solve
 
-The goal is "one API to rule them all": a single interface that can express *any*
-query, rather than a proliferation of endpoints, methods, libraries, and parameter sets
-that each answer one narrow question.
+The goal is "one API to rule them all": a single interface that can express *any* query, rather than a proliferation of endpoints, methods, libraries, and parameter sets that each answer one narrow question.
 
-Most data libraries grow by accretion. Every new question  (E.g. a different
-measurement, a new time range, a finer region, another chart type) tends to
-add another function, another endpoint, or another flag. The surface area grows
-without bound, and no single mental model survives contact with it. The user
-must learn the library question by question.
+Most data libraries grow by accretion. Every new question (e.g. a different measurement, a new time range, a finer region, another chart type) tends to add another function, another endpoint, or another flag. The surface area grows without bound, and no single mental model survives contact with it. The user must learn the library question by question.
 
-We wanted the opposite: A fixed, minimal grammar that a user learns *once* and
-can then aim at anything. Rather than adding a new entry point for each new
-question, the same four-field command string is pointed at new values. The set
-of answerable questions grows, but the interface does not.
+We wanted the opposite: a fixed, minimal grammar that a user learns *once* and can then aim at anything — and that a non-technical user can read and write without learning to program. Rather than adding a new entry point for each new question, the same four-field command string is pointed at new values. The set of answerable questions grows, but the interface does not.
 
-For now, "anything" means any query about public Sri Lankan data ("Lanka Data"); census
-measurements, election results, administrative geography, and their historical
-variants. But nothing in the grammar is specific to Sri Lanka, to censuses, or
-to elections. The four fields. *What* is measured, *when*, *where*, and *how*
-it is presented, are the dimensions of essentially any factual query about the
-world. The domain is the current scope; the grammar is intended to generalise
-beyond it.
+For now, "anything" means any query about public Sri Lankan data ("Lanka Data"): census measurements, election results, administrative geography, and their historical variants. But nothing in the grammar is specific to Sri Lanka, to censuses, or to elections. The four fields — *what* is measured, *when*, *where*, and *how* it is presented — are the dimensions of essentially any factual query about the world. The domain is the current scope; the grammar is intended to generalise beyond it.
 
-The rest of this document specifies that grammar and argues that four fields are
-enough to reach every corner of the query space by composition.
+The rest of this document specifies that grammar and argues that four fields are enough to reach every corner of the query space by composition.
 
 ## 1. Overview
 
-The public interface to Lanka Data is a single string parsed into four
-positional fields, delimited by slashes:
+The public interface to Lanka Data is a single string parsed into four positional fields, delimited by slashes:
 
 ```bash
 What / When / Where / How
@@ -45,26 +28,17 @@ For example:
 Religion/2012-2024/LK:district/Map:Change
 ```
 
-There is no secondary configuration surface: no options object, no builder
-API, no config files. Every query is expressible as this one string. This
-document specifies the four fields, explains why the field set is both
-sufficient and minimal, and shows how the space of valid queries is generated
-by composition rather than by enumeration.
+There is no secondary configuration surface: no options object, no builder API, no config files. Every query is expressible as this one string, and the same string works unchanged as a Python argument, a command-line argument, a URL path, and a file path (§4).
 
 The remainder uses commands drawn directly from [README.md](README.md).
 
 ## 2. The Four Fields
 
-Each field is an independent axis of the query. The fields are orthogonal:
-the value chosen for one field does not constrain the valid values of another
-(with the single, intentional coupling noted in §2.4).
-
-Orthogonality is what allows a small vocabulary to generate a large query space.
+Each field is an independent axis of the query: the value chosen for one field does not constrain the valid values of another (with the single, intentional coupling noted in §2.4).
 
 ### 2.1 What — the measurement
 
-**What** identifies the quantity being retrieved. It is a measurement. It is independent of time,
-region, and presentation.
+**What** identifies the quantity being retrieved. It is a measurement, independent of time, region, and presentation.
 
 ```bash
 Religion/...
@@ -75,15 +49,9 @@ Presidential/...
 Empty/...
 ```
 
-`Religion` and `Ethnicity` are census measurements. `Parliamentary`,
-`Presidential`, and `Local` are election results. `Empty` is a special keyword that denotes the absence
-of a measurement: a request for region geometry with no data bound to it, used
-for base maps and for inspecting boundary changes in isolation.
+`Religion` and `Ethnicity` are census measurements. `Parliamentary`, `Presidential`, and `Local` are election results. `Empty` is a special keyword that denotes the absence of a measurement: a request for region geometry with no data bound to it, used for base maps and for inspecting boundary changes in isolation.
 
-**What** encodes only the measurement type. It does not encode a year, a
-region, or an output format. This constraint is what allows a single
-measurement to be reused across every combination of the other three fields
-without expanding the vocabulary.
+**What** encodes only the measurement type. It does not encode a year, a region, or an output format. This constraint is what allows a single measurement to be reused across every combination of the other three fields without expanding the vocabulary.
 
 ### 2.2 When — the observation time
 
@@ -108,12 +76,7 @@ Religion/2012-2024/...
 
 ### 2.3 Where — the region
 
-**Where** identifies the region under measurement; its identity within the
-administrative hierarchy, not merely a coordinate. All current identities are
-places; the field is structured so that a non-place identity (e.g. a person or a "Who")
-would occupy the same position without a grammar change. It carries the most
-syntax of the four fields because it is the axis along which real queries vary
-most.
+**Where** identifies the region under measurement; its identity within the administrative hierarchy, not merely a coordinate. All current identities are places; the field is structured so that a non-place identity (e.g. a person or a "Who") would occupy the same position without a grammar change. It carries the most syntax of the four fields because it is the axis along which real queries vary most.
 
 The following forms are supported.
 
@@ -123,18 +86,14 @@ The following forms are supported.
 Parliamentary/2024/LK/JSON
 ```
 
-**Resolution into child regions.** The colon operator resolves a region into
-its constituent units of a given type. `LK:province` is Sri Lanka as its nine
-provinces; `LK:district` as its twenty-five districts:
+**Resolution into child regions.** The colon operator resolves a region into its constituent units of a given type. `LK:province` is Sri Lanka as its nine provinces; `LK:district` as its twenty-five districts:
 
 ```bash
 Empty/2024/LK:province/Map
 Religion/2012-2024/LK:district/Map:1st
 ```
 
-**Resolution of a named region at a finer level.** The same colon operator
-composes down the hierarchy — province, district, DSD, PD, LG — with no
-additional syntax:
+**Resolution of a named region at a finer level.** The same colon operator composes down the hierarchy — province, district, DSD, PD, LG — with no additional syntax:
 
 ```bash
 Religion/2012-2024/LK-42:district/BarChart
@@ -150,22 +109,19 @@ Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map
 Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
 ```
 
-**Contiguous range.** The ellipsis operator expands to all regions between two
-endpoints:
+**Contiguous range.** The ellipsis operator expands to all regions between two endpoints:
 
 ```bash
 Empty/2024/LK-5...LK-8/Map
 ```
 
-**Explicit zoom.** The `@` operator assigns a region an explicit scale, for
-framing regions that automatic bounds would render too small or too large:
+**Explicit zoom.** The `@` operator assigns a region an explicit scale, for framing regions that automatic bounds would render too small or too large:
 
 ```bash
 Empty/2024/LK-1127025@20/Map
 ```
 
-**Historical boundary variant.** A `pre<year>` suffix selects the region's
-boundaries as they existed before a given boundary redesign:
+**Historical boundary variant.** A `pre<year>` suffix selects the region's boundaries as they existed before a given boundary redesign:
 
 ```bash
 Empty/2012/LK-pre1845:province/Map
@@ -177,19 +133,11 @@ Empty/2012/LK-pre1961:district/Map
 Religion/2012-2024/LK-31-pre2019:dsd/BarChart
 ```
 
-The last example demonstrates a deliberate decomposition. The measurement
-interval is 2012–2024 (**When**), while the boundary set is the pre-2019
-definition (part of **Where**). Observation time and boundary epoch are kept as
-separate values because in a jurisdiction with mutable boundaries they are
-independent facts; collapsing them would misattribute counts to the wrong
-geometry.
+The last example demonstrates a deliberate decomposition. The measurement interval is 2012–2024 (**When**), while the boundary set is the pre-2019 definition (part of **Where**). Observation time and boundary epoch are kept as separate values because in a jurisdiction with mutable boundaries they are independent facts; collapsing them would misattribute counts to the wrong geometry.
 
 ### 2.4 How — the presentation
 
-**How** specifies the output representation. It is distinct from **What**:
-**What** is the measured quantity; **How** is the rendering of that quantity.
-The same measurement can be emitted as a choropleth map, a bar chart, or raw
-JSON without any change to **What**:
+**How** specifies the output representation. It is distinct from **What**: **What** is the measured quantity; **How** is the rendering of that quantity. The same measurement can be emitted as a choropleth map, a bar chart, or raw JSON without any change to **What**:
 
 ```bash
 Religion/2012-2024/LK:district/Map:2nd
@@ -197,8 +145,7 @@ Religion/2012-2024/LK-42:district/BarChart
 Parliamentary/2024/LK/JSON
 ```
 
-Because presentation is separated from measurement, **How** carries its own
-modifier grammar after a colon. Modifiers refine the view, not the data:
+Because presentation is separated from measurement, **How** carries its own modifier grammar after a colon. Modifiers refine the view, not the data:
 
 ```bash
 Map:1st            largest category per region
@@ -210,64 +157,58 @@ Map:Change         difference between the two observations
 Map:DiversityPew   diversity index across categories
 ```
 
-Each modifier is a transformation applied to the same underlying values;
-`Map:1st` and `Map:3rd` operate on identical data and differ only in the
-projection computed from it. Keeping **What** independent of **How** means the
-modifier family can grow — new rankings, differences, or indices — and every
-existing measurement acquires the new modifiers without changes to the data
-vocabulary. This is the coupling noted earlier: change-based modifiers such as
-`Map:Change` are only valid when **When** supplies an interval.
+Each modifier is a transformation applied to the same underlying values; `Map:1st` and `Map:3rd` operate on identical data and differ only in the projection computed from it. Keeping **What** independent of **How** means the modifier family can grow — new rankings, differences, or indices — and every existing measurement acquires the new modifiers without changes to the data vocabulary. This is the coupling noted earlier: change-based modifiers such as `Map:Change` are only valid when **When** supplies an interval.
 
 ## 3. Orthogonality and Generativity
 
-The four fields are independent axes, so the set of valid queries is their
-Cartesian product rather than an explicit list. Changing the **How** field from
-`Map` to `BarChart` leaves the **Where** semantics unchanged; changing **When**
-from `2012` to `2012-2024` leaves **What** unchanged while enabling the
-difference-based modifiers.
+The four fields are independent axes, so the set of valid queries is their Cartesian product rather than an explicit list. Changing the **How** field from `Map` to `BarChart` leaves the **Where** semantics unchanged; changing **When** from `2012` to `2012-2024` leaves **What** unchanged while enabling the difference-based modifiers.
 
-A small set of primitives therefore generates a
-large query space, and the examples in [README.md](README.md) are samples from
-that space, not an exhaustive specification.
+Orthogonality is what allows a small vocabulary to generate a large query space. The examples in [README.md](README.md) are samples from that space, not an exhaustive specification.
 
-## 4. Consistency of the Interface
+## 4. One Grammar, Everywhere
 
-The design keeps a single mental model across usage contexts.
+The command string is deliberately free of characters that need quoting or escaping in any common context. As a result, the *same string* is the entire interface in every place the data is consumed:
 
-- **Uniform surface.** The string passed on the command line —
-
-  ```bash
-  python workflows/console.py <cmd>
-  ```
-
-  is identical to the string passed programmatically:
+- **Python library:**
 
   ```python
-  from lanka_data import Command
-  output = Command("<cmd>").run()
+  output = CommandRunner.run('Energy/2012/LK/Map')
   ```
 
-  There is one grammar, used in both contexts.
+- **Command line:**
 
-- **Left-to-right readability.** `Religion/2012-2024/LK:district/Map:Change`
-  parses in reading order and maps directly onto the four fields, so the command
-  is self-describing.
+  ```bash
+  python workflows/console.py Energy/2012/LK/Map
+  ```
 
-- **Provenance.** Every response includes the `sources` that produced it and a
-  `query_time_ms`, so a compact request still yields a fully traceable result.
+- **HTTP endpoint** — the four fields *are* the URL path:
+
+  ```text
+  https://lanka-data.api/Energy/2012/LK/Map
+  ```
+
+- **Static file location** — the four fields *are* the directory structure:
+
+  ```text
+  /tmp/lanka_data/Energy/2012/LK/Map
+  ```
+
+This is not four interfaces that happen to look alike; it is one grammar hosted in four contexts. A query learned in the browser transfers verbatim to a script, a shell, or a cache path, and a pre-rendered result can be served statically at exactly the address that would compute it dynamically.
+
+Two further properties keep the mental model intact across contexts:
+
+- **Readable by non-technical users.** The string parses in reading order and mirrors how a question is asked in plain language — *what*, *when*, *where*, *how*. `Religion/2012-2024/LK:district/Map:Change` is self-describing: no programming knowledge is needed to read an existing command or to modify one field of it to ask a neighbouring question.
+
+- **Provenance.** Every response includes the `sources` that produced it and a `query_time_ms`, so a compact request still yields a fully traceable result.
 
 ## 5. Coverage
 
-A four-field grammar is only useful if it spans the required query space. The
-following archetypes, each a distinct class of query, are all expressed by
-selecting values along the same four axes:
+A four-field grammar is only useful if it spans the required query space. The following archetypes, each a distinct class of query, are all expressed by selecting values along the same four axes:
 
-- **Single fact, machine-readable.** 2024 parliamentary result for the country
-  as data:
+- **Single fact, machine-readable.** 2024 parliamentary result for the country as data:
   `Parliamentary/2024/LK/JSON`
 
-- **Snapshot, mapped.** 2015 presidential vote across one district's polling
-  divisions:
+- **Snapshot, mapped.** 2015 presidential vote across one district's polling divisions:
   `Presidential/2015/LK-11:pd/Map`
 
 - **Comparison over time.** Religion shift across districts, 2012–2024:
@@ -291,8 +232,7 @@ selecting values along the same four axes:
 - **Diversity index.** Religious diversity per district:
   `Religion/2012-2024/LK:district/Map:DiversityPew`
 
-Each is a different query answered by different values on the same four axes.
-Coverage is obtained by composition, not by adding endpoints.
+Each is a different query answered by different values on the same four axes. Coverage is obtained by composition, not by adding endpoints.
 
 ## 6. Summary
 
@@ -302,10 +242,4 @@ The interface reduces to four independent fields:
 What / When / Where / How
 ```
 
-The field set is chosen to be **minimal** (each field is a distinct axis of
-variation, none redundant), **orthogonal** (fields compose without mutual
-constraint, apart from the interval requirement of change modifiers),
-**uniform** (identical grammar across CLI and API), and **complete** for the
-target domain (the archetypal query classes are all reachable by composition).
-The measurement, observation time, boundary definition, and presentation are
-kept as separate values so that none silently contaminates another.
+The field set is **minimal** (each field is a distinct axis of variation, none redundant), **orthogonal** (fields compose without mutual constraint, apart from the interval requirement of change modifiers), **portable** (the identical string serves as Python argument, CLI argument, URL path, and file path), **intuitive** (it reads left-to-right as a plain-language question, usable without programming), and **complete** for the target domain (the archetypal query classes are all reachable by composition). Measurement, observation time, boundary definition, and presentation are kept as separate values so that none silently contaminates another.
