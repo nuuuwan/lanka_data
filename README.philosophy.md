@@ -2,7 +2,7 @@
 
 *Rationale for the command grammar.*
 
-## The Problem We Wanted to Solve
+## 0. The Problem We Wanted to Solve
 
 The goal is "one API to rule them all": a single interface that can express *any* query, rather than a proliferation of endpoints, methods, libraries, and parameter sets that each answer one narrow question.
 
