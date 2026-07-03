@@ -12,10 +12,7 @@ class Census2012Dataset(GIG2Dataset):
     @classmethod
     def metadata_file_path(cls) -> str:
         return os.path.join(
-            "src",
-            "lanka_data",
-            "dataset",
-            "custom",
+            os.path.dirname(os.path.abspath(__file__)),
             "census2012.datasets.json",
         )
 

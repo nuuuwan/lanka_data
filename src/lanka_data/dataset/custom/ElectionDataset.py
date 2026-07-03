@@ -9,9 +9,7 @@ log = Log("ElectionDataset")
 
 class ElectionDataset(GIG2Dataset):
 
-    def __init__(
-        self, region_data_list: list[dict], table_id: str, year: str
-    ):
+    def __init__(self, region_data_list: list[dict], table_id: str, year: str):
         GIG2Dataset.__init__(self, region_data_list, table_id)
         self.year = year
 
@@ -28,10 +26,7 @@ class ElectionDataset(GIG2Dataset):
     @classmethod
     def metadata_file_path(cls) -> str:
         return os.path.join(
-            "src",
-            "lanka_data",
-            "dataset",
-            "custom",
+            os.path.dirname(os.path.abspath(__file__)),
             "elections.datasets.json",
         )
 

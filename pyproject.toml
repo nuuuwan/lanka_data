@@ -17,3 +17,6 @@ dependencies = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+"lanka_data.dataset.custom" = ["*.json"]

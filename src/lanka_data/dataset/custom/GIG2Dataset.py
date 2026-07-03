@@ -51,7 +51,7 @@ class GIG2Dataset(RegionValueDataset):
 
     def fix_lg_id_bug(self, d_list: dict) -> dict:
         corrections_path = os.path.join(
-            "src", "lanka_data", "dataset", "custom", "lg.corrections.json"
+            os.path.dirname(os.path.abspath(__file__)), "lg.corrections.json"
         )
         corrections_file = JSONFile(corrections_path)
         old_id_to_new_id = corrections_file.read()
