@@ -45,8 +45,13 @@ class handler(BaseHTTPRequestHandler):
             result = CommandRunner.run(path)
             inner = result.get("result")
             if isinstance(inner, dict) and "image_path" in inner:
-                del inner["image_path"]
-                inner["image_url"] = self._public_url(f"{path}{IMAGE_SUFFIX}")
+                new_inner = {
+                    k: v for k, v in inner.items() if k != "image_path"
+                }
+                new_inner["image_url"] = self._public_url(
+                    f"{path}{IMAGE_SUFFIX}"
+                )
+                result = {**result, "result": new_inner}
             self._write_json(200, result, CACHE_CONTROL_JSON)
         except Exception as e:
             self._write_json(400, {"error": str(e)})
