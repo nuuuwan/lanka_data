@@ -178,7 +178,7 @@ The command string is deliberately free of characters that need quoting or escap
 - **Command line:**
 
   ```bash
-  python workflows/console.py Energy/2012/LK/Map
+  python workflows/single.py Energy/2012/LK/Map
   ```
 
 - **HTTP endpoint** — the four fields *are* the URL path:
