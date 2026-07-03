@@ -1,6 +1,7 @@
-[tool.vercel]
-builder = "vercel-python"
-
-[build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+[project]
+name = "lanka-data-api"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "lanka_data @ git+https://github.com/nuuuwan/lanka_data.git",
+]
