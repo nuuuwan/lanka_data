@@ -42,7 +42,7 @@ class DatasetFactory:
             )
         base_label = command.what_cmd.replace("Summary", "")
         if base_label in ElectionDataset.get_labels():
-            return ElectionSummaryDataset.from_label_and_region_data_list_and_year(
+            return ElectionSummaryDataset.from_label_and_region_data_list_and_year(  # noqa: E501
                 base_label,
                 region_data_list,
                 command.when_cmd,

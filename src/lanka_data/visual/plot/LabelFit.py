@@ -12,7 +12,6 @@ class LabelFit:
 
     @staticmethod
     def _edges(poly):
-        """Pre-computed edge arrays (ax, ay, ex, ey) for ray casting."""
         coords = np.array(poly.exterior.coords)
         ax, ay = coords[:-1, 0], coords[:-1, 1]
         bx, by = coords[1:, 0], coords[1:, 1]
@@ -20,7 +19,6 @@ class LabelFit:
 
     @staticmethod
     def _ray_dist(cx, cy, dx, dy, edges, span):
-        """Distance from (cx,cy) to polygon boundary in direction (dx,dy)."""
         ax, ay, ex, ey = edges
         denom = dx * ey - dy * ex
         valid = np.abs(denom) > 1e-12
@@ -42,7 +40,6 @@ class LabelFit:
 
     @staticmethod
     def _hw_hh(cx, cy, cos_a, sin_a, edges, span):
-        """Half-width/height of the best-fit rect at the given angle."""
         rd = LabelFit._ray_dist
         hw = min(
             rd(cx, cy, cos_a, sin_a, edges, span),

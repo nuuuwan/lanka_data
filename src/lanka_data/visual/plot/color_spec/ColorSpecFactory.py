@@ -87,8 +87,6 @@ class ColorSpecFactory:
             how_without_params = how_cmd
             how_params = None
 
-        log.debug(f"{how_without_params=}, {how_params=}, {is_diff=}")
-
         if not dataset.has_values():
             return ColorSpec.by_custom_category_key(
                 dataset,
