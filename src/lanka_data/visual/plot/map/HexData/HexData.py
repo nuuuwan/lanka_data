@@ -45,7 +45,12 @@ class HexData(
         total_count = sum(counts.values())
         centers, radius = cls.build_grid(tuple(gdf.total_bounds), total_count)
         hexes = cls.assign(centroids, counts, centers)
-        return {"radius": radius, "hexes": hexes}
+        value_per_hex = sum(region_to_weight.values()) / max(len(hexes), 1)
+        return {
+            "radius": radius,
+            "hexes": hexes,
+            "value_per_hex": value_per_hex,
+        }
 
     @classmethod
     def get_hex_layout(cls, data_list):

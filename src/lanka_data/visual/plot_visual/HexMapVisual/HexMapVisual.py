@@ -1,6 +1,9 @@
 from lanka_data.visual.plot.color_spec import ColorSpecFactory
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map.HexData import HexData
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import (
+    HexMapBoundaryMixin,
+)
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import (
     HexMapDrawMixin,
 )
@@ -8,7 +11,7 @@ from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 
 
-class HexMapVisual(PlotVisual, HexMapDrawMixin):
+class HexMapVisual(PlotVisual, HexMapDrawMixin, HexMapBoundaryMixin):
     MAX_REGIONS_TO_LABEL = 30
 
     @staticmethod
@@ -17,6 +20,16 @@ class HexMapVisual(PlotVisual, HexMapDrawMixin):
             d["region_id"]: d.get("region_name") or str(d["region_id"])
             for d in data_list
         }
+
+    @staticmethod
+    def _draw_scale(ax, layout):
+        value_per_hex = layout.get("value_per_hex")
+        if not value_per_hex:
+            return
+        ax.set_title(
+            f"Each hexagon represents ~{round(value_per_hex):,} people",
+            fontsize=9,
+        )
 
     @timer
     def draw(self, dataset, fig):
@@ -32,7 +45,9 @@ class HexMapVisual(PlotVisual, HexMapDrawMixin):
         legend_ax = fig.add_subplot(gs[1])
 
         self._draw_hexes(ax, layout, region_color_map)
+        self._draw_boundaries(ax, layout)
         if len(region_to_name) <= self.MAX_REGIONS_TO_LABEL:
             self._draw_labels(ax, layout, region_to_name, region_color_map)
+        self._draw_scale(ax, layout)
         Legend.draw(value_to_color, legend_ax)
         ax.set_axis_off()
