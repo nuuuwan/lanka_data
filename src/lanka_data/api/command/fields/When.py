@@ -1,10 +1,10 @@
 import re
 from dataclasses import dataclass
 
-from lanka_data.api.command.fields.CensusDatasetRegistry import \
-    CensusDatasetRegistry
-from lanka_data.api.command.fields.WhenIntrospectionMixin import \
-    WhenIntrospectionMixin
+from lanka_data.api.command.fields.WhenIntrospectionMixin import (
+    WhenIntrospectionMixin,
+)
+from lanka_data.api.command.fields.WhenRegistry import WhenRegistry
 from lanka_data.api.command.InvalidWhenError import InvalidWhenError
 
 
@@ -14,10 +14,7 @@ class When(WhenIntrospectionMixin):
 
     @classmethod
     def available_values(cls):
-        values = []
-        for dataset_cls in CensusDatasetRegistry.DATASET_CLASSES:
-            values.extend(dataset_cls.get_supported_whens())
-        return sorted(set(values))
+        return WhenRegistry.values()
 
     def __post_init__(self):
         if self.value == "":

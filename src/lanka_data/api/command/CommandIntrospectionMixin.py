@@ -1,11 +1,5 @@
 from lanka_data.api.command.fields import How, What, When, Where
-from lanka_data.datasets.dataset.custom.Census2001Dataset import \
-    Census2001Dataset
-from lanka_data.datasets.dataset.custom.Census2012Dataset import \
-    Census2012Dataset
-from lanka_data.datasets.dataset.custom.Census2024Dataset import \
-    Census2024Dataset
-from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
+from lanka_data.api.command.fields.WhatWhenRegistry import WhatWhenRegistry
 
 
 class CommandIntrospectionMixin:
@@ -54,30 +48,8 @@ class CommandIntrospectionMixin:
 
     @classmethod
     def valid_what_when_pairs(cls, when_values=None):
-        pairs = cls.census_what_when_pairs()
         when_values = when_values or When.available_values()
-        for label in ElectionDataset.get_labels():
-            for when in when_values:
-                pairs.append((label, when))
-                pairs.append((label + "Summary", when))
-        return sorted(set(pairs))
-
-    @classmethod
-    def census_what_when_pairs(cls):
-        pairs = []
-        for dataset_cls in cls.census_dataset_classes():
-            for label in dataset_cls.get_labels():
-                for when in dataset_cls.get_supported_whens():
-                    pairs.append((label, when))
-        return pairs
-
-    @classmethod
-    def census_dataset_classes(cls):
-        return [
-            Census2001Dataset,
-            Census2012Dataset,
-            Census2024Dataset,
-        ]
+        return WhatWhenRegistry.pairs(when_values)
 
     @classmethod
     def add_valid_command(

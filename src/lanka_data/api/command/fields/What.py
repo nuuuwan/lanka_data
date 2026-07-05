@@ -1,11 +1,9 @@
 from dataclasses import dataclass
 
-from lanka_data.api.command.fields.CensusDatasetRegistry import \
-    CensusDatasetRegistry
-from lanka_data.api.command.fields.ElectionDatasetRegistry import \
-    ElectionDatasetRegistry
-from lanka_data.api.command.fields.WhatIntrospectionMixin import \
-    WhatIntrospectionMixin
+from lanka_data.api.command.fields.WhatIntrospectionMixin import (
+    WhatIntrospectionMixin,
+)
+from lanka_data.api.command.fields.WhatRegistry import WhatRegistry
 from lanka_data.api.command.UnknownWhatError import UnknownWhatError
 
 
@@ -17,30 +15,9 @@ class What(WhatIntrospectionMixin):
 
     @classmethod
     def available_groups(cls):
-        election = cls.election_values()
-        return {
-            "special": cls.VALUE_GROUPS["special"],
-            "census": sorted(set(cls.census_values())),
-            "election": election,
-            "election_summary": cls.election_summary_values(election),
-        }
-
-    @staticmethod
-    def election_summary_values(election):
-        return [x + "Summary" for x in election]
-
-    @classmethod
-    def election_values(cls):
-        if ElectionDatasetRegistry.DATASET_CLASS is None:
-            return []
-        return ElectionDatasetRegistry.DATASET_CLASS.get_labels()
-
-    @classmethod
-    def census_values(cls):
-        values = []
-        for dataset_cls in CensusDatasetRegistry.DATASET_CLASSES:
-            values += dataset_cls.get_labels()
-        return values
+        groups = dict(cls.VALUE_GROUPS)
+        groups.update(WhatRegistry.groups())
+        return groups
 
     def __post_init__(self):
         if self.value == "Help":

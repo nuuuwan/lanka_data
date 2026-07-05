@@ -1,27 +1,27 @@
 # lanka_data (auto generate by build_inits.py)
 # flake8: noqa: F408
 
-from lanka_data.api import (CensusDatasetRegistry, CommandCache, CommandError,
-                            CommandLoaderMixin, Dataset, DataSource,
-                            DiffDataset, ElectionDatasetRegistry, How,
+from lanka_data.api import (Command, CommandBase, CommandBaseValidationMixin,
+                            CommandCache, CommandError,
+                            CommandIntrospectionMixin, CommandLoaderMixin,
+                            Dataset, DataSource, DiffDataset, How,
                             HowIntrospectionMixin, HowRegistryMixin,
                             InvalidCommandError, InvalidWhenError,
                             InvalidWhereError, RegionTypeRegistry,
                             RegionValueDataset, RegionValueDatasetTableMixin,
                             Segregation, SegregationComputeMixin,
                             UnknownHowError, UnknownWhatError, What,
-                            WhatIntrospectionMixin, When,
-                            WhenIntrospectionMixin, Where,
-                            WhereIntrospectionMixin)
+                            WhatIntrospectionMixin, WhatRegistry,
+                            WhatWhenRegistry, When, WhenIntrospectionMixin,
+                            WhenRegistry, Where, WhereIntrospectionMixin)
 from lanka_data.CompatibilityAliases import CompatibilityAliases
 from lanka_data.console import (ConsoleApp, ConsoleCommandLibrary,
                                 ConsoleCompleter, ConsoleImageOpener,
                                 ConsoleLocalCommands, ConsoleRenderer)
 from lanka_data.datasets import (Census2001Dataset, Census2012Dataset,
-                                 Census2024Dataset, Command, CommandBase,
-                                 CommandHelp, CommandIntrospectionMixin,
-                                 CommandRunner, DatasetCommandRegistry,
-                                 DatasetFactory, Diversity, ElectionDataset,
+                                 Census2024Dataset, CommandHelp, CommandRunner,
+                                 DatasetCommandRegistry, DatasetFactory,
+                                 Diversity, ElectionDataset,
                                  ElectionSummaryDataset, EmptyDataset,
                                  FieldNameUtils, GIG2Dataset, RegionFetchMixin,
                                  RegionLoadersMixin, RegionParentMixin,
