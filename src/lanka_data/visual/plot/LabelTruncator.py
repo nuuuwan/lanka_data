@@ -22,21 +22,20 @@ class LabelTruncator:
 
     @classmethod
     def _truncate(cls, name, n):
-        first = name[0]
-        first_lower = first.lower()
-        result = [first]
-        for ch in name[1:]:
-            if len(result) >= n:
-                break
-            lower = ch.lower()
-            if (
-                not ch.isalpha()
-                or lower in cls.VOWELS
-                or lower == first_lower
-            ):
-                continue
-            result.append(ch)
-        return "".join(result)
+        words = name.split()
+        if len(words) == 1:
+            return cls._truncate_single_word(name, n)
+        return cls._truncate_single_word("".join([c[0] for c in words]), n)
+
+    @classmethod
+    def _truncate_single_word(cls, name, n):
+        first_char = name[0]
+        consonants = [c for c in name[1:] if c not in cls.VOWELS]
+        if n == 1:
+            return first_char
+        if n >= len(consonants) + 1:
+            return name[:n].upper()
+        return first_char + "".join(consonants[: n - 1]).upper()
 
     @classmethod
     def get_label(cls, name, region_count):
