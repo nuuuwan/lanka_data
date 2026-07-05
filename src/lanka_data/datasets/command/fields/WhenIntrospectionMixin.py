@@ -29,9 +29,9 @@ class WhenIntrospectionMixin:
     def available_intervals(cls):
         values = cls.available_values()
         return [
-            f"{start}-{end}"
-            for i, start in enumerate(values)
-            for end in values[i + 1:]
+            f"{values[i]}-{values[j]}"
+            for i in range(len(values))
+            for j in range(i + 1, len(values))
         ]
 
     @classmethod
