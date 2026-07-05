@@ -8,6 +8,9 @@ from lanka_data.command.fields.How import How
 from lanka_data.command.fields.What import What
 from lanka_data.command.fields.When import When
 from lanka_data.command.fields.Where import Where
+from lanka_data.api.command.fields.What import What as APIWhat
+from lanka_data.api.command.fields.When import When as APIWhen
+from lanka_data.api.command.fields.Where import Where as APIWhere
 
 
 class TestCommandFields:
@@ -91,3 +94,9 @@ class TestCommandFields:
         assert commands
         for command_id in commands:
             assert Command.from_str(command_id).cmd_id == command_id
+
+    def test_api_field_introspection_is_dataset_independent(self):
+        assert APIWhat.available_groups() == dict(special=["Empty"])
+        assert APIWhen.available_values() == []
+        assert APIWhere.available_region_types() == []
+        assert APIWhere.available_examples() == []
