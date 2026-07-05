@@ -80,23 +80,23 @@ class TestHexCountError:
         value_per_hex = HexData._value_per_hex(region_to_weight)
         for region_id, weight in region_to_weight.items():
             ideal = weight / value_per_hex
-            error = abs(ideal - counts[region_id])
+            error = HexData._region_error(counts[region_id], ideal)
             assert error <= HexData.HEXMAP_ERROR + 1e-9
 
     def test_uses_largest_population_per_hexagon(self):
         region_to_weight = {"A": 900, "B": 250, "C": 100}
         value_per_hex = HexData._value_per_hex(region_to_weight)
         smallest = min(region_to_weight.values())
-        assert value_per_hex == smallest / HexData.HEXMAP_ERROR
+        assert value_per_hex == smallest * (1 + HexData.HEXMAP_ERROR)
 
     def test_larger_population_per_hexagon_would_exceed_error(self):
         region_to_weight = {"A": 900, "B": 250, "C": 100}
         value_per_hex = HexData._value_per_hex(region_to_weight)
-        larger = value_per_hex * 1.5
+        larger = value_per_hex * 2
         smallest = min(region_to_weight.values())
         ideal = smallest / larger
         actual = max(1, round(ideal))
-        assert abs(ideal - actual) > HexData.HEXMAP_ERROR
+        assert HexData._region_error(actual, ideal) > HexData.HEXMAP_ERROR
 
     def test_non_positive_weights_give_each_region_one_hex(self):
         counts = HexData.get_counts({"A": 0, "B": 0})
