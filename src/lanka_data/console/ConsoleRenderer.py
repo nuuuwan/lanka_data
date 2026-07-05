@@ -6,19 +6,17 @@ from rich.table import Table
 
 
 class ConsoleRenderer:
+    BANNER_TEXT = (
+        "Lanka Data Console\n"
+        "Type help for commands. Press Tab for completion."
+    )
     MAX_DISPLAYED_VALUES = 30
 
     def __init__(self, console):
         self.console = console
 
     def show_banner(self):
-        self.console.print(
-            Panel.fit(
-                "Lanka Data Console\n"
-                "Type help for commands. Press Tab for completion.",
-                title="lanka_data",
-            )
-        )
+        self.console.print(Panel.fit(self.BANNER_TEXT, title="lanka_data"))
 
     def show_help(self):
         table = Table(title="Console commands")
@@ -59,9 +57,13 @@ class ConsoleRenderer:
     def show_command_table(self, title, commands):
         table = Table(title=title)
         table.add_column("Command")
+        self.add_command_rows(table, commands)
+        self.console.print(table)
+
+    @staticmethod
+    def add_command_rows(table, commands):
         for command in commands:
             table.add_row(command)
-        self.console.print(table)
 
     def show_output(self, output):
         text = json.dumps(output, indent=2)

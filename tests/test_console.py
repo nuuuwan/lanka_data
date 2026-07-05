@@ -27,3 +27,7 @@ class TestConsole:
         app = ConsoleApp(runner=FakeRunner)
         assert app.run_args(["run", "Help"]) == 0
         assert FakeRunner.command == "Help"
+
+    def test_run_prefix_without_command_is_safe(self):
+        app = ConsoleApp(runner=FakeRunner)
+        assert app.normalize_command("run ") == ""

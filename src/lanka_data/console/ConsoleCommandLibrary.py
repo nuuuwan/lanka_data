@@ -22,15 +22,23 @@ class ConsoleCommandLibrary:
         return sorted(set(commands))
 
     def suggestions(self):
-        commands = self.command_suggestions()
-        values = self.META_COMMANDS + commands
-        values += [f"run {command}" for command in commands]
-        values += What.available_values()
-        values += When.available_values()
-        values += When.available_intervals()
-        values += Where.available_values()
-        values += How.available_values()
+        values = self.META_COMMANDS + self.command_based_suggestions()
+        values += self.field_based_suggestions()
         return sorted(set(values))
+
+    def command_based_suggestions(self):
+        commands = self.command_suggestions()
+        return commands + [f"run {command}" for command in commands]
+
+    @staticmethod
+    def field_based_suggestions():
+        return (
+            What.available_values()
+            + When.available_values()
+            + When.available_intervals()
+            + Where.available_values()
+            + How.available_values()
+        )
 
     def field_rows(self):
         return [

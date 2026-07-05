@@ -5,6 +5,7 @@ from rich.console import Console
 from lanka_data.console.ConsoleCommandLibrary import ConsoleCommandLibrary
 from lanka_data.console.ConsoleCompleter import ConsoleCompleter
 from lanka_data.console.ConsoleImageOpener import ConsoleImageOpener
+from lanka_data.console.ConsoleLocalCommands import ConsoleLocalCommands
 from lanka_data.console.ConsoleRenderer import ConsoleRenderer
 from lanka_data.datasets.command.CommandRunner import CommandRunner
 
@@ -18,6 +19,7 @@ class ConsoleApp:
         self.library = library or ConsoleCommandLibrary()
         self.renderer = ConsoleRenderer(self.console)
         self.completer = ConsoleCompleter(self.library.suggestions())
+        self.local_commands = ConsoleLocalCommands(self)
 
     @classmethod
     def main(cls, args=None):
@@ -37,67 +39,58 @@ class ConsoleApp:
     def run_loop(self):
         self.completer.attach()
         self.renderer.show_banner()
-        while True:
-            try:
-                line = input("lanka-data> ")
-            except (EOFError, KeyboardInterrupt):
-                self.console.print()
-                break
-            if not self.handle_line(line):
-                break
+        while self.read_next_line():
+            pass
+
+    def read_next_line(self):
+        line = self.safe_input()
+        if line is None:
+            return False
+        return self.handle_line(line)
+
+    def safe_input(self):
+        try:
+            return input("lanka-data> ")
+        except (EOFError, KeyboardInterrupt):
+            self.console.print()
+            return None
 
     def handle_line(self, line):
         line = line.strip()
         if not line:
             return True
-        if not self.handle_local_line(line):
+        return self.dispatch_line(line)
+
+    def dispatch_line(self, line):
+        if not self.local_commands.handle(line):
             return False
-        if line.lower() not in self.local_commands():
+        if line.lower() not in self.local_commands.names():
             self.run_command(line)
         return True
 
-    def handle_local_line(self, line):
-        line_lower = line.lower()
-        if line_lower in ["exit", "quit"]:
-            return False
-        actions = self.local_actions()
-        if line_lower in actions:
-            actions[line_lower]()
-        return True
-
-    def local_actions(self):
-        return dict(
-            clear=self.console.clear,
-            help=self.renderer.show_help,
-            fields=self.show_fields,
-            examples=self.show_examples,
-            commands=self.show_commands,
-        )
-
-    def show_fields(self):
-        self.renderer.show_fields(self.library.field_rows())
-
-    def show_examples(self):
-        self.renderer.show_examples(self.library.example_commands())
-
-    def show_commands(self):
-        self.renderer.show_commands(self.library.command_suggestions())
-
-    @staticmethod
-    def local_commands():
-        return ["clear", "help", "fields", "examples", "commands"]
-
     def run_command(self, line):
         command = self.normalize_command(line)
-        try:
-            output = self.runner.run(command)
-        except Exception as error:
-            self.renderer.show_error(error)
+        output = self.get_output(command)
+        if output is None:
             return
         ConsoleImageOpener.open(output)
         self.renderer.show_output(output)
 
+    def get_output(self, command):
+        try:
+            return self.runner.run(command)
+        except Exception as error:
+            self.renderer.show_error(error)
+            return None
+
     def normalize_command(self, line):
         if line.lower().startswith(self.RUN_PREFIX):
-            return line.split(maxsplit=1)[1].strip()
+            return self.normalize_run_command(line)
         return line
+
+    @staticmethod
+    def normalize_run_command(line):
+        parts = line.split(maxsplit=1)
+        if len(parts) == 1:
+            return ""
+        return parts[1].strip()
