@@ -96,7 +96,7 @@ class TestCommandFields:
             assert Command.from_str(command_id).cmd_id == command_id
 
     def test_api_field_introspection_is_dataset_independent(self):
-        assert APIWhat.available_groups() == dict(special=["Empty"])
+        assert APIWhat.available_groups() == {"special": ["Empty"]}
         assert APIWhen.available_values() == []
         assert APIWhere.available_region_types() == []
         assert APIWhere.available_examples() == []

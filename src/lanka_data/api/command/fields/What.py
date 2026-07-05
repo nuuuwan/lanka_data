@@ -10,7 +10,7 @@ from lanka_data.api.command.fields.WhatIntrospectionMixin import (
 class What(WhatIntrospectionMixin):
     value: str
 
-    VALUE_GROUPS = dict(special=["Empty"])
+    VALUE_GROUPS = {"special": ["Empty"]}
 
     def __post_init__(self):
         if self.value == "Help":

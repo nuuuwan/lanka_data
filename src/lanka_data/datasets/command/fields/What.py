@@ -15,12 +15,12 @@ class What(APIWhat):
     @classmethod
     def available_groups(cls):
         election = ElectionDataset.get_labels()
-        return dict(
-            special=["Empty"],
-            census=sorted(set(cls.census_values())),
-            election=election,
-            election_summary=[x + "Summary" for x in election],
-        )
+        return {
+            "special": ["Empty"],
+            "census": sorted(set(cls.census_values())),
+            "election": election,
+            "election_summary": [x + "Summary" for x in election],
+        }
 
     @classmethod
     def census_values(cls):
