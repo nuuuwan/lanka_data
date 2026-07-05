@@ -7,6 +7,7 @@ from utils_future.dcn import (DCNUtils, DCNUtilsAlgorithm, DCNUtilsCompute,
                               DCNUtilsRunner)
 from utils_future.File import File
 from utils_future.GeoUtils import GeoUtils
+from utils_future.hungarian import HungarianUtils
 from utils_future.JSONFile import JSONFile
 from utils_future.Log import Log
 from utils_future.Parse import Parse
