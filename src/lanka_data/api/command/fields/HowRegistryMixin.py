@@ -3,6 +3,7 @@ class HowRegistryMixin:
         "JSON": None,
         "Map": None,
         "Cartogram": "Cartogram (Population based)",
+        "HexMap": "HexMap (Population based)",
         "BarChart": "Bar Chart",
         "PieChart": "Pie Chart",
         "BumpChart": "Bump Chart",
