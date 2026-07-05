@@ -2,9 +2,9 @@
 
 This repo implements "one API to rule them all": a single interface that can express *any* query to access public data about Sri Lanka 🇱🇰.
 
-## 0. Design Philosophy
+## 0. Design Philosophy & Code
 
-See [README.philosophy.md](README.philosophy.md).
+See [README.philosophy.md](README.philosophy.md)  and [README.code.md](README.code.md)
 
 ## 1. Data Sources
 

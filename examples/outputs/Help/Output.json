@@ -1,0 +1,26 @@
+{
+  "command_str": "Help",
+  "result": {
+    "what_to_whens": [
+      "TODO"
+    ],
+    "where": [
+      "LK*",
+      "EC-*",
+      "LG-*"
+    ],
+    "how": [
+      "JSON",
+      "Map"
+    ],
+    "source": "lanka_data",
+    "source_url": "https://github.com/nuuuwan/lanka_data/blob/main/README.md"
+  },
+  "sources": [
+    {
+      "name": "Lanka Data",
+      "url": "https://github.com/nuuuwan/lanka_data/blob/main/README.md"
+    }
+  ],
+  "query_time_ms": 0
+}
