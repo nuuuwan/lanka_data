@@ -47,7 +47,6 @@ for _old_child in [
     "data",
     "dataset",
     "region",
-    "visual",
 ]:
     _alias_prefix(
         f"lanka_data.{_old_child}",
@@ -62,6 +61,8 @@ for _old_child in [
         f"lanka_data.datasets.{_old_child}",
         f"lanka_data.{_old_child}",
     )
+
+_alias_prefix("lanka_data.datasets.visual", "lanka_data.visual")
 
 for _old_name, _new_name in {
     "lanka_data.command.CommandCache": "lanka_data.api.command.CommandCache",

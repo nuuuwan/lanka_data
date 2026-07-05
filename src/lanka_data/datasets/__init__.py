@@ -31,33 +31,33 @@ from lanka_data.datasets.region import (
     RegionRawDataMixin,
 )
 from lanka_data.datasets.region import Regions, RegionTypeUtils, Where
-from lanka_data.datasets.visual import BarChartDrawMixin, BarChartLabelMixin
-from lanka_data.datasets.visual import BarChartVisual, BumpChartDataMixin
-from lanka_data.datasets.visual import BumpChartDrawMixin, BumpChartVisual
-from lanka_data.datasets.visual import ColorSpec, ColorSpecCategoryMixin
-from lanka_data.datasets.visual import (
+from lanka_data.visual import BarChartDrawMixin, BarChartLabelMixin
+from lanka_data.visual import BarChartVisual, BumpChartDataMixin
+from lanka_data.visual import BumpChartDrawMixin, BumpChartVisual
+from lanka_data.visual import ColorSpec, ColorSpecCategoryMixin
+from lanka_data.visual import (
     ColorSpecConstants,
     ColorSpecCustomMixin,
 )
-from lanka_data.datasets.visual import ColorSpecFactory, ColorSpecHelpers
-from lanka_data.datasets.visual import (
+from lanka_data.visual import ColorSpecFactory, ColorSpecHelpers
+from lanka_data.visual import (
     ColorSpecHelpersMixin,
     Font,
     Footer,
     GeoData,
 )
-from lanka_data.datasets.visual import (
+from lanka_data.visual import (
     GeoDataLoaderMixin,
     Header,
     HowFormatter,
 )
-from lanka_data.datasets.visual import (
+from lanka_data.visual import (
     JSONVisual,
     Label,
     LabelFit,
     Legend,
     MapVisual,
 )
-from lanka_data.datasets.visual import PieChartGridMixin, PieChartVisual, Plot
-from lanka_data.datasets.visual import PlotVisual, Text, Visual, VisualFactory
-from lanka_data.datasets.visual import WhatFormatter, WhereFormatter
+from lanka_data.visual import PieChartGridMixin, PieChartVisual, Plot
+from lanka_data.visual import PlotVisual, Text, Visual, VisualFactory
+from lanka_data.visual import WhatFormatter, WhereFormatter
