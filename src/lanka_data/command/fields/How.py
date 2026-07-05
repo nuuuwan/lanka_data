@@ -8,15 +8,15 @@ from lanka_data.command.UnknownHowError import UnknownHowError
 class How:
     value: str
 
-    BASE_LABELS = {
-        "JSON": None,
-        "Map": None,
-        "Cartogram": "Cartogram (Population based)",
-        "None": None,
-        "BarChart": "Bar Chart",
-        "PieChart": "Pie Chart",
-        "BumpChart": "Bump Chart",
-    }
+    BASE_LABELS = dict(
+        JSON=None,
+        Map=None,
+        Cartogram="Cartogram (Population based)",
+        BarChart="Bar Chart",
+        PieChart="Pie Chart",
+        BumpChart="Bump Chart",
+        **{"None": None},
+    )
     INTERVAL_BASES = {"BumpChart"}
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
@@ -75,6 +75,8 @@ class How:
 
     @property
     def base_label(self):
+        if self.base == "None":
+            return None
         return self.BASE_LABELS.get(self.base, self.split_camel(self.base))
 
     @property
@@ -85,17 +87,12 @@ class How:
             "label", self.split_camel(self.modifier)
         )
 
-    def format_with_modifier(self):
-        return (
-            f"{self.base_label} by {self.modifier_label}"
-            if self.base_label
-            else self.modifier_label
-        )
-
     def format(self):
         if not self.modifier:
             return self.base_label or self.split_camel(self.base)
-        return self.format_with_modifier()
+        if self.base_label:
+            return f"{self.base_label} by {self.modifier_label}"
+        return self.modifier_label
 
     def __str__(self):
         return self.value

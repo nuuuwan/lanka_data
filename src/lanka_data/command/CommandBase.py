@@ -46,9 +46,8 @@ class CommandBase:
 
     def _validate_coupling(self):
         if self.how.needs_interval and not self.when.is_interval:
-            how_name = self.how.modifier or self.how.base
             raise InvalidCommandError(
-                f"{how_name} requires an interval when",
+                f"{self.how.value} requires an interval when",
                 self.cmd_id,
             )
 

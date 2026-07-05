@@ -82,7 +82,7 @@ class DatasetFactory:
             return result
 
         raise UnknownWhatError(
-            f"Dataset unknown for: {command.what_cmd}/{command.when_cmd}",
+            f"Dataset unknown for what: {command.what_cmd}",
             command.what_cmd,
         )
 

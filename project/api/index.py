@@ -27,7 +27,7 @@ class handler(HandlerResponseMixin, BaseHTTPRequestHandler):
 
     def _validate_safe_image_path(self, image_path):
         if image_path and not self._is_safe_image_path(image_path):
-            raise CommandError("Unsafe image path", image_path)
+            raise CommandError("Unsafe image path")
 
     def do_GET(self):
         path = self.path.split("?")[0].replace("/api/", "").strip("/")
@@ -44,7 +44,7 @@ class handler(HandlerResponseMixin, BaseHTTPRequestHandler):
         image_path = (result.get("result") or {}).get("image_path")
         self._validate_safe_image_path(image_path)
         if not image_path or not os.path.exists(image_path):
-            raise CommandError("Image not found", image_path)
+            raise CommandError("Image not found")
         return image_path
 
     def _read_image(self, command_str):
