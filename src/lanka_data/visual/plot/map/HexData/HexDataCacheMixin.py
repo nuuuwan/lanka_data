@@ -19,10 +19,10 @@ class HexDataCacheMixin:
     def _load(path):
         if not os.path.exists(path):
             return None
-        with open(path) as f:
+        with open(path, encoding="utf-8") as f:
             return json.load(f)
 
     @staticmethod
     def _save(path, layout):
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8") as f:
             json.dump(layout, f)
