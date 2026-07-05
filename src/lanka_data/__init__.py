@@ -34,10 +34,12 @@ from datasets import WhereFormatter
 
 
 def _alias_prefix(old_name, new_name):
-    import_module(new_name)
-    for name, module in list(sys.modules.items()):
-        if name == new_name or name.startswith(new_name + "."):
-            sys.modules[old_name + name[len(new_name):]] = module
+    module = import_module(new_name)
+    sys.modules[old_name] = module
+    for name, child_module in list(sys.modules.items()):
+        if name.startswith(new_name + "."):
+            suffix = name.removeprefix(new_name)
+            sys.modules[old_name + suffix] = child_module
 
 
 for _old_child in [
