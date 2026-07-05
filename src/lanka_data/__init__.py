@@ -46,14 +46,21 @@ for _old_child in [
     "command",
     "data",
     "dataset",
-    "examples",
-    "readme",
     "region",
     "visual",
 ]:
     _alias_prefix(
         f"lanka_data.{_old_child}",
         f"lanka_data.datasets.{_old_child}",
+    )
+
+for _old_child in [
+    "examples",
+    "readme",
+]:
+    _alias_prefix(
+        f"lanka_data.datasets.{_old_child}",
+        f"lanka_data.{_old_child}",
     )
 
 for _old_name, _new_name in {
