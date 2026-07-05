@@ -34,6 +34,10 @@ class TestCommandFields:
         assert command.where_cmd == "LK:district"
         assert command.how_cmd == "Map"
 
+    def test_command_rejects_unknown_fields_before_validation(self):
+        with pytest.raises(TypeError):
+            Command(what_cmd="Unknown", other_cmd="Other")
+
     def test_copy_can_clear_empty_string_fields(self):
         command = Command.from_str("Empty/2024/LK/Map")
         copied = command.copy(where_cmd="", how_cmd="")
