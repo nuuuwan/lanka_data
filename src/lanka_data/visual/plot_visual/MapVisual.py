@@ -9,7 +9,6 @@ from utils_future import timer
 class MapVisual(PlotVisual):
     DEFAULT_EDGE_COLOR = "#fff"
     DEFAULT_EDGE_WIDTH = 0.2
-    MAX_REGIONS_TO_LABEL = 30
 
     def _get_gdf_region(self, dataset, region_color_map):
         data_list = dataset.get_data_table()
@@ -46,7 +45,6 @@ class MapVisual(PlotVisual):
             edgecolor=self.DEFAULT_EDGE_COLOR,
             linewidth=self.DEFAULT_EDGE_WIDTH,
         )
-        if len(gdf_region) <= self.MAX_REGIONS_TO_LABEL:
-            Label.draw(gdf_region, ax)
+        Label.draw(gdf_region, ax, len(gdf_region))
         Legend.draw(value_to_color, legend_ax)
         ax.set_axis_off()

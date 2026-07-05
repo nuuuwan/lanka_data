@@ -1,4 +1,5 @@
 from lanka_data.visual.plot.LabelFit import LabelFit
+from lanka_data.visual.plot.LabelTruncator import LabelTruncator
 from utils_future import ColorUtils, timer
 
 
@@ -40,19 +41,18 @@ class Label:
 
     @classmethod
     @timer
-    def draw(cls, gdf_region, ax):
+    def draw(cls, gdf_region, ax, region_count):
         fig = ax.get_figure()
         for _, row in gdf_region.iterrows():
+            name = row.get("region_name") or str(row.get("region_id"))
+            label = LabelTruncator.get_label(name, region_count)
+            if label is None:
+                continue
             cx, cy, rect_w, rect_h, angle_deg = LabelFit.best_label_fit(
                 row.geometry
             )
             bg_color = row.get("color") or "white"
             text_color = "#666" if cls.IS_LIGHT_COLOR(bg_color) else "#aaa"
-            label = (
-                f'{row.get("region_name")}'
-                if row.get("region_name")
-                else str(row.get("region_id"))
-            )
 
             if rect_w >= rect_h:
                 text_w, text_h = rect_w, rect_h

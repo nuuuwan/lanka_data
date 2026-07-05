@@ -1,5 +1,6 @@
 from matplotlib.patches import RegularPolygon
 
+from lanka_data.visual.plot.LabelTruncator import LabelTruncator
 from utils_future import ColorUtils, timer
 
 
@@ -51,12 +52,18 @@ class HexMapDrawMixin:
 
     @classmethod
     @timer
-    def _draw_labels(cls, ax, layout, region_to_name, region_color_map):
+    def _draw_labels(
+        cls, ax, layout, region_to_name, region_color_map, region_count
+    ):
         for region_id, (cx, cy) in cls._region_centers(layout).items():
+            name = region_to_name.get(region_id, str(region_id))
+            label = LabelTruncator.get_label(name, region_count)
+            if label is None:
+                continue
             color = region_color_map.get(region_id) or cls.DEFAULT_FILL_COLOR
             text_color = "#666" if cls.IS_LIGHT_COLOR(color) else "#eee"
             ax.annotate(
-                region_to_name.get(region_id, str(region_id)),
+                label,
                 xy=(cx, cy),
                 ha="center",
                 va="center",
