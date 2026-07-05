@@ -2,10 +2,13 @@ from dataclasses import dataclass
 import re
 
 from lanka_data.api.command.UnknownHowError import UnknownHowError
+from lanka_data.datasets.command.fields.HowIntrospectionMixin import (
+    HowIntrospectionMixin,
+)
 
 
 @dataclass(frozen=True)
-class How:
+class How(HowIntrospectionMixin):
     value: str
 
     BASE_LABELS = {

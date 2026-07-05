@@ -1,4 +1,7 @@
 from lanka_data.datasets.command.CommandBase import CommandBase
+from lanka_data.datasets.command.CommandIntrospectionMixin import (
+    CommandIntrospectionMixin,
+)
 from lanka_data.api.command.CommandLoaderMixin import CommandLoaderMixin
 from utils_future import Log
 
@@ -6,6 +9,7 @@ log = Log("Command")
 
 
 class Command(
+    CommandIntrospectionMixin,
     CommandBase,
     CommandLoaderMixin,
 ):

@@ -2,10 +2,13 @@ from dataclasses import dataclass
 import re
 
 from lanka_data.api.command.InvalidWhenError import InvalidWhenError
+from lanka_data.datasets.command.fields.WhenIntrospectionMixin import (
+    WhenIntrospectionMixin,
+)
 
 
 @dataclass(frozen=True)
-class When:
+class When(WhenIntrospectionMixin):
     value: str
 
     def __post_init__(self):
