@@ -5,6 +5,9 @@ from lanka_data.command.InvalidCommandError import InvalidCommandError
 from lanka_data.command.InvalidWhereError import InvalidWhereError
 from lanka_data.command.UnknownHowError import UnknownHowError
 from lanka_data.command.fields.How import How
+from lanka_data.command.fields.What import What
+from lanka_data.command.fields.When import When
+from lanka_data.command.fields.Where import Where
 
 
 class TestCommandFields:
@@ -17,6 +20,19 @@ class TestCommandFields:
         assert command.when.years == ["2012", "2024"]
         assert command.where.child_region_type == "district"
         assert command.how.modifier == "Change"
+
+    def test_command_accepts_independent_value_objects(self):
+        command = Command(
+            What("Religion"),
+            When("2012"),
+            Where("LK:district"),
+            How("Map"),
+        )
+        assert command.cmd_id == "Religion/2012/LK:district/Map"
+        assert command.what_cmd == "Religion"
+        assert command.when_cmd == "2012"
+        assert command.where_cmd == "LK:district"
+        assert command.how_cmd == "Map"
 
     def test_copy_can_clear_empty_string_fields(self):
         command = Command.from_str("Empty/2024/LK/Map")
