@@ -7,6 +7,9 @@ from lanka_data.visual.plot_visual.BarChartVisual import (BarChartDrawMixin,
 from lanka_data.visual.plot_visual.BumpChartVisual import (BumpChartDataMixin,
                                                            BumpChartDrawMixin,
                                                            BumpChartVisual)
+from lanka_data.visual.plot_visual.HexMapVisual import (HexMapBoundaryMixin,
+                                                        HexMapDrawMixin,
+                                                        HexMapVisual)
 from lanka_data.visual.plot_visual.MapVisual import MapVisual
 from lanka_data.visual.plot_visual.PieChartVisual import (PieChartGridMixin,
                                                           PieChartVisual)

@@ -17,7 +17,8 @@ from lanka_data.api import (Command, CommandBase, CommandBaseValidationMixin,
 from lanka_data.CompatibilityAliases import CompatibilityAliases
 from lanka_data.console import (ConsoleApp, ConsoleCommandLibrary,
                                 ConsoleCompleter, ConsoleImageOpener,
-                                ConsoleLocalCommands, ConsoleRenderer)
+                                ConsoleLocalCommands, ConsolePrompt,
+                                ConsolePromptCompleter, ConsoleRenderer)
 from lanka_data.datasets import (Census2001Dataset, Census2012Dataset,
                                  Census2024Dataset, CommandHelp, CommandRunner,
                                  DatasetCommandRegistry, DatasetFactory,
@@ -39,7 +40,11 @@ from lanka_data.visual import (BarChartDrawMixin, BarChartLabelMixin,
                                ColorSpecCustomMixin, ColorSpecFactory,
                                ColorSpecHelpers, ColorSpecHelpersMixin, Font,
                                Footer, GeoData, GeoDataLoaderMixin, Header,
-                               HowFormatter, JSONVisual, Label, LabelFit,
-                               Legend, MapVisual, PieChartGridMixin,
-                               PieChartVisual, Plot, PlotVisual, Text, Visual,
-                               VisualFactory, WhatFormatter, WhereFormatter)
+                               HexData, HexDataAssignMixin, HexDataCacheMixin,
+                               HexDataCountMixin, HexDataGridMixin,
+                               HexMapBoundaryMixin, HexMapDrawMixin,
+                               HexMapVisual, HowFormatter, JSONVisual, Label,
+                               LabelFit, LabelTruncator, Legend, MapVisual,
+                               PieChartGridMixin, PieChartVisual, Plot,
+                               PlotVisual, Text, Visual, VisualFactory,
+                               WhatFormatter, WhereFormatter)

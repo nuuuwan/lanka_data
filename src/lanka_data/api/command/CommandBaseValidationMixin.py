@@ -1,6 +1,6 @@
-from lanka_data.api.fields import How, What, When, Where
 from lanka_data.api.command_errors.InvalidCommandError import \
     InvalidCommandError
+from lanka_data.api.fields import How, What, When, Where
 
 
 class CommandBaseValidationMixin:
