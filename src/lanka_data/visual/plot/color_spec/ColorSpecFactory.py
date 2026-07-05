@@ -63,29 +63,24 @@ class ColorSpecFactory:
 
     @staticmethod
     def _resolve_color_spec(
-        dataset, how_without_params, how_params, is_diff, how_cmd
+        dataset, how, is_diff
     ):
         spec = ColorSpecFactory._get_param_color_spec(
-            dataset, how_without_params, how_params, is_diff
+            dataset, how.base, how.modifier, is_diff
         )
         if spec is not None:
             return spec
-        if is_diff and (
-            how_params in ColorSpecHelpers.KEY_PARAM_TO_I_RANK
-            or how_params is None
-        ):
-            idx = ColorSpecHelpers.KEY_PARAM_TO_I_RANK.get(how_params, 0)
+        if is_diff and (how.rank is not None or how.modifier is None):
+            idx = how.rank if how.rank is not None else 0
             return ColorSpecHelpers.get_colors_from_flips(dataset, idx=idx)
-        return ColorSpecHelpers.get_color_spec_generic(dataset, how_cmd)
+        return ColorSpecHelpers.get_color_spec_generic(dataset, how.value)
 
     @staticmethod
     def get_color_spec(dataset, how_cmd) -> ColorSpec:
+        from lanka_data.command.fields.How import How
+
+        how = How(how_cmd)
         is_diff = dataset.is_diff()
-        if ":" in how_cmd:
-            how_without_params, how_params = how_cmd.split(":")
-        else:
-            how_without_params = how_cmd
-            how_params = None
 
         if not dataset.has_values():
             return ColorSpec.by_custom_category_key(
@@ -94,5 +89,5 @@ class ColorSpecFactory:
                 True,
             )
         return ColorSpecFactory._resolve_color_spec(
-            dataset, how_without_params, how_params, is_diff, how_cmd
+            dataset, how, is_diff
         )

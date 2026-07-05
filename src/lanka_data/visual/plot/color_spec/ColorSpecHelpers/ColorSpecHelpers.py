@@ -4,7 +4,13 @@ from .ColorSpecHelpersMixin import ColorSpecHelpersMixin
 
 
 class ColorSpecHelpers(ColorSpecHelpersMixin):
-    KEY_PARAM_TO_I_RANK = {"1st": 0, "2nd": 1, "3rd": 2, "Bottom": -1}
+    KEY_PARAM_TO_I_RANK = {
+        "1st": 0,
+        "Top": 0,
+        "2nd": 1,
+        "3rd": 2,
+        "Bottom": -1,
+    }
     PCT_VALUE_PARAM_TO_KEY = {"1stPct": 0, "2ndPct": 1, "3rdPct": 2}
 
     @staticmethod
@@ -31,19 +37,19 @@ class ColorSpecHelpers(ColorSpecHelpersMixin):
 
     @staticmethod
     def get_color_spec_generic(dataset, how_cmd) -> ColorSpec:
-        params = how_cmd.split(":")[1] if ":" in how_cmd else "1st"
-        if params in ColorSpecHelpers.KEY_PARAM_TO_I_RANK:
-            i_rank = ColorSpecHelpers.KEY_PARAM_TO_I_RANK[params]
+        from lanka_data.command.fields.How import How
+
+        how = How(how_cmd)
+        params = how.modifier or "1st"
+        if how.rank is not None:
+            i_rank = how.rank
             func_key = ColorSpecHelpers.func_key_from_rank(i_rank)
             return ColorSpec.by_custom_category_key(
                 dataset, func_key, hide_legend=False
             )
-        if params in ColorSpecHelpers.PCT_VALUE_PARAM_TO_KEY:
-            key = ColorSpecHelpers.PCT_VALUE_PARAM_TO_KEY[params]
+        if how.pct_rank is not None:
+            key = how.pct_rank
             func_value = ColorSpecHelpers.func_pct_value_from_rank(key)
-            return ColorSpec.by_single_pct_value(dataset, func_value)
-        if params:
-            func_value = ColorSpecHelpers.func_pct_value_from_key(params)
             return ColorSpec.by_single_pct_value(dataset, func_value)
         raise ValueError(
             f"Unknown how_cmd params: {params} in how_cmd: {how_cmd}"

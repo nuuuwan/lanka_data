@@ -42,7 +42,7 @@ class CommandRunner:
         else:
             command = Command.from_str(command_str)
             datasets = DatasetFactory.list_from_command(command)
-            visual = VisualFactory.from_commmand_and_datasets(
+            visual = VisualFactory.from_command_and_datasets(
                 command, datasets
             )
             result = visual.build()

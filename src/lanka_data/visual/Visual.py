@@ -22,7 +22,7 @@ class Visual(ABC):
         return self.__str__()
 
     @classmethod
-    def from_commmand_and_datasets(cls, command, datasets):
+    def from_command_and_datasets(cls, command, datasets):
         visual = cls(
             command=command,
             datasets=datasets,
@@ -30,6 +30,10 @@ class Visual(ABC):
         )
         log.debug(f"Built {visual}")
         return visual
+
+    @classmethod
+    def from_commmand_and_datasets(cls, command, datasets):
+        return cls.from_command_and_datasets(command, datasets)
 
     @abstractmethod
     def build(self):

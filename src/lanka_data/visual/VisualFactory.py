@@ -23,10 +23,13 @@ class VisualFactory:
     }
 
     @staticmethod
-    def from_commmand_and_datasets(command, datasets):
+    def from_command_and_datasets(command, datasets):
         how_cmd = command.how_cmd
-        how_without_params = how_cmd.split(":")[0]
-        visual_cls = VisualFactory._VISUAL_CLS.get(how_without_params)
+        visual_cls = VisualFactory._VISUAL_CLS.get(command.how.base)
         if visual_cls is None:
             raise ValueError(f"Unknown how_cmd: {command.how_cmd}")
         return visual_cls(command=command, datasets=datasets, how_cmd=how_cmd)
+
+    @staticmethod
+    def from_commmand_and_datasets(command, datasets):
+        return VisualFactory.from_command_and_datasets(command, datasets)

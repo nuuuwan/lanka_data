@@ -1,5 +1,7 @@
 from utils_future import Log
 
+from lanka_data.command.InvalidCommandError import InvalidCommandError
+
 log = Log("CommandLoaderMixin")
 
 
@@ -16,10 +18,11 @@ class CommandLoaderMixin:
         n_tokens = len(tokens)
 
         if n_tokens != 4:
-            raise ValueError(
+            raise InvalidCommandError(
                 "Invalid command format:"
                 + " expected <what>/<when>/<where>/<how>,"
-                + f" got '{cmd_str}'"
+                + f" got '{cmd_str}'",
+                cmd_str,
             )
 
         what_cmd, when_cmd, where_cmd, how_cmd = tokens
