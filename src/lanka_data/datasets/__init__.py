@@ -61,3 +61,22 @@ from lanka_data.datasets.visual import (
 from lanka_data.datasets.visual import PieChartGridMixin, PieChartVisual, Plot
 from lanka_data.datasets.visual import PlotVisual, Text, Visual, VisualFactory
 from lanka_data.datasets.visual import WhatFormatter, WhereFormatter
+from lanka_data.api.command.fields.CensusDatasetRegistry import (
+    CensusDatasetRegistry,
+)
+from lanka_data.api.command.fields.ElectionDatasetRegistry import (
+    ElectionDatasetRegistry,
+)
+from lanka_data.api.command.fields.RegionTypeRegistry import (
+    RegionTypeRegistry,
+)
+
+CensusDatasetRegistry.set_dataset_classes(
+    [
+        Census2001Dataset,
+        Census2012Dataset,
+        Census2024Dataset,
+    ]
+)
+ElectionDatasetRegistry.set_dataset_class(ElectionDataset)
+RegionTypeRegistry.set_prefix_maps(RegionTypeUtils.get_prefix_maps())

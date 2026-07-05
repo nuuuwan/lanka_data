@@ -1,8 +1,5 @@
-from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
-
-
 class RegionTypeRegistry:
-    PREFIX_MAPS = RegionTypeUtils.get_prefix_maps()
+    PREFIX_MAPS = {}
     EXAMPLES = [
         "LK",
         "LK:district",
@@ -11,3 +8,7 @@ class RegionTypeRegistry:
         "LK-pre1959",
         "LK-1127025@20",
     ]
+
+    @classmethod
+    def set_prefix_maps(cls, prefix_maps):
+        cls.PREFIX_MAPS = prefix_maps

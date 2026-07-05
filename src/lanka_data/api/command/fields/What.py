@@ -20,7 +20,7 @@ class What(WhatIntrospectionMixin):
 
     @classmethod
     def available_groups(cls):
-        election = ElectionDatasetRegistry.DATASET_CLASS.get_labels()
+        election = cls.election_values()
         return {
             "special": cls.VALUE_GROUPS["special"],
             "census": sorted(set(cls.census_values())),
@@ -31,6 +31,12 @@ class What(WhatIntrospectionMixin):
     @staticmethod
     def election_summary_values(election):
         return [x + "Summary" for x in election]
+
+    @classmethod
+    def election_values(cls):
+        if ElectionDatasetRegistry.DATASET_CLASS is None:
+            return []
+        return ElectionDatasetRegistry.DATASET_CLASS.get_labels()
 
     @classmethod
     def census_values(cls):
