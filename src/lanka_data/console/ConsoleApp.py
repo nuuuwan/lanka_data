@@ -39,8 +39,9 @@ class ConsoleApp:
     def run_loop(self):
         self.completer.attach()
         self.renderer.show_banner()
-        while self.read_next_line():
-            pass
+        while True:
+            if not self.read_next_line():
+                break
 
     def read_next_line(self):
         line = self.safe_input()
