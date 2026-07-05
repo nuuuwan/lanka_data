@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from functools import cached_property
 
 from lanka_data.command.InvalidCommandError import InvalidCommandError
 from lanka_data.command.fields import How, What, When, Where
@@ -24,12 +25,12 @@ class CommandBase:
 
     @staticmethod
     def _build_field(field_cls, value, value_cmd):
-        value = value if value_cmd is None else value_cmd
-        if isinstance(value, field_cls):
-            return value
-        return field_cls("" if value is None else value)
+        field_value = value if value_cmd is None else value_cmd
+        if isinstance(field_value, field_cls):
+            return field_value
+        return field_cls("" if field_value is None else field_value)
 
-    @property
+    @cached_property
     def cmd_id(self):
         return "/".join(
             [self.what_cmd, self.when_cmd, self.where_cmd, self.how_cmd]
