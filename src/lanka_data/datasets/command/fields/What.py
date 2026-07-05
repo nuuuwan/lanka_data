@@ -19,8 +19,12 @@ class What(APIWhat):
             "special": ["Empty"],
             "census": sorted(set(cls.census_values())),
             "election": election,
-            "election_summary": [x + "Summary" for x in election],
+            "election_summary": cls.election_summary_values(election),
         }
+
+    @staticmethod
+    def election_summary_values(election):
+        return [x + "Summary" for x in election]
 
     @classmethod
     def census_values(cls):

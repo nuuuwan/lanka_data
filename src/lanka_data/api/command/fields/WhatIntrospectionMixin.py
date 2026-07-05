@@ -8,7 +8,7 @@ class WhatIntrospectionMixin:
 
     @classmethod
     def available_groups(cls):
-        return cls.VALUE_GROUPS.copy()
+        return cls.VALUE_GROUPS
 
     @classmethod
     def describe(cls):
