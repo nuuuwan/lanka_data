@@ -4,7 +4,7 @@ This repo implements "one API to rule them all": a single interface that can exp
 
 ## 0. Design Philosophy & Code
 
-See [README.philosophy.md](README.philosophy.md)  and [README.code.md](README.code.md)
+See [README.philosophy.md](README.philosophy.md) and [README.code.md](README.code.md)
 
 ## 1. Data Sources
 

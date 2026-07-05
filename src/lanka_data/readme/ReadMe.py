@@ -27,7 +27,7 @@ class ReadMe(
                 "",
                 "## 0. Design Philosophy & Code",
                 "",
-                "See [README.philosophy.md](README.philosophy.md) "
+                "See [README.philosophy.md](README.philosophy.md)"
                 + " and [README.code.md](README.code.md)",
                 "",
             ]
