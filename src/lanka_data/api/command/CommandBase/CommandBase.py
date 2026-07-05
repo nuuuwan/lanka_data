@@ -1,9 +1,8 @@
 from dataclasses import dataclass
 from functools import cached_property
 
-from lanka_data.api.command.CommandBase.CommandBaseValidationMixin import (
-    CommandBaseValidationMixin,
-)
+from lanka_data.api.command.CommandBase.CommandBaseValidationMixin import \
+    CommandBaseValidationMixin
 from lanka_data.api.command.fields import How, What, When, Where
 
 

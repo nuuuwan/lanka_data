@@ -1,9 +1,8 @@
 import re
 from dataclasses import dataclass
 
-from lanka_data.api.command.fields.WhenIntrospectionMixin import (
-    WhenIntrospectionMixin,
-)
+from lanka_data.api.command.fields.WhenIntrospectionMixin import \
+    WhenIntrospectionMixin
 from lanka_data.api.command.fields.WhenRegistry import WhenRegistry
 from lanka_data.api.command.InvalidWhenError import InvalidWhenError
 

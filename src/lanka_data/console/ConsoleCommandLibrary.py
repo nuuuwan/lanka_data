@@ -1,5 +1,5 @@
-from lanka_data.api.command.fields import How, What, When, Where
 from lanka_data.api.command.Command import Command
+from lanka_data.api.command.fields import How, What, When, Where
 
 
 class ConsoleCommandLibrary:

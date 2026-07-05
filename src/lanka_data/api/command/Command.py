@@ -1,7 +1,6 @@
 from lanka_data.api.command.CommandBase import CommandBase
-from lanka_data.api.command.CommandIntrospectionMixin import (
-    CommandIntrospectionMixin,
-)
+from lanka_data.api.command.CommandIntrospectionMixin import \
+    CommandIntrospectionMixin
 from lanka_data.api.command.CommandLoaderMixin import CommandLoaderMixin
 from utils_future import Log
 
