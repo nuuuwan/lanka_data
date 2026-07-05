@@ -23,22 +23,14 @@ class TestCommandFields:
         assert command.when.years == ["2012", "2024"]
         assert command.where.child_region_type == "district"
         assert command.how.modifier == "Change"
-
-    def test_reported_religion_json_command_parses(self):
-        command = Command.from_str("Religion/2024/LK/JSON")
-        assert command.cmd_id == "Religion/2024/LK/JSON"
+        assert Command.from_str("Religion/2024/LK/JSON").how_cmd == "JSON"
 
     def test_command_accepts_independent_value_objects(self):
         what = What.available_values()[0]
         when = When.available_values()[0]
         where = Where.available_values()[0]
         how = How.available_bases()[0]
-        command = Command(
-            What(what),
-            When(when),
-            Where(where),
-            How(how),
-        )
+        command = Command(What(what), When(when), Where(where), How(how))
         assert command.cmd_id == f"{what}/{when}/{where}/{how}"
         assert command.what_cmd == what
         assert command.when_cmd == when
