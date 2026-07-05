@@ -2,10 +2,12 @@ from dataclasses import dataclass
 import re
 
 from lanka_data.api.command.InvalidWhereError import InvalidWhereError
+from lanka_data.api.command.fields.RegionTypeRegistry import (
+    RegionTypeRegistry,
+)
 from lanka_data.api.command.fields.WhereIntrospectionMixin import (
     WhereIntrospectionMixin,
 )
-from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 
 
 @dataclass(frozen=True)
@@ -15,20 +17,13 @@ class Where(WhereIntrospectionMixin):
     @classmethod
     def available_region_types(cls):
         values = set()
-        for prefix_map in RegionTypeUtils._PREFIX_MAPS.values():
+        for prefix_map in RegionTypeRegistry.PREFIX_MAPS.values():
             values.update(prefix_map.values())
         return sorted(values)
 
     @classmethod
     def available_examples(cls):
-        return [
-            "LK",
-            "LK:district",
-            "LK-1,LK-2",
-            "LK-1...LK-2",
-            "LK-pre1959",
-            "LK-1127025@20",
-        ]
+        return RegionTypeRegistry.EXAMPLES
 
     def __post_init__(self):
         if self.value == "":

@@ -17,7 +17,7 @@ class When(WhenIntrospectionMixin):
     @classmethod
     def available_values(cls):
         values = []
-        for dataset_cls in CensusDatasetRegistry.dataset_classes():
+        for dataset_cls in CensusDatasetRegistry.DATASET_CLASSES:
             values.extend(dataset_cls.get_supported_whens())
         return sorted(set(values))
 

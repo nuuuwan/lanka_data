@@ -10,10 +10,8 @@ from lanka_data.datasets.dataset.custom.Census2024Dataset import (
 
 
 class CensusDatasetRegistry:
-    @staticmethod
-    def dataset_classes():
-        return [
-            Census2001Dataset,
-            Census2012Dataset,
-            Census2024Dataset,
-        ]
+    DATASET_CLASSES = [
+        Census2001Dataset,
+        Census2012Dataset,
+        Census2024Dataset,
+    ]
