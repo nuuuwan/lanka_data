@@ -47,12 +47,17 @@ class CommandBase:
 
     def _validate_parts(self):
         for field_name, value, field_cls in self._field_validation_pairs():
-            if not isinstance(value, field_cls):
-                raise TypeError(
-                    "Invalid command field type for "
-                    + f"{field_name}: expected {field_cls.__name__}, "
-                    + f"got {type(value).__name__}"
-                )
+            self._validate_part(field_name, value, field_cls)
+
+    @staticmethod
+    def _validate_part(field_name, value, field_cls):
+        if isinstance(value, field_cls):
+            return
+        raise TypeError(
+            "Invalid command field type for "
+            + f"{field_name}: expected {field_cls.__name__}, "
+            + f"got {type(value).__name__}"
+        )
 
     def _field_validation_pairs(self):
         return [
