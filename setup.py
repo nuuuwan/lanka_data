@@ -37,8 +37,8 @@ setuptools.setup(
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
     package_data={
-        "lanka_data.dataset.custom": ["*.json"],
-        "lanka_data.visual.plot": ["fonts/*.ttf"],
+        "datasets.dataset.custom": ["*.json"],
+        "datasets.visual.plot": ["fonts/*.ttf"],
     },
     python_requires=">=3.10",
     install_requires=INSTALL_REQUIRES,

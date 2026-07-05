@@ -1,15 +1,10 @@
-# utils_future (auto generate by build_inits.py)
-# flake8: noqa: F408
+import sys
+from importlib import import_module
 
-from utils_future.BinaryFile import BinaryFile
-from utils_future.ColorUtils import ColorUtils
-from utils_future.dcn import (DCNUtils, DCNUtilsAlgorithm, DCNUtilsCompute,
-                              DCNUtilsRunner)
-from utils_future.File import File
-from utils_future.GeoUtils import GeoUtils
-from utils_future.JSONFile import JSONFile
-from utils_future.Log import Log
-from utils_future.Parse import Parse
-from utils_future.PolygonUtils import PolygonUtils
-from utils_future.timer import timer
-from utils_future.WWW import WWW
+_module = import_module("api.utils_future")
+globals().update(_module.__dict__)
+for _name, _module_value in list(sys.modules.items()):
+    if _name == "api.utils_future" or _name.startswith("api.utils_future."):
+        sys.modules["utils_future" + _name[len("api.utils_future"):]] = (
+            _module_value
+        )

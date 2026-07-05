@@ -1,10 +1,10 @@
 import os
 from http.server import BaseHTTPRequestHandler
 
-from lanka_data import CommandRunner
-from lanka_data.command.Command import Command
-from lanka_data.command.CommandError import CommandError
-from lanka_data.visual.plot.Plot import Plot
+from datasets.command.CommandRunner import CommandRunner
+from datasets.command.Command import Command
+from api.command.CommandError import CommandError
+from datasets.visual.plot.Plot import Plot
 from project.api.HandlerResponseMixin import HandlerResponseMixin
 
 IMAGE_SUFFIX = "/Image.png"

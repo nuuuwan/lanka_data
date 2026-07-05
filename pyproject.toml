@@ -19,5 +19,5 @@ dependencies = [
 where = ["src"]
 
 [tool.setuptools.package-data]
-"lanka_data.dataset.custom" = ["*.json"]
-"lanka_data.visual.plot" = ["fonts/*.ttf"]
+"datasets.dataset.custom" = ["*.json"]
+"datasets.visual.plot" = ["fonts/*.ttf"]

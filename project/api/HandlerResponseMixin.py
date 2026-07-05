@@ -1,7 +1,7 @@
 import json
 import traceback
 
-from lanka_data.command.CommandError import CommandError
+from api.command.CommandError import CommandError
 
 IMAGE_CONTENT_TYPE = "image/png"
 JSON_CONTENT_TYPE = "application/json"
