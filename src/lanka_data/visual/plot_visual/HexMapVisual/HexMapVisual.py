@@ -12,8 +12,6 @@ from utils_future import timer
 
 
 class HexMapVisual(PlotVisual, HexMapDrawMixin, HexMapBoundaryMixin):
-    MAX_REGIONS_TO_LABEL = 30
-
     @staticmethod
     def _region_to_name(data_list):
         return {
@@ -51,8 +49,13 @@ class HexMapVisual(PlotVisual, HexMapDrawMixin, HexMapBoundaryMixin):
 
         self._draw_hexes(ax, layout, region_color_map)
         self._draw_boundaries(ax, layout)
-        if len(region_to_name) <= self.MAX_REGIONS_TO_LABEL:
-            self._draw_labels(ax, layout, region_to_name, region_color_map)
+        self._draw_labels(
+            ax,
+            layout,
+            region_to_name,
+            region_color_map,
+            len(region_to_name),
+        )
         self._draw_scale(ax, layout)
         Legend.draw(value_to_color, legend_ax)
         ax.set_axis_off()

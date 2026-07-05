@@ -13,6 +13,7 @@ from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
 from lanka_data.visual.plot.Label import Label
 from lanka_data.visual.plot.LabelFit import LabelFit
+from lanka_data.visual.plot.LabelTruncator import LabelTruncator
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map import GeoData, GeoDataLoaderMixin
 from lanka_data.visual.plot.Plot import Plot
