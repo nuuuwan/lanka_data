@@ -23,12 +23,21 @@ class What:
 
     @classmethod
     def known_values(cls):
+        return sorted(
+            set(["Empty"] + cls.election_values() + cls.census_values())
+        )
+
+    @classmethod
+    def election_values(cls):
         election = ElectionDataset.get_labels()
-        values = ["Empty"] + election + [x + "Summary" for x in election]
-        values += Census2001Dataset.get_labels()
+        return election + [x + "Summary" for x in election]
+
+    @classmethod
+    def census_values(cls):
+        values = Census2001Dataset.get_labels()
         values += Census2012Dataset.get_labels()
         values += Census2024Dataset.get_labels()
-        return sorted(set(values))
+        return values
 
     @classmethod
     def suggestions(cls, value):

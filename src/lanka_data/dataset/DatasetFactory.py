@@ -34,14 +34,19 @@ class DatasetFactory:
     @staticmethod
     def _try_census_dataset(command, region_data_list):
         for cls in DatasetFactory.CENSUS_DATASET_CLASSES:
-            if command.when_cmd not in cls.get_supported_whens():
-                continue
-            if command.what_cmd not in cls.get_labels():
+            if not DatasetFactory._supports_census(cls, command):
                 continue
             return cls.from_label_and_region_data_list(
                 command.what_cmd, region_data_list
             )
         return None
+
+    @staticmethod
+    def _supports_census(cls, command):
+        return (
+            command.when_cmd in cls.get_supported_whens()
+            and command.what_cmd in cls.get_labels()
+        )
 
     @staticmethod
     def _try_election_dataset(command, region_data_list):

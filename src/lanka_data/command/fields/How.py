@@ -84,9 +84,11 @@ class How:
         )
 
     def format_with_modifier(self):
-        if self.base_label:
-            return f"{self.base_label} by {self.modifier_label}"
-        return self.modifier_label
+        return (
+            f"{self.base_label} by {self.modifier_label}"
+            if self.base_label
+            else self.modifier_label
+        )
 
     def format(self):
         if not self.modifier:

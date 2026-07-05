@@ -62,11 +62,17 @@ class handler(HandlerResponseMixin, BaseHTTPRequestHandler):
         inner = result.get("result")
         image_path = (inner or {}).get("image_path")
         self._validate_safe_image_path(image_path)
-        if not isinstance(inner, dict) or "image_path" not in inner:
+        if not self._has_image_path(inner):
             return result
+        return {**result, "result": self._to_public_image_result(path, inner)}
+
+    def _has_image_path(self, inner):
+        return isinstance(inner, dict) and "image_path" in inner
+
+    def _to_public_image_result(self, path, inner):
         new_inner = {k: v for k, v in inner.items() if k != "image_path"}
         new_inner["image_url"] = self._public_url(f"{path}{IMAGE_SUFFIX}")
-        return {**result, "result": new_inner}
+        return new_inner
 
     def _build_json_result(self, path):
         return self._hide_image_path(path, self._get_result(path))
