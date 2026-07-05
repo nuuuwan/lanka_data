@@ -1,17 +1,11 @@
 from dataclasses import dataclass
 
 from lanka_data.api.command.UnknownWhatError import UnknownWhatError
+from lanka_data.api.command.fields.CensusDatasetRegistry import (
+    CensusDatasetRegistry,
+)
 from lanka_data.api.command.fields.WhatIntrospectionMixin import (
     WhatIntrospectionMixin,
-)
-from lanka_data.datasets.dataset.custom.Census2001Dataset import (
-    Census2001Dataset,
-)
-from lanka_data.datasets.dataset.custom.Census2012Dataset import (
-    Census2012Dataset,
-)
-from lanka_data.datasets.dataset.custom.Census2024Dataset import (
-    Census2024Dataset,
 )
 from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
 
@@ -26,7 +20,7 @@ class What(WhatIntrospectionMixin):
     def available_groups(cls):
         election = ElectionDataset.get_labels()
         return {
-            "special": ["Empty"],
+            "special": cls.VALUE_GROUPS["special"],
             "census": sorted(set(cls.census_values())),
             "election": election,
             "election_summary": cls.election_summary_values(election),
@@ -38,9 +32,9 @@ class What(WhatIntrospectionMixin):
 
     @classmethod
     def census_values(cls):
-        values = Census2001Dataset.get_labels()
-        values += Census2012Dataset.get_labels()
-        values += Census2024Dataset.get_labels()
+        values = []
+        for dataset_cls in CensusDatasetRegistry.dataset_classes():
+            values += dataset_cls.get_labels()
         return values
 
     def __post_init__(self):
