@@ -41,6 +41,23 @@ class TestConsole:
         assert [c.text for c in completions] == ["Religion/2024/LK/JSON"]
         assert completions[0].start_position == -3
 
+    def test_completer_uses_field_values_by_position(self):
+        completer = ConsoleCompleter(
+            ["Religion"],
+            field_values=[
+                ["Religion"],
+                ["2024"],
+                ["LK-1127025@20"],
+                ["JSON", "Map:1st"],
+            ],
+        )
+        matches = completer.find_matches("Religion/2024/LK-1127025@20/")
+        assert matches == [
+            "Religion/2024/LK-1127025@20/JSON",
+            "Religion/2024/LK-1127025@20/Map:1st",
+        ]
+        assert "Religion/2024/LK-1127025@20/2024" not in matches
+
     def test_library_includes_meta_and_run_suggestions(self):
         library = ConsoleCommandLibrary(max_commands=1)
         suggestions = library.suggestions()

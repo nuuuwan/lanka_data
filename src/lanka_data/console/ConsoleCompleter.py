@@ -1,6 +1,7 @@
 class ConsoleCompleter:
-    def __init__(self, suggestions):
+    def __init__(self, suggestions, field_values=None):
         self.suggestions = suggestions
+        self.field_values = field_values or []
         self.matches = []
 
     def attach(self):
@@ -27,8 +28,15 @@ class ConsoleCompleter:
         start = separator + 1
         prefix = text[:start]
         segment = text[start:]
-        matches = self._prefix_matches(self.term_values(), segment)
+        values = self.segment_values(prefix)
+        matches = self._prefix_matches(values, segment)
         return [prefix + value for value in matches]
+
+    def segment_values(self, prefix):
+        index = prefix.count("/")
+        if index < len(self.field_values):
+            return self.field_values[index]
+        return self.term_values()
 
     def term_values(self):
         return [value for value in self.suggestions if "/" not in value]

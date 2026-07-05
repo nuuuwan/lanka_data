@@ -40,6 +40,15 @@ class ConsoleCommandLibrary:
             + How.available_values()
         )
 
+    @staticmethod
+    def field_values():
+        return [
+            What.available_values(),
+            When.available_values() + When.available_intervals(),
+            Where.available_values(),
+            How.available_values(),
+        ]
+
     def field_rows(self):
         return [
             ("what", What.available_values()),
