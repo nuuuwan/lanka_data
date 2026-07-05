@@ -45,8 +45,8 @@ class WhereFormatter:
             return f"{child_region_long_name} in {parent_regions_long_name}"
 
         if "@" in self.where_cmd:
-            region_id, zoom = self.where_cmd.split("@", 1)
+            region_id, radius = self.where_cmd.split("@", 1)
             region_full_name = self.format_regions([region_id])
-            return f"{region_full_name} at zoom {zoom}"
+            return f"Within {radius}km of {region_full_name}"
 
         return self._format_without_parent()

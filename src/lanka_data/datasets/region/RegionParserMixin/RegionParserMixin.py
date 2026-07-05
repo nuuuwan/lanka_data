@@ -15,9 +15,12 @@ class RegionParserMixin(RegionParserRadiusMixin):
             return parent_region_ids, region_year
 
         if "@" in parent_part:
-            region_id, _ = parent_part.split("@")
-            parent_region_ids = [region_id]
-            region_year = cls._get_region_year(parent_region_ids[0])
+            region_id, radius_km_str = parent_part.split("@")
+            radius_km = float(radius_km_str)
+            parent_region_ids = cls.get_region_ids_from_region_radius(
+                region_id, radius_km
+            )
+            region_year = cls._get_region_year(region_id)
             return parent_region_ids, region_year
 
         parent_region_ids = parent_part.split(",")
