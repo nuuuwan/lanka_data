@@ -38,7 +38,7 @@ class TestCommandFields:
         with pytest.raises(
             TypeError, match="Unknown command fields: other_cmd"
         ):
-            Command(what_cmd="Unknown", other_cmd="Other")
+            Command(what_cmd="Religion", other_cmd="Other")
 
     def test_copy_can_clear_empty_string_fields(self):
         command = Command.from_str("Empty/2024/LK/Map")
