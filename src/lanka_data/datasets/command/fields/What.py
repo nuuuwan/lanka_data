@@ -10,11 +10,14 @@ from lanka_data.datasets.dataset.custom.Census2012Dataset import (
 from lanka_data.datasets.dataset.custom.Census2024Dataset import (
     Census2024Dataset,
 )
+from lanka_data.datasets.command.fields.WhatIntrospectionMixin import (
+    WhatIntrospectionMixin,
+)
 from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
 
 
 @dataclass(frozen=True)
-class What:
+class What(WhatIntrospectionMixin):
     value: str
 
     def __post_init__(self):

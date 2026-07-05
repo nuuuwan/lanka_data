@@ -2,10 +2,13 @@ from dataclasses import dataclass
 import re
 
 from lanka_data.api.command.InvalidWhereError import InvalidWhereError
+from lanka_data.datasets.command.fields.WhereIntrospectionMixin import (
+    WhereIntrospectionMixin,
+)
 
 
 @dataclass(frozen=True)
-class Where:
+class Where(WhereIntrospectionMixin):
     value: str
 
     def __post_init__(self):

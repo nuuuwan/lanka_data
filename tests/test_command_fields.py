@@ -22,17 +22,21 @@ class TestCommandFields:
         assert command.how.modifier == "Change"
 
     def test_command_accepts_independent_value_objects(self):
+        what = What.available_values()[0]
+        when = When.available_values()[0]
+        where = Where.available_values()[0]
+        how = How.available_bases()[0]
         command = Command(
-            What("Religion"),
-            When("2012"),
-            Where("LK:district"),
-            How("Map"),
+            What(what),
+            When(when),
+            Where(where),
+            How(how),
         )
-        assert command.cmd_id == "Religion/2012/LK:district/Map"
-        assert command.what_cmd == "Religion"
-        assert command.when_cmd == "2012"
-        assert command.where_cmd == "LK:district"
-        assert command.how_cmd == "Map"
+        assert command.cmd_id == f"{what}/{when}/{where}/{how}"
+        assert command.what_cmd == what
+        assert command.when_cmd == when
+        assert command.where_cmd == where
+        assert command.how_cmd == how
 
     def test_command_rejects_unknown_fields_before_validation(self):
         with pytest.raises(
@@ -61,3 +65,29 @@ class TestCommandFields:
     def test_how_registry_rejects_unknown_modifier(self):
         with pytest.raises(UnknownHowError):
             How("Map:Unknown")
+
+    def test_field_introspection_values_are_constructible(self):
+        for field_cls in [What, When, Where, How]:
+            for value in field_cls.available_values():
+                assert field_cls(value).value == value
+
+    def test_field_introspection_describes_values(self):
+        for field_cls in [What, When, Where, How]:
+            description = field_cls.describe()
+            assert description["name"]
+            assert description["values"] == field_cls.available_values()
+
+    def test_command_introspection_describes_api_fields(self):
+        description = Command.describe_api()
+        assert description["format"] == "<what>/<when>/<where>/<how>"
+        assert set(description["fields"]) == {"what", "when", "where", "how"}
+
+    def test_command_introspection_generates_valid_commands(self):
+        commands = Command.valid_commands(
+            where_values=Where.available_values()[:1],
+            how_values=How.available_bases()[:1],
+            max_commands=3,
+        )
+        assert commands
+        for command_id in commands:
+            assert Command.from_str(command_id).cmd_id == command_id
