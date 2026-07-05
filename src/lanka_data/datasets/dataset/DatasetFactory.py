@@ -1,6 +1,12 @@
-from lanka_data.datasets.dataset.custom.Census2001Dataset import Census2001Dataset
-from lanka_data.datasets.dataset.custom.Census2012Dataset import Census2012Dataset
-from lanka_data.datasets.dataset.custom.Census2024Dataset import Census2024Dataset
+from lanka_data.datasets.dataset.custom.Census2001Dataset import (
+    Census2001Dataset,
+)
+from lanka_data.datasets.dataset.custom.Census2012Dataset import (
+    Census2012Dataset,
+)
+from lanka_data.datasets.dataset.custom.Census2024Dataset import (
+    Census2024Dataset,
+)
 from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
 from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import (
     ElectionSummaryDataset,

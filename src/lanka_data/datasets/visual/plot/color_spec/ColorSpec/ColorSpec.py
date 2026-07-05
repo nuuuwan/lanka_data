@@ -1,11 +1,7 @@
 from dataclasses import dataclass
 
-from lanka_data.datasets.visual.plot.color_spec.ColorSpec.ColorSpecCategoryMixin import (
-    ColorSpecCategoryMixin,
-)
-from lanka_data.datasets.visual.plot.color_spec.ColorSpec.ColorSpecCustomMixin import (
-    ColorSpecCustomMixin,
-)
+from .ColorSpecCategoryMixin import ColorSpecCategoryMixin
+from .ColorSpecCustomMixin import ColorSpecCustomMixin
 from lanka_data.datasets.visual.plot.color_spec.ColorSpecConstants import (
     ColorSpecConstants,
 )

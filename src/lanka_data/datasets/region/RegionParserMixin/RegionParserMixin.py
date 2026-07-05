@@ -1,6 +1,4 @@
-from lanka_data.datasets.region.RegionParserMixin.RegionParserRadiusMixin import (
-    RegionParserRadiusMixin,
-)
+from .RegionParserRadiusMixin import RegionParserRadiusMixin
 from lanka_data.api.utils_future import timer
 
 

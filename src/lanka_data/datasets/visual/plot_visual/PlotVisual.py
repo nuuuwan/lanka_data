@@ -3,7 +3,10 @@ from abc import abstractmethod
 import matplotlib.pyplot as plt
 
 from lanka_data.datasets.visual.plot import Plot
-from lanka_data.datasets.visual.plot.color_spec import ColorSpec, ColorSpecFactory
+from lanka_data.datasets.visual.plot.color_spec import (
+    ColorSpec,
+    ColorSpecFactory,
+)
 from lanka_data.datasets.visual.Visual import Visual
 from lanka_data.api.utils_future.timer import timer
 

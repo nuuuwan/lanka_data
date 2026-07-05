@@ -1,1 +1,4 @@
-from lanka_data.datasets.visual.plot.map.GeoData import GeoData, GeoDataLoaderMixin
+from lanka_data.datasets.visual.plot.map.GeoData import (
+    GeoData,
+    GeoDataLoaderMixin,
+)
