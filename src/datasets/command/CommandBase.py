@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from functools import cached_property
 
-from lanka_data.command.InvalidCommandError import InvalidCommandError
-from lanka_data.command.fields import How, What, When, Where
+from api.command.InvalidCommandError import InvalidCommandError
+from datasets.command.fields import How, What, When, Where
 
 
 @dataclass(init=False)

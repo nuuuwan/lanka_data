@@ -1,7 +1,7 @@
 import os
 
-from lanka_data.command.CommandRunner import CommandRunner
-from utils_future import JSONFile, Log
+from datasets.command.CommandRunner import CommandRunner
+from api.utils_future import JSONFile, Log
 
 log = Log("Example")
 

@@ -1,10 +1,10 @@
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
-from lanka_data.visual.formatters.HowFormatter import HowFormatter
-from lanka_data.visual.formatters.WhatFormatter import WhatFormatter
-from lanka_data.visual.formatters.WhereFormatter import WhereFormatter
-from lanka_data.visual.plot.Text import Text
+from datasets.visual.formatters.HowFormatter import HowFormatter
+from datasets.visual.formatters.WhatFormatter import WhatFormatter
+from datasets.visual.formatters.WhereFormatter import WhereFormatter
+from datasets.visual.plot.Text import Text
 
 
 class Header:

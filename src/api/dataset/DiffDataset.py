@@ -1,6 +1,6 @@
-from lanka_data.data.DataSource import DataSource
-from lanka_data.dataset.RegionValueDataset import RegionValueDataset
-from utils_future import Log
+from api.data.DataSource import DataSource
+from api.dataset.RegionValueDataset import RegionValueDataset
+from api.utils_future import Log
 
 log = Log("DiffDataset")
 

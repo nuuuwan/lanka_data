@@ -1,8 +1,8 @@
 import geopandas
 import pandas as pd
 
-from lanka_data.region.RegionTypeUtils import RegionTypeUtils
-from utils_future import WWW, timer
+from datasets.region.RegionTypeUtils import RegionTypeUtils
+from api.utils_future import WWW, timer
 
 
 class GeoDataLoaderMixin:

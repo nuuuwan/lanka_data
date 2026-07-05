@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import re
 
-from lanka_data.command.UnknownHowError import UnknownHowError
+from api.command.UnknownHowError import UnknownHowError
 
 
 @dataclass(frozen=True)

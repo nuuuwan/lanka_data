@@ -1,6 +1,6 @@
-from utils_future import Log
+from api.utils_future import Log
 
-from lanka_data.command.InvalidCommandError import InvalidCommandError
+from api.command.InvalidCommandError import InvalidCommandError
 
 log = Log("CommandLoaderMixin")
 

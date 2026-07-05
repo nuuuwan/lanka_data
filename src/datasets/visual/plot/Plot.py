@@ -4,11 +4,11 @@ import tempfile
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 
-from lanka_data.visual.plot.Font import Font
-from lanka_data.visual.plot.Footer import Footer
-from lanka_data.visual.plot.Header import Header
-from lanka_data.visual.plot.Text import Text
-from utils_future import File, Log, timer
+from datasets.visual.plot.Font import Font
+from datasets.visual.plot.Footer import Footer
+from datasets.visual.plot.Header import Header
+from datasets.visual.plot.Text import Text
+from api.utils_future import File, Log, timer
 
 log = Log("Plot")
 

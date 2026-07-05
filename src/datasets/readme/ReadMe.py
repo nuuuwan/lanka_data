@@ -1,9 +1,9 @@
-from lanka_data.examples import Example
-from lanka_data.readme.ReadMeExamplesMixin import ReadMeExamplesMixin
-from lanka_data.readme.ReadMeFooterMixin import ReadMeFooterMixin
-from lanka_data.readme.ReadMeSourcesMixin import ReadMeSourcesMixin
-from lanka_data.readme.ReadMeUsageMixin import ReadMeUsageMixin
-from utils_future import File, Log
+from datasets.examples import Example
+from datasets.readme.ReadMeExamplesMixin import ReadMeExamplesMixin
+from datasets.readme.ReadMeFooterMixin import ReadMeFooterMixin
+from datasets.readme.ReadMeSourcesMixin import ReadMeSourcesMixin
+from datasets.readme.ReadMeUsageMixin import ReadMeUsageMixin
+from api.utils_future import File, Log
 
 log = Log("ReadMe")
 

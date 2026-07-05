@@ -1,9 +1,9 @@
 from functools import cached_property
 
-from lanka_data.region.RegionLoadersMixin import RegionLoadersMixin
-from lanka_data.region.RegionTypeUtils import RegionTypeUtils
-from lanka_data.region.Where import Where
-from utils_future import Log
+from datasets.region.RegionLoadersMixin import RegionLoadersMixin
+from datasets.region.RegionTypeUtils import RegionTypeUtils
+from datasets.region.Where import Where
+from api.utils_future import Log
 
 log = Log("Regions")
 

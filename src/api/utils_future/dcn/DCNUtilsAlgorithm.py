@@ -1,6 +1,6 @@
 import math
 
-from utils_future.dcn.DCNUtilsCompute import DCNUtilsCompute
+from api.utils_future.dcn.DCNUtilsCompute import DCNUtilsCompute
 
 
 class DCNUtilsAlgorithm:

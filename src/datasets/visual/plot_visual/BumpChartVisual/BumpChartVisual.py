@@ -1,8 +1,10 @@
-from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartDataMixin import \
-    BumpChartDataMixin
-from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartDrawMixin import \
-    BumpChartDrawMixin
-from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
+from datasets.visual.plot_visual.BumpChartVisual.BumpChartDataMixin import (
+    BumpChartDataMixin,
+)
+from datasets.visual.plot_visual.BumpChartVisual.BumpChartDrawMixin import (
+    BumpChartDrawMixin,
+)
+from datasets.visual.plot_visual.PlotVisual import PlotVisual
 
 
 class BumpChartVisual(BumpChartDataMixin, BumpChartDrawMixin, PlotVisual):

@@ -1,32 +1,30 @@
-# lanka_data (auto generate by build_inits.py)
-# flake8: noqa: F408
-
-from lanka_data.command import (Command, CommandBase, CommandHelp,
-                                CommandLoaderMixin, CommandRunner)
-from lanka_data.data import (DataSource, Diversity, FieldNameUtils,
-                             Segregation, SegregationComputeMixin)
-from lanka_data.dataset import (Census2001Dataset, Census2012Dataset,
-                                Census2024Dataset, Dataset, DatasetFactory,
-                                DiffDataset, ElectionDataset,
-                                ElectionSummaryDataset, EmptyDataset,
-                                GIG2Dataset, RegionValueDataset,
-                                RegionValueDatasetTableMixin)
-from lanka_data.examples import Example, ExampleOutputMixin
-from lanka_data.readme import (ReadMe, ReadMeExamplesItemMixin,
-                               ReadMeExamplesMixin, ReadMeFooterMixin,
-                               ReadMeSourcesMixin, ReadMeUsageMixin)
-from lanka_data.region import (RegionFetchMixin, RegionLoadersMixin,
-                               RegionParentMixin, RegionParserMixin,
-                               RegionParserRadiusMixin, RegionRawDataMixin,
-                               Regions, RegionTypeUtils, Where)
-from lanka_data.visual import (BarChartDrawMixin, BarChartLabelMixin,
-                               BarChartVisual, BumpChartDataMixin,
-                               BumpChartDrawMixin, BumpChartVisual, ColorSpec,
-                               ColorSpecCategoryMixin, ColorSpecConstants,
-                               ColorSpecCustomMixin, ColorSpecFactory,
-                               ColorSpecHelpers, ColorSpecHelpersMixin, Font,
-                               Footer, GeoData, GeoDataLoaderMixin, Header,
-                               HowFormatter, JSONVisual, Label, LabelFit,
-                               Legend, MapVisual, PieChartGridMixin,
-                               PieChartVisual, Plot, PlotVisual, Text, Visual,
-                               VisualFactory, WhatFormatter, WhereFormatter)
+from api.command.CommandLoaderMixin import CommandLoaderMixin
+from api.data import DataSource, Segregation, SegregationComputeMixin
+from api.dataset import Dataset, DiffDataset, RegionValueDataset
+from api.dataset import RegionValueDatasetTableMixin
+from datasets.command import Command, CommandBase, CommandHelp, CommandRunner
+from datasets.data import Diversity, FieldNameUtils
+from datasets.dataset import Census2001Dataset, Census2012Dataset
+from datasets.dataset import Census2024Dataset, DatasetFactory
+from datasets.dataset import ElectionDataset, ElectionSummaryDataset
+from datasets.dataset import EmptyDataset, GIG2Dataset
+from datasets.examples import Example, ExampleOutputMixin
+from datasets.readme import ReadMe, ReadMeExamplesItemMixin
+from datasets.readme import ReadMeExamplesMixin, ReadMeFooterMixin
+from datasets.readme import ReadMeSourcesMixin, ReadMeUsageMixin
+from datasets.region import RegionFetchMixin, RegionLoadersMixin
+from datasets.region import RegionParentMixin, RegionParserMixin
+from datasets.region import RegionParserRadiusMixin, RegionRawDataMixin
+from datasets.region import Regions, RegionTypeUtils, Where
+from datasets.visual import BarChartDrawMixin, BarChartLabelMixin
+from datasets.visual import BarChartVisual, BumpChartDataMixin
+from datasets.visual import BumpChartDrawMixin, BumpChartVisual
+from datasets.visual import ColorSpec, ColorSpecCategoryMixin
+from datasets.visual import ColorSpecConstants, ColorSpecCustomMixin
+from datasets.visual import ColorSpecFactory, ColorSpecHelpers
+from datasets.visual import ColorSpecHelpersMixin, Font, Footer, GeoData
+from datasets.visual import GeoDataLoaderMixin, Header, HowFormatter
+from datasets.visual import JSONVisual, Label, LabelFit, Legend, MapVisual
+from datasets.visual import PieChartGridMixin, PieChartVisual, Plot
+from datasets.visual import PlotVisual, Text, Visual, VisualFactory
+from datasets.visual import WhatFormatter, WhereFormatter

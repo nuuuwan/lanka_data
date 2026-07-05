@@ -1,7 +1,9 @@
-# lanka_data.readme.ReadMeExamplesMixin (auto generate by build_inits.py)
+# datasets.readme.ReadMeExamplesMixin (auto generate by build_inits.py)
 # flake8: noqa: F408
 
-from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import \
-    ReadMeExamplesItemMixin
-from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesMixin import \
-    ReadMeExamplesMixin
+from datasets.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import (
+    ReadMeExamplesItemMixin,
+)
+from datasets.readme.ReadMeExamplesMixin.ReadMeExamplesMixin import (
+    ReadMeExamplesMixin,
+)

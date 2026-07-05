@@ -1,19 +1,21 @@
-# lanka_data.visual.plot (auto generate by build_inits.py)
+# datasets.visual.plot (auto generate by build_inits.py)
 # flake8: noqa: F408
 
-from lanka_data.visual.plot.color_spec import (ColorSpec,
-                                               ColorSpecCategoryMixin,
-                                               ColorSpecConstants,
-                                               ColorSpecCustomMixin,
-                                               ColorSpecFactory,
-                                               ColorSpecHelpers,
-                                               ColorSpecHelpersMixin)
-from lanka_data.visual.plot.Font import Font
-from lanka_data.visual.plot.Footer import Footer
-from lanka_data.visual.plot.Header import Header
-from lanka_data.visual.plot.Label import Label
-from lanka_data.visual.plot.LabelFit import LabelFit
-from lanka_data.visual.plot.Legend import Legend
-from lanka_data.visual.plot.map import GeoData, GeoDataLoaderMixin
-from lanka_data.visual.plot.Plot import Plot
-from lanka_data.visual.plot.Text import Text
+from datasets.visual.plot.color_spec import (
+    ColorSpec,
+    ColorSpecCategoryMixin,
+    ColorSpecConstants,
+    ColorSpecCustomMixin,
+    ColorSpecFactory,
+    ColorSpecHelpers,
+    ColorSpecHelpersMixin,
+)
+from datasets.visual.plot.Font import Font
+from datasets.visual.plot.Footer import Footer
+from datasets.visual.plot.Header import Header
+from datasets.visual.plot.Label import Label
+from datasets.visual.plot.LabelFit import LabelFit
+from datasets.visual.plot.Legend import Legend
+from datasets.visual.plot.map import GeoData, GeoDataLoaderMixin
+from datasets.visual.plot.Plot import Plot
+from datasets.visual.plot.Text import Text

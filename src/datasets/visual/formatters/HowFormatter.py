@@ -1,4 +1,4 @@
-from lanka_data.command.fields.How import How
+from datasets.command.fields.How import How
 
 
 class HowFormatter:

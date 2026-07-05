@@ -1,9 +1,10 @@
 from abc import abstractmethod
 from functools import cached_property
 
-from lanka_data.dataset.Dataset import Dataset
-from lanka_data.dataset.RegionValueDataset.RegionValueDatasetTableMixin import \
-    RegionValueDatasetTableMixin
+from api.dataset.Dataset import Dataset
+from api.dataset.RegionValueDataset.RegionValueDatasetTableMixin import (
+    RegionValueDatasetTableMixin,
+)
 
 
 class RegionValueDataset(RegionValueDatasetTableMixin, Dataset):

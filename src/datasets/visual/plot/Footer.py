@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
-from lanka_data.visual.plot.Text import Text
+from datasets.visual.plot.Text import Text
 
 
 class Footer:

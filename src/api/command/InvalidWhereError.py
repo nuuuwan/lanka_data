@@ -1,4 +1,4 @@
-from lanka_data.command.CommandError import CommandError
+from api.command.CommandError import CommandError
 
 
 class InvalidWhereError(CommandError):

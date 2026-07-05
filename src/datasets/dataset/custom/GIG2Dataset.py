@@ -1,10 +1,10 @@
 import os
 from abc import abstractmethod
 
-from lanka_data.data.DataSource import DataSource
-from lanka_data.data.FieldNameUtils import FieldNameUtils
-from lanka_data.dataset.RegionValueDataset import RegionValueDataset
-from utils_future import WWW, JSONFile, Log
+from api.data.DataSource import DataSource
+from datasets.data.FieldNameUtils import FieldNameUtils
+from api.dataset.RegionValueDataset import RegionValueDataset
+from api.utils_future import WWW, JSONFile, Log
 
 log = Log("GIG2Dataset")
 

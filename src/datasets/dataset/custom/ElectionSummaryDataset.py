@@ -1,6 +1,6 @@
-from lanka_data.data.FieldNameUtils import FieldNameUtils
-from lanka_data.dataset.custom.ElectionDataset import ElectionDataset
-from utils_future import Log
+from datasets.data.FieldNameUtils import FieldNameUtils
+from datasets.dataset.custom.ElectionDataset import ElectionDataset
+from api.utils_future import Log
 
 log = Log("ElectionDataset")
 

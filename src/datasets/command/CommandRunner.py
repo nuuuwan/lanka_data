@@ -1,12 +1,12 @@
 import time
 
-from lanka_data.command.Command import Command
-from lanka_data.command.CommandCache import CommandCache
-from lanka_data.command.CommandHelp import CommandHelp
-from lanka_data.data.DataSource import DataSource
-from lanka_data.dataset.DatasetFactory import DatasetFactory
-from lanka_data.visual.VisualFactory import VisualFactory
-from utils_future.timer import timer
+from datasets.command.Command import Command
+from api.command.CommandCache import CommandCache
+from datasets.command.CommandHelp import CommandHelp
+from api.data.DataSource import DataSource
+from datasets.dataset.DatasetFactory import DatasetFactory
+from datasets.visual.VisualFactory import VisualFactory
+from api.utils_future.timer import timer
 
 
 class CommandRunner:

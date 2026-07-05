@@ -1,12 +1,16 @@
-# lanka_data.region (auto generate by build_inits.py)
+# datasets.region (auto generate by build_inits.py)
 # flake8: noqa: F408
 
-from lanka_data.region.RegionLoadersMixin import RegionLoadersMixin
-from lanka_data.region.RegionParserMixin import (RegionParserMixin,
-                                                 RegionParserRadiusMixin)
-from lanka_data.region.RegionRawDataMixin import (RegionFetchMixin,
-                                                  RegionParentMixin,
-                                                  RegionRawDataMixin)
-from lanka_data.region.Regions import Regions
-from lanka_data.region.RegionTypeUtils import RegionTypeUtils
-from lanka_data.region.Where import Where
+from datasets.region.RegionLoadersMixin import RegionLoadersMixin
+from datasets.region.RegionParserMixin import (
+    RegionParserMixin,
+    RegionParserRadiusMixin,
+)
+from datasets.region.RegionRawDataMixin import (
+    RegionFetchMixin,
+    RegionParentMixin,
+    RegionRawDataMixin,
+)
+from datasets.region.Regions import Regions
+from datasets.region.RegionTypeUtils import RegionTypeUtils
+from datasets.region.Where import Where

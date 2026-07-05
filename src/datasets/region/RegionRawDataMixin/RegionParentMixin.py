@@ -1,6 +1,6 @@
 from functools import cache
 
-from lanka_data.region.RegionTypeUtils import RegionTypeUtils
+from datasets.region.RegionTypeUtils import RegionTypeUtils
 
 
 class RegionParentMixin:

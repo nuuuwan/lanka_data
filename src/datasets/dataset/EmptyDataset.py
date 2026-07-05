@@ -1,5 +1,5 @@
-from lanka_data.data.DataSource import DataSource
-from lanka_data.dataset.Dataset import Dataset
+from api.data.DataSource import DataSource
+from api.dataset.Dataset import Dataset
 
 
 class EmptyDataset(Dataset):

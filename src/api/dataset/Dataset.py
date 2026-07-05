@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from utils_future import Log
+from api.utils_future import Log
 
 log = Log("Dataset")
 

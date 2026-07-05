@@ -1,6 +1,6 @@
-# lanka_data.visual.formatters (auto generate by build_inits.py)
+# datasets.visual.formatters (auto generate by build_inits.py)
 # flake8: noqa: F408
 
-from lanka_data.visual.formatters.HowFormatter import HowFormatter
-from lanka_data.visual.formatters.WhatFormatter import WhatFormatter
-from lanka_data.visual.formatters.WhereFormatter import WhereFormatter
+from datasets.visual.formatters.HowFormatter import HowFormatter
+from datasets.visual.formatters.WhatFormatter import WhatFormatter
+from datasets.visual.formatters.WhereFormatter import WhereFormatter

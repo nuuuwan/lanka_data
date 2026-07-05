@@ -16,7 +16,7 @@ class ReadMeExamplesItemMixin:
 
     @staticmethod
     def get_lines_for_output(cmd, output):
-        from lanka_data.examples.Example.Example import Example
+        from datasets.examples.Example.Example import Example
 
         lines = ["```json"]
         output_json = json.dumps(output, indent=4)
@@ -45,7 +45,7 @@ class ReadMeExamplesItemMixin:
 
     @staticmethod
     def get_lines_for_image(cmd, output):
-        from lanka_data.examples.Example.Example import Example
+        from datasets.examples.Example.Example import Example
 
         if not ("result" in output and "image_path" in output["result"]):
             return []

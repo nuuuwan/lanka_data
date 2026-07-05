@@ -6,10 +6,10 @@ from functools import cached_property
 
 import requests
 
-from utils_future.BinaryFile import BinaryFile
-from utils_future.JSONFile import JSONFile
-from utils_future.Log import Log
-from utils_future.timer import timer
+from api.utils_future.BinaryFile import BinaryFile
+from api.utils_future.JSONFile import JSONFile
+from api.utils_future.Log import Log
+from api.utils_future.timer import timer
 
 log = Log("WWW")
 

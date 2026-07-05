@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import re
 
-from lanka_data.command.InvalidWhereError import InvalidWhereError
+from api.command.InvalidWhereError import InvalidWhereError
 
 
 @dataclass(frozen=True)

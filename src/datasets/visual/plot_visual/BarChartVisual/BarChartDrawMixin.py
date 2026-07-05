@@ -1,6 +1,6 @@
 from matplotlib.ticker import FuncFormatter
 
-from lanka_data.visual.plot.Legend import Legend
+from datasets.visual.plot.Legend import Legend
 
 
 class BarChartDrawMixin:

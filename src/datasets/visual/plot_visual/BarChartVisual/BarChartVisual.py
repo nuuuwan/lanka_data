@@ -1,8 +1,10 @@
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartDrawMixin import \
-    BarChartDrawMixin
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartLabelMixin import \
-    BarChartLabelMixin
-from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
+from datasets.visual.plot_visual.BarChartVisual.BarChartDrawMixin import (
+    BarChartDrawMixin,
+)
+from datasets.visual.plot_visual.BarChartVisual.BarChartLabelMixin import (
+    BarChartLabelMixin,
+)
+from datasets.visual.plot_visual.PlotVisual import PlotVisual
 
 
 class BarChartVisual(BarChartDrawMixin, BarChartLabelMixin, PlotVisual):

@@ -1,7 +1,9 @@
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import \
-    BarChartVisual
-from lanka_data.visual.plot_visual.PieChartVisual.PieChartGridMixin import \
-    PieChartGridMixin
+from datasets.visual.plot_visual.BarChartVisual.BarChartVisual import (
+    BarChartVisual,
+)
+from datasets.visual.plot_visual.PieChartVisual.PieChartGridMixin import (
+    PieChartGridMixin,
+)
 
 
 class PieChartVisual(PieChartGridMixin, BarChartVisual):

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import re
 
-from lanka_data.command.InvalidWhenError import InvalidWhenError
+from api.command.InvalidWhenError import InvalidWhenError
 
 
 @dataclass(frozen=True)

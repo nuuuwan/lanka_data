@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 
-from lanka_data.visual.JSONVisual import JSONVisual
-from lanka_data.visual.plot_visual.BarChartVisual import BarChartVisual
-from lanka_data.visual.plot_visual.BumpChartVisual import BumpChartVisual
-from lanka_data.visual.plot_visual.MapVisual import MapVisual
-from lanka_data.visual.plot_visual.PieChartVisual import PieChartVisual
-from utils_future import Log
+from datasets.visual.JSONVisual import JSONVisual
+from datasets.visual.plot_visual.BarChartVisual import BarChartVisual
+from datasets.visual.plot_visual.BumpChartVisual import BumpChartVisual
+from datasets.visual.plot_visual.MapVisual import MapVisual
+from datasets.visual.plot_visual.PieChartVisual import PieChartVisual
+from api.utils_future import Log
 
 log = Log("VisualFactory")
 

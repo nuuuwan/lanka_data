@@ -1,7 +1,7 @@
 import os
 
-from lanka_data.examples.Example.ExampleOutputMixin import ExampleOutputMixin
-from utils_future import JSONFile
+from datasets.examples.Example.ExampleOutputMixin import ExampleOutputMixin
+from api.utils_future import JSONFile
 
 
 class Example(ExampleOutputMixin):

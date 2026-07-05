@@ -1,4 +1,4 @@
-from lanka_data.visual.Visual import Visual
+from datasets.visual.Visual import Visual
 
 
 class JSONVisual(Visual):

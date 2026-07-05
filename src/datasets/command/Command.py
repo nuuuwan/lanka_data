@@ -1,6 +1,6 @@
-from lanka_data.command.CommandBase import CommandBase
-from lanka_data.command.CommandLoaderMixin import CommandLoaderMixin
-from utils_future import Log
+from datasets.command.CommandBase import CommandBase
+from api.command.CommandLoaderMixin import CommandLoaderMixin
+from api.utils_future import Log
 
 log = Log("Command")
 

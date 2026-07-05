@@ -1,6 +1,6 @@
-from lanka_data.region.RegionParserMixin import RegionParserMixin
-from lanka_data.region.RegionRawDataMixin import RegionRawDataMixin
-from utils_future import Log
+from datasets.region.RegionParserMixin import RegionParserMixin
+from datasets.region.RegionRawDataMixin import RegionRawDataMixin
+from api.utils_future import Log
 
 log = Log("RegionLoadersMixin")
 

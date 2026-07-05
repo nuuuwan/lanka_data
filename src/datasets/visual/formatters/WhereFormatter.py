@@ -1,5 +1,5 @@
-from lanka_data.region.RegionRawDataMixin import RegionRawDataMixin
-from lanka_data.region.RegionTypeUtils import RegionTypeUtils
+from datasets.region.RegionRawDataMixin import RegionRawDataMixin
+from datasets.region.RegionTypeUtils import RegionTypeUtils
 
 
 class WhereFormatter:

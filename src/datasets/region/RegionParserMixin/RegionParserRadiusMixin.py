@@ -1,10 +1,10 @@
-from utils_future.GeoUtils import GeoUtils
+from api.utils_future.GeoUtils import GeoUtils
 
 
 class RegionParserRadiusMixin:
     @classmethod
     def get_region_ids_from_range(cls, from_region_id, to_region_id):
-        from lanka_data.region.RegionTypeUtils import RegionTypeUtils
+        from datasets.region.RegionTypeUtils import RegionTypeUtils
 
         region_type = RegionTypeUtils.get_region_type(from_region_id)
         if region_type != RegionTypeUtils.get_region_type(to_region_id):
@@ -45,7 +45,7 @@ class RegionParserRadiusMixin:
 
     @classmethod
     def get_region_ids_from_region_radius(cls, region_id, radius_km):
-        from lanka_data.region.RegionTypeUtils import RegionTypeUtils
+        from datasets.region.RegionTypeUtils import RegionTypeUtils
 
         region_type = RegionTypeUtils.get_region_type(region_id)
         region_year = cls._get_region_year(region_id)

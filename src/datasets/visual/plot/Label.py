@@ -1,5 +1,5 @@
-from lanka_data.visual.plot.LabelFit import LabelFit
-from utils_future import ColorUtils, timer
+from datasets.visual.plot.LabelFit import LabelFit
+from api.utils_future import ColorUtils, timer
 
 
 class Label:

@@ -2,10 +2,10 @@ from abc import abstractmethod
 
 import matplotlib.pyplot as plt
 
-from lanka_data.visual.plot import Plot
-from lanka_data.visual.plot.color_spec import ColorSpec, ColorSpecFactory
-from lanka_data.visual.Visual import Visual
-from utils_future.timer import timer
+from datasets.visual.plot import Plot
+from datasets.visual.plot.color_spec import ColorSpec, ColorSpecFactory
+from datasets.visual.Visual import Visual
+from api.utils_future.timer import timer
 
 
 class PlotVisual(Visual):

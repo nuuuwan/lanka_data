@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
-from lanka_data.command.Command import Command
-from lanka_data.data.DataSource import DataSource
-from lanka_data.dataset.Dataset import Dataset
-from utils_future import Log
+from datasets.command.Command import Command
+from api.data.DataSource import DataSource
+from api.dataset.Dataset import Dataset
+from api.utils_future import Log
 
 log = Log("Visual")
 

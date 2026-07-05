@@ -1,6 +1,6 @@
 from functools import cache
 
-from utils_future import WWW
+from api.utils_future import WWW
 
 
 class RegionFetchMixin:

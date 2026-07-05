@@ -1,4 +1,4 @@
-from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
+from datasets.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 
 from .ColorSpecHelpersMixin import ColorSpecHelpersMixin
 
@@ -37,7 +37,7 @@ class ColorSpecHelpers(ColorSpecHelpersMixin):
 
     @staticmethod
     def get_color_spec_generic(dataset, how_cmd) -> ColorSpec:
-        from lanka_data.command.fields.How import How
+        from datasets.command.fields.How import How
 
         how = How(how_cmd)
         params = how.modifier or "1st"

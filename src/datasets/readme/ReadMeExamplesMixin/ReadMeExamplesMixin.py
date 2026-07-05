@@ -1,4 +1,4 @@
-from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import (
+from datasets.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import (
     ReadMeExamplesItemMixin,
 )
 

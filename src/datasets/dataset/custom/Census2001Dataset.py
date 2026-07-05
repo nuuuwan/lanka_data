@@ -1,9 +1,9 @@
 import os
 
-from lanka_data.data import FieldNameUtils
-from lanka_data.data.DataSource import DataSource
-from lanka_data.dataset.RegionValueDataset import RegionValueDataset
-from utils_future import WWW, JSONFile, Log
+from datasets.data import FieldNameUtils
+from api.data.DataSource import DataSource
+from api.dataset.RegionValueDataset import RegionValueDataset
+from api.utils_future import WWW, JSONFile, Log
 
 log = Log("Census2001Dataset")
 
