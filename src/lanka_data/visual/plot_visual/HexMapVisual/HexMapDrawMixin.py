@@ -50,12 +50,13 @@ class HexMapDrawMixin:
     def _region_centers(cls, layout):
         centers = {}
         for region_id, points in cls._region_hexes(layout).items():
-            n = len(points)
-            cx = sum(x for x, _ in points) / n
-            cy = sum(y for _, y in points) / n
+            point_count = len(points)
+            centroid_x = sum(x for x, _ in points) / point_count
+            centroid_y = sum(y for _, y in points) / point_count
             centers[region_id] = min(
                 points,
-                key=lambda p: (p[0] - cx) ** 2 + (p[1] - cy) ** 2,
+                key=lambda point: (point[0] - centroid_x) ** 2
+                + (point[1] - centroid_y) ** 2,
             )
         return centers
 
