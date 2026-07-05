@@ -1,4 +1,4 @@
-from lanka_data.api.command.UnknownWhatError import UnknownWhatError
+from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
 from lanka_data.api.dataset.DiffDataset import DiffDataset
 from lanka_data.datasets.dataset.custom.Census2001Dataset import \
     Census2001Dataset

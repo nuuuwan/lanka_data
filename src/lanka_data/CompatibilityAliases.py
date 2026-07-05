@@ -11,9 +11,11 @@ class CompatibilityAliases:
         "Command",
         "CommandBase",
         "CommandCache",
-        "CommandError",
         "CommandIntrospectionMixin",
         "CommandLoaderMixin",
+    ]
+    COMMAND_ERROR_MODULES = [
+        "CommandError",
         "InvalidCommandError",
         "InvalidWhenError",
         "InvalidWhereError",
@@ -41,9 +43,17 @@ class CompatibilityAliases:
         cls._register("lanka_data.command", "lanka_data.datasets.command")
         cls._register("lanka_data.dataset", "lanka_data.datasets.dataset")
         cls._register("lanka_data.region", "lanka_data.datasets.region")
-        cls._register(
-            "lanka_data.command.fields", "lanka_data.api.command.fields"
+        cls._register("lanka_data.command.fields", "lanka_data.api.fields")
+        cls._register_command()
+        cls._register_dataset()
+        cls._register_many(
+            cls.REGION_MODULES,
+            "lanka_data.region",
+            "lanka_data.datasets.region",
         )
+
+    @classmethod
+    def _register_command(cls):
         cls._register_many(
             cls.COMMAND_DATASET_MODULES,
             "lanka_data.command",
@@ -55,10 +65,18 @@ class CompatibilityAliases:
             "lanka_data.api.command",
         )
         cls._register_many(
+            cls.COMMAND_ERROR_MODULES,
+            "lanka_data.command",
+            "lanka_data.api.command_errors",
+        )
+        cls._register_many(
             cls.FIELD_MODULES,
             "lanka_data.command.fields",
-            "lanka_data.api.command.fields",
+            "lanka_data.api.fields",
         )
+
+    @classmethod
+    def _register_dataset(cls):
         cls._register_many(
             cls.DATASET_MODULES,
             "lanka_data.dataset",
@@ -71,11 +89,6 @@ class CompatibilityAliases:
             cls.CUSTOM_MODULES,
             "lanka_data.dataset.custom",
             "lanka_data.datasets.dataset.custom",
-        )
-        cls._register_many(
-            cls.REGION_MODULES,
-            "lanka_data.region",
-            "lanka_data.datasets.region",
         )
 
     @classmethod

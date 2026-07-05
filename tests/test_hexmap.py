@@ -48,7 +48,7 @@ class TestHexDataPure:
 
 class TestHexMapRouting:
     def test_hexmap_base_is_registered(self):
-        from lanka_data.api.command.fields.How import How
+        from lanka_data.api.fields.How import How
 
         assert "HexMap" in How.BASE_LABELS
 

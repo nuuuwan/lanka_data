@@ -21,9 +21,21 @@ class ConsoleCompleter:
         return None
 
     def find_matches(self, text):
+        separator = text.rfind("/")
+        if separator == -1:
+            return self._prefix_matches(self.suggestions, text)
+        start = separator + 1
+        prefix = text[:start]
+        segment = text[start:]
+        matches = self._prefix_matches(self.term_values(), segment)
+        return [prefix + value for value in matches]
+
+    def term_values(self):
+        return [value for value in self.suggestions if "/" not in value]
+
+    @staticmethod
+    def _prefix_matches(values, text):
         text_lower = text.lower()
         return [
-            value
-            for value in self.suggestions
-            if value.lower().startswith(text_lower)
+            value for value in values if value.lower().startswith(text_lower)
         ]

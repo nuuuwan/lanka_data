@@ -6,6 +6,7 @@ from lanka_data.console.ConsoleCommandLibrary import ConsoleCommandLibrary
 from lanka_data.console.ConsoleCompleter import ConsoleCompleter
 from lanka_data.console.ConsoleImageOpener import ConsoleImageOpener
 from lanka_data.console.ConsoleLocalCommands import ConsoleLocalCommands
+from lanka_data.console.ConsolePrompt import ConsolePrompt
 from lanka_data.console.ConsoleRenderer import ConsoleRenderer
 from lanka_data.datasets.command.CommandRunner import CommandRunner
 
@@ -19,6 +20,7 @@ class ConsoleApp:
         self.library = library or ConsoleCommandLibrary()
         self.renderer = ConsoleRenderer(self.console)
         self.completer = ConsoleCompleter(self.library.suggestions())
+        self.prompt = ConsolePrompt(self.completer)
         self.local_commands = ConsoleLocalCommands(self)
 
     @classmethod
@@ -37,7 +39,6 @@ class ConsoleApp:
         return 0
 
     def run_loop(self):
-        self.completer.attach()
         self.renderer.show_banner()
         while True:
             if not self.read_next_line():
@@ -51,7 +52,7 @@ class ConsoleApp:
 
     def safe_input(self):
         try:
-            return input("lanka-data> ")
+            return self.prompt.read()
         except (EOFError, KeyboardInterrupt):
             self.console.print()
             return None

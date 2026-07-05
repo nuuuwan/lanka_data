@@ -1,8 +1,8 @@
 import pytest
 
-from lanka_data.api.command.fields.What import What as APIWhat
-from lanka_data.api.command.fields.When import When as APIWhen
-from lanka_data.api.command.fields.Where import Where as APIWhere
+from lanka_data.api.fields.What import What as APIWhat
+from lanka_data.api.fields.When import When as APIWhen
+from lanka_data.api.fields.Where import Where as APIWhere
 from lanka_data.command.Command import Command
 from lanka_data.command.fields.How import How
 from lanka_data.command.fields.What import What

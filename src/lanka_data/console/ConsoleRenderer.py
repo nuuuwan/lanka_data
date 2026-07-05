@@ -8,7 +8,7 @@ from rich.table import Table
 class ConsoleRenderer:
     BANNER_TEXT = (
         "Lanka Data Console\n"
-        "Type help for commands. Press Tab for completion."
+        "Type help for commands. Suggestions appear as you type."
     )
     MAX_DISPLAYED_VALUES = 30
 

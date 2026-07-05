@@ -1,10 +1,10 @@
 import re
 from dataclasses import dataclass
 
-from lanka_data.api.command.fields.WhenIntrospectionMixin import \
+from lanka_data.api.fields.WhenIntrospectionMixin import \
     WhenIntrospectionMixin
-from lanka_data.api.command.fields.WhenRegistry import WhenRegistry
-from lanka_data.api.command.InvalidWhenError import InvalidWhenError
+from lanka_data.api.fields.WhenRegistry import WhenRegistry
+from lanka_data.api.command_errors.InvalidWhenError import InvalidWhenError
 
 
 @dataclass(frozen=True)
