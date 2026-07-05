@@ -29,6 +29,7 @@ class CommandBase:
             return value
         return field_cls("" if value is None else value)
 
+    @property
     def cmd_id(self):
         return "/".join(
             [self.what_cmd, self.when_cmd, self.where_cmd, self.how_cmd]
