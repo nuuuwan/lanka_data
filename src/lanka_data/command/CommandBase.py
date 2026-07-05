@@ -46,10 +46,17 @@ class CommandBase:
             raise TypeError(f"Unknown command fields: {', '.join(unknown)}")
 
     def _validate_parts(self):
-        self.what.value
-        self.when.value
-        self.where.value
-        self.how.value
+        for value, field_cls in self._field_pairs():
+            if not isinstance(value, field_cls):
+                raise TypeError(f"Invalid command field: {value}")
+
+    def _field_pairs(self):
+        return [
+            (self.what, What),
+            (self.when, When),
+            (self.where, Where),
+            (self.how, How),
+        ]
 
     @cached_property
     def cmd_id(self):
