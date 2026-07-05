@@ -1,10 +1,10 @@
-import os
 import sys
 
 from rich.console import Console
 
 from lanka_data.console.ConsoleCommandLibrary import ConsoleCommandLibrary
 from lanka_data.console.ConsoleCompleter import ConsoleCompleter
+from lanka_data.console.ConsoleImageOpener import ConsoleImageOpener
 from lanka_data.console.ConsoleRenderer import ConsoleRenderer
 from lanka_data.datasets.command.CommandRunner import CommandRunner
 
@@ -58,37 +58,41 @@ class ConsoleApp:
         line_lower = line.lower()
         if line_lower in ["exit", "quit"]:
             return False
-        if line_lower == "clear":
-            self.console.clear()
-        elif line_lower == "help":
-            self.renderer.show_help()
-        elif line_lower == "fields":
-            self.renderer.show_fields(self.library.field_rows())
-        elif line_lower == "examples":
-            self.renderer.show_examples(self.library.example_commands())
-        elif line_lower == "commands":
-            self.renderer.show_commands(self.library.command_suggestions())
+        actions = self.local_actions()
+        if line_lower in actions:
+            actions[line_lower]()
         return True
+
+    def local_actions(self):
+        return dict(
+            clear=self.console.clear,
+            help=self.renderer.show_help,
+            fields=self.show_fields,
+            examples=self.show_examples,
+            commands=self.show_commands,
+        )
+
+    def show_fields(self):
+        self.renderer.show_fields(self.library.field_rows())
+
+    def show_examples(self):
+        self.renderer.show_examples(self.library.example_commands())
+
+    def show_commands(self):
+        self.renderer.show_commands(self.library.command_suggestions())
 
     @staticmethod
     def local_commands():
         return ["clear", "help", "fields", "examples", "commands"]
 
     def run_command(self, line):
-        command = line[4:].strip() if line.lower().startswith("run ") else line
+        command = (
+            line[4:].strip() if line.lower().startswith("run ") else line
+        )
         try:
             output = self.runner.run(command)
         except Exception as error:
             self.renderer.show_error(error)
             return
-        self.open_image(output)
+        ConsoleImageOpener.open(output)
         self.renderer.show_output(output)
-
-    @staticmethod
-    def open_image(output):
-        result = output.get("result")
-        if not result or "image_path" not in result:
-            return
-        image_path = result["image_path"]
-        if sys.platform == "darwin":
-            os.system(f"open {image_path}")
