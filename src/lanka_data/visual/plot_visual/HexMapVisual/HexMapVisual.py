@@ -26,9 +26,14 @@ class HexMapVisual(PlotVisual, HexMapDrawMixin, HexMapBoundaryMixin):
         value_per_hex = layout.get("value_per_hex")
         if not value_per_hex:
             return
-        ax.set_title(
+        ax.text(
+            0.5,
+            -0.05,
             f"Each hexagon represents ~{round(value_per_hex):,} people",
             fontsize=9,
+            ha="center",
+            va="top",
+            transform=ax.transAxes,
         )
 
     @timer
