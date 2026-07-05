@@ -10,8 +10,11 @@ from lanka_data.datasets.dataset import (Census2001Dataset, Census2012Dataset,
                                          ElectionDataset,
                                          ElectionSummaryDataset, EmptyDataset,
                                          GIG2Dataset)
+from lanka_data.datasets.DatasetCommandRegistry import DatasetCommandRegistry
 from lanka_data.datasets.region import (RegionFetchMixin, RegionLoadersMixin,
                                         RegionParentMixin, RegionParserMixin,
                                         RegionParserRadiusMixin,
                                         RegionRawDataMixin, Regions,
                                         RegionTypeUtils, Where)
+
+DatasetCommandRegistry.register()

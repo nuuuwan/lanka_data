@@ -1,6 +1,7 @@
 # lanka_data (auto generate by build_inits.py)
 # flake8: noqa: F408
 
+from lanka_data.CompatibilityAliases import CompatibilityAliases
 from lanka_data.api import (CensusDatasetRegistry, CommandCache, CommandError,
                             CommandLoaderMixin, Dataset, DataSource,
                             DiffDataset, ElectionDatasetRegistry, How,
@@ -41,3 +42,5 @@ from lanka_data.visual import (BarChartDrawMixin, BarChartLabelMixin,
                                Legend, MapVisual, PieChartGridMixin,
                                PieChartVisual, Plot, PlotVisual, Text, Visual,
                                VisualFactory, WhatFormatter, WhereFormatter)
+
+CompatibilityAliases.register()

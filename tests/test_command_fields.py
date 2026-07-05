@@ -24,6 +24,10 @@ class TestCommandFields:
         assert command.where.child_region_type == "district"
         assert command.how.modifier == "Change"
 
+    def test_reported_religion_json_command_parses(self):
+        command = Command.from_str("Religion/2024/LK/JSON")
+        assert command.cmd_id == "Religion/2024/LK/JSON"
+
     def test_command_accepts_independent_value_objects(self):
         what = What.available_values()[0]
         when = When.available_values()[0]
