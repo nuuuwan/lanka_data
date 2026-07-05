@@ -15,16 +15,14 @@ class HexDataCountMixin:
 
     @staticmethod
     def _region_error(actual, ideal):
-        if ideal <= 0:
-            return 0.0
-        return abs(actual - ideal) / ideal
+        return abs(actual - ideal)
 
     @classmethod
     def _log_region(cls, region_id, actual, ideal):
         error = cls._region_error(actual, ideal)
         log.debug(
             f"{region_id}: actual={actual} "
-            + f"ideal={ideal:.2f} error={error:.0%}"
+            + f"ideal={ideal:.2f} error={error:.2f}"
         )
 
     @classmethod
