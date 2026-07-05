@@ -5,8 +5,8 @@ from shapely.ops import unary_union
 
 
 class HexMapBoundaryMixin:
-    BOUNDARY_COLOR = "#000"
-    BOUNDARY_WIDTH = 1.2
+    BOUNDARY_COLOR = "#fff"
+    BOUNDARY_WIDTH = 2
 
     @staticmethod
     def _hex_polygon(x, y, radius):

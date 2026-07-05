@@ -4,7 +4,7 @@ from utils_future import ColorUtils, timer
 
 
 class HexMapDrawMixin:
-    DEFAULT_EDGE_COLOR = "#fff"
+    DEFAULT_EDGE_COLOR = "#888"
     DEFAULT_EDGE_WIDTH = 0.5
     DEFAULT_FILL_COLOR = "#cccccc"
     IS_LIGHT_COLOR = getattr(ColorUtils, "_is_light_color")
