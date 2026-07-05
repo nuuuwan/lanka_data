@@ -23,6 +23,15 @@ class TestConsole:
         completer = ConsoleCompleter(["help", "Religion/2024/LK/JSON"])
         assert completer.find_matches("Rel") == ["Religion/2024/LK/JSON"]
 
+    def test_completer_matches_later_terms(self):
+        completer = ConsoleCompleter(
+            ["Religion", "2024", "LK", "Religion/2024/LK/JSON"]
+        )
+        assert completer.find_matches("Religion/20") == ["Religion/2024"]
+        assert completer.find_matches("Religion/2024/L") == [
+            "Religion/2024/LK"
+        ]
+
     def test_prompt_completer_yields_dropdown_completions(self):
         completer = ConsoleCompleter(["help", "Religion/2024/LK/JSON"])
         prompt_completer = ConsolePromptCompleter(completer)
