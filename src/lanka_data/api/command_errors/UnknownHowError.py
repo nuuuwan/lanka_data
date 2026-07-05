@@ -1,4 +1,4 @@
-from lanka_data.api.command.CommandError import CommandError
+from lanka_data.api.command_errors.CommandError import CommandError
 
 
 class UnknownHowError(CommandError):

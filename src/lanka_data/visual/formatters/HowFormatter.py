@@ -1,4 +1,4 @@
-from lanka_data.api.command.fields.How import How
+from lanka_data.api.fields.How import How
 
 
 class HowFormatter:

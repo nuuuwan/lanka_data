@@ -1,10 +1,10 @@
 import re
 from dataclasses import dataclass
 
-from lanka_data.api.command.fields.RegionTypeRegistry import RegionTypeRegistry
-from lanka_data.api.command.fields.WhereIntrospectionMixin import \
+from lanka_data.api.fields.RegionTypeRegistry import RegionTypeRegistry
+from lanka_data.api.fields.WhereIntrospectionMixin import \
     WhereIntrospectionMixin
-from lanka_data.api.command.InvalidWhereError import InvalidWhereError
+from lanka_data.api.command_errors.InvalidWhereError import InvalidWhereError
 
 
 @dataclass(frozen=True)

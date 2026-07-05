@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 
-from lanka_data.api.command.fields.WhatIntrospectionMixin import \
+from lanka_data.api.fields.WhatIntrospectionMixin import \
     WhatIntrospectionMixin
-from lanka_data.api.command.fields.WhatRegistry import WhatRegistry
-from lanka_data.api.command.UnknownWhatError import UnknownWhatError
+from lanka_data.api.fields.WhatRegistry import WhatRegistry
+from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
 
 
 @dataclass(frozen=True)
