@@ -2,6 +2,8 @@ import json
 import os
 import shutil
 
+from lanka_data.examples.Example.Example import Example
+
 
 class ReadMeExamplesItemMixin:
     MAX_LINES_IN_OUTPUT = 40
@@ -16,8 +18,6 @@ class ReadMeExamplesItemMixin:
 
     @staticmethod
     def get_lines_for_output(cmd, output):
-        from lanka_data.examples.Example.Example import Example
-
         lines = ["```json"]
         output_json = json.dumps(output, indent=4)
         output_json_lines = output_json.splitlines()
@@ -45,8 +45,6 @@ class ReadMeExamplesItemMixin:
 
     @staticmethod
     def get_lines_for_image(cmd, output):
-        from lanka_data.examples.Example.Example import Example
-
         if not ("result" in output and "image_path" in output["result"]):
             return []
         lines = []
