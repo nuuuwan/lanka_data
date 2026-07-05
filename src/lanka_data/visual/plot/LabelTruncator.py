@@ -6,7 +6,7 @@ class LabelTruncator:
     TRUNCATE_LEN_MID = 3
     MAX_REGIONS_FULL_LABEL = 30
     MAX_REGIONS_TRUNCATE_MID = 100
-    MAX_REGIONS_TRUNCATE_SMALL = 300
+    MAX_REGIONS_TRUNCATE_SMALL = 1000
 
     @classmethod
     def get_truncate_length(cls, region_count):
