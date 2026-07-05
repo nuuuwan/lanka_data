@@ -1,7 +1,8 @@
 from lanka_data.visual.plot.map.HexData import HexData
 from lanka_data.visual.plot_visual.HexMapVisual import HexMapVisual
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
-    HexMapBoundaryMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import (
+    HexMapBoundaryMixin,
+)
 from lanka_data.visual.VisualFactory import VisualFactory
 from utils_future import HungarianUtils
 
@@ -64,13 +65,43 @@ class TestHexScaleMinOneHex:
         assert min(counts.values()) >= 1
 
     def test_every_region_appears_in_assigned_hexes(self):
-        counts = HexData.get_counts({"A": 1_000_000, "B": 1, "C": 1})
+        counts = HexData.get_counts({"A": 1000, "B": 100, "C": 100})
         total = sum(counts.values())
         centers, _ = HexData.build_grid((0, 0, 100, 100), total)
         centroids = {"A": (10, 10), "B": (90, 90), "C": (50, 50)}
         hexes = HexData.assign(centroids, counts, centers)
         ids = {region_id for region_id, _, _ in hexes}
         assert ids == {"A", "B", "C"}
+
+
+class TestHexCountError:
+    def test_no_region_error_exceeds_hexmap_error(self):
+        region_to_weight = {"A": 900, "B": 250, "C": 100}
+        counts = HexData.get_counts(region_to_weight)
+        value_per_hex = HexData._value_per_hex(region_to_weight)
+        for region_id, weight in region_to_weight.items():
+            ideal = weight / value_per_hex
+            error = abs(ideal - counts[region_id])
+            assert error <= HexData.HEXMAP_ERROR + 1e-9
+
+    def test_uses_largest_population_per_hexagon(self):
+        region_to_weight = {"A": 900, "B": 250, "C": 100}
+        value_per_hex = HexData._value_per_hex(region_to_weight)
+        smallest = min(region_to_weight.values())
+        assert value_per_hex == smallest / HexData.HEXMAP_ERROR
+
+    def test_larger_population_per_hexagon_would_exceed_error(self):
+        region_to_weight = {"A": 900, "B": 250, "C": 100}
+        value_per_hex = HexData._value_per_hex(region_to_weight)
+        larger = value_per_hex * 1.5
+        smallest = min(region_to_weight.values())
+        ideal = smallest / larger
+        actual = max(1, round(ideal))
+        assert abs(ideal - actual) > HexData.HEXMAP_ERROR
+
+    def test_non_positive_weights_give_each_region_one_hex(self):
+        counts = HexData.get_counts({"A": 0, "B": 0})
+        assert counts == {"A": 1, "B": 1}
 
 
 class TestHexBoundary:
