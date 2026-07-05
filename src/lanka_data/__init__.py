@@ -7,7 +7,7 @@ InvalidWhenError InvalidWhereError UnknownHowError UnknownWhatError
 DataSource Segregation SegregationComputeMixin Dataset DiffDataset
 RegionValueDataset RegionValueDatasetTableMixin
 """.split()
-_DATASET_EXPORTS = """
+_DOMAIN_EXPORTS = """
 BarChartDrawMixin BarChartLabelMixin BarChartVisual BumpChartDataMixin
 BumpChartDrawMixin BumpChartVisual Census2001Dataset Census2012Dataset
 Census2024Dataset ColorSpec ColorSpecCategoryMixin ColorSpecConstants
@@ -40,7 +40,7 @@ def _alias_prefix(old_name, new_name):
 
 
 _export_names("api", _API_EXPORTS)
-_export_names("datasets", _DATASET_EXPORTS)
+_export_names("datasets", _DOMAIN_EXPORTS)
 
 for _old_child in [
     "command",
