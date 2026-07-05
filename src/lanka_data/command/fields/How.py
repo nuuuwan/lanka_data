@@ -8,15 +8,15 @@ from lanka_data.command.UnknownHowError import UnknownHowError
 class How:
     value: str
 
-    BASE_LABELS = dict(
-        JSON=None,
-        Map=None,
-        Cartogram="Cartogram (Population based)",
-        BarChart="Bar Chart",
-        PieChart="Pie Chart",
-        BumpChart="Bump Chart",
-        **{"None": None},
-    )
+    BASE_LABELS = {
+        "JSON": None,
+        "Map": None,
+        "Cartogram": "Cartogram (Population based)",
+        "BarChart": "Bar Chart",
+        "PieChart": "Pie Chart",
+        "BumpChart": "Bump Chart",
+        "None": None,
+    }
     INTERVAL_BASES = {"BumpChart"}
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
