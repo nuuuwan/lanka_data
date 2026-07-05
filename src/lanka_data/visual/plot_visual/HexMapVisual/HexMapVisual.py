@@ -31,7 +31,7 @@ class HexMapVisual(PlotVisual, HexMapDrawMixin, HexMapBoundaryMixin):
     def _draw_scale(cls, ax, layout):
         value_min = layout.get("value_per_hex_min")
         value_max = layout.get("value_per_hex_max")
-        if not value_min or not value_max:
+        if value_min is None or value_max is None:
             return
         ax.text(
             0.5,
