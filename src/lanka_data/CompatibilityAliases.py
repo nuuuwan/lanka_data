@@ -4,15 +4,15 @@ import sys
 
 class CompatibilityAliases:
     COMMAND_DATASET_MODULES = [
-        "Command",
-        "CommandBase",
         "CommandHelp",
-        "CommandIntrospectionMixin",
         "CommandRunner",
     ]
     COMMAND_API_MODULES = [
+        "Command",
+        "CommandBase",
         "CommandCache",
         "CommandError",
+        "CommandIntrospectionMixin",
         "CommandLoaderMixin",
         "InvalidCommandError",
         "InvalidWhenError",
@@ -86,3 +86,6 @@ class CompatibilityAliases:
     @staticmethod
     def _register(alias, target):
         sys.modules.setdefault(alias, importlib.import_module(target))
+
+
+CompatibilityAliases.register()
