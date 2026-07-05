@@ -40,15 +40,25 @@ class HexMapDrawMixin:
         ax.set_aspect("equal")
 
     @staticmethod
-    def _region_centers(layout):
-        sums = {}
+    def _region_hexes(layout):
+        hexes = {}
         for region_id, x, y in layout["hexes"]:
-            sx, sy, n = sums.get(region_id, (0.0, 0.0, 0))
-            sums[region_id] = (sx + x, sy + y, n + 1)
-        return {
-            region_id: (sx / n, sy / n)
-            for region_id, (sx, sy, n) in sums.items()
-        }
+            hexes.setdefault(region_id, []).append((x, y))
+        return hexes
+
+    @classmethod
+    def _region_centers(cls, layout):
+        centers = {}
+        for region_id, points in cls._region_hexes(layout).items():
+            point_count = len(points)
+            centroid_x = sum(x for x, _ in points) / point_count
+            centroid_y = sum(y for _, y in points) / point_count
+            centers[region_id] = min(
+                points,
+                key=lambda point: (point[0] - centroid_x) ** 2
+                + (point[1] - centroid_y) ** 2,
+            )
+        return centers
 
     @classmethod
     @timer
