@@ -4,7 +4,6 @@ from utils_future import ColorUtils, timer
 
 
 class HexMapDrawMixin:
-    DEFAULT_EDGE_COLOR = "#888"
     DEFAULT_EDGE_WIDTH = 0.5
     DEFAULT_FILL_COLOR = "#cccccc"
     IS_LIGHT_COLOR = getattr(ColorUtils, "_is_light_color")
@@ -14,6 +13,7 @@ class HexMapDrawMixin:
         radius = layout["radius"]
         for region_id, x, y in layout["hexes"]:
             color = region_color_map.get(region_id) or cls.DEFAULT_FILL_COLOR
+            edge_color = "#444" if cls.IS_LIGHT_COLOR(color) else "#ccc"
             ax.add_patch(
                 RegularPolygon(
                     (x, y),
@@ -21,7 +21,7 @@ class HexMapDrawMixin:
                     radius=radius,
                     orientation=0,
                     facecolor=color,
-                    edgecolor=cls.DEFAULT_EDGE_COLOR,
+                    edgecolor=edge_color,
                     linewidth=cls.DEFAULT_EDGE_WIDTH,
                 )
             )
