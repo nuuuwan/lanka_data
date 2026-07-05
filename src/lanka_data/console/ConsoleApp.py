@@ -19,7 +19,9 @@ class ConsoleApp:
         self.runner = runner or CommandRunner
         self.library = library or ConsoleCommandLibrary()
         self.renderer = ConsoleRenderer(self.console)
-        self.completer = ConsoleCompleter(self.library.suggestions())
+        self.completer = ConsoleCompleter(
+            self.library.suggestions(), self.library.field_values()
+        )
         self.prompt = ConsolePrompt(self.completer)
         self.local_commands = ConsoleLocalCommands(self)
 
