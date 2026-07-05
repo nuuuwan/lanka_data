@@ -77,7 +77,7 @@ class ColorSpecFactory:
 
     @staticmethod
     def get_color_spec(dataset, how_cmd) -> ColorSpec:
-        from lanka_data.datasets.command.fields.How import How
+        from lanka_data.api.command.fields.How import How
 
         how = How(how_cmd)
         is_diff = dataset.is_diff()

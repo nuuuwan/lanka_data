@@ -15,6 +15,10 @@ class RegionTypeUtils:
     }
 
     @staticmethod
+    def get_prefix_maps():
+        return RegionTypeUtils._PREFIX_MAPS
+
+    @staticmethod
     @cache
     def get_region_type(region_id: str) -> str:
         if "-pre" in region_id:
