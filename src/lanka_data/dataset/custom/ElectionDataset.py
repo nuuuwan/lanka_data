@@ -22,6 +22,10 @@ class ElectionDataset(GIG2Dataset):
         table_id = cls.get_label_to_table_id()[label]
         return cls(region_data_list, table_id, year)
 
+    @classmethod
+    def supports(cls, label, year):
+        return label in cls.get_labels()
+
     def get_year(self) -> str:
         return self.year
 

@@ -31,3 +31,7 @@ class Census2012Dataset(GIG2Dataset):
 
     def get_year(self) -> str:
         return "2012"
+
+    @classmethod
+    def get_supported_whens(cls):
+        return ["2012"]

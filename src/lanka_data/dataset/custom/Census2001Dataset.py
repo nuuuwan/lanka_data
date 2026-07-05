@@ -17,6 +17,10 @@ class Census2001Dataset(RegionValueDataset):
         return "2001"
 
     @classmethod
+    def get_supported_whens(cls):
+        return ["2001"]
+
+    @classmethod
     def from_label_and_region_data_list(
         cls, label: str, region_data_list: list[dict]
     ) -> "Census2001Dataset":

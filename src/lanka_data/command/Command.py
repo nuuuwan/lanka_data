@@ -18,8 +18,8 @@ class Command(
         how_cmd=None,
     ):
         return Command(
-            what_cmd=what_cmd or self.what_cmd,
-            when_cmd=when_cmd or self.when_cmd,
-            where_cmd=where_cmd or self.where_cmd,
-            how_cmd=how_cmd or self.how_cmd,
+            what_cmd=self.what_cmd if what_cmd is None else what_cmd,
+            when_cmd=self.when_cmd if when_cmd is None else when_cmd,
+            where_cmd=self.where_cmd if where_cmd is None else where_cmd,
+            how_cmd=self.how_cmd if how_cmd is None else how_cmd,
         )

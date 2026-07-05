@@ -1,7 +1,7 @@
-import os
 import time
 
 from lanka_data.command.Command import Command
+from lanka_data.command.CommandCache import CommandCache
 from lanka_data.command.CommandHelp import CommandHelp
 from lanka_data.data.DataSource import DataSource
 from lanka_data.dataset.DatasetFactory import DatasetFactory
@@ -10,14 +10,7 @@ from utils_future.timer import timer
 
 
 class CommandRunner:
-    _cache: dict = {}
-
-    @staticmethod
-    def _is_cache_valid(cached) -> bool:
-        result, _ = cached
-        if isinstance(result, dict) and "image_path" in result:
-            return os.path.exists(result["image_path"])
-        return True
+    _cache = CommandCache()
 
     @timer
     @staticmethod
@@ -25,7 +18,7 @@ class CommandRunner:
         t_start = time.perf_counter()
 
         cached = CommandRunner._cache.get(command_str)
-        if cached is not None and CommandRunner._is_cache_valid(cached):
+        if cached is not None:
             result, sources = cached
         elif command_str == "Help":
             result = CommandHelp.get_help_result()
@@ -38,16 +31,16 @@ class CommandRunner:
                     ),
                 )
             ]
-            CommandRunner._cache[command_str] = (result, sources)
+            CommandRunner._cache.set(command_str, (result, sources))
         else:
             command = Command.from_str(command_str)
             datasets = DatasetFactory.list_from_command(command)
-            visual = VisualFactory.from_commmand_and_datasets(
+            visual = VisualFactory.from_command_and_datasets(
                 command, datasets
             )
             result = visual.build()
             sources = visual.get_sources()
-            CommandRunner._cache[command_str] = (result, sources)
+            CommandRunner._cache.set(command_str, (result, sources))
 
         time_elapsed = time.perf_counter() - t_start
         return dict(
