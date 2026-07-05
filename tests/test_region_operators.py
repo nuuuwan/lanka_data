@@ -1,6 +1,5 @@
-from lanka_data.region.RegionParserMixin.RegionParserMixin import (
-    RegionParserMixin,
-)
+from lanka_data.region.RegionParserMixin.RegionParserMixin import \
+    RegionParserMixin
 from lanka_data.visual.formatters.WhereFormatter import WhereFormatter
 
 

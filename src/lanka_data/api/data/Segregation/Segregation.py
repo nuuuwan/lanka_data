@@ -1,6 +1,5 @@
-from lanka_data.api.data.Segregation.SegregationComputeMixin import (
-    SegregationComputeMixin,
-)
+from lanka_data.api.data.Segregation.SegregationComputeMixin import \
+    SegregationComputeMixin
 from utils_future import GeoUtils
 
 

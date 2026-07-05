@@ -1,5 +1,6 @@
-from .RegionParserRadiusMixin import RegionParserRadiusMixin
 from utils_future import timer
+
+from .RegionParserRadiusMixin import RegionParserRadiusMixin
 
 
 class RegionParserMixin(RegionParserRadiusMixin):

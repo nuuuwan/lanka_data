@@ -1,19 +1,15 @@
-from lanka_data.datasets.dataset.custom.Census2001Dataset import (
-    Census2001Dataset,
-)
-from lanka_data.datasets.dataset.custom.Census2012Dataset import (
-    Census2012Dataset,
-)
-from lanka_data.datasets.dataset.custom.Census2024Dataset import (
-    Census2024Dataset,
-)
-from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
-from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import (
-    ElectionSummaryDataset,
-)
-from lanka_data.api.dataset.DiffDataset import DiffDataset
-from lanka_data.datasets.dataset.EmptyDataset import EmptyDataset
 from lanka_data.api.command.UnknownWhatError import UnknownWhatError
+from lanka_data.api.dataset.DiffDataset import DiffDataset
+from lanka_data.datasets.dataset.custom.Census2001Dataset import \
+    Census2001Dataset
+from lanka_data.datasets.dataset.custom.Census2012Dataset import \
+    Census2012Dataset
+from lanka_data.datasets.dataset.custom.Census2024Dataset import \
+    Census2024Dataset
+from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
+from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import \
+    ElectionSummaryDataset
+from lanka_data.datasets.dataset.EmptyDataset import EmptyDataset
 from lanka_data.datasets.region.Regions import Regions
 from utils_future import Log
 from utils_future.timer import timer

@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 
+from lanka_data.visual.plot.color_spec.ColorSpecConstants import \
+    ColorSpecConstants
+from utils_future import ColorUtils, Parse
+
 from .ColorSpecCategoryMixin import ColorSpecCategoryMixin
 from .ColorSpecCustomMixin import ColorSpecCustomMixin
-from lanka_data.visual.plot.color_spec.ColorSpecConstants import (
-    ColorSpecConstants,
-)
-from utils_future import ColorUtils, Parse
 
 
 @dataclass

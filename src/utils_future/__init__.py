@@ -1,11 +1,10 @@
+# utils_future (auto generate by build_inits.py)
+# flake8: noqa: F408
+
 from utils_future.BinaryFile import BinaryFile
 from utils_future.ColorUtils import ColorUtils
-from utils_future.dcn import (
-    DCNUtils,
-    DCNUtilsAlgorithm,
-    DCNUtilsCompute,
-    DCNUtilsRunner,
-)
+from utils_future.dcn import (DCNUtils, DCNUtilsAlgorithm, DCNUtilsCompute,
+                              DCNUtilsRunner)
 from utils_future.File import File
 from utils_future.GeoUtils import GeoUtils
 from utils_future.JSONFile import JSONFile

@@ -1,11 +1,9 @@
 from functools import cache
 
-from lanka_data.datasets.region.RegionRawDataMixin.RegionFetchMixin import (
-    RegionFetchMixin,
-)
-from lanka_data.datasets.region.RegionRawDataMixin.RegionParentMixin import (
-    RegionParentMixin,
-)
+from lanka_data.datasets.region.RegionRawDataMixin.RegionFetchMixin import \
+    RegionFetchMixin
+from lanka_data.datasets.region.RegionRawDataMixin.RegionParentMixin import \
+    RegionParentMixin
 from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 
 

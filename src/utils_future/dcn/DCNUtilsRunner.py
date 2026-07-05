@@ -3,9 +3,7 @@ import time
 
 from shapely.geometry import shape
 
-from utils_future.dcn.DCNUtilsAlgorithm import (
-    DCNUtilsAlgorithm,
-)
+from utils_future.dcn.DCNUtilsAlgorithm import DCNUtilsAlgorithm
 from utils_future.dcn.DCNUtilsCompute import DCNUtilsCompute
 from utils_future.Log import Log
 

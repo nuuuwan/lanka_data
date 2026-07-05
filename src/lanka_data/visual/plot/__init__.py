@@ -1,12 +1,13 @@
-from lanka_data.visual.plot.color_spec import (
-    ColorSpec,
-    ColorSpecCategoryMixin,
-    ColorSpecConstants,
-    ColorSpecCustomMixin,
-    ColorSpecFactory,
-    ColorSpecHelpers,
-    ColorSpecHelpersMixin,
-)
+# lanka_data.visual.plot (auto generate by build_inits.py)
+# flake8: noqa: F408
+
+from lanka_data.visual.plot.color_spec import (ColorSpec,
+                                               ColorSpecCategoryMixin,
+                                               ColorSpecConstants,
+                                               ColorSpecCustomMixin,
+                                               ColorSpecFactory,
+                                               ColorSpecHelpers,
+                                               ColorSpecHelpersMixin)
 from lanka_data.visual.plot.Font import Font
 from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header

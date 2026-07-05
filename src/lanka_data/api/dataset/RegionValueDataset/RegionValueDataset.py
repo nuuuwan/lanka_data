@@ -2,6 +2,7 @@ from abc import abstractmethod
 from functools import cached_property
 
 from lanka_data.api.dataset.Dataset import Dataset
+
 from .RegionValueDatasetTableMixin import RegionValueDatasetTableMixin
 
 

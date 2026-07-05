@@ -3,9 +3,7 @@ from matplotlib.patches import Rectangle
 
 from lanka_data.visual.formatters.HowFormatter import HowFormatter
 from lanka_data.visual.formatters.WhatFormatter import WhatFormatter
-from lanka_data.visual.formatters.WhereFormatter import (
-    WhereFormatter,
-)
+from lanka_data.visual.formatters.WhereFormatter import WhereFormatter
 from lanka_data.visual.plot.Text import Text
 
 

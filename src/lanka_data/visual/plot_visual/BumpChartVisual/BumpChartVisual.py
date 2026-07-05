@@ -1,6 +1,7 @@
+from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
+
 from .BumpChartDataMixin import BumpChartDataMixin
 from .BumpChartDrawMixin import BumpChartDrawMixin
-from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 
 
 class BumpChartVisual(BumpChartDataMixin, BumpChartDrawMixin, PlotVisual):

@@ -1,6 +1,6 @@
 from lanka_data.command.Command import Command
-from lanka_data.dataset.DatasetFactory import DatasetFactory
 from lanka_data.dataset.custom.Census2012Dataset import Census2012Dataset
+from lanka_data.dataset.DatasetFactory import DatasetFactory
 
 
 class TestDatasetFactory:

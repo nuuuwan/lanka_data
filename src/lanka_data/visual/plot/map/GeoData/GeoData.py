@@ -5,9 +5,8 @@ import tempfile
 import geopandas
 import pandas as pd
 
-from lanka_data.visual.plot.map.GeoData.GeoDataLoaderMixin import (
-    GeoDataLoaderMixin,
-)
+from lanka_data.visual.plot.map.GeoData.GeoDataLoaderMixin import \
+    GeoDataLoaderMixin
 from utils_future import DCNUtils, Log
 
 log = Log("GeoData")

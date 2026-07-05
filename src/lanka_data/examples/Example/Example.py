@@ -1,8 +1,6 @@
 import os
 
-from lanka_data.examples.Example.ExampleOutputMixin import (
-    ExampleOutputMixin,
-)
+from lanka_data.examples.Example.ExampleOutputMixin import ExampleOutputMixin
 from utils_future import JSONFile
 
 

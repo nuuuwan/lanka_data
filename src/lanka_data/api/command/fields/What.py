@@ -1,15 +1,12 @@
 from dataclasses import dataclass
 
+from lanka_data.api.command.fields.CensusDatasetRegistry import \
+    CensusDatasetRegistry
+from lanka_data.api.command.fields.ElectionDatasetRegistry import \
+    ElectionDatasetRegistry
+from lanka_data.api.command.fields.WhatIntrospectionMixin import \
+    WhatIntrospectionMixin
 from lanka_data.api.command.UnknownWhatError import UnknownWhatError
-from lanka_data.api.command.fields.CensusDatasetRegistry import (
-    CensusDatasetRegistry,
-)
-from lanka_data.api.command.fields.ElectionDatasetRegistry import (
-    ElectionDatasetRegistry,
-)
-from lanka_data.api.command.fields.WhatIntrospectionMixin import (
-    WhatIntrospectionMixin,
-)
 
 
 @dataclass(frozen=True)

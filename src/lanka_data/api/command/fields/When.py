@@ -1,13 +1,11 @@
-from dataclasses import dataclass
 import re
+from dataclasses import dataclass
 
+from lanka_data.api.command.fields.CensusDatasetRegistry import \
+    CensusDatasetRegistry
+from lanka_data.api.command.fields.WhenIntrospectionMixin import \
+    WhenIntrospectionMixin
 from lanka_data.api.command.InvalidWhenError import InvalidWhenError
-from lanka_data.api.command.fields.CensusDatasetRegistry import (
-    CensusDatasetRegistry,
-)
-from lanka_data.api.command.fields.WhenIntrospectionMixin import (
-    WhenIntrospectionMixin,
-)
 
 
 @dataclass(frozen=True)

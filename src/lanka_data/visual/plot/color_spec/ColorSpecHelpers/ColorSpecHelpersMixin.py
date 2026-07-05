@@ -1,7 +1,5 @@
 from lanka_data.datasets.data import Diversity, Segregation
-from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import (
-    ColorSpec,
-)
+from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 
 
 class ColorSpecHelpersMixin:

@@ -1,16 +1,16 @@
 import pytest
 
+from lanka_data.api.command.fields.What import What as APIWhat
+from lanka_data.api.command.fields.When import When as APIWhen
+from lanka_data.api.command.fields.Where import Where as APIWhere
 from lanka_data.command.Command import Command
-from lanka_data.command.InvalidCommandError import InvalidCommandError
-from lanka_data.command.InvalidWhereError import InvalidWhereError
-from lanka_data.command.UnknownHowError import UnknownHowError
 from lanka_data.command.fields.How import How
 from lanka_data.command.fields.What import What
 from lanka_data.command.fields.When import When
 from lanka_data.command.fields.Where import Where
-from lanka_data.api.command.fields.What import What as APIWhat
-from lanka_data.api.command.fields.When import When as APIWhen
-from lanka_data.api.command.fields.Where import Where as APIWhere
+from lanka_data.command.InvalidCommandError import InvalidCommandError
+from lanka_data.command.InvalidWhereError import InvalidWhereError
+from lanka_data.command.UnknownHowError import UnknownHowError
 
 
 class TestCommandFields:

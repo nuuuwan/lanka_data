@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
-from lanka_data.datasets.command.Command import Command
 from lanka_data.api.data.DataSource import DataSource
 from lanka_data.api.dataset.Dataset import Dataset
+from lanka_data.datasets.command.Command import Command
 from utils_future import Log
 
 log = Log("Visual")

@@ -1,6 +1,4 @@
-from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import (
-    ColorSpec,
-)
+from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 
 from .ColorSpecHelpersMixin import ColorSpecHelpersMixin
 

@@ -1,6 +1,4 @@
-from lanka_data.visual.plot_visual.BarChartVisual import (
-    BarChartVisual,
-)
+from lanka_data.visual.plot_visual.BarChartVisual import BarChartVisual
 
 from .PieChartGridMixin import PieChartGridMixin
 
