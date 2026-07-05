@@ -1,4 +1,4 @@
-from lanka_data.api.utils_future import ColorUtils, Parse
+from utils_future import ColorUtils, Parse
 
 
 class ColorSpecCustomMixin:

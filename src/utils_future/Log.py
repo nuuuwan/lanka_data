@@ -18,7 +18,7 @@ class CustomLoggingFormatter(logging.Formatter):
 
 
 class Log(logging.Logger):
-    def __init__(self, name: str = "unamed", level: int = logging.DEBUG):
+    def __init__(self, name: str = "unnamed", level: int = logging.DEBUG):
         super(Log, self).__init__(name, level)
         self.propagate = False
 

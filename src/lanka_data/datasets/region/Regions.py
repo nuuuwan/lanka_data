@@ -3,7 +3,7 @@ from functools import cached_property
 from lanka_data.datasets.region.RegionLoadersMixin import RegionLoadersMixin
 from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 from lanka_data.datasets.region.Where import Where
-from lanka_data.api.utils_future import Log
+from utils_future import Log
 
 log = Log("Regions")
 

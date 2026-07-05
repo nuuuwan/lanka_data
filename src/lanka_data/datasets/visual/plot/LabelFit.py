@@ -2,8 +2,8 @@ import math
 
 import numpy as np
 
-from lanka_data.api.utils_future import timer
-from lanka_data.api.utils_future.PolygonUtils import PolygonUtils
+from utils_future import timer
+from utils_future.PolygonUtils import PolygonUtils
 
 
 class LabelFit:

@@ -8,7 +8,7 @@ from lanka_data.datasets.visual.plot.Font import Font
 from lanka_data.datasets.visual.plot.Footer import Footer
 from lanka_data.datasets.visual.plot.Header import Header
 from lanka_data.datasets.visual.plot.Text import Text
-from lanka_data.api.utils_future import File, Log, timer
+from utils_future import File, Log, timer
 
 log = Log("Plot")
 

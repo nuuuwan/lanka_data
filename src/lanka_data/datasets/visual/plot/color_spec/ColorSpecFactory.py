@@ -2,7 +2,7 @@ from lanka_data.datasets.visual.plot.color_spec import ColorSpec
 from lanka_data.datasets.visual.plot.color_spec.ColorSpecHelpers import (
     ColorSpecHelpers,
 )
-from lanka_data.api.utils_future import Log
+from utils_future import Log
 
 log = Log("ColorSpecFactory")
 

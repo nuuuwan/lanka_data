@@ -3,7 +3,7 @@ import os
 from rapidfuzz import fuzz
 
 from lanka_data.datasets.region import RegionRawDataMixin
-from lanka_data.api.utils_future import WWW, JSONFile, Log
+from utils_future import WWW, JSONFile, Log
 
 log = Log("oneoff_lg_correction_map")
 

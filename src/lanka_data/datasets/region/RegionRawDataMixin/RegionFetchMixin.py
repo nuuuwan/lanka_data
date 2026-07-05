@@ -1,6 +1,6 @@
 from functools import cache
 
-from lanka_data.api.utils_future import WWW
+from utils_future import WWW
 
 
 class RegionFetchMixin:

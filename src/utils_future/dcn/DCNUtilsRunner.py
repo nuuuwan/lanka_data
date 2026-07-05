@@ -3,11 +3,11 @@ import time
 
 from shapely.geometry import shape
 
-from lanka_data.api.utils_future.dcn.DCNUtilsAlgorithm import (
+from utils_future.dcn.DCNUtilsAlgorithm import (
     DCNUtilsAlgorithm,
 )
-from lanka_data.api.utils_future.dcn.DCNUtilsCompute import DCNUtilsCompute
-from lanka_data.api.utils_future.Log import Log
+from utils_future.dcn.DCNUtilsCompute import DCNUtilsCompute
+from utils_future.Log import Log
 
 log = Log("DCNUtilsRunner")
 

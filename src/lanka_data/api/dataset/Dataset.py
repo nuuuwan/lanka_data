@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from lanka_data.api.utils_future import Log
+from utils_future import Log
 
 log = Log("Dataset")
 

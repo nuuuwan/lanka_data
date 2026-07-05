@@ -3,7 +3,7 @@ import os
 import time
 from typing import Any
 
-from lanka_data.api.utils_future.Log import Log
+from utils_future.Log import Log
 
 log = Log("timer")
 

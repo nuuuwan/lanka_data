@@ -6,10 +6,10 @@ from functools import cached_property
 
 import requests
 
-from lanka_data.api.utils_future.BinaryFile import BinaryFile
-from lanka_data.api.utils_future.JSONFile import JSONFile
-from lanka_data.api.utils_future.Log import Log
-from lanka_data.api.utils_future.timer import timer
+from utils_future.BinaryFile import BinaryFile
+from utils_future.JSONFile import JSONFile
+from utils_future.Log import Log
+from utils_future.timer import timer
 
 log = Log("WWW")
 

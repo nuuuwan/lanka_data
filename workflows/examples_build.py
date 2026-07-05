@@ -1,4 +1,4 @@
-from lanka_data.datasets.examples import Example
+from lanka_data.examples import Example
 
 if __name__ == "__main__":
     Example.build()

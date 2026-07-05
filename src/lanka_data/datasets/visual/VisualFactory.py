@@ -11,7 +11,7 @@ from lanka_data.datasets.visual.plot_visual.MapVisual import MapVisual
 from lanka_data.datasets.visual.plot_visual.PieChartVisual import (
     PieChartVisual,
 )
-from lanka_data.api.utils_future import Log
+from utils_future import Log
 
 log = Log("VisualFactory")
 

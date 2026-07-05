@@ -8,7 +8,7 @@ from lanka_data.datasets.visual.plot.color_spec import (
     ColorSpecFactory,
 )
 from lanka_data.datasets.visual.Visual import Visual
-from lanka_data.api.utils_future.timer import timer
+from utils_future.timer import timer
 
 
 class PlotVisual(Visual):

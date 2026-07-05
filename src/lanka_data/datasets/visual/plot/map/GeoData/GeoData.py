@@ -8,7 +8,7 @@ import pandas as pd
 from lanka_data.datasets.visual.plot.map.GeoData.GeoDataLoaderMixin import (
     GeoDataLoaderMixin,
 )
-from lanka_data.api.utils_future import DCNUtils, Log
+from utils_future import DCNUtils, Log
 
 log = Log("GeoData")
 
