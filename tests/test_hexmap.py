@@ -99,6 +99,10 @@ class TestHexCountError:
         actual = max(1, round(ideal))
         assert abs(ideal - actual) > HexData.HEXMAP_ERROR
 
+    def test_non_positive_weights_give_each_region_one_hex(self):
+        counts = HexData.get_counts({"A": 0, "B": 0})
+        assert counts == {"A": 1, "B": 1}
+
 
 class TestHexBoundary:
     RADIUS = 1.0
