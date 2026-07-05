@@ -20,11 +20,12 @@ class CommandBase:
             Where, where, cmds.pop("where_cmd", None)
         )
         self.how = self._build_field(How, how, cmds.pop("how_cmd", None))
+        self._validate_parts()
         self._validate_coupling()
 
-    @staticmethod
-    def _build_field(field_cls, value, value_cmd):
-        field_value = CommandBase._resolve_field_value(value, value_cmd)
+    @classmethod
+    def _build_field(cls, field_cls, value, value_cmd):
+        field_value = cls._resolve_field_value(value, value_cmd)
         if isinstance(field_value, field_cls):
             return field_value
         return field_cls(field_value)
@@ -43,6 +44,12 @@ class CommandBase:
         unknown = sorted(set(cmds) - known)
         if unknown:
             raise TypeError(f"Unknown command fields: {', '.join(unknown)}")
+
+    def _validate_parts(self):
+        self.what.value
+        self.when.value
+        self.where.value
+        self.how.value
 
     @cached_property
     def cmd_id(self):

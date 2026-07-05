@@ -35,7 +35,7 @@ class TestCommandFields:
         assert command.how_cmd == "Map"
 
     def test_command_rejects_unknown_fields_before_validation(self):
-        with pytest.raises(TypeError):
+        with pytest.raises(TypeError, match="other_cmd"):
             Command(what_cmd="Unknown", other_cmd="Other")
 
     def test_copy_can_clear_empty_string_fields(self):
