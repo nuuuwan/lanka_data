@@ -142,3 +142,25 @@ class TestHexBoundary:
 
         HexMapBoundaryMixin._draw_boundaries(FakeAx(), layout)
         assert len(drawn) == 2
+
+
+class TestHexScaleRange:
+    def test_range_reflects_lowest_and_highest_per_region(self):
+        region_to_weight = {"A": 100, "B": 100}
+        hexes = [("A", 0, 0), ("A", 1, 0), ("B", 2, 0)]
+        value_min, value_max = HexData._value_per_hex_range(
+            region_to_weight, hexes
+        )
+        assert value_min == 50
+        assert value_max == 100
+
+    def test_empty_hexes_gives_no_range(self):
+        assert HexData._value_per_hex_range({}, []) == (None, None)
+
+    def test_scale_text_shows_range_when_values_differ(self):
+        text = HexMapVisual._scale_text(50, 100)
+        assert text == "Each hexagon represents 50 to 100 people"
+
+    def test_scale_text_collapses_when_values_equal(self):
+        text = HexMapVisual._scale_text(100, 100)
+        assert text == "Each hexagon represents ~100 people"

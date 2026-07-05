@@ -18,14 +18,23 @@ class HexMapVisual(PlotVisual, HexMapDrawMixin, HexMapBoundaryMixin):
         }
 
     @staticmethod
-    def _draw_scale(ax, layout):
-        value_per_hex = layout.get("value_per_hex")
-        if not value_per_hex:
+    def _scale_text(value_min, value_max):
+        a = round(value_min)
+        b = round(value_max)
+        if a == b:
+            return f"Each hexagon represents ~{a:,} people"
+        return f"Each hexagon represents {a:,} to {b:,} people"
+
+    @classmethod
+    def _draw_scale(cls, ax, layout):
+        value_min = layout.get("value_per_hex_min")
+        value_max = layout.get("value_per_hex_max")
+        if value_min is None or value_max is None:
             return
         ax.text(
             0.5,
             -0.05,
-            f"Each hexagon represents ~{round(value_per_hex):,} people",
+            cls._scale_text(value_min, value_max),
             fontsize=9,
             ha="center",
             va="top",

@@ -33,6 +33,21 @@ class HexData(
             result[row["region_id"]] = (centroid.x, centroid.y)
         return result
 
+    @staticmethod
+    def _value_per_hex_range(region_to_weight, hexes):
+        region_to_hex_count = {}
+        for region_id, _, _ in hexes:
+            region_to_hex_count[region_id] = (
+                region_to_hex_count.get(region_id, 0) + 1
+            )
+        values = [
+            region_to_weight[region_id] / count
+            for region_id, count in region_to_hex_count.items()
+        ]
+        if not values:
+            return None, None
+        return min(values), max(values)
+
     @classmethod
     def _compute(cls, data_list, region_to_weight):
         gdf = GeoData.get_geopandas_dataframe(data_list, True)
@@ -42,10 +57,15 @@ class HexData(
         centers, radius = cls.build_grid(tuple(gdf.total_bounds), total_count)
         hexes = cls.assign(centroids, counts, centers)
         value_per_hex = sum(region_to_weight.values()) / max(len(hexes), 1)
+        value_min, value_max = cls._value_per_hex_range(
+            region_to_weight, hexes
+        )
         return {
             "radius": radius,
             "hexes": hexes,
             "value_per_hex": value_per_hex,
+            "value_per_hex_min": value_min,
+            "value_per_hex_max": value_max,
         }
 
     @classmethod
