@@ -39,8 +39,8 @@ def _alias_prefix(old_name, new_name):
             sys.modules[old_name + suffix] = child_module
 
 
-_export_names("api", _API_EXPORTS)
-_export_names("datasets", _DOMAIN_EXPORTS)
+_export_names("lanka_data.api", _API_EXPORTS)
+_export_names("lanka_data.datasets", _DOMAIN_EXPORTS)
 
 for _old_child in [
     "command",
@@ -51,23 +51,38 @@ for _old_child in [
     "region",
     "visual",
 ]:
-    _alias_prefix(f"lanka_data.{_old_child}", f"datasets.{_old_child}")
+    _alias_prefix(
+        f"lanka_data.{_old_child}",
+        f"lanka_data.datasets.{_old_child}",
+    )
 
 for _old_name, _new_name in {
-    "lanka_data.command.CommandCache": "api.command.CommandCache",
-    "lanka_data.command.CommandError": "api.command.CommandError",
-    "lanka_data.command.CommandLoaderMixin": "api.command.CommandLoaderMixin",
-    "lanka_data.command.InvalidCommandError": "api.command.InvalidCommandError",
-    "lanka_data.command.InvalidWhenError": "api.command.InvalidWhenError",
-    "lanka_data.command.InvalidWhereError": "api.command.InvalidWhereError",
-    "lanka_data.command.UnknownHowError": "api.command.UnknownHowError",
-    "lanka_data.command.UnknownWhatError": "api.command.UnknownWhatError",
-    "lanka_data.data.DataSource": "api.data.DataSource",
-    "lanka_data.data.Segregation": "api.data.Segregation",
-    "lanka_data.dataset.Dataset": "api.dataset.Dataset",
-    "lanka_data.dataset.DiffDataset": "api.dataset.DiffDataset",
+    "lanka_data.command.CommandCache": "lanka_data.api.command.CommandCache",
+    "lanka_data.command.CommandError": "lanka_data.api.command.CommandError",
+    "lanka_data.command.CommandLoaderMixin": (
+        "lanka_data.api.command.CommandLoaderMixin"
+    ),
+    "lanka_data.command.InvalidCommandError": (
+        "lanka_data.api.command.InvalidCommandError"
+    ),
+    "lanka_data.command.InvalidWhenError": (
+        "lanka_data.api.command.InvalidWhenError"
+    ),
+    "lanka_data.command.InvalidWhereError": (
+        "lanka_data.api.command.InvalidWhereError"
+    ),
+    "lanka_data.command.UnknownHowError": (
+        "lanka_data.api.command.UnknownHowError"
+    ),
+    "lanka_data.command.UnknownWhatError": (
+        "lanka_data.api.command.UnknownWhatError"
+    ),
+    "lanka_data.data.DataSource": "lanka_data.api.data.DataSource",
+    "lanka_data.data.Segregation": "lanka_data.api.data.Segregation",
+    "lanka_data.dataset.Dataset": "lanka_data.api.dataset.Dataset",
+    "lanka_data.dataset.DiffDataset": "lanka_data.api.dataset.DiffDataset",
     "lanka_data.dataset.RegionValueDataset": (
-        "api.dataset.RegionValueDataset"
+        "lanka_data.api.dataset.RegionValueDataset"
     ),
 }.items():
     sys.modules[_old_name] = import_module(_new_name)
