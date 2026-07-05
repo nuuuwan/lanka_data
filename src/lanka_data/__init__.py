@@ -1,7 +1,8 @@
 # lanka_data (auto generate by build_inits.py)
 # flake8: noqa: F408
 
-from lanka_data.api import (Command, CommandBase, CommandCache, CommandError,
+from lanka_data.api import (Command, CommandBase, CommandBaseValidationMixin,
+                            CommandCache, CommandError,
                             CommandIntrospectionMixin, CommandLoaderMixin,
                             Dataset, DataSource, DiffDataset, How,
                             HowIntrospectionMixin, HowRegistryMixin,
