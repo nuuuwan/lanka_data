@@ -358,7 +358,13 @@ An interactive REPL for querying the API locally:
 
 - **`ConsoleApp`** — the entry point and read/eval loop.
 - **`ConsoleCommandLibrary`** — builds command and field suggestions.
-- **`ConsoleCompleter`** — readline tab completion over those suggestions.
+- **`ConsoleCompleter`** — matches suggestions by prefix (also drives the
+  readline fallback).
+- **`ConsolePromptCompleter`** — adapts the matches into `prompt_toolkit`
+  completions for the drop-down menu.
+- **`ConsolePrompt`** — reads input via a `prompt_toolkit` session that shows
+  auto-complete suggestions in a drop-down as you type, falling back to
+  readline-backed `input` when no interactive terminal is available.
 - **`ConsoleLocalCommands`** — built-ins (`help`, `fields`, `examples`,
   `commands`, `clear`, `exit`).
 - **`ConsoleRenderer`** — Rich-formatted tables and banners.
