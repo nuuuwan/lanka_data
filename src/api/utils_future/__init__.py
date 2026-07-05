@@ -1,6 +1,3 @@
-# api.utils_future (auto generate by build_inits.py)
-# flake8: noqa: F408
-
 from api.utils_future.BinaryFile import BinaryFile
 from api.utils_future.ColorUtils import ColorUtils
 from api.utils_future.dcn import (

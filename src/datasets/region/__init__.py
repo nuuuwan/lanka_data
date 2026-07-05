@@ -1,6 +1,3 @@
-# datasets.region (auto generate by build_inits.py)
-# flake8: noqa: F408
-
 from datasets.region.RegionLoadersMixin import RegionLoadersMixin
 from datasets.region.RegionParserMixin import (
     RegionParserMixin,

@@ -1,6 +1,3 @@
-# lanka_data.dataset (auto generate by build_inits.py)
-# flake8: noqa: F408
-
 from datasets.dataset.custom import (
     Census2001Dataset,
     Census2012Dataset,
