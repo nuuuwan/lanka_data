@@ -14,6 +14,7 @@ dependencies = [
     "geopandas",
     "shapely",
     "rich>=13.9.4",
+    "prompt_toolkit>=3.0.0",
 ]
 
 [tool.setuptools.packages.find]

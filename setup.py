@@ -16,6 +16,7 @@ INSTALL_REQUIRES = [
     "geopandas",
     "shapely",
     "rich>=13.9.4",
+    "prompt_toolkit>=3.0.0",
 ]
 
 setuptools.setup(
