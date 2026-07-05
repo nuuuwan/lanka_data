@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from functools import cached_property
 
 from lanka_data.api.command.InvalidCommandError import InvalidCommandError
-from lanka_data.datasets.command.fields import How, What, When, Where
+from lanka_data.api.command.fields import How, What, When, Where
 
 
 @dataclass(init=False)

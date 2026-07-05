@@ -2,6 +2,9 @@ from dataclasses import dataclass
 import re
 
 from lanka_data.api.command.InvalidWhereError import InvalidWhereError
+from lanka_data.api.command.fields.RegionTypeRegistry import (
+    RegionTypeRegistry,
+)
 from lanka_data.api.command.fields.WhereIntrospectionMixin import (
     WhereIntrospectionMixin,
 )
@@ -10,6 +13,17 @@ from lanka_data.api.command.fields.WhereIntrospectionMixin import (
 @dataclass(frozen=True)
 class Where(WhereIntrospectionMixin):
     value: str
+
+    @classmethod
+    def available_region_types(cls):
+        values = set()
+        for prefix_map in RegionTypeRegistry.PREFIX_MAPS.values():
+            values.update(prefix_map.values())
+        return sorted(values)
+
+    @classmethod
+    def available_examples(cls):
+        return RegionTypeRegistry.EXAMPLES
 
     def __post_init__(self):
         if self.value == "":
