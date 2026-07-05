@@ -28,4 +28,6 @@ python3 -m black --quiet --skip-string-normalization --line-length 78 <file>
 python3 -m flake8 --ignore="CFQ002,W503" --per-file-ignores="__init__.py:F401" --max-function-length 40 --max-line-length 80 --max-complexity 5 <file>
 ```
 
+Also, run all unittests.
+
 Fix all flake8 output before finishing.
