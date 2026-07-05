@@ -6,10 +6,14 @@ examples) and `README.philosophy.md` (the design rationale).
 
 Every query is a single string of the form `<what>/<when>/<where>/<how>`
 (for example `Religion/2012-2024/LK:district/Map:Change`). The classes below
-turn that string into a JSON payload or a rendered image. Read top to bottom:
-command **fields** compose into a **command**, a command produces **datasets**,
-datasets plus the command produce a **visual**, and the supporting, utility, and
-tooling classes sit around that spine.
+turn that string into a JSON payload or a rendered image.
+
+Read top to bottom:
+
+- ommand **fields** compose into a **command**
+- a command produces **datasets**,
+- datasets plus the command produce a **visual**,
+- the supporting, utility, and tooling classes sit around that spine.
 
 The package follows one-class-per-file, with oversized classes split into named
 `Mixin` classes that live beside (or in a folder with) the class they extend.
@@ -21,7 +25,7 @@ The package follows one-class-per-file, with oversized classes split into named
 The four fields are the atoms of the API. Each is a frozen dataclass that wraps a
 single `value: str`, validates it on construction, and exposes typed accessors so
 the rest of the pipeline never has to re-parse the raw string. They live in
-`lanka_data.api.command.fields`.
+`lanka_data.api.fields`.
 
 ### `What`
 
