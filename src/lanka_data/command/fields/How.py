@@ -79,6 +79,8 @@ class How:
 
     @property
     def modifier_label(self):
+        if self.modifier is None:
+            return None
         return self.modifier_spec.get(
             "label", self.split_camel(self.modifier)
         )

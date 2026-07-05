@@ -17,6 +17,9 @@ class TestHowRegistry:
         assert how.pct_rank == 2
         assert ColorSpecHelpers.PCT_VALUE_PARAM_TO_KEY["3rdPct"] == 2
 
+    def test_missing_modifier_has_no_modifier_label(self):
+        assert How("Map").modifier_label is None
+
     def test_all_registered_modifiers_compose_with_representative_where(self):
         for modifier in How.MODIFIERS:
             how = How(f"Map:{modifier}")

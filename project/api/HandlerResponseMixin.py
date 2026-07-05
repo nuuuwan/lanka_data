@@ -1,4 +1,5 @@
 import json
+import traceback
 
 from lanka_data.command.CommandError import CommandError
 
@@ -21,6 +22,7 @@ class HandlerResponseMixin:
         except CommandError as e:
             self._write_json(400, {"error": e.to_dict()})
         except Exception:
+            traceback.print_exc()
             self._write_json(500, {"error": "Internal server error"})
         return None
 

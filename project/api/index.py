@@ -23,7 +23,7 @@ class handler(HandlerResponseMixin, BaseHTTPRequestHandler):
     def _is_safe_image_path(self, image_path):
         output_dir = os.path.realpath(Plot.DIR_OUTPUT)
         image_path = os.path.realpath(image_path)
-        return image_path.startswith(output_dir + os.sep)
+        return os.path.commonpath([output_dir, image_path]) == output_dir
 
     def _validate_safe_image_path(self, image_path):
         if image_path and not self._is_safe_image_path(image_path):
