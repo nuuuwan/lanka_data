@@ -2,8 +2,8 @@ import os
 
 from rapidfuzz import fuzz
 
-from datasets.region import RegionRawDataMixin
-from api.utils_future import WWW, JSONFile, Log
+from lanka_data.datasets.region import RegionRawDataMixin
+from lanka_data.api.utils_future import WWW, JSONFile, Log
 
 log = Log("oneoff_lg_correction_map")
 
@@ -78,7 +78,12 @@ def get_old_id_to_new_id():
 
 if __name__ == "__main__":
     corrections_path = os.path.join(
-        "src", "datasets", "dataset", "custom", "lg.corrections.json"
+        "src",
+        "lanka_data",
+        "datasets",
+        "dataset",
+        "custom",
+        "lg.corrections.json",
     )
     corrections_file = JSONFile(corrections_path)
     corrections_file.write(get_old_id_to_new_id())

@@ -2,7 +2,7 @@ import json
 import os
 import sys
 
-from datasets.command.CommandRunner import CommandRunner
+from lanka_data.datasets.command.CommandRunner import CommandRunner
 
 
 def main(command_str):
