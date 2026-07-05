@@ -5,16 +5,67 @@ from lanka_data.command.InvalidCommandError import InvalidCommandError
 from lanka_data.command.fields import How, What, When, Where
 
 
-@dataclass
+@dataclass(init=False)
 class CommandBase:
-    what_cmd: str
-    when_cmd: str
-    where_cmd: str
-    how_cmd: str
+    what: What
+    when: When
+    where: Where
+    how: How
 
-    def __post_init__(self):
+    def __init__(self, what=None, when=None, where=None, how=None, **cmds):
+        self._validate_cmd_names(cmds)
+        self.what = self._build_field(What, what, cmds.pop("what_cmd", None))
+        self.when = self._build_field(When, when, cmds.pop("when_cmd", None))
+        self.where = self._build_field(
+            Where, where, cmds.pop("where_cmd", None)
+        )
+        self.how = self._build_field(How, how, cmds.pop("how_cmd", None))
         self._validate_parts()
         self._validate_coupling()
+
+    @classmethod
+    def _build_field(cls, field_cls, value, value_cmd):
+        field_value = cls._resolve_field_value(value, value_cmd)
+        if isinstance(field_value, field_cls):
+            return field_value
+        return field_cls(field_value)
+
+    @staticmethod
+    def _resolve_field_value(value, value_cmd):
+        if value_cmd is not None:
+            return value_cmd
+        if value is None:
+            return ""
+        return value
+
+    @staticmethod
+    def _validate_cmd_names(cmds):
+        known = {"what_cmd", "when_cmd", "where_cmd", "how_cmd"}
+        unknown = sorted(set(cmds) - known)
+        if unknown:
+            raise TypeError(f"Unknown command fields: {', '.join(unknown)}")
+
+    def _validate_parts(self):
+        for field_name, value, field_cls in self._field_validation_pairs():
+            self._validate_part(field_name, value, field_cls)
+
+    @staticmethod
+    def _validate_part(field_name, value, field_cls):
+        if isinstance(value, field_cls):
+            return
+        raise TypeError(
+            "Invalid command field type for "
+            + f"{field_name}: expected {field_cls.__name__}, "
+            + f"got {type(value).__name__}"
+        )
+
+    def _field_validation_pairs(self):
+        return [
+            ("what", self.what, What),
+            ("when", self.when, When),
+            ("where", self.where, Where),
+            ("how", self.how, How),
+        ]
 
     @cached_property
     def cmd_id(self):
@@ -22,27 +73,21 @@ class CommandBase:
             [self.what_cmd, self.when_cmd, self.where_cmd, self.how_cmd]
         )
 
-    @cached_property
-    def what(self):
-        return What(self.what_cmd)
+    @property
+    def what_cmd(self):
+        return self.what.value
 
-    @cached_property
-    def when(self):
-        return When(self.when_cmd)
+    @property
+    def when_cmd(self):
+        return self.when.value
 
-    @cached_property
-    def where(self):
-        return Where(self.where_cmd)
+    @property
+    def where_cmd(self):
+        return self.where.value
 
-    @cached_property
-    def how(self):
-        return How(self.how_cmd)
-
-    def _validate_parts(self):
-        self.what
-        self.when
-        self.where
-        self.how
+    @property
+    def how_cmd(self):
+        return self.how.value
 
     def _validate_coupling(self):
         if self.how.needs_interval and not self.when.is_interval:
