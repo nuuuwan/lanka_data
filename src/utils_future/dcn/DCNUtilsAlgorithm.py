@@ -1,6 +1,6 @@
 import math
 
-from lanka_data.api.utils_future.dcn.DCNUtilsCompute import DCNUtilsCompute
+from utils_future.dcn.DCNUtilsCompute import DCNUtilsCompute
 
 
 class DCNUtilsAlgorithm:

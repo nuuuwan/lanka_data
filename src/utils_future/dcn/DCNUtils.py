@@ -34,7 +34,7 @@ For each iteration (user controls when done)
 ```
 """
 
-from lanka_data.api.utils_future.dcn.DCNUtilsRunner import DCNUtilsRunner
+from utils_future.dcn.DCNUtilsRunner import DCNUtilsRunner
 
 
 class DCNUtils(DCNUtilsRunner):

@@ -3,7 +3,7 @@ import os
 from lanka_data.datasets.data import FieldNameUtils
 from lanka_data.api.data.DataSource import DataSource
 from lanka_data.api.dataset.RegionValueDataset import RegionValueDataset
-from lanka_data.api.utils_future import WWW, JSONFile, Log
+from utils_future import WWW, JSONFile, Log
 
 log = Log("Census2001Dataset")
 

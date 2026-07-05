@@ -5,7 +5,7 @@ from .ColorSpecCustomMixin import ColorSpecCustomMixin
 from lanka_data.datasets.visual.plot.color_spec.ColorSpecConstants import (
     ColorSpecConstants,
 )
-from lanka_data.api.utils_future import ColorUtils, Parse
+from utils_future import ColorUtils, Parse
 
 
 @dataclass

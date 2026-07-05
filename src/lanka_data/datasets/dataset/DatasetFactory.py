@@ -15,8 +15,8 @@ from lanka_data.api.dataset.DiffDataset import DiffDataset
 from lanka_data.datasets.dataset.EmptyDataset import EmptyDataset
 from lanka_data.api.command.UnknownWhatError import UnknownWhatError
 from lanka_data.datasets.region.Regions import Regions
-from lanka_data.api.utils_future import Log
-from lanka_data.api.utils_future.timer import timer
+from utils_future import Log
+from utils_future.timer import timer
 
 log = Log("DatasetFactory")
 

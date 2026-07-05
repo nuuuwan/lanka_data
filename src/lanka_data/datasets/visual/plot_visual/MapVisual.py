@@ -3,7 +3,7 @@ from lanka_data.datasets.visual.plot.Label import Label
 from lanka_data.datasets.visual.plot.Legend import Legend
 from lanka_data.datasets.visual.plot.map.GeoData import GeoData
 from lanka_data.datasets.visual.plot_visual.PlotVisual import PlotVisual
-from lanka_data.api.utils_future import timer
+from utils_future import timer
 
 
 class MapVisual(PlotVisual):

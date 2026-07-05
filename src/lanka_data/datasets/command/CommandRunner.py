@@ -6,7 +6,7 @@ from lanka_data.datasets.command.CommandHelp import CommandHelp
 from lanka_data.api.data.DataSource import DataSource
 from lanka_data.datasets.dataset.DatasetFactory import DatasetFactory
 from lanka_data.datasets.visual.VisualFactory import VisualFactory
-from lanka_data.api.utils_future.timer import timer
+from utils_future.timer import timer
 
 
 class CommandRunner:

@@ -1,9 +1,9 @@
 import os
 
-from lanka_data.datasets.examples.Example.ExampleOutputMixin import (
+from lanka_data.examples.Example.ExampleOutputMixin import (
     ExampleOutputMixin,
 )
-from lanka_data.api.utils_future import JSONFile
+from utils_future import JSONFile
 
 
 class Example(ExampleOutputMixin):

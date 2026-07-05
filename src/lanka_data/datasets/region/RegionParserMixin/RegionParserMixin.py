@@ -1,5 +1,5 @@
 from .RegionParserRadiusMixin import RegionParserRadiusMixin
-from lanka_data.api.utils_future import timer
+from utils_future import timer
 
 
 class RegionParserMixin(RegionParserRadiusMixin):

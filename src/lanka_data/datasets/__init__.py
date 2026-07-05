@@ -20,10 +20,10 @@ from lanka_data.datasets.dataset import (
     ElectionSummaryDataset,
 )
 from lanka_data.datasets.dataset import EmptyDataset, GIG2Dataset
-from lanka_data.datasets.examples import Example, ExampleOutputMixin
-from lanka_data.datasets.readme import ReadMe, ReadMeExamplesItemMixin
-from lanka_data.datasets.readme import ReadMeExamplesMixin, ReadMeFooterMixin
-from lanka_data.datasets.readme import ReadMeSourcesMixin, ReadMeUsageMixin
+from lanka_data.examples import Example, ExampleOutputMixin
+from lanka_data.readme import ReadMe, ReadMeExamplesItemMixin
+from lanka_data.readme import ReadMeExamplesMixin, ReadMeFooterMixin
+from lanka_data.readme import ReadMeSourcesMixin, ReadMeUsageMixin
 from lanka_data.datasets.region import RegionFetchMixin, RegionLoadersMixin
 from lanka_data.datasets.region import RegionParentMixin, RegionParserMixin
 from lanka_data.datasets.region import (

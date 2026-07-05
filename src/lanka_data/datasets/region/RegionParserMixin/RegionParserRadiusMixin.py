@@ -1,4 +1,4 @@
-from lanka_data.api.utils_future.GeoUtils import GeoUtils
+from utils_future.GeoUtils import GeoUtils
 
 
 class RegionParserRadiusMixin:

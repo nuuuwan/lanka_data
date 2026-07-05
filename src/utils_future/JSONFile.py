@@ -1,6 +1,6 @@
 import json
 
-from lanka_data.api.utils_future.File import File
+from utils_future.File import File
 
 
 class JSONFile(File):
