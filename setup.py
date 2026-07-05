@@ -15,6 +15,7 @@ INSTALL_REQUIRES = [
     "pandas",
     "geopandas",
     "shapely",
+    "rich>=13.9.4",
 ]
 
 setuptools.setup(
