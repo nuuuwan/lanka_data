@@ -74,7 +74,9 @@ class How:
         )
 
     def format(self):
-        base_label = self.BASE_LABELS.get(self.base, self.split_camel(self.base))
+        base_label = self.BASE_LABELS.get(
+            self.base, self.split_camel(self.base)
+        )
         if not self.modifier:
             return base_label or self.split_camel(self.base)
         param_label = self.modifier_spec.get(

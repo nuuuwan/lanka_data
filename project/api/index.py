@@ -1,8 +1,11 @@
-import json
 import os
 from http.server import BaseHTTPRequestHandler
 
 from lanka_data import CommandRunner
+from lanka_data.command.Command import Command
+from lanka_data.command.CommandError import CommandError
+from lanka_data.visual.plot.Plot import Plot
+from project.api.HandlerResponseMixin import HandlerResponseMixin
 
 IMAGE_SUFFIX = "/Image.png"
 CACHE_CONTROL_JSON = (
@@ -11,60 +14,67 @@ CACHE_CONTROL_JSON = (
 CACHE_CONTROL_IMAGE = "public, max-age=86400, s-maxage=31536000, immutable"
 
 
-class handler(BaseHTTPRequestHandler):
+class handler(HandlerResponseMixin, BaseHTTPRequestHandler):
+    def _validate_command(self, command_str):
+        if command_str == "Help":
+            return
+        Command.from_str(command_str)
+
+    def _is_safe_image_path(self, image_path):
+        output_dir = os.path.realpath(Plot.DIR_OUTPUT)
+        image_path = os.path.realpath(image_path)
+        return image_path.startswith(output_dir + os.sep)
+
     def do_GET(self):
         path = self.path.split("?")[0].replace("/api/", "").strip("/")
-
         if path.endswith(IMAGE_SUFFIX.strip("/")):
             self._serve_image(path[: -len(IMAGE_SUFFIX)])
             return
-
         self._serve_json(path)
 
-    def _serve_image(self, command_str):
-        try:
-            result = CommandRunner.run(command_str)
-            image_path = (result.get("result") or {}).get("image_path")
-            if not image_path or not os.path.exists(image_path):
-                raise FileNotFoundError("Image not found")
-            with open(image_path, "rb") as f:
-                data = f.read()
-        except Exception as e:
-            self._write_json(400, {"error": str(e)})
-            return
+    def _get_result(self, command_str):
+        self._validate_command(command_str)
+        return CommandRunner.run(command_str)
 
-        self.send_response(200)
-        self.send_header("Content-Type", "image/png")
-        self.send_header("Content-Length", str(len(data)))
-        self.send_header("Cache-Control", CACHE_CONTROL_IMAGE)
-        self.end_headers()
-        self.wfile.write(data)
+    def _get_safe_image_path(self, result):
+        image_path = (result.get("result") or {}).get("image_path")
+        if image_path and not self._is_safe_image_path(image_path):
+            raise CommandError("Unsafe image path", image_path)
+        if not image_path or not os.path.exists(image_path):
+            raise CommandError("Image not found", image_path)
+        return image_path
+
+    def _read_image(self, command_str):
+        result = self._get_result(command_str)
+        image_path = self._get_safe_image_path(result)
+        with open(image_path, "rb") as f:
+            return f.read()
+
+    def _serve_image(self, command_str):
+        data = self._run_safely(lambda: self._read_image(command_str))
+        if data is not None:
+            self._write_image(data, CACHE_CONTROL_IMAGE)
+
+    def _hide_image_path(self, path, result):
+        inner = result.get("result")
+        image_path = (inner or {}).get("image_path")
+        if image_path and not self._is_safe_image_path(image_path):
+            raise CommandError("Unsafe image path", image_path)
+        if not isinstance(inner, dict) or "image_path" not in inner:
+            return result
+        new_inner = {k: v for k, v in inner.items() if k != "image_path"}
+        new_inner["image_url"] = self._public_url(f"{path}{IMAGE_SUFFIX}")
+        return {**result, "result": new_inner}
+
+    def _build_json_result(self, path):
+        return self._hide_image_path(path, self._get_result(path))
 
     def _serve_json(self, path):
-        try:
-            result = CommandRunner.run(path)
-            inner = result.get("result")
-            if isinstance(inner, dict) and "image_path" in inner:
-                new_inner = {
-                    k: v for k, v in inner.items() if k != "image_path"
-                }
-                new_inner["image_url"] = self._public_url(
-                    f"{path}{IMAGE_SUFFIX}"
-                )
-                result = {**result, "result": new_inner}
+        result = self._run_safely(lambda: self._build_json_result(path))
+        if result is not None:
             self._write_json(200, result, CACHE_CONTROL_JSON)
-        except Exception as e:
-            self._write_json(400, {"error": str(e)})
 
     def _public_url(self, path):
         host = self.headers.get("Host", "")
         scheme = self.headers.get("X-Forwarded-Proto", "https")
         return f"{scheme}://{host}/{path}"
-
-    def _write_json(self, status, obj, cache_control="no-store"):
-        body = json.dumps(obj).encode()
-        self.send_response(status)
-        self.send_header("Content-Type", "application/json")
-        self.send_header("Cache-Control", cache_control)
-        self.end_headers()
-        self.wfile.write(body)

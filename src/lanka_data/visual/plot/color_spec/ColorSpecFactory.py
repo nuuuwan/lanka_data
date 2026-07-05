@@ -1,5 +1,7 @@
 from lanka_data.visual.plot.color_spec import ColorSpec
-from lanka_data.visual.plot.color_spec.ColorSpecHelpers import ColorSpecHelpers
+from lanka_data.visual.plot.color_spec.ColorSpecHelpers import (
+    ColorSpecHelpers,
+)
 from utils_future import Log
 
 log = Log("ColorSpecFactory")
@@ -62,9 +64,7 @@ class ColorSpecFactory:
         )
 
     @staticmethod
-    def _resolve_color_spec(
-        dataset, how, is_diff
-    ):
+    def _resolve_color_spec(dataset, how, is_diff):
         spec = ColorSpecFactory._get_param_color_spec(
             dataset, how.base, how.modifier, is_diff
         )
@@ -88,6 +88,4 @@ class ColorSpecFactory:
                 lambda data: data["region_id"],
                 True,
             )
-        return ColorSpecFactory._resolve_color_spec(
-            dataset, how, is_diff
-        )
+        return ColorSpecFactory._resolve_color_spec(dataset, how, is_diff)

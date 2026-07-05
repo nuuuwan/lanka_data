@@ -12,9 +12,13 @@ class Where:
         if self.value == "":
             return
         if re.fullmatch(r"[A-Za-z0-9:,@.\-]+", self.value or "") is None:
-            raise InvalidWhereError(f"Invalid where: {self.value}", self.value)
+            raise InvalidWhereError(
+                f"Invalid where: {self.value}", self.value
+            )
         if ".." in self.value.replace("...", ""):
-            raise InvalidWhereError(f"Invalid where: {self.value}", self.value)
+            raise InvalidWhereError(
+                f"Invalid where: {self.value}", self.value
+            )
 
     @property
     def parent_part(self):

@@ -6,6 +6,19 @@ log = Log("ElectionDataset")
 
 
 class ElectionSummaryDataset(ElectionDataset):
+    @classmethod
+    def supports(cls, label, year):
+        base_label = label.replace("Summary", "")
+        return label.endswith("Summary") and base_label in cls.get_labels()
+
+    @classmethod
+    def from_summary_label_and_region_data_list_and_year(
+        cls, label: str, region_data_list: list[dict], year: str
+    ) -> "ElectionSummaryDataset":
+        return cls.from_label_and_region_data_list_and_year(
+            label.replace("Summary", ""), region_data_list, year
+        )
+
     def clean_data_row(self, row: dict) -> dict:
         d = {"region_id": row["entity_id"]}
         raw_values = {}
