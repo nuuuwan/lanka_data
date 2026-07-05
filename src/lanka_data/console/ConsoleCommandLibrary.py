@@ -3,6 +3,7 @@ from lanka_data.datasets.command.fields import How, What, When, Where
 
 
 class ConsoleCommandLibrary:
+    DEFAULT_MAX_COMMANDS = 200
     META_COMMANDS = [
         "help",
         "fields",
@@ -13,7 +14,7 @@ class ConsoleCommandLibrary:
         "quit",
     ]
 
-    def __init__(self, max_commands=200):
+    def __init__(self, max_commands=DEFAULT_MAX_COMMANDS):
         self.max_commands = max_commands
 
     def command_suggestions(self):

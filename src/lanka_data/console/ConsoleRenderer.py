@@ -6,14 +6,16 @@ from rich.table import Table
 
 
 class ConsoleRenderer:
+    MAX_DISPLAYED_VALUES = 30
+
     def __init__(self, console):
         self.console = console
 
     def show_banner(self):
         self.console.print(
             Panel.fit(
-                "Lanka Data Console\nType help for commands. Press Tab for "
-                + "completion.",
+                "Lanka Data Console\n"
+                "Type help for commands. Press Tab for completion.",
                 title="lanka_data",
             )
         )
@@ -43,7 +45,9 @@ class ConsoleRenderer:
         table.add_column("Field")
         table.add_column("Values")
         for name, values in rows:
-            table.add_row(name, ", ".join(values[:30]))
+            table.add_row(
+                name, ", ".join(values[: self.MAX_DISPLAYED_VALUES])
+            )
         self.console.print(table)
 
     def show_examples(self, commands):

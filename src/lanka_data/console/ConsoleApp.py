@@ -10,6 +10,8 @@ from lanka_data.datasets.command.CommandRunner import CommandRunner
 
 
 class ConsoleApp:
+    RUN_PREFIX = "run "
+
     def __init__(self, console=None, runner=None, library=None):
         self.console = console or Console()
         self.runner = runner or CommandRunner
@@ -86,9 +88,7 @@ class ConsoleApp:
         return ["clear", "help", "fields", "examples", "commands"]
 
     def run_command(self, line):
-        command = (
-            line[4:].strip() if line.lower().startswith("run ") else line
-        )
+        command = self.normalize_command(line)
         try:
             output = self.runner.run(command)
         except Exception as error:
@@ -96,3 +96,8 @@ class ConsoleApp:
             return
         ConsoleImageOpener.open(output)
         self.renderer.show_output(output)
+
+    def normalize_command(self, line):
+        if line.lower().startswith(self.RUN_PREFIX):
+            return line.split(maxsplit=1)[1].strip()
+        return line
