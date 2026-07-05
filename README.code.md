@@ -285,7 +285,7 @@ These are the low-level drawing helpers used by `PlotVisual` subclasses:
   `how` modifier (rank, percentage, Change, Diversity, Segregation).
 - **Geometry:** **`GeoData`** (+ `GeoDataLoaderMixin`) loads TopoJSON boundaries,
   dissolves and caches them, applies cartogram distortion, and enriches the
-  geodataframe with the dataset's values.
+  `GeoDataFrame` with the dataset's values.
 
 ### Display formatters (`visual/formatters/`)
 
