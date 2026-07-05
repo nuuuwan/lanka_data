@@ -1,5 +1,5 @@
-from lanka_data.api.command.fields import How, What, When, Where
-from lanka_data.api.command.fields.WhatWhenRegistry import WhatWhenRegistry
+from lanka_data.api.fields import How, What, When, Where
+from lanka_data.api.fields.WhatWhenRegistry import WhatWhenRegistry
 
 
 class CommandIntrospectionMixin:

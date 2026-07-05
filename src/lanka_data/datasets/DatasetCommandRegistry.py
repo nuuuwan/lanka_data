@@ -1,7 +1,7 @@
-from lanka_data.api.command.fields.RegionTypeRegistry import RegionTypeRegistry
-from lanka_data.api.command.fields.WhatRegistry import WhatRegistry
-from lanka_data.api.command.fields.WhatWhenRegistry import WhatWhenRegistry
-from lanka_data.api.command.fields.WhenRegistry import WhenRegistry
+from lanka_data.api.fields.RegionTypeRegistry import RegionTypeRegistry
+from lanka_data.api.fields.WhatRegistry import WhatRegistry
+from lanka_data.api.fields.WhatWhenRegistry import WhatWhenRegistry
+from lanka_data.api.fields.WhenRegistry import WhenRegistry
 from lanka_data.datasets.dataset.custom.Census2001Dataset import \
     Census2001Dataset
 from lanka_data.datasets.dataset.custom.Census2012Dataset import \

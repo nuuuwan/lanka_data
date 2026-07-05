@@ -1,10 +1,10 @@
 import re
 from dataclasses import dataclass
 
-from lanka_data.api.command.fields.HowIntrospectionMixin import \
+from lanka_data.api.fields.HowIntrospectionMixin import \
     HowIntrospectionMixin
-from lanka_data.api.command.fields.HowRegistryMixin import HowRegistryMixin
-from lanka_data.api.command.UnknownHowError import UnknownHowError
+from lanka_data.api.fields.HowRegistryMixin import HowRegistryMixin
+from lanka_data.api.command_errors.UnknownHowError import UnknownHowError
 
 
 @dataclass(frozen=True)

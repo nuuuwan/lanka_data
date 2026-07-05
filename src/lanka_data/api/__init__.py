@@ -3,17 +3,18 @@
 
 from lanka_data.api.command import (Command, CommandBase,
                                     CommandBaseValidationMixin, CommandCache,
-                                    CommandError, CommandIntrospectionMixin,
-                                    CommandLoaderMixin, How,
-                                    HowIntrospectionMixin, HowRegistryMixin,
-                                    InvalidCommandError, InvalidWhenError,
-                                    InvalidWhereError, RegionTypeRegistry,
-                                    UnknownHowError, UnknownWhatError, What,
-                                    WhatIntrospectionMixin, WhatRegistry,
-                                    WhatWhenRegistry, When,
-                                    WhenIntrospectionMixin, WhenRegistry,
-                                    Where, WhereIntrospectionMixin)
+                                    CommandIntrospectionMixin,
+                                    CommandLoaderMixin)
+from lanka_data.api.command_errors import (CommandError, InvalidCommandError,
+                                           InvalidWhenError, InvalidWhereError,
+                                           UnknownHowError, UnknownWhatError)
 from lanka_data.api.data import (DataSource, Segregation,
                                  SegregationComputeMixin)
 from lanka_data.api.dataset import (Dataset, DiffDataset, RegionValueDataset,
                                     RegionValueDatasetTableMixin)
+from lanka_data.api.fields import (How, HowIntrospectionMixin,
+                                   HowRegistryMixin, RegionTypeRegistry, What,
+                                   WhatIntrospectionMixin, WhatRegistry,
+                                   WhatWhenRegistry, When,
+                                   WhenIntrospectionMixin, WhenRegistry, Where,
+                                   WhereIntrospectionMixin)
