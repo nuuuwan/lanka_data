@@ -16,5 +16,3 @@ from lanka_data.datasets.region import (RegionFetchMixin, RegionLoadersMixin,
                                         RegionParserRadiusMixin,
                                         RegionRawDataMixin, Regions,
                                         RegionTypeUtils, Where)
-
-DatasetCommandRegistry.register()
