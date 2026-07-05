@@ -1,53 +1,27 @@
-from dataclasses import dataclass
-import re
-
-from lanka_data.api.command.InvalidWhenError import InvalidWhenError
-from lanka_data.datasets.command.fields.WhenIntrospectionMixin import (
-    WhenIntrospectionMixin,
+from lanka_data.api.command.fields.When import When as APIWhen
+from lanka_data.datasets.dataset.custom.Census2001Dataset import (
+    Census2001Dataset,
+)
+from lanka_data.datasets.dataset.custom.Census2012Dataset import (
+    Census2012Dataset,
+)
+from lanka_data.datasets.dataset.custom.Census2024Dataset import (
+    Census2024Dataset,
 )
 
 
-@dataclass(frozen=True)
-class When(WhenIntrospectionMixin):
-    value: str
-
-    def __post_init__(self):
-        if self.value == "":
-            return
-        if self._is_year(self.value):
-            return
-        if self._is_interval(self.value):
-            return
-        raise InvalidWhenError(f"Invalid when: {self.value}", self.value)
-
-    @staticmethod
-    def _is_year(value):
-        return re.fullmatch(r"\d{4}", value or "") is not None
+class When(APIWhen):
+    @classmethod
+    def available_values(cls):
+        values = []
+        for dataset_cls in cls.dataset_classes():
+            values.extend(dataset_cls.get_supported_whens())
+        return sorted(set(values))
 
     @classmethod
-    def _is_interval(cls, value):
-        parts = (value or "").split("-")
-        if len(parts) != 2:
-            return False
-        if not all(cls._is_year(part) for part in parts):
-            return False
-        return int(parts[0]) < int(parts[1])
-
-    @property
-    def is_interval(self):
-        return self._is_interval(self.value)
-
-    @property
-    def years(self):
-        return self.value.split("-") if self.is_interval else [self.value]
-
-    @property
-    def start(self):
-        return self.years[0]
-
-    @property
-    def end(self):
-        return self.years[-1]
-
-    def __str__(self):
-        return self.value
+    def dataset_classes(cls):
+        return [
+            Census2001Dataset,
+            Census2012Dataset,
+            Census2024Dataset,
+        ]
