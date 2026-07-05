@@ -5,36 +5,12 @@ from lanka_data.api.command.UnknownHowError import UnknownHowError
 from lanka_data.api.command.fields.HowIntrospectionMixin import (
     HowIntrospectionMixin,
 )
+from lanka_data.api.command.fields.HowRegistryMixin import HowRegistryMixin
 
 
 @dataclass(frozen=True)
-class How(HowIntrospectionMixin):
+class How(HowIntrospectionMixin, HowRegistryMixin):
     value: str
-
-    BASE_LABELS = {
-        "JSON": None,
-        "Map": None,
-        "Cartogram": "Cartogram (Population based)",
-        "BarChart": "Bar Chart",
-        "PieChart": "Pie Chart",
-        "BumpChart": "Bump Chart",
-        "None": None,
-    }
-    INTERVAL_BASES = {"BumpChart"}
-    MODIFIERS = {
-        "1st": {"label": "Most common", "rank": 0},
-        "Top": {"label": "Most common", "rank": 0},
-        "2nd": {"label": "2nd most common", "rank": 1},
-        "3rd": {"label": "3rd most common", "rank": 2},
-        "Bottom": {"label": "Least common", "rank": -1},
-        "1stPct": {"label": "Most common share", "pct_rank": 0},
-        "2ndPct": {"label": "2nd most common share", "pct_rank": 1},
-        "3rdPct": {"label": "3rd most common share", "pct_rank": 2},
-        "Change": {"label": "Change", "needs_interval": True},
-        "Diversity": {"label": "Diversity"},
-        "DiversityPew": {"label": "Pew diversity"},
-        "Segregation": {"label": "Segregation"},
-    }
 
     def __post_init__(self):
         if self.value == "":
