@@ -2,7 +2,7 @@ from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 
 
 class RegionTypeRegistry:
-    PREFIX_MAPS = RegionTypeUtils._PREFIX_MAPS
+    PREFIX_MAPS = RegionTypeUtils.get_prefix_maps()
     EXAMPLES = [
         "LK",
         "LK:district",

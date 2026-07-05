@@ -96,7 +96,7 @@ class TestCommandFields:
             assert Command.from_str(command_id).cmd_id == command_id
 
     def test_api_field_introspection_has_dataset_values(self):
-        assert APIWhat.available_groups()["census"]
-        assert APIWhen.available_values()
-        assert APIWhere.available_region_types()
-        assert APIWhere.available_examples()
+        assert "Religion" in APIWhat.available_groups()["census"]
+        assert "2012" in APIWhen.available_values()
+        assert "district" in APIWhere.available_region_types()
+        assert "LK:district" in APIWhere.available_examples()
