@@ -1,36 +1,33 @@
 import sys
 from importlib import import_module
 
-from api.command.CommandCache import CommandCache
-from api.command.CommandError import CommandError
-from api.command.CommandLoaderMixin import CommandLoaderMixin
-from api.command.InvalidCommandError import InvalidCommandError
-from api.command.InvalidWhenError import InvalidWhenError
-from api.command.InvalidWhereError import InvalidWhereError
-from api.command.UnknownHowError import UnknownHowError
-from api.command.UnknownWhatError import UnknownWhatError
-from api.data import DataSource, Segregation, SegregationComputeMixin
-from api.dataset import Dataset, DiffDataset, RegionValueDataset
-from api.dataset import RegionValueDatasetTableMixin
-from datasets import BarChartDrawMixin, BarChartLabelMixin, BarChartVisual
-from datasets import BumpChartDataMixin, BumpChartDrawMixin, BumpChartVisual
-from datasets import Census2001Dataset, Census2012Dataset, Census2024Dataset
-from datasets import ColorSpec, ColorSpecCategoryMixin, ColorSpecConstants
-from datasets import ColorSpecCustomMixin, ColorSpecFactory, ColorSpecHelpers
-from datasets import ColorSpecHelpersMixin, Command, CommandBase, CommandHelp
-from datasets import CommandRunner, DatasetFactory, Diversity, ElectionDataset
-from datasets import ElectionSummaryDataset, EmptyDataset, Example
-from datasets import ExampleOutputMixin, FieldNameUtils, Font, Footer, GeoData
-from datasets import GeoDataLoaderMixin, GIG2Dataset, Header, HowFormatter
-from datasets import JSONVisual, Label, LabelFit, Legend, MapVisual
-from datasets import PieChartGridMixin, PieChartVisual, Plot, PlotVisual
-from datasets import ReadMe, ReadMeExamplesItemMixin, ReadMeExamplesMixin
-from datasets import ReadMeFooterMixin, ReadMeSourcesMixin, ReadMeUsageMixin
-from datasets import RegionFetchMixin, RegionLoadersMixin, RegionParentMixin
-from datasets import RegionParserMixin, RegionParserRadiusMixin
-from datasets import RegionRawDataMixin, Regions, RegionTypeUtils, Text
-from datasets import Visual, VisualFactory, WhatFormatter, Where
-from datasets import WhereFormatter
+_API_EXPORTS = """
+CommandCache CommandError CommandLoaderMixin InvalidCommandError
+InvalidWhenError InvalidWhereError UnknownHowError UnknownWhatError
+DataSource Segregation SegregationComputeMixin Dataset DiffDataset
+RegionValueDataset RegionValueDatasetTableMixin
+""".split()
+_DATASET_EXPORTS = """
+BarChartDrawMixin BarChartLabelMixin BarChartVisual BumpChartDataMixin
+BumpChartDrawMixin BumpChartVisual Census2001Dataset Census2012Dataset
+Census2024Dataset ColorSpec ColorSpecCategoryMixin ColorSpecConstants
+ColorSpecCustomMixin ColorSpecFactory ColorSpecHelpers ColorSpecHelpersMixin
+Command CommandBase CommandHelp CommandRunner DatasetFactory Diversity
+ElectionDataset ElectionSummaryDataset EmptyDataset Example ExampleOutputMixin
+FieldNameUtils Font Footer GeoData GeoDataLoaderMixin GIG2Dataset Header
+HowFormatter JSONVisual Label LabelFit Legend MapVisual PieChartGridMixin
+PieChartVisual Plot PlotVisual ReadMe ReadMeExamplesItemMixin
+ReadMeExamplesMixin ReadMeFooterMixin ReadMeSourcesMixin ReadMeUsageMixin
+RegionFetchMixin RegionLoadersMixin RegionParentMixin RegionParserMixin
+RegionParserRadiusMixin RegionRawDataMixin Regions RegionTypeUtils Text
+Visual VisualFactory WhatFormatter Where WhereFormatter
+""".split()
+
+
+def _export_names(module_name, names):
+    module = import_module(module_name)
+    for name in names:
+        globals()[name] = getattr(module, name)
 
 
 def _alias_prefix(old_name, new_name):
@@ -41,6 +38,9 @@ def _alias_prefix(old_name, new_name):
             suffix = name.removeprefix(new_name)
             sys.modules[old_name + suffix] = child_module
 
+
+_export_names("api", _API_EXPORTS)
+_export_names("datasets", _DATASET_EXPORTS)
 
 for _old_child in [
     "command",
