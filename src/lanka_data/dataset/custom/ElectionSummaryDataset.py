@@ -12,7 +12,7 @@ class ElectionSummaryDataset(ElectionDataset):
         return label.endswith("Summary") and base_label in cls.get_labels()
 
     @classmethod
-    def from_summary_label_and_region_data_list_and_year(
+    def from_summary_label_data_and_year(
         cls, label: str, region_data_list: list[dict], year: str
     ) -> "ElectionSummaryDataset":
         return cls.from_label_and_region_data_list_and_year(

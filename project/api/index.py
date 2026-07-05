@@ -25,6 +25,10 @@ class handler(HandlerResponseMixin, BaseHTTPRequestHandler):
         image_path = os.path.realpath(image_path)
         return image_path.startswith(output_dir + os.sep)
 
+    def _validate_safe_image_path(self, image_path):
+        if image_path and not self._is_safe_image_path(image_path):
+            raise CommandError("Unsafe image path", image_path)
+
     def do_GET(self):
         path = self.path.split("?")[0].replace("/api/", "").strip("/")
         if path.endswith(IMAGE_SUFFIX.strip("/")):
@@ -38,8 +42,7 @@ class handler(HandlerResponseMixin, BaseHTTPRequestHandler):
 
     def _get_safe_image_path(self, result):
         image_path = (result.get("result") or {}).get("image_path")
-        if image_path and not self._is_safe_image_path(image_path):
-            raise CommandError("Unsafe image path", image_path)
+        self._validate_safe_image_path(image_path)
         if not image_path or not os.path.exists(image_path):
             raise CommandError("Image not found", image_path)
         return image_path
@@ -58,8 +61,7 @@ class handler(HandlerResponseMixin, BaseHTTPRequestHandler):
     def _hide_image_path(self, path, result):
         inner = result.get("result")
         image_path = (inner or {}).get("image_path")
-        if image_path and not self._is_safe_image_path(image_path):
-            raise CommandError("Unsafe image path", image_path)
+        self._validate_safe_image_path(image_path)
         if not isinstance(inner, dict) or "image_path" not in inner:
             return result
         new_inner = {k: v for k, v in inner.items() if k != "image_path"}

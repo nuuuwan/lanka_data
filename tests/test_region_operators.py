@@ -5,7 +5,7 @@ from lanka_data.visual.formatters.WhereFormatter import WhereFormatter
 
 
 class TestRegionOperators:
-    def set_region_year(self, monkeypatch):
+    def setup_region_year_mock(self, monkeypatch):
         monkeypatch.setattr(
             RegionParserMixin,
             "_get_region_year",
@@ -18,7 +18,7 @@ class TestRegionOperators:
         )
 
     def test_range_parent_operator(self, monkeypatch):
-        self.set_region_year(monkeypatch)
+        self.setup_region_year_mock(monkeypatch)
         monkeypatch.setattr(
             RegionParserMixin,
             "get_region_ids_from_range",
@@ -31,7 +31,7 @@ class TestRegionOperators:
         assert region_year == "Current"
 
     def test_comma_parent_operator(self, monkeypatch):
-        self.set_region_year(monkeypatch)
+        self.setup_region_year_mock(monkeypatch)
         parent_ids, region_year = RegionParserMixin.parse_parent_part(
             "LK-1,LK-2"
         )
@@ -39,7 +39,7 @@ class TestRegionOperators:
         assert region_year == "Current"
 
     def test_pre_year_parent_operator(self, monkeypatch):
-        self.set_region_year(monkeypatch)
+        self.setup_region_year_mock(monkeypatch)
         parent_ids, region_year = RegionParserMixin.parse_parent_part(
             "LK-pre1959"
         )
@@ -47,7 +47,7 @@ class TestRegionOperators:
         assert region_year == "1959"
 
     def test_zoom_operator_does_not_expand_by_radius(self, monkeypatch):
-        self.set_region_year(monkeypatch)
+        self.setup_region_year_mock(monkeypatch)
         parent_ids, region_year = RegionParserMixin.parse_parent_part(
             "LK-1127025@20"
         )

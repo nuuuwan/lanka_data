@@ -52,7 +52,7 @@ class DatasetFactory:
         if ElectionSummaryDataset.supports(
             command.what_cmd, command.when_cmd
         ):
-            return ElectionSummaryDataset.from_summary_label_and_region_data_list_and_year(  # noqa: E501
+            return ElectionSummaryDataset.from_summary_label_data_and_year(
                 command.what_cmd,
                 region_data_list,
                 command.when_cmd,

@@ -20,7 +20,7 @@ class CommandCache:
     def set(self, key, value):
         self.data[key] = value
         self.data.move_to_end(key)
-        while len(self.data) > self.max_size:
+        if len(self.data) > self.max_size:
             self.data.popitem(last=False)
 
     @staticmethod

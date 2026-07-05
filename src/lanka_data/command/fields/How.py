@@ -73,16 +73,25 @@ class How:
             self.modifier_spec.get("needs_interval")
         )
 
-    def format(self):
-        base_label = self.BASE_LABELS.get(
-            self.base, self.split_camel(self.base)
-        )
-        if not self.modifier:
-            return base_label or self.split_camel(self.base)
-        param_label = self.modifier_spec.get(
+    @property
+    def base_label(self):
+        return self.BASE_LABELS.get(self.base, self.split_camel(self.base))
+
+    @property
+    def modifier_label(self):
+        return self.modifier_spec.get(
             "label", self.split_camel(self.modifier)
         )
-        return f"{base_label} by {param_label}" if base_label else param_label
+
+    def format_with_modifier(self):
+        if self.base_label:
+            return f"{self.base_label} by {self.modifier_label}"
+        return self.modifier_label
+
+    def format(self):
+        if not self.modifier:
+            return self.base_label or self.split_camel(self.base)
+        return self.format_with_modifier()
 
     def __str__(self):
         return self.value
