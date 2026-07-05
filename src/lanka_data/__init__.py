@@ -84,6 +84,11 @@ for _old_name, _new_name in {
     "lanka_data.command.UnknownWhatError": (
         "lanka_data.api.command.UnknownWhatError"
     ),
+    "lanka_data.command.fields": "lanka_data.api.command.fields",
+    "lanka_data.command.fields.How": "lanka_data.api.command.fields.How",
+    "lanka_data.command.fields.What": "lanka_data.api.command.fields.What",
+    "lanka_data.command.fields.When": "lanka_data.api.command.fields.When",
+    "lanka_data.command.fields.Where": "lanka_data.api.command.fields.Where",
     "lanka_data.data.DataSource": "lanka_data.api.data.DataSource",
     "lanka_data.data.Segregation": "lanka_data.api.data.Segregation",
     "lanka_data.dataset.Dataset": "lanka_data.api.dataset.Dataset",

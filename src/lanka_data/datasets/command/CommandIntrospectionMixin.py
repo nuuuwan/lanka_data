@@ -1,4 +1,4 @@
-from lanka_data.datasets.command.fields import How, What, When, Where
+from lanka_data.api.command.fields import How, What, When, Where
 from lanka_data.datasets.dataset.custom.Census2001Dataset import (
     Census2001Dataset,
 )
