@@ -380,6 +380,172 @@ concerns stay out of the library.
 
 ---
 
+## 8. Adding a new dataset class
+
+A dataset is the one place a new *measurement* enters the system. Because the
+grammar (§README.philosophy.md) is fixed, adding data never adds an endpoint, a
+flag, or a command — it adds a class that satisfies a small contract and
+registers itself into two class-level lists. After that, the same
+`what/when/where/how` string reaches the new data automatically.
+
+### The contract a dataset must satisfy
+
+Pick a base class by how the source data is shaped:
+
+- Extend **`RegionValueDataset`** when you fetch your own table and attach a
+  category → value map to each region (this is the general case, e.g.
+  `Census2024Dataset`).
+- Extend **`GIG2Dataset`** when the data lives in the external `gig-data`
+  repository as TSV keyed by a metadata JSON (e.g. `Census2012Dataset`).
+- Extend **`ElectionDataset`** for an election-shaped source with a per-year
+  `supports(label, year)` check.
+
+Follow the one-class-per-file rule: the file is named after the class
+(`class Foo` → `Foo.py`), lives in `datasets/dataset/custom/`, and any bundled
+metadata JSON sits beside it. Then implement the methods the pipeline calls:
+
+- **`get_source_data_table()`** — fetch the raw rows (usually via `WWW`).
+- **`clean_data_row(row)`** — normalise one raw row into
+  `{"region_id", "values": {category: number}}` (use `FieldNameUtils.normalize`
+  for category labels). `RegionValueDataset` handles aggregation, sorting,
+  totals, and `pct_values` for you via `RegionValueDatasetTableMixin`.
+- **`get_year()`** — the observation year the rows represent.
+- **`get_sources()`** — the `DataSource` provenance record(s).
+
+And the three class-level introspection hooks the framework queries to *find*
+the dataset:
+
+- **`get_labels()`** — the `What` values this dataset answers (its measurement
+  labels).
+- **`get_supported_whens()`** — the `When` values it covers.
+- **`from_label_and_region_data_list(label, region_data_list)`** — the
+  constructor the factory calls once a label matches (`GIG2Dataset` already
+  provides this from its metadata JSON).
+
+`has_values()` and `get_data_table()` come from `RegionValueDataset`, so a
+typical new census-style class only writes the four instance methods plus the
+metadata that backs `get_labels()`.
+
+### How it is seamlessly detected
+
+There is no per-dataset branch anywhere in the pipeline. Detection is *by
+protocol*: the framework iterates a list of dataset classes and asks each one,
+through `get_labels()` / `get_supported_whens()`, whether it answers the current
+command. To wire a new class in, add it to two class-level lists:
+
+1. **`DatasetFactory.CENSUS_DATASET_CLASSES`** (or `ELECTION_DATASET_CLASSES`).
+   `DatasetFactory.from_command` walks this list and, via
+   `_dataset_supports_census`, returns the first class whose
+   `get_supported_whens()` contains `command.when_cmd` *and* whose
+   `get_labels()` contains `command.what_cmd`. Matching a command to a dataset
+   is therefore data-driven — the factory never names your class.
+2. **`DatasetCommandRegistry.CENSUS_DATASET_CLASSES`**. At import time
+   `DatasetCommandRegistry.register()` feeds every class's labels and whens into
+   the generic `WhatRegistry` / `WhenRegistry` / `WhatWhenRegistry`. That is what
+   makes the new labels validate as legal `What` values, appear in
+   `describe_api()`, drive console tab-completion, and be enumerated by
+   `valid_commands()` (and hence the generated README examples).
+
+Once the class is in those two lists, every orthogonal combination comes for
+free without further work: interval queries are split by
+`DatasetFactory.list_from_command` and wrapped in a `DiffDataset` (so
+`When = 2012-2024` and `How = Map:Change` just work); `Where` is expanded
+independently by `Regions`; and every `How` output/modifier is applied later by
+the visual layer. Adding one dataset multiplies the answerable query space by
+the full `When × Where × How` product — this is the generativity described in
+`README.philosophy.md` §3, realised as a registration step rather than new code
+paths.
+
+---
+
+## 9. How the philosophy is implemented
+
+`README.philosophy.md` argues for one fixed, minimal, orthogonal grammar. The
+class layout above is the direct implementation of that argument. This section
+maps each philosophical claim to the code that enforces it.
+
+### One string, no secondary surface (§1, §4)
+
+The entire public interface is `CommandRunner.run(command_str)`. There is no
+options object or config: `CommandLoaderMixin.from_str` splits the one string on
+`/`, requires exactly four tokens, and builds the `Command`; `CommandBase.cmd_id`
+reconstructs the canonical `what/when/where/how` string. Because that string
+contains no characters needing escaping, the *same* value is used as a Python
+argument (`CommandRunner.run`), a CLI argument (`workflows/single.py`), a URL
+path (the `handler` in `project/api/index.py`), and a cache/output file path
+(`CommandCache`, `examples/outputs/<cmd>/`). One grammar, four hosts — not four
+interfaces.
+
+### Four independent fields (§2, §3)
+
+Each axis is its own frozen dataclass — `What`, `When`, `Where`, `How` — that
+validates only itself and never inspects another field's value. Orthogonality is
+then realised by giving each field its *own* consumer, so the query space is a
+Cartesian product rather than an enumerated list:
+
+- `What` selects the **dataset** (`DatasetFactory`, §3/§8).
+- `When` selects the **time**, and intervals are split into start/end and
+  diffed (`DatasetFactory.list_from_command` → `DiffDataset`).
+- `Where` is expanded independently into regions (`Regions.from_command`, §5).
+- `How` selects the **visual and modifier** (`VisualFactory` by `how.base`;
+  colour/rank/pct/Change/Diversity applied in `ColorSpecFactory`, §4).
+
+No single class knows all four vocabularies at once, which is why a new value on
+any one axis composes with every value on the others.
+
+### What independent of How (§2.4)
+
+Datasets emit only normalised values (`values`, `total_value`, `pct_values`);
+they never compute a ranking, a difference, or a diversity index. Those are
+projections applied downstream by the visual/colour layer (`How.rank`,
+`How.pct_rank`, `ColorSpecFactory`, `Diversity`, `Segregation`). So the modifier
+family (`Map:1st`, `Map:Change`, `Map:DiversityPew`, …) can grow and every
+existing measurement acquires the new modifier with no change to the data
+vocabulary.
+
+### The single intentional coupling (§2.4)
+
+The one deliberate cross-field constraint — change-style outputs require an
+interval — is the only coupling in the code: `CommandBase._validate_coupling`
+rejects a command whose `How.needs_interval` is true when `When.is_interval` is
+false, raising `InvalidCommandError`. Every other pair of fields is left free.
+
+### Observation time vs. boundary epoch (§2.3)
+
+The philosophy insists these are separate facts. In code, `When` (an interval)
+and the `Where` selector's `pre<year>` suffix are parsed and resolved by
+different layers: `RegionRawDataMixin` resolves current vs. historical
+(`-pre{year}`) boundaries and computes `region_to_current_ids`, which the
+datasets follow when aggregating. Measurement year never contaminates boundary
+year.
+
+### Empty as the absence of measurement (§2.1)
+
+`What = Empty` is not a dataset with zero rows; it is `EmptyDataset`, whose
+`has_values()` returns `False` and which carries only geometry — exactly the
+"region with no data bound" the philosophy describes, used for base maps and
+boundary inspection.
+
+### Provenance (§4)
+
+Every response is traceable: `CommandRunner.run` returns `sources` (merged
+`DataSource` records via `merge_datasource_list_of_lists`) and `query_time_ms`
+alongside the result, so even a compact one-string request yields a fully
+attributed answer.
+
+### The grammar is domain-agnostic (§0)
+
+The philosophy claims nothing in the grammar is specific to Sri Lanka, censuses,
+or elections. The code enforces this: the `lanka_data.api` package (the fields,
+the command, the registries) must not import any concrete dataset. Instead the
+`datasets` layer *self-registers* its census/election values into the generic
+`WhatRegistry` / `WhenRegistry` / `WhatWhenRegistry` at import time
+(`DatasetCommandRegistry.register()`). The grammar knows only "there are legal
+`What` and `When` values"; the domain supplies them from outside. That
+separation is what makes §8's "add a dataset, not an endpoint" possible.
+
+---
+
 ## Generated vs. hand-authored files
 
 Some `__init__.py` files are marked auto-generated by `build_inits.py` and only
