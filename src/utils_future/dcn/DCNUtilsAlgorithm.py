@@ -1,9 +1,13 @@
 import math
 
 from utils_future.dcn.DCNUtilsCompute import DCNUtilsCompute
+from utils_future.Log import Log
+
+log = Log("DCNUtilsAlgorithm")
 
 
 class DCNUtilsAlgorithm:
+    WARNING_ERROR = 0.2
 
     @staticmethod
     def _iter_coord_lists(geometry):
@@ -32,7 +36,7 @@ class DCNUtilsAlgorithm:
     def compute_force_params(
         features, areas, weights, total_value, total_area
     ):
-        radius, mass, size_errors = {}, {}, []
+        radius, mass, size_errors_and_fid = {}, {}, []
         for feat in features:
             fid = DCNUtilsCompute.get_feature_id(feat)
             desired = total_area * (weights[fid] / total_value)
@@ -40,12 +44,23 @@ class DCNUtilsAlgorithm:
             r = math.sqrt(actual / math.pi)
             m = math.sqrt(desired / math.pi) - math.sqrt(actual / math.pi)
             denom = min(actual, desired)
-            size_errors.append(
-                max(actual, desired) / denom if denom > 0 else 1.0
+            size_errors_and_fid.append(
+                [fid, max(actual, desired) / denom if denom > 0 else 1.0]
             )
             radius[fid] = r
             mass[fid] = m
+        sorted_size_errors = sorted(
+            size_errors_and_fid, key=lambda x: x[1], reverse=True
+        )
+        size_errors = [x[1] for x in sorted_size_errors]
         mean_size_error = sum(size_errors) / len(size_errors)
+        max_fid, max_size_error = sorted_size_errors[0]
+        emoji = (
+            "⚠️"
+            if max_size_error > DCNUtilsAlgorithm.WARNING_ERROR + 1
+            else ""
+        )
+        log.debug(f"{max_fid} {max_size_error=} {emoji}")
         frf = 1.0 / (1.0 + mean_size_error)
         return radius, mass, frf, mean_size_error
 

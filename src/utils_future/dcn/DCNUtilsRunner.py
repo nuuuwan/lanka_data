@@ -39,12 +39,6 @@ class DCNUtilsRunner:
             if td > DCNUtilsRunner.MAX_TIME:
                 log.debug("Max time reached.")
                 break
-            log.debug(
-                f"iteration={i + 1} <= {DCNUtilsRunner.MAX_ITERATIONS},"
-                + f" error={error:.4f} >= {DCNUtilsRunner.EPSILON}"
-                + f" time={td:.2f}s < {DCNUtilsRunner.MAX_TIME}s"
-            )
-
             DCNUtilsAlgorithm.apply_forces(
                 features, centroids, radius, mass, frf
             )
@@ -58,7 +52,5 @@ class DCNUtilsRunner:
         features = geojson["features"]
         DCNUtilsRunner._run_features(features, region_id_to_weight)
         result = gdf.copy()
-        result["geometry"] = [
-            shape(f["geometry"]).buffer(0) for f in features
-        ]
+        result["geometry"] = [shape(f["geometry"]).buffer(0) for f in features]
         return result
