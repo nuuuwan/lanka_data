@@ -15,6 +15,8 @@ class HowRegistryMixin:
         "TreeMap": "Tree Map",
         "Histogram": "Histogram",
         "ScatterPlot": "Scatter Plot",
+        "BivariateMap": "Bivariate Map",
+        "QuadrantMap": "Quadrant Map",
         "LineChart": "Line Chart",
         "MapAnimation": "Animated Map",
         "CartogramAnimation": "Animated Cartogram (Population based)",
