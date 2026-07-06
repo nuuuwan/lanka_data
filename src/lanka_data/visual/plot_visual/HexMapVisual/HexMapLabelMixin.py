@@ -1,9 +1,16 @@
 from lanka_data.visual.plot.LabelTruncator import LabelTruncator
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelFitMixin import (
+    HexMapLabelFitMixin,
+)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelGeoMixin import (
+    HexMapLabelGeoMixin,
+)
 from utils_future import ColorUtils, timer
 
 
-class HexMapLabelMixin:
+class HexMapLabelMixin(HexMapLabelGeoMixin, HexMapLabelFitMixin):
     IS_LIGHT_COLOR = getattr(ColorUtils, "_is_light_color")
+    TRUNCATED_FONT_SIZE = 8
 
     @classmethod
     def _default_fill_color(cls, color):
@@ -11,36 +18,10 @@ class HexMapLabelMixin:
             return "#fff"
         return "#000"
 
-    @staticmethod
-    def _region_hexes(layout):
-        hexes = {}
-        for region_id, x, y in layout["hexes"]:
-            hexes.setdefault(region_id, []).append((x, y))
-        return hexes
-
-    @staticmethod
-    def _region_centroid(points):
-        point_count = len(points)
-        return (
-            sum(x for x, _ in points) / point_count,
-            sum(y for _, y in points) / point_count,
-        )
-
     @classmethod
-    def _region_positions(cls, layout, snap):
-        positions = {}
-        for region_id, points in cls._region_hexes(layout).items():
-            centroid = cls._region_centroid(points)
-            positions[region_id] = (
-                min(
-                    points,
-                    key=lambda point: (point[0] - centroid[0]) ** 2
-                    + (point[1] - centroid[1]) ** 2,
-                )
-                if snap
-                else centroid
-            )
-        return positions
+    def _text_color(cls, region_color):
+        color = region_color or cls._default_fill_color(region_color)
+        return "#666" if cls.IS_LIGHT_COLOR(color) else "#eee"
 
     @staticmethod
     def _is_truncated(region_count):
@@ -55,32 +36,66 @@ class HexMapLabelMixin:
         )
 
     @classmethod
-    @timer
-    def _draw_labels(
+    def _label(cls, name, region_count):
+        return LabelTruncator.get_label(
+            name,
+            region_count,
+            LabelTruncator.HEX_MAX_REGIONS_FULL_LABEL,
+            LabelTruncator.HEX_MAX_REGIONS_TRUNCATE_MID,
+            LabelTruncator.HEX_MAX_REGIONS_TRUNCATE_SMALL,
+        )
+
+    @classmethod
+    def _draw_truncated_labels(
         cls, ax, layout, region_to_name, region_color_map, region_count
     ):
-        positions = cls._region_positions(
-            layout, cls._is_truncated(region_count)
-        )
-        for region_id, (cx, cy) in positions.items():
+        for region_id, (cx, cy) in cls._region_positions(
+            layout, True
+        ).items():
             name = region_to_name.get(region_id, str(region_id))
-            label = LabelTruncator.get_label(
-                name,
-                region_count,
-                LabelTruncator.HEX_MAX_REGIONS_FULL_LABEL,
-                LabelTruncator.HEX_MAX_REGIONS_TRUNCATE_MID,
-                LabelTruncator.HEX_MAX_REGIONS_TRUNCATE_SMALL,
-            )
+            label = cls._label(name, region_count)
             if label is None:
                 continue
-            region_color = region_color_map.get(region_id)
-            color = region_color or cls._default_fill_color(region_color)
-            text_color = "#666" if cls.IS_LIGHT_COLOR(color) else "#eee"
             ax.annotate(
                 label,
                 xy=(cx, cy),
                 ha="center",
                 va="center",
-                fontsize=8,
-                color=text_color,
+                fontsize=cls.TRUNCATED_FONT_SIZE,
+                color=cls._text_color(region_color_map.get(region_id)),
             )
+
+    @classmethod
+    def _draw_full_labels(
+        cls, ax, layout, region_to_name, region_color_map, region_count
+    ):
+        fig = ax.get_figure()
+        for region_id, geom in cls._region_polygons(layout).items():
+            name = region_to_name.get(region_id, str(region_id))
+            label = cls._label(name, region_count)
+            if label is None:
+                continue
+            cx, cy, angle, fontsize = cls._best_label_placement(
+                geom, label, ax, fig
+            )
+            ax.annotate(
+                label,
+                xy=(cx, cy),
+                ha="center",
+                va="center",
+                fontsize=fontsize,
+                color=cls._text_color(region_color_map.get(region_id)),
+                rotation=angle,
+            )
+
+    @classmethod
+    @timer
+    def _draw_labels(
+        cls, ax, layout, region_to_name, region_color_map, region_count
+    ):
+        draw = (
+            cls._draw_truncated_labels
+            if cls._is_truncated(region_count)
+            else cls._draw_full_labels
+        )
+        draw(ax, layout, region_to_name, region_color_map, region_count)

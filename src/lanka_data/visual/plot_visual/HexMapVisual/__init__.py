@@ -5,6 +5,10 @@ from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
     HexMapBoundaryMixin
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import \
     HexMapDrawMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelFitMixin import \
+    HexMapLabelFitMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelGeoMixin \
+    import HexMapLabelGeoMixin
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import \
     HexMapLabelMixin
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapVisual import \
