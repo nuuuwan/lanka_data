@@ -17,6 +17,7 @@ from lanka_data.visual.plot.LabelTruncator import LabelTruncator
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map import (GeoData, GeoDataLoaderMixin, HexData,
                                         HexDataAssignMixin, HexDataCacheMixin,
-                                        HexDataCountMixin, HexDataGridMixin)
+                                        HexDataCountMixin, HexDataGridMixin,
+                                        RegionPopulationFilter)
 from lanka_data.visual.plot.Plot import Plot
 from lanka_data.visual.plot.Text import Text

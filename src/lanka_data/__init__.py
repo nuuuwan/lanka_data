@@ -46,5 +46,6 @@ from lanka_data.visual import (BarChartDrawMixin, BarChartLabelMixin,
                                HexMapLabelMixin, HexMapVisual, HowFormatter,
                                JSONVisual, Label, LabelFit, LabelTruncator,
                                Legend, MapVisual, PieChartGridMixin,
-                               PieChartVisual, Plot, PlotVisual, Text, Visual,
+                               PieChartVisual, Plot, PlotVisual,
+                               RegionPopulationFilter, Text, Visual,
                                VisualFactory, WhatFormatter, WhereFormatter)

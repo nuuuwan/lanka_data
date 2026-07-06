@@ -12,7 +12,8 @@ from lanka_data.visual.plot import (ColorSpec, ColorSpecCategoryMixin,
                                     HexData, HexDataAssignMixin,
                                     HexDataCacheMixin, HexDataCountMixin,
                                     HexDataGridMixin, Label, LabelFit,
-                                    LabelTruncator, Legend, Plot, Text)
+                                    LabelTruncator, Legend, Plot,
+                                    RegionPopulationFilter, Text)
 from lanka_data.visual.plot_visual import (BarChartDrawMixin,
                                            BarChartLabelMixin, BarChartVisual,
                                            BumpChartDataMixin,
