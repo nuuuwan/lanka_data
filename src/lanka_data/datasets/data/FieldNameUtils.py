@@ -3,6 +3,7 @@ from functools import cache
 
 class FieldNameUtils:
     NORMALIZED_TO_ORIGINAL = {
+        # Ethnicity
         "SLTamil": {"SriLankaTamil", "SLTamil"},
         "IndMalaiyagaTamil": {
             "IndianTamil",
