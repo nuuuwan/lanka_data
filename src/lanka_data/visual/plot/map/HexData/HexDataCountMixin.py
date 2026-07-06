@@ -4,7 +4,7 @@ log = Log("HexData")
 
 
 class HexDataCountMixin:
-    HEXMAP_ERROR = 0.1
+    HEXMAP_ERROR = 0.25
 
     @staticmethod
     def _region_error(actual, ideal):
