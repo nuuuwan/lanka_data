@@ -27,19 +27,16 @@ class PieChartGridMixin:
         inset.pie(
             vals,
             colors=[category_to_color[k] for k, _ in ordered],
-            startangle=cls._get_startangle(vals[0], sum(vals)),
-            counterclock=False,
             wedgeprops={"linewidth": 0.2, "edgecolor": "white"},
         )
         inset.text(
             0.5,
-            -0.08,
-            f"{subregion['region_name']}\n"
-            f"{cls._format_population(subregion['total_value'])}",
+            1.1,
+            f"{subregion['region_name']}",
             transform=inset.transAxes,
             ha="center",
             va="top",
-            fontsize=7,
+            fontsize=12,
             color=Style.COLOR_METADATA,
             clip_on=False,
         )

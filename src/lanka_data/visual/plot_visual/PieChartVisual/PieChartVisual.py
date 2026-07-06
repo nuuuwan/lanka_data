@@ -25,12 +25,6 @@ class PieChartVisual(PieChartGridMixin, BarChartVisual):
             (k, v) for k, v in items if k != top_label
         ]
 
-    @staticmethod
-    def _get_startangle(top_value, total_value):
-        if total_value <= 0:
-            return 90
-        return 90 + 360.0 * top_value / total_value / 2
-
     def draw(self, dataset, fig):
         subregions = self._build_subregions(dataset.get_data_table())
         category_labels = self._build_category_labels(subregions)
