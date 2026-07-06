@@ -1,15 +1,22 @@
 from lanka_data.visual.plot.color_spec import ColorSpecFactory
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map.HexData import HexData
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
-    HexMapBoundaryMixin
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import \
-    HexMapDrawMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import (
+    HexMapBoundaryMixin,
+)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import (
+    HexMapDrawMixin,
+)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import (
+    HexMapLabelMixin,
+)
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 
 
-class HexMapVisual(PlotVisual, HexMapDrawMixin, HexMapBoundaryMixin):
+class HexMapVisual(
+    PlotVisual, HexMapDrawMixin, HexMapLabelMixin, HexMapBoundaryMixin
+):
     @staticmethod
     def _region_to_name(data_list):
         return {
