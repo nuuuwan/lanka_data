@@ -34,7 +34,7 @@ class HexMapVisual(
         a = round(value_min / Q) * Q
         b = round(value_max / Q) * Q
         if a == b:
-            return f"Each hexagon represents ~{a:,} people"
+            return f"Each hexagon represents {a:,} people"
         diff = round((b - a) / 2 / Q) * Q
         mid = round((a + b) / 2 / Q) * Q
         return f"Each hexagon represents {mid:,} ± {diff:,} people"
