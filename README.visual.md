@@ -61,18 +61,20 @@ the document is the specification.
 A fixed canvas is the foundation of a house style; every other measurement in
 this guide is expressed relative to it.
 
-- **Aspect & size.** Every figure is **16 × 9 inches** — a widescreen 16:9
-  frame that embeds cleanly in slides, web, and social cards.
-- **Resolution.** Export at **200 DPI**, giving a **3200 × 1800 px** raster.
-  This is the minimum for crisp text at presentation scale; never downscale the
-  DPI to save bytes.
+- **Aspect & size.** The figure aspect ratio adapts to the number of datasets:
+  **1×1** for one, **2×1** for two, **3×1** for three, and **2×2** for four
+  (more than four is rejected). Each panel occupies a **9 × 9 inch** square, so
+  the canvas is a grid of these squares.
+- **Resolution.** Export at **200 DPI**. This is the minimum for crisp text at
+  presentation scale; never downscale the DPI to save bytes.
 - **Format.** Output is **PNG** — lossless, universally embeddable, and free of
   the compression artefacts that JPEG would smear across flat colour fields.
-- **Deterministic layout.** The figure geometry must not depend on the machine
-  or the data volume. The same command produces the same composition every time,
-  so outputs are directly comparable across runs and across time.
+- **Deterministic layout.** The figure geometry must not depend on the machine.
+  The same command produces the same composition every time, so outputs are
+  directly comparable across runs and across time.
 
-*(Reference: `Plot.FIG_WIDTH`, `Plot.FIG_HEIGHT`, `savefig(dpi=200)`.)*
+*(Reference: `PlotLayout.figsize`, `PlotLayout.COUNT_TO_GRID`,
+`savefig(dpi=200)`.)*
 
 ### 2.1 The three horizontal bands
 
