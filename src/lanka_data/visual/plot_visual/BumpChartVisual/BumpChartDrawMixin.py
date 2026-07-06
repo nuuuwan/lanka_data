@@ -2,9 +2,9 @@ class BumpChartDrawMixin:
     COLOR_INCREASE = "#d62728"
     COLOR_DECREASE = "#1f77b4"
     COLOR_UNCHANGED = "#c7c7c7"
-    LINE_WIDTH = 3.6
-    MARKER_SIZE = 34
-    LABEL_FONTSIZE = 9
+    LINE_WIDTH = 10
+    MARKER_SIZE = 200
+    LABEL_FONTSIZE = 12
 
     @classmethod
     def _add_segmented_line(cls, ax, rank1, rank2, color):
@@ -43,9 +43,7 @@ class BumpChartDrawMixin:
             color = (
                 cls.COLOR_INCREASE
                 if delta < 0
-                else (
-                    cls.COLOR_DECREASE if delta > 0 else cls.COLOR_UNCHANGED
-                )
+                else (cls.COLOR_DECREASE if delta > 0 else cls.COLOR_UNCHANGED)
             )
             name = id_to_name.get(rid, str(rid))
             cls._add_segmented_line(ax, r1, r2, color)
