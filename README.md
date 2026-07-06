@@ -62,18 +62,33 @@ Help
 {
     "command_str": "Help",
     "result": {
-        "what_to_whens": [
-            "TODO"
-        ],
-        "where": [
-            "LK*",
-            "EC-*",
-            "LG-*"
-        ],
-        "how": [
-            "JSON",
-            "Map"
-        ],
+        "what_to_whens": {
+            "AgeGroup": [
+                "2001",
+                "2012",
+                "2024"
+            ],
+            "AgriOccupations": [
+                "2001"
+            ],
+            "Attendance": [
+                "2001"
+            ],
+            "Communication": [
+                "2012"
+            ],
+            "ConstructionYear": [
+                "2012"
+                ... // 237 lines ...
+                "3rdPct",
+                "Bottom",
+                "Change",
+                "Diversity",
+                "DiversityPew",
+                "Segregation",
+                "Top"
+            ]
+        },
         "source": "lanka_data",
         "source_url": "https://github.com/nuuuwan/lanka_data/blob/main/README.md"
     },

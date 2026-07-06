@@ -6,11 +6,6 @@ dataset registries, and the visual renderers).
 
 ## HI PRI
 
-- **Implement real `Help`.** `CommandHelp.get_help_result` still returns
-  `what_to_whens=["TODO"]`. Enumerate the actual valid `What`/`When` pairs from
-  `WhatWhenRegistry`, the region forms from `RegionTypeRegistry`, and every
-  `How` base + modifier from `HowRegistryMixin`, so `Help` becomes a live,
-  self-describing index of the query space.
 - **Tabular data output formats (`CSV`, `TSV`, `Table`).** `How` currently
   emits only `JSON` or an image. Add data-export renderers so the underlying
   region/value table can be downloaded directly (e.g. `Religion/2024/LK:district/CSV`),
