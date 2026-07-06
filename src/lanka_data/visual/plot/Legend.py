@@ -1,8 +1,11 @@
+from lanka_data.visual.plot.Style import Style
+
+
 class Legend:
     MAX_ITEMS = 10
     MARKER_SIZE = 100
     LEGEND_KWARGS = {
-        "fontsize": 12,
+        "fontsize": Style.FONT_SIZE_METADATA,
         "loc": "best",
     }
 

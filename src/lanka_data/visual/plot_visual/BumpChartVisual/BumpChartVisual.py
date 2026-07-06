@@ -1,3 +1,4 @@
+from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 
 from .BumpChartDataMixin import BumpChartDataMixin
@@ -23,8 +24,8 @@ class BumpChartVisual(BumpChartDataMixin, BumpChartDrawMixin, PlotVisual):
                 "BumpChart requires a change range, e.g. 2012-2024.",
                 ha="center",
                 va="center",
-                fontsize=10,
-                color="#444",
+                fontsize=Style.FONT_SIZE_METADATA,
+                color=Style.COLOR_METADATA,
                 transform=ax.transAxes,
             )
             return

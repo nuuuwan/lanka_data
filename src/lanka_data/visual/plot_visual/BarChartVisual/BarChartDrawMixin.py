@@ -1,6 +1,7 @@
 from matplotlib.ticker import FuncFormatter
 
 from lanka_data.visual.plot.Legend import Legend
+from lanka_data.visual.plot.Style import Style
 
 
 class BarChartDrawMixin:
@@ -58,7 +59,8 @@ class BarChartDrawMixin:
             x_labels,
             rotation=90 if len(x_labels) > 12 else 45,
             ha="right",
-            fontsize=8,
+            fontsize=Style.FONT_SIZE_METADATA,
+            color=Style.COLOR_METADATA,
         )
         pos = ax.get_position()
         padded_h = max(pos.height - self.BOTTOM_PADDING, pos.height * 0.7)
@@ -69,9 +71,9 @@ class BarChartDrawMixin:
         ax.margins(x=0.06, y=0.12)
         y_pad = max(y_max - y_min, 1) * 0.12
         ax.set_ylim(y_min - y_pad, y_max + y_pad)
-        ax.axhline(0, color="#666", linewidth=0.8)
+        ax.axhline(0, color=Style.COLOR_AXIS, linewidth=0.8)
         ax.yaxis.set_major_formatter(FuncFormatter(self._format_millions))
-        ax.set_ylabel(y_label)
+        ax.set_ylabel(y_label, color=Style.COLOR_METADATA)
 
     @staticmethod
     def _draw_category_legend(ax, category_labels, category_to_color):

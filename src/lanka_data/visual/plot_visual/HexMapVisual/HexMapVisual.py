@@ -1,14 +1,19 @@
 from lanka_data.visual.plot.color_spec import ColorSpecFactory
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map.HexData import HexData
-from lanka_data.visual.plot.map.RegionPopulationFilter import \
-    RegionPopulationFilter
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
-    HexMapBoundaryMixin
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import \
-    HexMapDrawMixin
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import \
-    HexMapLabelMixin
+from lanka_data.visual.plot.map.RegionPopulationFilter import (
+    RegionPopulationFilter,
+)
+from lanka_data.visual.plot.Style import Style
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import (
+    HexMapBoundaryMixin,
+)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import (
+    HexMapDrawMixin,
+)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import (
+    HexMapLabelMixin,
+)
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 
@@ -45,10 +50,10 @@ class HexMapVisual(
             0.5,
             0.05,
             cls._scale_text(value_min, value_max),
-            fontsize=9,
+            fontsize=Style.FONT_SIZE_METADATA,
             ha="center",
             va="bottom",
-            color="#444",
+            color=Style.COLOR_METADATA,
         )
 
     @timer
