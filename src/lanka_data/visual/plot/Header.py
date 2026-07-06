@@ -51,10 +51,11 @@ class Header:
         band_h = self._band_height(fig)
         band_bottom = 1 - band_h
         self._draw_background(fig, band_bottom, band_h)
+        text = self._title()
         Text.plot(
             fig,
             (0.5, band_bottom + band_h / 2),
-            self._title(),
-            fontsize=Style.FONT_SIZE_TITLE,
+            text,
+            fontsize=Style.FONT_SIZE_TITLE * 70 / len(text),
             color=self.TEXT_COLOR,
         )
