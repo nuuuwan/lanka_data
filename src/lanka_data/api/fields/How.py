@@ -2,12 +2,14 @@ import re
 from dataclasses import dataclass
 
 from lanka_data.api.command_errors.UnknownHowError import UnknownHowError
+from lanka_data.api.fields.HowFormatMixin import HowFormatMixin
 from lanka_data.api.fields.HowIntrospectionMixin import HowIntrospectionMixin
 from lanka_data.api.fields.HowRegistryMixin import HowRegistryMixin
+from lanka_data.api.fields.RegionFilter import RegionFilter
 
 
 @dataclass(frozen=True)
-class How(HowIntrospectionMixin, HowRegistryMixin):
+class How(HowFormatMixin, HowIntrospectionMixin, HowRegistryMixin):
     value: str
 
     def __post_init__(self):
@@ -19,6 +21,7 @@ class How(HowIntrospectionMixin, HowRegistryMixin):
             self.modifier
             and self.modifier not in self.MODIFIERS
             and self.base not in self.CATEGORY_BASES
+            and self.region_filter is None
         ):
             raise UnknownHowError(f"Unknown how: {self.value}", self.value)
 
@@ -49,9 +52,16 @@ class How(HowIntrospectionMixin, HowRegistryMixin):
         return self.modifier_spec.get("pct_rank")
 
     @property
+    def region_filter(self):
+        return RegionFilter.from_modifier(self.modifier)
+
+    @property
     def category(self):
         if self.modifier is None or self.modifier in self.MODIFIERS:
             return None
+        region_filter = self.region_filter
+        if region_filter is not None:
+            return region_filter.category
         return self.modifier
 
     @property
@@ -76,27 +86,6 @@ class How(HowIntrospectionMixin, HowRegistryMixin):
     @property
     def needs_series(self):
         return self.base in self.SERIES_BASES
-
-    @property
-    def base_label(self):
-        if self.base == "None":
-            return None
-        return self.BASE_LABELS.get(self.base, self.split_camel(self.base))
-
-    @property
-    def modifier_label(self):
-        if self.modifier is None:
-            return None
-        return self.modifier_spec.get(
-            "label", self.split_camel(self.modifier)
-        )
-
-    def format(self):
-        if not self.modifier:
-            return self.base_label or self.split_camel(self.base)
-        if self.base_label:
-            return f"{self.base_label} by {self.modifier_label}"
-        return self.modifier_label
 
     def __str__(self):
         return self.value

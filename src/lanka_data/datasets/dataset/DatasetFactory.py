@@ -2,15 +2,19 @@ from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
 from lanka_data.api.dataset.CorrelationDataset import CorrelationDataset
 from lanka_data.api.dataset.DiffDataset import DiffDataset
 from lanka_data.api.dataset.SeriesDataset import SeriesDataset
-from lanka_data.datasets.dataset.custom.Census2001Dataset import \
-    Census2001Dataset
-from lanka_data.datasets.dataset.custom.Census2012Dataset import \
-    Census2012Dataset
-from lanka_data.datasets.dataset.custom.Census2024Dataset import \
-    Census2024Dataset
+from lanka_data.datasets.dataset.custom.Census2001Dataset import (
+    Census2001Dataset,
+)
+from lanka_data.datasets.dataset.custom.Census2012Dataset import (
+    Census2012Dataset,
+)
+from lanka_data.datasets.dataset.custom.Census2024Dataset import (
+    Census2024Dataset,
+)
 from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
-from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import \
-    ElectionSummaryDataset
+from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import (
+    ElectionSummaryDataset,
+)
 from lanka_data.datasets.dataset.EmptyDataset import EmptyDataset
 from lanka_data.datasets.region.Regions import Regions
 from utils_future import Log
@@ -77,18 +81,25 @@ class DatasetFactory:
 
         result = DatasetFactory._try_census_dataset(command, region_data_list)
         if result is not None:
-            return result
+            return DatasetFactory._with_region_filter(result, command)
 
         result = DatasetFactory._try_election_dataset(
             command, region_data_list
         )
         if result is not None:
-            return result
+            return DatasetFactory._with_region_filter(result, command)
 
         raise UnknownWhatError(
             f"Dataset unknown for what: {command.what_cmd}",
             command.what_cmd,
         )
+
+    @staticmethod
+    def _with_region_filter(dataset, command):
+        region_filter = command.how.region_filter
+        if region_filter is not None:
+            dataset.region_filter = region_filter
+        return dataset
 
     @staticmethod
     def _list_from_interval(command):
@@ -99,7 +110,11 @@ class DatasetFactory:
         end = DatasetFactory.from_command(
             command.copy(when_cmd=years[-1], how_cmd="")
         )
-        return [DiffDataset(start, end)]
+        return [
+            DatasetFactory._with_region_filter(
+                DiffDataset(start, end), command
+            )
+        ]
 
     @staticmethod
     def _list_from_series(command):
@@ -110,7 +125,11 @@ class DatasetFactory:
             )
             for year in years
         ]
-        return [SeriesDataset(years, datasets)]
+        return [
+            DatasetFactory._with_region_filter(
+                SeriesDataset(years, datasets), command
+            )
+        ]
 
     @staticmethod
     def _list_from_combined(command):
@@ -121,7 +140,9 @@ class DatasetFactory:
         last = DatasetFactory.from_command(
             command.copy(what_cmd=whats[-1], how_cmd="")
         )
-        correlation = CorrelationDataset(first, last)
+        correlation = DatasetFactory._with_region_filter(
+            CorrelationDataset(first, last), command
+        )
         correlation.panel_label = "Correlation: " + " & ".join(
             [whats[0], whats[-1]]
         )

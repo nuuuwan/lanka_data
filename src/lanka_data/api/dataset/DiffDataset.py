@@ -87,7 +87,7 @@ class DiffDataset(RegionValueDataset):
                     data2.get("pct_values", {}),
                 )
             )
-        return d_list
+        return self._apply_region_filter(d_list)
 
     def get_source_data_table(self) -> list[dict]:
         raise NotImplementedError
