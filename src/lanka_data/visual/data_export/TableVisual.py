@@ -1,9 +1,13 @@
 from lanka_data.visual.annotations.Annotations import Annotations
 from lanka_data.visual.data_export.DataExportVisual import DataExportVisual
+from lanka_data.visual.data_export.FileExportMixin import FileExportMixin
 
 
-class TableVisual(DataExportVisual):
+class TableVisual(FileExportMixin, DataExportVisual):
     def build(self):
+        return self._write_output("Table.md", self._render_table())
+
+    def _render_table(self):
         headers, rows = self.get_table()
         str_rows = [[str(cell) for cell in row] for row in rows]
         widths = self._column_widths(headers, str_rows)

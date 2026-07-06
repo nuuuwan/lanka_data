@@ -151,13 +151,18 @@ class TestTableExportAnnotations:
             command, [FakeDataset(data_table)]
         )
 
+    @staticmethod
+    def _read_text(result):
+        with open(result["file_path"], encoding="utf-8") as fin:
+            return fin.read()
+
     def test_table_still_renders_grid(self):
-        lines = self._build(PLAIN).build().split("\n")
+        lines = self._read_text(self._build(PLAIN).build()).split("\n")
         assert lines[0].startswith("| region_id | region_name |")
         assert set(lines[1]) <= {"|", "-"}
 
     def test_table_appends_callout_section(self):
-        text = self._build(PLAIN).build()
+        text = self._read_text(self._build(PLAIN).build())
         assert "### What to notice" in text
         assert "- Highest: North (45)" in text
 

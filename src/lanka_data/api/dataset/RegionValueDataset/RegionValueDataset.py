@@ -12,6 +12,7 @@ class RegionValueDataset(RegionValueDatasetTableMixin, Dataset):
     def __init__(self, region_data_list):
         Dataset.__init__(self)
         self.region_data_list = region_data_list
+        self.region_filter = None
 
     @abstractmethod
     def get_year(self):
