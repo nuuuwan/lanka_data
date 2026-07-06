@@ -13,7 +13,7 @@ class PieChartGridMixin:
             [
                 col / n_cols + 0.02 * w,
                 1 - (row + 1) / n_rows + 0.05 * h,
-                w * 0.96,
+                w * 0.9,
                 h * 0.9,
             ]
         )
