@@ -63,7 +63,13 @@ class TestCommandFields:
 
     def test_how_registry_rejects_unknown_modifier(self):
         with pytest.raises(UnknownHowError):
-            How("Map:Unknown")
+            How("BarChart:Unknown")
+
+    def test_map_allows_category_modifier(self):
+        how = How("Map:Hindu")
+        assert how.base == "Map"
+        assert how.modifier == "Hindu"
+        assert how.category == "Hindu"
 
     def test_field_introspection_values_are_constructible(self):
         for field_cls in [What, When, Where, How]:

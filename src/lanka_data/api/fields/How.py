@@ -15,7 +15,11 @@ class How(HowIntrospectionMixin, HowRegistryMixin):
             return
         if self.base not in self.BASE_LABELS:
             raise UnknownHowError(f"Unknown how: {self.value}", self.value)
-        if self.modifier and self.modifier not in self.MODIFIERS:
+        if (
+            self.modifier
+            and self.modifier not in self.MODIFIERS
+            and self.base not in self.CATEGORY_BASES
+        ):
             raise UnknownHowError(f"Unknown how: {self.value}", self.value)
 
     @staticmethod
@@ -43,6 +47,12 @@ class How(HowIntrospectionMixin, HowRegistryMixin):
     @property
     def pct_rank(self):
         return self.modifier_spec.get("pct_rank")
+
+    @property
+    def category(self):
+        if self.modifier is None or self.modifier in self.MODIFIERS:
+            return None
+        return self.modifier
 
     @property
     def needs_interval(self):

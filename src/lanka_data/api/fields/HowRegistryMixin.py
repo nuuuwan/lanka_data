@@ -10,6 +10,7 @@ class HowRegistryMixin:
         "None": None,
     }
     INTERVAL_BASES = {"BumpChart"}
+    CATEGORY_BASES = {"Map", "Cartogram", "HexMap", "None"}
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
         "Top": {"label": "Most common", "rank": 0},
