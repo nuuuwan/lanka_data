@@ -21,7 +21,7 @@ class Style:
 
     MARGIN = 0.05
     BODY_TOP = 0.86
-    FOOTER_HEIGHT = 0.05
+    FOOTER_HEIGHT = 0.08
     BRAND_SPINE_X = 0.018
     BRAND_NAME = "Lanka Data"
     BRAND_URL = "https://github.com/nuuuwan/lanka_data"
