@@ -24,7 +24,8 @@ from lanka_data.visual.plot_visual.HexMapVisual import (
 )
 from lanka_data.visual.plot_visual.MapVisual import MapVisual
 from lanka_data.visual.plot_visual.PieChartVisual import (
-    PieChartGridMixin,
+    PieChartMapDrawMixin,
+    PieChartMapLabelMixin,
     PieChartVisual,
 )
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual

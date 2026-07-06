@@ -52,7 +52,8 @@ from lanka_data.visual.plot_visual import (
     HexMapLabelMixin,
     HexMapVisual,
     MapVisual,
-    PieChartGridMixin,
+    PieChartMapDrawMixin,
+    PieChartMapLabelMixin,
     PieChartVisual,
     PlotVisual,
 )
