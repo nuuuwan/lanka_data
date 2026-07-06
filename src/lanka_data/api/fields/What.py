@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 
 from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
-from lanka_data.api.fields.WhatIntrospectionMixin import WhatIntrospectionMixin
+from lanka_data.api.fields.WhatIntrospectionMixin import (
+    WhatIntrospectionMixin,
+)
 from lanka_data.api.fields.WhatRegistry import WhatRegistry
 
 
@@ -10,6 +12,7 @@ class What(WhatIntrospectionMixin):
     value: str
 
     VALUE_GROUPS = {"special": ["Empty"]}
+    COMBINE_DELIM = "+"
 
     @classmethod
     def available_groups(cls):
@@ -20,12 +23,25 @@ class What(WhatIntrospectionMixin):
     def __post_init__(self):
         if self.value == "Help":
             return
-        if self.value not in self.known_values():
+        for part in self.whats:
+            self._validate_part(part)
+
+    @classmethod
+    def _validate_part(cls, part):
+        if part not in cls.known_values():
             raise UnknownWhatError(
-                f"Unknown what: {self.value}",
-                self.value,
-                self.suggestions(self.value),
+                f"Unknown what: {part}",
+                part,
+                cls.suggestions(part),
             )
+
+    @property
+    def is_combined(self):
+        return self.COMBINE_DELIM in self.value
+
+    @property
+    def whats(self):
+        return self.value.split(self.COMBINE_DELIM)
 
     @classmethod
     def known_values(cls):

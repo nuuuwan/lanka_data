@@ -1,5 +1,6 @@
 import pytest
 
+from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
 from lanka_data.api.fields.What import What as APIWhat
 from lanka_data.api.fields.When import When as APIWhen
 from lanka_data.api.fields.Where import Where as APIWhere
@@ -56,6 +57,21 @@ class TestCommandFields:
     def test_bump_chart_requires_interval_when(self):
         with pytest.raises(InvalidCommandError):
             Command.from_str("Religion/2012/LK/BumpChart")
+
+    def test_combined_what_exposes_parts(self):
+        command = Command.from_str("Religion+Ethnicity/2024/LK:province/Map")
+        assert command.what.is_combined
+        assert command.what.whats == ["Religion", "Ethnicity"]
+        assert command.what_cmd == "Religion+Ethnicity"
+
+    def test_single_what_is_not_combined(self):
+        command = Command.from_str("Religion/2024/LK/Map")
+        assert not command.what.is_combined
+        assert command.what.whats == ["Religion"]
+
+    def test_combined_what_rejects_unknown_part(self):
+        with pytest.raises(UnknownWhatError):
+            What("Religion+Bogus")
 
     def test_where_rejects_traversal_like_token(self):
         with pytest.raises(InvalidWhereError):
