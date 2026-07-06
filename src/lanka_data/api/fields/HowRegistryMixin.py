@@ -1,6 +1,9 @@
 class HowRegistryMixin:
     BASE_LABELS = {
         "JSON": None,
+        "CSV": None,
+        "TSV": None,
+        "Table": None,
         "Map": None,
         "Cartogram": "Cartogram (Population based)",
         "HexMap": "HexMap (Population based)",
