@@ -2,6 +2,7 @@ from dataclasses import dataclass
 
 from lanka_data.visual.JSONVisual import JSONVisual
 from lanka_data.visual.plot_visual.BarChartVisual import BarChartVisual
+from lanka_data.visual.plot_visual.BubbleMapVisual import BubbleMapVisual
 from lanka_data.visual.plot_visual.BumpChartVisual import BumpChartVisual
 from lanka_data.visual.plot_visual.HexMapVisual import HexMapVisual
 from lanka_data.visual.plot_visual.MapVisual import MapVisual
@@ -18,6 +19,7 @@ class VisualFactory:
         "Map": MapVisual,
         "Cartogram": MapVisual,
         "HexMap": HexMapVisual,
+        "BubbleMap": BubbleMapVisual,
         "None": MapVisual,
         "BarChart": BarChartVisual,
         "PieChart": PieChartVisual,

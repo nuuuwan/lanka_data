@@ -4,13 +4,14 @@ class HowRegistryMixin:
         "Map": None,
         "Cartogram": "Cartogram (Population based)",
         "HexMap": "HexMap (Population based)",
+        "BubbleMap": "BubbleMap (Population based)",
         "BarChart": "Bar Chart",
         "PieChart": "Pie Chart",
         "BumpChart": "Bump Chart",
         "None": None,
     }
     INTERVAL_BASES = {"BumpChart"}
-    CATEGORY_BASES = {"Map", "Cartogram", "HexMap", "None"}
+    CATEGORY_BASES = {"Map", "Cartogram", "HexMap", "BubbleMap", "None"}
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
         "Top": {"label": "Most common", "rank": 0},
