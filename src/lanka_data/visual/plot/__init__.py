@@ -2,6 +2,7 @@
 # flake8: noqa: F408
 
 from lanka_data.visual.plot.Brand import Brand
+from lanka_data.visual.plot.Caption import Caption
 from lanka_data.visual.plot.color_spec import (ColorSpec,
                                                ColorSpecCategoryMixin,
                                                ColorSpecConstants,
