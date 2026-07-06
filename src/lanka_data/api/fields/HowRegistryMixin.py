@@ -16,11 +16,29 @@ class HowRegistryMixin:
         "Histogram": "Histogram",
         "ScatterPlot": "Scatter Plot",
         "LineChart": "Line Chart",
+        "MapAnimation": "Animated Map",
+        "CartogramAnimation": "Animated Cartogram (Population based)",
+        "HexMapAnimation": "Animated HexMap (Population based)",
+        "BubbleMapAnimation": "Animated BubbleMap (Population based)",
         "None": None,
     }
-    INTERVAL_BASES = {"BumpChart", "LineChart"}
+    ANIMATION_BASE_TO_FRAME_BASE = {
+        "MapAnimation": "Map",
+        "CartogramAnimation": "Cartogram",
+        "HexMapAnimation": "HexMap",
+        "BubbleMapAnimation": "BubbleMap",
+    }
+    INTERVAL_BASES = {"BumpChart", "LineChart"} | set(
+        ANIMATION_BASE_TO_FRAME_BASE
+    )
     SERIES_BASES = {"LineChart"}
-    CATEGORY_BASES = {"Map", "Cartogram", "HexMap", "BubbleMap", "None"}
+    CATEGORY_BASES = {
+        "Map",
+        "Cartogram",
+        "HexMap",
+        "BubbleMap",
+        "None",
+    } | set(ANIMATION_BASE_TO_FRAME_BASE)
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
         "Top": {"label": "Most common", "rank": 0},

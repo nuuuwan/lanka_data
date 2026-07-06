@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from lanka_data.visual.animation_visual.AnimationVisual import AnimationVisual
 from lanka_data.visual.data_export.CSVVisual import CSVVisual
 from lanka_data.visual.data_export.TableVisual import TableVisual
 from lanka_data.visual.data_export.TSVVisual import TSVVisual
@@ -42,6 +43,10 @@ class VisualFactory:
         "Histogram": HistogramVisual,
         "ScatterPlot": ScatterPlotVisual,
         "LineChart": LineChartVisual,
+        "MapAnimation": AnimationVisual,
+        "CartogramAnimation": AnimationVisual,
+        "HexMapAnimation": AnimationVisual,
+        "BubbleMapAnimation": AnimationVisual,
     }
 
     @staticmethod
