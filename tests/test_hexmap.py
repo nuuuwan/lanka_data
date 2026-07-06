@@ -1,7 +1,11 @@
+import math
+
 from lanka_data.visual.plot.map.HexData import HexData
 from lanka_data.visual.plot_visual.HexMapVisual import HexMapVisual
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
-    HexMapBoundaryMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import (
+    HexMapBoundaryMixin,
+)
+from lanka_data.visual.plot_visual.HexMapVisual.HexTextFit import HexTextFit
 from lanka_data.visual.VisualFactory import VisualFactory
 from utils_future import HungarianUtils
 
@@ -212,16 +216,11 @@ class TestHexScaleRange:
 
 
 class TestHexTextFit:
-    import math as _math
-
     RADIUS = 1.0
-    DX = _math.sqrt(3) * RADIUS
+    DX = math.sqrt(3) * RADIUS
     DY = 1.5 * RADIUS
 
     def _fit(self, points):
-        from lanka_data.visual.plot_visual.HexMapVisual.HexTextFit import \
-            HexTextFit
-
         return HexTextFit.best_label_fit(points, self.RADIUS)
 
     def test_horizontal_row_is_zero_degrees(self):

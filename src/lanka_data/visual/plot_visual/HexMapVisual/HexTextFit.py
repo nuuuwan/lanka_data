@@ -3,6 +3,7 @@ import math
 
 class HexTextFit:
     ANGLES_DEG = (0.0, 60.0, -60.0)
+    ADJACENCY_TOLERANCE = 0.5
 
     @staticmethod
     def _axes(angle_deg):
@@ -22,19 +23,20 @@ class HexTextFit:
             lines.setdefault(key, []).append((cls._project(point, u), point))
         return lines
 
-    @staticmethod
-    def _longest_in_line(items, step):
+    @classmethod
+    def _longest_in_line(cls, items, step):
         items.sort(key=lambda item: item[0])
-        best = run = [items[0]]
+        longest_run = run = [items[0]]
+        tolerance = step * cls.ADJACENCY_TOLERANCE
         for prev, cur in zip(items, items[1:]):
             run = (
                 run + [cur]
-                if abs(cur[0] - prev[0] - step) < step * 0.5
+                if abs(cur[0] - prev[0] - step) < tolerance
                 else [cur]
             )
-            if len(run) > len(best):
-                best = run
-        return best
+            if len(run) > len(longest_run):
+                longest_run = run
+        return longest_run
 
     @classmethod
     def _best_run(cls, points, radius):
