@@ -40,9 +40,10 @@ class ColorSpecCategoryMixin:
         return cls(region_to_color, value_to_color)
 
     @classmethod
-    def by_single_pct_value(cls, dataset, value_mapper):
+    def by_single_pct_value(cls, dataset, value_mapper, label=None):
         data_list = dataset.get_data_table()
         is_diff = dataset.is_diff()
+        cmap_abs = cls.cmap_for_label(label)
         pct_values = [value_mapper(data) for data in data_list]
         value_to_rank = {v: r for r, v in enumerate(sorted(set(pct_values)))}
         n = len(value_to_rank)
@@ -51,7 +52,7 @@ class ColorSpecCategoryMixin:
             value = value_mapper(data)
             rank = value_to_rank[value]
             color = (
-                cls.p_to_color_for_abs(rank / (n - 1))
+                cmap_abs(rank / (n - 1))
                 if not is_diff
                 else cls.p_to_color_for_diff(rank / (n - 1))
             )

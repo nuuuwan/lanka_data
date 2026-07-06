@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 
-from lanka_data.visual.plot.color_spec.ColorSpecConstants import \
-    ColorSpecConstants
+from lanka_data.visual.plot.color_spec.ColorSpecConstants import (
+    ColorSpecConstants,
+)
 from utils_future import ColorUtils, Parse
 
 from .ColorSpecCategoryMixin import ColorSpecCategoryMixin
@@ -22,6 +23,13 @@ class ColorSpec(ColorSpecCategoryMixin, ColorSpecCustomMixin):
     @staticmethod
     def p_to_color_for_abs(p):
         return ColorSpecConstants.DEFAULT_CMAP_ABS(p)
+
+    @classmethod
+    def cmap_for_label(cls, label):
+        rgb = cls.LABEL_TO_COLOR.get(label)
+        if rgb is None:
+            return ColorSpecConstants.DEFAULT_CMAP_ABS
+        return ColorSpecConstants.build_cmap_for_color(rgb)
 
     @staticmethod
     def p_to_color_for_diff(p):
