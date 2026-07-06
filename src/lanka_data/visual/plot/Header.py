@@ -13,7 +13,7 @@ class Header:
     TITLE_DELIM = " · "
     TEXT_COLOR = Style.COLOR_TITLE
     BACK_COLOR = Style.COLOR_SURFACE_HEADER
-    LINE_HEIGHT = 1.4
+    LINE_HEIGHT = 1
 
     def __init__(self, visual):
         self.visual = visual
