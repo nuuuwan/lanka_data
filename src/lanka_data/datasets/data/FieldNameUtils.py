@@ -17,6 +17,31 @@ class FieldNameUtils:
             "SriLankaMoor",
         },
         "SLChetty": {"SriLankaChetty", "SLChetty"},
+        "Other": {"Other", "OtherEth"},
+        "Firewood": {"Firewood", "FireWood"},
+        "Gas": {"Gas", "LpGas"},
+        "SawdustPaddyHusk": {"SawdustPaddyHusk", "SawDust/PaddyHusk"},
+        "Bricks": {"Bricks", "Brick"},
+        "CadjanPalmyrah": {"CadjanPalmyrah", "Cadjan/Palmyrah"},
+        "CadjanPalmyrahStraw": {
+            "CadjanPalmyrahStraw",
+            "Cadjan/Palmyrah/Straw",
+        },
+        "Kerosene": {"Kerosene", "KeroseneLamp"},
+        "ElectricityGrid": {
+            "ElectricityGrid",
+            "ElectricityNationalElectricityNetwork",
+        },
+        "MarriedRegistered": {
+            "MarriedRegistered",
+            "Married((Registered)",
+        },
+        "MarriedCustomary": {"MarriedCustomary", "Married(Customary)"},
+        "SeparatedNotLegally": {
+            "SeparatedNotLegally",
+            "SeperatedNotLegally",
+            "Separated(NotLegally)",
+        },
     }
     NAME_IDX = {
         original_name.lower(): normalized_name
