@@ -32,4 +32,6 @@ from lanka_data.visual.plot.map import (
     RegionPopulationFilter,
 )
 from lanka_data.visual.plot.Plot import Plot
+from lanka_data.visual.plot.PlotLayout import PlotLayout
+from lanka_data.visual.plot.PlotLayoutError import PlotLayoutError
 from lanka_data.visual.plot.Text import Text
