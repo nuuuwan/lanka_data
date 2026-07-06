@@ -4,6 +4,7 @@ import math
 class BubbleDataRelaxMixin:
     ITERATIONS = 500
     PADDING_RATIO = 0.01
+    GOLDEN_ANGLE = 2.399963
 
     @staticmethod
     def _padding(bounds):
@@ -17,7 +18,7 @@ class BubbleDataRelaxMixin:
         dy = pos_j[1] - pos_i[1]
         dist = math.hypot(dx, dy)
         if dist < 1e-9:
-            angle = index * 2.399963
+            angle = index * BubbleDataRelaxMixin.GOLDEN_ANGLE
             return math.cos(angle), math.sin(angle), 1e-9
         return dx / dist, dy / dist, dist
 
