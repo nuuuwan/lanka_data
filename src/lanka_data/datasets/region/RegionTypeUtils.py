@@ -39,7 +39,7 @@ class RegionTypeUtils:
             "district": "District",
             "dsd": "Divisional Secretariat Division",
             "gnd": "Grama Niladhari Division",
-            "ed": "Electoral Division",
+            "ed": "Electoral District",
             "pd": "Polling Division",
             "lg": "Local Authority",
         }
