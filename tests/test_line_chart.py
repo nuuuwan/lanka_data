@@ -1,6 +1,9 @@
+import pytest
+
 from lanka_data.api.dataset.SeriesDataset import SeriesDataset
 from lanka_data.command.Command import Command
 from lanka_data.command.fields.How import How
+from lanka_data.command.InvalidCommandError import InvalidCommandError
 from lanka_data.dataset.DatasetFactory import DatasetFactory
 from lanka_data.visual.plot_visual.LineChartVisual import LineChartVisual
 
@@ -30,11 +33,8 @@ class TestLineChart:
         assert how.format() == "Line Chart"
 
     def test_line_chart_requires_interval_when(self):
-        try:
+        with pytest.raises(InvalidCommandError):
             Command.from_str("Religion/2024/LK-1/LineChart")
-            raise AssertionError("Expected InvalidCommandError")
-        except Exception as exc:
-            assert "LineChart" in str(exc)
 
     def test_interval_when_builds_series_for_line_chart(self, monkeypatch):
         calls = []
