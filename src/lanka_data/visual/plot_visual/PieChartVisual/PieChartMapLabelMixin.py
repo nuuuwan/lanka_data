@@ -46,12 +46,18 @@ class PieChartMapLabelMixin:
                 continue
             label, pct = top
             x, y, radius = pos
-            text = f"{label}\n{pct:.0%}"
-            ax.annotate(
-                text,
-                xy=(x, y),
-                ha="center",
-                va="center",
-                fontsize=cls._fontsize(ax, x, y, radius, len(label)),
-                color=cls._label_color(label, category_to_color),
-            )
+
+            for text, offset, p_font_size in [
+                (f"{label}", 0.2, 0.5),
+                (f"{pct:.0%}", 0.5, 1.5),
+                (subregion["region_name"], 0.8, 0.5),
+            ]:
+                ax.annotate(
+                    text,
+                    xy=(x, y + radius * offset),
+                    ha="center",
+                    va="center",
+                    fontsize=cls._fontsize(ax, x, y, radius, len(label))
+                    * p_font_size,
+                    color=cls._label_color(label, category_to_color),
+                )

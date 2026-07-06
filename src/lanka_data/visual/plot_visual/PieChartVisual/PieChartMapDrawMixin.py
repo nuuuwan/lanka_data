@@ -29,7 +29,7 @@ class PieChartMapDrawMixin:
     @classmethod
     def _draw_one_pie(cls, ax, center, radius, ordered, category_to_color):
         total = sum(v for _, v in ordered) or 1
-        start = 90.0
+        start = 180
         for label, value in ordered:
             extent = 360.0 * value / total
             ax.add_patch(
