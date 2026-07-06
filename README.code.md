@@ -215,10 +215,18 @@ final output.
     (`Map`, `Cartogram`, `None`); loads geometry through `GeoData`.
   - **`BarChartVisual`** (+ `BarChartDrawMixin`, `BarChartLabelMixin`) — stacked
     bars, with adaptive in-bar label fitting and change-chart handling.
+  - **`StackedBarChartVisual`** — 100%-normalized stacked bars, showing each
+    region's categorical composition as shares of a full-height bar.
   - **`PieChartVisual`** (+ `PieChartGridMixin`) — a grid of per-region pies;
     falls back to bars for change charts.
   - **`BumpChartVisual`** (+ `BumpChartDataMixin`, `BumpChartDrawMixin`) — a
     rank-change slopegraph between the two years of an interval.
+  - **`TreeMapVisual`** (+ `TreeMapData`, `TreeMapDrawMixin`) — a squarified
+    treemap of the overall categorical composition across regions.
+  - **`HistogramVisual`** (+ `HistogramData`) — the distribution of region
+    totals binned into a histogram.
+  - **`ScatterPlotVisual`** (+ `ScatterPlotData`) — region population against
+    dominant-category share, coloured by dominant category.
 
 ### `VisualFactory`
 
@@ -230,8 +238,12 @@ instantiates the matching class:
 | `JSON`                      | `JSONVisual`      |
 | `Map`, `Cartogram`, `None`  | `MapVisual`       |
 | `BarChart`                  | `BarChartVisual`  |
+| `StackedBarChart`           | `StackedBarChartVisual` |
 | `PieChart`                  | `PieChartVisual`  |
 | `BumpChart`                 | `BumpChartVisual` |
+| `TreeMap`                   | `TreeMapVisual`   |
+| `Histogram`                 | `HistogramVisual` |
+| `ScatterPlot`               | `ScatterPlotVisual` |
 
 Keeping this mapping in one class isolates output-type selection from the drawing
 code.

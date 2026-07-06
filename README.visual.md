@@ -5,8 +5,8 @@
 ## 0. Purpose
 
 Every Lanka Data command ends in a picture. The `How` field selects a visual
-(`Map`, `HexMap`, `BarChart`, `PieChart`, `BumpChart`, `LineChart`), and the
-plotting layer
+(`Map`, `HexMap`, `BarChart`, `StackedBarChart`, `PieChart`, `BumpChart`,
+`LineChart`, `TreeMap`, `Histogram`, `ScatterPlot`), and the plotting layer
 in [`src/lanka_data/visual/`](src/lanka_data/visual/) renders it. This document
 defines the visual language those renderers must speak: the canvas, the type,
 the colour, and the composition rules that make an output look considered rather
@@ -254,6 +254,8 @@ The same rules bind every `How` visual, so the family stays coherent:
   the same palette, the same light borders, the same automatic label contrast.
 - **`BarChart`** — magnitudes as bars, ordered meaningfully, sharing the legend
   and number-format rules.
+- **`StackedBarChart`** — the same bars normalized to 100%, comparing categorical
+  composition across regions on a shared share axis.
 - **`PieChart`** — parts of a whole, from the same categorical palette, with the
   same legend treatment.
 - **`BumpChart`** — rank over time, using the categorical palette to trace each
@@ -261,6 +263,12 @@ The same rules bind every `How` visual, so the family stays coherent:
 - **`LineChart`** — a multi-year trend line/area over the census and election
   years for a single region or a small region set, one series per category from
   the same categorical palette.
+- **`TreeMap`** — nested rectangles sized by value, showing overall categorical
+  composition from the same palette.
+- **`Histogram`** — the distribution of region totals, binned and drawn with the
+  shared number-format and grid rules.
+- **`ScatterPlot`** — two measures per region as points, coloured by dominant
+  category from the same palette.
 
 Whatever the type, the header, footer, font, margins, palette, and metadata
 style are identical. That identity — not any single chart — is the Lanka Data
