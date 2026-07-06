@@ -25,9 +25,9 @@ class BubbleMapVisual(PlotVisual, BubbleMapDrawMixin, BubbleMapLabelMixin):
 
     @timer
     def draw(self, dataset, fig):
-        region_color_map, value_to_color = ColorSpecFactory.get_color_spec(
-            dataset, self.how_cmd
-        ).unpack()
+        region_color_map, value_to_color, value_to_region = (
+            ColorSpecFactory.get_color_spec(dataset, self.how_cmd).unpack()
+        )
         data_list_all = dataset.get_data_table()
         gdf_region = GeoData.get_geopandas_dataframe(
             data_list_all, False
@@ -49,5 +49,7 @@ class BubbleMapVisual(PlotVisual, BubbleMapDrawMixin, BubbleMapLabelMixin):
             region_color_map,
             len(region_to_name),
         )
-        Legend.draw(value_to_color, legend_ax)
+        Legend.draw(
+            value_to_color, legend_ax, value_to_region=value_to_region
+        )
         ax.set_axis_off()

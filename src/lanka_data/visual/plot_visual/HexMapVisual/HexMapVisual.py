@@ -58,9 +58,9 @@ class HexMapVisual(
 
     @timer
     def draw(self, dataset, fig):
-        region_color_map, value_to_color = ColorSpecFactory.get_color_spec(
-            dataset, self.how_cmd
-        ).unpack()
+        region_color_map, value_to_color, value_to_region = (
+            ColorSpecFactory.get_color_spec(dataset, self.how_cmd).unpack()
+        )
         data_list = RegionPopulationFilter.filter(dataset.get_data_table())
         layout = HexData.get_hex_layout(data_list)
         region_to_name = self._region_to_name(data_list)
@@ -79,5 +79,7 @@ class HexMapVisual(
             len(region_to_name),
         )
         self._draw_scale(ax, layout)
-        Legend.draw(value_to_color, legend_ax)
+        Legend.draw(
+            value_to_color, legend_ax, value_to_region=value_to_region
+        )
         ax.set_axis_off()

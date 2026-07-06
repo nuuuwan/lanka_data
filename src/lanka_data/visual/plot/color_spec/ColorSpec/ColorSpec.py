@@ -13,6 +13,7 @@ from .ColorSpecCustomMixin import ColorSpecCustomMixin
 class ColorSpec(ColorSpecCategoryMixin, ColorSpecCustomMixin):
     region_to_color: dict[str, str]
     value_to_color: dict[str, str]
+    value_to_region: dict[str, str] = None
 
     LABEL_TO_COLOR = {
         label: ColorUtils.hex_to_rgb(color)
@@ -77,9 +78,15 @@ class ColorSpec(ColorSpecCategoryMixin, ColorSpecCustomMixin):
             and Parse.float(next(iter(self.value_to_color))) is not None
         )
         if is_float_values:
-            return self.region_to_color, self._unpack_float_values(
-                self.value_to_color
+            return (
+                self.region_to_color,
+                self._unpack_float_values(self.value_to_color),
+                self.value_to_region,
             )
-        return self.region_to_color, self._unpack_category_values(
-            self.region_to_color, self.value_to_color
+        return (
+            self.region_to_color,
+            self._unpack_category_values(
+                self.region_to_color, self.value_to_color
+            ),
+            None,
         )

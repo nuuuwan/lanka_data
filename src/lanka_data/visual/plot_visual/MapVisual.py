@@ -2,8 +2,9 @@ from lanka_data.visual.plot.color_spec import ColorSpecFactory
 from lanka_data.visual.plot.Label import Label
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map.GeoData import GeoData
-from lanka_data.visual.plot.map.RegionPopulationFilter import \
-    RegionPopulationFilter
+from lanka_data.visual.plot.map.RegionPopulationFilter import (
+    RegionPopulationFilter,
+)
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 
@@ -25,9 +26,9 @@ class MapVisual(PlotVisual):
 
     @timer
     def draw(self, dataset, fig):
-        region_color_map, value_to_color = ColorSpecFactory.get_color_spec(
-            dataset, self.how_cmd
-        ).unpack()
+        region_color_map, value_to_color, value_to_region = (
+            ColorSpecFactory.get_color_spec(dataset, self.how_cmd).unpack()
+        )
 
         gdf_region = self._get_gdf_region(
             dataset,
@@ -51,5 +52,7 @@ class MapVisual(PlotVisual):
             linewidth=self.DEFAULT_EDGE_WIDTH,
         )
         Label.draw(gdf_region, ax, len(gdf_region))
-        Legend.draw(value_to_color, legend_ax)
+        Legend.draw(
+            value_to_color, legend_ax, value_to_region=value_to_region
+        )
         ax.set_axis_off()
