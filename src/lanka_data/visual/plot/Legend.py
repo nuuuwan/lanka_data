@@ -7,6 +7,7 @@ class Legend:
     LEGEND_KWARGS = {
         "fontsize": Style.FONT_SIZE_METADATA,
         "loc": "best",
+        "frameon": False,
     }
 
     @staticmethod
@@ -39,9 +40,7 @@ class Legend:
             legend_ax.scatter([], [], color=color, s=cls.MARKER_SIZE)
             for value, color in value_and_color
         ]
-        labels = [
-            cls._format_label(value) for value, color in value_and_color
-        ]
+        labels = [cls._format_label(value) for value, color in value_and_color]
 
         legend_kwargs = dict(cls.LEGEND_KWARGS)
         if title:
