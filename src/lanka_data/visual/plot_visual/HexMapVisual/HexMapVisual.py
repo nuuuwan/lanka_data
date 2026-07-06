@@ -34,10 +34,10 @@ class HexMapVisual(
         a = round(value_min / Q) * Q
         b = round(value_max / Q) * Q
         if a == b:
-            return f"Each hexagon represents {a:,} people"
+            return f"Hexagon = {a:,} people"
         diff = round((b - a) / 2 / Q) * Q
         mid = round((a + b) / 2 / Q) * Q
-        return f"Each hexagon represents {mid:,} ± {diff:,} people"
+        return f"Hexagon = {mid:,} ± {diff:,} people"
 
     @classmethod
     def _draw_scale(cls, ax, layout):
@@ -48,7 +48,7 @@ class HexMapVisual(
         fig = ax.get_figure()
         fig.text(
             0.5,
-            0.05,
+            0.1,
             cls._scale_text(value_min, value_max),
             fontsize=Style.FONT_SIZE_METADATA,
             ha="center",
