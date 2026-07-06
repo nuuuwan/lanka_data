@@ -10,7 +10,7 @@ class BumpChartAxisMixin:
         ax.set_xticklabels(
             when_labels,
             fontsize=Style.FONT_SIZE_METADATA,
-            color=Style.COLOR_PANEL,
+            color=Style.COLOR_METADATA,
         )
         ax.set_yticks(range(1, n_regions + 1))
         ax.tick_params(
