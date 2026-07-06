@@ -48,7 +48,7 @@ class HexMapVisual(
         fig = ax.get_figure()
         fig.text(
             0.5,
-            0.1,
+            0.085,
             cls._scale_text(value_min, value_max),
             fontsize=Style.FONT_SIZE_METADATA,
             ha="center",
