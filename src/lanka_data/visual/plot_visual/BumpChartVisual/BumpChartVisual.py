@@ -1,10 +1,14 @@
+from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 
+from .BumpChartAxisMixin import BumpChartAxisMixin
 from .BumpChartDataMixin import BumpChartDataMixin
 from .BumpChartDrawMixin import BumpChartDrawMixin
 
 
-class BumpChartVisual(BumpChartDataMixin, BumpChartDrawMixin, PlotVisual):
+class BumpChartVisual(
+    BumpChartDataMixin, BumpChartDrawMixin, BumpChartAxisMixin, PlotVisual
+):
     def draw(self, dataset, fig):
         subregions = self._build_subregions(dataset.get_data_table())
         when_cmd = getattr(self.command, "when_cmd", None)
@@ -23,8 +27,8 @@ class BumpChartVisual(BumpChartDataMixin, BumpChartDrawMixin, PlotVisual):
                 "BumpChart requires a change range, e.g. 2012-2024.",
                 ha="center",
                 va="center",
-                fontsize=10,
-                color="#444",
+                fontsize=Style.FONT_SIZE_METADATA,
+                color=Style.COLOR_METADATA,
                 transform=ax.transAxes,
             )
             return

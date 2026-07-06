@@ -1,5 +1,7 @@
 import math
 
+from lanka_data.visual.plot.Style import Style
+
 
 class PieChartGridMixin:
     @classmethod
@@ -38,6 +40,7 @@ class PieChartGridMixin:
             ha="center",
             va="top",
             fontsize=7,
+            color=Style.COLOR_METADATA,
             clip_on=False,
         )
         inset.axis("equal")

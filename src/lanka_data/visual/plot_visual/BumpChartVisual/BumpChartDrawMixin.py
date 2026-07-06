@@ -70,16 +70,3 @@ class BumpChartDrawMixin:
                 fontsize=cls.LABEL_FONTSIZE,
                 color=color,
             )
-
-    @staticmethod
-    def _style_bump_axis(ax, n_regions, when_labels):
-        ax.set_xlim(-0.35, 1.35)
-        ax.set_ylim(n_regions + 0.5, 0.5)
-        ax.set_xticks([0, 1])
-        ax.set_xticklabels(when_labels, fontsize=12)
-        ax.set_yticks(range(1, n_regions + 1))
-        ax.tick_params(axis="y", labelsize=10)
-        ax.set_ylabel("Region Rank (1 = highest)", fontsize=11)
-        ax.grid(axis="y", color="#ddd", linestyle="--", linewidth=0.7)
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
