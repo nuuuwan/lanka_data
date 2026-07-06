@@ -2,7 +2,9 @@ import re
 from dataclasses import dataclass
 
 from lanka_data.api.command_errors.InvalidWhenError import InvalidWhenError
-from lanka_data.api.fields.WhenIntrospectionMixin import WhenIntrospectionMixin
+from lanka_data.api.fields.WhenIntrospectionMixin import (
+    WhenIntrospectionMixin,
+)
 from lanka_data.api.fields.WhenRegistry import WhenRegistry
 
 
@@ -30,11 +32,12 @@ class When(WhenIntrospectionMixin):
     @classmethod
     def _is_interval(cls, value):
         parts = (value or "").split("-")
-        if len(parts) != 2:
+        if len(parts) < 2:
             return False
         if not all(cls._is_year(part) for part in parts):
             return False
-        return int(parts[0]) < int(parts[1])
+        years = [int(part) for part in parts]
+        return all(a < b for a, b in zip(years, years[1:]))
 
     @property
     def is_interval(self):

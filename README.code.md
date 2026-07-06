@@ -176,9 +176,11 @@ expose a normalized value table.
 
 `DatasetFactory.list_from_command(command)` is the dispatcher:
 
-1. For an **interval** `when`, it `copy`s the command to its `start` and `end`
-   years, builds a dataset for each, wraps them in a `DiffDataset`, and returns
-   all three (`[start, end, diff]`).
+1. For an **interval** `when`, it `copy`s the command to each of its years,
+   builds a dataset per year, appends a `DiffDataset` of the first and last
+   years, and returns them all (`[year_1, …, year_n, diff]`). A two-year
+   interval yields `[start, end, diff]`; a multi-year interval such as
+   `2001-2012-2024` yields `[2001, 2012, 2024, diff]`.
 2. For a **single** year it returns one dataset, chosen by `from_command`:
    `Empty` → `EmptyDataset`; otherwise the first census class whose supported
    years and labels match, else the election / election-summary datasets, else
@@ -494,8 +496,8 @@ then realised by giving each field its *own* consumer, so the query space is a
 Cartesian product rather than an enumerated list:
 
 - `What` selects the **dataset** (`DatasetFactory`, §3/§8).
-- `When` selects the **time**, and intervals are split into start/end and
-  diffed (`DatasetFactory.list_from_command` → `DiffDataset`).
+- `When` selects the **time**, and intervals are split into their years and
+  the first/last diffed (`DatasetFactory.list_from_command` → `DiffDataset`).
 - `Where` is expanded independently into regions (`Regions.from_command`, §5).
 - `How` selects the **visual and modifier** (`VisualFactory` by `how.base`;
   colour/rank/pct/Change/Diversity applied in `ColorSpecFactory`, §4).

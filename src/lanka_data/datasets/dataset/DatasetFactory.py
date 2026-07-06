@@ -1,14 +1,18 @@
 from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
 from lanka_data.api.dataset.DiffDataset import DiffDataset
-from lanka_data.datasets.dataset.custom.Census2001Dataset import \
-    Census2001Dataset
-from lanka_data.datasets.dataset.custom.Census2012Dataset import \
-    Census2012Dataset
-from lanka_data.datasets.dataset.custom.Census2024Dataset import \
-    Census2024Dataset
+from lanka_data.datasets.dataset.custom.Census2001Dataset import (
+    Census2001Dataset,
+)
+from lanka_data.datasets.dataset.custom.Census2012Dataset import (
+    Census2012Dataset,
+)
+from lanka_data.datasets.dataset.custom.Census2024Dataset import (
+    Census2024Dataset,
+)
 from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
-from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import \
-    ElectionSummaryDataset
+from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import (
+    ElectionSummaryDataset,
+)
 from lanka_data.datasets.dataset.EmptyDataset import EmptyDataset
 from lanka_data.datasets.region.Regions import Regions
 from utils_future import Log
@@ -91,13 +95,12 @@ class DatasetFactory:
     @staticmethod
     def list_from_command(command):
         if command.when.is_interval:
-            command_start = command.copy(when_cmd=command.when.start)
-            command_end = command.copy(when_cmd=command.when.end)
-
-            dataset_start = DatasetFactory.from_command(command_start)
-            dataset_end = DatasetFactory.from_command(command_end)
-            diff_dataset = DiffDataset(dataset_start, dataset_end)
-
-            return [dataset_start, dataset_end, diff_dataset]
+            years = command.when.years
+            datasets = [
+                DatasetFactory.from_command(command.copy(when_cmd=year))
+                for year in years
+            ]
+            diff_dataset = DiffDataset(datasets[0], datasets[-1])
+            return datasets + [diff_dataset]
 
         return [DatasetFactory.from_command(command)]
