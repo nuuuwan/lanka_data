@@ -5,14 +5,20 @@ from utils_future import ColorUtils
 
 class HexMapDrawMixin:
     DEFAULT_EDGE_WIDTH = 0.01
-    DEFAULT_FILL_COLOR = "#fff"
     IS_LIGHT_COLOR = getattr(ColorUtils, "_is_light_color")
+
+    @classmethod
+    def _default_fill_color(cls, color):
+        if color and not cls.IS_LIGHT_COLOR(color):
+            return "#fff"
+        return "#000"
 
     @classmethod
     def _draw_hexes(cls, ax, layout, region_color_map):
         radius = layout["radius"]
         for region_id, x, y in layout["hexes"]:
-            color = region_color_map.get(region_id) or cls.DEFAULT_FILL_COLOR
+            region_color = region_color_map.get(region_id)
+            color = region_color or cls._default_fill_color(region_color)
             edge_color = "#444" if cls.IS_LIGHT_COLOR(color) else "#ccc"
             ax.add_patch(
                 RegularPolygon(

@@ -3,8 +3,13 @@ from utils_future import ColorUtils, timer
 
 
 class HexMapLabelMixin:
-    DEFAULT_FILL_COLOR = "#cccccc"
     IS_LIGHT_COLOR = getattr(ColorUtils, "_is_light_color")
+
+    @classmethod
+    def _default_fill_color(cls, color):
+        if color and not cls.IS_LIGHT_COLOR(color):
+            return "#fff"
+        return "#000"
 
     @staticmethod
     def _region_hexes(layout):
@@ -68,7 +73,8 @@ class HexMapLabelMixin:
             )
             if label is None:
                 continue
-            color = region_color_map.get(region_id) or cls.DEFAULT_FILL_COLOR
+            region_color = region_color_map.get(region_id)
+            color = region_color or cls._default_fill_color(region_color)
             text_color = "#666" if cls.IS_LIGHT_COLOR(color) else "#eee"
             ax.annotate(
                 label,
