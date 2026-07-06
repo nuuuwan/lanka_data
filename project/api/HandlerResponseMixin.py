@@ -4,7 +4,6 @@ import traceback
 from lanka_data.api.command_errors.CommandError import CommandError
 
 IMAGE_CONTENT_TYPE = "image/png"
-SVG_CONTENT_TYPE = "image/svg+xml"
 JSON_CONTENT_TYPE = "application/json"
 
 
