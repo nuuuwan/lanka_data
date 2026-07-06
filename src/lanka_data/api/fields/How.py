@@ -74,6 +74,10 @@ class How(HowIntrospectionMixin, HowRegistryMixin):
         return f"{frame_base}:{self.modifier}"
 
     @property
+    def needs_series(self):
+        return self.base in self.SERIES_BASES
+
+    @property
     def base_label(self):
         if self.base == "None":
             return None

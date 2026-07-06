@@ -1,13 +1,21 @@
 class HowRegistryMixin:
     BASE_LABELS = {
         "JSON": None,
+        "CSV": None,
+        "TSV": None,
+        "Table": None,
         "Map": None,
         "Cartogram": "Cartogram (Population based)",
         "HexMap": "HexMap (Population based)",
         "BubbleMap": "BubbleMap (Population based)",
         "BarChart": "Bar Chart",
+        "StackedBarChart": "Stacked Bar Chart",
         "PieChart": "Pie Chart",
         "BumpChart": "Bump Chart",
+        "TreeMap": "Tree Map",
+        "Histogram": "Histogram",
+        "ScatterPlot": "Scatter Plot",
+        "LineChart": "Line Chart",
         "MapAnimation": "Animated Map",
         "CartogramAnimation": "Animated Cartogram (Population based)",
         "HexMapAnimation": "Animated HexMap (Population based)",
@@ -20,7 +28,10 @@ class HowRegistryMixin:
         "HexMapAnimation": "HexMap",
         "BubbleMapAnimation": "BubbleMap",
     }
-    INTERVAL_BASES = {"BumpChart"} | set(ANIMATION_BASE_TO_FRAME_BASE)
+    INTERVAL_BASES = {"BumpChart", "LineChart"} | set(
+        ANIMATION_BASE_TO_FRAME_BASE
+    )
+    SERIES_BASES = {"LineChart"}
     CATEGORY_BASES = {
         "Map",
         "Cartogram",

@@ -124,7 +124,10 @@ split into their `start` and `end` point-in-time commands.
   merged `DataSource` records, and the query time, and stores it in the cache.
 - **`CommandCache`** is an LRU (`OrderedDict`, default 128 entries). Its
   `is_valid` check evicts any cached image result whose file has disappeared.
-- **`CommandHelp`** returns the static payload served for the `Help` command.
+- **`CommandHelp`** returns the payload served for the `Help` command, a live,
+  self-describing index enumerating the valid `What`/`When` pairs from
+  `WhatWhenRegistry`, the region forms from `RegionTypeRegistry`, and every
+  `How` base and modifier from `HowRegistryMixin`.
 - **Error classes** — `CommandError` (base), `InvalidCommandError`,
   `InvalidWhenError`, `InvalidWhereError`, `UnknownWhatError`, `UnknownHowError`
   — are raised by the fields and command for precise, typed failures.
@@ -212,10 +215,18 @@ final output.
     (`Map`, `Cartogram`, `None`); loads geometry through `GeoData`.
   - **`BarChartVisual`** (+ `BarChartDrawMixin`, `BarChartLabelMixin`) — stacked
     bars, with adaptive in-bar label fitting and change-chart handling.
+  - **`StackedBarChartVisual`** — 100%-normalized stacked bars, showing each
+    region's categorical composition as shares of a full-height bar.
   - **`PieChartVisual`** (+ `PieChartGridMixin`) — a grid of per-region pies;
     falls back to bars for change charts.
   - **`BumpChartVisual`** (+ `BumpChartDataMixin`, `BumpChartDrawMixin`) — a
     rank-change slopegraph between the two years of an interval.
+  - **`TreeMapVisual`** (+ `TreeMapData`, `TreeMapDrawMixin`) — a squarified
+    treemap of the overall categorical composition across regions.
+  - **`HistogramVisual`** (+ `HistogramData`) — the distribution of region
+    totals binned into a histogram.
+  - **`ScatterPlotVisual`** (+ `ScatterPlotData`) — region population against
+    dominant-category share, coloured by dominant category.
   - **`AnimationVisual`** (+ `AnimationEncoder`, `AnimationMP4Mixin`) — sequences
     one still-map frame per interval year into an animated GIF (and MP4 when
     `ffmpeg` is available); the `*Animation` bases map through
@@ -226,13 +237,17 @@ final output.
 `VisualFactory.from_command_and_datasets` reads `command.how.base` and
 instantiates the matching class:
 
-| `how.base`                                                              | Visual class      |
-| ----------------------------------------------------------------------- | ----------------- |
-| `JSON`                                                                  | `JSONVisual`      |
-| `Map`, `Cartogram`, `None`                                              | `MapVisual`       |
-| `BarChart`                                                              | `BarChartVisual`  |
-| `PieChart`                                                              | `PieChartVisual`  |
-| `BumpChart`                                                             | `BumpChartVisual` |
+| `how.base`                  | Visual class      |
+| --------------------------- | ----------------- |
+| `JSON`                      | `JSONVisual`      |
+| `Map`, `Cartogram`, `None`  | `MapVisual`       |
+| `BarChart`                  | `BarChartVisual`  |
+| `StackedBarChart`           | `StackedBarChartVisual` |
+| `PieChart`                  | `PieChartVisual`  |
+| `BumpChart`                 | `BumpChartVisual` |
+| `TreeMap`                   | `TreeMapVisual`   |
+| `Histogram`                 | `HistogramVisual` |
+| `ScatterPlot`               | `ScatterPlotVisual` |
 | `MapAnimation`, `CartogramAnimation`, `HexMapAnimation`, `BubbleMapAnimation` | `AnimationVisual` |
 
 Keeping this mapping in one class isolates output-type selection from the drawing

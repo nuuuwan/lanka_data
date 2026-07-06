@@ -1,18 +1,269 @@
 {
   "command_str": "Help",
   "result": {
-    "what_to_whens": [
-      "TODO"
-    ],
-    "where": [
-      "LK*",
-      "EC-*",
-      "LG-*"
-    ],
-    "how": [
-      "JSON",
-      "Map"
-    ],
+    "what_to_whens": {
+      "AgeGroup": [
+        "2001",
+        "2012",
+        "2024"
+      ],
+      "AgriOccupations": [
+        "2001"
+      ],
+      "Attendance": [
+        "2001"
+      ],
+      "Communication": [
+        "2012"
+      ],
+      "ConstructionYear": [
+        "2012"
+      ],
+      "Dependency": [
+        "2001"
+      ],
+      "Disability": [
+        "2001"
+      ],
+      "Economy": [
+        "2012"
+      ],
+      "Education": [
+        "2001",
+        "2012"
+      ],
+      "Electricity": [
+        "2001"
+      ],
+      "Employment": [
+        "2001"
+      ],
+      "Enrollment": [
+        "2001"
+      ],
+      "Ethnicity": [
+        "2001",
+        "2012",
+        "2024"
+      ],
+      "Fertility": [
+        "2001"
+      ],
+      "Floor": [
+        "2012",
+        "2024"
+      ],
+      "Fuel": [
+        "2001",
+        "2012",
+        "2024"
+      ],
+      "Gender": [
+        "2012",
+        "2024"
+      ],
+      "Growth": [
+        "2001"
+      ],
+      "Housing": [
+        "2001"
+      ],
+      "Inactive": [
+        "2001"
+      ],
+      "Industry": [
+        "2001"
+      ],
+      "Informal": [
+        "2001"
+      ],
+      "Laborforce": [
+        "2001"
+      ],
+      "Lighting": [
+        "2012",
+        "2024"
+      ],
+      "Literacy": [
+        "2001"
+      ],
+      "Local": [
+        "2001",
+        "2012",
+        "2024"
+      ],
+      "LocalSummary": [
+        "2001",
+        "2012",
+        "2024"
+      ],
+      "Marital": [
+        "2001",
+        "2012"
+      ],
+      "Materials": [
+        "2001"
+      ],
+      "Migration": [
+        "2001"
+      ],
+      "NonAgriEmployment": [
+        "2001"
+      ],
+      "NotAttending": [
+        "2001"
+      ],
+      "Occupancy": [
+        "2012"
+      ],
+      "Occupations": [
+        "2001"
+      ],
+      "Ownership": [
+        "2012"
+      ],
+      "Parliamentary": [
+        "2001",
+        "2012",
+        "2024"
+      ],
+      "ParliamentarySummary": [
+        "2001",
+        "2012",
+        "2024"
+      ],
+      "Persons": [
+        "2012"
+      ],
+      "Population": [
+        "2001"
+      ],
+      "Presidential": [
+        "2001",
+        "2012",
+        "2024"
+      ],
+      "PresidentialSummary": [
+        "2001",
+        "2012",
+        "2024"
+      ],
+      "Quarters": [
+        "2012"
+      ],
+      "RelationshipToHead": [
+        "2012"
+      ],
+      "Religion": [
+        "2001",
+        "2012",
+        "2024"
+      ],
+      "Roof": [
+        "2012",
+        "2024"
+      ],
+      "Rooms": [
+        "2001",
+        "2012"
+      ],
+      "Sectoral": [
+        "2001"
+      ],
+      "Sectors": [
+        "2001"
+      ],
+      "Speaking": [
+        "2001"
+      ],
+      "Structure": [
+        "2001",
+        "2012",
+        "2024"
+      ],
+      "Tenure": [
+        "2001"
+      ],
+      "Toilet": [
+        "2001",
+        "2012",
+        "2024"
+      ],
+      "Unemployment": [
+        "2001"
+      ],
+      "Unit": [
+        "2001",
+        "2012"
+      ],
+      "Walls": [
+        "2012",
+        "2024"
+      ],
+      "Waste": [
+        "2012"
+      ],
+      "Water": [
+        "2001",
+        "2012",
+        "2024"
+      ]
+    },
+    "where": {
+      "region_types": [
+        "country",
+        "district",
+        "dsd",
+        "ed",
+        "gnd",
+        "lg",
+        "pd",
+        "province"
+      ],
+      "operators": [
+        "single",
+        "comma",
+        "range",
+        "history",
+        "zoom",
+        "child_type"
+      ],
+      "examples": [
+        "LK",
+        "LK:district",
+        "LK-1,LK-2",
+        "LK-1...LK-2",
+        "LK-pre1959",
+        "LK-1127025@20"
+      ]
+    },
+    "how": {
+      "bases": [
+        "BarChart",
+        "BubbleMap",
+        "BumpChart",
+        "Cartogram",
+        "HexMap",
+        "JSON",
+        "Map",
+        "None",
+        "PieChart"
+      ],
+      "modifiers": [
+        "1st",
+        "1stPct",
+        "2nd",
+        "2ndPct",
+        "3rd",
+        "3rdPct",
+        "Bottom",
+        "Change",
+        "Diversity",
+        "DiversityPew",
+        "Segregation",
+        "Top"
+      ]
+    },
     "source": "lanka_data",
     "source_url": "https://github.com/nuuuwan/lanka_data/blob/main/README.md"
   },
