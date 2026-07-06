@@ -53,9 +53,7 @@ class TestCorrelationDataset:
                 100,
             )
         }
-        return CorrelationDataset(
-            _DummyDataset(idx1), _DummyDataset(idx2)
-        )
+        return CorrelationDataset(_DummyDataset(idx1), _DummyDataset(idx2))
 
     def test_correlation_is_not_a_diff(self):
         assert self._build().is_diff() is False

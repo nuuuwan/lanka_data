@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 
 from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
-from lanka_data.api.fields.WhatIntrospectionMixin import WhatIntrospectionMixin
+from lanka_data.api.fields.WhatIntrospectionMixin import (
+    WhatIntrospectionMixin,
+)
 from lanka_data.api.fields.WhatRegistry import WhatRegistry
 
 

@@ -88,9 +88,7 @@ class TestDatasetFactory:
             return DummyDataset(command.what_cmd)
 
         monkeypatch.setattr(DatasetFactory, "from_command", fake_from_command)
-        command = Command.from_str(
-            "Religion+Ethnicity/2024/LK:province/Map"
-        )
+        command = Command.from_str("Religion+Ethnicity/2024/LK:province/Map")
         datasets = DatasetFactory.list_from_command(command)
         assert calls == ["Religion", "Ethnicity"]
         assert len(datasets) == 3

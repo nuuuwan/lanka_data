@@ -1,5 +1,6 @@
 import pytest
 
+from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
 from lanka_data.api.fields.What import What as APIWhat
 from lanka_data.api.fields.When import When as APIWhen
 from lanka_data.api.fields.Where import Where as APIWhere
@@ -58,9 +59,7 @@ class TestCommandFields:
             Command.from_str("Religion/2012/LK/BumpChart")
 
     def test_combined_what_exposes_parts(self):
-        command = Command.from_str(
-            "Religion+Ethnicity/2024/LK:province/Map"
-        )
+        command = Command.from_str("Religion+Ethnicity/2024/LK:province/Map")
         assert command.what.is_combined
         assert command.what.whats == ["Religion", "Ethnicity"]
         assert command.what_cmd == "Religion+Ethnicity"
