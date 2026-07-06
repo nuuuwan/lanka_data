@@ -60,7 +60,7 @@ class DCNUtilsAlgorithm:
             if max_size_error > DCNUtilsAlgorithm.WARNING_ERROR + 1
             else ""
         )
-        log.debug(f"{max_fid} {max_size_error=} {emoji}")
+        log.debug(f"{max_fid} {max_size_error=:.2f} {emoji}")
         frf = 1.0 / (1.0 + mean_size_error)
         return radius, mass, frf, mean_size_error
 
