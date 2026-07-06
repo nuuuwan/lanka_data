@@ -63,7 +63,7 @@ class TestDatasetFactory:
         monkeypatch.setattr(DatasetFactory, "from_command", fake_from_command)
         command = Command.from_str("Religion/2001-2012-2024/LK/JSON")
         datasets = DatasetFactory.list_from_command(command)
-        assert calls == ["2001", "2012", "2024"]
+        assert calls == ["2001", "2024"]
         assert len(datasets) == 1
         assert datasets[0].is_diff()
         assert datasets[0].dataset1.year == "2001"

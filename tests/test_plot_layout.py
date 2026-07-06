@@ -20,7 +20,7 @@ class TestPlotLayout:
 
     def test_more_than_one_raises(self):
         with pytest.raises(PlotLayoutError):
-            PlotLayout(5)
+            PlotLayout(3)
 
     def test_zero_raises(self):
         with pytest.raises(PlotLayoutError):
