@@ -103,6 +103,8 @@ class DatasetFactory:
                 for year in years
             ]
             diff_dataset = DiffDataset(datasets[0], datasets[-1])
+            if command.how.base in command.how.INTERVAL_BASES:
+                return [diff_dataset]
             return datasets + [diff_dataset]
 
         return [DatasetFactory.from_command(command)]
