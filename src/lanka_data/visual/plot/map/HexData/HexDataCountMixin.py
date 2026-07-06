@@ -47,9 +47,10 @@ class HexDataCountMixin:
         if ideal <= 0:
             return
         error = cls._region_error(actual, ideal)
+        emoji = "" if error <= cls.HEXMAP_ERROR else "⚠️"
         log.debug(
             f"{region_id}: actual={actual} "
-            + f"ideal={ideal:.2f} error={error:.2f}"
+            + f"ideal={ideal:.2f} error={error:.0%} {emoji}"
         )
 
     @classmethod
