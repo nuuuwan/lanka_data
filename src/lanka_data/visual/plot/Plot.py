@@ -67,8 +67,12 @@ class Plot:
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, "Image.png")
         plt.savefig(image_path, dpi=200, bbox_inches=0)
+        svg_path = os.path.join(image_dir, "Image.svg")
+        plt.savefig(svg_path, bbox_inches=0)
         plt.close("all")
         log.debug(f"Wrote {File(image_path)}")
+        log.debug(f"Wrote {File(svg_path)}")
         return {
             "image_path": image_path,
+            "svg_path": svg_path,
         }
