@@ -19,20 +19,25 @@ class FieldNameUtils:
         },
         "SLChetty": {"SriLankaChetty", "SLChetty"},
         "Other": {"Other", "OtherEth"},
+        # Cooking
         "Firewood": {"Firewood", "FireWood"},
         "Gas": {"Gas", "LpGas"},
         "SawdustPaddyHusk": {"SawdustPaddyHusk", "SawDust/PaddyHusk"},
+        # Wall
         "Bricks": {"Bricks", "Brick"},
+        # Roof
         "CadjanPalmyrah": {"CadjanPalmyrah", "Cadjan/Palmyrah"},
         "CadjanPalmyrahStraw": {
             "CadjanPalmyrahStraw",
             "Cadjan/Palmyrah/Straw",
         },
+        # Energy
         "Kerosene": {"Kerosene", "KeroseneLamp"},
         "ElectricityGrid": {
             "ElectricityGrid",
             "ElectricityNationalElectricityNetwork",
         },
+        # Marital Status
         "MarriedRegistered": {
             "MarriedRegistered",
             "Married((Registered)",
