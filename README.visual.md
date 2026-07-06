@@ -83,13 +83,16 @@ The canvas is divided top-to-bottom into three fixed bands. This is Principle 5
 
 | Band       | Vertical extent      | Role                                            |
 | ---------- | -------------------- | ----------------------------------------------- |
-| **Header** | top **5 %** (0.95–1.0) | Title bar: what / where / how, as English text |
-| **Body**   | middle (0.08–0.92)   | The plot(s) — one sub-figure per dataset year   |
-| **Footer** | bottom **5 %** (0–0.05) | Source attribution                           |
+| **Header** | top band, grows with title lines | Title (what / where / how, as English text, wrapped over as many lines as needed) plus the **Lanka Data** brand mark |
+| **Body**   | middle (0.10–0.86)   | The plot(s) — one sub-figure per dataset year   |
+| **Footer** | bottom **5 %** (0–0.05) | Source attribution and the GitHub repository link |
 
 The body is laid out on a grid: one column per dataset, with a fixed inter-panel
 gutter, so a two-year comparison reads as two aligned panels rather than two
-unrelated charts. Nothing in any band touches the canvas edge.
+unrelated charts. A uniform **5 %** margin is reserved on every side, so the
+plotted graphics never touch the canvas edge (`Style.MARGIN`). The header band is
+not a fixed height: it expands downward to fit however many lines the title
+needs, so the title text is never clipped or shrunk to fit one line.
 
 ---
 
@@ -112,9 +115,14 @@ and contrast carried by weight and colour — never by a zoo of typefaces.
   not merely bigger; it is heavier and darker than the subtitle. This keeps the
   hierarchy readable at thumbnail size and in greyscale, where size differences
   alone collapse.
-- **Centred, single-line headers.** Header and panel text is centre-aligned and
-  kept to one line; the header composes its parts with a single middle-dot
-  separator (` · `) so *what*, *where*, and *how* read as one balanced phrase.
+- **Centred, multi-line headers.** Header and panel text is centre-aligned. The
+  header composes its parts with a single middle-dot separator (` · `) so *what*,
+  *where*, and *how* read as one balanced phrase; when that phrase is wider than
+  the canvas it wraps onto additional lines at full title size rather than
+  shrinking, so nothing is ever clipped.
+- **Persistent brand and source line.** Every figure carries the **Lanka Data**
+  brand mark in the header and a link to the project's GitHub repository in the
+  footer, so an output is self-identifying wherever it travels.
 - **In-figure labels earn their place.** Region and data labels are only drawn
   when they fit their shape; a label that cannot be sized legibly is dropped
   rather than overlapped or shrunk into illegibility (see §6).
