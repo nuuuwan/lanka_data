@@ -74,6 +74,8 @@ class BarChartDrawMixin:
         ax.axhline(0, color=Style.COLOR_AXIS, linewidth=0.8)
         ax.yaxis.set_major_formatter(FuncFormatter(self._format_millions))
         ax.set_ylabel(y_label, color=Style.COLOR_METADATA)
+        for side in ("top", "right", "bottom"):
+            ax.spines[side].set_visible(False)
 
     @staticmethod
     def _draw_category_legend(ax, category_labels, category_to_color):
