@@ -16,7 +16,7 @@ class ColorSpecConstants:
         "#2000c0": ["OtherChristian"],
         "#c000c0": ["RomanCatholic"],
         # Null
-        "#222222": [ps
+        "#222222": [
             "(Insufficient Data)",
         ],
         "#111111": [
