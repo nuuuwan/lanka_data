@@ -96,32 +96,28 @@ class DatasetFactory:
     @staticmethod
     def _list_from_interval(command):
         years = command.when.years
-        datasets = [
-            DatasetFactory.from_command(
-                command.copy(when_cmd=year, how_cmd="")
-            )
-            for year in years
-        ]
-        diff_dataset = DiffDataset(datasets[0], datasets[-1])
-        if command.how.base in command.how.INTERVAL_BASES:
-            return [diff_dataset]
-        return datasets + [diff_dataset]
+        start = DatasetFactory.from_command(
+            command.copy(when_cmd=years[0], how_cmd="")
+        )
+        end = DatasetFactory.from_command(
+            command.copy(when_cmd=years[-1], how_cmd="")
+        )
+        return [DiffDataset(start, end)]
 
     @staticmethod
     def _list_from_combined(command):
         whats = command.what.whats
-        datasets = []
-        for what in whats:
-            dataset = DatasetFactory.from_command(
-                command.copy(what_cmd=what, how_cmd="")
-            )
-            dataset.panel_label = what
-            datasets.append(dataset)
-        correlation = CorrelationDataset(datasets[0], datasets[-1])
+        first = DatasetFactory.from_command(
+            command.copy(what_cmd=whats[0], how_cmd="")
+        )
+        last = DatasetFactory.from_command(
+            command.copy(what_cmd=whats[-1], how_cmd="")
+        )
+        correlation = CorrelationDataset(first, last)
         correlation.panel_label = "Correlation: " + " & ".join(
             [whats[0], whats[-1]]
         )
-        return datasets + [correlation]
+        return [correlation]
 
     @staticmethod
     def list_from_command(command):

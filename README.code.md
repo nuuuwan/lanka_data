@@ -177,10 +177,10 @@ expose a normalized value table.
 `DatasetFactory.list_from_command(command)` is the dispatcher:
 
 1. For an **interval** `when`, it `copy`s the command to each of its years,
-   builds a dataset per year, appends a `DiffDataset` of the first and last
-   years, and returns them all (`[year_1, …, year_n, diff]`). A two-year
-   interval yields `[start, end, diff]`; a multi-year interval such as
-   `2001-2012-2024` yields `[2001, 2012, 2024, diff]`.
+   builds a dataset per year, and returns a single-element list containing a
+   `DiffDataset` of the first and last years (`[diff]`). Both a two-year
+   interval such as `2012-2024` and a multi-year interval such as
+   `2001-2012-2024` yield exactly one dataset — the diff of the endpoints.
 2. For a **single** year it returns one dataset, chosen by `from_command`:
    `Empty` → `EmptyDataset`; otherwise the first census class whose supported
    years and labels match, else the election / election-summary datasets, else
