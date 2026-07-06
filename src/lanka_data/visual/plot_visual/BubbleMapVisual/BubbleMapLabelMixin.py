@@ -41,11 +41,13 @@ class BubbleMapLabelMixin:
             label = cls._label(name, region_count)
             if label is None:
                 continue
+            words = label.split()
+            longest_word = max(words, key=len)
             ax.annotate(
-                label,
+                "\n".join(words),
                 xy=(cx, cy),
                 ha="center",
                 va="center",
-                fontsize=7,
+                fontsize=60 / len(longest_word),
                 color=cls._text_color(region_color_map, region_id),
             )
