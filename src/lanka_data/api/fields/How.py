@@ -61,6 +61,10 @@ class How(HowIntrospectionMixin, HowRegistryMixin):
         )
 
     @property
+    def needs_series(self):
+        return self.base in self.SERIES_BASES
+
+    @property
     def base_label(self):
         if self.base == "None":
             return None

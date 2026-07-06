@@ -11,9 +11,11 @@ class HowRegistryMixin:
         "BarChart": "Bar Chart",
         "PieChart": "Pie Chart",
         "BumpChart": "Bump Chart",
+        "LineChart": "Line Chart",
         "None": None,
     }
-    INTERVAL_BASES = {"BumpChart"}
+    INTERVAL_BASES = {"BumpChart", "LineChart"}
+    SERIES_BASES = {"LineChart"}
     CATEGORY_BASES = {"Map", "Cartogram", "HexMap", "BubbleMap", "None"}
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
