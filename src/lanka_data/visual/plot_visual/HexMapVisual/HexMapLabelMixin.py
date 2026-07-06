@@ -70,13 +70,14 @@ class HexMapLabelMixin(HexMapLabelGeoMixin, HexMapLabelFitMixin):
         cls, ax, layout, region_to_name, region_color_map, region_count
     ):
         fig = ax.get_figure()
-        for region_id, geom in cls._region_polygons(layout).items():
+        radius = layout["radius"]
+        for region_id, points in cls._region_hexes(layout).items():
             name = region_to_name.get(region_id, str(region_id))
             label = cls._label(name, region_count)
             if label is None:
                 continue
             cx, cy, angle, fontsize = cls._best_label_placement(
-                geom, label, ax, fig
+                points, radius, label, ax, fig
             )
             ax.annotate(
                 label,

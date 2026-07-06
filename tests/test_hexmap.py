@@ -1,7 +1,11 @@
+import math
+
 from lanka_data.visual.plot.map.HexData import HexData
 from lanka_data.visual.plot_visual.HexMapVisual import HexMapVisual
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
-    HexMapBoundaryMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import (
+    HexMapBoundaryMixin,
+)
+from lanka_data.visual.plot_visual.HexMapVisual.HexTextFit import HexTextFit
 from lanka_data.visual.VisualFactory import VisualFactory
 from utils_future import HungarianUtils
 
@@ -209,3 +213,45 @@ class TestHexScaleRange:
     def test_scale_text_collapses_when_values_equal(self):
         text = HexMapVisual._scale_text(100, 100)
         assert text == "Each hexagon represents ~100 people"
+
+
+class TestHexTextFit:
+    RADIUS = 1.0
+    DX = math.sqrt(3) * RADIUS
+    DY = 1.5 * RADIUS
+
+    def _fit(self, points):
+        return HexTextFit.best_label_fit(points, self.RADIUS)
+
+    def test_horizontal_row_is_zero_degrees(self):
+        points = [(col * self.DX, 0.0) for col in range(4)]
+        _, _, width, _, angle = self._fit(points)
+        assert angle == 0.0
+        assert width == 4 * self.DX
+
+    def test_up_right_chain_is_sixty_degrees(self):
+        points = [(k * self.DX / 2, k * self.DY) for k in range(3)]
+        _, _, _, _, angle = self._fit(points)
+        assert angle == 60.0
+
+    def test_down_right_chain_is_minus_sixty_degrees(self):
+        points = [(k * self.DX / 2, -k * self.DY) for k in range(3)]
+        _, _, _, _, angle = self._fit(points)
+        assert angle == -60.0
+
+    def test_single_hex_defaults_to_horizontal_at_its_center(self):
+        cx, cy, _, _, angle = self._fit([(5.0, 7.0)])
+        assert (cx, cy) == (5.0, 7.0)
+        assert angle == 0.0
+
+    def test_longest_sequence_wins_over_shorter_ones(self):
+        row = [(col * self.DX, 0.0) for col in range(5)]
+        diagonal = [(k * self.DX / 2, k * self.DY) for k in range(3)]
+        _, _, _, _, angle = self._fit(row + diagonal)
+        assert angle == 0.0
+
+    def test_center_is_midpoint_of_the_sequence(self):
+        points = [(col * self.DX, 0.0) for col in range(4)]
+        cx, cy, _, _, _ = self._fit(points)
+        assert cx == 1.5 * self.DX
+        assert cy == 0.0
