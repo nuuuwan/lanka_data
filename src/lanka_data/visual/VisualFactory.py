@@ -5,8 +5,14 @@ from lanka_data.visual.plot_visual.BarChartVisual import BarChartVisual
 from lanka_data.visual.plot_visual.BubbleMapVisual import BubbleMapVisual
 from lanka_data.visual.plot_visual.BumpChartVisual import BumpChartVisual
 from lanka_data.visual.plot_visual.HexMapVisual import HexMapVisual
+from lanka_data.visual.plot_visual.HistogramVisual import HistogramVisual
 from lanka_data.visual.plot_visual.MapVisual import MapVisual
 from lanka_data.visual.plot_visual.PieChartVisual import PieChartVisual
+from lanka_data.visual.plot_visual.ScatterPlotVisual import ScatterPlotVisual
+from lanka_data.visual.plot_visual.StackedBarChartVisual import (
+    StackedBarChartVisual,
+)
+from lanka_data.visual.plot_visual.TreeMapVisual import TreeMapVisual
 from utils_future import Log
 
 log = Log("VisualFactory")
@@ -22,8 +28,12 @@ class VisualFactory:
         "BubbleMap": BubbleMapVisual,
         "None": MapVisual,
         "BarChart": BarChartVisual,
+        "StackedBarChart": StackedBarChartVisual,
         "PieChart": PieChartVisual,
         "BumpChart": BumpChartVisual,
+        "TreeMap": TreeMapVisual,
+        "Histogram": HistogramVisual,
+        "ScatterPlot": ScatterPlotVisual,
     }
 
     @staticmethod

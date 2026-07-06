@@ -6,8 +6,12 @@ class HowRegistryMixin:
         "HexMap": "HexMap (Population based)",
         "BubbleMap": "BubbleMap (Population based)",
         "BarChart": "Bar Chart",
+        "StackedBarChart": "Stacked Bar Chart",
         "PieChart": "Pie Chart",
         "BumpChart": "Bump Chart",
+        "TreeMap": "Tree Map",
+        "Histogram": "Histogram",
+        "ScatterPlot": "Scatter Plot",
         "None": None,
     }
     INTERVAL_BASES = {"BumpChart"}

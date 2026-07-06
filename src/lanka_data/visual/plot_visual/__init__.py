@@ -22,6 +22,10 @@ from lanka_data.visual.plot_visual.HexMapVisual import (
     HexMapLabelMixin,
     HexMapVisual,
 )
+from lanka_data.visual.plot_visual.HistogramVisual import (
+    HistogramData,
+    HistogramVisual,
+)
 from lanka_data.visual.plot_visual.MapVisual import MapVisual
 from lanka_data.visual.plot_visual.PieChartVisual import (
     PieChartMapDrawMixin,
@@ -29,3 +33,15 @@ from lanka_data.visual.plot_visual.PieChartVisual import (
     PieChartVisual,
 )
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
+from lanka_data.visual.plot_visual.ScatterPlotVisual import (
+    ScatterPlotData,
+    ScatterPlotVisual,
+)
+from lanka_data.visual.plot_visual.StackedBarChartVisual import (
+    StackedBarChartVisual,
+)
+from lanka_data.visual.plot_visual.TreeMapVisual import (
+    TreeMapData,
+    TreeMapDrawMixin,
+    TreeMapVisual,
+)
