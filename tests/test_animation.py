@@ -1,6 +1,7 @@
 import os
 import tempfile
 
+import pytest
 from PIL import Image
 
 from lanka_data.command.Command import Command
@@ -31,11 +32,8 @@ class TestAnimationHow:
 
     def test_animation_requires_interval_when(self):
         Command.from_str("Religion/2001-2012-2024/LK:district/MapAnimation")
-        try:
+        with pytest.raises(Exception, match="interval"):
             Command.from_str("Religion/2024/LK:district/MapAnimation")
-            raise AssertionError("single-year animation should be rejected")
-        except Exception as exc:
-            assert "interval" in str(exc)
 
 
 class TestAnimationFactory:
@@ -97,11 +95,8 @@ class TestAnimationEncoder:
         assert getattr(Image.open(result["image_path"]), "n_frames", 1) == 2
 
     def test_encode_raises_without_frames(self):
-        try:
+        with pytest.raises(ValueError):
             AnimationEncoder.encode([], tempfile.mkdtemp())
-            raise AssertionError("empty frames should raise")
-        except ValueError:
-            pass
 
 
 class TestAnimationVisual:

@@ -8,6 +8,7 @@ log = Log("AnimationMP4Mixin")
 class AnimationMP4Mixin:
     MP4_NAME = "Animation.mp4"
     MP4_FPS = 1
+    MP4_DPI = 100
 
     @classmethod
     def _try_encode_mp4(cls, frames, output_dir):
@@ -32,11 +33,14 @@ class AnimationMP4Mixin:
 
         mp4_path = os.path.join(output_dir, cls.MP4_NAME)
         width, height = frames[0].size
-        fig = plt.figure(figsize=(width / 100, height / 100), dpi=100)
+        fig = plt.figure(
+            figsize=(width / cls.MP4_DPI, height / cls.MP4_DPI),
+            dpi=cls.MP4_DPI,
+        )
         ax = fig.add_axes([0, 0, 1, 1])
         ax.set_axis_off()
         writer = writer_cls(fps=cls.MP4_FPS)
-        with writer.saving(fig, mp4_path, dpi=100):
+        with writer.saving(fig, mp4_path, dpi=cls.MP4_DPI):
             for frame in frames:
                 ax.imshow(frame)
                 writer.grab_frame()
