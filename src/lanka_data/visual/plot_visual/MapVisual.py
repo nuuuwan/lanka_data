@@ -2,6 +2,9 @@ from lanka_data.visual.plot.color_spec import ColorSpecFactory
 from lanka_data.visual.plot.Label import Label
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map.GeoData import GeoData
+from lanka_data.visual.plot.map.RegionPopulationFilter import (
+    RegionPopulationFilter,
+)
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 
@@ -12,8 +15,11 @@ class MapVisual(PlotVisual):
 
     def _get_gdf_region(self, dataset, region_color_map):
         data_list = dataset.get_data_table()
+        is_cartogram = "Cartogram" in self.how_cmd
+        if is_cartogram:
+            data_list = RegionPopulationFilter.filter(data_list)
         gdf_region = GeoData.get_geopandas_dataframe(
-            data_list, "Cartogram" in self.how_cmd
+            data_list, is_cartogram
         ).copy()
         gdf_region["color"] = gdf_region["region_id"].map(region_color_map)
         return gdf_region
