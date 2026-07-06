@@ -8,9 +8,11 @@ JSON_CONTENT_TYPE = "application/json"
 
 
 class HandlerResponseMixin:
-    def _write_image(self, data, cache_control):
+    def _write_image(
+        self, data, cache_control, content_type=IMAGE_CONTENT_TYPE
+    ):
         self.send_response(200)
-        self.send_header("Content-Type", IMAGE_CONTENT_TYPE)
+        self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", cache_control)
         self.end_headers()

@@ -1,11 +1,15 @@
 from dataclasses import dataclass
 
+from lanka_data.visual.data_export.CSVVisual import CSVVisual
+from lanka_data.visual.data_export.TableVisual import TableVisual
+from lanka_data.visual.data_export.TSVVisual import TSVVisual
 from lanka_data.visual.JSONVisual import JSONVisual
 from lanka_data.visual.plot_visual.BarChartVisual import BarChartVisual
 from lanka_data.visual.plot_visual.BubbleMapVisual import BubbleMapVisual
 from lanka_data.visual.plot_visual.BumpChartVisual import BumpChartVisual
 from lanka_data.visual.plot_visual.HexMapVisual import HexMapVisual
 from lanka_data.visual.plot_visual.HistogramVisual import HistogramVisual
+from lanka_data.visual.plot_visual.LineChartVisual import LineChartVisual
 from lanka_data.visual.plot_visual.MapVisual import MapVisual
 from lanka_data.visual.plot_visual.PieChartVisual import PieChartVisual
 from lanka_data.visual.plot_visual.ScatterPlotVisual import ScatterPlotVisual
@@ -22,6 +26,9 @@ log = Log("VisualFactory")
 class VisualFactory:
     _VISUAL_CLS = {
         "JSON": JSONVisual,
+        "CSV": CSVVisual,
+        "TSV": TSVVisual,
+        "Table": TableVisual,
         "Map": MapVisual,
         "Cartogram": MapVisual,
         "HexMap": HexMapVisual,
@@ -34,6 +41,7 @@ class VisualFactory:
         "TreeMap": TreeMapVisual,
         "Histogram": HistogramVisual,
         "ScatterPlot": ScatterPlotVisual,
+        "LineChart": LineChartVisual,
     }
 
     @staticmethod

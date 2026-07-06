@@ -124,7 +124,10 @@ split into their `start` and `end` point-in-time commands.
   merged `DataSource` records, and the query time, and stores it in the cache.
 - **`CommandCache`** is an LRU (`OrderedDict`, default 128 entries). Its
   `is_valid` check evicts any cached image result whose file has disappeared.
-- **`CommandHelp`** returns the static payload served for the `Help` command.
+- **`CommandHelp`** returns the payload served for the `Help` command, a live,
+  self-describing index enumerating the valid `What`/`When` pairs from
+  `WhatWhenRegistry`, the region forms from `RegionTypeRegistry`, and every
+  `How` base and modifier from `HowRegistryMixin`.
 - **Error classes** — `CommandError` (base), `InvalidCommandError`,
   `InvalidWhenError`, `InvalidWhereError`, `UnknownWhatError`, `UnknownHowError`
   — are raised by the fields and command for precise, typed failures.

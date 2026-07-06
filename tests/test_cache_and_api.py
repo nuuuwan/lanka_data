@@ -26,3 +26,25 @@ class TestCacheAndApi:
         safe_path = os.path.join(Plot.DIR_OUTPUT, "x", "Image.png")
         assert api._is_safe_image_path(safe_path)
         assert not api._is_safe_image_path("/tmp/other/Image.png")
+
+    def test_api_public_result_exposes_image_and_svg_urls(self):
+        api = object.__new__(handler)
+        api.headers = {"Host": "example.com", "X-Forwarded-Proto": "https"}
+        inner = {
+            "image_path": os.path.join(Plot.DIR_OUTPUT, "c", "Image.png"),
+            "svg_path": os.path.join(Plot.DIR_OUTPUT, "c", "Image.svg"),
+            "other": 1,
+        }
+        result = api._hide_image_path(
+            "Religion/2024/LK/Map", {"result": inner}
+        )
+        new_inner = result["result"]
+        assert "image_path" not in new_inner
+        assert "svg_path" not in new_inner
+        assert new_inner["other"] == 1
+        assert new_inner["image_url"].endswith(
+            "/Religion/2024/LK/Map/Image.png"
+        )
+        assert new_inner["svg_url"].endswith(
+            "/Religion/2024/LK/Map/Image.svg"
+        )

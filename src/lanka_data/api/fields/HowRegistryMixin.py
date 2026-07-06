@@ -1,6 +1,9 @@
 class HowRegistryMixin:
     BASE_LABELS = {
         "JSON": None,
+        "CSV": None,
+        "TSV": None,
+        "Table": None,
         "Map": None,
         "Cartogram": "Cartogram (Population based)",
         "HexMap": "HexMap (Population based)",
@@ -12,9 +15,11 @@ class HowRegistryMixin:
         "TreeMap": "Tree Map",
         "Histogram": "Histogram",
         "ScatterPlot": "Scatter Plot",
+        "LineChart": "Line Chart",
         "None": None,
     }
-    INTERVAL_BASES = {"BumpChart"}
+    INTERVAL_BASES = {"BumpChart", "LineChart"}
+    SERIES_BASES = {"LineChart"}
     CATEGORY_BASES = {"Map", "Cartogram", "HexMap", "BubbleMap", "None"}
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
