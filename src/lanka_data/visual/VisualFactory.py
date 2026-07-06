@@ -1,5 +1,8 @@
 from dataclasses import dataclass
 
+from lanka_data.visual.data_export.CSVVisual import CSVVisual
+from lanka_data.visual.data_export.TableVisual import TableVisual
+from lanka_data.visual.data_export.TSVVisual import TSVVisual
 from lanka_data.visual.JSONVisual import JSONVisual
 from lanka_data.visual.plot_visual.BarChartVisual import BarChartVisual
 from lanka_data.visual.plot_visual.BubbleMapVisual import BubbleMapVisual
@@ -16,6 +19,9 @@ log = Log("VisualFactory")
 class VisualFactory:
     _VISUAL_CLS = {
         "JSON": JSONVisual,
+        "CSV": CSVVisual,
+        "TSV": TSVVisual,
+        "Table": TableVisual,
         "Map": MapVisual,
         "Cartogram": MapVisual,
         "HexMap": HexMapVisual,
