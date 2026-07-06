@@ -17,6 +17,7 @@ class Header:
     BACK_COLOR = Style.COLOR_SURFACE_HEADER
     LINE_HEIGHT = 1.4
     CHAR_WIDTH_RATIO = 0.55
+    MIN_WRAP_CHARS = 8
 
     def __init__(self, visual):
         self.visual = visual
@@ -34,7 +35,7 @@ class Header:
     def _wrap(self, fig):
         width_pt = fig.get_figwidth() * 72 * (1 - 2 * Style.MARGIN)
         char_pt = Style.FONT_SIZE_TITLE * self.CHAR_WIDTH_RATIO
-        max_chars = max(int(width_pt / char_pt), 8)
+        max_chars = max(int(width_pt / char_pt), self.MIN_WRAP_CHARS)
         return textwrap.wrap(self._title(), width=max_chars) or [""]
 
     def _line_frac(self, fig):
