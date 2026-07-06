@@ -37,6 +37,9 @@ class ColorSpecHelpers(ColorSpecHelpersMixin):
 
     @staticmethod
     def _available_category_keys(dataset):
+        get_category_keys = getattr(dataset, "get_category_keys", None)
+        if get_category_keys is not None:
+            return get_category_keys()
         keys = set()
         for data in dataset.get_data_table():
             keys.update(data.get("pct_values", {}).keys())

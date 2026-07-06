@@ -50,7 +50,7 @@ class RegionValueDatasetTableMixin:
             return rows
         return region_filter.apply(rows)
 
-    def get_data_table(self):
+    def get_unfiltered_data_table(self):
         complete_data_table = self.get_complete_data_table()
         complete_data_idx = {d["region_id"]: d for d in complete_data_table}
         filtered_data_table = []
@@ -74,7 +74,16 @@ class RegionValueDatasetTableMixin:
                 "No data available for the specified regions. "
                 "Please check the region IDs and data source."
             )
-        return self._apply_region_filter(expanded_data_table)
+        return expanded_data_table
+
+    def get_data_table(self):
+        return self._apply_region_filter(self.get_unfiltered_data_table())
+
+    def get_category_keys(self):
+        keys = set()
+        for row in self.get_unfiltered_data_table():
+            keys.update(row.get("pct_values", {}).keys())
+        return keys
 
     def get_data_idx(self):
         return {d["region_id"]: d for d in self.get_data_table()}
