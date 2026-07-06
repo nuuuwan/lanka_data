@@ -40,10 +40,10 @@ class BubbleDataRelaxMixin:
         for region_id in ids:
             r = radii[region_id]
             x, y = pos[region_id]
-            lo_x, hi_x = min(minx + r, maxx - r), max(maxx - r, minx + r)
-            lo_y, hi_y = min(miny + r, maxy - r), max(maxy - r, miny + r)
-            x = min(max(x, lo_x), hi_x)
-            y = min(max(y, lo_y), hi_y)
+            min_x, max_x = min(minx + r, maxx - r), max(maxx - r, minx + r)
+            min_y, max_y = min(miny + r, maxy - r), max(maxy - r, miny + r)
+            x = min(max(x, min_x), max_x)
+            y = min(max(y, min_y), max_y)
             pos[region_id] = (x, y)
 
     @classmethod
