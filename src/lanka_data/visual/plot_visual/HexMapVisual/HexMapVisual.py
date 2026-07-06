@@ -26,14 +26,11 @@ class HexMapVisual(
 
     @staticmethod
     def _scale_text(value_min, value_max):
-        Q = 100
-        a = round(value_min / Q) * Q
-        b = round(value_max / Q) * Q
+        a = round(value_min)
+        b = round(value_max)
         if a == b:
-            return f"Hexagon = {a:,} people"
-        diff = round((b - a) / 2 / Q) * Q
-        mid = round((a + b) / 2 / Q) * Q
-        return f"Hexagon = {mid:,} ± {diff:,} people"
+            return f"Each hexagon represents ~{a:,} people"
+        return f"Each hexagon represents {a:,} to {b:,} people"
 
     @classmethod
     def _draw_scale(cls, ax, layout):
