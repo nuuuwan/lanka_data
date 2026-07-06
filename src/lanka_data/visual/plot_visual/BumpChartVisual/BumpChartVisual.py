@@ -1,11 +1,14 @@
 from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 
+from .BumpChartAxisMixin import BumpChartAxisMixin
 from .BumpChartDataMixin import BumpChartDataMixin
 from .BumpChartDrawMixin import BumpChartDrawMixin
 
 
-class BumpChartVisual(BumpChartDataMixin, BumpChartDrawMixin, PlotVisual):
+class BumpChartVisual(
+    BumpChartDataMixin, BumpChartDrawMixin, BumpChartAxisMixin, PlotVisual
+):
     def draw(self, dataset, fig):
         subregions = self._build_subregions(dataset.get_data_table())
         when_cmd = getattr(self.command, "when_cmd", None)
