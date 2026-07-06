@@ -21,7 +21,7 @@ class TestDatasetFactory:
         command = Command.from_str("Religion/2012/LK/JSON")
         assert DatasetFactory.from_command(command) is sentinel
 
-    def test_interval_when_builds_start_end_and_diff(self, monkeypatch):
+    def test_interval_when_builds_only_diff(self, monkeypatch):
         calls = []
 
         class DummyDataset:
@@ -41,9 +41,10 @@ class TestDatasetFactory:
         command = Command.from_str("Religion/2012-2024/LK/JSON")
         datasets = DatasetFactory.list_from_command(command)
         assert calls == ["2012", "2024"]
-        assert datasets[2].is_diff()
+        assert len(datasets) == 1
+        assert datasets[0].is_diff()
 
-    def test_multi_year_interval_builds_each_year_and_diff(self, monkeypatch):
+    def test_multi_year_interval_builds_only_diff(self, monkeypatch):
         calls = []
 
         class DummyDataset:
@@ -63,14 +64,12 @@ class TestDatasetFactory:
         command = Command.from_str("Religion/2001-2012-2024/LK/JSON")
         datasets = DatasetFactory.list_from_command(command)
         assert calls == ["2001", "2012", "2024"]
-        assert len(datasets) == 4
-        assert datasets[3].is_diff()
-        assert datasets[3].dataset1.year == "2001"
-        assert datasets[3].dataset2.year == "2024"
+        assert len(datasets) == 1
+        assert datasets[0].is_diff()
+        assert datasets[0].dataset1.year == "2001"
+        assert datasets[0].dataset2.year == "2024"
 
-    def test_combined_what_builds_each_what_and_correlation(
-        self, monkeypatch
-    ):
+    def test_combined_what_builds_only_correlation(self, monkeypatch):
         calls = []
 
         class DummyDataset:
@@ -91,10 +90,8 @@ class TestDatasetFactory:
         command = Command.from_str("Religion+Ethnicity/2024/LK:province/Map")
         datasets = DatasetFactory.list_from_command(command)
         assert calls == ["Religion", "Ethnicity"]
-        assert len(datasets) == 3
-        assert not datasets[2].is_diff()
-        assert datasets[0].panel_label == "Religion"
-        assert datasets[1].panel_label == "Ethnicity"
-        assert datasets[2].panel_label == "Correlation: Religion & Ethnicity"
-        assert datasets[2].dataset1.what == "Religion"
-        assert datasets[2].dataset2.what == "Ethnicity"
+        assert len(datasets) == 1
+        assert not datasets[0].is_diff()
+        assert datasets[0].panel_label == "Correlation: Religion & Ethnicity"
+        assert datasets[0].dataset1.what == "Religion"
+        assert datasets[0].dataset2.what == "Ethnicity"
