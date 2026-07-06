@@ -1,10 +1,18 @@
 import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
 
 
 class ColorSpecConstants:
     DEFAULT_CMAP_ABS = plt.colormaps["YlGn"]
     DEFAULT_CMAP_DIFF = plt.colormaps["coolwarm"]
     DEFAULT_CMAP_CAT = plt.colormaps["rainbow"]
+
+    @staticmethod
+    def build_cmap_for_color(rgb):
+        light = tuple(1 - (1 - c) * 0.15 for c in rgb[:3])
+        return LinearSegmentedColormap.from_list(
+            "abs_custom", [light, rgb[:3]]
+        )
 
     # Canonical colors for categorical data fields across all datasets.
     # Labels NOT listed here (ordinal demographic categories and

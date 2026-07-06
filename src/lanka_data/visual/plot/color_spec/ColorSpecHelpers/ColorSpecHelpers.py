@@ -47,7 +47,9 @@ class ColorSpecHelpers(ColorSpecHelpersMixin):
         if category not in ColorSpecHelpers._available_category_keys(dataset):
             raise ValueError(f"Unknown category: {category}")
         func_value = ColorSpecHelpers.func_pct_value_from_key(category)
-        return ColorSpec.by_single_pct_value(dataset, func_value)
+        return ColorSpec.by_single_pct_value(
+            dataset, func_value, label=category
+        )
 
     @staticmethod
     def get_color_spec_generic(dataset, how_cmd) -> ColorSpec:
