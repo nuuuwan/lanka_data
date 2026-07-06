@@ -1,7 +1,7 @@
 class BarChartLabelMixin:
-    _CHAR_W_RATIO = 0.6
-    _LINE_H_RATIO = 1.4
-    _MIN_FONT = 3
+    _CHAR_W_RATIO = 1
+    _LINE_H_RATIO = 1
+    _MIN_FONT = 2
     _MAX_FONT = 24
 
     @classmethod

@@ -57,8 +57,7 @@ class BarChartDrawMixin:
         ax.set_xticks(range(len(subregions)))
         ax.set_xticklabels(
             x_labels,
-            rotation=90 if len(x_labels) > 12 else 45,
-            ha="right",
+            rotation=90,
             fontsize=Style.FONT_SIZE_METADATA,
             color=Style.COLOR_METADATA,
         )
@@ -67,9 +66,11 @@ class BarChartDrawMixin:
         ax.set_position(
             [pos.x0, pos.y0 + self.BOTTOM_PADDING, pos.width, padded_h]
         )
-        ax.grid(False)
-        ax.margins(x=0.06, y=0.12)
-        y_pad = max(y_max - y_min, 1) * 0.12
+        ax.grid(
+            True, axis="y", color=Style.COLOR_GRID, linewidth=0.5, zorder=-1
+        )
+        ax.margins(x=0.0, y=0.0)
+        y_pad = 0
         ax.set_ylim(y_min - y_pad, y_max + y_pad)
         ax.axhline(0, color=Style.COLOR_AXIS, linewidth=0.8)
         ax.yaxis.set_major_formatter(FuncFormatter(self._format_millions))
