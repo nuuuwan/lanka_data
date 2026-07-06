@@ -55,17 +55,6 @@ class Header:
             )
         )
 
-    def _draw_brand(self, fig):
-        Text.plot(
-            fig,
-            (Style.MARGIN, 1 - Style.MARGIN / 2),
-            Style.BRAND_NAME,
-            fontsize=Style.FONT_SIZE_BRAND,
-            color=Style.COLOR_BRAND,
-            ha="left",
-            weight="bold",
-        )
-
     def _draw_title(self, fig, lines, band_bottom, line_frac):
         n_lines = len(lines)
         for i, line in enumerate(lines):
@@ -85,5 +74,4 @@ class Header:
         band_h = Style.MARGIN + len(lines) * line_frac
         band_bottom = 1 - band_h
         self._draw_background(fig, band_bottom, band_h)
-        self._draw_brand(fig)
         self._draw_title(fig, lines, band_bottom, line_frac)

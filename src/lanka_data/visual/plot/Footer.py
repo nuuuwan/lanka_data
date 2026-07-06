@@ -19,7 +19,7 @@ class Footer:
             Rectangle(
                 (0, 0),
                 1,
-                0.05,
+                Style.FOOTER_HEIGHT,
                 transform=fig.transFigure,
                 facecolor=self.BACK_COLOR,
                 edgecolor=self.BACK_COLOR,
@@ -29,18 +29,19 @@ class Footer:
 
         Text.plot(
             fig,
-            (0.5, 0.025),
+            (Style.MARGIN, Style.FOOTER_HEIGHT / 2),
             "Data Sources: "
             + ", ".join(
                 [source.name for source in self.visual.get_sources()]
             ),
             fontsize=Style.FONT_SIZE_METADATA,
             color=self.TEXT_COLOR,
+            ha="left",
         )
 
         Text.plot(
             fig,
-            (1 - Style.MARGIN, 0.025),
+            (1 - Style.MARGIN, Style.FOOTER_HEIGHT / 2),
             Style.BRAND_URL,
             fontsize=Style.FONT_SIZE_METADATA,
             color=self.TEXT_COLOR,

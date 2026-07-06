@@ -8,6 +8,7 @@ class Style:
     COLOR_PANEL = "#333333"
     COLOR_METADATA = "#888888"
     COLOR_BRAND = "#111111"
+    COLOR_BRAND_SPINE = "#b0b0b0"
 
     COLOR_SURFACE_HEADER = "#eeeeee"
     COLOR_SURFACE_FOOTER = "#ffffff"
@@ -16,5 +17,8 @@ class Style:
     COLOR_GRID = "#dddddd"
 
     MARGIN = 0.05
+    BODY_TOP = 0.86
+    FOOTER_HEIGHT = 0.05
+    BRAND_SPINE_X = 0.018
     BRAND_NAME = "Lanka Data"
     BRAND_URL = "https://github.com/nuuuwan/lanka_data"

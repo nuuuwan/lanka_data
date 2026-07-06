@@ -83,9 +83,10 @@ The canvas is divided top-to-bottom into three fixed bands. This is Principle 5
 
 | Band       | Vertical extent      | Role                                            |
 | ---------- | -------------------- | ----------------------------------------------- |
-| **Header** | top band, grows with title lines | Title (what / where / how, as English text, wrapped over as many lines as needed) plus the **Lanka Data** brand mark |
+| **Header** | top band, grows with title lines | Title (what / where / how, as English text, wrapped over as many lines as needed) |
 | **Body**   | middle (0.10–0.86)   | The plot(s) — one sub-figure per dataset year   |
-| **Footer** | bottom **5 %** (0–0.05) | Source attribution and the GitHub repository link |
+| **Footer** | bottom **5 %** (0–0.05) | Source attribution (left) and the GitHub repository link (right) |
+| **Spine**  | left margin, full body height | The **Lanka Data** brand mark, set as quiet rotated (vertical) type |
 
 The body is laid out on a grid: one column per dataset, with a fixed inter-panel
 gutter, so a two-year comparison reads as two aligned panels rather than two
@@ -121,8 +122,10 @@ and contrast carried by weight and colour — never by a zoo of typefaces.
   the canvas it wraps onto additional lines at full title size rather than
   shrinking, so nothing is ever clipped.
 - **Persistent brand and source line.** Every figure carries the **Lanka Data**
-  brand mark in the header and a link to the project's GitHub repository in the
-  footer, so an output is self-identifying wherever it travels.
+  brand mark as a quiet rotated masthead down the left spine and a link to the
+  project's GitHub repository in the footer, so an output is self-identifying
+  wherever it travels. The brand mark stays out of the header so it never
+  competes with the title.
 - **In-figure labels earn their place.** Region and data labels are only drawn
   when they fit their shape; a label that cannot be sized legibly is dropped
   rather than overlapped or shrunk into illegibility (see §6).

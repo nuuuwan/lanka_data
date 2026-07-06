@@ -4,6 +4,7 @@ import tempfile
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 
+from lanka_data.visual.plot.Brand import Brand
 from lanka_data.visual.plot.Font import Font
 from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
@@ -33,7 +34,7 @@ class Plot:
             figure=fig,
             left=Style.MARGIN,
             right=1 - Style.MARGIN,
-            top=0.86,
+            top=Style.BODY_TOP,
             bottom=0.10,
             wspace=0.25,
         )
@@ -57,6 +58,7 @@ class Plot:
 
         Header(self.visual).draw()
         Footer(self.visual).draw()
+        Brand(self.visual).draw()
 
         image_dir = os.path.join(self.DIR_OUTPUT, self.visual.command.cmd_id)
         os.makedirs(image_dir, exist_ok=True)
