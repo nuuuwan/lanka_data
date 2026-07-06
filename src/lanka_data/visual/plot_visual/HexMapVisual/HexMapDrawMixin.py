@@ -67,7 +67,13 @@ class HexMapDrawMixin:
     ):
         for region_id, (cx, cy) in cls._region_centers(layout).items():
             name = region_to_name.get(region_id, str(region_id))
-            label = LabelTruncator.get_label(name, region_count)
+            label = LabelTruncator.get_label(
+                name,
+                region_count,
+                LabelTruncator.HEX_MAX_REGIONS_FULL_LABEL,
+                LabelTruncator.HEX_MAX_REGIONS_TRUNCATE_MID,
+                LabelTruncator.HEX_MAX_REGIONS_TRUNCATE_SMALL,
+            )
             if label is None:
                 continue
             color = region_color_map.get(region_id) or cls.DEFAULT_FILL_COLOR
