@@ -1,3 +1,4 @@
+from lanka_data.api.fields.How import How
 from lanka_data.visual.plot.color_spec import ColorSpec
 from lanka_data.visual.plot.color_spec.ColorSpecHelpers import ColorSpecHelpers
 from utils_future import Log
@@ -54,9 +55,7 @@ class ColorSpecFactory:
                 dataset, False, is_diff
             )
         if how_params == "DiversityPew":
-            return ColorSpecFactory._get_diversity_spec(
-                dataset, True, is_diff
-            )
+            return ColorSpecFactory._get_diversity_spec(dataset, True, is_diff)
         return ColorSpecFactory._get_change_or_segregation_spec(
             dataset, how_without_params, how_params, is_diff
         )
@@ -75,7 +74,6 @@ class ColorSpecFactory:
 
     @staticmethod
     def get_color_spec(dataset, how_cmd) -> ColorSpec:
-        from lanka_data.api.fields.How import How
 
         how = How(how_cmd)
         is_diff = dataset.is_diff()
