@@ -4,7 +4,7 @@ from utils_future import ColorUtils
 
 
 class HexMapDrawMixin:
-    DEFAULT_EDGE_WIDTH = 0.01
+    DEFAULT_EDGE_WIDTH = 0.1
     IS_LIGHT_COLOR = getattr(ColorUtils, "_is_light_color")
 
     @classmethod
