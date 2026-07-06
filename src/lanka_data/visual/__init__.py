@@ -18,8 +18,9 @@ from lanka_data.visual.plot_visual import (BarChartDrawMixin,
                                            BumpChartDataMixin,
                                            BumpChartDrawMixin, BumpChartVisual,
                                            HexMapBoundaryMixin,
-                                           HexMapDrawMixin, HexMapVisual,
-                                           MapVisual, PieChartGridMixin,
-                                           PieChartVisual, PlotVisual)
+                                           HexMapDrawMixin, HexMapLabelMixin,
+                                           HexMapVisual, MapVisual,
+                                           PieChartGridMixin, PieChartVisual,
+                                           PlotVisual)
 from lanka_data.visual.Visual import Visual
 from lanka_data.visual.VisualFactory import VisualFactory
