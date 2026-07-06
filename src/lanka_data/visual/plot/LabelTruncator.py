@@ -8,12 +8,31 @@ class LabelTruncator:
     MAX_REGIONS_TRUNCATE_MID = 100
     MAX_REGIONS_TRUNCATE_SMALL = 1000
 
+    HEX_MAX_REGIONS_FULL_LABEL = 15
+    HEX_MAX_REGIONS_TRUNCATE_MID = 30
+    HEX_MAX_REGIONS_TRUNCATE_SMALL = 300
+
     @classmethod
-    def get_truncate_length(cls, region_count):
+    def get_truncate_length(
+        cls,
+        region_count,
+        max_regions_full_label=None,
+        max_regions_truncate_mid=None,
+        max_regions_truncate_small=None,
+    ):
         thresholds = [
-            (cls.MAX_REGIONS_FULL_LABEL, cls.TRUNCATE_LEN_FULL),
-            (cls.MAX_REGIONS_TRUNCATE_MID, cls.TRUNCATE_LEN_MID),
-            (cls.MAX_REGIONS_TRUNCATE_SMALL, cls.TRUNCATE_LEN_SMALL),
+            (
+                max_regions_full_label or cls.MAX_REGIONS_FULL_LABEL,
+                cls.TRUNCATE_LEN_FULL,
+            ),
+            (
+                max_regions_truncate_mid or cls.MAX_REGIONS_TRUNCATE_MID,
+                cls.TRUNCATE_LEN_MID,
+            ),
+            (
+                max_regions_truncate_small or cls.MAX_REGIONS_TRUNCATE_SMALL,
+                cls.TRUNCATE_LEN_SMALL,
+            ),
         ]
         for max_count, length in thresholds:
             if region_count <= max_count:
@@ -38,8 +57,20 @@ class LabelTruncator:
         return first_char + "".join(consonants[: n - 1]).upper()
 
     @classmethod
-    def get_label(cls, name, region_count):
-        n = cls.get_truncate_length(region_count)
+    def get_label(
+        cls,
+        name,
+        region_count,
+        max_regions_full_label=None,
+        max_regions_truncate_mid=None,
+        max_regions_truncate_small=None,
+    ):
+        n = cls.get_truncate_length(
+            region_count,
+            max_regions_full_label,
+            max_regions_truncate_mid,
+            max_regions_truncate_small,
+        )
         if n == cls.TRUNCATE_LEN_NONE:
             return None
         if n == cls.TRUNCATE_LEN_FULL:
