@@ -5,6 +5,7 @@ from lanka_data.visual.plot_visual.BarChartVisual import BarChartVisual
 from lanka_data.visual.plot_visual.BubbleMapVisual import BubbleMapVisual
 from lanka_data.visual.plot_visual.BumpChartVisual import BumpChartVisual
 from lanka_data.visual.plot_visual.HexMapVisual import HexMapVisual
+from lanka_data.visual.plot_visual.LineChartVisual import LineChartVisual
 from lanka_data.visual.plot_visual.MapVisual import MapVisual
 from lanka_data.visual.plot_visual.PieChartVisual import PieChartVisual
 from utils_future import Log
@@ -24,6 +25,7 @@ class VisualFactory:
         "BarChart": BarChartVisual,
         "PieChart": PieChartVisual,
         "BumpChart": BumpChartVisual,
+        "LineChart": LineChartVisual,
     }
 
     @staticmethod

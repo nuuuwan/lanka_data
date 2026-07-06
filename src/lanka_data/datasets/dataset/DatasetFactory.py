@@ -1,6 +1,7 @@
 from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
 from lanka_data.api.dataset.CorrelationDataset import CorrelationDataset
 from lanka_data.api.dataset.DiffDataset import DiffDataset
+from lanka_data.api.dataset.SeriesDataset import SeriesDataset
 from lanka_data.datasets.dataset.custom.Census2001Dataset import (
     Census2001Dataset,
 )
@@ -105,6 +106,17 @@ class DatasetFactory:
         return [DiffDataset(start, end)]
 
     @staticmethod
+    def _list_from_series(command):
+        years = command.when.years
+        datasets = [
+            DatasetFactory.from_command(
+                command.copy(when_cmd=year, how_cmd="")
+            )
+            for year in years
+        ]
+        return [SeriesDataset(years, datasets)]
+
+    @staticmethod
     def _list_from_combined(command):
         whats = command.what.whats
         first = DatasetFactory.from_command(
@@ -120,11 +132,17 @@ class DatasetFactory:
         return [correlation]
 
     @staticmethod
+    def _list_from_when(command):
+        if command.how.needs_series:
+            return DatasetFactory._list_from_series(command)
+        return DatasetFactory._list_from_interval(command)
+
+    @staticmethod
     def list_from_command(command):
         if command.what.is_combined:
             return DatasetFactory._list_from_combined(command)
 
         if command.when.is_interval:
-            return DatasetFactory._list_from_interval(command)
+            return DatasetFactory._list_from_when(command)
 
         return [DatasetFactory.from_command(command)]

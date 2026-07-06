@@ -5,7 +5,8 @@
 ## 0. Purpose
 
 Every Lanka Data command ends in a picture. The `How` field selects a visual
-(`Map`, `HexMap`, `BarChart`, `PieChart`, `BumpChart`), and the plotting layer
+(`Map`, `HexMap`, `BarChart`, `PieChart`, `BumpChart`, `LineChart`), and the
+plotting layer
 in [`src/lanka_data/visual/`](src/lanka_data/visual/) renders it. This document
 defines the visual language those renderers must speak: the canvas, the type,
 the colour, and the composition rules that make an output look considered rather
@@ -257,6 +258,9 @@ The same rules bind every `How` visual, so the family stays coherent:
   same legend treatment.
 - **`BumpChart`** — rank over time, using the categorical palette to trace each
   series consistently across periods.
+- **`LineChart`** — a multi-year trend line/area over the census and election
+  years for a single region or a small region set, one series per category from
+  the same categorical palette.
 
 Whatever the type, the header, footer, font, margins, palette, and metadata
 style are identical. That identity — not any single chart — is the Lanka Data
