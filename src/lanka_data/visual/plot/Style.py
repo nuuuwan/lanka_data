@@ -3,7 +3,7 @@ class Style:
     FONT_SIZE_PANEL = 15
     FONT_SIZE_METADATA = 11
     FONT_SIZE_BRAND = 13
-    FONT_SIZE_WATERMARK = 48
+    FONT_SIZE_WATERMARK = 120
 
     COLOR_TITLE = "#111111"
     COLOR_PANEL = "#333333"
@@ -11,7 +11,7 @@ class Style:
     COLOR_BRAND = "#111111"
     COLOR_BRAND_SPINE = "#b0b0b0"
     COLOR_WATERMARK = "#000000"
-    WATERMARK_ALPHA = 0.1
+    WATERMARK_ALPHA = 0.05
 
     COLOR_SURFACE_HEADER = "#eeeeee"
     COLOR_SURFACE_FOOTER = "#ffffff"
@@ -23,5 +23,5 @@ class Style:
     BODY_TOP = 0.86
     FOOTER_HEIGHT = 0.08
     BRAND_SPINE_X = 0.018
-    BRAND_NAME = "Lanka Data"
+    BRAND_NAME = "lanka data"
     BRAND_URL = "https://github.com/nuuuwan/lanka_data"

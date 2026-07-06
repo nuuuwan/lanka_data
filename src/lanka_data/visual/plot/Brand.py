@@ -19,5 +19,5 @@ class Brand:
             color=Style.COLOR_WATERMARK,
             alpha=Style.WATERMARK_ALPHA,
             weight="bold",
-            zorder=0,
+            zorder=10000,
         )
