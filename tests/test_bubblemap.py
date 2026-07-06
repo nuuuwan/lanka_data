@@ -53,6 +53,22 @@ class TestBubbleDataRelax:
         bubbles = BubbleData.relax(centroids, radii, self.BOUNDS)
         assert self._min_gap(bubbles) >= -1e-6
 
+    def test_bubbles_stay_within_bounds(self):
+        radii = {"A": 20, "B": 20, "C": 20, "D": 20}
+        centroids = {
+            "A": (50, 50),
+            "B": (51, 50),
+            "C": (50, 51),
+            "D": (49, 49),
+        }
+        bubbles = BubbleData.relax(centroids, radii, self.BOUNDS)
+        minx, miny, maxx, maxy = self.BOUNDS
+        for _, x, y, r in bubbles:
+            assert x - r >= minx - 1e-6
+            assert x + r <= maxx + 1e-6
+            assert y - r >= miny - 1e-6
+            assert y + r <= maxy + 1e-6
+
 
 class TestBubbleMapRouting:
     def test_bubblemap_base_is_registered(self):

@@ -34,6 +34,18 @@ class BubbleDataRelaxMixin:
         pos[id_j] = (pos[id_j][0] + nx * shift, pos[id_j][1] + ny * shift)
         return True
 
+    @staticmethod
+    def _clamp(pos, radii, bounds, ids):
+        minx, miny, maxx, maxy = bounds
+        for region_id in ids:
+            r = radii[region_id]
+            x, y = pos[region_id]
+            min_x, max_x = min(minx + r, maxx - r), max(maxx - r, minx + r)
+            min_y, max_y = min(miny + r, maxy - r), max(maxy - r, miny + r)
+            x = min(max(x, min_x), max_x)
+            y = min(max(y, min_y), max_y)
+            pos[region_id] = (x, y)
+
     @classmethod
     def _iterate(cls, pos, radii, pad, ids):
         moved = False
@@ -49,7 +61,9 @@ class BubbleDataRelaxMixin:
         ids = list(centroids.keys())
         pad = cls._padding(bounds)
         for _ in range(cls.ITERATIONS):
-            if not cls._iterate(pos, radii, pad, ids):
+            moved = cls._iterate(pos, radii, pad, ids)
+            cls._clamp(pos, radii, bounds, ids)
+            if not moved:
                 break
         return [
             (
