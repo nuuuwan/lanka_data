@@ -31,26 +31,38 @@ class ColorSpecHelpers(ColorSpecHelpersMixin):
     @staticmethod
     def func_pct_value_from_key(key):
         def f(data):
-            return data["pct_values"][key]
+            return data["pct_values"].get(key, 0)
 
         return f
+
+    @staticmethod
+    def _available_category_keys(dataset):
+        keys = set()
+        for data in dataset.get_data_table():
+            keys.update(data.get("pct_values", {}).keys())
+        return keys
+
+    @staticmethod
+    def _get_category_spec(dataset, category) -> ColorSpec:
+        if category not in ColorSpecHelpers._available_category_keys(dataset):
+            raise ValueError(f"Unknown category: {category}")
+        func_value = ColorSpecHelpers.func_pct_value_from_key(category)
+        return ColorSpec.by_single_pct_value(dataset, func_value)
 
     @staticmethod
     def get_color_spec_generic(dataset, how_cmd) -> ColorSpec:
         from lanka_data.api.fields.How import How
 
         how = How(how_cmd)
-        params = how.modifier or "1st"
-        if how.rank is not None:
-            i_rank = how.rank
-            func_key = ColorSpecHelpers.func_key_from_rank(i_rank)
-            return ColorSpec.by_custom_category_key(
-                dataset, func_key, hide_legend=False
-            )
         if how.pct_rank is not None:
-            key = how.pct_rank
-            func_value = ColorSpecHelpers.func_pct_value_from_rank(key)
+            func_value = ColorSpecHelpers.func_pct_value_from_rank(
+                how.pct_rank
+            )
             return ColorSpec.by_single_pct_value(dataset, func_value)
-        raise ValueError(
-            f"Unknown how_cmd params: {params} in how_cmd: {how_cmd}"
+        if how.category is not None:
+            return ColorSpecHelpers._get_category_spec(dataset, how.category)
+        i_rank = how.rank if how.rank is not None else 0
+        func_key = ColorSpecHelpers.func_key_from_rank(i_rank)
+        return ColorSpec.by_custom_category_key(
+            dataset, func_key, hide_legend=False
         )
