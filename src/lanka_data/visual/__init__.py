@@ -6,6 +6,11 @@ from lanka_data.visual.formatters import (
     WhatFormatter,
     WhereFormatter,
 )
+from lanka_data.visual.animation_visual import (
+    AnimationEncoder,
+    AnimationMP4Mixin,
+    AnimationVisual,
+)
 from lanka_data.visual.JSONVisual import JSONVisual
 from lanka_data.visual.plot import (
     BubbleData,

@@ -61,6 +61,19 @@ class How(HowIntrospectionMixin, HowRegistryMixin):
         )
 
     @property
+    def is_animation(self):
+        return self.base in self.ANIMATION_BASE_TO_FRAME_BASE
+
+    @property
+    def frame_how(self):
+        frame_base = self.ANIMATION_BASE_TO_FRAME_BASE.get(self.base)
+        if frame_base is None:
+            return self.value
+        if self.modifier is None:
+            return frame_base
+        return f"{frame_base}:{self.modifier}"
+
+    @property
     def base_label(self):
         if self.base == "None":
             return None

@@ -8,10 +8,26 @@ class HowRegistryMixin:
         "BarChart": "Bar Chart",
         "PieChart": "Pie Chart",
         "BumpChart": "Bump Chart",
+        "MapAnimation": "Animated Map",
+        "CartogramAnimation": "Animated Cartogram (Population based)",
+        "HexMapAnimation": "Animated HexMap (Population based)",
+        "BubbleMapAnimation": "Animated BubbleMap (Population based)",
         "None": None,
     }
-    INTERVAL_BASES = {"BumpChart"}
-    CATEGORY_BASES = {"Map", "Cartogram", "HexMap", "BubbleMap", "None"}
+    ANIMATION_BASE_TO_FRAME_BASE = {
+        "MapAnimation": "Map",
+        "CartogramAnimation": "Cartogram",
+        "HexMapAnimation": "HexMap",
+        "BubbleMapAnimation": "BubbleMap",
+    }
+    INTERVAL_BASES = {"BumpChart"} | set(ANIMATION_BASE_TO_FRAME_BASE)
+    CATEGORY_BASES = {
+        "Map",
+        "Cartogram",
+        "HexMap",
+        "BubbleMap",
+        "None",
+    } | set(ANIMATION_BASE_TO_FRAME_BASE)
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
         "Top": {"label": "Most common", "rank": 0},

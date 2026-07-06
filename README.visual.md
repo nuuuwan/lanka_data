@@ -257,6 +257,10 @@ The same rules bind every `How` visual, so the family stays coherent:
   same legend treatment.
 - **`BumpChart`** — rank over time, using the categorical palette to trace each
   series consistently across periods.
+- **`MapAnimation` / `CartogramAnimation` / `HexMapAnimation` /
+  `BubbleMapAnimation`** — an interval `When` (e.g. `2001-2012-2024`) rendered as
+  an animated GIF (and MP4 when `ffmpeg` is available) by sequencing one map
+  frame per year, reusing the matching still-map renderer for every frame.
 
 Whatever the type, the header, footer, font, margins, palette, and metadata
 style are identical. That identity — not any single chart — is the Lanka Data

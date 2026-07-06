@@ -216,19 +216,24 @@ final output.
     falls back to bars for change charts.
   - **`BumpChartVisual`** (+ `BumpChartDataMixin`, `BumpChartDrawMixin`) — a
     rank-change slopegraph between the two years of an interval.
+  - **`AnimationVisual`** (+ `AnimationEncoder`, `AnimationMP4Mixin`) — sequences
+    one still-map frame per interval year into an animated GIF (and MP4 when
+    `ffmpeg` is available); the `*Animation` bases map through
+    `How.frame_how` to the matching still-map renderer.
 
 ### `VisualFactory`
 
 `VisualFactory.from_command_and_datasets` reads `command.how.base` and
 instantiates the matching class:
 
-| `how.base`                  | Visual class      |
-| --------------------------- | ----------------- |
-| `JSON`                      | `JSONVisual`      |
-| `Map`, `Cartogram`, `None`  | `MapVisual`       |
-| `BarChart`                  | `BarChartVisual`  |
-| `PieChart`                  | `PieChartVisual`  |
-| `BumpChart`                 | `BumpChartVisual` |
+| `how.base`                                                              | Visual class      |
+| ----------------------------------------------------------------------- | ----------------- |
+| `JSON`                                                                  | `JSONVisual`      |
+| `Map`, `Cartogram`, `None`                                              | `MapVisual`       |
+| `BarChart`                                                              | `BarChartVisual`  |
+| `PieChart`                                                              | `PieChartVisual`  |
+| `BumpChart`                                                             | `BumpChartVisual` |
+| `MapAnimation`, `CartogramAnimation`, `HexMapAnimation`, `BubbleMapAnimation` | `AnimationVisual` |
 
 Keeping this mapping in one class isolates output-type selection from the drawing
 code.

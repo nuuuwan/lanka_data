@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from lanka_data.visual.animation_visual.AnimationVisual import AnimationVisual
 from lanka_data.visual.JSONVisual import JSONVisual
 from lanka_data.visual.plot_visual.BarChartVisual import BarChartVisual
 from lanka_data.visual.plot_visual.BubbleMapVisual import BubbleMapVisual
@@ -24,6 +25,10 @@ class VisualFactory:
         "BarChart": BarChartVisual,
         "PieChart": PieChartVisual,
         "BumpChart": BumpChartVisual,
+        "MapAnimation": AnimationVisual,
+        "CartogramAnimation": AnimationVisual,
+        "HexMapAnimation": AnimationVisual,
+        "BubbleMapAnimation": AnimationVisual,
     }
 
     @staticmethod
