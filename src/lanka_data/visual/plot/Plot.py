@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from lanka_data.visual.plot.Font import Font
 from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
+from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot.Text import Text
 from utils_future import File, Log, timer
 
@@ -38,8 +39,8 @@ class Plot:
                 sub_fig,
                 (0.5, 0.9),
                 dataset.get_year(),
-                fontsize=16,
-                color="#000",
+                fontsize=Style.FONT_SIZE_PANEL,
+                color=Style.COLOR_PANEL,
             )
         return fig
 

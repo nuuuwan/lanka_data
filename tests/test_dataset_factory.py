@@ -42,3 +42,28 @@ class TestDatasetFactory:
         datasets = DatasetFactory.list_from_command(command)
         assert calls == ["2012", "2024"]
         assert datasets[2].is_diff()
+
+    def test_multi_year_interval_builds_each_year_and_diff(self, monkeypatch):
+        calls = []
+
+        class DummyDataset:
+            region_data_list = []
+
+            def __init__(self, year):
+                self.year = year
+
+            def get_year(self):
+                return self.year
+
+        def fake_from_command(command):
+            calls.append(command.when_cmd)
+            return DummyDataset(command.when_cmd)
+
+        monkeypatch.setattr(DatasetFactory, "from_command", fake_from_command)
+        command = Command.from_str("Religion/2001-2012-2024/LK/JSON")
+        datasets = DatasetFactory.list_from_command(command)
+        assert calls == ["2001", "2012", "2024"]
+        assert len(datasets) == 4
+        assert datasets[3].is_diff()
+        assert datasets[3].dataset1.year == "2001"
+        assert datasets[3].dataset2.year == "2024"
