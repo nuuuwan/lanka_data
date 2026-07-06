@@ -13,6 +13,14 @@ class LabelTruncator:
     HEX_MAX_REGIONS_TRUNCATE_SMALL = 300
 
     @classmethod
+    def _resolve_thresholds(cls, full, mid, small):
+        return [
+            (full or cls.MAX_REGIONS_FULL_LABEL, cls.TRUNCATE_LEN_FULL),
+            (mid or cls.MAX_REGIONS_TRUNCATE_MID, cls.TRUNCATE_LEN_MID),
+            (small or cls.MAX_REGIONS_TRUNCATE_SMALL, cls.TRUNCATE_LEN_SMALL),
+        ]
+
+    @classmethod
     def get_truncate_length(
         cls,
         region_count,
@@ -20,20 +28,11 @@ class LabelTruncator:
         max_regions_truncate_mid=None,
         max_regions_truncate_small=None,
     ):
-        thresholds = [
-            (
-                max_regions_full_label or cls.MAX_REGIONS_FULL_LABEL,
-                cls.TRUNCATE_LEN_FULL,
-            ),
-            (
-                max_regions_truncate_mid or cls.MAX_REGIONS_TRUNCATE_MID,
-                cls.TRUNCATE_LEN_MID,
-            ),
-            (
-                max_regions_truncate_small or cls.MAX_REGIONS_TRUNCATE_SMALL,
-                cls.TRUNCATE_LEN_SMALL,
-            ),
-        ]
+        thresholds = cls._resolve_thresholds(
+            max_regions_full_label,
+            max_regions_truncate_mid,
+            max_regions_truncate_small,
+        )
         for max_count, length in thresholds:
             if region_count <= max_count:
                 return length
