@@ -7,11 +7,11 @@ class LabelTruncator:
 
     MAX_REGIONS_FULL_LABEL = 15
     MAX_REGIONS_TRUNCATE_MID = 30
-    MAX_REGIONS_TRUNCATE_SMALL = 100
+    MAX_REGIONS_TRUNCATE_SMALL = 60
 
     HEX_MAX_REGIONS_FULL_LABEL = 15
     HEX_MAX_REGIONS_TRUNCATE_MID = 30
-    HEX_MAX_REGIONS_TRUNCATE_SMALL = 100
+    HEX_MAX_REGIONS_TRUNCATE_SMALL = 60
 
     @classmethod
     def _resolve_thresholds(cls, full, mid, small):
@@ -41,6 +41,7 @@ class LabelTruncator:
 
     @classmethod
     def _truncate(cls, name, n):
+        name = name.replace("-", " ")
         words = name.split()
         if len(words) == 1:
             return cls._truncate_single_word(name, n)
@@ -52,7 +53,7 @@ class LabelTruncator:
         consonants = [c for c in name[1:] if c not in cls.VOWELS]
         if n == 1:
             return first_char
-        if n >= len(consonants) + 1:
+        if n > len(consonants) + 1:
             return name[:n].upper()
         return first_char + "".join(consonants[: n - 1]).upper()
 
