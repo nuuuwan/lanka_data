@@ -97,7 +97,9 @@ class DatasetFactory:
         if command.when.is_interval:
             years = command.when.years
             datasets = [
-                DatasetFactory.from_command(command.copy(when_cmd=year))
+                DatasetFactory.from_command(
+                    command.copy(when_cmd=year, how_cmd="")
+                )
                 for year in years
             ]
             diff_dataset = DiffDataset(datasets[0], datasets[-1])
