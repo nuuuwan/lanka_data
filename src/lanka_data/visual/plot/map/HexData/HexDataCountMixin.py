@@ -4,7 +4,7 @@ log = Log("HexData")
 
 
 class HexDataCountMixin:
-    HEXMAP_ERROR = 0.5
+    HEXMAP_ERROR = 0.25
 
     @classmethod
     def _value_per_hex(cls, region_to_weight):
