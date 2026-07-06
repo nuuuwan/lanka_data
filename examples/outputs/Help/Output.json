@@ -241,13 +241,25 @@
       "bases": [
         "BarChart",
         "BubbleMap",
+        "BubbleMapAnimation",
         "BumpChart",
+        "CSV",
         "Cartogram",
+        "CartogramAnimation",
         "HexMap",
+        "HexMapAnimation",
+        "Histogram",
         "JSON",
+        "LineChart",
         "Map",
+        "MapAnimation",
         "None",
-        "PieChart"
+        "PieChart",
+        "ScatterPlot",
+        "StackedBarChart",
+        "TSV",
+        "Table",
+        "TreeMap"
       ],
       "modifiers": [
         "1st",

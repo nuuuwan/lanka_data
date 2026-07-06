@@ -1,15 +1,12 @@
 from lanka_data.api.fields.How import How
-from lanka_data.visual.plot_visual.HistogramVisual import HistogramData
-from lanka_data.visual.plot_visual.ScatterPlotVisual import ScatterPlotData
-from lanka_data.visual.plot_visual.StackedBarChartVisual import (
-    StackedBarChartVisual,
-)
-from lanka_data.visual.plot_visual.TreeMapVisual import (
-    TreeMapData,
-    TreeMapVisual,
-)
-from lanka_data.visual.plot_visual.HistogramVisual import HistogramVisual
-from lanka_data.visual.plot_visual.ScatterPlotVisual import ScatterPlotVisual
+from lanka_data.visual.plot_visual.HistogramVisual import (HistogramData,
+                                                           HistogramVisual)
+from lanka_data.visual.plot_visual.ScatterPlotVisual import (ScatterPlotData,
+                                                             ScatterPlotVisual)
+from lanka_data.visual.plot_visual.StackedBarChartVisual import \
+    StackedBarChartVisual
+from lanka_data.visual.plot_visual.TreeMapVisual import (TreeMapData,
+                                                         TreeMapVisual)
 from lanka_data.visual.VisualFactory import VisualFactory
 
 
@@ -137,9 +134,7 @@ class TestScatterPlotData:
         assert points == [(100, 0.75, "A", "R")]
 
     def test_total_defaults_to_value_sum(self):
-        subregions = [
-            {"region_name": "R", "values": {"A": 3, "B": 1}}
-        ]
+        subregions = [{"region_name": "R", "values": {"A": 3, "B": 1}}]
         total, share, label, name = ScatterPlotData.points(subregions)[0]
         assert total == 4 and label == "A"
 

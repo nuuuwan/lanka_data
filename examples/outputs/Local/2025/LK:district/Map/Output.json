@@ -1,7 +1,8 @@
 {
   "command_str": "Local/2025/LK:district/Map",
   "result": {
-    "image_path": "/tmp/lanka_data/output/Local/2025/LK:district/Map/Image.png"
+    "image_path": "/tmp/lanka_data/output/Local/2025/LK:district/Map/Image.png",
+    "svg_path": "/tmp/lanka_data/output/Local/2025/LK:district/Map/Image.svg"
   },
   "sources": [
     {

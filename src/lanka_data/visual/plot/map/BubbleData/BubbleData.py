@@ -1,12 +1,9 @@
-from lanka_data.visual.plot.map.BubbleData.BubbleDataCacheMixin import (
-    BubbleDataCacheMixin,
-)
-from lanka_data.visual.plot.map.BubbleData.BubbleDataRadiusMixin import (
-    BubbleDataRadiusMixin,
-)
-from lanka_data.visual.plot.map.BubbleData.BubbleDataRelaxMixin import (
-    BubbleDataRelaxMixin,
-)
+from lanka_data.visual.plot.map.BubbleData.BubbleDataCacheMixin import \
+    BubbleDataCacheMixin
+from lanka_data.visual.plot.map.BubbleData.BubbleDataRadiusMixin import \
+    BubbleDataRadiusMixin
+from lanka_data.visual.plot.map.BubbleData.BubbleDataRelaxMixin import \
+    BubbleDataRelaxMixin
 from lanka_data.visual.plot.map.GeoData import GeoData
 from utils_future import Log
 

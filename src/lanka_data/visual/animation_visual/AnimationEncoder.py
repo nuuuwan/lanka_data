@@ -2,9 +2,8 @@ import os
 
 from PIL import Image
 
-from lanka_data.visual.animation_visual.AnimationMP4Mixin import (
-    AnimationMP4Mixin,
-)
+from lanka_data.visual.animation_visual.AnimationMP4Mixin import \
+    AnimationMP4Mixin
 from utils_future import File, Log
 
 log = Log("AnimationEncoder")

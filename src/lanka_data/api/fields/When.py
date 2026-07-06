@@ -2,9 +2,7 @@ import re
 from dataclasses import dataclass
 
 from lanka_data.api.command_errors.InvalidWhenError import InvalidWhenError
-from lanka_data.api.fields.WhenIntrospectionMixin import (
-    WhenIntrospectionMixin,
-)
+from lanka_data.api.fields.WhenIntrospectionMixin import WhenIntrospectionMixin
 from lanka_data.api.fields.WhenRegistry import WhenRegistry
 
 

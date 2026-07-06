@@ -7,11 +7,10 @@ from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import \
     HexMapDrawMixin
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelFitMixin import \
     HexMapLabelFitMixin
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelGeoMixin \
-    import HexMapLabelGeoMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelGeoMixin import \
+    HexMapLabelGeoMixin
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import \
     HexMapLabelMixin
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapVisual import \
     HexMapVisual
-from lanka_data.visual.plot_visual.HexMapVisual.HexTextFit import \
-    HexTextFit
+from lanka_data.visual.plot_visual.HexMapVisual.HexTextFit import HexTextFit

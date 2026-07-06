@@ -1,7 +1,8 @@
 {
   "command_str": "Empty/2024/LK-1127025@20/Map",
   "result": {
-    "image_path": "/tmp/lanka_data/output/Empty/2024/LK-1127025@20/Map/Image.png"
+    "image_path": "/tmp/lanka_data/output/Empty/2024/LK-1127025@20/Map/Image.png",
+    "svg_path": "/tmp/lanka_data/output/Empty/2024/LK-1127025@20/Map/Image.svg"
   },
   "sources": [
     {

@@ -55,7 +55,9 @@ class ColorSpecFactory:
                 dataset, False, is_diff
             )
         if how_params == "DiversityPew":
-            return ColorSpecFactory._get_diversity_spec(dataset, True, is_diff)
+            return ColorSpecFactory._get_diversity_spec(
+                dataset, True, is_diff
+            )
         return ColorSpecFactory._get_change_or_segregation_spec(
             dataset, how_without_params, how_params, is_diff
         )

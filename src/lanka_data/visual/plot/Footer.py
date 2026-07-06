@@ -39,7 +39,9 @@ class Footer:
             fig,
             (0.5, Style.FOOTER_HEIGHT * 0.3),
             "Data Sources: "
-            + ", ".join([source.name for source in self.visual.get_sources()]),
+            + ", ".join(
+                [source.name for source in self.visual.get_sources()]
+            ),
             fontsize=Style.FONT_SIZE_METADATA,
             color=self.TEXT_COLOR,
         )

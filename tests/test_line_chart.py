@@ -43,9 +43,7 @@ class TestLineChart:
             calls.append(command.when_cmd)
             return _FakeYearDataset(command.when_cmd, {})
 
-        monkeypatch.setattr(
-            DatasetFactory, "from_command", fake_from_command
-        )
+        monkeypatch.setattr(DatasetFactory, "from_command", fake_from_command)
         command = Command.from_str("Religion/2001-2012-2024/LK-1/LineChart")
         datasets = DatasetFactory.list_from_command(command)
         assert calls == ["2001", "2012", "2024"]

@@ -1,7 +1,8 @@
 {
   "command_str": "Religion/2012-2024/LK:district/Map:2ndPct",
   "result": {
-    "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:2ndPct/Image.png"
+    "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:2ndPct/Image.png",
+    "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:2ndPct/Image.svg"
   },
   "sources": [
     {

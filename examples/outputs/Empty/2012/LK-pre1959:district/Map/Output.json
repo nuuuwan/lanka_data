@@ -1,7 +1,8 @@
 {
   "command_str": "Empty/2012/LK-pre1959:district/Map",
   "result": {
-    "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1959:district/Map/Image.png"
+    "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1959:district/Map/Image.png",
+    "svg_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1959:district/Map/Image.svg"
   },
   "sources": [
     {

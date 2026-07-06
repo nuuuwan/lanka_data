@@ -2,9 +2,8 @@ import math
 
 from lanka_data.visual.plot.map.HexData import HexData
 from lanka_data.visual.plot_visual.HexMapVisual import HexMapVisual
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import (
-    HexMapBoundaryMixin,
-)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
+    HexMapBoundaryMixin
 from lanka_data.visual.plot_visual.HexMapVisual.HexTextFit import HexTextFit
 from lanka_data.visual.VisualFactory import VisualFactory
 from utils_future import HungarianUtils

@@ -40,6 +40,12 @@ Runs single command over HTTP.
 https://lanka-data-phi.vercel.app/Religion/2024/LK/Map/Image.png
 ```
 
+For print-quality, zoomable vector graphics, request `Image.svg` instead of `Image.png`.
+
+```bash
+https://lanka-data-phi.vercel.app/Religion/2024/LK/Map/Image.svg
+```
+
 ### workflows/single.py
 
 Runs single command.
@@ -79,7 +85,7 @@ Help
             ],
             "ConstructionYear": [
                 "2012"
-                ... // 237 lines ...
+                ... // 249 lines ...
                 "3rdPct",
                 "Bottom",
                 "Change",
@@ -116,7 +122,8 @@ Empty/2024/LK:province/Map
 {
     "command_str": "Empty/2024/LK:province/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2024/LK:province/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2024/LK:province/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2024/LK:province/Map/Image.svg"
     },
     "sources": [
         {
@@ -144,7 +151,8 @@ Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map
 {
     "command_str": "Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Image.svg"
     },
     "sources": [
         {
@@ -172,7 +180,8 @@ Empty/2024/LK-5...LK-8/Map
 {
     "command_str": "Empty/2024/LK-5...LK-8/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2024/LK-5...LK-8/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2024/LK-5...LK-8/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2024/LK-5...LK-8/Map/Image.svg"
     },
     "sources": [
         {
@@ -200,7 +209,8 @@ Empty/2024/LK-1127025@20/Map
 {
     "command_str": "Empty/2024/LK-1127025@20/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2024/LK-1127025@20/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2024/LK-1127025@20/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2024/LK-1127025@20/Map/Image.svg"
     },
     "sources": [
         {
@@ -230,7 +240,8 @@ Religion/2012-2024/LK:district/Map:1st
 {
     "command_str": "Religion/2012-2024/LK:district/Map:1st",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:1st/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:1st/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:1st/Image.svg"
     },
     "sources": [
         {
@@ -262,7 +273,8 @@ Religion/2012-2024/LK:district/Map:2nd
 {
     "command_str": "Religion/2012-2024/LK:district/Map:2nd",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:2nd/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:2nd/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:2nd/Image.svg"
     },
     "sources": [
         {
@@ -294,7 +306,8 @@ Religion/2012-2024/LK:district/Map:3rd
 {
     "command_str": "Religion/2012-2024/LK:district/Map:3rd",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:3rd/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:3rd/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:3rd/Image.svg"
     },
     "sources": [
         {
@@ -326,7 +339,8 @@ Religion/2012-2024/LK:district/Map:Change
 {
     "command_str": "Religion/2012-2024/LK:district/Map:Change",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:Change/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:Change/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:Change/Image.svg"
     },
     "sources": [
         {
@@ -358,7 +372,8 @@ Religion/2012-2024/LK-42:district/BarChart
 {
     "command_str": "Religion/2012-2024/LK-42:district/BarChart",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-42:district/BarChart/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-42:district/BarChart/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-42:district/BarChart/Image.svg"
     },
     "sources": [
         {
@@ -390,7 +405,8 @@ Religion/2012-2024/LK-43:dsd/BarChart
 {
     "command_str": "Religion/2012-2024/LK-43:dsd/BarChart",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-43:dsd/BarChart/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-43:dsd/BarChart/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-43:dsd/BarChart/Image.svg"
     },
     "sources": [
         {
@@ -422,7 +438,8 @@ Religion/2012-2024/LK-53:district/BarChart
 {
     "command_str": "Religion/2012-2024/LK-53:district/BarChart",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-53:district/BarChart/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-53:district/BarChart/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-53:district/BarChart/Image.svg"
     },
     "sources": [
         {
@@ -454,7 +471,8 @@ Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
 {
     "command_str": "Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.svg"
     },
     "sources": [
         {
@@ -486,7 +504,8 @@ Religion/2012-2024/LK:district/BarChart
 {
     "command_str": "Religion/2012-2024/LK:district/BarChart",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/BarChart/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/BarChart/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/BarChart/Image.svg"
     },
     "sources": [
         {
@@ -518,7 +537,8 @@ Religion/2012-2024/LK-11:dsd/BarChart
 {
     "command_str": "Religion/2012-2024/LK-11:dsd/BarChart",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-11:dsd/BarChart/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-11:dsd/BarChart/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-11:dsd/BarChart/Image.svg"
     },
     "sources": [
         {
@@ -550,7 +570,8 @@ Religion/2012-2024/LK-11:lg/BarChart
 {
     "command_str": "Religion/2012-2024/LK-11:lg/BarChart",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-11:lg/BarChart/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-11:lg/BarChart/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-11:lg/BarChart/Image.svg"
     },
     "sources": [
         {
@@ -582,7 +603,8 @@ Religion/2012-2024/LK-12:dsd/BarChart
 {
     "command_str": "Religion/2012-2024/LK-12:dsd/BarChart",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-12:dsd/BarChart/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-12:dsd/BarChart/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-12:dsd/BarChart/Image.svg"
     },
     "sources": [
         {
@@ -614,7 +636,8 @@ Religion/2012-2024/LK:district/Map:DiversityPew
 {
     "command_str": "Religion/2012-2024/LK:district/Map:DiversityPew",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.svg"
     },
     "sources": [
         {
@@ -646,7 +669,8 @@ Religion/2012-2024/LK:district/Map:2ndPct
 {
     "command_str": "Religion/2012-2024/LK:district/Map:2ndPct",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:2ndPct/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:2ndPct/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:2ndPct/Image.svg"
     },
     "sources": [
         {
@@ -678,7 +702,8 @@ Religion/2012-2024/LK:district/Map:3rdPct
 {
     "command_str": "Religion/2012-2024/LK:district/Map:3rdPct",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:3rdPct/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:3rdPct/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK:district/Map:3rdPct/Image.svg"
     },
     "sources": [
         {
@@ -710,7 +735,8 @@ Religion/2012-2024/LK-21:dsd/BarChart
 {
     "command_str": "Religion/2012-2024/LK-21:dsd/BarChart",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-21:dsd/BarChart/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-21:dsd/BarChart/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-21:dsd/BarChart/Image.svg"
     },
     "sources": [
         {
@@ -742,7 +768,8 @@ Religion/2012-2024/LK-31-pre2019:dsd/BarChart
 {
     "command_str": "Religion/2012-2024/LK-31-pre2019:dsd/BarChart",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.svg"
     },
     "sources": [
         {
@@ -774,7 +801,8 @@ Religion/2012-2024/LK-11:district/BarChart
 {
     "command_str": "Religion/2012-2024/LK-11:district/BarChart",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-11:district/BarChart/Image.png"
+        "image_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-11:district/BarChart/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Religion/2012-2024/LK-11:district/BarChart/Image.svg"
     },
     "sources": [
         {
@@ -860,7 +888,8 @@ Presidential/2015/LK-11:pd/Map
 {
     "command_str": "Presidential/2015/LK-11:pd/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Presidential/2015/LK-11:pd/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Presidential/2015/LK-11:pd/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Presidential/2015/LK-11:pd/Map/Image.svg"
     },
     "sources": [
         {
@@ -888,7 +917,8 @@ Local/2025/LK:district/Map
 {
     "command_str": "Local/2025/LK:district/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Local/2025/LK:district/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Local/2025/LK:district/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Local/2025/LK:district/Map/Image.svg"
     },
     "sources": [
         {
@@ -918,7 +948,8 @@ Empty/2012/LK-pre1845:province/Map
 {
     "command_str": "Empty/2012/LK-pre1845:province/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1845:province/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1845:province/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1845:province/Map/Image.svg"
     },
     "sources": [
         {
@@ -946,7 +977,8 @@ Empty/2012/LK-pre1873:province/Map
 {
     "command_str": "Empty/2012/LK-pre1873:province/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1873:province/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1873:province/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1873:province/Map/Image.svg"
     },
     "sources": [
         {
@@ -974,7 +1006,8 @@ Empty/2012/LK-pre1886:province/Map
 {
     "command_str": "Empty/2012/LK-pre1886:province/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1886:province/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1886:province/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1886:province/Map/Image.svg"
     },
     "sources": [
         {
@@ -1002,7 +1035,8 @@ Empty/2012/LK-pre1889:province/Map
 {
     "command_str": "Empty/2012/LK-pre1889:province/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1889:province/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1889:province/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1889:province/Map/Image.svg"
     },
     "sources": [
         {
@@ -1030,7 +1064,8 @@ Empty/2012/LK:province/Map
 {
     "command_str": "Empty/2012/LK:province/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2012/LK:province/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2012/LK:province/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2012/LK:province/Map/Image.svg"
     },
     "sources": [
         {
@@ -1058,7 +1093,8 @@ Empty/2012/LK-pre1959:district/Map
 {
     "command_str": "Empty/2012/LK-pre1959:district/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1959:district/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1959:district/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1959:district/Map/Image.svg"
     },
     "sources": [
         {
@@ -1086,7 +1122,8 @@ Empty/2012/LK-pre1961:district/Map
 {
     "command_str": "Empty/2012/LK-pre1961:district/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1961:district/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1961:district/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1961:district/Map/Image.svg"
     },
     "sources": [
         {
@@ -1114,7 +1151,8 @@ Empty/2012/LK-pre1978:district/Map
 {
     "command_str": "Empty/2012/LK-pre1978:district/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1978:district/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1978:district/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1978:district/Map/Image.svg"
     },
     "sources": [
         {
@@ -1142,7 +1180,8 @@ Empty/2012/LK-pre1984:district/Map
 {
     "command_str": "Empty/2012/LK-pre1984:district/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1984:district/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1984:district/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2012/LK-pre1984:district/Map/Image.svg"
     },
     "sources": [
         {
@@ -1170,7 +1209,8 @@ Empty/2012/LK:district/Map
 {
     "command_str": "Empty/2012/LK:district/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2012/LK:district/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2012/LK:district/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2012/LK:district/Map/Image.svg"
     },
     "sources": [
         {
@@ -1198,7 +1238,8 @@ Ethnicity/2012/LK-23-pre2019:dsd/Map
 {
     "command_str": "Ethnicity/2012/LK-23-pre2019:dsd/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.svg"
     },
     "sources": [
         {
@@ -1226,7 +1267,8 @@ Ethnicity/2024/LK-23-pre2019:dsd/Map
 {
     "command_str": "Ethnicity/2024/LK-23-pre2019:dsd/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.svg"
     },
     "sources": [
         {
@@ -1254,7 +1296,8 @@ Ethnicity/2024/LK-23:dsd/Map
 {
     "command_str": "Ethnicity/2024/LK-23:dsd/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Ethnicity/2024/LK-23:dsd/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Ethnicity/2024/LK-23:dsd/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Ethnicity/2024/LK-23:dsd/Map/Image.svg"
     },
     "sources": [
         {
@@ -1282,7 +1325,8 @@ Empty/2024/LK:dsd/Map
 {
     "command_str": "Empty/2024/LK:dsd/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2024/LK:dsd/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2024/LK:dsd/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2024/LK:dsd/Map/Image.svg"
     },
     "sources": [
         {
@@ -1310,7 +1354,8 @@ Empty/2024/LK:gnd/Map
 {
     "command_str": "Empty/2024/LK:gnd/Map",
     "result": {
-        "image_path": "/tmp/lanka_data/output/Empty/2024/LK:gnd/Map/Image.png"
+        "image_path": "/tmp/lanka_data/output/Empty/2024/LK:gnd/Map/Image.png",
+        "svg_path": "/tmp/lanka_data/output/Empty/2024/LK:gnd/Map/Image.svg"
     },
     "sources": [
         {

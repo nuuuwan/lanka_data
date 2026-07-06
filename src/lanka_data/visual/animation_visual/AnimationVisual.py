@@ -1,8 +1,7 @@
 import os
 
-from lanka_data.visual.animation_visual.AnimationEncoder import (
-    AnimationEncoder,
-)
+from lanka_data.visual.animation_visual.AnimationEncoder import \
+    AnimationEncoder
 from lanka_data.visual.plot.Plot import Plot
 from lanka_data.visual.Visual import Visual
 from utils_future import Log, timer

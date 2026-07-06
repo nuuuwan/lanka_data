@@ -43,7 +43,9 @@ class BumpChartDrawMixin:
             color = (
                 cls.COLOR_INCREASE
                 if delta < 0
-                else (cls.COLOR_DECREASE if delta > 0 else cls.COLOR_UNCHANGED)
+                else (
+                    cls.COLOR_DECREASE if delta > 0 else cls.COLOR_UNCHANGED
+                )
             )
             name = id_to_name.get(rid, str(rid))
             cls._add_segmented_line(ax, r1, r2, color)

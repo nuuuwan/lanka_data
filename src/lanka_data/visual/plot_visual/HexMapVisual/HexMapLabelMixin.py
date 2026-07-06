@@ -1,10 +1,8 @@
 from lanka_data.visual.plot.LabelTruncator import LabelTruncator
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelFitMixin import (
-    HexMapLabelFitMixin,
-)
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelGeoMixin import (
-    HexMapLabelGeoMixin,
-)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelFitMixin import \
+    HexMapLabelFitMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelGeoMixin import \
+    HexMapLabelGeoMixin
 from utils_future import ColorUtils, timer
 
 

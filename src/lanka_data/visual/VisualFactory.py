@@ -14,9 +14,8 @@ from lanka_data.visual.plot_visual.LineChartVisual import LineChartVisual
 from lanka_data.visual.plot_visual.MapVisual import MapVisual
 from lanka_data.visual.plot_visual.PieChartVisual import PieChartVisual
 from lanka_data.visual.plot_visual.ScatterPlotVisual import ScatterPlotVisual
-from lanka_data.visual.plot_visual.StackedBarChartVisual import (
-    StackedBarChartVisual,
-)
+from lanka_data.visual.plot_visual.StackedBarChartVisual import \
+    StackedBarChartVisual
 from lanka_data.visual.plot_visual.TreeMapVisual import TreeMapVisual
 from utils_future import Log
 

@@ -7,9 +7,8 @@ from PIL import Image
 from lanka_data.command.Command import Command
 from lanka_data.command.fields.How import How
 from lanka_data.dataset.DatasetFactory import DatasetFactory
-from lanka_data.visual.animation_visual.AnimationEncoder import (
-    AnimationEncoder,
-)
+from lanka_data.visual.animation_visual.AnimationEncoder import \
+    AnimationEncoder
 from lanka_data.visual.animation_visual.AnimationVisual import AnimationVisual
 from lanka_data.visual.VisualFactory import VisualFactory
 

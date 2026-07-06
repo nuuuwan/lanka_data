@@ -10,8 +10,10 @@ from lanka_data.api.command_errors import (CommandError, InvalidCommandError,
                                            UnknownHowError, UnknownWhatError)
 from lanka_data.api.data import (DataSource, Segregation,
                                  SegregationComputeMixin)
-from lanka_data.api.dataset import (Dataset, DiffDataset, RegionValueDataset,
-                                    RegionValueDatasetTableMixin)
+from lanka_data.api.dataset import (CorrelationDataset, Dataset, DiffDataset,
+                                    RegionValueDataset,
+                                    RegionValueDatasetTableMixin,
+                                    SeriesDataset)
 from lanka_data.api.fields import (How, HowIntrospectionMixin,
                                    HowRegistryMixin, RegionTypeRegistry, What,
                                    WhatIntrospectionMixin, WhatRegistry,
