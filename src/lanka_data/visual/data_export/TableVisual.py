@@ -1,3 +1,4 @@
+from lanka_data.visual.annotations.Annotations import Annotations
 from lanka_data.visual.data_export.DataExportVisual import DataExportVisual
 
 
@@ -12,6 +13,16 @@ class TableVisual(DataExportVisual):
         ]
         for row in str_rows:
             lines.append(self._format_row(row, widths))
+        return "\n".join(lines) + self._callout_block()
+
+    def _callout_block(self):
+        callouts = Annotations.from_data_table(
+            self._get_data_table()
+        ).callouts()
+        if not callouts:
+            return ""
+        lines = ["", "", "### What to notice", ""]
+        lines += [f"- {item}" for item in callouts]
         return "\n".join(lines)
 
     @staticmethod

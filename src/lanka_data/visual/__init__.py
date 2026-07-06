@@ -4,6 +4,8 @@
 from lanka_data.visual.animation_visual import (AnimationEncoder,
                                                 AnimationMP4Mixin,
                                                 AnimationVisual)
+from lanka_data.visual.annotations import (Annotations, AnnotationsStatMixin,
+                                            NumberAbbreviator)
 from lanka_data.visual.data_export import (CSVVisual, DataExportVisual,
                                            DelimitedExportMixin, TableVisual,
                                            TSVVisual)
@@ -12,7 +14,7 @@ from lanka_data.visual.formatters import (HowFormatter, WhatFormatter,
 from lanka_data.visual.JSONVisual import JSONVisual
 from lanka_data.visual.plot import (Brand, BubbleData, BubbleDataCacheMixin,
                                     BubbleDataRadiusMixin,
-                                    BubbleDataRelaxMixin, ColorSpec,
+                                    BubbleDataRelaxMixin, Caption, ColorSpec,
                                     ColorSpecCategoryMixin, ColorSpecConstants,
                                     ColorSpecCustomMixin, ColorSpecFactory,
                                     ColorSpecHelpers, ColorSpecHelpersMixin,

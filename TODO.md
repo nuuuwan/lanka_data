@@ -40,10 +40,6 @@ Feature ideas for growing Lanka Data without breaking the
   but accept friendlier aliases and improve suggestions/autocomplete so users can
   discover valid `What`, `Where`, and `How` values faster.
 
-- **Narrative-ready annotations.** Add optional callouts for maxima, minima,
-  biggest changes, and outliers so exported visuals can answer the “what should
-  I notice?” question automatically.
-
 ## WISHLIST
 
 - **Batch commands and dashboards.** Support a compact way to render a curated
