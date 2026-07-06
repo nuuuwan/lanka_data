@@ -10,6 +10,7 @@ from lanka_data.visual.plot.color_spec import (
     ColorSpecHelpers,
     ColorSpecHelpersMixin,
 )
+from lanka_data.visual.plot.Brand import Brand
 from lanka_data.visual.plot.Font import Font
 from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
