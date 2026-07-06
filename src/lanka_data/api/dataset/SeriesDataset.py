@@ -54,10 +54,12 @@ class SeriesDataset(RegionValueDataset):
 
     def get_data_table(self):
         data_idx_list = [dataset.get_data_idx() for dataset in self.datasets]
-        return [
-            self._build_region_row(region_id, data_idx_list)
-            for region_id in self._get_union_region_ids(data_idx_list)
-        ]
+        return self._apply_region_filter(
+            [
+                self._build_region_row(region_id, data_idx_list)
+                for region_id in self._get_union_region_ids(data_idx_list)
+            ]
+        )
 
     def get_source_data_table(self) -> list[dict]:
         raise NotImplementedError

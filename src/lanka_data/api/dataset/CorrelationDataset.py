@@ -78,12 +78,14 @@ class CorrelationDataset(RegionValueDataset):
         common_region_ids = set(self.dataset1.region_ids).intersection(
             set(self.dataset2.region_ids)
         )
-        return [
-            self._compute_region_correlation(
-                data_idx1[region_id], data_idx2[region_id]
-            )
-            for region_id in sorted(common_region_ids)
-        ]
+        return self._apply_region_filter(
+            [
+                self._compute_region_correlation(
+                    data_idx1[region_id], data_idx2[region_id]
+                )
+                for region_id in sorted(common_region_ids)
+            ]
+        )
 
     def get_source_data_table(self) -> list[dict]:
         raise NotImplementedError
