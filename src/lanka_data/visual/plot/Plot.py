@@ -31,8 +31,10 @@ class Plot:
             layout.n_rows,
             layout.n_cols,
             figure=fig,
-            top=0.92,
-            bottom=0.08,
+            left=Style.MARGIN,
+            right=1 - Style.MARGIN,
+            top=0.86,
+            bottom=0.10,
             wspace=0.25,
         )
 

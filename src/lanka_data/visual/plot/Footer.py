@@ -37,3 +37,12 @@ class Footer:
             fontsize=Style.FONT_SIZE_METADATA,
             color=self.TEXT_COLOR,
         )
+
+        Text.plot(
+            fig,
+            (1 - Style.MARGIN, 0.025),
+            Style.BRAND_URL,
+            fontsize=Style.FONT_SIZE_METADATA,
+            color=self.TEXT_COLOR,
+            ha="right",
+        )
