@@ -13,7 +13,7 @@ from .ColorSpecCustomMixin import ColorSpecCustomMixin
 class ColorSpec(ColorSpecCategoryMixin, ColorSpecCustomMixin):
     region_to_color: dict[str, str]
     value_to_color: dict[str, str]
-    value_to_region: dict[str, str] = None
+    value_to_region: dict[str, str] | None = None
 
     LABEL_TO_COLOR = {
         label: ColorUtils.hex_to_rgb(color)
