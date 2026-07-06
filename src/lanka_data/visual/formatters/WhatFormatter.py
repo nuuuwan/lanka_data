@@ -6,4 +6,4 @@ class WhatFormatter:
         if self.what_cmd == "Empty":
             return None
 
-        return self.what_cmd
+        return self.what_cmd.replace("+", " & ")

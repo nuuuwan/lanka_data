@@ -67,3 +67,36 @@ class TestDatasetFactory:
         assert datasets[3].is_diff()
         assert datasets[3].dataset1.year == "2001"
         assert datasets[3].dataset2.year == "2024"
+
+    def test_combined_what_builds_each_what_and_correlation(
+        self, monkeypatch
+    ):
+        calls = []
+
+        class DummyDataset:
+            region_data_list = []
+            region_ids = []
+
+            def __init__(self, what):
+                self.what = what
+
+            def get_year(self):
+                return self.what
+
+        def fake_from_command(command):
+            calls.append(command.what_cmd)
+            return DummyDataset(command.what_cmd)
+
+        monkeypatch.setattr(DatasetFactory, "from_command", fake_from_command)
+        command = Command.from_str(
+            "Religion+Ethnicity/2024/LK:province/Map"
+        )
+        datasets = DatasetFactory.list_from_command(command)
+        assert calls == ["Religion", "Ethnicity"]
+        assert len(datasets) == 3
+        assert not datasets[2].is_diff()
+        assert datasets[0].panel_label == "Religion"
+        assert datasets[1].panel_label == "Ethnicity"
+        assert datasets[2].panel_label == "Correlation: Religion & Ethnicity"
+        assert datasets[2].dataset1.what == "Religion"
+        assert datasets[2].dataset2.what == "Ethnicity"

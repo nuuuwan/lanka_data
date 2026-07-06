@@ -1,4 +1,5 @@
 from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
+from lanka_data.api.dataset.CorrelationDataset import CorrelationDataset
 from lanka_data.api.dataset.DiffDataset import DiffDataset
 from lanka_data.datasets.dataset.custom.Census2001Dataset import (
     Census2001Dataset,
@@ -93,18 +94,41 @@ class DatasetFactory:
         )
 
     @staticmethod
+    def _list_from_interval(command):
+        years = command.when.years
+        datasets = [
+            DatasetFactory.from_command(
+                command.copy(when_cmd=year, how_cmd="")
+            )
+            for year in years
+        ]
+        diff_dataset = DiffDataset(datasets[0], datasets[-1])
+        if command.how.base in command.how.INTERVAL_BASES:
+            return [diff_dataset]
+        return datasets + [diff_dataset]
+
+    @staticmethod
+    def _list_from_combined(command):
+        whats = command.what.whats
+        datasets = []
+        for what in whats:
+            dataset = DatasetFactory.from_command(
+                command.copy(what_cmd=what, how_cmd="")
+            )
+            dataset.panel_label = what
+            datasets.append(dataset)
+        correlation = CorrelationDataset(datasets[0], datasets[-1])
+        correlation.panel_label = "Correlation: " + " & ".join(
+            [whats[0], whats[-1]]
+        )
+        return datasets + [correlation]
+
+    @staticmethod
     def list_from_command(command):
+        if command.what.is_combined:
+            return DatasetFactory._list_from_combined(command)
+
         if command.when.is_interval:
-            years = command.when.years
-            datasets = [
-                DatasetFactory.from_command(
-                    command.copy(when_cmd=year, how_cmd="")
-                )
-                for year in years
-            ]
-            diff_dataset = DiffDataset(datasets[0], datasets[-1])
-            if command.how.base in command.how.INTERVAL_BASES:
-                return [diff_dataset]
-            return datasets + [diff_dataset]
+            return DatasetFactory._list_from_interval(command)
 
         return [DatasetFactory.from_command(command)]

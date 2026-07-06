@@ -43,10 +43,13 @@ class Plot:
             row, col = layout.position(i_dataset)
             sub_fig = fig.add_subfigure(outer_gs[row, col])
             self.visual.draw(dataset, sub_fig)
+            panel_label = (
+                getattr(dataset, "panel_label", None) or dataset.get_year()
+            )
             Text.plot(
                 sub_fig,
                 (0.5, 0.9),
-                dataset.get_year(),
+                panel_label,
                 fontsize=Style.FONT_SIZE_PANEL,
                 color=Style.COLOR_PANEL,
             )
