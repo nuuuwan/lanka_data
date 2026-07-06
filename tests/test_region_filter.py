@@ -134,3 +134,13 @@ class TestDatasetRegionFilter:
         dataset.region_filter = RegionFilter.from_modifier("Buddhist>0.9")
         region_ids = {row["region_id"] for row in dataset.get_data_table()}
         assert region_ids == {"r10", "r11"}
+
+    def test_get_data_table_empty_when_no_region_matches(self):
+        dataset = _build_fake_dataset()
+        dataset.region_filter = RegionFilter.from_modifier("Buddhist>0.99")
+        assert dataset.get_data_table() == []
+
+    def test_get_category_keys_ignores_region_filter(self):
+        dataset = _build_fake_dataset()
+        dataset.region_filter = RegionFilter.from_modifier("Buddhist>0.99")
+        assert "Buddhist" in dataset.get_category_keys()
