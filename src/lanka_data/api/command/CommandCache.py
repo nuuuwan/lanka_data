@@ -26,6 +26,8 @@ class CommandCache:
     @staticmethod
     def is_valid(cached):
         result, _ = cached
-        if isinstance(result, dict) and "image_path" in result:
-            return os.path.exists(result["image_path"])
+        if isinstance(result, dict):
+            for key in ("image_path", "file_path"):
+                if key in result:
+                    return os.path.exists(result[key])
         return True
