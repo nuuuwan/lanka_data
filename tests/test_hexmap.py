@@ -98,6 +98,21 @@ class TestHexCountError:
         actual = max(1, round(ideal))
         assert HexData._region_error(actual, ideal) > HexData.HEXMAP_ERROR
 
+    def test_region_error_is_absolute_percentage_error(self):
+        assert HexData._region_error(4, 4.5) == abs(4 - 4.5) / 4.5
+
+    def test_scaling_reduced_so_no_region_exceeds_error(self):
+        region_to_weight = {"A": 100, "B": 175}
+        value_per_hex = HexData._value_per_hex(region_to_weight)
+        assert value_per_hex < min(region_to_weight.values()) * (
+            1 + HexData.HEXMAP_ERROR
+        )
+        for weight in region_to_weight.values():
+            ideal = weight / value_per_hex
+            actual = max(1, round(ideal))
+            error = HexData._region_error(actual, ideal)
+            assert error <= HexData.HEXMAP_ERROR + 1e-9
+
     def test_non_positive_weights_give_each_region_one_hex(self):
         counts = HexData.get_counts({"A": 0, "B": 0})
         assert counts == {"A": 1, "B": 1}
