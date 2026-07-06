@@ -26,6 +26,10 @@
     "Religion/2012-2024/LK-31-pre2019:dsd/BarChart",
     "Religion/2012-2024/LK-11:district/BarChart"
   ],
+  "Bivariate": [
+    "Religion+Ethnicity/2024/LK:district/BivariateMap",
+    "Religion+Ethnicity/2024/LK:district/QuadrantMap"
+  ],
   "Elections": [
     "Parliamentary/2024/LK/JSON",
     "Presidential/2015/LK-11:pd/Map",
