@@ -11,8 +11,7 @@ class Brand:
         self.visual = visual
 
     def _spine_text(self):
-        spaced = (" " * self.LETTER_SPACING).join(Style.BRAND_NAME.upper())
-        return spaced
+        return (" " * self.LETTER_SPACING).join(Style.BRAND_NAME.upper())
 
     def draw(self):
         fig = plt.gcf()
