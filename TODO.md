@@ -21,9 +21,6 @@ dataset registries, and the visual renderers).
 - **`LineChart` / time-series `How`.** `BumpChart` handles interval ranking, but
   there is no plain multi-year trend line. Add a line/area chart over the census
   and election years for a single region or a small region set.
-- **Percentage / per-capita measures.** Values are raw counts (see
-  `GIG2Dataset.clean_data_row`). Add share-of-total and per-1,000 variants as
-  first-class `What` (or `How` modifiers) so cross-region comparison is fair.
 
 ## MID PRI
 
