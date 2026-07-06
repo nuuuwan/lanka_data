@@ -79,7 +79,7 @@ class PlotVisual(Visual):
         return color if color is not None else cmap(i / n_labels)
 
     def _build_category_to_color(self, dataset, category_labels):
-        _, value_to_color = ColorSpecFactory.get_color_spec(
+        _, value_to_color, _ = ColorSpecFactory.get_color_spec(
             dataset, self.how_cmd
         ).unpack()
         value_to_color = value_to_color or {}
