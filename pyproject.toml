@@ -11,6 +11,7 @@ dependencies = [
     "matplotlib",
     "numpy",
     "pandas",
+    "pyarrow",
     "geopandas",
     "shapely",
     "rich>=13.9.4",
