@@ -49,7 +49,7 @@ class PieChartMapLabelMixin:
 
             for text, offset, p_font_size in [
                 (f"{label}", 0.2, 0.5),
-                (f"{pct:.0%}", 0.5, 1.5),
+                (f"{pct:.1%}", 0.5, 1.5),
                 (subregion["region_name"], 0.8, 0.5),
             ]:
                 ax.annotate(
