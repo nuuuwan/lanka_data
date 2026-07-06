@@ -14,7 +14,7 @@ class Brand:
         Text.plot(
             fig,
             (0.5, y),
-            Style.BRAND_NAME,
+            Style.BRAND_NAME.title(),
             fontsize=Style.FONT_SIZE_WATERMARK,
             color=Style.COLOR_WATERMARK,
             alpha=Style.WATERMARK_ALPHA,
