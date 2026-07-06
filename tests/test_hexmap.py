@@ -87,7 +87,7 @@ class TestHexCountError:
             assert error <= HexData.HEXMAP_ERROR + 1e-9
 
     def test_uses_largest_population_per_hexagon(self):
-        region_to_weight = {"A": 900, "B": 250, "C": 100}
+        region_to_weight = {"A": 900, "B": 200, "C": 100}
         value_per_hex = HexData._value_per_hex(region_to_weight)
         smallest = min(region_to_weight.values())
         assert value_per_hex == smallest * (1 + HexData.HEXMAP_ERROR)
