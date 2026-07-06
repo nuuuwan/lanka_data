@@ -1,5 +1,4 @@
 .DS_Store
-TODO.md
 tests/test_db.data.temp.json
 .vscode
 single.sh
