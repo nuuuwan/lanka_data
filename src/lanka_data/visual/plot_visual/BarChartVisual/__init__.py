@@ -13,3 +13,6 @@ from lanka_data.visual.plot_visual.BarChartVisual.BarChartSingleMixin import (
 from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import (
     BarChartVisual,
 )
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartXLabelMixin import (
+    BarChartXLabelMixin,
+)

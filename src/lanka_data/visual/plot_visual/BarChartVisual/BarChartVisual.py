@@ -3,10 +3,15 @@ from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from .BarChartDrawMixin import BarChartDrawMixin
 from .BarChartLabelMixin import BarChartLabelMixin
 from .BarChartSingleMixin import BarChartSingleMixin
+from .BarChartXLabelMixin import BarChartXLabelMixin
 
 
 class BarChartVisual(
-    BarChartDrawMixin, BarChartLabelMixin, BarChartSingleMixin, PlotVisual
+    BarChartDrawMixin,
+    BarChartLabelMixin,
+    BarChartSingleMixin,
+    BarChartXLabelMixin,
+    PlotVisual,
 ):
     @staticmethod
     def _is_change_chart(subregions):
