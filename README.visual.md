@@ -86,15 +86,17 @@ The canvas is divided top-to-bottom into three fixed bands. This is Principle 5
 | ---------- | -------------------- | ----------------------------------------------- |
 | **Header** | top band, grows with title lines | Title (what / where / how, as English text, wrapped over as many lines as needed) |
 | **Caption** | just below the header (~0.88) | Optional narrative callout — the automatic *"what should I notice?"* line (highest, lowest, biggest change, outliers), computed **only from the values the visual actually shows** (e.g. the mapped percentage or metric), never from other underlying data. Self-suppressing when the visual shows no comparable per-region value (e.g. a categorical map). |
-| **Body**   | middle (0.10–0.86)   | The plot(s) — one sub-figure per dataset year   |
+| **Body**   | centred inner square (0.10–0.86, horizontally centred) | The plot(s) — one sub-figure per dataset year, framed by a light padding border |
 | **Footer** | bottom **5 %** (0–0.05) | Source attribution (left) and the GitHub repository link (right) |
 | **Spine**  | left margin, full body height | The **Lanka Data** brand mark, set as quiet rotated (vertical) type |
 | **QR code** | bottom-right corner | A QR code linking to the project's GitHub repository, so a printed or shared image can be scanned back to the source |
 
-The body is laid out on a grid: one column per dataset, with a fixed inter-panel
-gutter, so a two-year comparison reads as two aligned panels rather than two
-unrelated charts. A uniform **5 %** margin is reserved on every side, so the
-plotted graphics never touch the canvas edge (`Style.MARGIN`). The header band is
+The body is placed inside a centred **inner square**, so the plotted graphics
+occupy a square region between the header and footer bands with the header,
+caption, footer, spine, and QR code sitting outside it. A light **padding
+border** frames this inner square (`Style.BORDER_PAD`, `InnerSquare`). One
+column per dataset, with a fixed inter-panel gutter, so a two-year comparison
+reads as two aligned panels rather than two unrelated charts. The header band is
 not a fixed height: it expands downward to fit however many lines the title
 needs, so the title text is never clipped or shrunk to fit one line.
 
