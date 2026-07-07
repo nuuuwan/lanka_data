@@ -1,11 +1,13 @@
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
+from lanka_data.visual.plot.Header import Header
 from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot.Text import Text
 
 
 class Footer:
+    TITLE_DELIM = Header.TITLE_DELIM
     TEXT_COLOR = Style.COLOR_METADATA
     BACK_COLOR = Style.COLOR_SURFACE_FOOTER
 
@@ -27,21 +29,20 @@ class Footer:
             )
         )
 
-        Text.plot(
-            fig,
-            (0.5, Style.FOOTER_HEIGHT * 0.7),
-            "Code: " + Style.BRAND_URL,
-            fontsize=Style.FONT_SIZE_METADATA,
-            color=self.TEXT_COLOR,
+        footer_text = self.TITLE_DELIM.join(
+            [
+                "Original Data Sources: "
+                + ", ".join(
+                    [source.name for source in self.visual.get_sources()]
+                ),
+                "Structured Data & Code: " + Style.BRAND_URL,
+            ]
         )
 
         Text.plot(
             fig,
             (0.5, Style.FOOTER_HEIGHT * 0.3),
-            "Data Sources: "
-            + ", ".join(
-                [source.name for source in self.visual.get_sources()]
-            ),
-            fontsize=Style.FONT_SIZE_METADATA,
+            footer_text,
+            fontsize=Style.FONT_SIZE_METADATA * 100 / len(footer_text),
             color=self.TEXT_COLOR,
         )
