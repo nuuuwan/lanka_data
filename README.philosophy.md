@@ -190,7 +190,7 @@ The command string is deliberately free of characters that need quoting or escap
 - **Static file location** — the four fields *are* the directory structure:
 
   ```text
-  /tmp/lanka_data/Energy/2012/LK/Map
+  _output/Energy/2012/LK/Map
   ```
 
 This is not four interfaces that happen to look alike; it is one grammar hosted in four contexts. A query learned in the browser transfers verbatim to a script, a shell, or a cache path, and a pre-rendered result can be served statically at exactly the address that would compute it dynamically.
