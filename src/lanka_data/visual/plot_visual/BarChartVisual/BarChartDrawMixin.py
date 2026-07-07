@@ -5,8 +5,6 @@ from lanka_data.visual.plot.Style import Style
 
 
 class BarChartDrawMixin:
-    BOTTOM_PADDING = 0.08
-
     @staticmethod
     def _draw_stacked_bars(
         ax, subregions, x_values, category_labels, category_to_color
@@ -54,22 +52,17 @@ class BarChartDrawMixin:
 
     def _style_axis(self, ax, subregions, y_min, y_max, y_label="Population"):
         x_labels = [s["region_name"] for s in subregions]
-        ax.set_xticks(range(len(subregions)))
-        ax.set_xticklabels(
-            x_labels,
-            rotation=90,
-            fontsize=Style.FONT_SIZE_METADATA,
-            color=Style.COLOR_METADATA,
-        )
+        bottom_padding = self._fit_x_labels(ax, x_labels)
         pos = ax.get_position()
-        padded_h = max(pos.height - self.BOTTOM_PADDING, pos.height * 0.7)
+        padded_h = max(pos.height - bottom_padding, pos.height * 0.4)
         ax.set_position(
-            [pos.x0, pos.y0 + self.BOTTOM_PADDING, pos.width, padded_h]
+            [pos.x0, pos.y0 + bottom_padding, pos.width, padded_h]
         )
         ax.grid(
             True, axis="y", color=Style.COLOR_GRID, linewidth=0.5, zorder=-1
         )
         ax.margins(x=0.0, y=0.0)
+        ax.set_xlim(-0.6, len(x_labels) - 0.4)
         y_pad = 0
         ax.set_ylim(y_min - y_pad, y_max + y_pad)
         ax.axhline(0, color=Style.COLOR_AXIS, linewidth=0.8)
