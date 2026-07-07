@@ -37,7 +37,7 @@ class ColorSpecConstants:
         "Veddha": "#66A61E",
         # --- Census: gender ---
         "Male": "#88ccff",
-        "Female": "#ff88cc",
+        "Female": "#ff88cd",
         # --- Shared: null / placeholder categories ---
         "(Insufficient Data)": "#222222",
         "(No Data)": "#111111",
