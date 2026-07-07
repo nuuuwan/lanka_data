@@ -1,15 +1,19 @@
 from lanka_data.visual.plot.color_spec import ColorSpecFactory
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map.HexData import HexData
-from lanka_data.visual.plot.map.RegionPopulationFilter import \
-    RegionPopulationFilter
+from lanka_data.visual.plot.map.RegionPopulationFilter import (
+    RegionPopulationFilter,
+)
 from lanka_data.visual.plot.Style import Style
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
-    HexMapBoundaryMixin
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import \
-    HexMapDrawMixin
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import \
-    HexMapLabelMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import (
+    HexMapBoundaryMixin,
+)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import (
+    HexMapDrawMixin,
+)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import (
+    HexMapLabelMixin,
+)
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 
@@ -26,11 +30,15 @@ class HexMapVisual(
 
     @staticmethod
     def _scale_text(value_min, value_max):
-        a = round(value_min)
-        b = round(value_max)
+        Q = 100
+        a = round(value_min / Q) * Q
+        b = round(value_max / Q) * Q
         if a == b:
-            return f"Each hexagon represents ~{a:,} people"
-        return f"Each hexagon represents {a:,} to {b:,} people"
+            return f"Hexagon = {a:,} people"
+
+        mid = round((a + b) / 2 / Q) * Q
+        span = round((b - a) / 2 / Q) * Q
+        return f"Hexagon = {mid:,} ± {span:,} people"
 
     @classmethod
     def _draw_scale(cls, ax, layout):
@@ -72,7 +80,5 @@ class HexMapVisual(
             len(region_to_name),
         )
         self._draw_scale(ax, layout)
-        Legend.draw(
-            value_to_color, legend_ax, value_to_region=value_to_region
-        )
+        Legend.draw(value_to_color, legend_ax, value_to_region=value_to_region)
         ax.set_axis_off()
