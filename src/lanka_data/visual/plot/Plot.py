@@ -10,6 +10,7 @@ from lanka_data.visual.plot.Font import Font
 from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
 from lanka_data.visual.plot.PlotLayout import PlotLayout
+from lanka_data.visual.plot.QRCode import QRCode
 from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot.Text import Text
 from utils_future import File, Log, timer
@@ -64,6 +65,7 @@ class Plot:
         Footer(self.visual).draw()
         Caption(self.visual).draw()
         Brand(self.visual).draw()
+        QRCode(self.visual).draw()
 
         image_dir = os.path.join(self.DIR_OUTPUT, self.visual.command.cmd_id)
         os.makedirs(image_dir, exist_ok=True)
