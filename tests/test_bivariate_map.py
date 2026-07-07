@@ -40,6 +40,12 @@ class TestBivariateRouting:
             assert base not in How.CATEGORY_BASES
             assert base not in How.INTERVAL_BASES
 
+    def test_bases_accept_category_pair_modifier(self):
+        for base in self.BASES:
+            how = How(f"{base}:Buddhist:Sinhalese")
+            assert how.categories == ["Buddhist", "Sinhalese"]
+            assert how.category is None
+
 
 class TestBivariateData:
     def test_dominant_returns_top_share(self):
@@ -56,6 +62,26 @@ class TestBivariateData:
         assert point["x_label"] == "Buddhist"
         assert point["y_label"] == "Sinhala"
         assert point["x"] == 0.6 and point["y"] == 0.8
+
+    def test_point_uses_explicit_categories(self):
+        point = BivariateData._point(
+            _row(
+                "LK-1",
+                {"Buddhist": 0.6, "Hindu": 0.4},
+                {"Sinhalese": 0.7, "Tamil": 0.3},
+            ),
+            ["Hindu", "Tamil"],
+        )
+        assert point["x_label"] == "Hindu"
+        assert point["y_label"] == "Tamil"
+        assert point["x"] == 0.4 and point["y"] == 0.3
+
+    def test_point_missing_category_share_is_zero(self):
+        point = BivariateData._point(
+            _row("LK-1", {"Buddhist": 1.0}, {"Sinhalese": 1.0}),
+            ["Islam", "Tamil"],
+        )
+        assert point["x"] == 0.0 and point["y"] == 0.0
 
     def test_point_skips_when_a_measure_is_missing(self):
         assert BivariateData._point(_row("LK-1", {}, {"S": 1.0})) is None

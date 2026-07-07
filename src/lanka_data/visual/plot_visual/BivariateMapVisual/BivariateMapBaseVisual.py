@@ -19,14 +19,27 @@ class BivariateMapBaseVisual(PlotVisual):
         return BivariatePalette(self.N_BINS)
 
     @property
+    def categories(self):
+        return self.command.how.categories
+
+    @property
     def measure_labels(self):
         whats = self.command.what.whats
         first = whats[0]
         last = whats[-1] if len(whats) > 1 else whats[0]
+        categories = self.categories
+        if categories:
+            first_category, last_category = BivariateData._pair(categories)
+            if first_category:
+                first = f"{first_category} ({first})"
+            if last_category:
+                last = f"{last_category} ({last})"
         return first, last
 
     def _classified_points(self, dataset):
-        points = BivariateData.points(dataset.get_data_table())
+        points = BivariateData.points(
+            dataset.get_data_table(), self.categories
+        )
         return BivariateData.classify(points, self.N_BINS)
 
     def _region_color_map(self, points):

@@ -21,6 +21,7 @@ class How(HowFormatMixin, HowIntrospectionMixin, HowRegistryMixin):
             self.modifier
             and self.modifier not in self.MODIFIERS
             and self.base not in self.CATEGORY_BASES
+            and self.base not in self.PAIR_CATEGORY_BASES
             and self.region_filter is None
         ):
             raise UnknownHowError(f"Unknown how: {self.value}", self.value)
@@ -54,15 +55,6 @@ class How(HowFormatMixin, HowIntrospectionMixin, HowRegistryMixin):
     @property
     def region_filter(self):
         return RegionFilter.from_modifier(self.modifier)
-
-    @property
-    def category(self):
-        if self.modifier is None or self.modifier in self.MODIFIERS:
-            return None
-        region_filter = self.region_filter
-        if region_filter is not None:
-            return region_filter.category
-        return self.modifier
 
     @property
     def needs_interval(self):
