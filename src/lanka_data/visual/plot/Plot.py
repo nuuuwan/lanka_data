@@ -62,10 +62,10 @@ class Plot:
         self._draw_subfigures()
 
         Header(self.visual).draw()
+        QRCode(self.visual).draw()
         Footer(self.visual).draw()
         Caption(self.visual).draw()
         Brand(self.visual).draw()
-        QRCode(self.visual).draw()
 
         image_dir = os.path.join(self.DIR_OUTPUT, self.visual.command.cmd_id)
         os.makedirs(image_dir, exist_ok=True)

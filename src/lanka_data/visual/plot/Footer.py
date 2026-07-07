@@ -43,6 +43,6 @@ class Footer:
             fig,
             (0.5, Style.FOOTER_HEIGHT * 0.3),
             footer_text,
-            fontsize=Style.FONT_SIZE_METADATA * 100 / len(footer_text),
+            fontsize=Style.FONT_SIZE_METADATA * 80 / len(footer_text),
             color=self.TEXT_COLOR,
         )

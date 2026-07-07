@@ -7,8 +7,8 @@ from lanka_data.visual.plot.Style import Style
 
 class QRCode:
     URL = Style.BRAND_URL
-    SIZE_INCHES = 0.8
-    BORDER = 2
+    SIZE_INCHES = 1.5
+    BORDER = 5
 
     def __init__(self, visual):
         self.visual = visual
@@ -22,11 +22,9 @@ class QRCode:
         fig_w, fig_h = fig.get_size_inches()
         width = self.SIZE_INCHES / fig_w
         height = self.SIZE_INCHES / fig_h
-        left = 1 - Style.MARGIN - width
-        bottom = (Style.FOOTER_HEIGHT - height) / 2
-        return fig.add_axes(
-            [left, max(bottom, 0.005), width, height], zorder=10001
-        )
+        left = 1 - width
+        bottom = 0
+        return fig.add_axes([left, bottom, width, height], zorder=10001)
 
     def draw(self):
         fig = plt.gcf()
