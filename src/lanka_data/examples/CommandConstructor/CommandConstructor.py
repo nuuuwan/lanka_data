@@ -35,4 +35,7 @@ class CommandConstructor:
                 return Command.from_str(cmd_str).cmd_id
             except ValueError:
                 continue
-        raise RuntimeError("Could not construct a valid random command")
+        raise RuntimeError(
+            "Could not construct a valid random command after "
+            + f"{cls.MAX_ATTEMPTS} attempts"
+        )
