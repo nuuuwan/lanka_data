@@ -12,6 +12,8 @@ class Caption:
     X = InnerSquare.left + 0.01
     Y_TOP = InnerSquare.bottom + 0.22
     LINE_HEIGHT = 0.026
+    HEADING_GAP = LINE_HEIGHT * 1.4
+    LINE_SPACING = 1.6
 
     def __init__(self, visual):
         self.visual = visual
@@ -56,7 +58,7 @@ class Caption:
         items = self._callouts()
         if not items:
             return ""
-        return "What to notice — " + "; ".join(items)
+        return self.HEADING + " — " + "; ".join(items)
 
     def draw(self):
         items = self._callouts()
@@ -75,11 +77,11 @@ class Caption:
         )
         Text.plot(
             fig,
-            (self.X, self.Y_TOP - self.LINE_HEIGHT * 1.4),
+            (self.X, self.Y_TOP - self.HEADING_GAP),
             "\n".join(items),
             fontsize=Style.FONT_SIZE_METADATA,
             color=Style.COLOR_METADATA,
             ha="left",
             va="top",
-            linespacing=1.6,
+            linespacing=self.LINE_SPACING,
         )
