@@ -1,6 +1,13 @@
-from lanka_data.api.fields.How import How
-from lanka_data.visual.plot_visual.HistogramVisual import (HistogramData,
-                                                           HistogramVisual)
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt  # noqa: E402
+
+from lanka_data.api.fields.How import How  # noqa: E402
+from lanka_data.visual.plot_visual.BarChartVisual import \
+    BarChartVisual  # noqa: E402
+from lanka_data.visual.plot_visual.HistogramVisual import (  # noqa: E402
+    HistogramData, HistogramVisual)
 from lanka_data.visual.plot_visual.ScatterPlotVisual import (ScatterPlotData,
                                                              ScatterPlotVisual)
 from lanka_data.visual.plot_visual.StackedBarChartVisual import \
@@ -59,6 +66,59 @@ class TestStackedBarChartNormalize:
 
     def test_percent_formatter(self):
         assert StackedBarChartVisual._format_millions(0.25, None) == "25%"
+
+
+class _FakeDataset:
+    def __init__(self, rows):
+        self._rows = rows
+
+    def get_data_table(self):
+        return self._rows
+
+
+class _BarChartForTest(BarChartVisual):
+    def __init__(self):
+        self.how_cmd = None
+
+    def _build_category_to_color(self, dataset, category_labels):
+        return {c: "C%d" % (i % 9) for i, c in enumerate(category_labels)}
+
+
+class TestBarChartSingleVsStacked:
+    SINGLE = [
+        {
+            "region_id": "LK-42",
+            "region_name": "Gampaha",
+            "values": {"Buddhist": 100, "Hindu": 30, "Muslim": 20},
+        }
+    ]
+    MULTI = [
+        {
+            "region_id": "LK-41",
+            "region_name": "Colombo",
+            "values": {"Buddhist": 80, "Hindu": 40, "Muslim": 30},
+        },
+        {
+            "region_id": "LK-42",
+            "region_name": "Gampaha",
+            "values": {"Buddhist": 100, "Hindu": 30, "Muslim": 20},
+        },
+    ]
+
+    @staticmethod
+    def _draw(rows):
+        fig = plt.figure()
+        _BarChartForTest().draw(_FakeDataset(rows), fig)
+        ax = fig.axes[0]
+        labels = [t.get_text() for t in ax.get_xticklabels()]
+        plt.close(fig)
+        return labels
+
+    def test_single_row_uses_category_x_axis(self):
+        assert self._draw(self.SINGLE) == ["Buddhist", "Hindu", "Muslim"]
+
+    def test_multi_row_uses_region_x_axis(self):
+        assert self._draw(self.MULTI) == ["Colombo", "Gampaha"]
 
 
 class TestTreeMapData:

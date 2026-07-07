@@ -2,9 +2,12 @@ from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 
 from .BarChartDrawMixin import BarChartDrawMixin
 from .BarChartLabelMixin import BarChartLabelMixin
+from .BarChartSingleMixin import BarChartSingleMixin
 
 
-class BarChartVisual(BarChartDrawMixin, BarChartLabelMixin, PlotVisual):
+class BarChartVisual(
+    BarChartDrawMixin, BarChartLabelMixin, BarChartSingleMixin, PlotVisual
+):
     @staticmethod
     def _is_change_chart(subregions):
         return any(v < 0 for s in subregions for v in s["values"].values())
@@ -47,6 +50,11 @@ class BarChartVisual(BarChartDrawMixin, BarChartLabelMixin, PlotVisual):
         ax = fig.add_subplot(gs[0])
         if not subregions or not category_labels:
             ax.set_axis_off()
+            return
+        if len(subregions) == 1:
+            self._draw_single_region(
+                ax, subregions[0], category_labels, category_to_color
+            )
             return
         x_values = list(range(len(subregions)))
         y_min, y_max = self._draw_stacked_bars(
