@@ -65,6 +65,9 @@ class BarChartVisual(
         y_min, y_max = self._draw_stacked_bars(
             ax, subregions, x_values, category_labels, category_to_color
         )
-        self._style_axis(ax, subregions, y_min, y_max, "Population")
+        self._style_axis(
+            ax, subregions, y_min, y_max, "Population", x_labels=False
+        )
         self._add_bar_labels(ax, subregions)
+        self._add_region_labels(ax, subregions, x_values)
         self._draw_category_legend(ax, category_labels, category_to_color)

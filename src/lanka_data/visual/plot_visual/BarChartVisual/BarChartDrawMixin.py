@@ -52,9 +52,7 @@ class BarChartDrawMixin:
             y_min = min(y_min, neg_bottom)
         return y_min, y_max
 
-    def _style_axis(self, ax, subregions, y_min, y_max, y_label="Population"):
-        x_labels = [s["region_name"] for s in subregions]
-        bottom_padding = self._fit_x_labels(ax, x_labels)
+    def _reposition_axis(self, ax, bottom_padding):
         pos = ax.get_position()
         padded_w = pos.width - self.PADDING * 2
         padded_h = max(
@@ -69,13 +67,30 @@ class BarChartDrawMixin:
                 padded_h,
             ]
         )
+
+    def _style_axis(
+        self,
+        ax,
+        subregions,
+        y_min,
+        y_max,
+        y_label="Population",
+        x_labels=True,
+    ):
+        x_names = [s["region_name"] for s in subregions]
+        if x_labels:
+            bottom_padding = self._fit_x_labels(ax, x_names)
+        else:
+            ax.set_xticks([])
+            bottom_padding = 0
+        self._reposition_axis(ax, bottom_padding)
         ax.grid(
             True, axis="y", color=Style.COLOR_GRID, linewidth=0.5, zorder=-1
         )
         ax.margins(x=0.0, y=0.0)
-        ax.set_xlim(-0.6, len(x_labels) - 0.4)
-        y_pad = 0
-        ax.set_ylim(y_min - y_pad, y_max + y_pad)
+        ax.set_xlim(-0.6, len(x_names) - 0.4)
+        y_top_pad = 0 if x_labels else (y_max - y_min) * 0.08
+        ax.set_ylim(y_min, y_max + y_top_pad)
         ax.axhline(0, color=Style.COLOR_AXIS, linewidth=0.8)
         ax.yaxis.set_major_formatter(FuncFormatter(self._format_millions))
         ax.set_ylabel(y_label, color=Style.COLOR_METADATA)
