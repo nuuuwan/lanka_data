@@ -1,7 +1,6 @@
 import os
-import tempfile
 
-DIR_OUTPUT = os.path.join(tempfile.gettempdir(), "lanka_data", "output")
+DIR_OUTPUT = "_output"
 
 
 class FileExportMixin:

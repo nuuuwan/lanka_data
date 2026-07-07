@@ -3,6 +3,7 @@ tests/test_db.data.temp.json
 .vscode
 single.sh
 temp.txt
+_output/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
