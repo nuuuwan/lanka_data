@@ -111,14 +111,19 @@ class TestBarChartSingleVsStacked:
         _BarChartForTest().draw(_FakeDataset(rows), fig)
         ax = fig.axes[0]
         labels = [t.get_text() for t in ax.get_xticklabels()]
+        texts = [t.get_text() for t in ax.texts]
         plt.close(fig)
-        return labels
+        return labels, texts
 
     def test_single_row_uses_category_x_axis(self):
-        assert self._draw(self.SINGLE) == ["Buddhist", "Hindu", "Muslim"]
+        labels, _ = self._draw(self.SINGLE)
+        assert labels == ["Buddhist", "Hindu", "Muslim"]
 
-    def test_multi_row_uses_region_x_axis(self):
-        assert self._draw(self.MULTI) == ["Colombo", "Gampaha"]
+    def test_multi_row_labels_regions_on_top(self):
+        labels, texts = self._draw(self.MULTI)
+        assert labels == []
+        assert "Colombo" in texts
+        assert "Gampaha" in texts
 
 
 class TestTreeMapData:

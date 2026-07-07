@@ -28,6 +28,23 @@ class BarChartXLabelMixin:
         ]
         return (max(heights) if heights else 0) / subfig_h
 
+    def _add_region_labels(self, ax, subregions, x_values):
+        y0, y1 = ax.get_ylim()
+        offset = (y1 - y0) * 0.01
+        for x, subregion in zip(x_values, subregions):
+            top = sum(v for v in subregion["values"].values() if v > 0)
+            ax.text(
+                x,
+                top + offset,
+                self._truncate_label(subregion["region_name"]),
+                ha="center",
+                va="bottom",
+                rotation=0,
+                fontsize=Style.FONT_SIZE_METADATA,
+                color=Style.COLOR_METADATA,
+                clip_on=False,
+            )
+
     def _fit_x_labels(self, ax, x_labels):
         ax.set_xticks(range(len(x_labels)))
         ax.set_xticklabels(
