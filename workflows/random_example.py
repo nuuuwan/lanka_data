@@ -5,6 +5,7 @@ from lanka_data import CommandConstructor, CommandRunner
 
 if __name__ == "__main__":
     command = CommandConstructor.construct()
+    print(f"{command=}")
     output = CommandRunner.run(command)
     result = output["result"]
     if "image_path" in result:
