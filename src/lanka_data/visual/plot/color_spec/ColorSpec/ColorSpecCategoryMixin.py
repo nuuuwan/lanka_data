@@ -48,6 +48,7 @@ class ColorSpecCategoryMixin:
         value_to_rank = {v: r for r, v in enumerate(sorted(set(pct_values)))}
         n = len(value_to_rank)
         value_to_color, region_to_color, value_to_region = {}, {}, {}
+        region_to_value, region_to_value_str = {}, {}
         for data in data_list:
             value = value_mapper(data)
             rank = value_to_rank[value]
@@ -60,8 +61,17 @@ class ColorSpecCategoryMixin:
             if is_diff:
                 value_str = value_str.replace("%", "pp")
             value_to_color[value_str] = color
-            region_to_color[data["region_id"]] = color
+            region_id = data["region_id"]
+            region_to_color[region_id] = color
+            region_to_value[region_id] = value
+            region_to_value_str[region_id] = value_str
             value_to_region[value_str] = data.get("region_name") or str(
-                data["region_id"]
+                region_id
             )
-        return cls(region_to_color, value_to_color, value_to_region)
+        return cls(
+            region_to_color,
+            value_to_color,
+            value_to_region,
+            region_to_value,
+            region_to_value_str,
+        )

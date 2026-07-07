@@ -2,6 +2,8 @@ from lanka_data.command.Command import Command
 from lanka_data.visual.annotations.Annotations import Annotations
 from lanka_data.visual.annotations.NumberAbbreviator import NumberAbbreviator
 from lanka_data.visual.data_export.TableVisual import TableVisual
+from lanka_data.visual.plot.Caption import Caption
+from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 from lanka_data.visual.VisualFactory import VisualFactory
 
 
@@ -168,3 +170,70 @@ class TestTableExportAnnotations:
 
     def test_returns_table_visual(self):
         assert isinstance(self._build(PLAIN), TableVisual)
+
+
+class FakeMapDataset:
+    def __init__(self, rows):
+        self._rows = rows
+
+    def get_data_table(self):
+        return self._rows
+
+    def has_values(self):
+        return True
+
+    def is_diff(self):
+        return False
+
+
+class FakeVisual:
+    def __init__(self, dataset, how_cmd):
+        self.datasets = [dataset]
+        self.how_cmd = how_cmd
+
+
+MAP_ROWS = [
+    {"region_id": "A", "region_name": "Alpha", "pct_values": {"X": 0.70}},
+    {"region_id": "B", "region_name": "Beta", "pct_values": {"X": 0.10}},
+    {"region_id": "C", "region_name": "Gamma", "pct_values": {"X": 0.40}},
+]
+
+
+class TestAnnotationsDisplay:
+    def test_display_string_preferred_over_number(self):
+        rows = [
+            {"region_name": "A", "total_value": 0.7, "display": "70.0%"},
+            {"region_name": "B", "total_value": 0.1, "display": "10.0%"},
+        ]
+        callouts = Annotations.from_data_table(rows).callouts()
+        assert callouts[0] == "Highest: A (70.0%)"
+        assert callouts[1] == "Lowest: B (10.0%)"
+
+
+class TestColorSpecRenderedValues:
+    def test_single_pct_exposes_region_values(self):
+        spec = ColorSpec.by_single_pct_value(
+            FakeMapDataset(MAP_ROWS),
+            lambda data: data["pct_values"]["X"],
+            label="X",
+        )
+        assert spec.region_to_value == {"A": 0.70, "B": 0.10, "C": 0.40}
+        assert spec.region_to_value_str["A"] == "70.0%"
+
+    def test_categorical_spec_has_no_region_values(self):
+        spec = ColorSpec.by_custom_category_key(
+            FakeMapDataset(MAP_ROWS), lambda data: "X", False
+        )
+        assert spec.region_to_value is None
+
+
+class TestCaptionUsesVisibleData:
+    def test_numeric_map_caption_uses_displayed_values(self):
+        caption = Caption(FakeVisual(FakeMapDataset(MAP_ROWS), "Map:1stPct"))
+        summary = caption._summary()
+        assert "Highest: Alpha (70.0%)" in summary
+        assert "Lowest: Beta (10.0%)" in summary
+
+    def test_categorical_map_has_no_caption(self):
+        caption = Caption(FakeVisual(FakeMapDataset(MAP_ROWS), "Map"))
+        assert caption._summary() == ""
