@@ -31,3 +31,10 @@ class QRCode:
         ax = self._axes(fig)
         ax.imshow(self._matrix(), cmap="gray_r", interpolation="nearest")
         ax.axis("off")
+        ax.set_title(
+            Style.BRAND_NAME.title(),
+            loc="left",
+            fontsize=Style.FONT_SIZE_BRAND,
+            color=Style.COLOR_BRAND,
+            weight="bold",
+        )
