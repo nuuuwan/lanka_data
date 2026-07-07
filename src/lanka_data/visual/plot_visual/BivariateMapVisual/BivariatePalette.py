@@ -2,14 +2,14 @@ class BivariatePalette:
     NEUTRAL = "#dddddd"
 
     GRID_3 = [
-        ["#e8e8e8", "#b5c0da", "#6c83b5"],
-        ["#b8d6be", "#90b2b3", "#567994"],
-        ["#73ae80", "#5a9178", "#2a5a5b"],
+        ["#e8e8e8", "#8aabd3", "#2d6ebe"],
+        ["#d89292", "#896e90", "#3a4b8e"],
+        ["#c83c3c", "#87324e", "#46285f"],
     ]
 
     GRID_2 = [
-        ["#e8e8e8", "#6c83b5"],
-        ["#73ae80", "#2a5a5b"],
+        ["#e8e8e8", "#2d6ebe"],
+        ["#c83c3c", "#46285f"],
     ]
 
     def __init__(self, n_bins):
