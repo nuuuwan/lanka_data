@@ -19,8 +19,12 @@ class Style:
     COLOR_AXIS = "#666666"
     COLOR_GRID = "#dddddd"
 
+    COLOR_BORDER = "#b0b0b0"
+
     MARGIN = 0.05
     BODY_TOP = 0.86
+    BODY_BOTTOM = 0.10
+    BORDER_PAD = 0.015
     FOOTER_HEIGHT = 0.08
     BRAND_SPINE_X = 0.018
     BRAND_NAME = "lanka data"

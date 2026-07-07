@@ -5,10 +5,12 @@ import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 
 from lanka_data.visual.plot.Brand import Brand
+from lanka_data.visual.plot.Border import Border
 from lanka_data.visual.plot.Caption import Caption
 from lanka_data.visual.plot.Font import Font
 from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
+from lanka_data.visual.plot.InnerSquare import InnerSquare
 from lanka_data.visual.plot.PlotLayout import PlotLayout
 from lanka_data.visual.plot.QRCode import QRCode
 from lanka_data.visual.plot.Style import Style
@@ -34,10 +36,10 @@ class Plot:
             layout.n_rows,
             layout.n_cols,
             figure=fig,
-            left=Style.MARGIN,
-            right=1 - Style.MARGIN,
-            top=Style.BODY_TOP,
-            bottom=0.10,
+            left=InnerSquare.left,
+            right=InnerSquare.right,
+            top=InnerSquare.top,
+            bottom=InnerSquare.bottom,
             wspace=0.25,
         )
 
@@ -62,6 +64,7 @@ class Plot:
         self._draw_subfigures()
 
         Header(self.visual).draw()
+        Border(self.visual).draw()
         QRCode(self.visual).draw()
         Footer(self.visual).draw()
         Caption(self.visual).draw()
