@@ -11,7 +11,7 @@ class Style:
     COLOR_BRAND = "#111111"
     COLOR_BRAND_SPINE = "#b0b0b0"
     COLOR_WATERMARK = "#000000"
-    WATERMARK_ALPHA = 0.01
+    WATERMARK_ALPHA = 0.02
 
     COLOR_SURFACE_HEADER = "#eeeeee"
     COLOR_SURFACE_FOOTER = "#ffffff"
