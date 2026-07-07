@@ -71,6 +71,8 @@ class ColorSpec(ColorSpecCategoryMixin, ColorSpecCustomMixin):
         expanded = {}
         for value, color in sorted_vtc.items():
             count = color_to_count.get(color, 0)
+            if count == 0:
+                continue
             expanded[f"{value} ({count})"] = color
         return expanded
 
