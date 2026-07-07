@@ -8,8 +8,12 @@ log = Log("ElectionDataset")
 class ElectionSummaryDataset(ElectionDataset):
     @classmethod
     def supports(cls, label, year):
+        if not label.endswith("Summary"):
+            return False
         base_label = label.replace("Summary", "")
-        return label.endswith("Summary") and base_label in cls.get_labels()
+        return base_label in cls.get_labels() and year in cls.get_years(
+            base_label
+        )
 
     @classmethod
     def from_summary_label_data_and_year(

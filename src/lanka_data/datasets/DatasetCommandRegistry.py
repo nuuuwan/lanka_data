@@ -2,12 +2,15 @@ from lanka_data.api.fields.RegionTypeRegistry import RegionTypeRegistry
 from lanka_data.api.fields.WhatRegistry import WhatRegistry
 from lanka_data.api.fields.WhatWhenRegistry import WhatWhenRegistry
 from lanka_data.api.fields.WhenRegistry import WhenRegistry
-from lanka_data.datasets.dataset.custom.Census2001Dataset import \
-    Census2001Dataset
-from lanka_data.datasets.dataset.custom.Census2012Dataset import \
-    Census2012Dataset
-from lanka_data.datasets.dataset.custom.Census2024Dataset import \
-    Census2024Dataset
+from lanka_data.datasets.dataset.custom.Census2001Dataset import (
+    Census2001Dataset,
+)
+from lanka_data.datasets.dataset.custom.Census2012Dataset import (
+    Census2012Dataset,
+)
+from lanka_data.datasets.dataset.custom.Census2024Dataset import (
+    Census2024Dataset,
+)
 from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
 from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 
@@ -28,7 +31,9 @@ class DatasetCommandRegistry:
                 "election_summary": cls.election_summary_labels,
             }
         )
-        WhenRegistry.set_value_providers([cls.census_whens])
+        WhenRegistry.set_value_providers(
+            [cls.census_whens, cls.election_whens]
+        )
         WhatWhenRegistry.set_pair_providers(
             [cls.census_pairs, cls.election_pairs]
         )
@@ -62,12 +67,16 @@ class DatasetCommandRegistry:
         return pairs
 
     @classmethod
+    def election_whens(cls):
+        return ElectionDataset.get_all_years()
+
+    @classmethod
     def election_pairs(cls, when_values):
         pairs = []
         for label in ElectionDataset.get_labels():
-            for when in when_values:
-                pairs.append((label, when))
-                pairs.append((label + "Summary", when))
+            for year in ElectionDataset.get_years(label):
+                pairs.append((label, year))
+                pairs.append((label + "Summary", year))
         return pairs
 
 

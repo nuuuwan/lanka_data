@@ -2,7 +2,7 @@ import os
 
 from lanka_data.api.data.DataSource import DataSource
 from lanka_data.datasets.dataset.custom.GIG2Dataset import GIG2Dataset
-from utils_future import Log
+from utils_future import Log, JSONFile
 
 log = Log("ElectionDataset")
 
@@ -24,7 +24,7 @@ class ElectionDataset(GIG2Dataset):
 
     @classmethod
     def supports(cls, label, year):
-        return label in cls.get_labels()
+        return label in cls.get_labels() and year in cls.get_years(label)
 
     def get_year(self) -> str:
         return self.year
@@ -35,6 +35,28 @@ class ElectionDataset(GIG2Dataset):
             os.path.dirname(os.path.abspath(__file__)),
             "elections.datasets.json",
         )
+
+    @classmethod
+    def years_file_path(cls) -> str:
+        return os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "elections.years.json",
+        )
+
+    @classmethod
+    def get_label_to_years(cls) -> dict[str, list[str]]:
+        return JSONFile(cls.years_file_path()).read()
+
+    @classmethod
+    def get_years(cls, label: str) -> list[str]:
+        return cls.get_label_to_years().get(label, [])
+
+    @classmethod
+    def get_all_years(cls) -> list[str]:
+        years = []
+        for label_years in cls.get_label_to_years().values():
+            years.extend(label_years)
+        return sorted(set(years))
 
     def get_sources(self) -> list[dict]:
         return [
