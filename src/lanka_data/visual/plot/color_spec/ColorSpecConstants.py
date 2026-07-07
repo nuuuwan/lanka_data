@@ -93,5 +93,5 @@ class ColorSpecConstants:
         "#ff8801": ["Rejected"],
         # Gender
         "#88ccff": ["Male"],
-        "#ff88cc": ["Female"],
+        "#ff88cd": ["Female"],
     }
