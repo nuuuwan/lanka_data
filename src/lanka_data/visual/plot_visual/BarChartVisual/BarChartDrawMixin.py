@@ -5,7 +5,7 @@ from lanka_data.visual.plot.Style import Style
 
 
 class BarChartDrawMixin:
-    BOTTOM_PADDING = 0.08
+    PADDING = 0.08
 
     @staticmethod
     def _draw_stacked_bars(
@@ -34,7 +34,7 @@ class BarChartDrawMixin:
                     bottom=[pos_bottom],
                     color=category_to_color[cat],
                     label=cat,
-                    width=0.85,
+                    width=0.8,
                 )
                 pos_bottom += v
             for cat in neg_cats:
@@ -45,7 +45,7 @@ class BarChartDrawMixin:
                     bottom=[neg_bottom],
                     color=category_to_color[cat],
                     label=cat,
-                    width=0.85,
+                    width=0.8,
                 )
                 neg_bottom += v
             y_max = max(y_max, pos_bottom)
@@ -62,9 +62,10 @@ class BarChartDrawMixin:
             color=Style.COLOR_METADATA,
         )
         pos = ax.get_position()
-        padded_h = max(pos.height - self.BOTTOM_PADDING, pos.height * 0.7)
+        padded_w = pos.width - self.PADDING * 2
+        padded_h = pos.height - self.PADDING * 2
         ax.set_position(
-            [pos.x0, pos.y0 + self.BOTTOM_PADDING, pos.width, padded_h]
+            [pos.x0 + self.PADDING, pos.y0 + self.PADDING, padded_w, padded_h]
         )
         ax.grid(
             True, axis="y", color=Style.COLOR_GRID, linewidth=0.5, zorder=-1
