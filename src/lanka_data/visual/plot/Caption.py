@@ -2,13 +2,16 @@ import matplotlib.pyplot as plt
 
 from lanka_data.visual.annotations.Annotations import Annotations
 from lanka_data.visual.plot.color_spec import ColorSpecFactory
+from lanka_data.visual.plot.InnerSquare import InnerSquare
 from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot.Text import Text
 
 
 class Caption:
-    Y = Style.BODY_TOP + 0.02
-    MAX_CHARS = 120
+    HEADING = "What to notice"
+    X = InnerSquare.left + 0.01
+    Y_TOP = InnerSquare.bottom + 0.22
+    LINE_HEIGHT = 0.026
 
     def __init__(self, visual):
         self.visual = visual
@@ -42,23 +45,41 @@ class Caption:
             for region_id, value in region_to_value.items()
         ]
 
-    def _summary(self):
+    def _callouts(self):
         datasets = self.visual.datasets
         if not datasets:
-            return ""
+            return []
         rows = self._visible_rows(datasets[-1])
-        return Annotations.from_data_table(rows).summary()
+        return Annotations.from_data_table(rows).callouts()
+
+    def _summary(self):
+        items = self._callouts()
+        if not items:
+            return ""
+        return "What to notice — " + "; ".join(items)
 
     def draw(self):
-        text = self._summary()
-        if not text:
+        items = self._callouts()
+        if not items:
             return
-        if len(text) > self.MAX_CHARS:
-            text = text[: self.MAX_CHARS - 1] + "…"
+        fig = plt.gcf()
         Text.plot(
-            plt.gcf(),
-            (0.5, self.Y),
-            text,
+            fig,
+            (self.X, self.Y_TOP),
+            self.HEADING,
+            fontsize=Style.FONT_SIZE_METADATA,
+            color=Style.COLOR_PANEL,
+            ha="left",
+            va="top",
+            fontweight="bold",
+        )
+        Text.plot(
+            fig,
+            (self.X, self.Y_TOP - self.LINE_HEIGHT * 1.4),
+            "\n".join(items),
             fontsize=Style.FONT_SIZE_METADATA,
             color=Style.COLOR_METADATA,
+            ha="left",
+            va="top",
+            linespacing=1.6,
         )
