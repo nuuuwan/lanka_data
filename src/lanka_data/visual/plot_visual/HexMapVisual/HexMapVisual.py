@@ -1,19 +1,15 @@
 from lanka_data.visual.plot.color_spec import ColorSpecFactory
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map.HexData import HexData
-from lanka_data.visual.plot.map.RegionPopulationFilter import (
-    RegionPopulationFilter,
-)
+from lanka_data.visual.plot.map.RegionPopulationFilter import \
+    RegionPopulationFilter
 from lanka_data.visual.plot.Style import Style
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import (
-    HexMapBoundaryMixin,
-)
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import (
-    HexMapDrawMixin,
-)
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import (
-    HexMapLabelMixin,
-)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
+    HexMapBoundaryMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import \
+    HexMapDrawMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import \
+    HexMapLabelMixin
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 
@@ -80,5 +76,7 @@ class HexMapVisual(
             len(region_to_name),
         )
         self._draw_scale(ax, layout)
-        Legend.draw(value_to_color, legend_ax, value_to_region=value_to_region)
+        Legend.draw(
+            value_to_color, legend_ax, value_to_region=value_to_region
+        )
         ax.set_axis_off()

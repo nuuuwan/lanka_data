@@ -1,6 +1,5 @@
-from lanka_data.visual.annotations.AnnotationsStatMixin import (
-    AnnotationsStatMixin,
-)
+from lanka_data.visual.annotations.AnnotationsStatMixin import \
+    AnnotationsStatMixin
 from lanka_data.visual.annotations.NumberAbbreviator import NumberAbbreviator
 
 

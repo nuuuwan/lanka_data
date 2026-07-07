@@ -2,9 +2,7 @@ from matplotlib.ticker import PercentFormatter
 
 from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot_visual.BivariateMapVisual import (
-    BivariateData,
-    BivariateMapBaseVisual,
-)
+    BivariateData, BivariateMapBaseVisual)
 
 
 class QuadrantMapVisual(BivariateMapBaseVisual):

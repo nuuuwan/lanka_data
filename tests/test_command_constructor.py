@@ -1,9 +1,8 @@
 import random
 
 from lanka_data.api.command.Command import Command
-from lanka_data.examples.CommandConstructor.CommandConstructor import (
-    CommandConstructor,
-)
+from lanka_data.examples.CommandConstructor.CommandConstructor import \
+    CommandConstructor
 
 
 class TestCommandConstructor:

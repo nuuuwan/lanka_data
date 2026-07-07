@@ -1,5 +1,13 @@
 import matplotlib
 
+from lanka_data.visual.plot_visual.ScatterPlotVisual import (ScatterPlotData,
+                                                             ScatterPlotVisual)
+from lanka_data.visual.plot_visual.StackedBarChartVisual import \
+    StackedBarChartVisual
+from lanka_data.visual.plot_visual.TreeMapVisual import (TreeMapData,
+                                                         TreeMapVisual)
+from lanka_data.visual.VisualFactory import VisualFactory
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 
@@ -8,13 +16,6 @@ from lanka_data.visual.plot_visual.BarChartVisual import \
     BarChartVisual  # noqa: E402
 from lanka_data.visual.plot_visual.HistogramVisual import (  # noqa: E402
     HistogramData, HistogramVisual)
-from lanka_data.visual.plot_visual.ScatterPlotVisual import (ScatterPlotData,
-                                                             ScatterPlotVisual)
-from lanka_data.visual.plot_visual.StackedBarChartVisual import \
-    StackedBarChartVisual
-from lanka_data.visual.plot_visual.TreeMapVisual import (TreeMapData,
-                                                         TreeMapVisual)
-from lanka_data.visual.VisualFactory import VisualFactory
 
 
 class TestNewChartRouting:

@@ -1,8 +1,7 @@
 import pytest
 
-from lanka_data.api.dataset.RegionValueDataset.RegionValueDataset import (
-    RegionValueDataset,
-)
+from lanka_data.api.dataset.RegionValueDataset.RegionValueDataset import \
+    RegionValueDataset
 from lanka_data.api.fields.How import How
 from lanka_data.api.fields.RegionFilter import RegionFilter
 from lanka_data.command.UnknownHowError import UnknownHowError

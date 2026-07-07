@@ -1,16 +1,11 @@
 import json
 import os
-import random
 
-from lanka_data import CommandRunner, Example
+from lanka_data import CommandConstructor, CommandRunner
 
 if __name__ == "__main__":
-    examples = Example.get_cmd_list()
-
-    random.shuffle(examples)
-    random_example = random.choice(examples)
-
-    output = CommandRunner.run(random_example)
+    command = CommandConstructor.construct()
+    output = CommandRunner.run(command)
     result = output["result"]
     if "image_path" in result:
         image_path = result["image_path"]

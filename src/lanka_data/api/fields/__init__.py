@@ -2,8 +2,10 @@
 # flake8: noqa: F408
 
 from lanka_data.api.fields.How import How
+from lanka_data.api.fields.HowFormatMixin import HowFormatMixin
 from lanka_data.api.fields.HowIntrospectionMixin import HowIntrospectionMixin
 from lanka_data.api.fields.HowRegistryMixin import HowRegistryMixin
+from lanka_data.api.fields.RegionFilter import RegionFilter
 from lanka_data.api.fields.RegionTypeRegistry import RegionTypeRegistry
 from lanka_data.api.fields.What import What
 from lanka_data.api.fields.WhatIntrospectionMixin import WhatIntrospectionMixin
