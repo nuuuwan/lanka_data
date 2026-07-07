@@ -21,16 +21,21 @@ class Annotations(AnnotationsStatMixin):
         )
 
     @staticmethod
+    def _value_text(row_entry):
+        display = row_entry["row"].get("display")
+        if display:
+            return display
+        return NumberAbbreviator.format(row_entry["total"])
+
+    @staticmethod
     def _extremes(rows):
         ordered = sorted(rows, key=lambda r: r["total"])
         low, high = ordered[0], ordered[-1]
         if low["name"] == high["name"]:
             return []
         return [
-            f"Highest: {high['name']} "
-            f"({NumberAbbreviator.format(high['total'])})",
-            f"Lowest: {low['name']} "
-            f"({NumberAbbreviator.format(low['total'])})",
+            f"Highest: {high['name']} " f"({Annotations._value_text(high)})",
+            f"Lowest: {low['name']} " f"({Annotations._value_text(low)})",
         ]
 
     @staticmethod
@@ -38,10 +43,9 @@ class Annotations(AnnotationsStatMixin):
         top = max(rows, key=lambda r: abs(r["total"]))
         if top["total"] == 0:
             return []
-        return [
-            f"Biggest change: {top['name']} "
-            f"({NumberAbbreviator.signed(top['total'])})"
-        ]
+        display = top["row"].get("display")
+        text = display or NumberAbbreviator.signed(top["total"])
+        return [f"Biggest change: {top['name']} " f"({text})"]
 
     def _outlier_callout(self, rows):
         outliers = self._outliers(rows)

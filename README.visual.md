@@ -85,7 +85,7 @@ The canvas is divided top-to-bottom into three fixed bands. This is Principle 5
 | Band       | Vertical extent      | Role                                            |
 | ---------- | -------------------- | ----------------------------------------------- |
 | **Header** | top band, grows with title lines | Title (what / where / how, as English text, wrapped over as many lines as needed) |
-| **Caption** | just below the header (~0.88) | Optional narrative callout — the automatic *"what should I notice?"* line (highest, lowest, biggest change, outliers) |
+| **Caption** | just below the header (~0.88) | Optional narrative callout — the automatic *"what should I notice?"* line (highest, lowest, biggest change, outliers), computed **only from the values the visual actually shows** (e.g. the mapped percentage or metric), never from other underlying data. Self-suppressing when the visual shows no comparable per-region value (e.g. a categorical map). |
 | **Body**   | middle (0.10–0.86)   | The plot(s) — one sub-figure per dataset year   |
 | **Footer** | bottom **5 %** (0–0.05) | Source attribution (left) and the GitHub repository link (right) |
 | **Spine**  | left margin, full body height | The **Lanka Data** brand mark, set as quiet rotated (vertical) type |
