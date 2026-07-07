@@ -16,6 +16,7 @@ dependencies = [
     "shapely",
     "rich>=13.9.4",
     "prompt_toolkit>=3.0.0",
+    "segno>=1.6.1",
 ]
 
 [tool.setuptools.packages.find]

@@ -89,6 +89,7 @@ The canvas is divided top-to-bottom into three fixed bands. This is Principle 5
 | **Body**   | middle (0.10–0.86)   | The plot(s) — one sub-figure per dataset year   |
 | **Footer** | bottom **5 %** (0–0.05) | Source attribution (left) and the GitHub repository link (right) |
 | **Spine**  | left margin, full body height | The **Lanka Data** brand mark, set as quiet rotated (vertical) type |
+| **QR code** | bottom-right corner | A QR code linking to the project's GitHub repository, so a printed or shared image can be scanned back to the source |
 
 The body is laid out on a grid: one column per dataset, with a fixed inter-panel
 gutter, so a two-year comparison reads as two aligned panels rather than two
@@ -125,7 +126,8 @@ and contrast carried by weight and colour — never by a zoo of typefaces.
   shrinking, so nothing is ever clipped.
 - **Persistent brand and source line.** Every figure carries the **Lanka Data**
   brand mark as a quiet rotated masthead down the left spine and a link to the
-  project's GitHub repository in the footer, so an output is self-identifying
+  project's GitHub repository in the footer, plus a QR code in the bottom-right
+  corner that resolves to the same repository, so an output is self-identifying
   wherever it travels. The brand mark stays out of the header so it never
   competes with the title.
 - **In-figure labels earn their place.** Region and data labels are only drawn
