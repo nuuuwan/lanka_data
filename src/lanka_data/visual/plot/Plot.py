@@ -4,8 +4,8 @@ import tempfile
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 
-from lanka_data.visual.plot.Brand import Brand
 from lanka_data.visual.plot.Border import Border
+from lanka_data.visual.plot.Brand import Brand
 from lanka_data.visual.plot.Caption import Caption
 from lanka_data.visual.plot.Font import Font
 from lanka_data.visual.plot.Footer import Footer
@@ -64,7 +64,6 @@ class Plot:
         self._draw_subfigures()
 
         Header(self.visual).draw()
-        Border(self.visual).draw()
         QRCode(self.visual).draw()
         Footer(self.visual).draw()
         Caption(self.visual).draw()
