@@ -49,10 +49,20 @@ class HandlerResponseMixin:
             self._write_json(500, self._error_payload(e))
         return None
 
-    def _write_json(self, status, obj, cache_control="no-store"):
+    def _write_json(
+        self, status, obj, cache_control="no-store", extra_headers=None
+    ):
         body = json.dumps(obj).encode()
         self.send_response(status)
         self.send_header("Content-Type", JSON_CONTENT_TYPE)
         self.send_header("Cache-Control", cache_control)
+        for name, value in (extra_headers or {}).items():
+            self.send_header(
+                self._sanitize_header(name), self._sanitize_header(value)
+            )
         self.end_headers()
         self.wfile.write(body)
+
+    @staticmethod
+    def _sanitize_header(value):
+        return str(value).replace("\r", "").replace("\n", "")
