@@ -31,7 +31,7 @@ class HowRegistryMixin:
         "BubbleMap",
         "None",
     }
-    PAIR_CATEGORY_BASES = {"BivariateMap", "QuadrantMap"}
+    PAIR_CATEGORY_BASES = {"BivariateMap", "QuadrantMap", "ScatterPlot"}
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
         "Top": {"label": "Most common", "rank": 0},

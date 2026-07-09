@@ -4,9 +4,10 @@ from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot_visual.BarChartVisual import BarChartVisual
 
 from .ScatterPlotData import ScatterPlotData
+from .ScatterPlotPairMixin import ScatterPlotPairMixin
 
 
-class ScatterPlotVisual(BarChartVisual):
+class ScatterPlotVisual(ScatterPlotPairMixin, BarChartVisual):
     MARKER_SIZE = 80
     LABEL_FONTSIZE = 7
 
@@ -41,6 +42,9 @@ class ScatterPlotVisual(BarChartVisual):
             ax.spines[side].set_visible(False)
 
     def draw(self, dataset, fig):
+        if self.command.what.is_combined:
+            self._draw_pair(dataset, fig)
+            return
         subregions = self._build_subregions(dataset.get_data_table())
         category_labels = self._build_category_labels(subregions)
         category_to_color = self._build_category_to_color(

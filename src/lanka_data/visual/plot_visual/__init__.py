@@ -32,8 +32,9 @@ from lanka_data.visual.plot_visual.MapVisual import MapVisual
 from lanka_data.visual.plot_visual.PieChartVisual import (
     PieChartMapDrawMixin, PieChartMapLabelMixin, PieChartVisual)
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
-from lanka_data.visual.plot_visual.ScatterPlotVisual import (ScatterPlotData,
-                                                             ScatterPlotVisual)
+from lanka_data.visual.plot_visual.ScatterPlotVisual import (
+    ScatterPlotData, ScatterPlotPairMixin, ScatterPlotStats,
+    ScatterPlotVisual)
 from lanka_data.visual.plot_visual.StackedBarChartVisual import \
     StackedBarChartVisual
 from lanka_data.visual.plot_visual.TreeMapVisual import (TreeMapData,
