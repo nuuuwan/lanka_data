@@ -32,7 +32,6 @@ class TestCacheAndApi:
         api.headers = {"Host": "example.com", "X-Forwarded-Proto": "https"}
         inner = {
             "image_path": os.path.join(Plot.DIR_OUTPUT, "c", "Image.png"),
-            "svg_path": os.path.join(Plot.DIR_OUTPUT, "c", "Image.svg"),
             "other": 1,
         }
         result = api._hide_image_path(
@@ -45,6 +44,4 @@ class TestCacheAndApi:
         assert new_inner["image_url"].endswith(
             "/Religion/2024/LK/Map/Image.png"
         )
-        assert new_inner["svg_url"].endswith(
-            "/Religion/2024/LK/Map/Image.svg"
-        )
+        assert "svg_url" not in new_inner

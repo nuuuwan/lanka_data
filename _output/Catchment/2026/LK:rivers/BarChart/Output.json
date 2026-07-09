@@ -1,8 +1,7 @@
 {
   "command_str": "Catchment/2026/LK:rivers/BarChart",
   "result": {
-    "image_path": "_output/Catchment/2026/LK:rivers/BarChart/Image.png",
-    "svg_path": "_output/Catchment/2026/LK:rivers/BarChart/Image.svg"
+    "image_path": "_output/Catchment/2026/LK:rivers/BarChart/Image.png"
   },
   "sources": [
     {

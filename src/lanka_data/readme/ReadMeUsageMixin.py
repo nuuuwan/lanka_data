@@ -46,14 +46,6 @@ class ReadMeUsageMixin:
             + "/Religion/2024/LK/Map/Image.png",
             "```",
             "",
-            "For print-quality, zoomable vector graphics, request "
-            + "`Image.svg` instead of `Image.png`.",
-            "",
-            "```bash",
-            "https://lanka-data-phi.vercel.app"
-            + "/Religion/2024/LK/Map/Image.svg",
-            "```",
-            "",
         ]
 
     @staticmethod

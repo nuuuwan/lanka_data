@@ -9,10 +9,7 @@ from api.HandlerResponseMixin import HandlerResponseMixin
 
 Plot.DIR_OUTPUT = os.environ.get("LANKA_DATA_OUTPUT_DIR", Plot.DIR_OUTPUT)
 
-OUTPUTS = (
-    ("/Image.png", "image_path", "image/png"),
-    ("/Image.svg", "svg_path", "image/svg+xml"),
-)
+OUTPUTS = (("/Image.png", "image_path", "image/png"),)
 CACHE_CONTROL_JSON = (
     "public, max-age=300, s-maxage=86400, " "stale-while-revalidate=86400"
 )

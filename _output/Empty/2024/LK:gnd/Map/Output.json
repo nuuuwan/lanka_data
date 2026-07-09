@@ -1,8 +1,7 @@
 {
   "command_str": "Empty/2024/LK:gnd/Map",
   "result": {
-    "image_path": "_output/Empty/2024/LK:gnd/Map/Image.png",
-    "svg_path": "_output/Empty/2024/LK:gnd/Map/Image.svg"
+    "image_path": "_output/Empty/2024/LK:gnd/Map/Image.png"
   },
   "sources": [
     {

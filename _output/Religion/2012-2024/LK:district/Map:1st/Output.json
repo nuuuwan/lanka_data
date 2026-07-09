@@ -1,8 +1,7 @@
 {
   "command_str": "Religion/2012-2024/LK:district/Map:1st",
   "result": {
-    "image_path": "_output/Religion/2012-2024/LK:district/Map:1st/Image.png",
-    "svg_path": "_output/Religion/2012-2024/LK:district/Map:1st/Image.svg"
+    "image_path": "_output/Religion/2012-2024/LK:district/Map:1st/Image.png"
   },
   "sources": [
     {
