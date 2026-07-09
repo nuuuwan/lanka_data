@@ -1,9 +1,12 @@
+from lanka_data.datasets.region.rivers.RiversData import RiversData
 from utils_future import timer
 
 from .RegionParserRadiusMixin import RegionParserRadiusMixin
 
 
 class RegionParserMixin(RegionParserRadiusMixin):
+    RIVERS_REGION_TYPE = "rivers"
+
     @classmethod
     def parse_parent_part(cls, parent_part: str):
         if "..." in parent_part:
@@ -36,6 +39,8 @@ class RegionParserMixin(RegionParserRadiusMixin):
     def get_raw_regions(
         cls, parent_region_ids, child_region_type, region_year
     ):
+        if child_region_type == cls.RIVERS_REGION_TYPE:
+            return RiversData.get_river_regions(), region_year
         if not child_region_type:
             return (
                 cls._get_raw_region_data_list_for_region_ids(

@@ -2,8 +2,9 @@ from lanka_data.visual.plot.color_spec import ColorSpecFactory
 from lanka_data.visual.plot.Label import Label
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map.GeoData import GeoData
-from lanka_data.visual.plot.map.RegionPopulationFilter import \
-    RegionPopulationFilter
+from lanka_data.visual.plot.map.RegionPopulationFilter import (
+    RegionPopulationFilter,
+)
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 
@@ -11,6 +12,8 @@ from utils_future import timer
 class MapVisual(PlotVisual):
     DEFAULT_EDGE_COLOR = "#fff"
     DEFAULT_EDGE_WIDTH = 0.2
+    LINE_WIDTH = 0.8
+    LINE_GEOM_TYPES = ["LineString", "MultiLineString"]
 
     def _get_gdf_region(self, dataset, region_color_map):
         data_list = dataset.get_data_table()
@@ -25,7 +28,17 @@ class MapVisual(PlotVisual):
         gdf_region["color"] = gdf_region["region_id"].map(region_color_map)
         return gdf_region
 
+    def _is_line_region(self, gdf_region):
+        return gdf_region.geom_type.isin(self.LINE_GEOM_TYPES).any()
+
     def _draw_region(self, gdf_region, ax):
+        if self._is_line_region(gdf_region):
+            gdf_region.plot(
+                ax=ax,
+                color=gdf_region["color"],
+                linewidth=self.LINE_WIDTH,
+            )
+            return
         gdf_region.plot(
             ax=ax,
             categorical=True,

@@ -19,8 +19,7 @@ class RegionTypeUtils:
         return RegionTypeUtils._PREFIX_MAPS
 
     @staticmethod
-    @cache
-    def get_region_type(region_id: str) -> str:
+    def _lookup_prefix_type(region_id):
         if "-pre" in region_id:
             region_id = region_id.split("-pre")[0]
         id_len = len(region_id)
@@ -29,6 +28,16 @@ class RegionTypeUtils:
                 region_type = id_map.get(id_len)
                 if region_type:
                     return region_type
+        return None
+
+    @staticmethod
+    @cache
+    def get_region_type(region_id: str) -> str:
+        if region_id.startswith("LK-river-"):
+            return "rivers"
+        region_type = RegionTypeUtils._lookup_prefix_type(region_id)
+        if region_type:
+            return region_type
         raise ValueError(f"Invalid region ID format: {region_id}")
 
     @staticmethod
@@ -42,6 +51,7 @@ class RegionTypeUtils:
             "ed": "Electoral District",
             "pd": "Polling Division",
             "lg": "Local Authority",
+            "rivers": "River",
         }
         return long_names.get(region_type, region_type)
 

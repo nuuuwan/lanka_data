@@ -3,6 +3,7 @@ class RegionTypeRegistry:
     EXAMPLES = [
         "LK",
         "LK:district",
+        "LK:rivers",
         "LK-1,LK-2",
         "LK-1...LK-2",
         "LK-pre1959",
