@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 
-from lanka_data.visual.plot.color_spec.ColorSpecConstants import \
-    ColorSpecConstants
+from lanka_data.visual.plot.color_spec.ColorSpecConstants import (
+    ColorSpecConstants,
+)
 from utils_future import ColorUtils, Parse
 
 from .ColorSpecCategoryMixin import ColorSpecCategoryMixin
@@ -18,8 +19,7 @@ class ColorSpec(ColorSpecCategoryMixin, ColorSpecCustomMixin):
 
     LABEL_TO_COLOR = {
         label: ColorUtils.hex_to_rgb(color)
-        for color, labels in ColorSpecConstants.COLOR_TO_LABELS.items()
-        for label in labels
+        for label, color in ColorSpecConstants.LABEL_TO_COLOR.items()
     }
 
     @staticmethod
