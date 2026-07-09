@@ -1,21 +1,7 @@
-from lanka_data.command.Command import Command
 from lanka_data.visual.annotations.Annotations import Annotations
 from lanka_data.visual.annotations.NumberAbbreviator import NumberAbbreviator
-from lanka_data.visual.data_export.TableVisual import TableVisual
 from lanka_data.visual.plot.Caption import Caption
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
-from lanka_data.visual.VisualFactory import VisualFactory
-
-
-class FakeDataset:
-    def __init__(self, data_table):
-        self._data_table = data_table
-
-    def get_data_table(self):
-        return self._data_table
-
-    def get_sources(self):
-        return []
 
 
 PLAIN = [
@@ -143,33 +129,6 @@ class TestAnnotationsOutliers:
         ]
         callouts = Annotations.from_data_table(rows).callouts()
         assert not any(c.startswith("Outliers") for c in callouts)
-
-
-class TestTableExportAnnotations:
-    @staticmethod
-    def _build(data_table):
-        command = Command.from_str("Religion/2024/LK:province/Table")
-        return VisualFactory.from_command_and_datasets(
-            command, [FakeDataset(data_table)]
-        )
-
-    @staticmethod
-    def _read_text(result):
-        with open(result["file_path"], encoding="utf-8") as fin:
-            return fin.read()
-
-    def test_table_still_renders_grid(self):
-        lines = self._read_text(self._build(PLAIN).build()).split("\n")
-        assert lines[0].startswith("| region_id | region_name |")
-        assert set(lines[1]) <= {"|", "-"}
-
-    def test_table_appends_callout_section(self):
-        text = self._read_text(self._build(PLAIN).build())
-        assert "### What to notice" in text
-        assert "- Highest: North (45)" in text
-
-    def test_returns_table_visual(self):
-        assert isinstance(self._build(PLAIN), TableVisual)
 
 
 class FakeMapDataset:

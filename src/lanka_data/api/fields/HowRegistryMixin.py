@@ -3,7 +3,6 @@ class HowRegistryMixin:
         "JSON": None,
         "CSV": None,
         "TSV": None,
-        "Table": None,
         "GeoJSON": None,
         "Parquet": None,
         "ChartSpec": "Chart Spec",

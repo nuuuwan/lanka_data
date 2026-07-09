@@ -8,7 +8,6 @@ from lanka_data.visual.data_export.ChartSpecVisual import ChartSpecVisual
 from lanka_data.visual.data_export.CSVVisual import CSVVisual
 from lanka_data.visual.data_export.GeoJSONVisual import GeoJSONVisual
 from lanka_data.visual.data_export.ParquetVisual import ParquetVisual
-from lanka_data.visual.data_export.TableVisual import TableVisual
 from lanka_data.visual.data_export.TSVVisual import TSVVisual
 from lanka_data.visual.VisualFactory import VisualFactory
 
@@ -53,7 +52,6 @@ class TestDataExport:
     def test_factory_resolves_export_visuals(self):
         assert isinstance(build("CSV"), CSVVisual)
         assert isinstance(build("TSV"), TSVVisual)
-        assert isinstance(build("Table"), TableVisual)
         assert isinstance(build("GeoJSON"), GeoJSONVisual)
         assert isinstance(build("Parquet"), ParquetVisual)
         assert isinstance(build("ChartSpec"), ChartSpecVisual)
@@ -78,12 +76,6 @@ class TestDataExport:
         assert (
             header == "region_id\tregion_name\tHindu\tBuddhist\ttotal_value"
         )
-
-    def test_table_renders_markdown_grid(self):
-        lines = read_text(build("Table").build()).split("\n")
-        assert lines[0].startswith("| region_id | region_name |")
-        assert set(lines[1]) <= {"|", "-"}
-        assert "| LK-1" in lines[2]
 
     def test_missing_category_defaults_to_zero(self):
         text = read_text(build("CSV").build())

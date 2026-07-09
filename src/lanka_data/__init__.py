@@ -68,7 +68,7 @@ from lanka_data.visual import (Annotations,
                                PlotLayoutError, PlotVisual, QRCode,
                                QuadrantMapVisual, RegionPopulationFilter,
                                ScatterPlotData, ScatterPlotVisual,
-                               StackedBarChartVisual, Style, TableVisual, Text,
+                               StackedBarChartVisual, Style, Text,
                                TreeMapData, TreeMapDrawMixin, TreeMapVisual,
                                TSVVisual, Visual, VisualFactory, WhatFormatter,
                                WhenFormatter, WhereFormatter)

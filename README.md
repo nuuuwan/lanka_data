@@ -80,7 +80,8 @@ Help
             ],
             "Communication": [
                 "2012"
-                ... // 283 lines ...
+                ... // 281 lines ...
+                "3rd",
                 "3rdPct",
                 "Bottom",
                 "Change",
