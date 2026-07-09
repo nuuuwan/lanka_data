@@ -37,13 +37,7 @@ output = CommandRunner.run("<cmd>")
 Runs single command over HTTP.
 
 ```bash
-https://lanka-data-phi.vercel.app/Religion/2024/LK/Map/Image.png
-```
-
-For print-quality, zoomable vector graphics, request `Image.svg` instead of `Image.png`.
-
-```bash
-https://lanka-data-phi.vercel.app/Religion/2024/LK/Map/Image.svg
+https://lanka-data-phi.vercel.app/Religion/2024/LK/Map
 ```
 
 ### workflows/single.py
