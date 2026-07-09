@@ -11,7 +11,7 @@ from utils_future.timer import timer
 
 HELP_SOURCE = DataSource(
     name="Lanka Data",
-    url=("https://github.com/nuuuwan/lanka_data" "/blob/main/README.md"),
+    url="https://github.com/nuuuwan/lanka_data/blob/main/README.md",
 )
 
 

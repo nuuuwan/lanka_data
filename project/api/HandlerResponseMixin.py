@@ -63,4 +63,4 @@ class HandlerResponseMixin:
 
     @staticmethod
     def _sanitize_header(value):
-        return "".join(c for c in str(value) if c not in "\r\n")
+        return str(value).replace("\r", "").replace("\n", "")
