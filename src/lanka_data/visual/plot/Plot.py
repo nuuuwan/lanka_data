@@ -70,7 +70,7 @@ class Plot:
         image_dir = os.path.join(self.DIR_OUTPUT, self.visual.command.cmd_id)
         os.makedirs(image_dir, exist_ok=True)
         image_path = os.path.join(image_dir, "Image.png")
-        plt.savefig(image_path, dpi=200, bbox_inches=0)
+        plt.savefig(image_path, dpi=100, bbox_inches=0)
         plt.close("all")
         log.debug(f"Wrote {File(image_path)}")
         return {
