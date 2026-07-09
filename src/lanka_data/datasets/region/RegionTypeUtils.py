@@ -33,7 +33,7 @@ class RegionTypeUtils:
     @staticmethod
     @cache
     def get_region_type(region_id: str) -> str:
-        if region_id.startswith("LK-river-"):
+        if region_id.startswith("R-"):
             return "rivers"
         region_type = RegionTypeUtils._lookup_prefix_type(region_id)
         if region_type:

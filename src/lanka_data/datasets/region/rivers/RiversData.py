@@ -2,7 +2,7 @@ from functools import cache
 
 from utils_future import WWW
 
-RIVER_ID_PREFIX = "LK-river-"
+RIVER_ID_PREFIX = "R-"
 
 
 class RiversData:
