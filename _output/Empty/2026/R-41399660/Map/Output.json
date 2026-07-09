@@ -1,8 +1,7 @@
 {
   "command_str": "Empty/2026/R-41399660/Map",
   "result": {
-    "image_path": "_output/Empty/2026/R-41399660/Map/Image.png",
-    "svg_path": "_output/Empty/2026/R-41399660/Map/Image.svg"
+    "image_path": "_output/Empty/2026/R-41399660/Map/Image.png"
   },
   "sources": [
     {

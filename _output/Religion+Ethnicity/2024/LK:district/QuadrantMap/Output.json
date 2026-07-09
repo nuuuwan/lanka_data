@@ -1,8 +1,7 @@
 {
   "command_str": "Religion+Ethnicity/2024/LK:district/QuadrantMap",
   "result": {
-    "image_path": "_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png",
-    "svg_path": "_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.svg"
+    "image_path": "_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png"
   },
   "sources": [
     {
