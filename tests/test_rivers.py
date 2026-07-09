@@ -7,8 +7,10 @@ from lanka_data.datasets.region.rivers.RiverNames import RiverNames
 SAMPLE_FEATURES = [
     {
         "properties": {
+            "HYRIV_ID": 111,
             "MAIN_RIV": 111,
             "LENGTH_KM": 1.0,
+            "DIST_UP_KM": 3.0,
             "UPLAND_SKM": 5.0,
             "CATCH_SKM": 2.0,
         },
@@ -19,8 +21,10 @@ SAMPLE_FEATURES = [
     },
     {
         "properties": {
+            "HYRIV_ID": 112,
             "MAIN_RIV": 111,
             "LENGTH_KM": 2.0,
+            "DIST_UP_KM": 2.0,
             "UPLAND_SKM": 3.0,
             "CATCH_SKM": 3.0,
         },
@@ -31,8 +35,10 @@ SAMPLE_FEATURES = [
     },
     {
         "properties": {
+            "HYRIV_ID": 222,
             "MAIN_RIV": 222,
             "LENGTH_KM": 4.0,
+            "DIST_UP_KM": 4.0,
             "UPLAND_SKM": 8.0,
             "CATCH_SKM": 1.0,
         },
@@ -73,7 +79,7 @@ class TestRiversData:
     def test_aggregate_measures(self):
         measures = {}
         for feature in SAMPLE_FEATURES:
-            RiversData._accumulate_measures(measures, feature)
+            RiversData._set_measures(measures, feature)
         assert measures["R-111"]["RiverLen"] == 3.0
         assert measures["R-111"]["Catchment"] == 5.0
         assert measures["R-222"]["RiverLen"] == 4.0
