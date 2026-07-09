@@ -72,11 +72,11 @@ class RiversData:
         row = measures.setdefault(
             region_id, {LABEL_RIVER_LEN: 0.0, LABEL_CATCHMENT: 0.0}
         )
-        row[LABEL_RIVER_LEN] += properties.get("LENGTH_KM", 0) or 0
+        row[LABEL_RIVER_LEN] += properties.get("LENGTH_KM") or 0
         row[LABEL_CATCHMENT] = max(
             row[LABEL_CATCHMENT],
-            properties.get("UPLAND_SKM", 0) or 0,
-            properties.get("CATCH_SKM", 0) or 0,
+            properties.get("UPLAND_SKM") or 0,
+            properties.get("CATCH_SKM") or 0,
         )
 
     @classmethod
