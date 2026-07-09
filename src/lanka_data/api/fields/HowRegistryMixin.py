@@ -45,5 +45,4 @@ class HowRegistryMixin:
         "Change": {"label": "Change", "needs_interval": True},
         "Diversity": {"label": "Diversity"},
         "DiversityPew": {"label": "Pew diversity"},
-        "Segregation": {"label": "Segregation"},
     }
