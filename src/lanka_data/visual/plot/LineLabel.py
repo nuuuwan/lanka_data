@@ -50,13 +50,17 @@ class LineLabel:
             rotation=angle,
         )
 
-    @classmethod
-    @timer
-    def draw(cls, gdf_region, ax, region_count):
-        rows = [
+    @staticmethod
+    def _named_rows(gdf_region):
+        return [
             row
             for _, row in gdf_region.iterrows()
             if row.get("is_named", True)
         ]
+
+    @classmethod
+    @timer
+    def draw(cls, gdf_region, ax, region_count):
+        rows = cls._named_rows(gdf_region)
         for row in rows:
             cls._draw_one(row, ax, len(rows))
