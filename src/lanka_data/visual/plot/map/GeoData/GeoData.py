@@ -5,8 +5,10 @@ import tempfile
 import geopandas
 import pandas as pd
 
-from lanka_data.visual.plot.map.GeoData.GeoDataLoaderMixin import \
-    GeoDataLoaderMixin
+from lanka_data.visual.plot.map.GeoData.GeoDataLoaderMixin import (
+    GeoDataLoaderMixin,
+)
+from lanka_data.visual.plot.map.GeoData.RiversGeoData import RiversGeoData
 from utils_future import DCNUtils, Log
 
 log = Log("GeoData")
@@ -57,6 +59,12 @@ class GeoData(GeoDataLoaderMixin):
 
     @classmethod
     def get_geopandas_dataframe(cls, data_list, is_cartogram):
+        if RiversGeoData.is_rivers(data_list):
+            return RiversGeoData.build(data_list, cls._enrich_from_data_list)
+        return cls._get_admin_gdf(data_list, is_cartogram)
+
+    @classmethod
+    def _get_admin_gdf(cls, data_list, is_cartogram):
         region_id_to_weight = {
             d["region_id"]: abs(d.get("total_value", 1)) for d in data_list
         }
