@@ -112,7 +112,9 @@ class DatasetFactory:
 
     @staticmethod
     def _with_region_filter(dataset, command):
-        region_filter = command.how.region_filter
+        region_filter = (
+            command.how.region_filter or command.where.region_filter
+        )
         if region_filter is not None:
             dataset.region_filter = region_filter
         return dataset

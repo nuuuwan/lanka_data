@@ -1,10 +1,11 @@
+from lanka_data.api.fields.Where import Where
 from lanka_data.datasets.region.RegionRawDataMixin import RegionRawDataMixin
 from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 
 
 class WhereFormatter:
     def __init__(self, where_cmd):
-        self.where_cmd = where_cmd
+        self.where_cmd = Where.strip_top(where_cmd)
 
     def format_regions(self, region_ids):
         region_ids = [id.split("-pre")[0] for id in region_ids]

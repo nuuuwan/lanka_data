@@ -49,7 +49,9 @@ without string surgery.
 `Where` holds the region selector. Construction only enforces the character set
 and rejects malformed range syntax; the real interpretation of the selector
 happens later in the region layer. It exposes `parent_part`, `child_region_type`
-(the part after `:`), and `zoom` (the number after `@`).
+(the part after `:`), `zoom` (the number after `@`), and `top` (the number after
+`#`, e.g. `LK:rivers#10` keeps only the top 10 regions by value, surfaced as a
+`Top<N>` `region_filter`).
 
 ### `How`
 
@@ -272,7 +274,8 @@ boundaries and history.
   selector, fetches raw data, and returns a `Regions`.
 - **`RegionParserMixin`** (+ **`RegionParserRadiusMixin`**) interprets the
   selector grammar: comma lists (`LK-1,LK-2`), ranges (`LK-1...LK-2`), radius
-  queries (`id@km`, via Haversine distance), and `:child_type` expansion.
+  queries (`id@km`, via Haversine distance), `:child_type` expansion, and the
+  `#N` top primitive (`LK:rivers#10`).
 - **`RegionRawDataMixin`** (+ **`RegionFetchMixin`**, **`RegionParentMixin`**)
   fetches region definitions from the external `lk_admin_regions` dataset,
   normalizes field names, resolves current vs. historical (`-pre{year}`)
