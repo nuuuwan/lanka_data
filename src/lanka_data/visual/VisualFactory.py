@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-from lanka_data.visual.animation_visual.AnimationVisual import AnimationVisual
 from lanka_data.visual.data_export.ChartSpecVisual import ChartSpecVisual
 from lanka_data.visual.data_export.CSVVisual import CSVVisual
 from lanka_data.visual.data_export.GeoJSONVisual import GeoJSONVisual
@@ -52,10 +51,6 @@ class VisualFactory:
         "BivariateMap": BivariateMapVisual,
         "QuadrantMap": QuadrantMapVisual,
         "LineChart": LineChartVisual,
-        "MapAnimation": AnimationVisual,
-        "CartogramAnimation": AnimationVisual,
-        "HexMapAnimation": AnimationVisual,
-        "BubbleMapAnimation": AnimationVisual,
     }
 
     @staticmethod

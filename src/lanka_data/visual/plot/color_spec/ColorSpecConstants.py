@@ -43,7 +43,6 @@ class ColorSpecConstants:
         "(No Data)": "#111111",
         "Other": "#dddddd",
         "(No Flip)": "#cccccc",
-        "(No Segregation)": "#cccccc",
         "(No Change)": "#cccccc",
         # --- Election: political parties (by alliance / ideology) ---
         # SLFP family (blue)
@@ -112,8 +111,7 @@ class ColorSpecConstants:
         "Valid": "#008801",
         "DidNotVote": "#cc0001",
         "Rejected": "#ff8801",
-        # --- Segregation ---
-        "Segregated": "#fe0000",
+        # --- Change ---
         "Change": "#ff8800",
         # --- Validation only ---
         "A": "#0088f1",
