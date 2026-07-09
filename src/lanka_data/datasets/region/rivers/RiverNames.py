@@ -33,3 +33,7 @@ class RiverNames:
     @staticmethod
     def get_name(main_river_id):
         return NAMES.get(str(main_river_id), f"River {main_river_id}")
+
+    @staticmethod
+    def is_named(main_river_id):
+        return str(main_river_id) in NAMES
