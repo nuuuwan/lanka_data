@@ -105,6 +105,18 @@ class TestBarChartSingleVsStacked:
             "values": {"Buddhist": 100, "Hindu": 30, "Muslim": 20},
         },
     ]
+    RIVERS = [
+        {
+            "region_id": "R-1",
+            "region_name": "Mahaweli Ganga",
+            "values": {"RiverLen": 330},
+        },
+        {
+            "region_id": "R-2",
+            "region_name": "Malwathu Oya",
+            "values": {"RiverLen": 161},
+        },
+    ]
 
     @staticmethod
     def _draw(rows):
@@ -120,11 +132,19 @@ class TestBarChartSingleVsStacked:
         labels, _ = self._draw(self.SINGLE)
         assert labels == ["Buddhist", "Hindu", "Muslim"]
 
-    def test_multi_row_labels_regions_on_top(self):
-        labels, texts = self._draw(self.MULTI)
-        assert labels == []
-        assert "Colombo" in texts
-        assert "Gampaha" in texts
+    def test_multi_row_labels_regions_on_x_axis(self):
+        labels, _ = self._draw(self.MULTI)
+        assert "Colombo" in labels
+        assert "Gampaha" in labels
+
+    def test_multi_category_bars_show_percent(self):
+        _, texts = self._draw(self.MULTI)
+        assert any("%" in t for t in texts)
+
+    def test_single_category_bars_show_unit_not_percent(self):
+        _, texts = self._draw(self.RIVERS)
+        assert not any("%" in t for t in texts)
+        assert any("330 km" == t for t in texts)
 
 
 class TestTreeMapData:

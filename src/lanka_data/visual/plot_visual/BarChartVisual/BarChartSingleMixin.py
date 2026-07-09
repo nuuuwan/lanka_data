@@ -29,7 +29,7 @@ class BarChartSingleMixin:
             ax.text(
                 i,
                 v,
-                self._format_millions(v, None),
+                self._value_label(cat, v),
                 ha="center",
                 va="bottom" if v >= 0 else "top",
                 fontsize=Style.FONT_SIZE_METADATA,
