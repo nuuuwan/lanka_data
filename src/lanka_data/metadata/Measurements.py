@@ -33,7 +33,7 @@ class Measurements:
 
     @classmethod
     @lru_cache(maxsize=None)
-    def _boundary_years(cls):
+    def _geometry_observation_years(cls):
         years = set()
         for what in What.available_groups().get("census", []):
             years.update(cls._years_by_what().get(what, []))
@@ -52,7 +52,7 @@ class Measurements:
     def observation_years(cls, what):
         base = cls._base(what)
         if cls.kind(base) == "geometry":
-            return cls._boundary_years()
+            return cls._geometry_observation_years()
         return cls._years_by_what().get(base)
 
     @classmethod
