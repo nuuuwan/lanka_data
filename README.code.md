@@ -290,8 +290,6 @@ boundaries and history.
   result; `merge_datasource_list_of_lists` de-duplicates and sorts them.
 - **`Diversity`** computes a normalized religious-diversity index (with an
   optional Pew grouping) and maps it to labelled bands and colors.
-- **`Segregation`** (+ **`SegregationComputeMixin`**) classifies each region as
-  segregated or not by comparing its shares to those of its nearby neighbours.
 - **`FieldNameUtils`** normalizes ethnic/category labels to canonical
   PascalCase names.
 
@@ -311,7 +309,7 @@ These are the low-level drawing helpers used by `PlotVisual` subclasses:
   holds region→color and value→color maps and knows the fixed palettes;
   **`ColorSpecFactory`** (+ `ColorSpecHelpers` / `ColorSpecHelpersMixin`,
   `ColorSpecConstants`) picks the coloring strategy from the dataset and
-  `how` modifier (rank, percentage, Change, Diversity, Segregation).
+  `how` modifier (rank, percentage, Change, Diversity).
 - **Geometry:** **`GeoData`** (+ `GeoDataLoaderMixin`) loads TopoJSON boundaries,
   dissolves and caches them, applies cartogram distortion, and enriches the
   `GeoDataFrame` with the dataset's values.
@@ -533,7 +531,7 @@ any one axis composes with every value on the others.
 Datasets emit only normalised values (`values`, `total_value`, `pct_values`);
 they never compute a ranking, a difference, or a diversity index. Those are
 projections applied downstream by the visual/colour layer (`How.rank`,
-`How.pct_rank`, `ColorSpecFactory`, `Diversity`, `Segregation`). So the modifier
+`How.pct_rank`, `ColorSpecFactory`, `Diversity`). So the modifier
 family (`Map:1st`, `Map:Change`, `Map:DiversityPew`, …) can grow and every
 existing measurement acquires the new modifier with no change to the data
 vocabulary.

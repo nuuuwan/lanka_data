@@ -1,4 +1,3 @@
-from lanka_data.api.data import Segregation
 from lanka_data.datasets.data import Diversity
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 
@@ -29,18 +28,6 @@ class ColorSpecHelpersMixin:
         return ColorSpec.by_region_to_custom_value(
             Diversity.get_region_to_diversity_change(result_data, is_pew),
             True,
-        )
-
-    @staticmethod
-    def get_color_spec_for_segregation(result_data):
-        return ColorSpec.by_region_to_custom_value(
-            Segregation.get_region_to_segregation(result_data), False
-        )
-
-    @staticmethod
-    def get_color_spec_for_segregation_change(result_data):
-        return ColorSpec.by_region_to_custom_value(
-            Segregation.get_segregation_change(result_data), True
         )
 
     @staticmethod

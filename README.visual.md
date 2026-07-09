@@ -176,7 +176,7 @@ colormap chosen by the *kind* of quantity:
   evenly spaced qualitative set.
 
 The choice of scale is driven by the `How` modifier (rank, percentage, `Change`,
-`Diversity`, `Segregation`), not hand-picked per chart, so the same kind of
+`Diversity`), not hand-picked per chart, so the same kind of
 question always gets the same kind of scale.
 
 ### 4.3 Surfaces (Principle 6)
