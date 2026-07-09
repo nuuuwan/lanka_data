@@ -66,7 +66,7 @@ class BarChartVisual(
             ax, subregions, x_values, category_labels, category_to_color
         )
         self._style_axis(
-            ax, subregions, y_min, y_max, "Population", x_labels=False
+            ax, subregions, y_min, y_max, self._y_axis_label(), x_labels=False
         )
         self._add_bar_labels(ax, subregions)
         self._add_region_labels(ax, subregions, x_values)

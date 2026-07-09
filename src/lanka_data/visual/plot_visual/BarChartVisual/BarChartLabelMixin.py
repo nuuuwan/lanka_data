@@ -1,6 +1,15 @@
+from lanka_data.visual.formatters.WhatFormatter import WhatFormatter
+
+
 class BarChartLabelMixin:
     _CHAR_W_RATIO = 1
     _LINE_H_RATIO = 2
+
+    def _y_axis_label(self):
+        command = getattr(self, "command", None)
+        what_cmd = getattr(command, "what_cmd", None)
+        label = WhatFormatter(what_cmd).format() if what_cmd else None
+        return label or "Population"
 
     @classmethod
     def _fit_fontsize(cls, bar_h_px, bar_w_px, n_chars, n_lines, dpi):
