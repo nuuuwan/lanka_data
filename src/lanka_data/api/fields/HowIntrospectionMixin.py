@@ -1,3 +1,6 @@
+import re
+
+
 class HowIntrospectionMixin:
     @property
     def category(self):
@@ -18,7 +21,7 @@ class HowIntrospectionMixin:
             return []
         if self.modifier is None:
             return []
-        return self.modifier.split("+")
+        return re.split(r"[:+]", self.modifier)
 
     @classmethod
     def available_bases(cls):

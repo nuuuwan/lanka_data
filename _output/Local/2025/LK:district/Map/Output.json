@@ -1,8 +1,7 @@
 {
   "command_str": "Local/2025/LK:district/Map",
   "result": {
-    "image_path": "_output/Local/2025/LK:district/Map/Image.png",
-    "svg_path": "_output/Local/2025/LK:district/Map/Image.svg"
+    "image_path": "_output/Local/2025/LK:district/Map/Image.png"
   },
   "sources": [
     {
