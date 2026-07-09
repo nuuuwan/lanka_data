@@ -36,7 +36,7 @@ class TestRiversData:
 
     def test_build_region_shape(self):
         region = RiversData._build_region(111, [[[80.0, 9.0], [80.1, 9.1]]])
-        assert region["region_id"] == "LK-river-111"
+        assert region["region_id"] == "R-111"
         assert region["region_name"] == "River 111"
         assert region["region_type"] == "rivers"
         assert region["geometry"]["type"] == "MultiLineString"
@@ -44,7 +44,7 @@ class TestRiversData:
 
 class TestRiversRegionType:
     def test_get_region_type_for_river_id(self):
-        assert RegionTypeUtils.get_region_type("LK-river-111") == "rivers"
+        assert RegionTypeUtils.get_region_type("R-111") == "rivers"
 
     def test_long_name_plural_for_rivers(self):
         assert RegionTypeUtils.get_long_name_plural("rivers") == "Rivers"
@@ -52,7 +52,7 @@ class TestRiversRegionType:
 
 class TestRiversParsing:
     def test_get_raw_regions_routes_to_rivers(self, monkeypatch):
-        sentinel = [{"region_id": "LK-river-111"}]
+        sentinel = [{"region_id": "R-111"}]
         monkeypatch.setattr(
             RiversData, "get_river_regions", staticmethod(lambda: sentinel)
         )
