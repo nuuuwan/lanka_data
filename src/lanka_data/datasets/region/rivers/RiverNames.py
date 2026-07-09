@@ -32,7 +32,4 @@ NAMES = {
 class RiverNames:
     @staticmethod
     def get_name(main_river_id):
-        name = NAMES.get(str(main_river_id))
-        if name:
-            return name
-        return f"River {main_river_id}"
+        return NAMES.get(str(main_river_id), f"River {main_river_id}")
