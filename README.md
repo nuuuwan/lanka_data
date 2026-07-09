@@ -979,8 +979,7 @@ Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese
 {
     "command_str": "Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese",
     "result": {
-        "image_path": "_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese/Image.png",
-        "svg_path": "_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese/Image.svg"
+        "image_path": "_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese/Image.png"
     },
     "sources": [
         {
