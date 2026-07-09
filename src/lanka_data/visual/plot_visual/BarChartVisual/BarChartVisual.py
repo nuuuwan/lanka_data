@@ -1,3 +1,4 @@
+from lanka_data.visual.formatters.WhatFormatter import WhatFormatter
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 
 from .BarChartDrawMixin import BarChartDrawMixin
@@ -16,6 +17,12 @@ class BarChartVisual(
     @staticmethod
     def _is_change_chart(subregions):
         return any(v < 0 for s in subregions for v in s["values"].values())
+
+    def _y_axis_label(self):
+        command = getattr(self, "command", None)
+        what_cmd = getattr(command, "what_cmd", None)
+        label = WhatFormatter(what_cmd).format() if what_cmd else None
+        return label or "Population"
 
     @classmethod
     def _sort_subregions(cls, subregions):
@@ -66,7 +73,7 @@ class BarChartVisual(
             ax, subregions, x_values, category_labels, category_to_color
         )
         self._style_axis(
-            ax, subregions, y_min, y_max, "Population", x_labels=False
+            ax, subregions, y_min, y_max, self._y_axis_label(), x_labels=False
         )
         self._add_bar_labels(ax, subregions)
         self._add_region_labels(ax, subregions, x_values)

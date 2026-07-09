@@ -20,7 +20,7 @@ class BarChartSingleMixin:
             y_max = max(y_max, v)
             y_min = min(y_min, v)
         pseudo = [{"region_name": c} for c in cats]
-        self._style_axis(ax, pseudo, y_min, y_max, "Population")
+        self._style_axis(ax, pseudo, y_min, y_max, self._y_axis_label())
         self._add_single_labels(ax, cats, values)
 
     def _add_single_labels(self, ax, cats, values):
