@@ -7,6 +7,8 @@ from lanka_data.datasets.command.CommandRunner import CommandRunner
 from lanka_data.visual.plot.Plot import Plot
 from api.HandlerResponseMixin import HandlerResponseMixin
 
+Plot.DIR_OUTPUT = os.environ.get("LANKA_DATA_OUTPUT_DIR", Plot.DIR_OUTPUT)
+
 OUTPUTS = (
     ("/Image.png", "image_path", "image/png"),
     ("/Image.svg", "svg_path", "image/svg+xml"),

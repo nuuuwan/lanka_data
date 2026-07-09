@@ -1,1 +1,7 @@
-{}
+{
+  "env": {
+    "MPLCONFIGDIR": "/tmp/matplotlib",
+    "LANKA_DATA_OUTPUT_DIR": "/tmp/_output",
+    "LANKA_DATA_DEBUG": "1"
+  }
+}

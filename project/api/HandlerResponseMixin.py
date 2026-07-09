@@ -1,10 +1,13 @@
 import json
+import os
+import sys
 import traceback
 
 from lanka_data.api.command_errors.CommandError import CommandError
 
 IMAGE_CONTENT_TYPE = "image/png"
 JSON_CONTENT_TYPE = "application/json"
+DEBUG = os.environ.get("LANKA_DATA_DEBUG", "") not in ("", "0", "false")
 
 
 class HandlerResponseMixin:
@@ -18,14 +21,32 @@ class HandlerResponseMixin:
         self.end_headers()
         self.wfile.write(data)
 
+    def _log_error(self, e):
+        path = getattr(self, "path", "?")
+        print(
+            f"[lanka_data] {type(e).__name__} on {path}: {e}",
+            file=sys.stderr,
+        )
+        traceback.print_exc()
+
+    def _error_payload(self, e):
+        payload = {
+            "type": type(e).__name__,
+            "message": str(e),
+            "path": getattr(self, "path", None),
+        }
+        if DEBUG:
+            payload["traceback"] = traceback.format_exc().splitlines()
+        return {"error": payload}
+
     def _run_safely(self, func):
         try:
             return func()
         except CommandError as e:
             self._write_json(400, {"error": e.to_dict()})
-        except Exception:
-            traceback.print_exc()
-            self._write_json(500, {"error": "Internal server error"})
+        except Exception as e:
+            self._log_error(e)
+            self._write_json(500, self._error_payload(e))
         return None
 
     def _write_json(self, status, obj, cache_control="no-store"):
