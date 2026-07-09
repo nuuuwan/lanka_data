@@ -1,0 +1,14 @@
+{
+  "command_str": "Religion+Ethnicity/2024/LK:district/BivariateMap",
+  "result": {
+    "image_path": "_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Image.png",
+    "svg_path": "_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Image.svg"
+  },
+  "sources": [
+    {
+      "name": "Census of Population and Housing 2024",
+      "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+    }
+  ],
+  "query_time_ms": 0
+}

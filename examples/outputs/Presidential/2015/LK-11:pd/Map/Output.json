@@ -1,8 +1,8 @@
 {
   "command_str": "Presidential/2015/LK-11:pd/Map",
   "result": {
-    "image_path": "/tmp/lanka_data/output/Presidential/2015/LK-11:pd/Map/Image.png",
-    "svg_path": "/tmp/lanka_data/output/Presidential/2015/LK-11:pd/Map/Image.svg"
+    "image_path": "_output/Presidential/2015/LK-11:pd/Map/Image.png",
+    "svg_path": "_output/Presidential/2015/LK-11:pd/Map/Image.svg"
   },
   "sources": [
     {

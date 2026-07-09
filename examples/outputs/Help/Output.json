@@ -88,14 +88,10 @@
         "2001"
       ],
       "Local": [
-        "2001",
-        "2012",
-        "2024"
+        "2025"
       ],
       "LocalSummary": [
-        "2001",
-        "2012",
-        "2024"
+        "2025"
       ],
       "Marital": [
         "2001",
@@ -123,13 +119,25 @@
         "2012"
       ],
       "Parliamentary": [
+        "1989",
+        "1994",
+        "2000",
         "2001",
-        "2012",
+        "2004",
+        "2010",
+        "2015",
+        "2020",
         "2024"
       ],
       "ParliamentarySummary": [
+        "1989",
+        "1994",
+        "2000",
         "2001",
-        "2012",
+        "2004",
+        "2010",
+        "2015",
+        "2020",
         "2024"
       ],
       "Persons": [
@@ -139,13 +147,25 @@
         "2001"
       ],
       "Presidential": [
-        "2001",
-        "2012",
+        "1982",
+        "1988",
+        "1994",
+        "1999",
+        "2005",
+        "2010",
+        "2015",
+        "2019",
         "2024"
       ],
       "PresidentialSummary": [
-        "2001",
-        "2012",
+        "1982",
+        "1988",
+        "1994",
+        "1999",
+        "2005",
+        "2010",
+        "2015",
+        "2019",
         "2024"
       ],
       "Quarters": [
@@ -240,12 +260,15 @@
     "how": {
       "bases": [
         "BarChart",
+        "BivariateMap",
         "BubbleMap",
         "BubbleMapAnimation",
         "BumpChart",
         "CSV",
         "Cartogram",
         "CartogramAnimation",
+        "ChartSpec",
+        "GeoJSON",
         "HexMap",
         "HexMapAnimation",
         "Histogram",
@@ -254,7 +277,9 @@
         "Map",
         "MapAnimation",
         "None",
+        "Parquet",
         "PieChart",
+        "QuadrantMap",
         "ScatterPlot",
         "StackedBarChart",
         "TSV",

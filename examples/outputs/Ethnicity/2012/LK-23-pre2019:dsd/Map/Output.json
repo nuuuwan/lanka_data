@@ -1,8 +1,8 @@
 {
   "command_str": "Ethnicity/2012/LK-23-pre2019:dsd/Map",
   "result": {
-    "image_path": "/tmp/lanka_data/output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png",
-    "svg_path": "/tmp/lanka_data/output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.svg"
+    "image_path": "_output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png",
+    "svg_path": "_output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.svg"
   },
   "sources": [
     {
