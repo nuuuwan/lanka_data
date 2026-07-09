@@ -1,6 +1,6 @@
 from lanka_data.api.fields.How import How
 from lanka_data.visual.plot_visual.BivariateMapVisual import (
-    BivariateData, BivariateMapVisual, BivariatePalette, QuadrantMapVisual)
+    BivariateData, BivariateMapVisual, BivariatePalette, QuadrantChartVisual)
 from lanka_data.visual.VisualFactory import VisualFactory
 
 
@@ -16,7 +16,7 @@ def _row(region_id, pct1, pct2):
 class TestBivariateRouting:
     BASES = {
         "BivariateMap": BivariateMapVisual,
-        "QuadrantMap": QuadrantMapVisual,
+        "QuadrantChart": QuadrantChartVisual,
     }
 
     def test_bases_are_registered(self):
@@ -38,7 +38,7 @@ class TestBivariateRouting:
 
     def test_bases_accept_category_pair_modifier(self):
         for base in self.BASES:
-            how = How(f"{base}:Buddhist:Sinhalese")
+            how = How(f"{base}:Buddhist+Sinhalese")
             assert how.categories == ["Buddhist", "Sinhalese"]
             assert how.category is None
 

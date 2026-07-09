@@ -34,7 +34,7 @@
   ],
   "Bivariate": [
     "Religion+Ethnicity/2024/LK:district/BivariateMap",
-    "Religion+Ethnicity/2024/LK:district/QuadrantMap"
+    "Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese"
   ],
   "Elections": [
     "Parliamentary/2024/LK/JSON",

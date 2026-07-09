@@ -10,7 +10,7 @@ from lanka_data.visual.data_export.TSVVisual import TSVVisual
 from lanka_data.visual.JSONVisual import JSONVisual
 from lanka_data.visual.plot_visual.BarChartVisual import BarChartVisual
 from lanka_data.visual.plot_visual.BivariateMapVisual import (
-    BivariateMapVisual, QuadrantMapVisual)
+    BivariateMapVisual, QuadrantChartVisual)
 from lanka_data.visual.plot_visual.BubbleMapVisual import BubbleMapVisual
 from lanka_data.visual.plot_visual.BumpChartVisual import BumpChartVisual
 from lanka_data.visual.plot_visual.HexMapVisual import HexMapVisual
@@ -50,7 +50,7 @@ class VisualFactory:
         "Histogram": HistogramVisual,
         "ScatterPlot": ScatterPlotVisual,
         "BivariateMap": BivariateMapVisual,
-        "QuadrantMap": QuadrantMapVisual,
+        "QuadrantChart": QuadrantChartVisual,
         "LineChart": LineChartVisual,
         "MapAnimation": AnimationVisual,
         "CartogramAnimation": AnimationVisual,

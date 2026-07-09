@@ -18,7 +18,7 @@ class HowIntrospectionMixin:
             return []
         if self.modifier is None:
             return []
-        return self.modifier.split(":")
+        return self.modifier.split("+")
 
     @classmethod
     def available_bases(cls):

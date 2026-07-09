@@ -110,7 +110,7 @@ Help
 ```
 
 Source: [_output/Help/Output.json](_output/Help/Output.json)
- 
+
 ### 2) Selection
 
 #### 2.01) Empty/2024/LK:province/Map
@@ -974,18 +974,18 @@ Source: [_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Output.json](_
 
 Source: [_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Image.png](_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Image.png)
 
-#### 5.02) Religion+Ethnicity/2024/LK:district/QuadrantMap
+#### 5.02) Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese
 
 ```bash
-Religion+Ethnicity/2024/LK:district/QuadrantMap
+Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese
 ```
 
 ```json
 {
-    "command_str": "Religion+Ethnicity/2024/LK:district/QuadrantMap",
+    "command_str": "Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese",
     "result": {
-        "image_path": "_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png",
-        "svg_path": "_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.svg"
+        "image_path": "_output/Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese/Image.png",
+        "svg_path": "_output/Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese/Image.svg"
     },
     "sources": [
         {
@@ -997,11 +997,11 @@ Religion+Ethnicity/2024/LK:district/QuadrantMap
 }
 ```
 
-Source: [_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Output.json](_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Output.json)
+Source: [_output/Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese/Output.json](_output/Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese/Output.json)
 
-![Religion+Ethnicity/2024/LK:district/QuadrantMap](_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png)
+![Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese](_output/Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese/Image.png)
 
-Source: [_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png](_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png)
+Source: [_output/Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese/Image.png](_output/Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese/Image.png)
 
 ### 6) Elections
 

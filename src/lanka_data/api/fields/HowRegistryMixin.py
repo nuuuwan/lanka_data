@@ -19,7 +19,7 @@ class HowRegistryMixin:
         "Histogram": "Histogram",
         "ScatterPlot": "Scatter Plot",
         "BivariateMap": "Bivariate Map",
-        "QuadrantMap": "Quadrant Map",
+        "QuadrantChart": "Quadrant Chart",
         "LineChart": "Line Chart",
         "MapAnimation": "Animated Map",
         "CartogramAnimation": "Animated Cartogram (Population based)",
@@ -44,7 +44,7 @@ class HowRegistryMixin:
         "BubbleMap",
         "None",
     } | set(ANIMATION_BASE_TO_FRAME_BASE)
-    PAIR_CATEGORY_BASES = {"BivariateMap", "QuadrantMap"}
+    PAIR_CATEGORY_BASES = {"BivariateMap", "QuadrantChart"}
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
         "Top": {"label": "Most common", "rank": 0},

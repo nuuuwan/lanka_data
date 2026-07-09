@@ -5,7 +5,7 @@ from lanka_data.visual.plot_visual.BivariateMapVisual import (
     BivariateData, BivariateMapBaseVisual)
 
 
-class QuadrantMapVisual(BivariateMapBaseVisual):
+class QuadrantChartVisual(BivariateMapBaseVisual):
     N_BINS = 2
     MARKER_SIZE = 60
     LABEL_FONTSIZE = 6
@@ -59,9 +59,4 @@ class QuadrantMapVisual(BivariateMapBaseVisual):
 
     def draw(self, dataset, fig):
         points = self._classified_points(dataset)
-        gdf_region = self._get_gdf_region(
-            dataset, self._region_color_map(points)
-        )
-        gs = fig.add_gridspec(1, 2, width_ratios=[3, 2], wspace=0.15)
-        self._draw_map(fig.add_subplot(gs[0]), gdf_region)
-        self._draw_scatter(fig.add_subplot(gs[1]), points)
+        self._draw_scatter(fig.add_subplot(1, 1, 1), points)

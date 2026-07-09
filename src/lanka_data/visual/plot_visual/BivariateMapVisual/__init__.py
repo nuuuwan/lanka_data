@@ -9,5 +9,5 @@ from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateMapVisual import 
     BivariateMapVisual
 from lanka_data.visual.plot_visual.BivariateMapVisual.BivariatePalette import \
     BivariatePalette
-from lanka_data.visual.plot_visual.BivariateMapVisual.QuadrantMapVisual import \
-    QuadrantMapVisual
+from lanka_data.visual.plot_visual.BivariateMapVisual.QuadrantChartVisual import \
+    QuadrantChartVisual

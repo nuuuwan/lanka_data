@@ -8,7 +8,7 @@ from lanka_data.visual.plot_visual.BarChartVisual import (BarChartDrawMixin,
                                                           BarChartXLabelMixin)
 from lanka_data.visual.plot_visual.BivariateMapVisual import (
     BivariateData, BivariateMapBaseVisual, BivariateMapVisual,
-    BivariatePalette, QuadrantMapVisual)
+    BivariatePalette, QuadrantChartVisual)
 from lanka_data.visual.plot_visual.BubbleMapVisual import (BubbleMapDrawMixin,
                                                            BubbleMapLabelMixin,
                                                            BubbleMapVisual)

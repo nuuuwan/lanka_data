@@ -52,7 +52,7 @@ from lanka_data.visual.plot_visual import (BarChartDrawMixin,
                                            MapVisual, PieChartMapDrawMixin,
                                            PieChartMapLabelMixin,
                                            PieChartVisual, PlotVisual,
-                                           QuadrantMapVisual, ScatterPlotData,
+                                           QuadrantChartVisual, ScatterPlotData,
                                            ScatterPlotVisual,
                                            StackedBarChartVisual, TreeMapData,
                                            TreeMapDrawMixin, TreeMapVisual)
