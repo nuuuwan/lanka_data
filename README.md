@@ -11,6 +11,7 @@ See [README.philosophy.md](README.philosophy.md) and [README.code.md](README.cod
 - [Census of Population and Housing 2012](https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf)
 - [Census of Population and Housing 2024](https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024)
 - [Election Commission of Sri lanka](https://www.elections.gov.lk)
+- [HydroRIVERS (via lk_rivers)](https://github.com/nuuuwan/lk_rivers)
 - [Lanka Data](https://github.com/nuuuwan/lanka_data/blob/main/README.md)
 - [Survey Department of Sri Lanka](https://survey.gov.lk/)
 
@@ -37,7 +38,13 @@ output = CommandRunner.run("<cmd>")
 Runs single command over HTTP.
 
 ```bash
-https://lanka-data-phi.vercel.app/Religion/2024/LK/Map
+https://lanka-data-phi.vercel.app/Religion/2024/LK/Map/Image.png
+```
+
+For print-quality, zoomable vector graphics, request `Image.svg` instead of `Image.png`.
+
+```bash
+https://lanka-data-phi.vercel.app/Religion/2024/LK/Map/Image.svg
 ```
 
 ### workflows/single.py
@@ -74,12 +81,12 @@ Help
             "Attendance": [
                 "2001"
             ],
+            "Catchment": [
+                "2026"
+            ],
             "Communication": [
                 "2012"
-            ],
-            "ConstructionYear": [
-                "2012"
-                ... // 274 lines ...
+                ... // 283 lines ...
                 "3rdPct",
                 "Bottom",
                 "Change",
@@ -102,7 +109,7 @@ Help
 }
 ```
 
-Source: [examples/outputs/Help/Output.json](examples/outputs/Help/Output.json)
+Source: [_output/Help/Output.json](_output/Help/Output.json)
 
 ### 2) Selection
 
@@ -129,11 +136,11 @@ Empty/2024/LK:province/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2024/LK:province/Map/Output.json](examples/outputs/Empty/2024/LK:province/Map/Output.json)
+Source: [_output/Empty/2024/LK:province/Map/Output.json](_output/Empty/2024/LK:province/Map/Output.json)
 
-![Empty/2024/LK:province/Map](examples/outputs/Empty/2024/LK:province/Map/Image.png)
+![Empty/2024/LK:province/Map](_output/Empty/2024/LK:province/Map/Image.png)
 
-Source: [examples/outputs/Empty/2024/LK:province/Map/Image.png](examples/outputs/Empty/2024/LK:province/Map/Image.png)
+Source: [_output/Empty/2024/LK:province/Map/Image.png](_output/Empty/2024/LK:province/Map/Image.png)
 
 #### 2.02) Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map
 
@@ -158,11 +165,11 @@ Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Output.json](examples/outputs/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Output.json)
+Source: [_output/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Output.json](_output/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Output.json)
 
-![Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map](examples/outputs/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Image.png)
+![Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map](_output/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Image.png)
 
-Source: [examples/outputs/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Image.png](examples/outputs/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Image.png)
+Source: [_output/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Image.png](_output/Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map/Image.png)
 
 #### 2.03) Empty/2024/LK-5...LK-8/Map
 
@@ -187,11 +194,11 @@ Empty/2024/LK-5...LK-8/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2024/LK-5...LK-8/Map/Output.json](examples/outputs/Empty/2024/LK-5...LK-8/Map/Output.json)
+Source: [_output/Empty/2024/LK-5...LK-8/Map/Output.json](_output/Empty/2024/LK-5...LK-8/Map/Output.json)
 
-![Empty/2024/LK-5...LK-8/Map](examples/outputs/Empty/2024/LK-5...LK-8/Map/Image.png)
+![Empty/2024/LK-5...LK-8/Map](_output/Empty/2024/LK-5...LK-8/Map/Image.png)
 
-Source: [examples/outputs/Empty/2024/LK-5...LK-8/Map/Image.png](examples/outputs/Empty/2024/LK-5...LK-8/Map/Image.png)
+Source: [_output/Empty/2024/LK-5...LK-8/Map/Image.png](_output/Empty/2024/LK-5...LK-8/Map/Image.png)
 
 #### 2.04) Empty/2024/LK-1127025@20/Map
 
@@ -216,15 +223,133 @@ Empty/2024/LK-1127025@20/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2024/LK-1127025@20/Map/Output.json](examples/outputs/Empty/2024/LK-1127025@20/Map/Output.json)
+Source: [_output/Empty/2024/LK-1127025@20/Map/Output.json](_output/Empty/2024/LK-1127025@20/Map/Output.json)
 
-![Empty/2024/LK-1127025@20/Map](examples/outputs/Empty/2024/LK-1127025@20/Map/Image.png)
+![Empty/2024/LK-1127025@20/Map](_output/Empty/2024/LK-1127025@20/Map/Image.png)
 
-Source: [examples/outputs/Empty/2024/LK-1127025@20/Map/Image.png](examples/outputs/Empty/2024/LK-1127025@20/Map/Image.png)
+Source: [_output/Empty/2024/LK-1127025@20/Map/Image.png](_output/Empty/2024/LK-1127025@20/Map/Image.png)
 
-### 3) Religion
+### 3) Rivers
 
-#### 3.01) Religion/2012-2024/LK:district/Map:1st
+#### 3.01) Empty/2026/LK:rivers/Map
+
+```bash
+Empty/2026/LK:rivers/Map
+```
+
+```json
+{
+    "command_str": "Empty/2026/LK:rivers/Map",
+    "result": {
+        "image_path": "_output/Empty/2026/LK:rivers/Map/Image.png",
+        "svg_path": "_output/Empty/2026/LK:rivers/Map/Image.svg"
+    },
+    "sources": [
+        {
+            "name": "Survey Department of Sri Lanka",
+            "url": "https://survey.gov.lk/"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [_output/Empty/2026/LK:rivers/Map/Output.json](_output/Empty/2026/LK:rivers/Map/Output.json)
+
+![Empty/2026/LK:rivers/Map](_output/Empty/2026/LK:rivers/Map/Image.png)
+
+Source: [_output/Empty/2026/LK:rivers/Map/Image.png](_output/Empty/2026/LK:rivers/Map/Image.png)
+
+#### 3.02) Empty/2026/R-41399660/Map
+
+```bash
+Empty/2026/R-41399660/Map
+```
+
+```json
+{
+    "command_str": "Empty/2026/R-41399660/Map",
+    "result": {
+        "image_path": "_output/Empty/2026/R-41399660/Map/Image.png",
+        "svg_path": "_output/Empty/2026/R-41399660/Map/Image.svg"
+    },
+    "sources": [
+        {
+            "name": "Survey Department of Sri Lanka",
+            "url": "https://survey.gov.lk/"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [_output/Empty/2026/R-41399660/Map/Output.json](_output/Empty/2026/R-41399660/Map/Output.json)
+
+![Empty/2026/R-41399660/Map](_output/Empty/2026/R-41399660/Map/Image.png)
+
+Source: [_output/Empty/2026/R-41399660/Map/Image.png](_output/Empty/2026/R-41399660/Map/Image.png)
+
+#### 3.03) RiverLen/2026/LK:rivers/BarChart
+
+```bash
+RiverLen/2026/LK:rivers/BarChart
+```
+
+```json
+{
+    "command_str": "RiverLen/2026/LK:rivers/BarChart",
+    "result": {
+        "image_path": "_output/RiverLen/2026/LK:rivers/BarChart/Image.png",
+        "svg_path": "_output/RiverLen/2026/LK:rivers/BarChart/Image.svg"
+    },
+    "sources": [
+        {
+            "name": "HydroRIVERS (via lk_rivers)",
+            "url": "https://github.com/nuuuwan/lk_rivers"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [_output/RiverLen/2026/LK:rivers/BarChart/Output.json](_output/RiverLen/2026/LK:rivers/BarChart/Output.json)
+
+![RiverLen/2026/LK:rivers/BarChart](_output/RiverLen/2026/LK:rivers/BarChart/Image.png)
+
+Source: [_output/RiverLen/2026/LK:rivers/BarChart/Image.png](_output/RiverLen/2026/LK:rivers/BarChart/Image.png)
+
+#### 3.04) Catchment/2026/LK:rivers/BarChart
+
+```bash
+Catchment/2026/LK:rivers/BarChart
+```
+
+```json
+{
+    "command_str": "Catchment/2026/LK:rivers/BarChart",
+    "result": {
+        "image_path": "_output/Catchment/2026/LK:rivers/BarChart/Image.png",
+        "svg_path": "_output/Catchment/2026/LK:rivers/BarChart/Image.svg"
+    },
+    "sources": [
+        {
+            "name": "HydroRIVERS (via lk_rivers)",
+            "url": "https://github.com/nuuuwan/lk_rivers"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [_output/Catchment/2026/LK:rivers/BarChart/Output.json](_output/Catchment/2026/LK:rivers/BarChart/Output.json)
+
+![Catchment/2026/LK:rivers/BarChart](_output/Catchment/2026/LK:rivers/BarChart/Image.png)
+
+Source: [_output/Catchment/2026/LK:rivers/BarChart/Image.png](_output/Catchment/2026/LK:rivers/BarChart/Image.png)
+
+### 4) Religion
+
+#### 4.01) Religion/2012-2024/LK:district/Map:1st
 
 ```bash
 Religion/2012-2024/LK:district/Map:1st
@@ -251,13 +376,13 @@ Religion/2012-2024/LK:district/Map:1st
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:1st/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:1st/Output.json)
+Source: [_output/Religion/2012-2024/LK:district/Map:1st/Output.json](_output/Religion/2012-2024/LK:district/Map:1st/Output.json)
 
-![Religion/2012-2024/LK:district/Map:1st](examples/outputs/Religion/2012-2024/LK:district/Map:1st/Image.png)
+![Religion/2012-2024/LK:district/Map:1st](_output/Religion/2012-2024/LK:district/Map:1st/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:1st/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:1st/Image.png)
+Source: [_output/Religion/2012-2024/LK:district/Map:1st/Image.png](_output/Religion/2012-2024/LK:district/Map:1st/Image.png)
 
-#### 3.02) Religion/2012-2024/LK:district/Map:2nd
+#### 4.02) Religion/2012-2024/LK:district/Map:2nd
 
 ```bash
 Religion/2012-2024/LK:district/Map:2nd
@@ -284,13 +409,13 @@ Religion/2012-2024/LK:district/Map:2nd
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:2nd/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:2nd/Output.json)
+Source: [_output/Religion/2012-2024/LK:district/Map:2nd/Output.json](_output/Religion/2012-2024/LK:district/Map:2nd/Output.json)
 
-![Religion/2012-2024/LK:district/Map:2nd](examples/outputs/Religion/2012-2024/LK:district/Map:2nd/Image.png)
+![Religion/2012-2024/LK:district/Map:2nd](_output/Religion/2012-2024/LK:district/Map:2nd/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:2nd/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:2nd/Image.png)
+Source: [_output/Religion/2012-2024/LK:district/Map:2nd/Image.png](_output/Religion/2012-2024/LK:district/Map:2nd/Image.png)
 
-#### 3.03) Religion/2012-2024/LK:district/Map:3rd
+#### 4.03) Religion/2012-2024/LK:district/Map:3rd
 
 ```bash
 Religion/2012-2024/LK:district/Map:3rd
@@ -317,13 +442,13 @@ Religion/2012-2024/LK:district/Map:3rd
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:3rd/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:3rd/Output.json)
+Source: [_output/Religion/2012-2024/LK:district/Map:3rd/Output.json](_output/Religion/2012-2024/LK:district/Map:3rd/Output.json)
 
-![Religion/2012-2024/LK:district/Map:3rd](examples/outputs/Religion/2012-2024/LK:district/Map:3rd/Image.png)
+![Religion/2012-2024/LK:district/Map:3rd](_output/Religion/2012-2024/LK:district/Map:3rd/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:3rd/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:3rd/Image.png)
+Source: [_output/Religion/2012-2024/LK:district/Map:3rd/Image.png](_output/Religion/2012-2024/LK:district/Map:3rd/Image.png)
 
-#### 3.04) Religion/2012-2024/LK:district/Map:Change
+#### 4.04) Religion/2012-2024/LK:district/Map:Change
 
 ```bash
 Religion/2012-2024/LK:district/Map:Change
@@ -350,13 +475,13 @@ Religion/2012-2024/LK:district/Map:Change
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:Change/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:Change/Output.json)
+Source: [_output/Religion/2012-2024/LK:district/Map:Change/Output.json](_output/Religion/2012-2024/LK:district/Map:Change/Output.json)
 
-![Religion/2012-2024/LK:district/Map:Change](examples/outputs/Religion/2012-2024/LK:district/Map:Change/Image.png)
+![Religion/2012-2024/LK:district/Map:Change](_output/Religion/2012-2024/LK:district/Map:Change/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:Change/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:Change/Image.png)
+Source: [_output/Religion/2012-2024/LK:district/Map:Change/Image.png](_output/Religion/2012-2024/LK:district/Map:Change/Image.png)
 
-#### 3.05) Religion/2012-2024/LK-42:district/BarChart
+#### 4.05) Religion/2012-2024/LK-42:district/BarChart
 
 ```bash
 Religion/2012-2024/LK-42:district/BarChart
@@ -383,13 +508,13 @@ Religion/2012-2024/LK-42:district/BarChart
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Output.json)
+Source: [_output/Religion/2012-2024/LK-42:district/BarChart/Output.json](_output/Religion/2012-2024/LK-42:district/BarChart/Output.json)
 
-![Religion/2012-2024/LK-42:district/BarChart](examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Image.png)
+![Religion/2012-2024/LK-42:district/BarChart](_output/Religion/2012-2024/LK-42:district/BarChart/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-42:district/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-42:district/BarChart/Image.png](_output/Religion/2012-2024/LK-42:district/BarChart/Image.png)
 
-#### 3.06) Religion/2012-2024/LK-43:dsd/BarChart
+#### 4.06) Religion/2012-2024/LK-43:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-43:dsd/BarChart
@@ -416,13 +541,13 @@ Religion/2012-2024/LK-43:dsd/BarChart
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK-43:dsd/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-43:dsd/BarChart/Output.json)
+Source: [_output/Religion/2012-2024/LK-43:dsd/BarChart/Output.json](_output/Religion/2012-2024/LK-43:dsd/BarChart/Output.json)
 
-![Religion/2012-2024/LK-43:dsd/BarChart](examples/outputs/Religion/2012-2024/LK-43:dsd/BarChart/Image.png)
+![Religion/2012-2024/LK-43:dsd/BarChart](_output/Religion/2012-2024/LK-43:dsd/BarChart/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK-43:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-43:dsd/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-43:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-43:dsd/BarChart/Image.png)
 
-#### 3.07) Religion/2012-2024/LK-53:district/BarChart
+#### 4.07) Religion/2012-2024/LK-53:district/BarChart
 
 ```bash
 Religion/2012-2024/LK-53:district/BarChart
@@ -449,13 +574,13 @@ Religion/2012-2024/LK-53:district/BarChart
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK-53:district/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-53:district/BarChart/Output.json)
+Source: [_output/Religion/2012-2024/LK-53:district/BarChart/Output.json](_output/Religion/2012-2024/LK-53:district/BarChart/Output.json)
 
-![Religion/2012-2024/LK-53:district/BarChart](examples/outputs/Religion/2012-2024/LK-53:district/BarChart/Image.png)
+![Religion/2012-2024/LK-53:district/BarChart](_output/Religion/2012-2024/LK-53:district/BarChart/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK-53:district/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-53:district/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-53:district/BarChart/Image.png](_output/Religion/2012-2024/LK-53:district/BarChart/Image.png)
 
-#### 3.08) Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
+#### 4.08) Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
 
 ```bash
 Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
@@ -482,13 +607,13 @@ Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Output.json)
+Source: [_output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Output.json](_output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Output.json)
 
-![Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart](examples/outputs/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png)
+![Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart](_output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png](_output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png)
 
-#### 3.09) Religion/2012-2024/LK:district/BarChart
+#### 4.09) Religion/2012-2024/LK:district/BarChart
 
 ```bash
 Religion/2012-2024/LK:district/BarChart
@@ -515,13 +640,13 @@ Religion/2012-2024/LK:district/BarChart
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK:district/BarChart/Output.json)
+Source: [_output/Religion/2012-2024/LK:district/BarChart/Output.json](_output/Religion/2012-2024/LK:district/BarChart/Output.json)
 
-![Religion/2012-2024/LK:district/BarChart](examples/outputs/Religion/2012-2024/LK:district/BarChart/Image.png)
+![Religion/2012-2024/LK:district/BarChart](_output/Religion/2012-2024/LK:district/BarChart/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK:district/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK:district/BarChart/Image.png](_output/Religion/2012-2024/LK:district/BarChart/Image.png)
 
-#### 3.10) Religion/2012-2024/LK-11:dsd/BarChart
+#### 4.10) Religion/2012-2024/LK-11:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-11:dsd/BarChart
@@ -548,13 +673,13 @@ Religion/2012-2024/LK-11:dsd/BarChart
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK-11:dsd/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-11:dsd/BarChart/Output.json)
+Source: [_output/Religion/2012-2024/LK-11:dsd/BarChart/Output.json](_output/Religion/2012-2024/LK-11:dsd/BarChart/Output.json)
 
-![Religion/2012-2024/LK-11:dsd/BarChart](examples/outputs/Religion/2012-2024/LK-11:dsd/BarChart/Image.png)
+![Religion/2012-2024/LK-11:dsd/BarChart](_output/Religion/2012-2024/LK-11:dsd/BarChart/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK-11:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-11:dsd/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-11:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-11:dsd/BarChart/Image.png)
 
-#### 3.11) Religion/2012-2024/LK-11:lg/BarChart
+#### 4.11) Religion/2012-2024/LK-11:lg/BarChart
 
 ```bash
 Religion/2012-2024/LK-11:lg/BarChart
@@ -581,13 +706,13 @@ Religion/2012-2024/LK-11:lg/BarChart
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK-11:lg/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-11:lg/BarChart/Output.json)
+Source: [_output/Religion/2012-2024/LK-11:lg/BarChart/Output.json](_output/Religion/2012-2024/LK-11:lg/BarChart/Output.json)
 
-![Religion/2012-2024/LK-11:lg/BarChart](examples/outputs/Religion/2012-2024/LK-11:lg/BarChart/Image.png)
+![Religion/2012-2024/LK-11:lg/BarChart](_output/Religion/2012-2024/LK-11:lg/BarChart/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK-11:lg/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-11:lg/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-11:lg/BarChart/Image.png](_output/Religion/2012-2024/LK-11:lg/BarChart/Image.png)
 
-#### 3.12) Religion/2012-2024/LK-12:dsd/BarChart
+#### 4.12) Religion/2012-2024/LK-12:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-12:dsd/BarChart
@@ -614,13 +739,13 @@ Religion/2012-2024/LK-12:dsd/BarChart
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Output.json)
+Source: [_output/Religion/2012-2024/LK-12:dsd/BarChart/Output.json](_output/Religion/2012-2024/LK-12:dsd/BarChart/Output.json)
 
-![Religion/2012-2024/LK-12:dsd/BarChart](examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Image.png)
+![Religion/2012-2024/LK-12:dsd/BarChart](_output/Religion/2012-2024/LK-12:dsd/BarChart/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-12:dsd/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-12:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-12:dsd/BarChart/Image.png)
 
-#### 3.13) Religion/2012-2024/LK:district/Map:DiversityPew
+#### 4.13) Religion/2012-2024/LK:district/Map:DiversityPew
 
 ```bash
 Religion/2012-2024/LK:district/Map:DiversityPew
@@ -647,13 +772,13 @@ Religion/2012-2024/LK:district/Map:DiversityPew
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Output.json)
+Source: [_output/Religion/2012-2024/LK:district/Map:DiversityPew/Output.json](_output/Religion/2012-2024/LK:district/Map:DiversityPew/Output.json)
 
-![Religion/2012-2024/LK:district/Map:DiversityPew](examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
+![Religion/2012-2024/LK:district/Map:DiversityPew](_output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
+Source: [_output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png](_output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
 
-#### 3.14) Religion/2012-2024/LK:district/Map:2ndPct
+#### 4.14) Religion/2012-2024/LK:district/Map:2ndPct
 
 ```bash
 Religion/2012-2024/LK:district/Map:2ndPct
@@ -680,13 +805,13 @@ Religion/2012-2024/LK:district/Map:2ndPct
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:2ndPct/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:2ndPct/Output.json)
+Source: [_output/Religion/2012-2024/LK:district/Map:2ndPct/Output.json](_output/Religion/2012-2024/LK:district/Map:2ndPct/Output.json)
 
-![Religion/2012-2024/LK:district/Map:2ndPct](examples/outputs/Religion/2012-2024/LK:district/Map:2ndPct/Image.png)
+![Religion/2012-2024/LK:district/Map:2ndPct](_output/Religion/2012-2024/LK:district/Map:2ndPct/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:2ndPct/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:2ndPct/Image.png)
+Source: [_output/Religion/2012-2024/LK:district/Map:2ndPct/Image.png](_output/Religion/2012-2024/LK:district/Map:2ndPct/Image.png)
 
-#### 3.15) Religion/2012-2024/LK:district/Map:3rdPct
+#### 4.15) Religion/2012-2024/LK:district/Map:3rdPct
 
 ```bash
 Religion/2012-2024/LK:district/Map:3rdPct
@@ -713,13 +838,13 @@ Religion/2012-2024/LK:district/Map:3rdPct
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:3rdPct/Output.json](examples/outputs/Religion/2012-2024/LK:district/Map:3rdPct/Output.json)
+Source: [_output/Religion/2012-2024/LK:district/Map:3rdPct/Output.json](_output/Religion/2012-2024/LK:district/Map:3rdPct/Output.json)
 
-![Religion/2012-2024/LK:district/Map:3rdPct](examples/outputs/Religion/2012-2024/LK:district/Map:3rdPct/Image.png)
+![Religion/2012-2024/LK:district/Map:3rdPct](_output/Religion/2012-2024/LK:district/Map:3rdPct/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK:district/Map:3rdPct/Image.png](examples/outputs/Religion/2012-2024/LK:district/Map:3rdPct/Image.png)
+Source: [_output/Religion/2012-2024/LK:district/Map:3rdPct/Image.png](_output/Religion/2012-2024/LK:district/Map:3rdPct/Image.png)
 
-#### 3.16) Religion/2012-2024/LK-21:dsd/BarChart
+#### 4.16) Religion/2012-2024/LK-21:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-21:dsd/BarChart
@@ -746,13 +871,13 @@ Religion/2012-2024/LK-21:dsd/BarChart
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Output.json)
+Source: [_output/Religion/2012-2024/LK-21:dsd/BarChart/Output.json](_output/Religion/2012-2024/LK-21:dsd/BarChart/Output.json)
 
-![Religion/2012-2024/LK-21:dsd/BarChart](examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Image.png)
+![Religion/2012-2024/LK-21:dsd/BarChart](_output/Religion/2012-2024/LK-21:dsd/BarChart/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-21:dsd/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-21:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-21:dsd/BarChart/Image.png)
 
-#### 3.17) Religion/2012-2024/LK-31-pre2019:dsd/BarChart
+#### 4.17) Religion/2012-2024/LK-31-pre2019:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-31-pre2019:dsd/BarChart
@@ -779,13 +904,13 @@ Religion/2012-2024/LK-31-pre2019:dsd/BarChart
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Output.json)
+Source: [_output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Output.json](_output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Output.json)
 
-![Religion/2012-2024/LK-31-pre2019:dsd/BarChart](examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png)
+![Religion/2012-2024/LK-31-pre2019:dsd/BarChart](_output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png)
 
-#### 3.18) Religion/2012-2024/LK-11:district/BarChart
+#### 4.18) Religion/2012-2024/LK-11:district/BarChart
 
 ```bash
 Religion/2012-2024/LK-11:district/BarChart
@@ -812,15 +937,15 @@ Religion/2012-2024/LK-11:district/BarChart
 }
 ```
 
-Source: [examples/outputs/Religion/2012-2024/LK-11:district/BarChart/Output.json](examples/outputs/Religion/2012-2024/LK-11:district/BarChart/Output.json)
+Source: [_output/Religion/2012-2024/LK-11:district/BarChart/Output.json](_output/Religion/2012-2024/LK-11:district/BarChart/Output.json)
 
-![Religion/2012-2024/LK-11:district/BarChart](examples/outputs/Religion/2012-2024/LK-11:district/BarChart/Image.png)
+![Religion/2012-2024/LK-11:district/BarChart](_output/Religion/2012-2024/LK-11:district/BarChart/Image.png)
 
-Source: [examples/outputs/Religion/2012-2024/LK-11:district/BarChart/Image.png](examples/outputs/Religion/2012-2024/LK-11:district/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-11:district/BarChart/Image.png](_output/Religion/2012-2024/LK-11:district/BarChart/Image.png)
 
-### 4) Bivariate
+### 5) Bivariate
 
-#### 4.01) Religion+Ethnicity/2024/LK:district/BivariateMap
+#### 5.01) Religion+Ethnicity/2024/LK:district/BivariateMap
 
 ```bash
 Religion+Ethnicity/2024/LK:district/BivariateMap
@@ -843,13 +968,13 @@ Religion+Ethnicity/2024/LK:district/BivariateMap
 }
 ```
 
-Source: [examples/outputs/Religion+Ethnicity/2024/LK:district/BivariateMap/Output.json](examples/outputs/Religion+Ethnicity/2024/LK:district/BivariateMap/Output.json)
+Source: [_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Output.json](_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Output.json)
 
-![Religion+Ethnicity/2024/LK:district/BivariateMap](examples/outputs/Religion+Ethnicity/2024/LK:district/BivariateMap/Image.png)
+![Religion+Ethnicity/2024/LK:district/BivariateMap](_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Image.png)
 
-Source: [examples/outputs/Religion+Ethnicity/2024/LK:district/BivariateMap/Image.png](examples/outputs/Religion+Ethnicity/2024/LK:district/BivariateMap/Image.png)
+Source: [_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Image.png](_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Image.png)
 
-#### 4.02) Religion+Ethnicity/2024/LK:district/QuadrantMap
+#### 5.02) Religion+Ethnicity/2024/LK:district/QuadrantMap
 
 ```bash
 Religion+Ethnicity/2024/LK:district/QuadrantMap
@@ -872,15 +997,15 @@ Religion+Ethnicity/2024/LK:district/QuadrantMap
 }
 ```
 
-Source: [examples/outputs/Religion+Ethnicity/2024/LK:district/QuadrantMap/Output.json](examples/outputs/Religion+Ethnicity/2024/LK:district/QuadrantMap/Output.json)
+Source: [_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Output.json](_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Output.json)
 
-![Religion+Ethnicity/2024/LK:district/QuadrantMap](examples/outputs/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png)
+![Religion+Ethnicity/2024/LK:district/QuadrantMap](_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png)
 
-Source: [examples/outputs/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png](examples/outputs/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png)
+Source: [_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png](_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png)
 
-### 5) Elections
+### 6) Elections
 
-#### 5.01) Parliamentary/2024/LK/JSON
+#### 6.01) Parliamentary/2024/LK/JSON
 
 ```bash
 Parliamentary/2024/LK/JSON
@@ -930,9 +1055,9 @@ Parliamentary/2024/LK/JSON
 }
 ```
 
-Source: [examples/outputs/Parliamentary/2024/LK/JSON/Output.json](examples/outputs/Parliamentary/2024/LK/JSON/Output.json)
+Source: [_output/Parliamentary/2024/LK/JSON/Output.json](_output/Parliamentary/2024/LK/JSON/Output.json)
 
-#### 5.02) Presidential/2015/LK-11:pd/Map
+#### 6.02) Presidential/2015/LK-11:pd/Map
 
 ```bash
 Presidential/2015/LK-11:pd/Map
@@ -955,13 +1080,13 @@ Presidential/2015/LK-11:pd/Map
 }
 ```
 
-Source: [examples/outputs/Presidential/2015/LK-11:pd/Map/Output.json](examples/outputs/Presidential/2015/LK-11:pd/Map/Output.json)
+Source: [_output/Presidential/2015/LK-11:pd/Map/Output.json](_output/Presidential/2015/LK-11:pd/Map/Output.json)
 
-![Presidential/2015/LK-11:pd/Map](examples/outputs/Presidential/2015/LK-11:pd/Map/Image.png)
+![Presidential/2015/LK-11:pd/Map](_output/Presidential/2015/LK-11:pd/Map/Image.png)
 
-Source: [examples/outputs/Presidential/2015/LK-11:pd/Map/Image.png](examples/outputs/Presidential/2015/LK-11:pd/Map/Image.png)
+Source: [_output/Presidential/2015/LK-11:pd/Map/Image.png](_output/Presidential/2015/LK-11:pd/Map/Image.png)
 
-#### 5.03) Local/2025/LK:district/Map
+#### 6.03) Local/2025/LK:district/Map
 
 ```bash
 Local/2025/LK:district/Map
@@ -984,15 +1109,15 @@ Local/2025/LK:district/Map
 }
 ```
 
-Source: [examples/outputs/Local/2025/LK:district/Map/Output.json](examples/outputs/Local/2025/LK:district/Map/Output.json)
+Source: [_output/Local/2025/LK:district/Map/Output.json](_output/Local/2025/LK:district/Map/Output.json)
 
-![Local/2025/LK:district/Map](examples/outputs/Local/2025/LK:district/Map/Image.png)
+![Local/2025/LK:district/Map](_output/Local/2025/LK:district/Map/Image.png)
 
-Source: [examples/outputs/Local/2025/LK:district/Map/Image.png](examples/outputs/Local/2025/LK:district/Map/Image.png)
+Source: [_output/Local/2025/LK:district/Map/Image.png](_output/Local/2025/LK:district/Map/Image.png)
 
-### 6) History
+### 7) History
 
-#### 6.01) Empty/2012/LK-pre1845:province/Map
+#### 7.01) Empty/2012/LK-pre1845:province/Map
 
 ```bash
 Empty/2012/LK-pre1845:province/Map
@@ -1015,13 +1140,13 @@ Empty/2012/LK-pre1845:province/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2012/LK-pre1845:province/Map/Output.json](examples/outputs/Empty/2012/LK-pre1845:province/Map/Output.json)
+Source: [_output/Empty/2012/LK-pre1845:province/Map/Output.json](_output/Empty/2012/LK-pre1845:province/Map/Output.json)
 
-![Empty/2012/LK-pre1845:province/Map](examples/outputs/Empty/2012/LK-pre1845:province/Map/Image.png)
+![Empty/2012/LK-pre1845:province/Map](_output/Empty/2012/LK-pre1845:province/Map/Image.png)
 
-Source: [examples/outputs/Empty/2012/LK-pre1845:province/Map/Image.png](examples/outputs/Empty/2012/LK-pre1845:province/Map/Image.png)
+Source: [_output/Empty/2012/LK-pre1845:province/Map/Image.png](_output/Empty/2012/LK-pre1845:province/Map/Image.png)
 
-#### 6.02) Empty/2012/LK-pre1873:province/Map
+#### 7.02) Empty/2012/LK-pre1873:province/Map
 
 ```bash
 Empty/2012/LK-pre1873:province/Map
@@ -1044,13 +1169,13 @@ Empty/2012/LK-pre1873:province/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2012/LK-pre1873:province/Map/Output.json](examples/outputs/Empty/2012/LK-pre1873:province/Map/Output.json)
+Source: [_output/Empty/2012/LK-pre1873:province/Map/Output.json](_output/Empty/2012/LK-pre1873:province/Map/Output.json)
 
-![Empty/2012/LK-pre1873:province/Map](examples/outputs/Empty/2012/LK-pre1873:province/Map/Image.png)
+![Empty/2012/LK-pre1873:province/Map](_output/Empty/2012/LK-pre1873:province/Map/Image.png)
 
-Source: [examples/outputs/Empty/2012/LK-pre1873:province/Map/Image.png](examples/outputs/Empty/2012/LK-pre1873:province/Map/Image.png)
+Source: [_output/Empty/2012/LK-pre1873:province/Map/Image.png](_output/Empty/2012/LK-pre1873:province/Map/Image.png)
 
-#### 6.03) Empty/2012/LK-pre1886:province/Map
+#### 7.03) Empty/2012/LK-pre1886:province/Map
 
 ```bash
 Empty/2012/LK-pre1886:province/Map
@@ -1073,13 +1198,13 @@ Empty/2012/LK-pre1886:province/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2012/LK-pre1886:province/Map/Output.json](examples/outputs/Empty/2012/LK-pre1886:province/Map/Output.json)
+Source: [_output/Empty/2012/LK-pre1886:province/Map/Output.json](_output/Empty/2012/LK-pre1886:province/Map/Output.json)
 
-![Empty/2012/LK-pre1886:province/Map](examples/outputs/Empty/2012/LK-pre1886:province/Map/Image.png)
+![Empty/2012/LK-pre1886:province/Map](_output/Empty/2012/LK-pre1886:province/Map/Image.png)
 
-Source: [examples/outputs/Empty/2012/LK-pre1886:province/Map/Image.png](examples/outputs/Empty/2012/LK-pre1886:province/Map/Image.png)
+Source: [_output/Empty/2012/LK-pre1886:province/Map/Image.png](_output/Empty/2012/LK-pre1886:province/Map/Image.png)
 
-#### 6.04) Empty/2012/LK-pre1889:province/Map
+#### 7.04) Empty/2012/LK-pre1889:province/Map
 
 ```bash
 Empty/2012/LK-pre1889:province/Map
@@ -1102,13 +1227,13 @@ Empty/2012/LK-pre1889:province/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2012/LK-pre1889:province/Map/Output.json](examples/outputs/Empty/2012/LK-pre1889:province/Map/Output.json)
+Source: [_output/Empty/2012/LK-pre1889:province/Map/Output.json](_output/Empty/2012/LK-pre1889:province/Map/Output.json)
 
-![Empty/2012/LK-pre1889:province/Map](examples/outputs/Empty/2012/LK-pre1889:province/Map/Image.png)
+![Empty/2012/LK-pre1889:province/Map](_output/Empty/2012/LK-pre1889:province/Map/Image.png)
 
-Source: [examples/outputs/Empty/2012/LK-pre1889:province/Map/Image.png](examples/outputs/Empty/2012/LK-pre1889:province/Map/Image.png)
+Source: [_output/Empty/2012/LK-pre1889:province/Map/Image.png](_output/Empty/2012/LK-pre1889:province/Map/Image.png)
 
-#### 6.05) Empty/2012/LK:province/Map
+#### 7.05) Empty/2012/LK:province/Map
 
 ```bash
 Empty/2012/LK:province/Map
@@ -1131,13 +1256,13 @@ Empty/2012/LK:province/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2012/LK:province/Map/Output.json](examples/outputs/Empty/2012/LK:province/Map/Output.json)
+Source: [_output/Empty/2012/LK:province/Map/Output.json](_output/Empty/2012/LK:province/Map/Output.json)
 
-![Empty/2012/LK:province/Map](examples/outputs/Empty/2012/LK:province/Map/Image.png)
+![Empty/2012/LK:province/Map](_output/Empty/2012/LK:province/Map/Image.png)
 
-Source: [examples/outputs/Empty/2012/LK:province/Map/Image.png](examples/outputs/Empty/2012/LK:province/Map/Image.png)
+Source: [_output/Empty/2012/LK:province/Map/Image.png](_output/Empty/2012/LK:province/Map/Image.png)
 
-#### 6.06) Empty/2012/LK-pre1959:district/Map
+#### 7.06) Empty/2012/LK-pre1959:district/Map
 
 ```bash
 Empty/2012/LK-pre1959:district/Map
@@ -1160,13 +1285,13 @@ Empty/2012/LK-pre1959:district/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2012/LK-pre1959:district/Map/Output.json](examples/outputs/Empty/2012/LK-pre1959:district/Map/Output.json)
+Source: [_output/Empty/2012/LK-pre1959:district/Map/Output.json](_output/Empty/2012/LK-pre1959:district/Map/Output.json)
 
-![Empty/2012/LK-pre1959:district/Map](examples/outputs/Empty/2012/LK-pre1959:district/Map/Image.png)
+![Empty/2012/LK-pre1959:district/Map](_output/Empty/2012/LK-pre1959:district/Map/Image.png)
 
-Source: [examples/outputs/Empty/2012/LK-pre1959:district/Map/Image.png](examples/outputs/Empty/2012/LK-pre1959:district/Map/Image.png)
+Source: [_output/Empty/2012/LK-pre1959:district/Map/Image.png](_output/Empty/2012/LK-pre1959:district/Map/Image.png)
 
-#### 6.07) Empty/2012/LK-pre1961:district/Map
+#### 7.07) Empty/2012/LK-pre1961:district/Map
 
 ```bash
 Empty/2012/LK-pre1961:district/Map
@@ -1189,13 +1314,13 @@ Empty/2012/LK-pre1961:district/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2012/LK-pre1961:district/Map/Output.json](examples/outputs/Empty/2012/LK-pre1961:district/Map/Output.json)
+Source: [_output/Empty/2012/LK-pre1961:district/Map/Output.json](_output/Empty/2012/LK-pre1961:district/Map/Output.json)
 
-![Empty/2012/LK-pre1961:district/Map](examples/outputs/Empty/2012/LK-pre1961:district/Map/Image.png)
+![Empty/2012/LK-pre1961:district/Map](_output/Empty/2012/LK-pre1961:district/Map/Image.png)
 
-Source: [examples/outputs/Empty/2012/LK-pre1961:district/Map/Image.png](examples/outputs/Empty/2012/LK-pre1961:district/Map/Image.png)
+Source: [_output/Empty/2012/LK-pre1961:district/Map/Image.png](_output/Empty/2012/LK-pre1961:district/Map/Image.png)
 
-#### 6.08) Empty/2012/LK-pre1978:district/Map
+#### 7.08) Empty/2012/LK-pre1978:district/Map
 
 ```bash
 Empty/2012/LK-pre1978:district/Map
@@ -1218,13 +1343,13 @@ Empty/2012/LK-pre1978:district/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2012/LK-pre1978:district/Map/Output.json](examples/outputs/Empty/2012/LK-pre1978:district/Map/Output.json)
+Source: [_output/Empty/2012/LK-pre1978:district/Map/Output.json](_output/Empty/2012/LK-pre1978:district/Map/Output.json)
 
-![Empty/2012/LK-pre1978:district/Map](examples/outputs/Empty/2012/LK-pre1978:district/Map/Image.png)
+![Empty/2012/LK-pre1978:district/Map](_output/Empty/2012/LK-pre1978:district/Map/Image.png)
 
-Source: [examples/outputs/Empty/2012/LK-pre1978:district/Map/Image.png](examples/outputs/Empty/2012/LK-pre1978:district/Map/Image.png)
+Source: [_output/Empty/2012/LK-pre1978:district/Map/Image.png](_output/Empty/2012/LK-pre1978:district/Map/Image.png)
 
-#### 6.09) Empty/2012/LK-pre1984:district/Map
+#### 7.09) Empty/2012/LK-pre1984:district/Map
 
 ```bash
 Empty/2012/LK-pre1984:district/Map
@@ -1247,13 +1372,13 @@ Empty/2012/LK-pre1984:district/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2012/LK-pre1984:district/Map/Output.json](examples/outputs/Empty/2012/LK-pre1984:district/Map/Output.json)
+Source: [_output/Empty/2012/LK-pre1984:district/Map/Output.json](_output/Empty/2012/LK-pre1984:district/Map/Output.json)
 
-![Empty/2012/LK-pre1984:district/Map](examples/outputs/Empty/2012/LK-pre1984:district/Map/Image.png)
+![Empty/2012/LK-pre1984:district/Map](_output/Empty/2012/LK-pre1984:district/Map/Image.png)
 
-Source: [examples/outputs/Empty/2012/LK-pre1984:district/Map/Image.png](examples/outputs/Empty/2012/LK-pre1984:district/Map/Image.png)
+Source: [_output/Empty/2012/LK-pre1984:district/Map/Image.png](_output/Empty/2012/LK-pre1984:district/Map/Image.png)
 
-#### 6.10) Empty/2012/LK:district/Map
+#### 7.10) Empty/2012/LK:district/Map
 
 ```bash
 Empty/2012/LK:district/Map
@@ -1276,13 +1401,13 @@ Empty/2012/LK:district/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2012/LK:district/Map/Output.json](examples/outputs/Empty/2012/LK:district/Map/Output.json)
+Source: [_output/Empty/2012/LK:district/Map/Output.json](_output/Empty/2012/LK:district/Map/Output.json)
 
-![Empty/2012/LK:district/Map](examples/outputs/Empty/2012/LK:district/Map/Image.png)
+![Empty/2012/LK:district/Map](_output/Empty/2012/LK:district/Map/Image.png)
 
-Source: [examples/outputs/Empty/2012/LK:district/Map/Image.png](examples/outputs/Empty/2012/LK:district/Map/Image.png)
+Source: [_output/Empty/2012/LK:district/Map/Image.png](_output/Empty/2012/LK:district/Map/Image.png)
 
-#### 6.11) Ethnicity/2012/LK-23-pre2019:dsd/Map
+#### 7.11) Ethnicity/2012/LK-23-pre2019:dsd/Map
 
 ```bash
 Ethnicity/2012/LK-23-pre2019:dsd/Map
@@ -1305,13 +1430,13 @@ Ethnicity/2012/LK-23-pre2019:dsd/Map
 }
 ```
 
-Source: [examples/outputs/Ethnicity/2012/LK-23-pre2019:dsd/Map/Output.json](examples/outputs/Ethnicity/2012/LK-23-pre2019:dsd/Map/Output.json)
+Source: [_output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Output.json](_output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Output.json)
 
-![Ethnicity/2012/LK-23-pre2019:dsd/Map](examples/outputs/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png)
+![Ethnicity/2012/LK-23-pre2019:dsd/Map](_output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png)
 
-Source: [examples/outputs/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png](examples/outputs/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png)
+Source: [_output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png](_output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png)
 
-#### 6.12) Ethnicity/2024/LK-23-pre2019:dsd/Map
+#### 7.12) Ethnicity/2024/LK-23-pre2019:dsd/Map
 
 ```bash
 Ethnicity/2024/LK-23-pre2019:dsd/Map
@@ -1334,13 +1459,13 @@ Ethnicity/2024/LK-23-pre2019:dsd/Map
 }
 ```
 
-Source: [examples/outputs/Ethnicity/2024/LK-23-pre2019:dsd/Map/Output.json](examples/outputs/Ethnicity/2024/LK-23-pre2019:dsd/Map/Output.json)
+Source: [_output/Ethnicity/2024/LK-23-pre2019:dsd/Map/Output.json](_output/Ethnicity/2024/LK-23-pre2019:dsd/Map/Output.json)
 
-![Ethnicity/2024/LK-23-pre2019:dsd/Map](examples/outputs/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png)
+![Ethnicity/2024/LK-23-pre2019:dsd/Map](_output/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png)
 
-Source: [examples/outputs/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png](examples/outputs/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png)
+Source: [_output/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png](_output/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png)
 
-#### 6.13) Ethnicity/2024/LK-23:dsd/Map
+#### 7.13) Ethnicity/2024/LK-23:dsd/Map
 
 ```bash
 Ethnicity/2024/LK-23:dsd/Map
@@ -1363,13 +1488,13 @@ Ethnicity/2024/LK-23:dsd/Map
 }
 ```
 
-Source: [examples/outputs/Ethnicity/2024/LK-23:dsd/Map/Output.json](examples/outputs/Ethnicity/2024/LK-23:dsd/Map/Output.json)
+Source: [_output/Ethnicity/2024/LK-23:dsd/Map/Output.json](_output/Ethnicity/2024/LK-23:dsd/Map/Output.json)
 
-![Ethnicity/2024/LK-23:dsd/Map](examples/outputs/Ethnicity/2024/LK-23:dsd/Map/Image.png)
+![Ethnicity/2024/LK-23:dsd/Map](_output/Ethnicity/2024/LK-23:dsd/Map/Image.png)
 
-Source: [examples/outputs/Ethnicity/2024/LK-23:dsd/Map/Image.png](examples/outputs/Ethnicity/2024/LK-23:dsd/Map/Image.png)
+Source: [_output/Ethnicity/2024/LK-23:dsd/Map/Image.png](_output/Ethnicity/2024/LK-23:dsd/Map/Image.png)
 
-#### 6.14) Empty/2024/LK:dsd/Map
+#### 7.14) Empty/2024/LK:dsd/Map
 
 ```bash
 Empty/2024/LK:dsd/Map
@@ -1392,13 +1517,13 @@ Empty/2024/LK:dsd/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2024/LK:dsd/Map/Output.json](examples/outputs/Empty/2024/LK:dsd/Map/Output.json)
+Source: [_output/Empty/2024/LK:dsd/Map/Output.json](_output/Empty/2024/LK:dsd/Map/Output.json)
 
-![Empty/2024/LK:dsd/Map](examples/outputs/Empty/2024/LK:dsd/Map/Image.png)
+![Empty/2024/LK:dsd/Map](_output/Empty/2024/LK:dsd/Map/Image.png)
 
-Source: [examples/outputs/Empty/2024/LK:dsd/Map/Image.png](examples/outputs/Empty/2024/LK:dsd/Map/Image.png)
+Source: [_output/Empty/2024/LK:dsd/Map/Image.png](_output/Empty/2024/LK:dsd/Map/Image.png)
 
-#### 6.15) Empty/2024/LK:gnd/Map
+#### 7.15) Empty/2024/LK:gnd/Map
 
 ```bash
 Empty/2024/LK:gnd/Map
@@ -1421,11 +1546,11 @@ Empty/2024/LK:gnd/Map
 }
 ```
 
-Source: [examples/outputs/Empty/2024/LK:gnd/Map/Output.json](examples/outputs/Empty/2024/LK:gnd/Map/Output.json)
+Source: [_output/Empty/2024/LK:gnd/Map/Output.json](_output/Empty/2024/LK:gnd/Map/Output.json)
 
-![Empty/2024/LK:gnd/Map](examples/outputs/Empty/2024/LK:gnd/Map/Image.png)
+![Empty/2024/LK:gnd/Map](_output/Empty/2024/LK:gnd/Map/Image.png)
 
-Source: [examples/outputs/Empty/2024/LK:gnd/Map/Image.png](examples/outputs/Empty/2024/LK:gnd/Map/Image.png)
+Source: [_output/Empty/2024/LK:gnd/Map/Image.png](_output/Empty/2024/LK:gnd/Map/Image.png)
 
 ![Maintainer](https://img.shields.io/badge/maintainer-nuuuwan-red)
 ![MadeWith](https://img.shields.io/badge/made_with-python-blue)

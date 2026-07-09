@@ -6,7 +6,6 @@ from utils_future import JSONFile
 
 class Example(ExampleOutputMixin):
     EXAMPLES_PATH = os.path.join("examples", "examples.json")
-    DIR_EXAMPLES_OUTPUT = os.path.join("examples", "outputs")
     MAX_EXAMPLES = 1000
 
     def __init__(self, cmd):

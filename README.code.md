@@ -370,7 +370,7 @@ pipeline itself.
 
 - **`Example`** (+ **`ExampleOutputMixin`**) loads named commands from
   `examples/examples.json`, runs each through `CommandRunner`, and materializes
-  the results into `examples/outputs/<cmd>/Output.json` (and images). The
+  the results into `_output/<cmd>/Output.json` (and images). The
   generated outputs are reused by the README.
 
 ### README generation (`readme/`)

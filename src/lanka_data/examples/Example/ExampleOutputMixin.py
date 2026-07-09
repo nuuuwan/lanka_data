@@ -19,7 +19,7 @@ class ExampleOutputMixin:
 
     @classmethod
     def get_output(cls, cmd):
-        output_dir = os.path.join("examples", "outputs", cmd)
+        output_dir = os.path.join("_output", cmd)
         os.makedirs(output_dir, exist_ok=True)
         output_path = os.path.join(output_dir, "Output.json")
         output_file = JSONFile(output_path)

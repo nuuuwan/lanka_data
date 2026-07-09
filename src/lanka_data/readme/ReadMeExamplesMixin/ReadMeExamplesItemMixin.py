@@ -1,11 +1,10 @@
 import json
 import os
-import shutil
 
 
 class ReadMeExamplesItemMixin:
     MAX_LINES_IN_OUTPUT = 40
-    DIR_EXAMPLES_OUTPUT = os.path.join("examples", "outputs")
+    DIR_EXAMPLES_OUTPUT = "_output"
 
     @staticmethod
     def get_lines_for_example_title(i_group_name, i_cmd, cmd, result):
@@ -46,16 +45,10 @@ class ReadMeExamplesItemMixin:
     def get_lines_for_image(cmd, output):
         if not ("result" in output and "image_path" in output["result"]):
             return []
-        lines = []
         image_path = output["result"]["image_path"]
-        new_image_dir = os.path.join(
-            ReadMeExamplesItemMixin.DIR_EXAMPLES_OUTPUT, cmd
-        )
-        os.makedirs(new_image_dir, exist_ok=True)
-        new_image_path = os.path.join(new_image_dir, "Image.png")
-        shutil.copy2(image_path, new_image_path)
-        lines.append(f"![{cmd}]({new_image_path})")
-        lines.append("")
-        lines.append(f"Source: [{new_image_path}]({new_image_path})")
-        lines.append("")
-        return lines
+        return [
+            f"![{cmd}]({image_path})",
+            "",
+            f"Source: [{image_path}]({image_path})",
+            "",
+        ]

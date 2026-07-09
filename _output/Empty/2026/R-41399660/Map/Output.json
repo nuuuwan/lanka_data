@@ -1,0 +1,14 @@
+{
+  "command_str": "Empty/2026/R-41399660/Map",
+  "result": {
+    "image_path": "_output/Empty/2026/R-41399660/Map/Image.png",
+    "svg_path": "_output/Empty/2026/R-41399660/Map/Image.svg"
+  },
+  "sources": [
+    {
+      "name": "Survey Department of Sri Lanka",
+      "url": "https://survey.gov.lk/"
+    }
+  ],
+  "query_time_ms": 0
+}
