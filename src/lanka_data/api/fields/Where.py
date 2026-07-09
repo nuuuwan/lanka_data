@@ -8,16 +8,16 @@ from lanka_data.api.fields.WhereIntrospectionMixin import (
     WhereIntrospectionMixin,
 )
 
-TOP_RE = re.compile(r"#(\d+)$")
-
 
 @dataclass(frozen=True)
 class Where(WhereIntrospectionMixin):
     value: str
 
-    @staticmethod
-    def strip_top(token):
-        return TOP_RE.sub("", token or "")
+    TOP_RE = re.compile(r"#(\d+)$")
+
+    @classmethod
+    def strip_top(cls, token):
+        return cls.TOP_RE.sub("", token or "")
 
     @classmethod
     def available_region_types(cls):
@@ -48,7 +48,7 @@ class Where(WhereIntrospectionMixin):
 
     @property
     def top(self):
-        match = TOP_RE.search(self.value or "")
+        match = self.TOP_RE.search(self.value or "")
         if match is None:
             return None
         return int(match.group(1))
