@@ -17,10 +17,7 @@ class ColorSpec(ColorSpecCategoryMixin, ColorSpecCustomMixin):
     region_to_value: dict[str, float] | None = None
     region_to_value_str: dict[str, str] | None = None
 
-    LABEL_TO_COLOR = {
-        label: ColorUtils.hex_to_rgb(color)
-        for label, color in ColorSpecConstants.LABEL_TO_COLOR.items()
-    }
+    LABEL_TO_COLOR = ColorSpecConstants.LABEL_TO_COLOR
 
     @staticmethod
     def p_to_color_for_abs(p):

@@ -14,9 +14,15 @@ class ColorSpecCategoryMixin:
     def _fill_missing_value_colors(cls, data_list, value_to_color):
         if not data_list or "values" not in data_list[0]:
             return
+        existing_colors = set(value_to_color.values())
         for k in data_list[0]["values"]:
-            if k not in value_to_color and k in cls.LABEL_TO_COLOR:
-                value_to_color[k] = cls.LABEL_TO_COLOR[k]
+            if k in value_to_color or k not in cls.LABEL_TO_COLOR:
+                continue
+            color = cls.LABEL_TO_COLOR[k]
+            if color in existing_colors:
+                continue
+            value_to_color[k] = color
+            existing_colors.add(color)
 
     @classmethod
     def by_custom_category_key(cls, dataset, func_key_getter, hide_legend):
