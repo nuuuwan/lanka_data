@@ -1,0 +1,15 @@
+{
+  "command_str": "Presidential/2024/LK-7:pd/HexMap",
+  "result": {
+    "image_path": "_output/Presidential/2024/LK-7:pd/HexMap/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Election Commission of Sri lanka",
+      "url": "https://www.elections.gov.lk"
+    }
+  ],
+  "query_time_ms": 1018,
+  "is_corrected": false,
+  "corrections": []
+}
