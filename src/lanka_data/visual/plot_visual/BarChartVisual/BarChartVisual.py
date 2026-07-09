@@ -1,5 +1,6 @@
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 
+from .BarChartBarTextMixin import BarChartBarTextMixin
 from .BarChartDrawMixin import BarChartDrawMixin
 from .BarChartLabelMixin import BarChartLabelMixin
 from .BarChartSingleMixin import BarChartSingleMixin
@@ -7,6 +8,7 @@ from .BarChartXLabelMixin import BarChartXLabelMixin
 
 
 class BarChartVisual(
+    BarChartBarTextMixin,
     BarChartDrawMixin,
     BarChartLabelMixin,
     BarChartSingleMixin,
@@ -66,8 +68,7 @@ class BarChartVisual(
             ax, subregions, x_values, category_labels, category_to_color
         )
         self._style_axis(
-            ax, subregions, y_min, y_max, self._y_axis_label(), x_labels=False
+            ax, subregions, y_min, y_max, self._y_axis_label(), x_labels=True
         )
         self._add_bar_labels(ax, subregions)
-        self._add_region_labels(ax, subregions, x_values)
         self._draw_category_legend(ax, category_labels, category_to_color)
