@@ -27,40 +27,18 @@ class ColorSpecFactory:
         )
 
     @staticmethod
-    def _get_segregation_spec(dataset, is_diff):
-        if is_diff:
-            return ColorSpecHelpers.get_color_spec_for_segregation_change(
-                dataset
-            )
-        return ColorSpecHelpers.get_color_spec_for_segregation(dataset)
-
-    @staticmethod
-    def _get_change_or_segregation_spec(
+    def _get_param_color_spec(
         dataset, how_without_params, how_params, is_diff
     ):
+        if how_params in ("Diversity", "DiversityPew"):
+            return ColorSpecFactory._get_diversity_spec(
+                dataset, how_params == "DiversityPew", is_diff
+            )
         if how_params == "Change":
             return ColorSpecFactory._get_change_spec(
                 dataset, how_without_params, is_diff
             )
-        if how_params == "Segregation":
-            return ColorSpecFactory._get_segregation_spec(dataset, is_diff)
         return None
-
-    @staticmethod
-    def _get_param_color_spec(
-        dataset, how_without_params, how_params, is_diff
-    ):
-        if how_params == "Diversity":
-            return ColorSpecFactory._get_diversity_spec(
-                dataset, False, is_diff
-            )
-        if how_params == "DiversityPew":
-            return ColorSpecFactory._get_diversity_spec(
-                dataset, True, is_diff
-            )
-        return ColorSpecFactory._get_change_or_segregation_spec(
-            dataset, how_without_params, how_params, is_diff
-        )
 
     @staticmethod
     def _resolve_color_spec(dataset, how, is_diff):

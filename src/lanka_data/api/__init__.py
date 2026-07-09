@@ -8,8 +8,7 @@ from lanka_data.api.command import (Command, CommandBase,
 from lanka_data.api.command_errors import (CommandError, InvalidCommandError,
                                            InvalidWhenError, InvalidWhereError,
                                            UnknownHowError, UnknownWhatError)
-from lanka_data.api.data import (DataSource, Segregation,
-                                 SegregationComputeMixin)
+from lanka_data.api.data import DataSource
 from lanka_data.api.dataset import (CorrelationDataset, Dataset, DiffDataset,
                                     RegionValueDataset,
                                     RegionValueDatasetTableMixin,

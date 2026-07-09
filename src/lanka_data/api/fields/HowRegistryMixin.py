@@ -3,7 +3,6 @@ class HowRegistryMixin:
         "JSON": None,
         "CSV": None,
         "TSV": None,
-        "Table": None,
         "GeoJSON": None,
         "Parquet": None,
         "ChartSpec": "Chart Spec",
@@ -21,21 +20,9 @@ class HowRegistryMixin:
         "BivariateMap": "Bivariate Map",
         "QuadrantChart": "Quadrant Chart",
         "LineChart": "Line Chart",
-        "MapAnimation": "Animated Map",
-        "CartogramAnimation": "Animated Cartogram (Population based)",
-        "HexMapAnimation": "Animated HexMap (Population based)",
-        "BubbleMapAnimation": "Animated BubbleMap (Population based)",
         "None": None,
     }
-    ANIMATION_BASE_TO_FRAME_BASE = {
-        "MapAnimation": "Map",
-        "CartogramAnimation": "Cartogram",
-        "HexMapAnimation": "HexMap",
-        "BubbleMapAnimation": "BubbleMap",
-    }
-    INTERVAL_BASES = {"BumpChart", "LineChart"} | set(
-        ANIMATION_BASE_TO_FRAME_BASE
-    )
+    INTERVAL_BASES = {"BumpChart", "LineChart"}
     SERIES_BASES = {"LineChart"}
     CATEGORY_BASES = {
         "Map",
@@ -43,7 +30,7 @@ class HowRegistryMixin:
         "HexMap",
         "BubbleMap",
         "None",
-    } | set(ANIMATION_BASE_TO_FRAME_BASE)
+    }
     PAIR_CATEGORY_BASES = {"BivariateMap", "QuadrantChart"}
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
@@ -57,5 +44,4 @@ class HowRegistryMixin:
         "Change": {"label": "Change", "needs_interval": True},
         "Diversity": {"label": "Diversity"},
         "DiversityPew": {"label": "Pew diversity"},
-        "Segregation": {"label": "Segregation"},
     }
