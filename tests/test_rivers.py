@@ -79,11 +79,16 @@ class TestRiversData:
     def test_aggregate_measures(self):
         measures = {}
         for feature in SAMPLE_FEATURES:
-            RiversData._set_measures(measures, feature)
+            RiversData._set_outlet_measures(measures, feature)
         assert measures["R-111"]["RiverLen"] == 3.0
         assert measures["R-111"]["Catchment"] == 5.0
         assert measures["R-222"]["RiverLen"] == 4.0
         assert measures["R-222"]["Catchment"] == 8.0
+
+    def test_set_outlet_measures_skips_non_outlet(self):
+        measures = {}
+        RiversData._set_outlet_measures(measures, SAMPLE_FEATURES[1])
+        assert measures == {}
 
 
 class TestRiversDataset:

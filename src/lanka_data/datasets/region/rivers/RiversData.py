@@ -68,7 +68,7 @@ class RiversData:
         ]
 
     @classmethod
-    def _set_measures(cls, measures, feature):
+    def _set_outlet_measures(cls, measures, feature):
         properties = feature["properties"]
         if properties["HYRIV_ID"] != properties["MAIN_RIV"]:
             return
@@ -84,5 +84,5 @@ class RiversData:
         data = WWW(cls.URL).read_json()
         measures = {}
         for feature in data["features"]:
-            cls._set_measures(measures, feature)
+            cls._set_outlet_measures(measures, feature)
         return measures
