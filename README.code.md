@@ -229,10 +229,6 @@ final output.
     totals binned into a histogram.
   - **`ScatterPlotVisual`** (+ `ScatterPlotData`) — region population against
     dominant-category share, coloured by dominant category.
-  - **`AnimationVisual`** (+ `AnimationEncoder`, `AnimationMP4Mixin`) — sequences
-    one still-map frame per interval year into an animated GIF (and MP4 when
-    `ffmpeg` is available); the `*Animation` bases map through
-    `How.frame_how` to the matching still-map renderer.
 
 ### `VisualFactory`
 
@@ -250,7 +246,6 @@ instantiates the matching class:
 | `TreeMap`                   | `TreeMapVisual`   |
 | `Histogram`                 | `HistogramVisual` |
 | `ScatterPlot`               | `ScatterPlotVisual` |
-| `MapAnimation`, `CartogramAnimation`, `HexMapAnimation`, `BubbleMapAnimation` | `AnimationVisual` |
 
 Keeping this mapping in one class isolates output-type selection from the drawing
 code.

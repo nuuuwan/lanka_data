@@ -1,9 +1,6 @@
 # lanka_data.visual (auto generate by build_inits.py)
 # flake8: noqa: F408
 
-from lanka_data.visual.animation_visual import (AnimationEncoder,
-                                                AnimationMP4Mixin,
-                                                AnimationVisual)
 from lanka_data.visual.annotations import (Annotations, AnnotationsStatMixin,
                                            NumberAbbreviator)
 from lanka_data.visual.data_export import (ChartSpecVisual, CSVVisual,
