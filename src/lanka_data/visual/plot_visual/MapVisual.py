@@ -1,6 +1,7 @@
 from lanka_data.visual.plot.color_spec import ColorSpecFactory
 from lanka_data.visual.plot.Label import Label
 from lanka_data.visual.plot.Legend import Legend
+from lanka_data.visual.plot.LineLabel import LineLabel
 from lanka_data.visual.plot.map.GeoData import GeoData
 from lanka_data.visual.plot.map.GeoData.DistrictBackgroundGeoData import (
     DistrictBackgroundGeoData,
@@ -56,6 +57,7 @@ class MapVisual(PlotVisual):
                 color=gdf_region["color"],
                 linewidth=self.LINE_WIDTH,
             )
+            LineLabel.draw(gdf_region, ax, len(gdf_region))
             return
         gdf_region.plot(
             ax=ax,
