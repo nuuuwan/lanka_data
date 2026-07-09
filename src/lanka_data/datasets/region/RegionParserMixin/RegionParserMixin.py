@@ -1,4 +1,5 @@
 from lanka_data.datasets.region.rivers.RiversData import RiversData
+from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 from utils_future import timer
 
 from .RegionParserRadiusMixin import RegionParserRadiusMixin
@@ -6,6 +7,27 @@ from .RegionParserRadiusMixin import RegionParserRadiusMixin
 
 class RegionParserMixin(RegionParserRadiusMixin):
     RIVERS_REGION_TYPE = "rivers"
+
+    @classmethod
+    def _is_rivers_region_id(cls, region_id):
+        return (
+            RegionTypeUtils.get_region_type(region_id)
+            == cls.RIVERS_REGION_TYPE
+        )
+
+    @classmethod
+    def _filter_river_regions(cls, region_ids):
+        region_idx = {
+            region["region_id"]: region
+            for region in RiversData.get_river_regions()
+        }
+        regions = []
+        for region_id in region_ids:
+            region = region_idx.get(region_id)
+            if region is None:
+                raise ValueError(f"River region not found: {region_id}")
+            regions.append(region)
+        return regions
 
     @classmethod
     def parse_parent_part(cls, parent_part: str):
@@ -35,6 +57,12 @@ class RegionParserMixin(RegionParserRadiusMixin):
         return parent_region_ids, region_year
 
     @classmethod
+    def _get_regions_without_child_type(cls, parent_region_ids):
+        if all(cls._is_rivers_region_id(r) for r in parent_region_ids):
+            return cls._filter_river_regions(parent_region_ids)
+        return cls._get_raw_region_data_list_for_region_ids(parent_region_ids)
+
+    @classmethod
     @timer
     def get_raw_regions(
         cls, parent_region_ids, child_region_type, region_year
@@ -43,9 +71,7 @@ class RegionParserMixin(RegionParserRadiusMixin):
             return RiversData.get_river_regions(), region_year
         if not child_region_type:
             return (
-                cls._get_raw_region_data_list_for_region_ids(
-                    parent_region_ids
-                ),
+                cls._get_regions_without_child_type(parent_region_ids),
                 region_year,
             )
         child_raw_regions = cls._get_raw_region_data_list_for_region_type(

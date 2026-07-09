@@ -12,6 +12,7 @@ from lanka_data.datasets.dataset.custom.Census2024Dataset import (
     Census2024Dataset,
 )
 from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
+from lanka_data.datasets.dataset.custom.RiversDataset import RiversDataset
 from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 
 
@@ -29,13 +30,14 @@ class DatasetCommandRegistry:
                 "census": cls.census_labels,
                 "election": ElectionDataset.get_labels,
                 "election_summary": cls.election_summary_labels,
+                "rivers": RiversDataset.get_labels,
             }
         )
         WhenRegistry.set_value_providers(
-            [cls.census_whens, cls.election_whens]
+            [cls.census_whens, cls.election_whens, cls.rivers_whens]
         )
         WhatWhenRegistry.set_pair_providers(
-            [cls.census_pairs, cls.election_pairs]
+            [cls.census_pairs, cls.election_pairs, cls.rivers_pairs]
         )
         RegionTypeRegistry.set_prefix_maps(RegionTypeUtils.get_prefix_maps())
 
@@ -69,6 +71,18 @@ class DatasetCommandRegistry:
     @classmethod
     def election_whens(cls):
         return ElectionDataset.get_all_years()
+
+    @classmethod
+    def rivers_whens(cls):
+        return RiversDataset.get_supported_whens()
+
+    @classmethod
+    def rivers_pairs(cls, when_values):
+        return [
+            (label, when)
+            for label in RiversDataset.get_labels()
+            for when in RiversDataset.get_supported_whens()
+        ]
 
     @classmethod
     def election_pairs(cls, when_values):
