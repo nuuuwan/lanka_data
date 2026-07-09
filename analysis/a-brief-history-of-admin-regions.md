@@ -18,31 +18,31 @@ The five: **Western, Central, Southern, Northern, Eastern.**
 
 The four provinces added between 1845 and 1889 each responded to growth in population and economic activity. The coffee boom around Kandy after 1840, which saw hundreds of estates established on crown land, significantly increased the administrative load on existing units [5].
 
-![Empty/2012/LK-pre1845:province/Map](../examples/outputs/Empty/2012/LK-pre1845:province/Map/Image.png)
+![Empty/2012/LK-pre1845:province/Map](../_outputs/Empty/2012/LK-pre1845:province/Map/Image.png)
 
 ### 1845: North Western Province
 
 Split from Western Province, taking the maritime districts of Chilaw and Puttalam and the Kandyan Seven Korales [4]. The coastal trade and the interior plantation frontier had grown too large to govern from Colombo.
 
-![Empty/2012/LK-pre1873:province/Map](../examples/outputs/Empty/2012/LK-pre1873:province/Map/Image.png)
+![Empty/2012/LK-pre1873:province/Map](../_outputs/Empty/2012/LK-pre1873:province/Map/Image.png)
 
 ### 1873: North Central Province
 
 Assembled from the southern Northern Province (Nuwara Kalawiya) and north-western Eastern Province (Tamankaduwa) [4]. This was the dry-zone heartland, sparsely settled ancient irrigation country that was later the target of major resettlement schemes.
 
-![Empty/2012/LK-pre1886:province/Map](../examples/outputs/Empty/2012/LK-pre1886:province/Map/Image.png)
+![Empty/2012/LK-pre1886:province/Map](../_outputs/Empty/2012/LK-pre1886:province/Map/Image.png)
 
 ### 1886: Uva Province
 
 Carved from parts of Central, Eastern (Bintenna) and Southern (Wellassa) [4]. Remote eastern hill country, hard to administer from Kandy, and increasingly drawn into the plantation economy.
 
-![Empty/2012/LK-pre1889:province/Map](../examples/outputs/Empty/2012/LK-pre1889:province/Map/Image.png)
+![Empty/2012/LK-pre1889:province/Map](../_outputs/Empty/2012/LK-pre1889:province/Map/Image.png)
 
 ### 1889: Sabaragamuwa Province
 
 Split from Southern and Western [4]. This completed the nine provinces still in use today. The boundaries have not changed since 1889. For most of their existence, provinces functioned primarily as administrative units with limited devolved powers [7].
 
-![Empty/2012/LK:province/Map](../examples/outputs/Empty/2012/LK:province/Map/Image.png)
+![Empty/2012/LK:province/Map](../_outputs/Empty/2012/LK:province/Map/Image.png)
 
 ### 1987–88: The merger of Northern and Eastern Provinces
 
@@ -64,19 +64,19 @@ Districts began as sub-units of provinces. In **1955** they became the country's
 
 The Administrative Districts Act (No. 22 of 1955) fixed twenty districts as the working middle tier between province and village [13].
 
-![Empty/2012/LK-pre1959:district/Map](../examples/outputs/Empty/2012/LK-pre1959:district/Map/Image.png)
+![Empty/2012/LK-pre1959:district/Map](../_outputs/Empty/2012/LK-pre1959:district/Map/Image.png)
 
 ### 1959: Monaragala District
 
 Split from Badulla [14]. The vast, thinly-settled Uva dry zone needed its own seat, far from the hill-country administration at Badulla.
 
-![Empty/2012/LK-pre1961:district/Map](../examples/outputs/Empty/2012/LK-pre1961:district/Map/Image.png)
+![Empty/2012/LK-pre1961:district/Map](../_outputs/Empty/2012/LK-pre1961:district/Map/Image.png)
 
 ### 1961: Ampara District
 
 Carved from southern Batticaloa [14]. A development district built around the Gal Oya irrigation and resettlement scheme, which drew in Sinhalese, Tamil and Muslim settlers from across the island.
 
-![Empty/2012/LK-pre1978:district/Map](../examples/outputs/Empty/2012/LK-pre1978:district/Map/Image.png)
+![Empty/2012/LK-pre1978:district/Map](../_outputs/Empty/2012/LK-pre1978:district/Map/Image.png)
 
 ### 1978: Gampaha & Mullaitivu District
 
@@ -84,19 +84,19 @@ Gampaha was split from Colombo due to population growth [15]. Greater Colombo's 
 
 Mullaitivu was assembled the same year from parts of Vavuniya, Jaffna and Mannar [16]. A sparse northern district in the far north.
 
-![Empty/2012/LK-pre1984:district/Map](../examples/outputs/Empty/2012/LK-pre1984:district/Map/Image.png)
+![Empty/2012/LK-pre1984:district/Map](../_outputs/Empty/2012/LK-pre1984:district/Map/Image.png)
 
 ### 1984: Kilinochchi District
 
 The last district, split from Jaffna [14]. No district has been created in over forty years. The total stands at **twenty-five**.
 
-![Empty/2012/LK:district/Map](../examples/outputs/Empty/2012/LK:district/Map/Image.png)
+![Empty/2012/LK:district/Map](../_outputs/Empty/2012/LK:district/Map/Image.png)
 
 ## Divisional Secretariats and Grama Niladhari Divisions
 
 Below the district, there are two further tiers: **340 Divisional Secretariat Divisions (DSDs)** and **14,000+ Grama Niladhari Divisions (GNDs)** [17].
 
-![Empty/2024/LK:dsd/Map](../examples/outputs/Empty/2024/LK:dsd/Map/Image.png)
+![Empty/2024/LK:dsd/Map](../_outputs/Empty/2024/LK:dsd/Map/Image.png)
 
 These differ from provinces and districts in how they change. Provincial and district boundaries move only through Parliament, constitutional amendment, or a Supreme Court ruling. DSD and GND boundaries are adjusted by gazette notification to keep units at a workable size.
 
@@ -104,7 +104,7 @@ The most common reason for change is growth in population or area. The GND is th
 
 There is significant variation in the size of GNDs: some urban GNDs have populations over 20,000, while some dry-zone divisions cover hundreds of square kilometres [19]. Recent changes have generally been splits of larger divisions, for example Colombo divisions subdivided into A/B units, and Attanagalla's GND count rising from 86 to 151 [20].
 
-![Empty/2024/LK:gnd/Map](../examples/outputs/Empty/2024/LK:gnd/Map/Image.png)
+![Empty/2024/LK:gnd/Map](../_outputs/Empty/2024/LK:gnd/Map/Image.png)
 
 ## Current Status
 
