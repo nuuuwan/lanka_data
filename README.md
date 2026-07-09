@@ -110,7 +110,7 @@ Help
 ```
 
 Source: [_output/Help/Output.json](_output/Help/Output.json)
- 
+
 ### 2) Selection
 
 #### 2.01) Empty/2024/LK:province/Map
@@ -1002,6 +1002,35 @@ Source: [_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Output.json](_o
 ![Religion+Ethnicity/2024/LK:district/QuadrantMap](_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png)
 
 Source: [_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png](_output/Religion+Ethnicity/2024/LK:district/QuadrantMap/Image.png)
+
+#### 5.03) Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese
+
+```bash
+Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese
+```
+
+```json
+{
+    "command_str": "Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese",
+    "result": {
+        "image_path": "_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese/Image.png",
+        "svg_path": "_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese/Image.svg"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0
+}
+```
+
+Source: [_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese/Output.json](_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese/Output.json)
+
+![Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese](_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese/Image.png)
+
+Source: [_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese/Image.png](_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese/Image.png)
 
 ### 6) Elections
 

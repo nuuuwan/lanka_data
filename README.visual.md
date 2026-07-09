@@ -275,7 +275,12 @@ The same rules bind every `How` visual, so the family stays coherent:
 - **`Histogram`** — the distribution of region totals, binned and drawn with the
   shared number-format and grid rules.
 - **`ScatterPlot`** — two measures per region as points, coloured by dominant
-  category from the same palette.
+  category from the same palette. With a combined `What` and a `+`-separated
+  category pair in the `How` (e.g.
+  `Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese`), it
+  plots the first category's share against the second, fits a regression line
+  and annotates the on-graph line and correlation stats (slope/intercept,
+  Pearson `r`, `R²`, `n`).
 - **`MapAnimation` / `CartogramAnimation` / `HexMapAnimation` /
   `BubbleMapAnimation`** — an interval `When` (e.g. `2001-2012-2024`) rendered as
   an animated GIF (and MP4 when `ffmpeg` is available) by sequencing one map

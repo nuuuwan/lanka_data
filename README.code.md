@@ -227,8 +227,11 @@ final output.
     treemap of the overall categorical composition across regions.
   - **`HistogramVisual`** (+ `HistogramData`) — the distribution of region
     totals binned into a histogram.
-  - **`ScatterPlotVisual`** (+ `ScatterPlotData`) — region population against
-    dominant-category share, coloured by dominant category.
+  - **`ScatterPlotVisual`** (+ `ScatterPlotData`, `ScatterPlotPairMixin`,
+    `ScatterPlotStats`) — region population against dominant-category share,
+    coloured by dominant category; with a combined `What` and a category pair
+    in the `How` it plots one category's share against the other with a fitted
+    regression line and correlation stats.
   - **`AnimationVisual`** (+ `AnimationEncoder`, `AnimationMP4Mixin`) — sequences
     one still-map frame per interval year into an animated GIF (and MP4 when
     `ffmpeg` is available); the `*Animation` bases map through

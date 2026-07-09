@@ -44,7 +44,7 @@ class HowRegistryMixin:
         "BubbleMap",
         "None",
     } | set(ANIMATION_BASE_TO_FRAME_BASE)
-    PAIR_CATEGORY_BASES = {"BivariateMap", "QuadrantMap"}
+    PAIR_CATEGORY_BASES = {"BivariateMap", "QuadrantMap", "ScatterPlot"}
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
         "Top": {"label": "Most common", "rank": 0},
