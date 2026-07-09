@@ -4,7 +4,6 @@ from lanka_data.visual.data_export.ChartSpecVisual import ChartSpecVisual
 from lanka_data.visual.data_export.CSVVisual import CSVVisual
 from lanka_data.visual.data_export.GeoJSONVisual import GeoJSONVisual
 from lanka_data.visual.data_export.ParquetVisual import ParquetVisual
-from lanka_data.visual.data_export.TableVisual import TableVisual
 from lanka_data.visual.data_export.TSVVisual import TSVVisual
 from lanka_data.visual.JSONVisual import JSONVisual
 from lanka_data.visual.plot_visual.BarChartVisual import BarChartVisual
@@ -32,7 +31,6 @@ class VisualFactory:
         "JSON": JSONVisual,
         "CSV": CSVVisual,
         "TSV": TSVVisual,
-        "Table": TableVisual,
         "GeoJSON": GeoJSONVisual,
         "Parquet": ParquetVisual,
         "ChartSpec": ChartSpecVisual,

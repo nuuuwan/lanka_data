@@ -9,5 +9,4 @@ from lanka_data.visual.data_export.DelimitedExportMixin import \
 from lanka_data.visual.data_export.FileExportMixin import FileExportMixin
 from lanka_data.visual.data_export.GeoJSONVisual import GeoJSONVisual
 from lanka_data.visual.data_export.ParquetVisual import ParquetVisual
-from lanka_data.visual.data_export.TableVisual import TableVisual
 from lanka_data.visual.data_export.TSVVisual import TSVVisual
