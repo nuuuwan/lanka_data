@@ -5,7 +5,7 @@ from lanka_data.api.command.Command import Command
 from lanka_data.api.command_errors.CommandError import CommandError
 from lanka_data.datasets.command.CommandRunner import CommandRunner
 from lanka_data.visual.plot.Plot import Plot
-from project.api.HandlerResponseMixin import HandlerResponseMixin
+from api.HandlerResponseMixin import HandlerResponseMixin
 
 OUTPUTS = (
     ("/Image.png", "image_path", "image/png"),
