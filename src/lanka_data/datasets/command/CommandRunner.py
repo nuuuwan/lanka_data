@@ -37,6 +37,8 @@ class CommandRunner:
             return result, sources, [], command_str
         command = Command.from_str(command_str)
         corrected, corrections = correct(command, policy)
+        # Cache key is the corrected cmd_id; the correction block stays out of
+        # the cache and is recomputed per request so shared entries are clean.
         result, sources = CommandRunner._run_or_cache(corrected)
         return result, sources, corrections, corrected.cmd_id
 

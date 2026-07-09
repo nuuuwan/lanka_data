@@ -1,13 +1,7 @@
-# lanka_data.correction
-#
-# Boundary epoch is deliberately NOT reconciled here.
-#
-# TODO(boundary-epoch): Do not add a rule that reconciles ``When`` against a
-# ``pre<year>`` boundary variant, and do not silently reproject an interval
-# that straddles a boundary redesign. Reprojection is a spatial operation with
-# real error, not a syntax correction; per the design doc (section 2.4),
-# collapsing observation time and boundary epoch "would misattribute counts to
-# the wrong geometry". Such conflicts must keep raising, never be corrected.
+# TODO(boundary-epoch): Do NOT reconcile When against a `pre<year>` boundary
+# variant or reproject an interval that straddles a boundary redesign here.
+# Reprojection is a spatial operation with real error, not a syntax
+# correction (design doc 2.4); such conflicts must keep raising.
 
 from lanka_data.correction.Correction import Correction
 from lanka_data.correction.CorrectionErrors import (

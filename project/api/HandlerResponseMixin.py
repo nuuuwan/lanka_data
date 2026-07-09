@@ -57,6 +57,10 @@ class HandlerResponseMixin:
         self.send_header("Content-Type", JSON_CONTENT_TYPE)
         self.send_header("Cache-Control", cache_control)
         for name, value in (extra_headers or {}).items():
-            self.send_header(name, value)
+            self.send_header(name, self._sanitize_header(value))
         self.end_headers()
         self.wfile.write(body)
+
+    @staticmethod
+    def _sanitize_header(value):
+        return "".join(c for c in str(value) if c not in "\r\n")

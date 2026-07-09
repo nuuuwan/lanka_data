@@ -51,6 +51,6 @@ def correct(command, policy=None, rules=None):
             corrected = _annotate(wc.to_command(), corrections)
             return corrected, corrections
     raise CorrectionLoopError(
-        "Correction did not reach a fixpoint within" f" {MAX_PASSES} passes",
+        f"Correction did not reach a fixpoint within {MAX_PASSES} passes",
         command.cmd_id,
     )
