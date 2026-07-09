@@ -2,6 +2,7 @@ from lanka_data.datasets.dataset.custom.RiversDataset import RiversDataset
 from lanka_data.datasets.region.RegionParserMixin import RegionParserMixin
 from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 from lanka_data.datasets.region.rivers.RiversData import RiversData
+from lanka_data.datasets.region.rivers.RiverNames import RiverNames
 
 SAMPLE_FEATURES = [
     {
@@ -57,6 +58,13 @@ class TestRiversData:
         assert region["region_type"] == "rivers"
         assert region["geometry"]["type"] == "MultiLineString"
 
+    def test_build_region_uses_named_label(self):
+        region = RiversData._build_region(
+            41399660, [[[80.0, 9.0], [80.1, 9.1]]]
+        )
+        assert region["region_id"] == "R-41399660"
+        assert region["region_name"] == "Mahaweli Ganga"
+
     def test_build_region_has_center(self):
         region = RiversData._build_region(111, [[[80.0, 9.0], [80.2, 9.4]]])
         assert region["center_lat"] == 9.2
@@ -93,6 +101,17 @@ class TestRiversDataset:
         dataset = RiversDataset([{"region_id": "R-111"}], "RiverLen")
         rows = dataset.get_source_data_table()
         assert rows == [{"region_id": "R-111", "values": {"RiverLen": 3.0}}]
+
+
+class TestRiverNames:
+    def test_known_id(self):
+        assert RiverNames.get_name(41407423) == "Kalu Ganga"
+
+    def test_known_id_str(self):
+        assert RiverNames.get_name("41403190") == "Deduru Oya"
+
+    def test_unknown_id_falls_back(self):
+        assert RiverNames.get_name(111) == "River 111"
 
 
 class TestRiversRegionType:
