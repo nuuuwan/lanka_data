@@ -54,7 +54,7 @@ class TestRiversParsing:
     def test_get_raw_regions_routes_to_rivers(self, monkeypatch):
         sentinel = [{"region_id": "LK-river-111"}]
         monkeypatch.setattr(
-            RiversData, "get_river_regions", classmethod(lambda cls: sentinel)
+            RiversData, "get_river_regions", staticmethod(lambda: sentinel)
         )
         regions, region_year = RegionParserMixin.get_raw_regions(
             ["LK"], "rivers", "Current"
