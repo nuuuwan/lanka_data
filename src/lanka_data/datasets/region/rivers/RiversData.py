@@ -49,6 +49,7 @@ class RiversData:
             "region_id": f"{RIVER_ID_PREFIX}{main_river_id}",
             "region_name": RiverNames.get_name(main_river_id),
             "region_type": "rivers",
+            "is_named": RiverNames.is_named(main_river_id),
             "center_lat": center_lat,
             "center_lng": center_lng,
             "geometry": {

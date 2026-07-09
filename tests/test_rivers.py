@@ -64,6 +64,11 @@ class TestRiversData:
         )
         assert region["region_id"] == "R-41399660"
         assert region["region_name"] == "Mahaweli Ganga"
+        assert region["is_named"] is True
+
+    def test_build_region_unnamed_flag(self):
+        region = RiversData._build_region(111, [[[80.0, 9.0], [80.1, 9.1]]])
+        assert region["is_named"] is False
 
     def test_build_region_has_center(self):
         region = RiversData._build_region(111, [[[80.0, 9.0], [80.2, 9.4]]])
@@ -112,6 +117,13 @@ class TestRiverNames:
 
     def test_unknown_id_falls_back(self):
         assert RiverNames.get_name(111) == "River 111"
+
+    def test_is_named_known(self):
+        assert RiverNames.is_named(41407423)
+        assert RiverNames.is_named("41403190")
+
+    def test_is_named_unknown(self):
+        assert not RiverNames.is_named(111)
 
 
 class TestRiversRegionType:

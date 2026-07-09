@@ -53,5 +53,10 @@ class LineLabel:
     @classmethod
     @timer
     def draw(cls, gdf_region, ax, region_count):
-        for _, row in gdf_region.iterrows():
-            cls._draw_one(row, ax, region_count)
+        rows = [
+            row
+            for _, row in gdf_region.iterrows()
+            if row.get("is_named", True)
+        ]
+        for row in rows:
+            cls._draw_one(row, ax, len(rows))
