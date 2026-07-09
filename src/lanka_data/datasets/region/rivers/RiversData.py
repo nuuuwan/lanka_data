@@ -68,18 +68,15 @@ class RiversData:
         ]
 
     @classmethod
-    def _accumulate_measures(cls, measures, feature):
+    def _set_outlet_measures(cls, measures, feature):
         properties = feature["properties"]
+        if properties["HYRIV_ID"] != properties["MAIN_RIV"]:
+            return
         region_id = f"{RIVER_ID_PREFIX}{properties['MAIN_RIV']}"
-        row = measures.setdefault(
-            region_id, {LABEL_RIVER_LEN: 0.0, LABEL_CATCHMENT: 0.0}
-        )
-        row[LABEL_RIVER_LEN] += properties.get("LENGTH_KM") or 0
-        row[LABEL_CATCHMENT] = max(
-            row[LABEL_CATCHMENT],
-            properties.get("UPLAND_SKM") or 0,
-            properties.get("CATCH_SKM") or 0,
-        )
+        measures[region_id] = {
+            LABEL_RIVER_LEN: properties.get("DIST_UP_KM") or 0,
+            LABEL_CATCHMENT: properties.get("UPLAND_SKM") or 0,
+        }
 
     @classmethod
     @cache
@@ -87,5 +84,5 @@ class RiversData:
         data = WWW(cls.URL).read_json()
         measures = {}
         for feature in data["features"]:
-            cls._accumulate_measures(measures, feature)
+            cls._set_outlet_measures(measures, feature)
         return measures
