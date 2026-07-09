@@ -2,6 +2,8 @@ from functools import cache
 
 from utils_future import WWW
 
+from lanka_data.datasets.region.rivers.RiverNames import RiverNames
+
 RIVER_ID_PREFIX = "R-"
 
 LABEL_RIVER_LEN = "RiverLen"
@@ -45,7 +47,7 @@ class RiversData:
         center_lat, center_lng = cls._centroid(lines)
         return {
             "region_id": f"{RIVER_ID_PREFIX}{main_river_id}",
-            "region_name": f"River {main_river_id}",
+            "region_name": RiverNames.get_name(main_river_id),
             "region_type": "rivers",
             "center_lat": center_lat,
             "center_lng": center_lng,
