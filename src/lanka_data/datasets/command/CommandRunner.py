@@ -3,10 +3,16 @@ import time
 from lanka_data.api.command.Command import Command
 from lanka_data.api.command.CommandCache import CommandCache
 from lanka_data.api.data.DataSource import DataSource
+from lanka_data.correction import correct
 from lanka_data.datasets.command.CommandHelp import CommandHelp
 from lanka_data.datasets.dataset.DatasetFactory import DatasetFactory
 from lanka_data.visual.VisualFactory import VisualFactory
 from utils_future.timer import timer
+
+HELP_SOURCE = DataSource(
+    name="Lanka Data",
+    url=("https://github.com/nuuuwan/lanka_data" "/blob/main/README.md"),
+)
 
 
 class CommandRunner:
@@ -14,38 +20,60 @@ class CommandRunner:
 
     @timer
     @staticmethod
-    def run(command_str: str):
+    def run(command_str: str, policy=None):
         t_start = time.perf_counter()
+        result, sources, corrections, effective = CommandRunner._resolve(
+            command_str, policy
+        )
+        elapsed = time.perf_counter() - t_start
+        return CommandRunner._payload(
+            effective, command_str, result, sources, corrections, elapsed
+        )
 
-        cached = CommandRunner._cache.get(command_str)
+    @staticmethod
+    def _resolve(command_str, policy):
+        if command_str == "Help":
+            result, sources = CommandRunner._run_help()
+            return result, sources, [], command_str
+        command = Command.from_str(command_str)
+        corrected, corrections = correct(command, policy)
+        result, sources = CommandRunner._run_or_cache(corrected)
+        return result, sources, corrections, corrected.cmd_id
+
+    @staticmethod
+    def _run_help():
+        cached = CommandRunner._cache.get("Help")
         if cached is not None:
-            result, sources = cached
-        elif command_str == "Help":
-            result = CommandHelp.get_help_result()
-            sources = [
-                DataSource(
-                    name="Lanka Data",
-                    url=(
-                        "https://github.com/nuuuwan/lanka_data"
-                        "/blob/main/README.md"
-                    ),
-                )
-            ]
-            CommandRunner._cache.set(command_str, (result, sources))
-        else:
-            command = Command.from_str(command_str)
-            datasets = DatasetFactory.list_from_command(command)
-            visual = VisualFactory.from_command_and_datasets(
-                command, datasets
-            )
-            result = visual.build()
-            sources = visual.get_sources()
-            CommandRunner._cache.set(command_str, (result, sources))
+            return cached
+        value = (CommandHelp.get_help_result(), [HELP_SOURCE])
+        CommandRunner._cache.set("Help", value)
+        return value
 
-        time_elapsed = time.perf_counter() - t_start
-        return dict(
-            command_str=command_str,
+    @staticmethod
+    def _run_or_cache(command):
+        key = command.cmd_id
+        cached = CommandRunner._cache.get(key)
+        if cached is not None:
+            return cached
+        datasets = DatasetFactory.list_from_command(command)
+        visual = VisualFactory.from_command_and_datasets(command, datasets)
+        value = (visual.build(), visual.get_sources())
+        CommandRunner._cache.set(key, value)
+        return value
+
+    @staticmethod
+    def _payload(effective, original, result, sources, corrections, elapsed):
+        payload = dict(
+            command_str=effective,
             result=result,
             sources=[source.__dict__ for source in sources],
-            query_time_ms=int(time_elapsed * 1000),
+            query_time_ms=int(elapsed * 1000),
+            is_corrected=bool(corrections),
+            corrections=[c.to_dict() for c in corrections],
         )
+        if corrections and effective != original:
+            payload["original_command_str"] = original
+            payload["correction_reason"] = "; ".join(
+                c.reason for c in corrections
+            )
+        return payload

@@ -26,7 +26,13 @@ class Header:
             HowFormatter(self.visual.command.how_cmd).format(),
         ]
         items = [item.strip() for item in items if item and item.strip()]
-        return self.TITLE_DELIM.join(items)
+        return self.TITLE_DELIM.join(items) + self._correction_suffix()
+
+    def _correction_suffix(self):
+        note = getattr(self.visual.command, "correction_note", None)
+        if not note:
+            return ""
+        return f"  ({note})"
 
     def _band_height(self, fig):
         line_pt = Style.FONT_SIZE_TITLE * self.LINE_HEIGHT

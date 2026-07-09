@@ -91,7 +91,22 @@ class handler(HandlerResponseMixin, BaseHTTPRequestHandler):
     def _serve_json(self, path):
         result = self._run_safely(lambda: self._build_json_result(path))
         if result is not None:
-            self._write_json(200, result, CACHE_CONTROL_JSON)
+            self._write_json(
+                200,
+                result,
+                CACHE_CONTROL_JSON,
+                self._correction_headers(result),
+            )
+
+    @staticmethod
+    def _correction_headers(result):
+        if not (result or {}).get("is_corrected"):
+            return {}
+        reason = result.get("correction_reason", "")
+        return {
+            "X-Lanka-Corrected": "true",
+            "Warning": f'299 - "{reason}"',
+        }
 
     def _public_url(self, path):
         host = self.headers.get("Host", "")
