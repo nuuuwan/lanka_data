@@ -292,7 +292,6 @@
         "ScatterPlot",
         "StackedBarChart",
         "TSV",
-        "Table",
         "TreeMap"
       ],
       "modifiers": [
@@ -306,7 +305,6 @@
         "Change",
         "Diversity",
         "DiversityPew",
-        "Segregation",
         "Top"
       ]
     },

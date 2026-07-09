@@ -92,7 +92,6 @@ Help
                 "Change",
                 "Diversity",
                 "DiversityPew",
-                "Segregation",
                 "Top"
             ]
         },

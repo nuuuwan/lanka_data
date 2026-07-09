@@ -176,7 +176,7 @@ colormap chosen by the *kind* of quantity:
   evenly spaced qualitative set.
 
 The choice of scale is driven by the `How` modifier (rank, percentage, `Change`,
-`Diversity`, `Segregation`), not hand-picked per chart, so the same kind of
+`Diversity`), not hand-picked per chart, so the same kind of
 question always gets the same kind of scale.
 
 ### 4.3 Surfaces (Principle 6)
@@ -281,10 +281,6 @@ The same rules bind every `How` visual, so the family stays coherent:
   plots the first category's share against the second, fits a regression line
   and annotates the on-graph line and correlation stats (slope/intercept,
   Pearson `r`, `R²`, `n`).
-- **`MapAnimation` / `CartogramAnimation` / `HexMapAnimation` /
-  `BubbleMapAnimation`** — an interval `When` (e.g. `2001-2012-2024`) rendered as
-  an animated GIF (and MP4 when `ffmpeg` is available) by sequencing one map
-  frame per year, reusing the matching still-map renderer for every frame.
 
 Whatever the type, the header, footer, font, margins, palette, and metadata
 style are identical. That identity — not any single chart — is the Lanka Data
