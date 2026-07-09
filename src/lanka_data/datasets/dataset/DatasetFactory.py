@@ -2,15 +2,20 @@ from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
 from lanka_data.api.dataset.CorrelationDataset import CorrelationDataset
 from lanka_data.api.dataset.DiffDataset import DiffDataset
 from lanka_data.api.dataset.SeriesDataset import SeriesDataset
-from lanka_data.datasets.dataset.custom.Census2001Dataset import \
-    Census2001Dataset
-from lanka_data.datasets.dataset.custom.Census2012Dataset import \
-    Census2012Dataset
-from lanka_data.datasets.dataset.custom.Census2024Dataset import \
-    Census2024Dataset
+from lanka_data.datasets.dataset.custom.Census2001Dataset import (
+    Census2001Dataset,
+)
+from lanka_data.datasets.dataset.custom.Census2012Dataset import (
+    Census2012Dataset,
+)
+from lanka_data.datasets.dataset.custom.Census2024Dataset import (
+    Census2024Dataset,
+)
 from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
-from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import \
-    ElectionSummaryDataset
+from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import (
+    ElectionSummaryDataset,
+)
+from lanka_data.datasets.dataset.custom.RiversDataset import RiversDataset
 from lanka_data.datasets.dataset.EmptyDataset import EmptyDataset
 from lanka_data.datasets.region.Regions import Regions
 from utils_future import Log
@@ -69,19 +74,34 @@ class DatasetFactory:
         return None
 
     @staticmethod
+    def _try_rivers_dataset(command, region_data_list):
+        if RiversDataset.supports(command.what_cmd, command.when_cmd):
+            return RiversDataset.from_label_and_region_data_list(
+                command.what_cmd, region_data_list
+            )
+        return None
+
+    @staticmethod
+    def _first_dataset(command, region_data_list):
+        builders = [
+            DatasetFactory._try_rivers_dataset,
+            DatasetFactory._try_census_dataset,
+            DatasetFactory._try_election_dataset,
+        ]
+        for builder in builders:
+            result = builder(command, region_data_list)
+            if result is not None:
+                return result
+        return None
+
+    @staticmethod
     def from_command(command):
         region_data_list = DatasetFactory.get_region_data_list(command)
 
         if command.what_cmd == "Empty":
             return EmptyDataset(region_data_list)
 
-        result = DatasetFactory._try_census_dataset(command, region_data_list)
-        if result is not None:
-            return DatasetFactory._with_region_filter(result, command)
-
-        result = DatasetFactory._try_election_dataset(
-            command, region_data_list
-        )
+        result = DatasetFactory._first_dataset(command, region_data_list)
         if result is not None:
             return DatasetFactory._with_region_filter(result, command)
 

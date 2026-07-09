@@ -4,6 +4,9 @@ from utils_future import WWW
 
 RIVER_ID_PREFIX = "R-"
 
+LABEL_RIVER_LEN = "RiverLen"
+LABEL_CATCHMENT = "Catchment"
+
 
 class RiversData:
     URL = (
@@ -18,6 +21,16 @@ class RiversData:
             return geometry["coordinates"]
         return [geometry["coordinates"]]
 
+    @staticmethod
+    def _centroid(lines):
+        lats, lngs = [], []
+        for line in lines:
+            for lng, lat in line:
+                lats.append(lat)
+                lngs.append(lng)
+        n = len(lats)
+        return sum(lats) / n, sum(lngs) / n
+
     @classmethod
     def _group_by_main_river(cls, features):
         main_river_to_lines = {}
@@ -27,12 +40,15 @@ class RiversData:
             lines.extend(cls._segment_lines(feature["geometry"]))
         return main_river_to_lines
 
-    @staticmethod
-    def _build_region(main_river_id, lines):
+    @classmethod
+    def _build_region(cls, main_river_id, lines):
+        center_lat, center_lng = cls._centroid(lines)
         return {
             "region_id": f"{RIVER_ID_PREFIX}{main_river_id}",
             "region_name": f"River {main_river_id}",
             "region_type": "rivers",
+            "center_lat": center_lat,
+            "center_lng": center_lng,
             "geometry": {
                 "type": "MultiLineString",
                 "coordinates": lines,
@@ -48,3 +64,26 @@ class RiversData:
             cls._build_region(main_river_id, lines)
             for main_river_id, lines in main_river_to_lines.items()
         ]
+
+    @classmethod
+    def _accumulate_measures(cls, measures, feature):
+        properties = feature["properties"]
+        region_id = f"{RIVER_ID_PREFIX}{properties['MAIN_RIV']}"
+        row = measures.setdefault(
+            region_id, {LABEL_RIVER_LEN: 0.0, LABEL_CATCHMENT: 0.0}
+        )
+        row[LABEL_RIVER_LEN] += properties.get("LENGTH_KM") or 0
+        row[LABEL_CATCHMENT] = max(
+            row[LABEL_CATCHMENT],
+            properties.get("UPLAND_SKM") or 0,
+            properties.get("CATCH_SKM") or 0,
+        )
+
+    @classmethod
+    @cache
+    def get_river_measures(cls):
+        data = WWW(cls.URL).read_json()
+        measures = {}
+        for feature in data["features"]:
+            cls._accumulate_measures(measures, feature)
+        return measures
