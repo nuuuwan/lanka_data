@@ -11,7 +11,6 @@ See [README.philosophy.md](README.philosophy.md) and [README.code.md](README.cod
 - [Census of Population and Housing 2012](https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf)
 - [Census of Population and Housing 2024](https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024)
 - [Election Commission of Sri lanka](https://www.elections.gov.lk)
-- [HydroRIVERS (via lk_rivers)](https://github.com/nuuuwan/lk_rivers)
 - [Lanka Data](https://github.com/nuuuwan/lanka_data/blob/main/README.md)
 - [Survey Department of Sri Lanka](https://survey.gov.lk/)
 
@@ -80,9 +79,7 @@ Help
             ],
             "Communication": [
                 "2012"
-                ... // 284 lines ...
-                "3rd",
-                "3rdPct",
+                ... // 286 lines ...
                 "Bottom",
                 "Change",
                 "Diversity",
@@ -99,7 +96,9 @@ Help
             "url": "https://github.com/nuuuwan/lanka_data/blob/main/README.md"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -125,7 +124,9 @@ Empty/2024/LK:province/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -153,7 +154,9 @@ Empty/2024/LK-1,LK-2,LK-3,LK-9,LK-8/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -181,7 +184,9 @@ Empty/2024/LK-5...LK-8/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -209,7 +214,9 @@ Empty/2024/LK-1127025@20/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -219,123 +226,9 @@ Source: [_output/Empty/2024/LK-1127025@20/Map/Output.json](_output/Empty/2024/LK
 
 Source: [_output/Empty/2024/LK-1127025@20/Map/Image.png](_output/Empty/2024/LK-1127025@20/Map/Image.png)
 
-### 3) Rivers
+### 3) Religion
 
-#### 3.01) Empty/2026/LK:rivers/Map
-
-```bash
-Empty/2026/LK:rivers/Map
-```
-
-```json
-{
-    "command_str": "Empty/2026/LK:rivers/Map",
-    "result": {
-        "image_path": "_output/Empty/2026/LK:rivers/Map/Image.png"
-    },
-    "sources": [
-        {
-            "name": "Survey Department of Sri Lanka",
-            "url": "https://survey.gov.lk/"
-        }
-    ],
-    "query_time_ms": 0
-}
-```
-
-Source: [_output/Empty/2026/LK:rivers/Map/Output.json](_output/Empty/2026/LK:rivers/Map/Output.json)
-
-![Empty/2026/LK:rivers/Map](_output/Empty/2026/LK:rivers/Map/Image.png)
-
-Source: [_output/Empty/2026/LK:rivers/Map/Image.png](_output/Empty/2026/LK:rivers/Map/Image.png)
-
-#### 3.02) Empty/2026/R-41399660/Map
-
-```bash
-Empty/2026/R-41399660/Map
-```
-
-```json
-{
-    "command_str": "Empty/2026/R-41399660/Map",
-    "result": {
-        "image_path": "_output/Empty/2026/R-41399660/Map/Image.png"
-    },
-    "sources": [
-        {
-            "name": "Survey Department of Sri Lanka",
-            "url": "https://survey.gov.lk/"
-        }
-    ],
-    "query_time_ms": 0
-}
-```
-
-Source: [_output/Empty/2026/R-41399660/Map/Output.json](_output/Empty/2026/R-41399660/Map/Output.json)
-
-![Empty/2026/R-41399660/Map](_output/Empty/2026/R-41399660/Map/Image.png)
-
-Source: [_output/Empty/2026/R-41399660/Map/Image.png](_output/Empty/2026/R-41399660/Map/Image.png)
-
-#### 3.03) RiverLen/2026/LK:rivers/BarChart
-
-```bash
-RiverLen/2026/LK:rivers/BarChart
-```
-
-```json
-{
-    "command_str": "RiverLen/2026/LK:rivers/BarChart",
-    "result": {
-        "image_path": "_output/RiverLen/2026/LK:rivers/BarChart/Image.png"
-    },
-    "sources": [
-        {
-            "name": "HydroRIVERS (via lk_rivers)",
-            "url": "https://github.com/nuuuwan/lk_rivers"
-        }
-    ],
-    "query_time_ms": 0
-}
-```
-
-Source: [_output/RiverLen/2026/LK:rivers/BarChart/Output.json](_output/RiverLen/2026/LK:rivers/BarChart/Output.json)
-
-![RiverLen/2026/LK:rivers/BarChart](_output/RiverLen/2026/LK:rivers/BarChart/Image.png)
-
-Source: [_output/RiverLen/2026/LK:rivers/BarChart/Image.png](_output/RiverLen/2026/LK:rivers/BarChart/Image.png)
-
-#### 3.04) Catchment/2026/LK:rivers/BarChart
-
-```bash
-Catchment/2026/LK:rivers/BarChart
-```
-
-```json
-{
-    "command_str": "Catchment/2026/LK:rivers/BarChart",
-    "result": {
-        "image_path": "_output/Catchment/2026/LK:rivers/BarChart/Image.png"
-    },
-    "sources": [
-        {
-            "name": "HydroRIVERS (via lk_rivers)",
-            "url": "https://github.com/nuuuwan/lk_rivers"
-        }
-    ],
-    "query_time_ms": 0
-}
-```
-
-Source: [_output/Catchment/2026/LK:rivers/BarChart/Output.json](_output/Catchment/2026/LK:rivers/BarChart/Output.json)
-
-![Catchment/2026/LK:rivers/BarChart](_output/Catchment/2026/LK:rivers/BarChart/Image.png)
-
-Source: [_output/Catchment/2026/LK:rivers/BarChart/Image.png](_output/Catchment/2026/LK:rivers/BarChart/Image.png)
-
-### 4) Religion
-
-#### 4.01) Religion/2012-2024/LK:district/Map:1st
+#### 3.01) Religion/2012-2024/LK:district/Map:1st
 
 ```bash
 Religion/2012-2024/LK:district/Map:1st
@@ -357,7 +250,9 @@ Religion/2012-2024/LK:district/Map:1st
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -367,7 +262,7 @@ Source: [_output/Religion/2012-2024/LK:district/Map:1st/Output.json](_output/Rel
 
 Source: [_output/Religion/2012-2024/LK:district/Map:1st/Image.png](_output/Religion/2012-2024/LK:district/Map:1st/Image.png)
 
-#### 4.02) Religion/2012-2024/LK:district/Map:2nd
+#### 3.02) Religion/2012-2024/LK:district/Map:2nd
 
 ```bash
 Religion/2012-2024/LK:district/Map:2nd
@@ -389,7 +284,9 @@ Religion/2012-2024/LK:district/Map:2nd
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -399,7 +296,7 @@ Source: [_output/Religion/2012-2024/LK:district/Map:2nd/Output.json](_output/Rel
 
 Source: [_output/Religion/2012-2024/LK:district/Map:2nd/Image.png](_output/Religion/2012-2024/LK:district/Map:2nd/Image.png)
 
-#### 4.03) Religion/2012-2024/LK:district/Map:3rd
+#### 3.03) Religion/2012-2024/LK:district/Map:3rd
 
 ```bash
 Religion/2012-2024/LK:district/Map:3rd
@@ -421,7 +318,9 @@ Religion/2012-2024/LK:district/Map:3rd
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -431,7 +330,7 @@ Source: [_output/Religion/2012-2024/LK:district/Map:3rd/Output.json](_output/Rel
 
 Source: [_output/Religion/2012-2024/LK:district/Map:3rd/Image.png](_output/Religion/2012-2024/LK:district/Map:3rd/Image.png)
 
-#### 4.04) Religion/2012-2024/LK:district/Map:Change
+#### 3.04) Religion/2012-2024/LK:district/Map:Change
 
 ```bash
 Religion/2012-2024/LK:district/Map:Change
@@ -453,7 +352,9 @@ Religion/2012-2024/LK:district/Map:Change
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -463,7 +364,7 @@ Source: [_output/Religion/2012-2024/LK:district/Map:Change/Output.json](_output/
 
 Source: [_output/Religion/2012-2024/LK:district/Map:Change/Image.png](_output/Religion/2012-2024/LK:district/Map:Change/Image.png)
 
-#### 4.05) Religion/2012-2024/LK-42:district/BarChart
+#### 3.05) Religion/2012-2024/LK-42:district/BarChart
 
 ```bash
 Religion/2012-2024/LK-42:district/BarChart
@@ -471,9 +372,9 @@ Religion/2012-2024/LK-42:district/BarChart
 
 ```json
 {
-    "command_str": "Religion/2012-2024/LK-42:district/BarChart",
+    "command_str": "Religion/2012-2024/LK-42/BarChart",
     "result": {
-        "image_path": "_output/Religion/2012-2024/LK-42:district/BarChart/Image.png"
+        "image_path": "_output/Religion/2012-2024/LK-42/BarChart/Image.png"
     },
     "sources": [
         {
@@ -485,17 +386,30 @@ Religion/2012-2024/LK-42:district/BarChart
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": true,
+    "corrections": [
+        {
+            "field": "Where",
+            "rule": "resolve_self_type",
+            "from": "LK-42:district",
+            "to": "LK-42",
+            "severity": "lossless",
+            "reason": "LK-42 is already a district; dropped redundant :district."
+        }
+    ],
+    "original_command_str": "Religion/2012-2024/LK-42:district/BarChart",
+    "correction_reason": "LK-42 is already a district; dropped redundant :district."
 }
 ```
 
 Source: [_output/Religion/2012-2024/LK-42:district/BarChart/Output.json](_output/Religion/2012-2024/LK-42:district/BarChart/Output.json)
 
-![Religion/2012-2024/LK-42:district/BarChart](_output/Religion/2012-2024/LK-42:district/BarChart/Image.png)
+![Religion/2012-2024/LK-42:district/BarChart](_output/Religion/2012-2024/LK-42/BarChart/Image.png)
 
-Source: [_output/Religion/2012-2024/LK-42:district/BarChart/Image.png](_output/Religion/2012-2024/LK-42:district/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-42/BarChart/Image.png](_output/Religion/2012-2024/LK-42/BarChart/Image.png)
 
-#### 4.06) Religion/2012-2024/LK-43:dsd/BarChart
+#### 3.06) Religion/2012-2024/LK-43:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-43:dsd/BarChart
@@ -517,7 +431,9 @@ Religion/2012-2024/LK-43:dsd/BarChart
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -527,7 +443,7 @@ Source: [_output/Religion/2012-2024/LK-43:dsd/BarChart/Output.json](_output/Reli
 
 Source: [_output/Religion/2012-2024/LK-43:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-43:dsd/BarChart/Image.png)
 
-#### 4.07) Religion/2012-2024/LK-53:district/BarChart
+#### 3.07) Religion/2012-2024/LK-53:district/BarChart
 
 ```bash
 Religion/2012-2024/LK-53:district/BarChart
@@ -535,9 +451,9 @@ Religion/2012-2024/LK-53:district/BarChart
 
 ```json
 {
-    "command_str": "Religion/2012-2024/LK-53:district/BarChart",
+    "command_str": "Religion/2012-2024/LK-53/BarChart",
     "result": {
-        "image_path": "_output/Religion/2012-2024/LK-53:district/BarChart/Image.png"
+        "image_path": "_output/Religion/2012-2024/LK-53/BarChart/Image.png"
     },
     "sources": [
         {
@@ -549,17 +465,30 @@ Religion/2012-2024/LK-53:district/BarChart
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": true,
+    "corrections": [
+        {
+            "field": "Where",
+            "rule": "resolve_self_type",
+            "from": "LK-53:district",
+            "to": "LK-53",
+            "severity": "lossless",
+            "reason": "LK-53 is already a district; dropped redundant :district."
+        }
+    ],
+    "original_command_str": "Religion/2012-2024/LK-53:district/BarChart",
+    "correction_reason": "LK-53 is already a district; dropped redundant :district."
 }
 ```
 
 Source: [_output/Religion/2012-2024/LK-53:district/BarChart/Output.json](_output/Religion/2012-2024/LK-53:district/BarChart/Output.json)
 
-![Religion/2012-2024/LK-53:district/BarChart](_output/Religion/2012-2024/LK-53:district/BarChart/Image.png)
+![Religion/2012-2024/LK-53:district/BarChart](_output/Religion/2012-2024/LK-53/BarChart/Image.png)
 
-Source: [_output/Religion/2012-2024/LK-53:district/BarChart/Image.png](_output/Religion/2012-2024/LK-53:district/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-53/BarChart/Image.png](_output/Religion/2012-2024/LK-53/BarChart/Image.png)
 
-#### 4.08) Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
+#### 3.08) Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
 
 ```bash
 Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
@@ -581,7 +510,9 @@ Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -591,7 +522,7 @@ Source: [_output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Output.j
 
 Source: [_output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png](_output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png)
 
-#### 4.09) Religion/2012-2024/LK:district/BarChart
+#### 3.09) Religion/2012-2024/LK:district/BarChart
 
 ```bash
 Religion/2012-2024/LK:district/BarChart
@@ -613,7 +544,9 @@ Religion/2012-2024/LK:district/BarChart
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -623,7 +556,7 @@ Source: [_output/Religion/2012-2024/LK:district/BarChart/Output.json](_output/Re
 
 Source: [_output/Religion/2012-2024/LK:district/BarChart/Image.png](_output/Religion/2012-2024/LK:district/BarChart/Image.png)
 
-#### 4.10) Religion/2012-2024/LK-11:dsd/BarChart
+#### 3.10) Religion/2012-2024/LK-11:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-11:dsd/BarChart
@@ -645,7 +578,9 @@ Religion/2012-2024/LK-11:dsd/BarChart
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -655,7 +590,7 @@ Source: [_output/Religion/2012-2024/LK-11:dsd/BarChart/Output.json](_output/Reli
 
 Source: [_output/Religion/2012-2024/LK-11:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-11:dsd/BarChart/Image.png)
 
-#### 4.11) Religion/2012-2024/LK-11:lg/BarChart
+#### 3.11) Religion/2012-2024/LK-11:lg/BarChart
 
 ```bash
 Religion/2012-2024/LK-11:lg/BarChart
@@ -677,7 +612,9 @@ Religion/2012-2024/LK-11:lg/BarChart
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -687,7 +624,7 @@ Source: [_output/Religion/2012-2024/LK-11:lg/BarChart/Output.json](_output/Relig
 
 Source: [_output/Religion/2012-2024/LK-11:lg/BarChart/Image.png](_output/Religion/2012-2024/LK-11:lg/BarChart/Image.png)
 
-#### 4.12) Religion/2012-2024/LK-12:dsd/BarChart
+#### 3.12) Religion/2012-2024/LK-12:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-12:dsd/BarChart
@@ -709,7 +646,9 @@ Religion/2012-2024/LK-12:dsd/BarChart
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -719,7 +658,7 @@ Source: [_output/Religion/2012-2024/LK-12:dsd/BarChart/Output.json](_output/Reli
 
 Source: [_output/Religion/2012-2024/LK-12:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-12:dsd/BarChart/Image.png)
 
-#### 4.13) Religion/2012-2024/LK:district/Map:DiversityPew
+#### 3.13) Religion/2012-2024/LK:district/Map:DiversityPew
 
 ```bash
 Religion/2012-2024/LK:district/Map:DiversityPew
@@ -741,7 +680,9 @@ Religion/2012-2024/LK:district/Map:DiversityPew
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -751,7 +692,7 @@ Source: [_output/Religion/2012-2024/LK:district/Map:DiversityPew/Output.json](_o
 
 Source: [_output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png](_output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
 
-#### 4.14) Religion/2012-2024/LK:district/Map:2ndPct
+#### 3.14) Religion/2012-2024/LK:district/Map:2ndPct
 
 ```bash
 Religion/2012-2024/LK:district/Map:2ndPct
@@ -773,7 +714,9 @@ Religion/2012-2024/LK:district/Map:2ndPct
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -783,7 +726,7 @@ Source: [_output/Religion/2012-2024/LK:district/Map:2ndPct/Output.json](_output/
 
 Source: [_output/Religion/2012-2024/LK:district/Map:2ndPct/Image.png](_output/Religion/2012-2024/LK:district/Map:2ndPct/Image.png)
 
-#### 4.15) Religion/2012-2024/LK:district/Map:3rdPct
+#### 3.15) Religion/2012-2024/LK:district/Map:3rdPct
 
 ```bash
 Religion/2012-2024/LK:district/Map:3rdPct
@@ -805,7 +748,9 @@ Religion/2012-2024/LK:district/Map:3rdPct
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -815,7 +760,7 @@ Source: [_output/Religion/2012-2024/LK:district/Map:3rdPct/Output.json](_output/
 
 Source: [_output/Religion/2012-2024/LK:district/Map:3rdPct/Image.png](_output/Religion/2012-2024/LK:district/Map:3rdPct/Image.png)
 
-#### 4.16) Religion/2012-2024/LK-21:dsd/BarChart
+#### 3.16) Religion/2012-2024/LK-21:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-21:dsd/BarChart
@@ -837,7 +782,9 @@ Religion/2012-2024/LK-21:dsd/BarChart
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -847,7 +794,7 @@ Source: [_output/Religion/2012-2024/LK-21:dsd/BarChart/Output.json](_output/Reli
 
 Source: [_output/Religion/2012-2024/LK-21:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-21:dsd/BarChart/Image.png)
 
-#### 4.17) Religion/2012-2024/LK-31-pre2019:dsd/BarChart
+#### 3.17) Religion/2012-2024/LK-31-pre2019:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-31-pre2019:dsd/BarChart
@@ -869,7 +816,9 @@ Religion/2012-2024/LK-31-pre2019:dsd/BarChart
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -879,7 +828,7 @@ Source: [_output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Output.json](_out
 
 Source: [_output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png)
 
-#### 4.18) Religion/2012-2024/LK-11:district/BarChart
+#### 3.18) Religion/2012-2024/LK-11:district/BarChart
 
 ```bash
 Religion/2012-2024/LK-11:district/BarChart
@@ -887,9 +836,9 @@ Religion/2012-2024/LK-11:district/BarChart
 
 ```json
 {
-    "command_str": "Religion/2012-2024/LK-11:district/BarChart",
+    "command_str": "Religion/2012-2024/LK-11/BarChart",
     "result": {
-        "image_path": "_output/Religion/2012-2024/LK-11:district/BarChart/Image.png"
+        "image_path": "_output/Religion/2012-2024/LK-11/BarChart/Image.png"
     },
     "sources": [
         {
@@ -901,19 +850,32 @@ Religion/2012-2024/LK-11:district/BarChart
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": true,
+    "corrections": [
+        {
+            "field": "Where",
+            "rule": "resolve_self_type",
+            "from": "LK-11:district",
+            "to": "LK-11",
+            "severity": "lossless",
+            "reason": "LK-11 is already a district; dropped redundant :district."
+        }
+    ],
+    "original_command_str": "Religion/2012-2024/LK-11:district/BarChart",
+    "correction_reason": "LK-11 is already a district; dropped redundant :district."
 }
 ```
 
 Source: [_output/Religion/2012-2024/LK-11:district/BarChart/Output.json](_output/Religion/2012-2024/LK-11:district/BarChart/Output.json)
 
-![Religion/2012-2024/LK-11:district/BarChart](_output/Religion/2012-2024/LK-11:district/BarChart/Image.png)
+![Religion/2012-2024/LK-11:district/BarChart](_output/Religion/2012-2024/LK-11/BarChart/Image.png)
 
-Source: [_output/Religion/2012-2024/LK-11:district/BarChart/Image.png](_output/Religion/2012-2024/LK-11:district/BarChart/Image.png)
+Source: [_output/Religion/2012-2024/LK-11/BarChart/Image.png](_output/Religion/2012-2024/LK-11/BarChart/Image.png)
 
-### 5) Bivariate
+### 4) Bivariate
 
-#### 5.01) Religion+Ethnicity/2024/LK:district/BivariateMap
+#### 4.01) Religion+Ethnicity/2024/LK:district/BivariateMap
 
 ```bash
 Religion+Ethnicity/2024/LK:district/BivariateMap
@@ -931,7 +893,9 @@ Religion+Ethnicity/2024/LK:district/BivariateMap
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -941,7 +905,7 @@ Source: [_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Output.json](_
 
 Source: [_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Image.png](_output/Religion+Ethnicity/2024/LK:district/BivariateMap/Image.png)
 
-#### 5.02) Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese
+#### 4.02) Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese
 
 ```bash
 Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese
@@ -959,7 +923,9 @@ Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -969,7 +935,7 @@ Source: [_output/Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinh
 
 Source: [_output/Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese/Image.png](_output/Religion+Ethnicity/2024/LK:district/QuadrantChart:Buddhist+Sinhalese/Image.png)
 
-#### 5.03) Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese
+#### 4.03) Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese
 
 ```bash
 Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese
@@ -987,7 +953,9 @@ Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -997,9 +965,9 @@ Source: [_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhal
 
 Source: [_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese/Image.png](_output/Religion+Ethnicity/2024/LK:district/ScatterPlot:Buddhist+Sinhalese/Image.png)
 
-### 6) Elections
+### 5) Elections
 
-#### 6.01) Parliamentary/2024/LK/JSON
+#### 5.01) Parliamentary/2024/LK/JSON
 
 ```bash
 Parliamentary/2024/LK/JSON
@@ -1026,9 +994,7 @@ Parliamentary/2024/LK/JSON
                 "SB": 178006,
                 "SLMC": 87038,
                 "UDV": 83488,
-                ... // 648 lines ...
-                "IND34-13": 0.0,
-                "IND26-12": 0.0,
+                ... // 650 lines ...
                 "IND05-13": 0.0,
                 "IND07-13": 0.0,
                 "IND08-14": 0.0,
@@ -1045,13 +1011,15 @@ Parliamentary/2024/LK/JSON
             "url": "https://www.elections.gov.lk"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
 Source: [_output/Parliamentary/2024/LK/JSON/Output.json](_output/Parliamentary/2024/LK/JSON/Output.json)
 
-#### 6.02) Presidential/2015/LK-11:pd/Map
+#### 5.02) Presidential/2015/LK-11:pd/Map
 
 ```bash
 Presidential/2015/LK-11:pd/Map
@@ -1069,7 +1037,9 @@ Presidential/2015/LK-11:pd/Map
             "url": "https://www.elections.gov.lk"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1079,7 +1049,7 @@ Source: [_output/Presidential/2015/LK-11:pd/Map/Output.json](_output/Presidentia
 
 Source: [_output/Presidential/2015/LK-11:pd/Map/Image.png](_output/Presidential/2015/LK-11:pd/Map/Image.png)
 
-#### 6.03) Local/2025/LK:district/Map
+#### 5.03) Local/2025/LK:district/Map
 
 ```bash
 Local/2025/LK:district/Map
@@ -1097,7 +1067,9 @@ Local/2025/LK:district/Map
             "url": "https://www.elections.gov.lk"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1107,9 +1079,9 @@ Source: [_output/Local/2025/LK:district/Map/Output.json](_output/Local/2025/LK:d
 
 Source: [_output/Local/2025/LK:district/Map/Image.png](_output/Local/2025/LK:district/Map/Image.png)
 
-### 7) History
+### 6) History
 
-#### 7.01) Empty/2012/LK-pre1845:province/Map
+#### 6.01) Empty/2012/LK-pre1845:province/Map
 
 ```bash
 Empty/2012/LK-pre1845:province/Map
@@ -1127,7 +1099,9 @@ Empty/2012/LK-pre1845:province/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1137,7 +1111,7 @@ Source: [_output/Empty/2012/LK-pre1845:province/Map/Output.json](_output/Empty/2
 
 Source: [_output/Empty/2012/LK-pre1845:province/Map/Image.png](_output/Empty/2012/LK-pre1845:province/Map/Image.png)
 
-#### 7.02) Empty/2012/LK-pre1873:province/Map
+#### 6.02) Empty/2012/LK-pre1873:province/Map
 
 ```bash
 Empty/2012/LK-pre1873:province/Map
@@ -1155,7 +1129,9 @@ Empty/2012/LK-pre1873:province/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1165,7 +1141,7 @@ Source: [_output/Empty/2012/LK-pre1873:province/Map/Output.json](_output/Empty/2
 
 Source: [_output/Empty/2012/LK-pre1873:province/Map/Image.png](_output/Empty/2012/LK-pre1873:province/Map/Image.png)
 
-#### 7.03) Empty/2012/LK-pre1886:province/Map
+#### 6.03) Empty/2012/LK-pre1886:province/Map
 
 ```bash
 Empty/2012/LK-pre1886:province/Map
@@ -1183,7 +1159,9 @@ Empty/2012/LK-pre1886:province/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1193,7 +1171,7 @@ Source: [_output/Empty/2012/LK-pre1886:province/Map/Output.json](_output/Empty/2
 
 Source: [_output/Empty/2012/LK-pre1886:province/Map/Image.png](_output/Empty/2012/LK-pre1886:province/Map/Image.png)
 
-#### 7.04) Empty/2012/LK-pre1889:province/Map
+#### 6.04) Empty/2012/LK-pre1889:province/Map
 
 ```bash
 Empty/2012/LK-pre1889:province/Map
@@ -1211,7 +1189,9 @@ Empty/2012/LK-pre1889:province/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1221,7 +1201,7 @@ Source: [_output/Empty/2012/LK-pre1889:province/Map/Output.json](_output/Empty/2
 
 Source: [_output/Empty/2012/LK-pre1889:province/Map/Image.png](_output/Empty/2012/LK-pre1889:province/Map/Image.png)
 
-#### 7.05) Empty/2012/LK:province/Map
+#### 6.05) Empty/2012/LK:province/Map
 
 ```bash
 Empty/2012/LK:province/Map
@@ -1239,7 +1219,9 @@ Empty/2012/LK:province/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1249,7 +1231,7 @@ Source: [_output/Empty/2012/LK:province/Map/Output.json](_output/Empty/2012/LK:p
 
 Source: [_output/Empty/2012/LK:province/Map/Image.png](_output/Empty/2012/LK:province/Map/Image.png)
 
-#### 7.06) Empty/2012/LK-pre1959:district/Map
+#### 6.06) Empty/2012/LK-pre1959:district/Map
 
 ```bash
 Empty/2012/LK-pre1959:district/Map
@@ -1267,7 +1249,9 @@ Empty/2012/LK-pre1959:district/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1277,7 +1261,7 @@ Source: [_output/Empty/2012/LK-pre1959:district/Map/Output.json](_output/Empty/2
 
 Source: [_output/Empty/2012/LK-pre1959:district/Map/Image.png](_output/Empty/2012/LK-pre1959:district/Map/Image.png)
 
-#### 7.07) Empty/2012/LK-pre1961:district/Map
+#### 6.07) Empty/2012/LK-pre1961:district/Map
 
 ```bash
 Empty/2012/LK-pre1961:district/Map
@@ -1295,7 +1279,9 @@ Empty/2012/LK-pre1961:district/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1305,7 +1291,7 @@ Source: [_output/Empty/2012/LK-pre1961:district/Map/Output.json](_output/Empty/2
 
 Source: [_output/Empty/2012/LK-pre1961:district/Map/Image.png](_output/Empty/2012/LK-pre1961:district/Map/Image.png)
 
-#### 7.08) Empty/2012/LK-pre1978:district/Map
+#### 6.08) Empty/2012/LK-pre1978:district/Map
 
 ```bash
 Empty/2012/LK-pre1978:district/Map
@@ -1323,7 +1309,9 @@ Empty/2012/LK-pre1978:district/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1333,7 +1321,7 @@ Source: [_output/Empty/2012/LK-pre1978:district/Map/Output.json](_output/Empty/2
 
 Source: [_output/Empty/2012/LK-pre1978:district/Map/Image.png](_output/Empty/2012/LK-pre1978:district/Map/Image.png)
 
-#### 7.09) Empty/2012/LK-pre1984:district/Map
+#### 6.09) Empty/2012/LK-pre1984:district/Map
 
 ```bash
 Empty/2012/LK-pre1984:district/Map
@@ -1351,7 +1339,9 @@ Empty/2012/LK-pre1984:district/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1361,7 +1351,7 @@ Source: [_output/Empty/2012/LK-pre1984:district/Map/Output.json](_output/Empty/2
 
 Source: [_output/Empty/2012/LK-pre1984:district/Map/Image.png](_output/Empty/2012/LK-pre1984:district/Map/Image.png)
 
-#### 7.10) Empty/2012/LK:district/Map
+#### 6.10) Empty/2012/LK:district/Map
 
 ```bash
 Empty/2012/LK:district/Map
@@ -1379,7 +1369,9 @@ Empty/2012/LK:district/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1389,7 +1381,7 @@ Source: [_output/Empty/2012/LK:district/Map/Output.json](_output/Empty/2012/LK:d
 
 Source: [_output/Empty/2012/LK:district/Map/Image.png](_output/Empty/2012/LK:district/Map/Image.png)
 
-#### 7.11) Ethnicity/2012/LK-23-pre2019:dsd/Map
+#### 6.11) Ethnicity/2012/LK-23-pre2019:dsd/Map
 
 ```bash
 Ethnicity/2012/LK-23-pre2019:dsd/Map
@@ -1407,7 +1399,9 @@ Ethnicity/2012/LK-23-pre2019:dsd/Map
             "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1417,7 +1411,7 @@ Source: [_output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Output.json](_output/Ethni
 
 Source: [_output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png](_output/Ethnicity/2012/LK-23-pre2019:dsd/Map/Image.png)
 
-#### 7.12) Ethnicity/2024/LK-23-pre2019:dsd/Map
+#### 6.12) Ethnicity/2024/LK-23-pre2019:dsd/Map
 
 ```bash
 Ethnicity/2024/LK-23-pre2019:dsd/Map
@@ -1435,7 +1429,9 @@ Ethnicity/2024/LK-23-pre2019:dsd/Map
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1445,7 +1441,7 @@ Source: [_output/Ethnicity/2024/LK-23-pre2019:dsd/Map/Output.json](_output/Ethni
 
 Source: [_output/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png](_output/Ethnicity/2024/LK-23-pre2019:dsd/Map/Image.png)
 
-#### 7.13) Ethnicity/2024/LK-23:dsd/Map
+#### 6.13) Ethnicity/2024/LK-23:dsd/Map
 
 ```bash
 Ethnicity/2024/LK-23:dsd/Map
@@ -1463,7 +1459,9 @@ Ethnicity/2024/LK-23:dsd/Map
             "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1473,7 +1471,7 @@ Source: [_output/Ethnicity/2024/LK-23:dsd/Map/Output.json](_output/Ethnicity/202
 
 Source: [_output/Ethnicity/2024/LK-23:dsd/Map/Image.png](_output/Ethnicity/2024/LK-23:dsd/Map/Image.png)
 
-#### 7.14) Empty/2024/LK:dsd/Map
+#### 6.14) Empty/2024/LK:dsd/Map
 
 ```bash
 Empty/2024/LK:dsd/Map
@@ -1491,7 +1489,9 @@ Empty/2024/LK:dsd/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
@@ -1501,7 +1501,7 @@ Source: [_output/Empty/2024/LK:dsd/Map/Output.json](_output/Empty/2024/LK:dsd/Ma
 
 Source: [_output/Empty/2024/LK:dsd/Map/Image.png](_output/Empty/2024/LK:dsd/Map/Image.png)
 
-#### 7.15) Empty/2024/LK:gnd/Map
+#### 6.15) Empty/2024/LK:gnd/Map
 
 ```bash
 Empty/2024/LK:gnd/Map
@@ -1519,7 +1519,9 @@ Empty/2024/LK:gnd/Map
             "url": "https://survey.gov.lk/"
         }
     ],
-    "query_time_ms": 0
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
 }
 ```
 
