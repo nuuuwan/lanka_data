@@ -118,3 +118,29 @@ class TestCommandFields:
         assert "2012" in APIWhen.available_values()
         assert "district" in APIWhere.available_region_types()
         assert "LK:district" in APIWhere.available_examples()
+
+
+class TestWhereTopPrimitive:
+    def test_parses_top_count(self):
+        where = APIWhere("LK:rivers#10")
+        assert where.top == 10
+
+    def test_no_top_returns_none(self):
+        assert APIWhere("LK:rivers").top is None
+        assert APIWhere("LK:rivers").region_filter is None
+
+    def test_builds_top_rank_region_filter(self):
+        region_filter = APIWhere("LK:rivers#10").region_filter
+        assert region_filter.kind == "rank"
+        assert region_filter.direction == "Top"
+        assert region_filter.count == 10
+
+    def test_strips_top_from_region_parts(self):
+        where = APIWhere("LK:rivers#10")
+        assert where.parent_part == "LK"
+        assert where.child_region_type == "rivers"
+
+    def test_command_preserves_top_in_cmd_id(self):
+        command = Command.from_str("Catchment/2026/LK:rivers#10/BarChart")
+        assert command.cmd_id == "Catchment/2026/LK:rivers#10/BarChart"
+        assert command.where.region_filter.count == 10

@@ -8,6 +8,7 @@ class RegionTypeRegistry:
         "LK-1...LK-2",
         "LK-pre1959",
         "LK-1127025@20",
+        "LK:rivers#10",
     ]
 
     @classmethod

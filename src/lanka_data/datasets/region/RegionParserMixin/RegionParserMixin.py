@@ -1,3 +1,4 @@
+from lanka_data.api.fields.Where import Where
 from lanka_data.datasets.region.rivers.RiversData import RiversData
 from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 from utils_future import timer
@@ -86,6 +87,7 @@ class RegionParserMixin(RegionParserRadiusMixin):
 
     @classmethod
     def parse(cls, token: str):
+        token = Where.strip_top(token)
         if ":" in token:
             parent_part, child_region_type = token.split(":")
         else:

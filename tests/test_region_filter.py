@@ -1,10 +1,13 @@
 import pytest
 
-from lanka_data.api.dataset.RegionValueDataset.RegionValueDataset import \
-    RegionValueDataset
+from lanka_data.api.dataset.RegionValueDataset.RegionValueDataset import (
+    RegionValueDataset,
+)
 from lanka_data.api.fields.How import How
 from lanka_data.api.fields.RegionFilter import RegionFilter
+from lanka_data.api.fields.Where import Where as APIWhere
 from lanka_data.command.UnknownHowError import UnknownHowError
+from lanka_data.dataset.DatasetFactory import DatasetFactory
 
 
 def _rows():
@@ -143,3 +146,25 @@ class TestDatasetRegionFilter:
         dataset = _build_fake_dataset()
         dataset.region_filter = RegionFilter.from_modifier("Buddhist>0.99")
         assert "Buddhist" in dataset.get_category_keys()
+
+
+class _FakeCommand:
+    def __init__(self, how, where):
+        self.how = How(how)
+        self.where = APIWhere(where)
+
+
+class TestWhereTopRegionFilter:
+    def test_where_top_applies_rank_filter(self):
+        dataset = _build_fake_dataset()
+        command = _FakeCommand("BarChart", "LK:rivers#3")
+        DatasetFactory._with_region_filter(dataset, command)
+        region_ids = [row["region_id"] for row in dataset.get_data_table()]
+        assert region_ids == ["r11", "r10", "r9"]
+
+    def test_how_filter_takes_priority_over_where(self):
+        dataset = _build_fake_dataset()
+        command = _FakeCommand("BarChart:Top2", "LK:rivers#5")
+        DatasetFactory._with_region_filter(dataset, command)
+        region_ids = [row["region_id"] for row in dataset.get_data_table()]
+        assert region_ids == ["r11", "r10"]

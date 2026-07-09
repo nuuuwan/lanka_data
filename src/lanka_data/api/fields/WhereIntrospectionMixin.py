@@ -5,7 +5,15 @@ class WhereIntrospectionMixin:
 
     @classmethod
     def available_operators(cls):
-        return ["single", "comma", "range", "history", "zoom", "child_type"]
+        return [
+            "single",
+            "comma",
+            "range",
+            "history",
+            "zoom",
+            "child_type",
+            "top",
+        ]
 
     @classmethod
     def available_examples(cls):
@@ -22,5 +30,5 @@ class WhereIntrospectionMixin:
             values=cls.available_values(),
             region_types=cls.available_region_types(),
             operators=cls.available_operators(),
-            token_pattern=r"[A-Za-z0-9:,@.\-]+",
+            token_pattern=r"[A-Za-z0-9:,@.#\-]+",
         )
