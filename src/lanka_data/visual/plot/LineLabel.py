@@ -9,7 +9,8 @@ from utils_future import timer
 class LineLabel:
     FONT_SIZE = 6
     TEXT_COLOR = "#333"
-    SEA_OFFSET = 0.08
+    SEA_OFFSET_RATIO = 0.08
+    INLAND_OFFSET_RATIO = 0.1
 
     @staticmethod
     def _longest_line(geom):
@@ -20,12 +21,21 @@ class LineLabel:
         return geom
 
     @staticmethod
-    def _mouth_and_inland(line, center):
+    def _normalize_angle(angle):
+        while angle > 90.0:
+            angle -= 180.0
+        while angle < -90.0:
+            angle += 180.0
+        return angle
+
+    @classmethod
+    def _mouth_and_inland(cls, line, center):
         start = line.interpolate(0.0, normalized=True)
         end = line.interpolate(1.0, normalized=True)
+        inland_ratio = cls.INLAND_OFFSET_RATIO
         if start.distance(center) >= end.distance(center):
-            return start, line.interpolate(0.1, normalized=True)
-        return end, line.interpolate(0.9, normalized=True)
+            return start, line.interpolate(inland_ratio, normalized=True)
+        return end, line.interpolate(1.0 - inland_ratio, normalized=True)
 
     @classmethod
     def _label_placement(cls, line, center):
@@ -34,14 +44,10 @@ class LineLabel:
         norm = math.hypot(dx, dy)
         if norm == 0:
             return mouth.x, mouth.y, 0.0
-        offset = cls.SEA_OFFSET * line.length
+        offset = cls.SEA_OFFSET_RATIO * line.length
         px = mouth.x + dx / norm * offset
         py = mouth.y + dy / norm * offset
-        angle = math.degrees(math.atan2(dy, dx))
-        while angle > 90.0:
-            angle -= 180.0
-        while angle < -90.0:
-            angle += 180.0
+        angle = cls._normalize_angle(math.degrees(math.atan2(dy, dx)))
         return px, py, angle
 
     @classmethod
