@@ -35,8 +35,7 @@ from lanka_data.examples import CommandConstructor, Example, ExampleOutputMixin
 from lanka_data.readme import (ReadMe, ReadMeExamplesItemMixin,
                                ReadMeExamplesMixin, ReadMeFooterMixin,
                                ReadMeSourcesMixin, ReadMeUsageMixin)
-from lanka_data.visual import (AnimationEncoder, AnimationMP4Mixin,
-                               AnimationVisual, Annotations,
+from lanka_data.visual import (Annotations,
                                AnnotationsStatMixin, BarChartDrawMixin,
                                BarChartLabelMixin, BarChartSingleMixin,
                                BarChartVisual, BarChartXLabelMixin,

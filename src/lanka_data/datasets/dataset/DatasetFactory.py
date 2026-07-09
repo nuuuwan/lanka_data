@@ -167,18 +167,6 @@ class DatasetFactory:
         return [correlation]
 
     @staticmethod
-    @staticmethod
-    def _list_from_animation(command):
-        datasets = []
-        for year in command.when.years:
-            dataset = DatasetFactory.from_command(
-                command.copy(when_cmd=year, how_cmd="")
-            )
-            dataset.panel_label = year
-            datasets.append(dataset)
-        return datasets
-
-    @staticmethod
     def _list_from_when(command):
         if command.how.needs_series:
             return DatasetFactory._list_from_series(command)
@@ -194,10 +182,6 @@ class DatasetFactory:
             (
                 lambda c: c.what.is_combined,
                 DatasetFactory._list_from_combined,
-            ),
-            (
-                lambda c: c.how.is_animation,
-                DatasetFactory._list_from_animation,
             ),
             (lambda c: c.when.is_interval, DatasetFactory._list_from_when),
         ]

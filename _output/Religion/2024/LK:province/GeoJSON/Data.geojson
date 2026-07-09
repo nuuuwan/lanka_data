@@ -1,0 +1,43 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0,
+          6.9
+        ]
+      },
+      "properties": {
+        "region_id": "LK-1",
+        "region_name": "Western",
+        "values": {
+          "Buddhist": 30,
+          "Hindu": 10
+        },
+        "total_value": 40
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6,
+          7.3
+        ]
+      },
+      "properties": {
+        "region_id": "LK-2",
+        "region_name": "Central",
+        "values": {
+          "Hindu": 50,
+          "Buddhist": 5
+        },
+        "total_value": 55
+      }
+    }
+  ]
+}
