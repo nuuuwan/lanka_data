@@ -10,7 +10,7 @@ from lanka_data.visual.data_export import (ChartSpecVisual, CSVVisual,
                                            DataExportVisual,
                                            DelimitedExportMixin,
                                            FileExportMixin, GeoJSONVisual,
-                                           ParquetVisual, TableVisual,
+                                           ParquetVisual,
                                            TSVVisual)
 from lanka_data.visual.formatters import (HowFormatter, WhatFormatter,
                                           WhenFormatter, WhereFormatter)

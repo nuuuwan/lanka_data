@@ -292,7 +292,6 @@
         "ScatterPlot",
         "StackedBarChart",
         "TSV",
-        "Table",
         "TreeMap"
       ],
       "modifiers": [
