@@ -270,6 +270,13 @@ class TestClusterData:
     def test_empty_values_give_empty(self):
         assert ClusterData.cluster([], 3) == ([], [])
 
+    def test_population_weight_pulls_center(self):
+        _, unweighted = ClusterData.cluster([0.0, 0.0, 0.0, 12.0], 1)
+        _, weighted = ClusterData.cluster(
+            [0.0, 0.0, 0.0, 12.0], 1, weights=[1, 1, 1, 9]
+        )
+        assert weighted[0][0] > unweighted[0][0]
+
 
 class TestClusterModifier:
     def test_map_cluster_is_recognized(self):
