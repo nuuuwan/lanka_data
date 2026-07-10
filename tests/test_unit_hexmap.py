@@ -50,6 +50,21 @@ class TestUnitHexMapLayout:
         ids = sorted(region_id for region_id, _, _ in layout["hexes"])
         assert ids == ["LK-1", "LK-2", "LK-3"]
 
+    def test_layout_is_same_across_differing_weights(self):
+        data_a = [
+            {"region_id": "LK-1", "region_name": "LK-1", "total_value": 900},
+            {"region_id": "LK-2", "region_name": "LK-2", "total_value": 100},
+            {"region_id": "LK-3", "region_name": "LK-3", "total_value": 1},
+        ]
+        data_b = [
+            {"region_id": "LK-1", "region_name": "LK-1", "total_value": 1},
+            {"region_id": "LK-2", "region_name": "LK-2", "total_value": 500},
+            {"region_id": "LK-3", "region_name": "LK-3", "total_value": 900},
+        ]
+        layout_a = UnitHexMapVisual._get_layout(data_a)
+        layout_b = UnitHexMapVisual._get_layout(data_b)
+        assert layout_a["hexes"] == layout_b["hexes"]
+
     def test_get_data_list_keeps_all_regions(self):
         data_list = [
             {"region_id": "A", "total_value": 1000},

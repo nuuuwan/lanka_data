@@ -18,6 +18,10 @@ class SquareData(
     HexDataAssignMixin,
     SquareDataCacheMixin,
 ):
+    @classmethod
+    def _prepare_data_list(cls, data_list):
+        return data_list
+
     @staticmethod
     def _region_to_weight(data_list):
         return {
@@ -72,6 +76,7 @@ class SquareData(
 
     @classmethod
     def get_square_layout(cls, data_list):
+        data_list = cls._prepare_data_list(data_list)
         region_to_weight = cls._region_to_weight(data_list)
         path = cls._cache_path(region_to_weight)
         cached = cls._load(path)
