@@ -4,7 +4,6 @@ import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 
 from lanka_data.visual.plot.Brand import Brand
-from lanka_data.visual.plot.Caption import Caption
 from lanka_data.visual.plot.Font import Font
 from lanka_data.visual.plot.Footer import Footer
 from lanka_data.visual.plot.Header import Header
@@ -64,7 +63,6 @@ class Plot:
         Header(self.visual).draw()
         QRCode(self.visual).draw()
         Footer(self.visual).draw()
-        Caption(self.visual).draw()
         Brand(self.visual).draw()
 
         image_dir = os.path.join(self.DIR_OUTPUT, self.visual.command.cmd_id)
