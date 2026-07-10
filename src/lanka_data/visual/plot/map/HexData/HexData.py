@@ -1,12 +1,22 @@
 from lanka_data.visual.plot.map.GeoData.GeoData import GeoData
-from lanka_data.visual.plot.map.HexData.HexDataAssignMixin import \
-    HexDataAssignMixin
-from lanka_data.visual.plot.map.HexData.HexDataCacheMixin import \
-    HexDataCacheMixin
-from lanka_data.visual.plot.map.HexData.HexDataCountMixin import \
-    HexDataCountMixin
-from lanka_data.visual.plot.map.HexData.HexDataGridMixin import \
-    HexDataGridMixin
+from lanka_data.visual.plot.map.HexData.HexDataAssignMixin import (
+    HexDataAssignMixin,
+)
+from lanka_data.visual.plot.map.HexData.ContiguityRepairMixin import (
+    ContiguityRepairMixin,
+)
+from lanka_data.visual.plot.map.HexData.GridAdjacencyMixin import (
+    GridAdjacencyMixin,
+)
+from lanka_data.visual.plot.map.HexData.HexDataCacheMixin import (
+    HexDataCacheMixin,
+)
+from lanka_data.visual.plot.map.HexData.HexDataCountMixin import (
+    HexDataCountMixin,
+)
+from lanka_data.visual.plot.map.HexData.HexDataGridMixin import (
+    HexDataGridMixin,
+)
 from utils_future import Log
 
 log = Log("HexData")
@@ -16,6 +26,8 @@ class HexData(
     HexDataCountMixin,
     HexDataGridMixin,
     HexDataAssignMixin,
+    GridAdjacencyMixin,
+    ContiguityRepairMixin,
     HexDataCacheMixin,
 ):
     @classmethod
@@ -60,6 +72,7 @@ class HexData(
         total_count = sum(counts.values())
         centers, radius = cls.build_grid(tuple(gdf.total_bounds), total_count)
         hexes = cls.assign(centroids, counts, centers)
+        hexes = cls.repair(hexes, centers)
         value_per_hex = sum(region_to_weight.values()) / max(len(hexes), 1)
         value_min, value_max = cls._value_per_hex_range(
             region_to_weight, hexes
