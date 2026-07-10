@@ -170,3 +170,69 @@ class TestSquareTextFit:
         assert (cx, cy) == (5.0, 7.0)
         assert width == self.SIDE
         assert angle == 0.0
+
+
+class TestSquareContiguity:
+    SIZE = 1.0
+
+    @classmethod
+    def _centers(cls, n=5):
+        side = 2 * cls.SIZE
+        return [
+            (col * side, row * side)
+            for row in range(n)
+            for col in range(n)
+        ]
+
+    @classmethod
+    def _components_of(cls, repaired, centers):
+        adj = SquareData._adjacency(centers)
+        pos = {
+            (round(x, 9), round(y, 9)): i
+            for i, (x, y) in enumerate(centers)
+        }
+        by_region = {}
+        for r, x, y in repaired:
+            idx = pos[(round(x, 9), round(y, 9))]
+            by_region.setdefault(r, []).append(idx)
+        return {
+            r: SquareData._components(idxs, adj)
+            for r, idxs in by_region.items()
+        }
+
+    def test_orphan_cell_is_reconnected(self):
+        centers = self._centers()
+        cells = [["A", 0.0, 0.0], ["A", 6.0, 0.0]]
+        repaired = SquareData.repair(cells, centers)
+        ids = [r for r, _, _ in repaired]
+        assert ids.count("A") == 2
+        comps = self._components_of(repaired, centers)
+        assert len(comps["A"]) == 1
+
+    def test_surrounded_core_reconnects_via_shift(self):
+        centers = self._centers()
+        cells = [
+            ["A", 4.0, 4.0],
+            ["A", 0.0, 0.0],
+            ["B", 2.0, 4.0],
+            ["B", 6.0, 4.0],
+            ["B", 4.0, 2.0],
+            ["B", 4.0, 6.0],
+        ]
+        repaired = SquareData.repair(cells, centers)
+        ids = [r for r, _, _ in repaired]
+        assert ids.count("A") == 2
+        assert ids.count("B") == 4
+        comps = self._components_of(repaired, centers)
+        assert len(comps["A"]) == 1
+        assert len(comps["B"]) == 1
+
+    def test_contiguous_layout_is_unchanged(self):
+        centers = self._centers()
+        cells = [
+            ["A", 0.0, 0.0],
+            ["A", 2.0, 0.0],
+            ["A", 0.0, 2.0],
+        ]
+        repaired = SquareData.repair(cells, centers)
+        assert sorted(map(tuple, repaired)) == sorted(map(tuple, cells))

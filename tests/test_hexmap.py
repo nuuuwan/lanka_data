@@ -254,3 +254,59 @@ class TestHexTextFit:
         cx, cy, _, _, _ = self._fit(points)
         assert cx == 1.5 * self.DX
         assert cy == 0.0
+
+
+class TestHexContiguity:
+    RADIUS = 1.0
+
+    @classmethod
+    def _grid(cls, n=6):
+        radius = cls.RADIUS
+        dx = math.sqrt(3) * radius
+        dy = 1.5 * radius
+        return [
+            (col * dx + (row % 2) * (dx / 2), row * dy)
+            for row in range(n)
+            for col in range(n)
+        ]
+
+    @classmethod
+    def _components_of(cls, repaired, centers):
+        adj = HexData._adjacency(centers)
+        pos = {
+            (round(x, 9), round(y, 9)): i
+            for i, (x, y) in enumerate(centers)
+        }
+        by_region = {}
+        for r, x, y in repaired:
+            idx = pos[(round(x, 9), round(y, 9))]
+            by_region.setdefault(r, []).append(idx)
+        return {
+            r: HexData._components(idxs, adj)
+            for r, idxs in by_region.items()
+        }
+
+    def test_orphan_cell_is_reconnected(self):
+        centers = self._grid()
+        far = centers[-1]
+        cells = [["A", centers[0][0], centers[0][1]], ["A", far[0], far[1]]]
+        repaired = HexData.repair(cells, centers)
+        ids = [r for r, _, _ in repaired]
+        assert ids.count("A") == 2
+        comps = self._components_of(repaired, centers)
+        assert len(comps["A"]) == 1
+
+    def test_counts_are_preserved(self):
+        centers = self._grid()
+        cells = [
+            ["A", centers[0][0], centers[0][1]],
+            ["A", centers[20][0], centers[20][1]],
+            ["B", centers[10][0], centers[10][1]],
+        ]
+        repaired = HexData.repair(cells, centers)
+        ids = [r for r, _, _ in repaired]
+        assert ids.count("A") == 2
+        assert ids.count("B") == 1
+        comps = self._components_of(repaired, centers)
+        assert len(comps["A"]) == 1
+        assert len(comps["B"]) == 1
