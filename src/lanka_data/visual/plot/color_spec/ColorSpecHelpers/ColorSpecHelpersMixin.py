@@ -1,4 +1,4 @@
-from lanka_data.datasets.data import Diversity
+from lanka_data.datasets.data.Diversity import Diversity
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 
 

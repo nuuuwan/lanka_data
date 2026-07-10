@@ -1,6 +1,6 @@
 from lanka_data.command.fields.How import How
 from lanka_data.visual.formatters.HowFormatter import HowFormatter
-from lanka_data.visual.plot.color_spec.ColorSpecHelpers import ColorSpecHelpers
+from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpers import ColorSpecHelpers
 
 
 class TestHowRegistry:

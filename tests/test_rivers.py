@@ -1,5 +1,5 @@
 from lanka_data.datasets.dataset.custom.RiversDataset import RiversDataset
-from lanka_data.datasets.region.RegionParserMixin import RegionParserMixin
+from lanka_data.datasets.region.RegionParserMixin.RegionParserMixin import RegionParserMixin
 from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 from lanka_data.datasets.region.rivers.RiversData import RiversData
 from lanka_data.datasets.region.rivers.RiverNames import RiverNames
