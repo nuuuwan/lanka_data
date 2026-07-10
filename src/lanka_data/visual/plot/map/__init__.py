@@ -12,3 +12,6 @@ from lanka_data.visual.plot.map.HexData import (HexData, HexDataAssignMixin,
                                                 HexDataGridMixin, UnitHexData)
 from lanka_data.visual.plot.map.RegionPopulationFilter import \
     RegionPopulationFilter
+from lanka_data.visual.plot.map.SquareData import (SquareData,
+                                                   SquareDataCacheMixin,
+                                                   SquareDataGridMixin)

@@ -10,6 +10,7 @@ class HowRegistryMixin:
         "Cartogram": "Cartogram (Population based)",
         "HexMap": "HexMap (Population based)",
         "UnitHexMap": "UnitHexMap (One hexagon per region)",
+        "SquareMap": "SquareMap (Population based)",
         "BubbleMap": "BubbleMap (Population based)",
         "BarChart": "Bar Chart",
         "StackedBarChart": "Stacked Bar Chart",
@@ -30,6 +31,7 @@ class HowRegistryMixin:
         "Cartogram",
         "HexMap",
         "UnitHexMap",
+        "SquareMap",
         "BubbleMap",
         "None",
     }

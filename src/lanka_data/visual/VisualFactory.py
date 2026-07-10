@@ -17,6 +17,7 @@ from lanka_data.visual.plot_visual.LineChartVisual import LineChartVisual
 from lanka_data.visual.plot_visual.MapVisual import MapVisual
 from lanka_data.visual.plot_visual.PieChartVisual import PieChartVisual
 from lanka_data.visual.plot_visual.ScatterPlotVisual import ScatterPlotVisual
+from lanka_data.visual.plot_visual.SquareMapVisual import SquareMapVisual
 from lanka_data.visual.plot_visual.StackedBarChartVisual import \
     StackedBarChartVisual
 from lanka_data.visual.plot_visual.TreeMapVisual import TreeMapVisual
@@ -39,6 +40,7 @@ class VisualFactory:
         "Cartogram": MapVisual,
         "HexMap": HexMapVisual,
         "UnitHexMap": UnitHexMapVisual,
+        "SquareMap": SquareMapVisual,
         "BubbleMap": BubbleMapVisual,
         "None": MapVisual,
         "BarChart": BarChartVisual,

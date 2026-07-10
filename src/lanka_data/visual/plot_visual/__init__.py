@@ -35,6 +35,10 @@ from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from lanka_data.visual.plot_visual.ScatterPlotVisual import (
     ScatterPlotData, ScatterPlotPairMixin, ScatterPlotStats,
     ScatterPlotVisual)
+from lanka_data.visual.plot_visual.SquareMapVisual import (
+    SquareMapBoundaryMixin, SquareMapDrawMixin, SquareMapLabelFitMixin,
+    SquareMapLabelGeoMixin, SquareMapLabelMixin, SquareMapVisual,
+    SquareTextFit)
 from lanka_data.visual.plot_visual.StackedBarChartVisual import \
     StackedBarChartVisual
 from lanka_data.visual.plot_visual.TreeMapVisual import (TreeMapData,
