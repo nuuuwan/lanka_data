@@ -1,0 +1,15 @@
+{
+  "command_str": "Presidential/2015/LK:province/SquareMap:NDF",
+  "result": {
+    "image_path": "_output/Presidential/2015/LK:province/SquareMap:NDF/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Election Commission of Sri lanka",
+      "url": "https://www.elections.gov.lk"
+    }
+  ],
+  "query_time_ms": 620,
+  "is_corrected": false,
+  "corrections": []
+}
