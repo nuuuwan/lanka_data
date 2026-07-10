@@ -359,12 +359,21 @@ class TestClusterColorSpec:
         assert spec.region_to_color["LK-3"] == spec.region_to_color["LK-4"]
         assert spec.region_to_color["LK-1"] != spec.region_to_color["LK-3"]
 
-    def test_colour_matches_dominant_field(self):
+    def test_colour_comes_from_divergent_cmap(self):
         spec = self._spec(2)
+        colors = ColorSpecHelpers._random_diff_colors(2)
+        assert spec.region_to_color["LK-1"] in colors
+        assert spec.region_to_color["LK-3"] in colors
+        assert spec.region_to_color["LK-1"] != spec.region_to_color["LK-3"]
         sinhalese = ColorSpec.cmap_for_label("Sinhalese")(1.0)
-        r, g, b, alpha = spec.region_to_color["LK-1"]
-        assert (r, g, b) == (sinhalese[0], sinhalese[1], sinhalese[2])
-        assert alpha == 0.5
+        r, g, b, _ = spec.region_to_color["LK-1"]
+        assert (r, g, b) != (sinhalese[0], sinhalese[1], sinhalese[2])
+
+    def test_diff_colours_are_reproducible(self):
+        assert (
+            ColorSpecHelpers._random_diff_colors(3)
+            == ColorSpecHelpers._random_diff_colors(3)
+        )
 
     def test_legend_label_lists_top_two_fields_and_other(self):
         spec = self._spec(2)
