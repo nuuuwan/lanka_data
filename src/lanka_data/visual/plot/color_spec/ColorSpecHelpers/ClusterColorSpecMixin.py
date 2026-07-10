@@ -4,13 +4,6 @@ from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 
 class ClusterColorSpecMixin:
     @staticmethod
-    def _region_total(data):
-        total = data.get("total_value")
-        if total is None:
-            total = sum(data.get("values", {}).values())
-        return total
-
-    @staticmethod
     def _region_pct(data):
         pct = data.get("pct_values")
         if pct:
@@ -58,10 +51,22 @@ class ClusterColorSpecMixin:
         )
 
     @classmethod
+    def _pct_vectors(cls, data_list):
+        fields = []
+        for data in data_list:
+            for field in cls._region_pct(data):
+                if field not in fields:
+                    fields.append(field)
+        return [
+            [cls._region_pct(data).get(field, 0.0) for field in fields]
+            for data in data_list
+        ]
+
+    @classmethod
     def get_color_spec_for_cluster(cls, dataset, n_clusters) -> ColorSpec:
         data_list = dataset.get_data_table()
-        totals = [cls._region_total(d) for d in data_list]
-        labels, _ = ClusterData.cluster(totals, n_clusters)
+        vectors = cls._pct_vectors(data_list)
+        labels, _ = ClusterData.cluster(vectors, n_clusters)
         cluster_to_data = {}
         for data, label in zip(data_list, labels):
             cluster_to_data.setdefault(label, []).append(data)
