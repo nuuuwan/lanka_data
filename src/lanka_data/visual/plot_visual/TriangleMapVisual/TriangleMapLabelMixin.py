@@ -3,6 +3,9 @@ from lanka_data.visual.plot.LabelTruncator import LabelTruncator
 from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapLabelGeoMixin import (
     TriangleMapLabelGeoMixin,
 )
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleTextFit import (
+    TriangleTextFit,
+)
 from utils_future import ColorUtils, timer
 
 
@@ -35,7 +38,7 @@ class TriangleMapLabelMixin(TriangleMapLabelGeoMixin):
         return LabelTruncator.get_label(name, region_count)
 
     @classmethod
-    def _annotate(cls, ax, label, position, fontsize, color):
+    def _annotate(cls, ax, label, position, fontsize, color, rotation=0.0):
         ax.annotate(
             label,
             xy=position,
@@ -43,6 +46,7 @@ class TriangleMapLabelMixin(TriangleMapLabelGeoMixin):
             va="center",
             fontsize=fontsize,
             color=color,
+            rotation=rotation,
         )
 
     @classmethod
@@ -75,10 +79,11 @@ class TriangleMapLabelMixin(TriangleMapLabelGeoMixin):
             label = cls._label(name, region_count)
             if label is None:
                 continue
-            cx, cy = cls._region_centroid(points)
-            width, height = cls._region_extent(points)
-            box_w = (width + size) * cls.LABEL_BOX_FACTOR
-            box_h = (height + size) * cls.LABEL_BOX_FACTOR
+            cx, cy, run_w, run_h, angle = TriangleTextFit.best_label_fit(
+                points, size
+            )
+            box_w = run_w * cls.LABEL_BOX_FACTOR
+            box_h = run_h * cls.LABEL_BOX_FACTOR
             fontsize = cls.FIT_FONTSIZE(label, box_w, box_h, ax, fig)
             cls._annotate(
                 ax,
@@ -86,6 +91,7 @@ class TriangleMapLabelMixin(TriangleMapLabelGeoMixin):
                 (cx, cy),
                 fontsize,
                 cls._text_color(region_color_map.get(region_id)),
+                angle,
             )
 
     @classmethod
