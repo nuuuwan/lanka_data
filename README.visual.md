@@ -7,7 +7,7 @@
 Every Lanka Data command ends in a picture. The `How` field selects a visual
 (`Map`, `HexMap`, `SquareMap`, `BarChart`, `StackedBarChart`, `PieChart`,
 `BumpChart`,
-`LineChart`, `TreeMap`, `Histogram`, `Cluster`, `ScatterPlot`), and the plotting layer
+`LineChart`, `TreeMap`, `Histogram`, `ScatterPlot`), and the plotting layer
 in [`src/lanka_data/visual/`](src/lanka_data/visual/) renders it. This document
 defines the visual language those renderers must speak: the canvas, the type,
 the colour, and the composition rules that make an output look considered rather
@@ -283,9 +283,11 @@ The same rules bind every `How` visual, so the family stays coherent:
   composition from the same palette.
 - **`Histogram`** — the distribution of region totals, binned and drawn with the
   shared number-format and grid rules.
-- **`Cluster`** — regions grouped into clusters by their total value using
-  in-house 1D k-means, drawn as a strip plot positioned by value and coloured by
-  cluster, with cluster-centre y-ticks in the shared number-format.
+- **`Cluster` coloring** — not a chart type but a coloring modifier on the map
+  types (e.g. `Map:Cluster-3`, `HexMap:Cluster-3`): regions are grouped by their
+  total value into `N` clusters using in-house 1D k-means and each region is
+  coloured by its cluster centre, with the centres shown in the legend using the
+  shared number-format.
 - **`ScatterPlot`** — two measures per region as points, coloured by dominant
   category from the same palette. With a combined `What` and a `+`-separated
   category pair in the `How` (e.g.

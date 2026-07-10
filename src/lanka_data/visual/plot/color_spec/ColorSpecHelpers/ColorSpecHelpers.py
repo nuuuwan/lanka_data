@@ -1,9 +1,10 @@
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 
+from .ClusterColorSpecMixin import ClusterColorSpecMixin
 from .ColorSpecHelpersMixin import ColorSpecHelpersMixin
 
 
-class ColorSpecHelpers(ColorSpecHelpersMixin):
+class ColorSpecHelpers(ColorSpecHelpersMixin, ClusterColorSpecMixin):
     KEY_PARAM_TO_I_RANK = {
         "1st": 0,
         "Top": 0,
