@@ -227,6 +227,9 @@ final output.
     treemap of the overall categorical composition across regions.
   - **`HistogramVisual`** (+ `HistogramData`) — the distribution of region
     totals binned into a histogram.
+  - **`ClusterVisual`** (+ `ClusterData`) — groups regions into clusters by
+    their total value using in-house 1D k-means, drawn as a strip plot of
+    regions positioned by value and coloured by cluster.
   - **`ScatterPlotVisual`** (+ `ScatterPlotData`, `ScatterPlotPairMixin`,
     `ScatterPlotStats`) — region population against dominant-category share,
     coloured by dominant category; with a combined `What` and a category pair
@@ -248,6 +251,7 @@ instantiates the matching class:
 | `BumpChart`                 | `BumpChartVisual` |
 | `TreeMap`                   | `TreeMapVisual`   |
 | `Histogram`                 | `HistogramVisual` |
+| `Cluster`                   | `ClusterVisual`   |
 | `ScatterPlot`               | `ScatterPlotVisual` |
 
 Keeping this mapping in one class isolates output-type selection from the drawing
