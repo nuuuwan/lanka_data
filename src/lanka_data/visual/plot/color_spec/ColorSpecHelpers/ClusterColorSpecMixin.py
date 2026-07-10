@@ -48,11 +48,26 @@ class ClusterColorSpecMixin:
         return (base[0], base[1], base[2], round(share, 4))
 
     @staticmethod
-    def _format_label(sorted_pct):
-        top = sorted_pct[:2]
-        parts = [f"{field} ({share * 100:.0f}%)" for field, share in top]
-        other = max(0.0, 1.0 - sum(share for _, share in top))
-        parts.append(f"Other ({other * 100:.0f}%)")
+    def _format_range(field, shares):
+        low = round(min(shares) * 100)
+        high = round(max(shares) * 100)
+        if low == high:
+            return f"{field} ({low}%)"
+        return f"{field} ({low}-{high}%)"
+
+    @classmethod
+    def _format_label(cls, sorted_pct, data_list):
+        top = [field for field, _ in sorted_pct[:2]]
+        rows = [
+            [cls._region_pct(data).get(field, 0.0) for field in top]
+            for data in data_list
+        ]
+        parts = [
+            cls._format_range(field, [row[i] for row in rows])
+            for i, field in enumerate(top)
+        ]
+        others = [max(0.0, 1.0 - sum(row)) for row in rows]
+        parts.append(cls._format_range("Other", others))
         return ", ".join(parts)
 
     @classmethod
@@ -62,7 +77,7 @@ class ClusterColorSpecMixin:
             return "(No Data)", ColorSpec.LABEL_TO_COLOR["(No Data)"]
         top_field, top_share = sorted_pct[0]
         return (
-            cls._format_label(sorted_pct),
+            cls._format_label(sorted_pct, data_list),
             cls._color_for_field(top_field, top_share),
         )
 
