@@ -2,12 +2,12 @@ class ClusterData:
     MAX_ITERATIONS = 50
 
     @staticmethod
-    def _init_centers(values, k):
+    def _init_centers(values, n_clusters):
         lo, hi = min(values), max(values)
-        if hi <= lo or k < 2:
+        if hi <= lo or n_clusters < 2:
             return [lo]
-        step = (hi - lo) / (k - 1)
-        return [lo + i * step for i in range(k)]
+        step = (hi - lo) / (n_clusters - 1)
+        return [lo + i * step for i in range(n_clusters)]
 
     @staticmethod
     def _assign(values, centers):
@@ -29,12 +29,12 @@ class ClusterData:
         return new_centers
 
     @classmethod
-    def cluster(cls, values, k):
+    def cluster(cls, values, n_clusters):
         values = [v for v in values if v is not None]
         if not values:
             return [], []
-        k = max(1, min(k, len(set(values))))
-        centers = cls._init_centers(values, k)
+        n_clusters = max(1, min(n_clusters, len(set(values))))
+        centers = cls._init_centers(values, n_clusters)
         labels = cls._assign(values, centers)
         for _ in range(cls.MAX_ITERATIONS):
             centers = cls._update(values, labels, centers)
