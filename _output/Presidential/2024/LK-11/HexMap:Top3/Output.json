@@ -1,0 +1,26 @@
+{
+  "command_str": "Presidential/2024/LK-11/HexMap:Top3",
+  "result": {
+    "image_path": "_output/Presidential/2024/LK-11/HexMap:Top3/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Election Commission of Sri lanka",
+      "url": "https://www.elections.gov.lk"
+    }
+  ],
+  "query_time_ms": 422,
+  "is_corrected": true,
+  "corrections": [
+    {
+      "field": "Where",
+      "rule": "resolve_self_type",
+      "from": "LK-11:district",
+      "to": "LK-11",
+      "severity": "lossless",
+      "reason": "LK-11 is already a district; dropped redundant :district."
+    }
+  ],
+  "original_command_str": "Presidential/2024/LK-11:district/HexMap:Top3",
+  "correction_reason": "LK-11 is already a district; dropped redundant :district."
+}
