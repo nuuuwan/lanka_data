@@ -5,7 +5,8 @@
 ## 0. Purpose
 
 Every Lanka Data command ends in a picture. The `How` field selects a visual
-(`Map`, `HexMap`, `BarChart`, `StackedBarChart`, `PieChart`, `BumpChart`,
+(`Map`, `HexMap`, `SquareMap`, `BarChart`, `StackedBarChart`, `PieChart`,
+`BumpChart`,
 `LineChart`, `TreeMap`, `Histogram`, `ScatterPlot`), and the plotting layer
 in [`src/lanka_data/visual/`](src/lanka_data/visual/) renders it. This document
 defines the visual language those renderers must speak: the canvas, the type,
@@ -259,6 +260,9 @@ The same rules bind every `How` visual, so the family stays coherent:
   the palette or a colormap, with fitted in-region labels and light borders.
 - **`HexMap`** — one hexagon per unit of population, laid out as a tessellation;
   the same palette, the same light borders, the same automatic label contrast.
+- **`SquareMap`** — one square per unit of population, laid out as a grid
+  tessellation; the same palette, the same light borders, the same automatic
+  label contrast.
 - **`BarChart`** — magnitudes as bars, ordered meaningfully, sharing the legend
   and number-format rules.
 - **`StackedBarChart`** — the same bars normalized to 100%, comparing categorical
