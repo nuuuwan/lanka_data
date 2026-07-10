@@ -23,12 +23,6 @@ class TriangleMapLabelGeoMixin:
             + (point[1] - centroid[1]) ** 2,
         )
 
-    @staticmethod
-    def _region_extent(points):
-        xs = [x for x, _ in points]
-        ys = [y for _, y in points]
-        return max(xs) - min(xs), max(ys) - min(ys)
-
     @classmethod
     def _region_positions(cls, layout, snap):
         positions = {}
