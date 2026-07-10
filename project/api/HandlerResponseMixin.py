@@ -11,6 +11,14 @@ DEBUG = os.environ.get("LANKA_DATA_DEBUG", "") not in ("", "0", "false")
 
 
 class HandlerResponseMixin:
+    def _send_cors_headers(self):
+        # The API is a public, read-only, credential-free service consumed by
+        # static sites (e.g. GitHub Pages), so any origin may read it.
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Accept")
+        self.send_header("Access-Control-Max-Age", "86400")
+
     def _write_image(
         self, data, cache_control, content_type=IMAGE_CONTENT_TYPE
     ):
@@ -18,6 +26,7 @@ class HandlerResponseMixin:
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", cache_control)
+        self._send_cors_headers()
         self.end_headers()
         self.wfile.write(data)
 
@@ -56,6 +65,7 @@ class HandlerResponseMixin:
         self.send_response(status)
         self.send_header("Content-Type", JSON_CONTENT_TYPE)
         self.send_header("Cache-Control", cache_control)
+        self._send_cors_headers()
         for name, value in (extra_headers or {}).items():
             self.send_header(
                 self._sanitize_header(name), self._sanitize_header(value)

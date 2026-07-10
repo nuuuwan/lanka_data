@@ -31,6 +31,12 @@ class handler(HandlerResponseMixin, BaseHTTPRequestHandler):
         if image_path and not self._is_safe_image_path(image_path):
             raise CommandError("Unsafe image path")
 
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self._send_cors_headers()
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
     def do_GET(self):
         path = self.path.split("?")[0].replace("/api/", "").strip("/")
         for suffix, key, content_type in OUTPUTS:
