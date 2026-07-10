@@ -1,3 +1,5 @@
+import random
+
 from lanka_data.visual.plot.color_spec.ClusterData import ClusterData
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 
@@ -43,9 +45,13 @@ class ClusterColorSpecMixin:
         return sorted(mean.items(), key=lambda item: -item[1])
 
     @staticmethod
-    def _color_for_field(field, share):
-        base = ColorSpec.cmap_for_label(field)(1.0)
-        return (base[0], base[1], base[2], round(share, 4))
+    def _random_diff_colors(n):
+        rng = random.Random(0)
+        colors = []
+        for _ in range(n):
+            base = ColorSpec.p_to_color_for_diff(rng.random())
+            colors.append((base[0], base[1], base[2], 1.0))
+        return colors
 
     @staticmethod
     def _format_range(field, shares):
@@ -71,15 +77,11 @@ class ClusterColorSpecMixin:
         return ", ".join(parts)
 
     @classmethod
-    def _cluster_label_and_color(cls, data_list):
+    def _cluster_label(cls, data_list):
         sorted_pct = cls._mean_pct(data_list)
         if not sorted_pct:
-            return "(No Data)", ColorSpec.LABEL_TO_COLOR["(No Data)"]
-        top_field, top_share = sorted_pct[0]
-        return (
-            cls._format_label(sorted_pct, data_list),
-            cls._color_for_field(top_field, top_share),
-        )
+            return "(No Data)"
+        return cls._format_label(sorted_pct, data_list)
 
     @classmethod
     def _pct_vectors(cls, data_list):
@@ -102,9 +104,10 @@ class ClusterColorSpecMixin:
         cluster_to_data = {}
         for data, label in zip(data_list, labels):
             cluster_to_data.setdefault(label, []).append(data)
+        colors = cls._random_diff_colors(len(cluster_to_data))
         cluster_to_spec = {
-            label: cls._cluster_label_and_color(members)
-            for label, members in cluster_to_data.items()
+            label: (cls._cluster_label(members), colors[i])
+            for i, (label, members) in enumerate(cluster_to_data.items())
         }
         region_to_color, value_to_color = {}, {}
         for data, label in zip(data_list, labels):
