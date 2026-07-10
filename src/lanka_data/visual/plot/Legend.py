@@ -4,11 +4,20 @@ from lanka_data.visual.plot.Style import Style
 class Legend:
     MAX_ITEMS = 10
     MARKER_SIZE = 100
+    MAX_LABEL_LEN = 18
+    MIN_FONT_SIZE = 6
     LEGEND_KWARGS = {
-        "fontsize": Style.FONT_SIZE_METADATA,
         "loc": "best",
         "frameon": False,
     }
+
+    @classmethod
+    def _fontsize(cls, labels):
+        max_len = max((len(label) for label in labels), default=0)
+        if max_len <= cls.MAX_LABEL_LEN:
+            return Style.FONT_SIZE_METADATA
+        scaled = Style.FONT_SIZE_METADATA * cls.MAX_LABEL_LEN / max_len
+        return max(cls.MIN_FONT_SIZE, scaled)
 
     @staticmethod
     def _format_label(value, region=None):
@@ -53,6 +62,7 @@ class Legend:
         ]
 
         legend_kwargs = dict(cls.LEGEND_KWARGS)
+        legend_kwargs["fontsize"] = cls._fontsize(labels)
         if title:
             legend_kwargs["title"] = title
         legend_ax.legend(
