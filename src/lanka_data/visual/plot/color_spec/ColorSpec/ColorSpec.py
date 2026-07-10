@@ -25,9 +25,10 @@ class ColorSpec(ColorSpecCategoryMixin, ColorSpecCustomMixin):
 
     @classmethod
     def cmap_for_label(cls, label):
-        rgb = cls.LABEL_TO_COLOR.get(label)
-        if rgb is None:
+        hex_color = cls.LABEL_TO_COLOR.get(label)
+        if hex_color is None:
             return ColorSpecConstants.DEFAULT_CMAP_ABS
+        rgb = ColorUtils.hex_to_rgb(hex_color)
         return ColorSpecConstants.build_cmap_for_color(rgb)
 
     @staticmethod
