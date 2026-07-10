@@ -46,11 +46,17 @@ from lanka_data.visual.plot_visual.StackedBarChartVisual.StackedBarChartVisual i
 from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapVisual import (
     TreeMapVisual,
 )
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapVisual import (
+    TriangleMapVisual,
+)
 from lanka_data.visual.plot_visual.UnitHexMapVisual.UnitHexMapVisual import (
     UnitHexMapVisual,
 )
 from lanka_data.visual.plot_visual.UnitSquareMapVisual.UnitSquareMapVisual import (
     UnitSquareMapVisual,
+)
+from lanka_data.visual.plot_visual.UnitTriangleMapVisual.UnitTriangleMapVisual import (
+    UnitTriangleMapVisual,
 )
 from utils_future import Log
 
@@ -72,6 +78,8 @@ class VisualFactory:
         "UnitHexMap": UnitHexMapVisual,
         "SquareMap": SquareMapVisual,
         "UnitSquareMap": UnitSquareMapVisual,
+        "TriangleMap": TriangleMapVisual,
+        "UnitTriangleMap": UnitTriangleMapVisual,
         "BubbleMap": BubbleMapVisual,
         "None": MapVisual,
         "BarChart": BarChartVisual,
