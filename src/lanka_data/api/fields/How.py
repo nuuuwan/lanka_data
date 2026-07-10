@@ -57,7 +57,13 @@ class How(HowFormatMixin, HowIntrospectionMixin, HowRegistryMixin):
 
     @property
     def region_filter(self):
+        if self.modifier in self.MODIFIERS:
+            return None
         return RegionFilter.from_modifier(self.modifier)
+
+    @property
+    def is_top3(self):
+        return self.modifier == "Top3"
 
     @property
     def is_cluster(self):

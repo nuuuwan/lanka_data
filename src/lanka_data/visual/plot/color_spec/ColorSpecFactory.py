@@ -44,6 +44,8 @@ class ColorSpecFactory:
 
     @staticmethod
     def _get_special_color_spec(dataset, how, is_diff):
+        if how.is_top3:
+            return ColorSpecHelpers.get_color_spec_for_top3(dataset)
         if how.is_cluster:
             return ColorSpecHelpers.get_color_spec_for_cluster(
                 dataset, how.cluster_n
