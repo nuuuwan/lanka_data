@@ -283,8 +283,10 @@ The same rules bind every `How` visual, so the family stays coherent:
 - **`Cluster` coloring** — not a chart type but a coloring modifier on the map
   types (e.g. `Map:Cluster-3`, `HexMap:Cluster-3`): regions are grouped by their
   total value into `N` clusters using in-house 1D k-means and each region is
-  coloured by its cluster centre, with the centres shown in the legend using the
-  shared number-format.
+  coloured by its cluster's mean composition — the hue of the most common field
+  in the cluster mean, shaded by an alpha equal to that field's share. The legend
+  labels each cluster with its two most common fields and their percentages plus
+  `Other` (e.g. `Sinhalese (50%), SLMoor (30%), Other (20%)`).
 - **`ScatterPlot`** — two measures per region as points, coloured by dominant
   category from the same palette. With a combined `What` and a `+`-separated
   category pair in the `How` (e.g.
