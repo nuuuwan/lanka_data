@@ -86,7 +86,6 @@ The canvas is divided top-to-bottom into three fixed bands. This is Principle 5
 | Band       | Vertical extent      | Role                                            |
 | ---------- | -------------------- | ----------------------------------------------- |
 | **Header** | top band, grows with title lines | Title (what / where / how, as English text, wrapped over as many lines as needed) |
-| **Caption** | inside the body, in the empty bottom-left corner | Optional narrative callout — the automatic *"what should I notice?"* block (highest, lowest, biggest change, outliers), set as a small left-aligned block in the empty whitespace of the plot so it never crowds the title. Computed **only from the values the visual actually shows** (e.g. the mapped percentage or metric), never from other underlying data. Self-suppressing when the visual shows no comparable per-region value (e.g. a categorical map). |
 | **Body**   | centred inner square (0.10–0.86, horizontally centred) | The plot(s) — one sub-figure per dataset year, framed by a light padding border |
 | **Footer** | bottom **5 %** (0–0.05) | Source attribution (left) and the GitHub repository link (right) |
 | **Spine**  | left margin, full body height | The **Lanka Data** brand mark, set as quiet rotated (vertical) type |
@@ -94,9 +93,7 @@ The canvas is divided top-to-bottom into three fixed bands. This is Principle 5
 
 The body is placed inside a centred **inner square**, so the plotted graphics
 occupy a square region between the header and footer bands with the header,
-footer, spine, and QR code sitting outside it. The caption is the exception: it
-sits **inside** the inner square, in the empty bottom-left corner, using the
-plot's own whitespace rather than a band of its own. A light **padding
+footer, spine, and QR code sitting outside it. A light **padding
 border** frames this inner square (`Style.BORDER_PAD`, `InnerSquare`). One
 column per dataset, with a fixed inter-panel gutter, so a two-year comparison
 reads as two aligned panels rather than two unrelated charts. The header band is
