@@ -17,6 +17,22 @@ class ClusterColorSpecMixin:
     @classmethod
     def _mean_pct(cls, data_list):
         totals = {}
+        weight_total = 0
+        for data in data_list:
+            weight = abs(data.get("total_value", 0) or 0)
+            weight_total += weight
+            for field, share in cls._region_pct(data).items():
+                totals[field] = totals.get(field, 0) + weight * share
+        if weight_total <= 0:
+            return cls._unweighted_mean_pct(data_list)
+        mean = {
+            field: total / weight_total for field, total in totals.items()
+        }
+        return sorted(mean.items(), key=lambda item: -item[1])
+
+    @classmethod
+    def _unweighted_mean_pct(cls, data_list):
+        totals = {}
         for data in data_list:
             for field, share in cls._region_pct(data).items():
                 totals[field] = totals.get(field, 0) + share
@@ -66,7 +82,8 @@ class ClusterColorSpecMixin:
     def get_color_spec_for_cluster(cls, dataset, n_clusters) -> ColorSpec:
         data_list = dataset.get_data_table()
         vectors = cls._pct_vectors(data_list)
-        labels, _ = ClusterData.cluster(vectors, n_clusters)
+        weights = [abs(d.get("total_value", 0) or 0) for d in data_list]
+        labels, _ = ClusterData.cluster(vectors, n_clusters, weights)
         cluster_to_data = {}
         for data, label in zip(data_list, labels):
             cluster_to_data.setdefault(label, []).append(data)
