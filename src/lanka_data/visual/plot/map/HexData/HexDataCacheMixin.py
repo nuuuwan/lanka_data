@@ -5,15 +5,17 @@ import tempfile
 
 
 class HexDataCacheMixin:
-    @staticmethod
-    def _cache_path(region_to_weight):
+    CACHE_PREFIX = "hex"
+
+    @classmethod
+    def _cache_path(cls, region_to_weight):
         key = str(sorted(region_to_weight.items()))
         hash_value = hashlib.md5(key.encode()).hexdigest()
         dir_temp = os.path.join(
             tempfile.gettempdir(), "lanka_data", "hex_cache"
         )
         os.makedirs(dir_temp, exist_ok=True)
-        return os.path.join(dir_temp, f"hex_{hash_value}.json")
+        return os.path.join(dir_temp, f"{cls.CACHE_PREFIX}_{hash_value}.json")
 
     @staticmethod
     def _load(path):

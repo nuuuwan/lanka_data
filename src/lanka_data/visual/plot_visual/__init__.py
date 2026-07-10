@@ -40,3 +40,4 @@ from lanka_data.visual.plot_visual.StackedBarChartVisual import \
 from lanka_data.visual.plot_visual.TreeMapVisual import (TreeMapData,
                                                          TreeMapDrawMixin,
                                                          TreeMapVisual)
+from lanka_data.visual.plot_visual.UnitHexMapVisual import UnitHexMapVisual

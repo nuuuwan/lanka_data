@@ -25,7 +25,7 @@ from lanka_data.visual.plot.map import (BubbleData, BubbleDataCacheMixin,
                                         GeoDataLoaderMixin, HexData,
                                         HexDataAssignMixin, HexDataCacheMixin,
                                         HexDataCountMixin, HexDataGridMixin,
-                                        RegionPopulationFilter)
+                                        RegionPopulationFilter, UnitHexData)
 from lanka_data.visual.plot.Plot import Plot
 from lanka_data.visual.plot.PlotLayout import PlotLayout
 from lanka_data.visual.plot.PlotLayoutError import PlotLayoutError

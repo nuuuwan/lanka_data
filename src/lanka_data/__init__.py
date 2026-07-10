@@ -71,5 +71,6 @@ from lanka_data.visual import (Annotations,
                                ScatterPlotStats, ScatterPlotVisual,
                                StackedBarChartVisual, Style, Text,
                                TreeMapData, TreeMapDrawMixin, TreeMapVisual,
-                               TSVVisual, Visual, VisualFactory, WhatFormatter,
+                               TSVVisual, UnitHexData, UnitHexMapVisual,
+                               Visual, VisualFactory, WhatFormatter,
                                WhenFormatter, WhereFormatter)

@@ -25,7 +25,8 @@ from lanka_data.visual.plot import (Border, Brand, BubbleData,
                                     HexDataGridMixin, InnerSquare, Label,
                                     LabelFit, LabelTruncator, Legend, Plot,
                                     PlotLayout, PlotLayoutError, QRCode,
-                                    RegionPopulationFilter, Style, Text)
+                                    RegionPopulationFilter, Style, Text,
+                                    UnitHexData)
 from lanka_data.visual.plot_visual import (BarChartDrawMixin,
                                            BarChartLabelMixin,
                                            BarChartSingleMixin, BarChartVisual,
@@ -54,6 +55,7 @@ from lanka_data.visual.plot_visual import (BarChartDrawMixin,
                                            ScatterPlotStats,
                                            ScatterPlotVisual,
                                            StackedBarChartVisual, TreeMapData,
-                                           TreeMapDrawMixin, TreeMapVisual)
+                                           TreeMapDrawMixin, TreeMapVisual,
+                                           UnitHexMapVisual)
 from lanka_data.visual.Visual import Visual
 from lanka_data.visual.VisualFactory import VisualFactory

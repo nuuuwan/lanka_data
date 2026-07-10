@@ -10,3 +10,4 @@ from lanka_data.visual.plot.map.HexData.HexDataCountMixin import \
     HexDataCountMixin
 from lanka_data.visual.plot.map.HexData.HexDataGridMixin import \
     HexDataGridMixin
+from lanka_data.visual.plot.map.HexData.UnitHexData import UnitHexData

@@ -20,6 +20,7 @@ from lanka_data.visual.plot_visual.ScatterPlotVisual import ScatterPlotVisual
 from lanka_data.visual.plot_visual.StackedBarChartVisual import \
     StackedBarChartVisual
 from lanka_data.visual.plot_visual.TreeMapVisual import TreeMapVisual
+from lanka_data.visual.plot_visual.UnitHexMapVisual import UnitHexMapVisual
 from utils_future import Log
 
 log = Log("VisualFactory")
@@ -37,6 +38,7 @@ class VisualFactory:
         "Map": MapVisual,
         "Cartogram": MapVisual,
         "HexMap": HexMapVisual,
+        "UnitHexMap": UnitHexMapVisual,
         "BubbleMap": BubbleMapVisual,
         "None": MapVisual,
         "BarChart": BarChartVisual,
