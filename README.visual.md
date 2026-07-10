@@ -260,6 +260,8 @@ The same rules bind every `How` visual, so the family stays coherent:
   the palette or a colormap, with fitted in-region labels and light borders.
 - **`HexMap`** — one hexagon per unit of population, laid out as a tessellation;
   the same palette, the same light borders, the same automatic label contrast.
+- **`UnitHexMap`** — the same tessellation as `HexMap`, but every region is a
+  single hexagon regardless of population, giving each region equal visual weight.
 - **`SquareMap`** — one square per unit of population, laid out as a grid
   tessellation; the same palette, the same light borders, the same automatic
   label contrast.

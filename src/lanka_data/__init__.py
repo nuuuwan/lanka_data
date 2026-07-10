@@ -119,6 +119,7 @@ from lanka_data.visual.plot.map.HexData.HexDataAssignMixin import HexDataAssignM
 from lanka_data.visual.plot.map.HexData.HexDataCacheMixin import HexDataCacheMixin
 from lanka_data.visual.plot.map.HexData.HexDataCountMixin import HexDataCountMixin
 from lanka_data.visual.plot.map.HexData.HexDataGridMixin import HexDataGridMixin
+from lanka_data.visual.plot.map.HexData.UnitHexData import UnitHexData
 from lanka_data.visual.plot.map.RegionPopulationFilter import RegionPopulationFilter
 from lanka_data.visual.plot.map.SquareData.SquareData import SquareData
 from lanka_data.visual.plot.map.SquareData.SquareDataCacheMixin import SquareDataCacheMixin
@@ -178,5 +179,6 @@ from lanka_data.visual.plot_visual.StackedBarChartVisual.StackedBarChartVisual i
 from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapData import TreeMapData
 from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapDrawMixin import TreeMapDrawMixin
 from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapVisual import TreeMapVisual
+from lanka_data.visual.plot_visual.UnitHexMapVisual.UnitHexMapVisual import UnitHexMapVisual
 from lanka_data.visual.Visual import Visual
 from lanka_data.visual.VisualFactory import VisualFactory

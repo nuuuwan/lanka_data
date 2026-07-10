@@ -4,12 +4,15 @@ from lanka_data.visual.plot.map.HexData.HexData import HexData
 from lanka_data.visual.plot.map.RegionPopulationFilter import \
     RegionPopulationFilter
 from lanka_data.visual.plot.Style import Style
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
-    HexMapBoundaryMixin
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import \
-    HexMapDrawMixin
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import \
-    HexMapLabelMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import (
+    HexMapBoundaryMixin,
+)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import (
+    HexMapDrawMixin,
+)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import (
+    HexMapLabelMixin,
+)
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 
@@ -53,13 +56,21 @@ class HexMapVisual(
             color=Style.COLOR_METADATA,
         )
 
+    @staticmethod
+    def _get_data_list(dataset):
+        return RegionPopulationFilter.filter(dataset.get_data_table())
+
+    @staticmethod
+    def _get_layout(data_list):
+        return HexData.get_hex_layout(data_list)
+
     @timer
     def draw(self, dataset, fig):
         region_color_map, value_to_color, value_to_region = (
             ColorSpecFactory.get_color_spec(dataset, self.how_cmd).unpack()
         )
-        data_list = RegionPopulationFilter.filter(dataset.get_data_table())
-        layout = HexData.get_hex_layout(data_list)
+        data_list = self._get_data_list(dataset)
+        layout = self._get_layout(data_list)
         region_to_name = self._region_to_name(data_list)
 
         gs = fig.add_gridspec(1, 2, width_ratios=[5, 1], wspace=0.05)
