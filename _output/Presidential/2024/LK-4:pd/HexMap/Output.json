@@ -9,7 +9,18 @@
       "url": "https://www.elections.gov.lk"
     }
   ],
-  "query_time_ms": 698,
-  "is_corrected": false,
-  "corrections": []
+  "query_time_ms": 607,
+  "is_corrected": true,
+  "corrections": [
+    {
+      "field": "How",
+      "rule": "modifier_requires_kind",
+      "from": "HexMap:2nd",
+      "to": "HexMap",
+      "severity": "lossless",
+      "reason": "2nd requires a categorical measurement; Presidential is scalar."
+    }
+  ],
+  "original_command_str": "Presidential/2024/LK-4:pd/HexMap:2nd",
+  "correction_reason": "2nd requires a categorical measurement; Presidential is scalar."
 }
