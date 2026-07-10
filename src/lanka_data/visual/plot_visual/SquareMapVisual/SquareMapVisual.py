@@ -56,13 +56,21 @@ class SquareMapVisual(
             color=Style.COLOR_METADATA,
         )
 
+    @staticmethod
+    def _get_data_list(dataset):
+        return RegionPopulationFilter.filter(dataset.get_data_table())
+
+    @staticmethod
+    def _get_layout(data_list):
+        return SquareData.get_square_layout(data_list)
+
     @timer
     def draw(self, dataset, fig):
         region_color_map, value_to_color, value_to_region = (
             ColorSpecFactory.get_color_spec(dataset, self.how_cmd).unpack()
         )
-        data_list = RegionPopulationFilter.filter(dataset.get_data_table())
-        layout = SquareData.get_square_layout(data_list)
+        data_list = self._get_data_list(dataset)
+        layout = self._get_layout(data_list)
         region_to_name = self._region_to_name(data_list)
 
         gs = fig.add_gridspec(1, 2, width_ratios=[5, 1], wspace=0.05)

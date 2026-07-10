@@ -265,6 +265,9 @@ The same rules bind every `How` visual, so the family stays coherent:
 - **`SquareMap`** — one square per unit of population, laid out as a grid
   tessellation; the same palette, the same light borders, the same automatic
   label contrast.
+- **`UnitSquareMap`** — the same grid tessellation as `SquareMap`, but every
+  region is a single square regardless of population, giving each region equal
+  visual weight.
 - **`BarChart`** — magnitudes as bars, ordered meaningfully, sharing the legend
   and number-format rules.
 - **`StackedBarChart`** — the same bars normalized to 100%, comparing categorical

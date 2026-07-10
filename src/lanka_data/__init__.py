@@ -124,6 +124,7 @@ from lanka_data.visual.plot.map.RegionPopulationFilter import RegionPopulationFi
 from lanka_data.visual.plot.map.SquareData.SquareData import SquareData
 from lanka_data.visual.plot.map.SquareData.SquareDataCacheMixin import SquareDataCacheMixin
 from lanka_data.visual.plot.map.SquareData.SquareDataGridMixin import SquareDataGridMixin
+from lanka_data.visual.plot.map.SquareData.UnitSquareData import UnitSquareData
 from lanka_data.visual.plot.Plot import Plot
 from lanka_data.visual.plot.PlotLayout import PlotLayout
 from lanka_data.visual.plot.PlotLayoutError import PlotLayoutError
@@ -180,5 +181,6 @@ from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapData import TreeMapData
 from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapDrawMixin import TreeMapDrawMixin
 from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapVisual import TreeMapVisual
 from lanka_data.visual.plot_visual.UnitHexMapVisual.UnitHexMapVisual import UnitHexMapVisual
+from lanka_data.visual.plot_visual.UnitSquareMapVisual.UnitSquareMapVisual import UnitSquareMapVisual
 from lanka_data.visual.Visual import Visual
 from lanka_data.visual.VisualFactory import VisualFactory
