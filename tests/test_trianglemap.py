@@ -1,3 +1,5 @@
+import math
+
 from lanka_data.visual.plot.map.TriangleData.TriangleData import TriangleData
 from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapVisual import (
     TriangleMapVisual,
@@ -5,8 +7,6 @@ from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapVisual import (
 from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleTextFit import (
     TriangleTextFit,
 )
-import math
-
 from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapBoundaryMixin import (
     TriangleMapBoundaryMixin,
 )
