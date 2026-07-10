@@ -52,6 +52,7 @@ class HowRegistryMixin:
         "2ndPct": {"label": "2nd most common share", "pct_rank": 1},
         "3rdPct": {"label": "3rd most common share", "pct_rank": 2},
         "Change": {"label": "Change", "needs_interval": True},
+        "Top3": {"label": "Top 3 fields"},
         "Diversity": {"label": "Diversity"},
         "DiversityPew": {"label": "Pew diversity"},
     }
