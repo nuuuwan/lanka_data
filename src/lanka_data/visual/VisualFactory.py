@@ -11,6 +11,7 @@ from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateMapVisual import 
 from lanka_data.visual.plot_visual.BivariateMapVisual.QuadrantChartVisual import QuadrantChartVisual
 from lanka_data.visual.plot_visual.BubbleMapVisual.BubbleMapVisual import BubbleMapVisual
 from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartVisual import BumpChartVisual
+from lanka_data.visual.plot_visual.ClusterVisual.ClusterVisual import ClusterVisual
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapVisual import HexMapVisual
 from lanka_data.visual.plot_visual.HistogramVisual.HistogramVisual import HistogramVisual
 from lanka_data.visual.plot_visual.LineChartVisual.LineChartVisual import LineChartVisual
@@ -50,6 +51,7 @@ class VisualFactory:
         "BumpChart": BumpChartVisual,
         "TreeMap": TreeMapVisual,
         "Histogram": HistogramVisual,
+        "Cluster": ClusterVisual,
         "ScatterPlot": ScatterPlotVisual,
         "BivariateMap": BivariateMapVisual,
         "QuadrantChart": QuadrantChartVisual,

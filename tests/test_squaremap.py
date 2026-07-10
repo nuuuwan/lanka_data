@@ -171,6 +171,27 @@ class TestSquareTextFit:
         assert width == self.SIDE
         assert angle == 0.0
 
+    def test_vertical_column_is_ninety_degrees(self):
+        points = [(0.0, row * self.SIDE) for row in range(4)]
+        cx, cy, width, height, angle = self._fit(points)
+        assert angle == 90.0
+        assert width == 4 * self.SIDE
+        assert height == self.SIDE
+        assert cx == 0.0
+        assert cy == 1.5 * self.SIDE
+
+    def test_longest_column_wins_over_shorter_row(self):
+        column = [(0.0, row * self.SIDE) for row in range(5)]
+        short_row = [(col * self.SIDE, 0.0) for col in range(2)]
+        _, _, width, _, angle = self._fit(column + short_row)
+        assert angle == 90.0
+        assert width == 5 * self.SIDE
+
+    def test_row_wins_tie_with_column(self):
+        points = [(0.0, 0.0), (self.SIDE, 0.0), (0.0, self.SIDE)]
+        _, _, _, _, angle = self._fit(points)
+        assert angle == 0.0
+
 
 class TestSquareContiguity:
     SIZE = 1.0
@@ -236,3 +257,4 @@ class TestSquareContiguity:
         ]
         repaired = SquareData.repair(cells, centers)
         assert sorted(map(tuple, repaired)) == sorted(map(tuple, cells))
+

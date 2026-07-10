@@ -2,6 +2,8 @@ import matplotlib
 
 from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotData import ScatterPlotData
 from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotVisual import ScatterPlotVisual
+from lanka_data.visual.plot_visual.ClusterVisual.ClusterData import ClusterData
+from lanka_data.visual.plot_visual.ClusterVisual.ClusterVisual import ClusterVisual
 from lanka_data.visual.plot_visual.StackedBarChartVisual.StackedBarChartVisual import StackedBarChartVisual
 from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapData import TreeMapData
 from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapVisual import TreeMapVisual
@@ -22,6 +24,7 @@ class TestNewChartRouting:
         "TreeMap": TreeMapVisual,
         "Histogram": HistogramVisual,
         "ScatterPlot": ScatterPlotVisual,
+        "Cluster": ClusterVisual,
     }
 
     def test_bases_are_registered(self):
@@ -225,3 +228,26 @@ class TestScatterPlotData:
     def test_regions_without_positive_values_are_skipped(self):
         subregions = [{"region_name": "R", "values": {"A": 0}}]
         assert ScatterPlotData.points(subregions) == []
+
+
+class TestClusterData:
+    def test_labels_match_number_of_values(self):
+        labels, _ = ClusterData.cluster([1, 2, 100, 101], 2)
+        assert len(labels) == 4
+
+    def test_similar_values_share_a_cluster(self):
+        labels, _ = ClusterData.cluster([1, 2, 100, 101], 2)
+        assert labels[0] == labels[1]
+        assert labels[2] == labels[3]
+        assert labels[0] != labels[2]
+
+    def test_centers_count_capped_by_distinct_values(self):
+        _, centers = ClusterData.cluster([5, 5, 5], 4)
+        assert len(centers) == 1
+
+    def test_single_value_does_not_crash(self):
+        labels, centers = ClusterData.cluster([7], 3)
+        assert labels == [0] and len(centers) == 1
+
+    def test_empty_values_give_empty(self):
+        assert ClusterData.cluster([], 3) == ([], [])
