@@ -9,6 +9,7 @@ class HowRegistryMixin:
         "Map": None,
         "Cartogram": "Cartogram (Population based)",
         "HexMap": "HexMap (Population based)",
+        "SquareMap": "SquareMap (Population based)",
         "BubbleMap": "BubbleMap (Population based)",
         "BarChart": "Bar Chart",
         "StackedBarChart": "Stacked Bar Chart",
@@ -28,6 +29,7 @@ class HowRegistryMixin:
         "Map",
         "Cartogram",
         "HexMap",
+        "SquareMap",
         "BubbleMap",
         "None",
     }
