@@ -1,7 +1,7 @@
 {
-  "command_str": "Religion/2024/LK:district/SquareMap",
+  "command_str": "Religion/2024/LK:district/UnitHexMap",
   "result": {
-    "image_path": "_output/Religion/2024/LK:district/SquareMap/Image.png"
+    "image_path": "_output/Religion/2024/LK:district/UnitHexMap/Image.png"
   },
   "sources": [
     {
@@ -9,7 +9,7 @@
       "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
     }
   ],
-  "query_time_ms": 1816,
+  "query_time_ms": 778,
   "is_corrected": false,
   "corrections": []
 }
