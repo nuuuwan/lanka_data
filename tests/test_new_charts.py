@@ -372,6 +372,29 @@ class TestClusterColorSpec:
         assert "Sinhalese (50%), SLMoor (30%), Other (20%)" in labels
         assert "SLTamil (60%), Sinhalese (40%), Other (0%)" in labels
 
+    def test_legend_label_uses_range_when_members_differ(self):
+        rows = [
+            {
+                "region_id": "LK-1",
+                "region_name": "A",
+                "pct_values": {"Buddhist": 0.70, "Hindu": 0.20},
+                "total_value": 100,
+            },
+            {
+                "region_id": "LK-2",
+                "region_name": "B",
+                "pct_values": {"Buddhist": 0.80, "Hindu": 0.10},
+                "total_value": 100,
+            },
+        ]
+        spec = ColorSpecHelpers.get_color_spec_for_cluster(
+            _FakeDataset(rows), 1
+        )
+        labels = set(spec.value_to_color)
+        assert (
+            "Buddhist (70-80%), Hindu (10-20%), Other (10%)" in labels
+        )
+
     def test_empty_dataset_does_not_crash(self):
         spec = ColorSpecHelpers.get_color_spec_for_cluster(
             _FakeDataset([]), 3
