@@ -1,7 +1,7 @@
 {
-  "command_str": "Ethnicity/2024/LK-4,LK-5,LK-62:pd/HexMap",
+  "command_str": "Ethnicity/2024/LK-11:lg/SquareMap",
   "result": {
-    "image_path": "_output/Ethnicity/2024/LK-4,LK-5,LK-62:pd/HexMap/Image.png"
+    "image_path": "_output/Ethnicity/2024/LK-11:lg/SquareMap/Image.png"
   },
   "sources": [
     {
@@ -9,7 +9,7 @@
       "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
     }
   ],
-  "query_time_ms": 1081,
+  "query_time_ms": 2709,
   "is_corrected": false,
   "corrections": []
 }
