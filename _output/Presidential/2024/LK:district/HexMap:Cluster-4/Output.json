@@ -1,0 +1,15 @@
+{
+  "command_str": "Presidential/2024/LK:district/HexMap:Cluster-4",
+  "result": {
+    "image_path": "_output/Presidential/2024/LK:district/HexMap:Cluster-4/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Election Commission of Sri lanka",
+      "url": "https://www.elections.gov.lk"
+    }
+  ],
+  "query_time_ms": 1091,
+  "is_corrected": false,
+  "corrections": []
+}
