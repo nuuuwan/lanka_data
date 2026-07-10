@@ -1,7 +1,7 @@
 {
-  "command_str": "Presidential/2015/LK-11:pd/UnitHexMap",
+  "command_str": "Presidential/2015/LK-4,LK-5:pd/UnitHexMap",
   "result": {
-    "image_path": "_output/Presidential/2015/LK-11:pd/UnitHexMap/Image.png"
+    "image_path": "_output/Presidential/2015/LK-4,LK-5:pd/UnitHexMap/Image.png"
   },
   "sources": [
     {
@@ -9,7 +9,7 @@
       "url": "https://www.elections.gov.lk"
     }
   ],
-  "query_time_ms": 587,
+  "query_time_ms": 3742,
   "is_corrected": false,
   "corrections": []
 }
