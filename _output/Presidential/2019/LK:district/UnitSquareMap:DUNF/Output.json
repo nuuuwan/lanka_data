@@ -1,0 +1,15 @@
+{
+  "command_str": "Presidential/2019/LK:district/UnitSquareMap:DUNF",
+  "result": {
+    "image_path": "_output/Presidential/2019/LK:district/UnitSquareMap:DUNF/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Election Commission of Sri lanka",
+      "url": "https://www.elections.gov.lk"
+    }
+  ],
+  "query_time_ms": 876,
+  "is_corrected": false,
+  "corrections": []
+}
