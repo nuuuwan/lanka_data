@@ -3,7 +3,7 @@ import time
 from lanka_data.api.command.Command import Command
 from lanka_data.api.command.CommandCache import CommandCache
 from lanka_data.api.data.DataSource import DataSource
-from lanka_data.correction import correct
+from lanka_data.correction.CorrectionPipeline import correct
 from lanka_data.datasets.command.CommandHelp import CommandHelp
 from lanka_data.datasets.dataset.DatasetFactory import DatasetFactory
 from lanka_data.visual.VisualFactory import VisualFactory

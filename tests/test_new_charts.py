@@ -1,21 +1,19 @@
 import matplotlib
 
-from lanka_data.visual.plot_visual.ScatterPlotVisual import (ScatterPlotData,
-                                                             ScatterPlotVisual)
-from lanka_data.visual.plot_visual.StackedBarChartVisual import \
-    StackedBarChartVisual
-from lanka_data.visual.plot_visual.TreeMapVisual import (TreeMapData,
-                                                         TreeMapVisual)
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotData import ScatterPlotData
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotVisual import ScatterPlotVisual
+from lanka_data.visual.plot_visual.StackedBarChartVisual.StackedBarChartVisual import StackedBarChartVisual
+from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapData import TreeMapData
+from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapVisual import TreeMapVisual
 from lanka_data.visual.VisualFactory import VisualFactory
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 
 from lanka_data.api.fields.How import How  # noqa: E402
-from lanka_data.visual.plot_visual.BarChartVisual import \
-    BarChartVisual  # noqa: E402
-from lanka_data.visual.plot_visual.HistogramVisual import (  # noqa: E402
-    HistogramData, HistogramVisual)
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import BarChartVisual  # noqa: E402
+from lanka_data.visual.plot_visual.HistogramVisual.HistogramData import HistogramData  # noqa: E402
+from lanka_data.visual.plot_visual.HistogramVisual.HistogramVisual import HistogramVisual
 
 
 class TestNewChartRouting:

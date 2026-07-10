@@ -1,7 +1,7 @@
-from lanka_data.visual.plot.color_spec import ColorSpecFactory
+from lanka_data.visual.plot.color_spec.ColorSpecFactory import ColorSpecFactory
 from lanka_data.visual.plot.Legend import Legend
-from lanka_data.visual.plot.map.BubbleData import BubbleData
-from lanka_data.visual.plot.map.GeoData import GeoData
+from lanka_data.visual.plot.map.BubbleData.BubbleData import BubbleData
+from lanka_data.visual.plot.map.GeoData.GeoData import GeoData
 from lanka_data.visual.plot.map.RegionPopulationFilter import \
     RegionPopulationFilter
 from lanka_data.visual.plot_visual.BubbleMapVisual.BubbleMapDrawMixin import \

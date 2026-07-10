@@ -27,14 +27,3 @@ DEFAULT_RULES = [
     ResolveSelfType(),
     ZoomIgnoredByRenderer(),
 ]
-
-__all__ = [
-    "SnapObservationYear",
-    "SnapIntervalEndpoints",
-    "GeometryRejectsModifiers",
-    "ModifierRequiresKind",
-    "ChangeRequiresTwoObservations",
-    "ResolveSelfType",
-    "ZoomIgnoredByRenderer",
-    "DEFAULT_RULES",
-]

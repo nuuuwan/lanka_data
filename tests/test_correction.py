@@ -1,13 +1,10 @@
 import pytest
 
 from lanka_data.api.command.Command import Command
-from lanka_data.correction import (
-    Correction,
-    CorrectionLoopError,
-    CorrectionPolicy,
-    DestructiveCorrectionError,
-    correct,
-)
+from lanka_data.correction.Correction import Correction
+from lanka_data.correction.CorrectionErrors import CorrectionLoopError, DestructiveCorrectionError
+from lanka_data.correction.CorrectionPolicy import CorrectionPolicy
+from lanka_data.correction.CorrectionPipeline import correct
 from lanka_data.datasets.command.CommandRunner import CommandRunner
 
 AUTO = CorrectionPolicy(destructive="auto")

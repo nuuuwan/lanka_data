@@ -1,5 +1,5 @@
-from lanka_data.examples import Example
-from lanka_data.readme.ReadMeExamplesMixin import ReadMeExamplesMixin
+from lanka_data.examples.Example.Example import Example
+from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesMixin import ReadMeExamplesMixin
 from lanka_data.readme.ReadMeFooterMixin import ReadMeFooterMixin
 from lanka_data.readme.ReadMeSourcesMixin import ReadMeSourcesMixin
 from lanka_data.readme.ReadMeUsageMixin import ReadMeUsageMixin

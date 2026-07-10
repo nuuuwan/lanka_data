@@ -1,7 +1,7 @@
 import math
 
-from lanka_data.visual.plot.map.SquareData import SquareData
-from lanka_data.visual.plot_visual.SquareMapVisual import SquareMapVisual
+from lanka_data.visual.plot.map.SquareData.SquareData import SquareData
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapVisual import SquareMapVisual
 from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapBoundaryMixin \
     import SquareMapBoundaryMixin
 from lanka_data.visual.plot_visual.SquareMapVisual.SquareTextFit import \

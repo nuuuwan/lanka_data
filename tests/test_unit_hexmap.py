@@ -1,8 +1,10 @@
 from lanka_data.api.fields.How import How
-from lanka_data.visual.plot.map.HexData import HexData
+from lanka_data.visual.plot.map.HexData.HexData import HexData
 from lanka_data.visual.plot.map.HexData.UnitHexData import UnitHexData
-from lanka_data.visual.plot_visual.HexMapVisual import HexMapVisual
-from lanka_data.visual.plot_visual.UnitHexMapVisual import UnitHexMapVisual
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapVisual import \
+    HexMapVisual
+from lanka_data.visual.plot_visual.UnitHexMapVisual.UnitHexMapVisual import \
+    UnitHexMapVisual
 from lanka_data.visual.VisualFactory import VisualFactory
 
 
