@@ -1,7 +1,7 @@
 {
-  "command_str": "Presidential/2024/LK-2:pd/SquareMap",
+  "command_str": "Presidential/2024/LK-12:pd/SquareMap",
   "result": {
-    "image_path": "_output/Presidential/2024/LK-2:pd/SquareMap/Image.png"
+    "image_path": "_output/Presidential/2024/LK-12:pd/SquareMap/Image.png"
   },
   "sources": [
     {
@@ -9,7 +9,7 @@
       "url": "https://www.elections.gov.lk"
     }
   ],
-  "query_time_ms": 920,
+  "query_time_ms": 1019,
   "is_corrected": false,
   "corrections": []
 }

@@ -1,12 +1,22 @@
 from lanka_data.visual.plot.map.GeoData.GeoData import GeoData
-from lanka_data.visual.plot.map.HexData.HexDataAssignMixin import \
-    HexDataAssignMixin
-from lanka_data.visual.plot.map.HexData.HexDataCountMixin import \
-    HexDataCountMixin
-from lanka_data.visual.plot.map.SquareData.SquareDataCacheMixin import \
-    SquareDataCacheMixin
-from lanka_data.visual.plot.map.SquareData.SquareDataGridMixin import \
-    SquareDataGridMixin
+from lanka_data.visual.plot.map.HexData.ContiguityRepairMixin import (
+    ContiguityRepairMixin,
+)
+from lanka_data.visual.plot.map.HexData.GridAdjacencyMixin import (
+    GridAdjacencyMixin,
+)
+from lanka_data.visual.plot.map.HexData.HexDataAssignMixin import (
+    HexDataAssignMixin,
+)
+from lanka_data.visual.plot.map.HexData.HexDataCountMixin import (
+    HexDataCountMixin,
+)
+from lanka_data.visual.plot.map.SquareData.SquareDataCacheMixin import (
+    SquareDataCacheMixin,
+)
+from lanka_data.visual.plot.map.SquareData.SquareDataGridMixin import (
+    SquareDataGridMixin,
+)
 from utils_future import Log
 
 log = Log("SquareData")
@@ -16,6 +26,8 @@ class SquareData(
     HexDataCountMixin,
     SquareDataGridMixin,
     HexDataAssignMixin,
+    GridAdjacencyMixin,
+    ContiguityRepairMixin,
     SquareDataCacheMixin,
 ):
     @classmethod
@@ -60,6 +72,7 @@ class SquareData(
         total_count = sum(counts.values())
         centers, size = cls.build_grid(tuple(gdf.total_bounds), total_count)
         squares = cls.assign(centroids, counts, centers)
+        squares = cls.repair(squares, centers)
         value_per_square = sum(region_to_weight.values()) / max(
             len(squares), 1
         )

@@ -74,9 +74,6 @@ from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesMixin import ReadMeExam
 from lanka_data.readme.ReadMeFooterMixin import ReadMeFooterMixin
 from lanka_data.readme.ReadMeSourcesMixin import ReadMeSourcesMixin
 from lanka_data.readme.ReadMeUsageMixin import ReadMeUsageMixin
-from lanka_data.visual.annotations.Annotations import Annotations
-from lanka_data.visual.annotations.AnnotationsStatMixin import AnnotationsStatMixin
-from lanka_data.visual.annotations.NumberAbbreviator import NumberAbbreviator
 from lanka_data.visual.data_export.ChartSpecVisual import ChartSpecVisual
 from lanka_data.visual.data_export.CSVVisual import CSVVisual
 from lanka_data.visual.data_export.DataExportVisual import DataExportVisual
@@ -92,7 +89,6 @@ from lanka_data.visual.formatters.WhereFormatter import WhereFormatter
 from lanka_data.visual.JSONVisual import JSONVisual
 from lanka_data.visual.plot.Border import Border
 from lanka_data.visual.plot.Brand import Brand
-from lanka_data.visual.plot.Caption import Caption
 from lanka_data.visual.plot.color_spec.ClusterData import ClusterData
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpecCategoryMixin import ColorSpecCategoryMixin
