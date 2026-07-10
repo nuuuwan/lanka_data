@@ -1,0 +1,15 @@
+{
+  "command_str": "Religion/2024/LK-11:pd/SquareMap:Cluster-2",
+  "result": {
+    "image_path": "_output/Religion/2024/LK-11:pd/SquareMap:Cluster-2/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Census of Population and Housing 2024",
+      "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+    }
+  ],
+  "query_time_ms": 576,
+  "is_corrected": false,
+  "corrections": []
+}
