@@ -5,7 +5,8 @@
 ## 0. Purpose
 
 Every Lanka Data command ends in a picture. The `How` field selects a visual
-(`Map`, `HexMap`, `SquareMap`, `BarChart`, `StackedBarChart`, `PieChart`,
+(`Map`, `HexMap`, `SquareMap`, `TriangleMap`, `BarChart`, `StackedBarChart`,
+`PieChart`,
 `BumpChart`,
 `LineChart`, `TreeMap`, `Histogram`, `Cluster`, `ScatterPlot`), and the plotting layer
 in [`src/lanka_data/visual/`](src/lanka_data/visual/) renders it. This document
@@ -268,6 +269,12 @@ The same rules bind every `How` visual, so the family stays coherent:
 - **`UnitSquareMap`** — the same grid tessellation as `SquareMap`, but every
   region is a single square regardless of population, giving each region equal
   visual weight.
+- **`TriangleMap`** — one triangle per unit of population, laid out as an
+  alternating up/down triangular tessellation; the same palette, the same light
+  borders, the same automatic label contrast.
+- **`UnitTriangleMap`** — the same triangular tessellation as `TriangleMap`, but
+  every region is a single triangle regardless of population, giving each region
+  equal visual weight.
 - **`BarChart`** — magnitudes as bars, ordered meaningfully, sharing the legend
   and number-format rules.
 - **`StackedBarChart`** — the same bars normalized to 100%, comparing categorical
