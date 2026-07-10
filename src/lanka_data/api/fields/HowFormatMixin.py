@@ -9,6 +9,8 @@ class HowFormatMixin:
     def modifier_label(self):
         if self.modifier is None:
             return None
+        if self.is_cluster:
+            return f"cluster ({self.cluster_n} groups)"
         return self.modifier_spec.get(
             "label", self.split_camel(self.modifier)
         )

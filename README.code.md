@@ -227,9 +227,6 @@ final output.
     treemap of the overall categorical composition across regions.
   - **`HistogramVisual`** (+ `HistogramData`) — the distribution of region
     totals binned into a histogram.
-  - **`ClusterVisual`** (+ `ClusterData`) — groups regions into clusters by
-    their total value using in-house 1D k-means, drawn as a strip plot of
-    regions positioned by value and coloured by cluster.
   - **`ScatterPlotVisual`** (+ `ScatterPlotData`, `ScatterPlotPairMixin`,
     `ScatterPlotStats`) — region population against dominant-category share,
     coloured by dominant category; with a combined `What` and a category pair
@@ -251,7 +248,6 @@ instantiates the matching class:
 | `BumpChart`                 | `BumpChartVisual` |
 | `TreeMap`                   | `TreeMapVisual`   |
 | `Histogram`                 | `HistogramVisual` |
-| `Cluster`                   | `ClusterVisual`   |
 | `ScatterPlot`               | `ScatterPlotVisual` |
 
 Keeping this mapping in one class isolates output-type selection from the drawing
@@ -309,9 +305,13 @@ These are the low-level drawing helpers used by `PlotVisual` subclasses:
   value→color key.
 - **Color:** **`ColorSpec`** (+ `ColorSpecCategoryMixin`, `ColorSpecCustomMixin`)
   holds region→color and value→color maps and knows the fixed palettes;
-  **`ColorSpecFactory`** (+ `ColorSpecHelpers` / `ColorSpecHelpersMixin`,
-  `ColorSpecConstants`) picks the coloring strategy from the dataset and
-  `how` modifier (rank, percentage, Change, Diversity).
+  **`ColorSpecFactory`** (+ `ColorSpecHelpers` / `ColorSpecHelpersMixin` /
+  `ClusterColorSpecMixin`, `ColorSpecConstants`) picks the coloring strategy from
+  the dataset and `how` modifier (rank, percentage, Change, Diversity, Cluster).
+  The `Cluster` / `Cluster-N` modifier (e.g. `Map:Cluster-3`,
+  `HexMap:Cluster-3`) groups regions by their total value into `N` clusters using
+  in-house 1D k-means (`ClusterData`, default 5) and colors each region by its
+  cluster centre.
 - **Geometry:** **`GeoData`** (+ `GeoDataLoaderMixin`) loads TopoJSON boundaries,
   dissolves and caches them, applies cartogram distortion, and enriches the
   `GeoDataFrame` with the dataset's values.

@@ -8,6 +8,7 @@ class HowIntrospectionMixin:
             self.modifier is None
             or self.modifier in self.MODIFIERS
             or self.base in self.PAIR_CATEGORY_BASES
+            or self.is_cluster
         ):
             return None
         region_filter = self.region_filter

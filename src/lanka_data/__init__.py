@@ -89,11 +89,13 @@ from lanka_data.visual.formatters.WhereFormatter import WhereFormatter
 from lanka_data.visual.JSONVisual import JSONVisual
 from lanka_data.visual.plot.Border import Border
 from lanka_data.visual.plot.Brand import Brand
+from lanka_data.visual.plot.color_spec.ClusterData import ClusterData
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpecCategoryMixin import ColorSpecCategoryMixin
 from lanka_data.visual.plot.color_spec.ColorSpecConstants import ColorSpecConstants
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpecCustomMixin import ColorSpecCustomMixin
 from lanka_data.visual.plot.color_spec.ColorSpecFactory import ColorSpecFactory
+from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ClusterColorSpecMixin import ClusterColorSpecMixin
 from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpers import ColorSpecHelpers
 from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpersMixin import ColorSpecHelpersMixin
 from lanka_data.visual.plot.Font import Font
@@ -144,8 +146,6 @@ from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartAxisMixin import Bum
 from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartDataMixin import BumpChartDataMixin
 from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartDrawMixin import BumpChartDrawMixin
 from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartVisual import BumpChartVisual
-from lanka_data.visual.plot_visual.ClusterVisual.ClusterData import ClusterData
-from lanka_data.visual.plot_visual.ClusterVisual.ClusterVisual import ClusterVisual
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import HexMapBoundaryMixin
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import HexMapDrawMixin
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelFitMixin import HexMapLabelFitMixin

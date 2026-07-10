@@ -1,21 +1,39 @@
+from lanka_data.visual.plot_visual.HistogramVisual.HistogramVisual import (
+    HistogramVisual,
+)
 import matplotlib
 
-from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotData import ScatterPlotData
-from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotVisual import ScatterPlotVisual
-from lanka_data.visual.plot_visual.ClusterVisual.ClusterData import ClusterData
-from lanka_data.visual.plot_visual.ClusterVisual.ClusterVisual import ClusterVisual
-from lanka_data.visual.plot_visual.StackedBarChartVisual.StackedBarChartVisual import StackedBarChartVisual
-from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapData import TreeMapData
-from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapVisual import TreeMapVisual
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotData import (
+    ScatterPlotData,
+)
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotVisual import (
+    ScatterPlotVisual,
+)
+from lanka_data.visual.plot.color_spec.ClusterData import ClusterData
+from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpers import (
+    ColorSpecHelpers,
+)
+from lanka_data.visual.plot_visual.StackedBarChartVisual.StackedBarChartVisual import (
+    StackedBarChartVisual,
+)
+from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapData import (
+    TreeMapData,
+)
+from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapVisual import (
+    TreeMapVisual,
+)
 from lanka_data.visual.VisualFactory import VisualFactory
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 
 from lanka_data.api.fields.How import How  # noqa: E402
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import BarChartVisual  # noqa: E402
-from lanka_data.visual.plot_visual.HistogramVisual.HistogramData import HistogramData  # noqa: E402
-from lanka_data.visual.plot_visual.HistogramVisual.HistogramVisual import HistogramVisual
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import (
+    BarChartVisual,
+)  # noqa: E402
+from lanka_data.visual.plot_visual.HistogramVisual.HistogramData import (
+    HistogramData,
+)  # noqa: E402
 
 
 class TestNewChartRouting:
@@ -24,7 +42,6 @@ class TestNewChartRouting:
         "TreeMap": TreeMapVisual,
         "Histogram": HistogramVisual,
         "ScatterPlot": ScatterPlotVisual,
-        "Cluster": ClusterVisual,
     }
 
     def test_bases_are_registered(self):
@@ -251,3 +268,67 @@ class TestClusterData:
 
     def test_empty_values_give_empty(self):
         assert ClusterData.cluster([], 3) == ([], [])
+
+
+class TestClusterModifier:
+    def test_map_cluster_is_recognized(self):
+        how = How("Map:Cluster-3")
+        assert how.is_cluster
+        assert how.cluster_n == 3
+
+    def test_hexmap_cluster_is_recognized(self):
+        how = How("HexMap:Cluster-4")
+        assert how.is_cluster
+        assert how.cluster_n == 4
+
+    def test_cluster_without_count_uses_default(self):
+        assert How("Map:Cluster").cluster_n == 5
+
+    def test_cluster_is_not_a_category(self):
+        assert How("Map:Cluster-3").category is None
+
+    def test_plain_map_is_not_a_cluster(self):
+        how = How("Map")
+        assert not how.is_cluster
+        assert how.cluster_n is None
+
+    def test_cluster_routes_to_map_visual(self):
+        from lanka_data.visual.plot_visual.MapVisual import MapVisual
+
+        assert (
+            VisualFactory._VISUAL_CLS[How("Map:Cluster-3").base] is MapVisual
+        )
+
+    def test_cluster_is_not_a_standalone_base(self):
+        assert "Cluster" not in How.BASE_LABELS
+        assert "Cluster" not in VisualFactory._VISUAL_CLS
+
+
+class TestClusterColorSpec:
+    ROWS = [
+        {"region_id": "LK-1", "region_name": "A", "values": {"x": 1}},
+        {"region_id": "LK-2", "region_name": "B", "values": {"x": 2}},
+        {"region_id": "LK-3", "region_name": "C", "values": {"x": 100}},
+        {"region_id": "LK-4", "region_name": "D", "values": {"x": 101}},
+    ]
+
+    def _spec(self, n):
+        return ColorSpecHelpers.get_color_spec_for_cluster(
+            _FakeDataset(self.ROWS), n
+        )
+
+    def test_every_region_is_coloured(self):
+        spec = self._spec(2)
+        assert set(spec.region_to_color) == {"LK-1", "LK-2", "LK-3", "LK-4"}
+
+    def test_similar_regions_share_a_colour(self):
+        spec = self._spec(2)
+        assert spec.region_to_color["LK-1"] == spec.region_to_color["LK-2"]
+        assert spec.region_to_color["LK-3"] == spec.region_to_color["LK-4"]
+        assert spec.region_to_color["LK-1"] != spec.region_to_color["LK-3"]
+
+    def test_empty_dataset_does_not_crash(self):
+        spec = ColorSpecHelpers.get_color_spec_for_cluster(
+            _FakeDataset([]), 3
+        )
+        assert spec.region_to_color == {}

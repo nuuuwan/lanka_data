@@ -7,6 +7,9 @@ from lanka_data.api.fields.HowIntrospectionMixin import HowIntrospectionMixin
 from lanka_data.api.fields.HowRegistryMixin import HowRegistryMixin
 from lanka_data.api.fields.RegionFilter import RegionFilter
 
+CLUSTER_RE = re.compile(r"^Cluster(?:-(\d+))?$")
+DEFAULT_CLUSTER_N = 5
+
 
 @dataclass(frozen=True)
 class How(HowFormatMixin, HowIntrospectionMixin, HowRegistryMixin):
@@ -55,6 +58,21 @@ class How(HowFormatMixin, HowIntrospectionMixin, HowRegistryMixin):
     @property
     def region_filter(self):
         return RegionFilter.from_modifier(self.modifier)
+
+    @property
+    def is_cluster(self):
+        if self.modifier is None:
+            return False
+        return CLUSTER_RE.fullmatch(self.modifier) is not None
+
+    @property
+    def cluster_n(self):
+        if self.modifier is None:
+            return None
+        match = CLUSTER_RE.fullmatch(self.modifier)
+        if match is None:
+            return None
+        return int(match.group(1)) if match.group(1) else DEFAULT_CLUSTER_N
 
     @property
     def needs_interval(self):

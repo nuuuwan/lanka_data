@@ -1,6 +1,8 @@
 from lanka_data.api.fields.How import How
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
-from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpers import ColorSpecHelpers
+from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpers import (
+    ColorSpecHelpers,
+)
 from utils_future import Log
 
 log = Log("ColorSpecFactory")
@@ -41,10 +43,18 @@ class ColorSpecFactory:
         return None
 
     @staticmethod
-    def _resolve_color_spec(dataset, how, is_diff):
-        spec = ColorSpecFactory._get_param_color_spec(
+    def _get_special_color_spec(dataset, how, is_diff):
+        if how.is_cluster:
+            return ColorSpecHelpers.get_color_spec_for_cluster(
+                dataset, how.cluster_n
+            )
+        return ColorSpecFactory._get_param_color_spec(
             dataset, how.base, how.modifier, is_diff
         )
+
+    @staticmethod
+    def _resolve_color_spec(dataset, how, is_diff):
+        spec = ColorSpecFactory._get_special_color_spec(dataset, how, is_diff)
         if spec is not None:
             return spec
         if is_diff and (how.rank is not None or how.modifier is None):
