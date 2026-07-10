@@ -1,0 +1,15 @@
+{
+  "command_str": "Presidential/2005/LK:province/UnitSquareMap",
+  "result": {
+    "image_path": "_output/Presidential/2005/LK:province/UnitSquareMap/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Election Commission of Sri lanka",
+      "url": "https://www.elections.gov.lk"
+    }
+  ],
+  "query_time_ms": 1303,
+  "is_corrected": false,
+  "corrections": []
+}
