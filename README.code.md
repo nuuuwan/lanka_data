@@ -311,7 +311,10 @@ These are the low-level drawing helpers used by `PlotVisual` subclasses:
   The `Cluster` / `Cluster-N` modifier (e.g. `Map:Cluster-3`,
   `HexMap:Cluster-3`) groups regions by their total value into `N` clusters using
   in-house 1D k-means (`ClusterData`, default 5) and colors each region by its
-  cluster centre.
+  cluster's mean composition: the hue of the most common field in the cluster
+  mean, shaded by an alpha equal to that field's share. The legend labels each
+  cluster with its two most common fields and their percentages plus `Other`
+  (e.g. `Sinhalese (50%), SLMoor (30%), Other (20%)`).
 - **Geometry:** **`GeoData`** (+ `GeoDataLoaderMixin`) loads TopoJSON boundaries,
   dissolves and caches them, applies cartogram distortion, and enriches the
   `GeoDataFrame` with the dataset's values.

@@ -10,6 +10,7 @@ from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotVisual import (
     ScatterPlotVisual,
 )
 from lanka_data.visual.plot.color_spec.ClusterData import ClusterData
+from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpers import (
     ColorSpecHelpers,
 )
@@ -306,10 +307,34 @@ class TestClusterModifier:
 
 class TestClusterColorSpec:
     ROWS = [
-        {"region_id": "LK-1", "region_name": "A", "values": {"x": 1}},
-        {"region_id": "LK-2", "region_name": "B", "values": {"x": 2}},
-        {"region_id": "LK-3", "region_name": "C", "values": {"x": 100}},
-        {"region_id": "LK-4", "region_name": "D", "values": {"x": 101}},
+        {
+            "region_id": "LK-1",
+            "region_name": "A",
+            "values": {"Sinhalese": 5, "SLMoor": 3, "Islam": 2},
+            "pct_values": {"Sinhalese": 0.5, "SLMoor": 0.3, "Islam": 0.2},
+            "total_value": 10,
+        },
+        {
+            "region_id": "LK-2",
+            "region_name": "B",
+            "values": {"Sinhalese": 6, "SLMoor": 3, "Islam": 2},
+            "pct_values": {"Sinhalese": 0.5, "SLMoor": 0.3, "Islam": 0.2},
+            "total_value": 11,
+        },
+        {
+            "region_id": "LK-3",
+            "region_name": "C",
+            "values": {"SLTamil": 60, "Sinhalese": 40},
+            "pct_values": {"SLTamil": 0.6, "Sinhalese": 0.4},
+            "total_value": 100,
+        },
+        {
+            "region_id": "LK-4",
+            "region_name": "D",
+            "values": {"SLTamil": 61, "Sinhalese": 40},
+            "pct_values": {"SLTamil": 0.6, "Sinhalese": 0.4},
+            "total_value": 101,
+        },
     ]
 
     def _spec(self, n):
@@ -326,6 +351,19 @@ class TestClusterColorSpec:
         assert spec.region_to_color["LK-1"] == spec.region_to_color["LK-2"]
         assert spec.region_to_color["LK-3"] == spec.region_to_color["LK-4"]
         assert spec.region_to_color["LK-1"] != spec.region_to_color["LK-3"]
+
+    def test_colour_matches_dominant_field(self):
+        spec = self._spec(2)
+        sinhalese = ColorSpec.cmap_for_label("Sinhalese")(1.0)
+        r, g, b, alpha = spec.region_to_color["LK-1"]
+        assert (r, g, b) == (sinhalese[0], sinhalese[1], sinhalese[2])
+        assert alpha == 0.5
+
+    def test_legend_label_lists_top_two_fields_and_other(self):
+        spec = self._spec(2)
+        labels = set(spec.value_to_color)
+        assert "Sinhalese (50%), SLMoor (30%), Other (20%)" in labels
+        assert "SLTamil (60%), Sinhalese (40%), Other (0%)" in labels
 
     def test_empty_dataset_does_not_crash(self):
         spec = ColorSpecHelpers.get_color_spec_for_cluster(
