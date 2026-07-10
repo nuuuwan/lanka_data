@@ -27,7 +27,7 @@ class SquareTextFit:
         best = None
         for angle, primary, secondary in cls.ANGLES:
             for items in cls._lines(points, secondary, side).values():
-                run = cls._longest_run(list(items), primary, side)
+                run = cls._longest_run(items, primary, side)
                 if best is None or len(run) > len(best[0]):
                     best = (run, angle)
         return best
