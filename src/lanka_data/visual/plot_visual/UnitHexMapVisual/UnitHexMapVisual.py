@@ -13,6 +13,6 @@ class UnitHexMapVisual(HexMapVisual):
     def _get_layout(data_list):
         return UnitHexData.get_hex_layout(data_list)
 
-    @classmethod
-    def _draw_scale(cls, ax, layout):
-        return
+    @staticmethod
+    def _draw_scale(ax, layout):
+        pass
