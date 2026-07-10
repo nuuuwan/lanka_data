@@ -19,6 +19,7 @@ class HowRegistryMixin:
         "BumpChart": "Bump Chart",
         "TreeMap": "Tree Map",
         "Histogram": "Histogram",
+        "Cluster": "Cluster (K-means of region totals)",
         "ScatterPlot": "Scatter Plot",
         "BivariateMap": "Bivariate Map",
         "QuadrantChart": "Quadrant Chart",

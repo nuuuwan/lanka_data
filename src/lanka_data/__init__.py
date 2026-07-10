@@ -148,6 +148,8 @@ from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartAxisMixin import Bum
 from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartDataMixin import BumpChartDataMixin
 from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartDrawMixin import BumpChartDrawMixin
 from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartVisual import BumpChartVisual
+from lanka_data.visual.plot_visual.ClusterVisual.ClusterData import ClusterData
+from lanka_data.visual.plot_visual.ClusterVisual.ClusterVisual import ClusterVisual
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import HexMapBoundaryMixin
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import HexMapDrawMixin
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelFitMixin import HexMapLabelFitMixin
