@@ -1,5 +1,5 @@
 from lanka_data.api.fields.Where import Where
-from lanka_data.datasets.region.RegionRawDataMixin import RegionRawDataMixin
+from lanka_data.datasets.region.RegionRawDataMixin.RegionRawDataMixin import RegionRawDataMixin
 from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 
 

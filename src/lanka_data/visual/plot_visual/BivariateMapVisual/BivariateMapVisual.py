@@ -1,8 +1,7 @@
 from matplotlib.patches import Rectangle
 
 from lanka_data.visual.plot.Style import Style
-from lanka_data.visual.plot_visual.BivariateMapVisual import \
-    BivariateMapBaseVisual
+from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateMapBaseVisual import BivariateMapBaseVisual
 
 
 class BivariateMapVisual(BivariateMapBaseVisual):

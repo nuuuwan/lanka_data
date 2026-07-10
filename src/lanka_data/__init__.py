@@ -1,80 +1,182 @@
-# lanka_data (auto generate by build_inits.py)
 # flake8: noqa: F408
 
-from lanka_data.api import (Command, CommandBase, CommandBaseValidationMixin,
-                            CommandCache, CommandError,
-                            CommandIntrospectionMixin, CommandLoaderMixin,
-                            CorrelationDataset, Dataset, DataSource,
-                            DiffDataset, How, HowFormatMixin,
-                            HowIntrospectionMixin, HowRegistryMixin,
-                            InvalidCommandError, InvalidWhenError,
-                            InvalidWhereError, RegionFilter,
-                            RegionTypeRegistry, RegionValueDataset,
-                            RegionValueDatasetTableMixin, SeriesDataset,
-                            UnknownHowError, UnknownWhatError, What,
-                            WhatIntrospectionMixin, WhatRegistry,
-                            WhatWhenRegistry, When, WhenIntrospectionMixin,
-                            WhenRegistry, Where, WhereIntrospectionMixin)
+from lanka_data.api.command.Command import Command
+from lanka_data.api.command.CommandBase import CommandBase
+from lanka_data.api.command.CommandBaseValidationMixin import CommandBaseValidationMixin
+from lanka_data.api.command.CommandCache import CommandCache
+from lanka_data.api.command.CommandIntrospectionMixin import CommandIntrospectionMixin
+from lanka_data.api.command.CommandLoaderMixin import CommandLoaderMixin
+from lanka_data.api.command_errors.CommandError import CommandError
+from lanka_data.api.command_errors.InvalidCommandError import InvalidCommandError
+from lanka_data.api.command_errors.InvalidWhenError import InvalidWhenError
+from lanka_data.api.command_errors.InvalidWhereError import InvalidWhereError
+from lanka_data.api.command_errors.UnknownHowError import UnknownHowError
+from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
+from lanka_data.api.data.DataSource import DataSource
+from lanka_data.api.dataset.CorrelationDataset import CorrelationDataset
+from lanka_data.api.dataset.Dataset import Dataset
+from lanka_data.api.dataset.DiffDataset import DiffDataset
+from lanka_data.api.dataset.RegionValueDataset.RegionValueDataset import RegionValueDataset
+from lanka_data.api.dataset.RegionValueDataset.RegionValueDatasetTableMixin import RegionValueDatasetTableMixin
+from lanka_data.api.dataset.SeriesDataset import SeriesDataset
+from lanka_data.api.fields.How import How
+from lanka_data.api.fields.HowFormatMixin import HowFormatMixin
+from lanka_data.api.fields.HowIntrospectionMixin import HowIntrospectionMixin
+from lanka_data.api.fields.HowRegistryMixin import HowRegistryMixin
+from lanka_data.api.fields.RegionFilter import RegionFilter
+from lanka_data.api.fields.RegionTypeRegistry import RegionTypeRegistry
+from lanka_data.api.fields.What import What
+from lanka_data.api.fields.WhatIntrospectionMixin import WhatIntrospectionMixin
+from lanka_data.api.fields.WhatRegistry import WhatRegistry
+from lanka_data.api.fields.WhatWhenRegistry import WhatWhenRegistry
+from lanka_data.api.fields.When import When
+from lanka_data.api.fields.WhenIntrospectionMixin import WhenIntrospectionMixin
+from lanka_data.api.fields.WhenRegistry import WhenRegistry
+from lanka_data.api.fields.Where import Where
+from lanka_data.api.fields.WhereIntrospectionMixin import WhereIntrospectionMixin
 from lanka_data.CompatibilityAliases import CompatibilityAliases
-from lanka_data.console import (ConsoleApp, ConsoleCommandLibrary,
-                                ConsoleCompleter, ConsoleImageOpener,
-                                ConsoleLocalCommands, ConsolePrompt,
-                                ConsolePromptCompleter, ConsoleRenderer)
-from lanka_data.datasets import (Census2001Dataset, Census2012Dataset,
-                                 Census2024Dataset, CommandHelp, CommandRunner,
-                                 DatasetCommandRegistry, DatasetFactory,
-                                 Diversity, ElectionDataset,
-                                 ElectionSummaryDataset, EmptyDataset,
-                                 FieldNameUtils, GIG2Dataset, RegionFetchMixin,
-                                 RegionLoadersMixin, RegionParentMixin,
-                                 RegionParserMixin, RegionParserRadiusMixin,
-                                 RegionRawDataMixin, Regions, RegionTypeUtils,
-                                 Where)
-from lanka_data.examples import CommandConstructor, Example, ExampleOutputMixin
-from lanka_data.readme import (ReadMe, ReadMeExamplesItemMixin,
-                               ReadMeExamplesMixin, ReadMeFooterMixin,
-                               ReadMeSourcesMixin, ReadMeUsageMixin)
-from lanka_data.visual import (Annotations,
-                               AnnotationsStatMixin, BarChartDrawMixin,
-                               BarChartLabelMixin, BarChartSingleMixin,
-                               BarChartVisual, BarChartXLabelMixin,
-                               BivariateData, BivariateMapBaseVisual,
-                               BivariateMapVisual, BivariatePalette, Border,
-                               Brand, BubbleData, BubbleDataCacheMixin,
-                               BubbleDataRadiusMixin, BubbleDataRelaxMixin,
-                               BubbleMapDrawMixin, BubbleMapLabelMixin,
-                               BubbleMapVisual, BumpChartAxisMixin,
-                               BumpChartDataMixin, BumpChartDrawMixin,
-                               BumpChartVisual, Caption, ChartSpecVisual,
-                               ColorSpec, ColorSpecCategoryMixin,
-                               ColorSpecConstants, ColorSpecCustomMixin,
-                               ColorSpecFactory, ColorSpecHelpers,
-                               ColorSpecHelpersMixin, CSVVisual,
-                               DataExportVisual, DelimitedExportMixin,
-                               FileExportMixin, Font, Footer, GeoData,
-                               GeoDataLoaderMixin, GeoJSONVisual, Header,
-                               HexData, HexDataAssignMixin, HexDataCacheMixin,
-                               HexDataCountMixin, HexDataGridMixin,
-                               HexMapBoundaryMixin, HexMapDrawMixin,
-                               HexMapLabelFitMixin, HexMapLabelGeoMixin,
-                               HexMapLabelMixin, HexMapVisual, HexTextFit,
-                               HistogramData, HistogramVisual, HowFormatter,
-                               InnerSquare, JSONVisual, Label, LabelFit,
-                               LabelTruncator, Legend, LineChartDataMixin,
-                               LineChartDrawMixin, LineChartVisual, MapVisual,
-                               NumberAbbreviator, ParquetVisual,
-                               PieChartMapDrawMixin, PieChartMapLabelMixin,
-                               PieChartVisual, Plot, PlotLayout,
-                               PlotLayoutError, PlotVisual, QRCode,
-                               QuadrantChartVisual, RegionPopulationFilter,
-                               ScatterPlotData, ScatterPlotPairMixin,
-                               ScatterPlotStats, ScatterPlotVisual,
-                               SquareData, SquareDataCacheMixin,
-                               SquareDataGridMixin, SquareMapBoundaryMixin,
-                               SquareMapDrawMixin, SquareMapLabelFitMixin,
-                               SquareMapLabelGeoMixin, SquareMapLabelMixin,
-                               SquareMapVisual, SquareTextFit,
-                               StackedBarChartVisual, Style, Text,
-                               TreeMapData, TreeMapDrawMixin, TreeMapVisual,
-                               TSVVisual, Visual, VisualFactory, WhatFormatter,
-                               WhenFormatter, WhereFormatter)
+from lanka_data.console.ConsoleApp import ConsoleApp
+from lanka_data.console.ConsoleCommandLibrary import ConsoleCommandLibrary
+from lanka_data.console.ConsoleCompleter import ConsoleCompleter
+from lanka_data.console.ConsoleImageOpener import ConsoleImageOpener
+from lanka_data.console.ConsoleLocalCommands import ConsoleLocalCommands
+from lanka_data.console.ConsolePrompt import ConsolePrompt
+from lanka_data.console.ConsolePromptCompleter import ConsolePromptCompleter
+from lanka_data.console.ConsoleRenderer import ConsoleRenderer
+from lanka_data.datasets.command.CommandHelp import CommandHelp
+from lanka_data.datasets.command.CommandRunner import CommandRunner
+from lanka_data.datasets.data.Diversity import Diversity
+from lanka_data.datasets.data.FieldNameUtils import FieldNameUtils
+from lanka_data.datasets.dataset.custom.Census2001Dataset import Census2001Dataset
+from lanka_data.datasets.dataset.custom.Census2012Dataset import Census2012Dataset
+from lanka_data.datasets.dataset.custom.Census2024Dataset import Census2024Dataset
+from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
+from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import ElectionSummaryDataset
+from lanka_data.datasets.dataset.custom.GIG2Dataset import GIG2Dataset
+from lanka_data.datasets.dataset.DatasetFactory import DatasetFactory
+from lanka_data.datasets.dataset.EmptyDataset import EmptyDataset
+from lanka_data.datasets.DatasetCommandRegistry import DatasetCommandRegistry
+from lanka_data.datasets.region.RegionLoadersMixin import RegionLoadersMixin
+from lanka_data.datasets.region.RegionParserMixin.RegionParserMixin import RegionParserMixin
+from lanka_data.datasets.region.RegionParserMixin.RegionParserRadiusMixin import RegionParserRadiusMixin
+from lanka_data.datasets.region.RegionRawDataMixin.RegionFetchMixin import RegionFetchMixin
+from lanka_data.datasets.region.RegionRawDataMixin.RegionParentMixin import RegionParentMixin
+from lanka_data.datasets.region.RegionRawDataMixin.RegionRawDataMixin import RegionRawDataMixin
+from lanka_data.datasets.region.Regions import Regions
+from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
+from lanka_data.datasets.region.Where import Where
+from lanka_data.examples.CommandConstructor.CommandConstructor import CommandConstructor
+from lanka_data.examples.Example.Example import Example
+from lanka_data.examples.Example.ExampleOutputMixin import ExampleOutputMixin
+from lanka_data.readme.ReadMe import ReadMe
+from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import ReadMeExamplesItemMixin
+from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesMixin import ReadMeExamplesMixin
+from lanka_data.readme.ReadMeFooterMixin import ReadMeFooterMixin
+from lanka_data.readme.ReadMeSourcesMixin import ReadMeSourcesMixin
+from lanka_data.readme.ReadMeUsageMixin import ReadMeUsageMixin
+from lanka_data.visual.annotations.Annotations import Annotations
+from lanka_data.visual.annotations.AnnotationsStatMixin import AnnotationsStatMixin
+from lanka_data.visual.annotations.NumberAbbreviator import NumberAbbreviator
+from lanka_data.visual.data_export.ChartSpecVisual import ChartSpecVisual
+from lanka_data.visual.data_export.CSVVisual import CSVVisual
+from lanka_data.visual.data_export.DataExportVisual import DataExportVisual
+from lanka_data.visual.data_export.DelimitedExportMixin import DelimitedExportMixin
+from lanka_data.visual.data_export.FileExportMixin import FileExportMixin
+from lanka_data.visual.data_export.GeoJSONVisual import GeoJSONVisual
+from lanka_data.visual.data_export.ParquetVisual import ParquetVisual
+from lanka_data.visual.data_export.TSVVisual import TSVVisual
+from lanka_data.visual.formatters.HowFormatter import HowFormatter
+from lanka_data.visual.formatters.WhatFormatter import WhatFormatter
+from lanka_data.visual.formatters.WhenFormatter import WhenFormatter
+from lanka_data.visual.formatters.WhereFormatter import WhereFormatter
+from lanka_data.visual.JSONVisual import JSONVisual
+from lanka_data.visual.plot.Border import Border
+from lanka_data.visual.plot.Brand import Brand
+from lanka_data.visual.plot.Caption import Caption
+from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
+from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpecCategoryMixin import ColorSpecCategoryMixin
+from lanka_data.visual.plot.color_spec.ColorSpecConstants import ColorSpecConstants
+from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpecCustomMixin import ColorSpecCustomMixin
+from lanka_data.visual.plot.color_spec.ColorSpecFactory import ColorSpecFactory
+from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpers import ColorSpecHelpers
+from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpersMixin import ColorSpecHelpersMixin
+from lanka_data.visual.plot.Font import Font
+from lanka_data.visual.plot.Footer import Footer
+from lanka_data.visual.plot.Header import Header
+from lanka_data.visual.plot.InnerSquare import InnerSquare
+from lanka_data.visual.plot.Label import Label
+from lanka_data.visual.plot.LabelFit import LabelFit
+from lanka_data.visual.plot.LabelTruncator import LabelTruncator
+from lanka_data.visual.plot.Legend import Legend
+from lanka_data.visual.plot.map.BubbleData.BubbleData import BubbleData
+from lanka_data.visual.plot.map.BubbleData.BubbleDataCacheMixin import BubbleDataCacheMixin
+from lanka_data.visual.plot.map.BubbleData.BubbleDataRadiusMixin import BubbleDataRadiusMixin
+from lanka_data.visual.plot.map.BubbleData.BubbleDataRelaxMixin import BubbleDataRelaxMixin
+from lanka_data.visual.plot.map.GeoData.GeoData import GeoData
+from lanka_data.visual.plot.map.GeoData.GeoDataLoaderMixin import GeoDataLoaderMixin
+from lanka_data.visual.plot.map.HexData.HexData import HexData
+from lanka_data.visual.plot.map.HexData.HexDataAssignMixin import HexDataAssignMixin
+from lanka_data.visual.plot.map.HexData.HexDataCacheMixin import HexDataCacheMixin
+from lanka_data.visual.plot.map.HexData.HexDataCountMixin import HexDataCountMixin
+from lanka_data.visual.plot.map.HexData.HexDataGridMixin import HexDataGridMixin
+from lanka_data.visual.plot.map.RegionPopulationFilter import RegionPopulationFilter
+from lanka_data.visual.plot.map.SquareData.SquareData import SquareData
+from lanka_data.visual.plot.map.SquareData.SquareDataCacheMixin import SquareDataCacheMixin
+from lanka_data.visual.plot.map.SquareData.SquareDataGridMixin import SquareDataGridMixin
+from lanka_data.visual.plot.Plot import Plot
+from lanka_data.visual.plot.PlotLayout import PlotLayout
+from lanka_data.visual.plot.PlotLayoutError import PlotLayoutError
+from lanka_data.visual.plot.QRCode import QRCode
+from lanka_data.visual.plot.Style import Style
+from lanka_data.visual.plot.Text import Text
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartDrawMixin import BarChartDrawMixin
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartLabelMixin import BarChartLabelMixin
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartSingleMixin import BarChartSingleMixin
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import BarChartVisual
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartXLabelMixin import BarChartXLabelMixin
+from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateData import BivariateData
+from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateMapBaseVisual import BivariateMapBaseVisual
+from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateMapVisual import BivariateMapVisual
+from lanka_data.visual.plot_visual.BivariateMapVisual.BivariatePalette import BivariatePalette
+from lanka_data.visual.plot_visual.BivariateMapVisual.QuadrantChartVisual import QuadrantChartVisual
+from lanka_data.visual.plot_visual.BubbleMapVisual.BubbleMapDrawMixin import BubbleMapDrawMixin
+from lanka_data.visual.plot_visual.BubbleMapVisual.BubbleMapLabelMixin import BubbleMapLabelMixin
+from lanka_data.visual.plot_visual.BubbleMapVisual.BubbleMapVisual import BubbleMapVisual
+from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartAxisMixin import BumpChartAxisMixin
+from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartDataMixin import BumpChartDataMixin
+from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartDrawMixin import BumpChartDrawMixin
+from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartVisual import BumpChartVisual
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import HexMapBoundaryMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import HexMapDrawMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelFitMixin import HexMapLabelFitMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelGeoMixin import HexMapLabelGeoMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import HexMapLabelMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapVisual import HexMapVisual
+from lanka_data.visual.plot_visual.HexMapVisual.HexTextFit import HexTextFit
+from lanka_data.visual.plot_visual.HistogramVisual.HistogramData import HistogramData
+from lanka_data.visual.plot_visual.HistogramVisual.HistogramVisual import HistogramVisual
+from lanka_data.visual.plot_visual.LineChartVisual.LineChartDataMixin import LineChartDataMixin
+from lanka_data.visual.plot_visual.LineChartVisual.LineChartDrawMixin import LineChartDrawMixin
+from lanka_data.visual.plot_visual.LineChartVisual.LineChartVisual import LineChartVisual
+from lanka_data.visual.plot_visual.MapVisual import MapVisual
+from lanka_data.visual.plot_visual.PieChartVisual.PieChartMapDrawMixin import PieChartMapDrawMixin
+from lanka_data.visual.plot_visual.PieChartVisual.PieChartMapLabelMixin import PieChartMapLabelMixin
+from lanka_data.visual.plot_visual.PieChartVisual.PieChartVisual import PieChartVisual
+from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotData import ScatterPlotData
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotPairMixin import ScatterPlotPairMixin
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotStats import ScatterPlotStats
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotVisual import ScatterPlotVisual
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapBoundaryMixin import SquareMapBoundaryMixin
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapDrawMixin import SquareMapDrawMixin
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapLabelFitMixin import SquareMapLabelFitMixin
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapLabelGeoMixin import SquareMapLabelGeoMixin
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapLabelMixin import SquareMapLabelMixin
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapVisual import SquareMapVisual
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareTextFit import SquareTextFit
+from lanka_data.visual.plot_visual.StackedBarChartVisual.StackedBarChartVisual import StackedBarChartVisual
+from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapData import TreeMapData
+from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapDrawMixin import TreeMapDrawMixin
+from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapVisual import TreeMapVisual
+from lanka_data.visual.Visual import Visual
+from lanka_data.visual.VisualFactory import VisualFactory

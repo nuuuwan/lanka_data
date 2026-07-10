@@ -3,7 +3,7 @@ from lanka_data.correction.CorrectionErrors import (
     DestructiveCorrectionError,
 )
 from lanka_data.correction.CorrectionPolicy import CorrectionPolicy, RAISE
-from lanka_data.correction.rules import DEFAULT_RULES
+from lanka_data.correction.rules.DefaultRules import DEFAULT_RULES
 from lanka_data.correction.WorkingCommand import WorkingCommand
 
 MAX_PASSES = 8

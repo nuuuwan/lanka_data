@@ -1,7 +1,7 @@
 import math
 
-from lanka_data.visual.plot.map.BubbleData import BubbleData
-from lanka_data.visual.plot_visual.BubbleMapVisual import BubbleMapVisual
+from lanka_data.visual.plot.map.BubbleData.BubbleData import BubbleData
+from lanka_data.visual.plot_visual.BubbleMapVisual.BubbleMapVisual import BubbleMapVisual
 from lanka_data.visual.VisualFactory import VisualFactory
 
 

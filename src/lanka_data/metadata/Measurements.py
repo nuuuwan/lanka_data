@@ -1,6 +1,7 @@
 from functools import lru_cache
 
-from lanka_data.api.fields import What, When
+from lanka_data.api.fields.What import What
+from lanka_data.api.fields.When import When
 from lanka_data.api.fields.WhatWhenRegistry import WhatWhenRegistry
 
 GROUP_KIND = {

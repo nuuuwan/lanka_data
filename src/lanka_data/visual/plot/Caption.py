@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 from lanka_data.visual.annotations.Annotations import Annotations
-from lanka_data.visual.plot.color_spec import ColorSpecFactory
+from lanka_data.visual.plot.color_spec.ColorSpecFactory import ColorSpecFactory
 from lanka_data.visual.plot.InnerSquare import InnerSquare
 from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot.Text import Text

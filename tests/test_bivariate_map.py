@@ -1,6 +1,8 @@
 from lanka_data.api.fields.How import How
-from lanka_data.visual.plot_visual.BivariateMapVisual import (
-    BivariateData, BivariateMapVisual, BivariatePalette, QuadrantChartVisual)
+from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateData import BivariateData
+from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateMapVisual import BivariateMapVisual
+from lanka_data.visual.plot_visual.BivariateMapVisual.BivariatePalette import BivariatePalette
+from lanka_data.visual.plot_visual.BivariateMapVisual.QuadrantChartVisual import QuadrantChartVisual
 from lanka_data.visual.VisualFactory import VisualFactory
 
 

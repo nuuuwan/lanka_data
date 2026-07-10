@@ -1,5 +1,5 @@
 from lanka_data.api.data.DataSource import DataSource
-from lanka_data.api.dataset.RegionValueDataset import RegionValueDataset
+from lanka_data.api.dataset.RegionValueDataset.RegionValueDataset import RegionValueDataset
 from utils_future import Log
 
 log = Log("SeriesDataset")

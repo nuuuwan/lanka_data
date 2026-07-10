@@ -1,4 +1,6 @@
-from lanka_data.api.fields import How, When, Where
+from lanka_data.api.fields.How import How
+from lanka_data.api.fields.When import When
+from lanka_data.api.fields.Where import Where
 from lanka_data.api.fields.WhatWhenRegistry import WhatWhenRegistry
 
 

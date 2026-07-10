@@ -3,7 +3,10 @@ from functools import cached_property
 
 from lanka_data.api.command.CommandBaseValidationMixin import \
     CommandBaseValidationMixin
-from lanka_data.api.fields import How, What, When, Where
+from lanka_data.api.fields.How import How
+from lanka_data.api.fields.What import What
+from lanka_data.api.fields.When import When
+from lanka_data.api.fields.Where import Where
 
 
 @dataclass(init=False)

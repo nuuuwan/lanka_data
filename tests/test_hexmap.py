@@ -1,7 +1,7 @@
 import math
 
-from lanka_data.visual.plot.map.HexData import HexData
-from lanka_data.visual.plot_visual.HexMapVisual import HexMapVisual
+from lanka_data.visual.plot.map.HexData.HexData import HexData
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapVisual import HexMapVisual
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
     HexMapBoundaryMixin
 from lanka_data.visual.plot_visual.HexMapVisual.HexTextFit import HexTextFit
