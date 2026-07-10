@@ -18,6 +18,10 @@ class HexData(
     HexDataAssignMixin,
     HexDataCacheMixin,
 ):
+    @classmethod
+    def _prepare_data_list(cls, data_list):
+        return data_list
+
     @staticmethod
     def _region_to_weight(data_list):
         return {
@@ -70,6 +74,7 @@ class HexData(
 
     @classmethod
     def get_hex_layout(cls, data_list):
+        data_list = cls._prepare_data_list(data_list)
         region_to_weight = cls._region_to_weight(data_list)
         path = cls._cache_path(region_to_weight)
         cached = cls._load(path)
