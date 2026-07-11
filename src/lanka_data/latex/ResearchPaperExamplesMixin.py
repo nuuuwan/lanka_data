@@ -95,6 +95,9 @@ class ResearchPaperExamplesMixin:
         return hashlib.md5(cmd.encode()).hexdigest()[:4] + '.png'
 
     def copy_images(self, tex_dir):
+        for f in os.listdir(tex_dir):
+            if f.endswith('.png'):
+                os.remove(os.path.join(tex_dir, f))
         for cmd, _, _ in self.EXAMPLES:
             src = os.path.join('_output', cmd, 'Image.png')
             dst = os.path.join(tex_dir, self._img_path(cmd))
