@@ -1,41 +1,5 @@
 [
   {
-    "label": "Gender",
-    "description": "Distribution of the population by gender.",
-    "category_labels": [
-      "Female",
-      "Male"
-    ]
-  },
-  {
-    "label": "Ethnicity",
-    "description": "Distribution of the population by ethnic group.",
-    "category_labels": [
-      "Bharatha",
-      "Burgher",
-      "IndMalaiyagaTamil",
-      "Malay",
-      "Other",
-      "Sinhalese",
-      "SLChetty",
-      "SLMoor",
-      "SLTamil",
-      "Veddha"
-    ]
-  },
-  {
-    "label": "Religion",
-    "description": "Distribution of the population by religious affiliation.",
-    "category_labels": [
-      "Buddhist",
-      "Hindu",
-      "Islam",
-      "Other",
-      "OtherChristian",
-      "RomanCatholic"
-    ]
-  },
-  {
     "label": "AgeGroup",
     "description": "Distribution of the population by age groups.",
     "category_labels": [
@@ -56,9 +20,460 @@
       "70-74 Years",
       "75-79 Years",
       "80-84 Years",
-      "85-89 Years",
-      "90-94 Years",
-      "95+ Years"
+      "8589",
+      "9094",
+      "95AndAbove"
+    ]
+  },
+  {
+    "label": "AgriOccupations",
+    "description": "Distribution of agricultural occupations.",
+    "category_labels": [
+      "FisheryWorkersHuntersAndTrappers",
+      "ForestryAndRelatedWorkers",
+      "MarketGardenersAndCropGrowers",
+      "MarketOrientedAnimalProducers",
+      "MarketOrientedCropAndAnimalProducers",
+      "SubsistenceAgriculturalAndFisheryWorkers",
+      "SubsistenceDairyLivestockAndRelatedWorkers",
+      "UnskilledLabourersWorkingInTheAgriculturalAndFisherySector"
+    ]
+  },
+  {
+    "label": "Communication",
+    "description": "Distribution of households by communication items.",
+    "category_labels": [
+      "Fax",
+      "FixedTp",
+      "Laptop",
+      "Mobile",
+      "Pc",
+      "Radio",
+      "Tv"
+    ]
+  },
+  {
+    "label": "ConstructionYear",
+    "description": "Distribution of housing by year of construction.",
+    "category_labels": [
+      "19801989",
+      "19901994",
+      "19951999",
+      "20002004",
+      "2005",
+      "2006",
+      "2007",
+      "2008",
+      "2009",
+      "2010",
+      "2011",
+      "Before80"
+    ]
+  },
+  {
+    "label": "Dependency",
+    "description": "Dependency ratios and age group distribution.",
+    "category_labels": [
+      "Aged0014",
+      "Aged1559",
+      "Aged60AndOver",
+      "DependencyRatioOld",
+      "DependencyRatioYoung"
+    ]
+  },
+  {
+    "label": "Economy",
+    "description": "Distribution of the population by economic activity.",
+    "category_labels": [
+      "EconomicallyNotActive",
+      "Employed",
+      "Unemployed"
+    ]
+  },
+  {
+    "label": "Education",
+    "description": "Distribution of the population by educational attainment.",
+    "category_labels": [
+      "DegreeAndAbove",
+      "GceAdvancedLevel",
+      "GceOrdinaryLevel",
+      "NoSchooling",
+      "Primary",
+      "Secondary"
+    ]
+  },
+  {
+    "label": "Electricity",
+    "description": "Distribution of electricity access by sector.",
+    "category_labels": [
+      "Estate",
+      "Rural",
+      "Urban",
+      "UsingElectricity"
+    ]
+  },
+  {
+    "label": "Employment",
+    "description": "Distribution of the population by employment status.",
+    "category_labels": [
+      "GovernmentEmployees",
+      "OwnAccountWorkers",
+      "PrivateSectorEmployeesAndEmployers",
+      "SemiGovernmentEmployees",
+      "UnpaidFamilyWorkers"
+    ]
+  },
+  {
+    "label": "Enrollment",
+    "description": "Distribution of school enrollment.",
+    "category_labels": [
+      "PopulationAged534Years"
+    ]
+  },
+  {
+    "label": "Ethnicity",
+    "description": "Distribution of the population by ethnic group.",
+    "category_labels": [
+      "Bharatha",
+      "Burgher",
+      "IndMalaiyagaTamil",
+      "Malay",
+      "Other",
+      "Sinhalese",
+      "SLChetty",
+      "SLMoor",
+      "SLTamil",
+      "Veddha"
+    ]
+  },
+  {
+    "label": "Fertility",
+    "description": "Fertility rates by sector.",
+    "category_labels": [
+      "EstateRate",
+      "RuralRate",
+      "UrbanRate"
+    ]
+  },
+  {
+    "label": "Floor",
+    "description": "Distribution of housing by floor material type.",
+    "category_labels": [
+      "Cement",
+      "Concrete",
+      "Mud",
+      "NotRelevant",
+      "Other",
+      "Sand",
+      "TerrazzoTileGraniteWoodFinished",
+      "Wood"
+    ]
+  },
+  {
+    "label": "Fuel",
+    "description": "Distribution of housing by cooking fuel type.",
+    "category_labels": [
+      "BioGas",
+      "Electricity",
+      "Firewood",
+      "Gas",
+      "Kerosene",
+      "NotRelevant",
+      "Other",
+      "SawdustPaddyHusk"
+    ]
+  },
+  {
+    "label": "Gender",
+    "description": "Distribution of the population by gender.",
+    "category_labels": [
+      "Female",
+      "Male"
+    ]
+  },
+  {
+    "label": "Growth",
+    "description": "Population growth metrics.",
+    "category_labels": [
+      "AnnualGrowthRate",
+      "Census1981Population",
+      "Census2001Population",
+      "IntercensalIncrease"
+    ]
+  },
+  {
+    "label": "Housing",
+    "description": "Housing distribution by sector.",
+    "category_labels": [
+      "Estate",
+      "Rural",
+      "Urban"
+    ]
+  },
+  {
+    "label": "Inactive",
+    "description": "Usually economically inactive population.",
+    "category_labels": [
+      "UsuallyNotEconomicallyActivePopulationAged10YearsAndOver"
+    ]
+  },
+  {
+    "label": "Industry",
+    "description": "Distribution of population by employment industry.",
+    "category_labels": [
+      "ActivitextraterritorialOrganisationsAndBodies",
+      "AgricultureAndForestry",
+      "Construction",
+      "Education",
+      "ElectricityGasAndWaterSupply",
+      "FinancialIntermediation",
+      "Fishing",
+      "HealthAndSocialWork",
+      "HotelsAndRestaurants",
+      "IndustryInElementaryOccupationsUnidentifiableOrInadequate",
+      "Manufacturing",
+      "MiningAndQuarrying",
+      "OtherCommunitySocialAndPersonalServiceActivities",
+      "PrivateHouseholdsWithEmployedPersons",
+      "PublicAdministrationAndDefenceCompulsorySocialSecurity",
+      "RealEstateRentingAndBusinessActivities",
+      "TransportStorageAndCommunication",
+      "WholesaleAndRetailTrad",
+      "WorksReportingIndustryUnidentifiableOrInadequate"
+    ]
+  },
+  {
+    "label": "Informal",
+    "description": "Distribution of informal housing.",
+    "category_labels": [
+      "HutsAndShanties"
+    ]
+  },
+  {
+    "label": "Laborforce",
+    "description": "Labor force participation rates.",
+    "category_labels": [
+      "FemaleRate",
+      "MaleRate"
+    ]
+  },
+  {
+    "label": "Lighting",
+    "description": "Distribution of housing by lighting source.",
+    "category_labels": [
+      "BioGas",
+      "ElectricityGrid",
+      "Generator",
+      "Kerosene",
+      "Other",
+      "SolarGrid",
+      "SolarStandalone"
+    ]
+  },
+  {
+    "label": "Literacy",
+    "description": "Literacy rates by sector and gender.",
+    "category_labels": [
+      "EstateRate",
+      "FemaleRate",
+      "MaleRate",
+      "RuralRate",
+      "UrbanRate"
+    ]
+  },
+  {
+    "label": "Marital",
+    "description": "Distribution of the population by marital status.",
+    "category_labels": [
+      "Divorced",
+      "LegallySeparated",
+      "MarriedRegistered",
+      "MarriedCustomary",
+      "NeverMarried",
+      "NotStated",
+      "SeparatedNotLegally",
+      "Widowed"
+    ]
+  },
+  {
+    "label": "Materials",
+    "description": "Distribution of housing construction materials.",
+    "category_labels": [
+      "FloorCementTileTerrazoGranite",
+      "OuterWallsBricksCabooksCementBlocksStones",
+      "RoofTileAsbestosConcreteMetalSheets"
+    ]
+  },
+  {
+    "label": "Migration",
+    "description": "Distribution of population by migration patterns.",
+    "category_labels": [
+      "Migrants14Years",
+      "Migrants10YearsAndMore",
+      "Migrants59Years",
+      "MigrantsLessThan1Year",
+      "MigrantsNotStated",
+      "ResidentSinceBirth",
+      "UsualResident"
+    ]
+  },
+  {
+    "label": "NonAgriEmployment",
+    "description": "Non-agricultural employment by occupation.",
+    "category_labels": [
+      "ArmedForcesAndWorkersNotIdentifiableOrInadequateRate",
+      "LegislatorsSeniorOfficialsAdministratorsProfessionalsTechniciansAndClerksRate",
+      "ProductionAndRelatedWorkersRate",
+      "ServiceWorkersMarketAndSalesWorkersAndPrivateBusinessOwnersRate"
+    ]
+  },
+  {
+    "label": "Occupancy",
+    "description": "Distribution of households by occupancy status.",
+    "category_labels": [
+      "Occupied",
+      "Vacant"
+    ]
+  },
+  {
+    "label": "Occupations",
+    "description": "Distribution of population by occupations.",
+    "category_labels": [
+      "ArmedForcesAndWorkersNotIdentifiableOrInadequate",
+      "Clerks",
+      "CraftAndRelatedWorkers",
+      "ElementaryOccupations",
+      "LegislatorsSeniorOfficialsAndManagers",
+      "PlantAndMachineOperatorsAndAssemblers",
+      "PrivateBusinessOwners",
+      "Professionals",
+      "SkilledAgriculturalAndFisheryWorkers",
+      "SocialWorkersAndShopAndMarketSalesWorkers",
+      "TechniciansAndAssociateProfessionals"
+    ]
+  },
+  {
+    "label": "Ownership",
+    "description": "Distribution of housing by ownership status.",
+    "category_labels": [
+      "Encroached",
+      "OccupiedFreeOfRent",
+      "Other",
+      "OwnedByAHouseholdMember",
+      "Rent/LeaseGovernmentOwned",
+      "Rent/LeasePrivatelyOwned"
+    ]
+  },
+  {
+    "label": "Persons",
+    "description": "Distribution of households by number of persons.",
+    "category_labels": [
+      "10OrMore",
+      "1Person",
+      "2Persons",
+      "3Persons",
+      "4Persons",
+      "5Persons",
+      "6Persons",
+      "7Persons",
+      "8Persons",
+      "9Persons"
+    ]
+  },
+  {
+    "label": "Population",
+    "description": "Population overview metrics.",
+    "category_labels": [
+      "Density",
+      "Female",
+      "Male",
+      "SexRatio"
+    ]
+  },
+  {
+    "label": "Quarters",
+    "description": "Distribution of households by living quarters type.",
+    "category_labels": [
+      "CollectiveLivingQuarter",
+      "HousingUnit",
+      "NonHousingUnit"
+    ]
+  },
+  {
+    "label": "RelationshipToHead",
+    "description": "Distribution of the population by relationship to household head.",
+    "category_labels": [
+      "Boarder",
+      "Clergy",
+      "DomesticEmployee",
+      "Grandchild/GreatGrandChild",
+      "Head",
+      "NonRelative",
+      "NotStated",
+      "OtherRelative",
+      "ParentOfHeadOrSpouse",
+      "Son/Daughter",
+      "Son/DaughterInLaw",
+      "Wife/Husband"
+    ]
+  },
+  {
+    "label": "Religion",
+    "description": "Distribution of the population by religious affiliation.",
+    "category_labels": [
+      "Buddhist",
+      "Hindu",
+      "Islam",
+      "Other",
+      "OtherChristian",
+      "RomanCatholic"
+    ]
+  },
+  {
+    "label": "Roof",
+    "description": "Distribution of housing by roof material type.",
+    "category_labels": [
+      "Asbestos",
+      "CadjanPalmyrahStraw",
+      "Concrete",
+      "MetalSheet",
+      "NotRelevant",
+      "Other",
+      "Tile",
+      "ZinkAluminiumSheet"
+    ]
+  },
+  {
+    "label": "Rooms",
+    "description": "Distribution of housing by number of rooms.",
+    "category_labels": [
+      "10AndAbove",
+      "1Room",
+      "2Rooms",
+      "3Rooms",
+      "4Rooms",
+      "5Rooms",
+      "6Rooms",
+      "7Rooms",
+      "8Rooms",
+      "9Rooms"
+    ]
+  },
+  {
+    "label": "Sectoral",
+    "description": "Distribution of population by sector.",
+    "category_labels": [
+      "PopulationInEstateSector",
+      "PopulationInRuralSector",
+      "PopulationInUrbanSector"
+    ]
+  },
+  {
+    "label": "Sectors",
+    "description": "Employment distribution by sector.",
+    "category_labels": [
+      "AgriculturalAndFisheryWorkersIncludingUnskilledLabourers",
+      "NonAgriculturalAndFisheryWorkers"
     ]
   },
   {
@@ -75,6 +490,52 @@
       "SingleHouseMoreThanTwoStoreyed",
       "SingleHouseSingleStoreyed",
       "SingleHouseTwoStoreyed"
+    ]
+  },
+  {
+    "label": "Tenure",
+    "description": "Distribution of housing by tenure.",
+    "category_labels": [
+      "Encroached",
+      "OwnedByMemberOfHousehold",
+      "RentFree",
+      "RentLease"
+    ]
+  },
+  {
+    "label": "Toilet",
+    "description": "Distribution of housing by toilet facility type.",
+    "category_labels": [
+      "CommonPublic",
+      "NoToiletSharing",
+      "None",
+      "WithinPremisesExclusive",
+      "WithinPremisesShared",
+      "WithinUnitExclusive",
+      "WithinUnitShared"
+    ]
+  },
+  {
+    "label": "Unemployment",
+    "description": "Unemployment rates by education and gender.",
+    "category_labels": [
+      "DegreeAndAboveRate",
+      "FemaleRate",
+      "MaleRate",
+      "PassedGceAlRate",
+      "PassedGceOlRate",
+      "PassedYear04Rate",
+      "PassedYear59Rate"
+    ]
+  },
+  {
+    "label": "Unit",
+    "description": "Distribution of housing by unit type.",
+    "category_labels": [
+      "Improvised",
+      "Permanent",
+      "SemiPermanent",
+      "Unclassified"
     ]
   },
   {
@@ -95,31 +556,15 @@
     ]
   },
   {
-    "label": "Floor",
-    "description": "Distribution of housing by floor material type.",
+    "label": "Waste",
+    "description": "Distribution of housing by solid waste disposal method.",
     "category_labels": [
-      "Cement",
-      "Concrete",
-      "Mud",
-      "NotRelevant",
-      "Other",
-      "Sand",
-      "TerrazzoTileGraniteWoodFinished",
-      "Wood"
-    ]
-  },
-  {
-    "label": "Roof",
-    "description": "Distribution of housing by roof material type.",
-    "category_labels": [
-      "Asbestos",
-      "CadjanPalmyrahStraw",
-      "Concrete",
-      "MetalSheet",
-      "NotRelevant",
-      "Other",
-      "Tile",
-      "ZinkAluminiumSheet"
+      "CollectedByLocalAuthorities",
+      "OccupantsBurn",
+      "OccupantsBury",
+      "OccupantsCompostingSolidWaste",
+      "OccupantsDisposeSolidWasteIntoRoad/River/Canal/Sea/Creek/ForestEtc",
+      "Other"
     ]
   },
   {
@@ -141,46 +586,6 @@
       "TankRiverStream",
       "TubeWell",
       "UnprotectedWell"
-    ]
-  },
-  {
-    "label": "Fuel",
-    "description": "Distribution of housing by cooking fuel type.",
-    "category_labels": [
-      "BioGas",
-      "Electricity",
-      "Firewood",
-      "Gas",
-      "Kerosene",
-      "NotRelevant",
-      "Other",
-      "SawdustPaddyHusk"
-    ]
-  },
-  {
-    "label": "Lighting",
-    "description": "Distribution of housing by lighting source.",
-    "category_labels": [
-      "BioGas",
-      "ElectricityGrid",
-      "Generator",
-      "Kerosene",
-      "Other",
-      "SolarGrid",
-      "SolarStandalone"
-    ]
-  },
-  {
-    "label": "Toilet",
-    "description": "Distribution of housing by toilet facility type.",
-    "category_labels": [
-      "CommonPublic",
-      "NoToiletSharing",
-      "None",
-      "WithinPremisesExclusive",
-      "WithinPremisesShared",
-      "WithinUnitExclusive",
-      "WithinUnitShared"
     ]
   }
 ]
