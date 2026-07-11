@@ -106,10 +106,10 @@ class DatasetsReadme:
     @staticmethod
     def get_sources_for_dataset(dataset_class):
         if dataset_class == ElectionSummaryDataset:
-            instance = ElectionSummaryDataset([], '')
-        elif dataset_class in [ElectionDataset]:
+            instance = ElectionSummaryDataset([], '', '')
+        elif dataset_class == ElectionDataset:
             instance = ElectionDataset([], '', '')
-        elif dataset_class in [RiversDataset]:
+        elif dataset_class == RiversDataset:
             instance = RiversDataset([], '')
         else:
             instance = dataset_class([], '')
