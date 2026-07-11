@@ -1,6 +1,7 @@
 import os
 from dataclasses import dataclass, field
 from functools import cache
+from typing import Optional
 
 from utils_future import JSONFile
 
@@ -37,7 +38,7 @@ class WhatLabel:
         return {what_label.label: what_label for what_label in cls.list()}
 
     @classmethod
-    def from_label(cls, label: str) -> "WhatLabel":
+    def from_label(cls, label: str) -> Optional["WhatLabel"]:
         return cls.idx().get(label)
 
     def __str__(self) -> str:
