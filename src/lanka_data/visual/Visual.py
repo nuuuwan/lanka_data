@@ -20,6 +20,10 @@ class Visual(ABC):
 
     def __repr__(self):
         return self.__str__()
+    
+    @classmethod 
+    def get_label(cls):
+        return cls.__name__.replace('Visual', '')
 
     @classmethod
     def from_command_and_datasets(cls, command, datasets):
