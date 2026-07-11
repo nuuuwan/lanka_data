@@ -1,0 +1,13 @@
+{
+  "command_str": "RiverLen/2026/LK:rivers/BarChart",
+  "result": {
+    "image_path": "_output/RiverLen/2026/LK:rivers/BarChart/Image.png"
+  },
+  "sources": [
+    {
+      "name": "HydroRIVERS (via lk_rivers)",
+      "url": "https://www.hydrosheds.org/products/hydrorivers"
+    }
+  ],
+  "query_time_ms": 0
+}
