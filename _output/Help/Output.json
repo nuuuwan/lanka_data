@@ -3,9 +3,6 @@
   "result": {
     "What": {
       "census-housing": {
-        "Electricity": "Distribution of electricity access by sector."
-      },
-      "census-housings": {
         "Communication": "Household communication items distribution",
         "ConstructionYear": "Year of construction distribution",
         "Electricity": "Electricity access statistics",
