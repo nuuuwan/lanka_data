@@ -10,6 +10,7 @@ from utils_future import JSONFile
 class WhatLabel:
     label: str
     description: str
+    group: str = "census"
     category_labels: list[str] = field(default_factory=list)
 
     @classmethod
@@ -27,6 +28,7 @@ class WhatLabel:
             cls(
                 label=definition["label"],
                 description=definition["description"],
+                group=definition.get("group", "census"),
                 category_labels=list(definition["category_labels"]),
             )
             for definition in definitions
