@@ -1,8 +1,8 @@
-
 import os
 
-from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import \
-    ReadMeExamplesItemMixin
+from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import (
+    ReadMeExamplesItemMixin,
+)
 from utils_future import File, JSONFile, Log
 
 log = Log("ExamplesReadme")
@@ -12,16 +12,13 @@ class ExamplesReadme(ReadMeExamplesItemMixin):
     PATH = "README.examples.md"
 
     def get_lines(self, example_idx, output_idx):
-        return (
-            [
-                "# Examples",
-                "",
-                "This file showcases all examples from `examples.json`"
-                + " with their output results.",
-                "",
-            ]
-            + self.get_lines_for_examples(example_idx, output_idx)
-        )
+        return [
+            "# Examples",
+            "",
+            "This file showcases all examples from `examples.json`"
+            + " with their output results.",
+            "",
+        ] + self.get_lines_for_examples(example_idx, output_idx)
 
     @staticmethod
     def get_lines_for_example(i_group_name, i_cmd, cmd, output_idx):
@@ -37,9 +34,7 @@ class ExamplesReadme(ReadMeExamplesItemMixin):
         lines.extend(
             ReadMeExamplesItemMixin.get_lines_for_output(cmd, output)
         )
-        lines.extend(
-            ReadMeExamplesItemMixin.get_lines_for_image(cmd, output)
-        )
+        lines.extend(ReadMeExamplesItemMixin.get_lines_for_image(cmd, output))
         return lines
 
     def get_lines_for_examples(self, example_idx, output_idx):
@@ -62,9 +57,7 @@ class ExamplesReadme(ReadMeExamplesItemMixin):
             os.path.join("examples", "examples.json")
         ).read()
         output_idx = {
-            cmd: JSONFile(
-                os.path.join("_output", cmd, "Output.json")
-            ).read()
+            cmd: JSONFile(os.path.join("_output", cmd, "Output.json")).read()
             for cmds in example_idx.values()
             for cmd in cmds
         }
