@@ -1,7 +1,9 @@
-from lanka_data.examples.Example.Example import Example
+
+import os
+
 from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import \
     ReadMeExamplesItemMixin
-from utils_future import File, Log
+from utils_future import File, JSONFile, Log
 
 log = Log("ExamplesReadme")
 
@@ -22,11 +24,10 @@ class ExamplesReadme(ReadMeExamplesItemMixin):
         )
 
     @staticmethod
-    def get_lines_for_example(i_group_name, i_cmd, example, output_idx):
-        lines = []
-        cmd = example.cmd
+    def get_lines_for_example(i_group_name, i_cmd, cmd, output_idx):
         output = output_idx[cmd]
         result = output["result"]
+        lines = []
         lines.extend(
             ReadMeExamplesItemMixin.get_lines_for_example_title(
                 i_group_name, i_cmd, cmd, result
@@ -36,27 +37,37 @@ class ExamplesReadme(ReadMeExamplesItemMixin):
         lines.extend(
             ReadMeExamplesItemMixin.get_lines_for_output(cmd, output)
         )
-        lines.extend(ReadMeExamplesItemMixin.get_lines_for_image(cmd, output))
+        lines.extend(
+            ReadMeExamplesItemMixin.get_lines_for_image(cmd, output)
+        )
         return lines
 
     def get_lines_for_examples(self, example_idx, output_idx):
         lines = []
-        for i_group_name, (group_name, examples) in enumerate(
+        for i_group_name, (group_name, cmds) in enumerate(
             example_idx.items(), start=1
         ):
             lines.append(f"## {i_group_name}) {group_name}")
             lines.append("")
-            for i_cmd, example in enumerate(examples, start=1):
+            for i_cmd, cmd in enumerate(cmds, start=1):
                 lines.extend(
                     self.get_lines_for_example(
-                        i_group_name, i_cmd, example, output_idx
+                        i_group_name, i_cmd, cmd, output_idx
                     )
                 )
         return lines
 
     def build(self):
-        example_idx = Example.get_group_to_examples()
-        output_idx = Example.get_cmd_to_output()
+        example_idx = JSONFile(
+            os.path.join("examples", "examples.json")
+        ).read()
+        output_idx = {
+            cmd: JSONFile(
+                os.path.join("_output", cmd, "Output.json")
+            ).read()
+            for cmds in example_idx.values()
+            for cmd in cmds
+        }
         lines = self.get_lines(example_idx, output_idx)
         readme_file = File(self.PATH)
         readme_file.write("\n".join(lines))
