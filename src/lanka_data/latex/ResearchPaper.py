@@ -52,7 +52,7 @@ class ResearchPaper(
         lines.append('')
         lines.append(f'\\title{{{self.TITLE}}}')
         author_line = (
-            f'\\author{{{self.AUTHOR}\\\\' + '\\texttt{nuuuwan@gmail.com}}'
+            f'\\author{{{self.AUTHOR}\\\\' + '\\texttt{nuwans@stanford.edu}}'
         )
         lines.append(author_line)
         lines.append('\\date{\\today}')
@@ -154,9 +154,36 @@ class ResearchPaper(
             + self._get_how_lines()
         )
 
+    def _get_what_list_lines(self):
+        """Return What field values by category."""
+        return [
+            '\\subsubsection*{census-population (29 values)}',
+            'AgeGroup, AgriOccupations, Attendance, Dependency,',
+            'Disability, Economy, Education, Employment, Enrollment,',
+            'Ethnicity, Fertility, Gender, Growth, Inactive, Industry,',
+            'Laborforce, Literacy, Marital, Migration,',
+            'NonAgriEmployment, NotAttending, Occupations, Population,',
+            'RelationshipToHead, Religion, Sectoral, Sectors,',
+            'Speaking, Unemployment',
+            '',
+            '\\subsubsection*{census-housing (22 values)}',
+            'Communication, ConstructionYear, Electricity, Floor, Fuel,',
+            'Housing, Informal, Lighting, Materials, Occupancy,',
+            'Ownership, Persons, Quarters, Roof, Rooms, Structure,',
+            'Tenure, Toilet, Unit, Walls, Waste, Water',
+            '',
+            '\\subsubsection*{election (6 values)}',
+            'Local, LocalSummary, Parliamentary, ParliamentarySummary,',
+            'Presidential, PresidentialSummary',
+            '',
+            '\\subsubsection*{rivers (2 values)}',
+            'Catchment, RiverLen',
+            '',
+        ]
+
     def _get_what_lines(self):
         """Get What field lines."""
-        return [
+        lines = [
             '\\subsection{What --- the measurement}',
             '',
             '\\textbf{What} identifies the quantity being retrieved. It',
@@ -171,10 +198,24 @@ class ResearchPaper(
             'other three fields without expanding the vocabulary.',
             '',
         ]
+        return lines + self._get_what_list_lines()
+
+    def _get_when_list_lines(self):
+        """Return When field examples and syntax."""
+        return [
+            'Supported formats:',
+            '\\begin{itemize}',
+            '\\item Single year: e.g., \\texttt{2024}',
+            '\\item Interval: e.g., \\texttt{2012-2024}',
+            '\\item If exact year unavailable, closest available data',
+            'is returned',
+            '\\end{itemize}',
+            '',
+        ]
 
     def _get_when_lines(self):
         """Get When field lines."""
-        return [
+        lines = [
             '\\subsection{When --- the observation time}',
             '',
             '\\textbf{When} binds the measurement to the point or',
@@ -183,10 +224,29 @@ class ResearchPaper(
             'not two concatenated queries.',
             '',
         ]
+        return lines + self._get_when_list_lines()
+
+    def _get_where_list_lines(self):
+        """Return Where field syntax patterns."""
+        return [
+            'Supported syntax patterns:',
+            '\\begin{itemize}',
+            '\\item \\texttt{<region\\_id>}: Single region (e.g., LK)',
+            '\\item \\texttt{<region\\_id>:<type>}: Child regions',
+            '(e.g., LK:district)',
+            '\\item \\texttt{<r1>,<r2>}: Multiple regions',
+            '(e.g., LK-1,LK-2)',
+            '\\item \\texttt{<r1>...<r2>}: Range between endpoints',
+            '(e.g., LK-1...LK-2)',
+            '\\item \\texttt{<region>@<distance>}: Regions within',
+            'distance of same type',
+            '\\end{itemize}',
+            '',
+        ]
 
     def _get_where_lines(self):
         """Get Where field lines."""
-        return [
+        lines = [
             '\\subsection{Where --- the region}',
             '',
             '\\textbf{Where} identifies the region under measurement: its',
@@ -203,10 +263,27 @@ class ResearchPaper(
             'wrong geometry.',
             '',
         ]
+        return lines + self._get_where_list_lines()
+
+    def _get_how_list_lines(self):
+        """Return How field visualization bases and modifiers."""
+        return [
+            'Supported visualization bases (24 total):',
+            'BarChart, BivariateMap, BubbleMap, BumpChart, CSV,',
+            'ChartSpec, GeoJSON, HexMap, Histogram, JSON, LineChart,',
+            'Map, Parquet, PieChart, QuadrantChart, ScatterPlot,',
+            'SquareMap, StackedBarChart, TSV, TreeMap, TriangleMap,',
+            'UnitHexMap, UnitSquareMap, UnitTriangleMap',
+            '',
+            'Supported modifiers (12 total):',
+            '1st, Top, 2nd, 3rd, Bottom, 1stPct, 2ndPct, Change,',
+            'Top3, Diversity, DiversityPew',
+            '',
+        ]
 
     def _get_how_lines(self):
         """Get How field lines."""
-        return [
+        lines = [
             '\\subsection{How --- the presentation}',
             '',
             '\\textbf{How} specifies the output representation. The same',
@@ -221,6 +298,7 @@ class ResearchPaper(
             'supplies an interval.',
             '',
         ]
+        return lines + self._get_how_list_lines()
 
     def _get_dataset_lines(self):
         """Get datasets and sources section lines."""

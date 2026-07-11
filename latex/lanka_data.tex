@@ -12,7 +12,7 @@
 \usepackage{acl}%
 
 \title{Lanka Data: A Four-Field Grammar for Querying Public Data about Sri Lanka}
-\author{Nuwan I. Senaratna\\\texttt{nuuuwan@gmail.com}}
+\author{Nuwan I. Senaratna\\\texttt{nuwans@stanford.edu}}
 \date{\today}
 
 \begin{document}
@@ -83,12 +83,42 @@ for inspecting boundary changes in isolation. Because
 measurement is reused across every combination of the
 other three fields without expanding the vocabulary.
 
+\subsubsection*{census-population (29 values)}
+AgeGroup, AgriOccupations, Attendance, Dependency,
+Disability, Economy, Education, Employment, Enrollment,
+Ethnicity, Fertility, Gender, Growth, Inactive, Industry,
+Laborforce, Literacy, Marital, Migration,
+NonAgriEmployment, NotAttending, Occupations, Population,
+RelationshipToHead, Religion, Sectoral, Sectors,
+Speaking, Unemployment
+
+\subsubsection*{census-housing (22 values)}
+Communication, ConstructionYear, Electricity, Floor, Fuel,
+Housing, Informal, Lighting, Materials, Occupancy,
+Ownership, Persons, Quarters, Roof, Rooms, Structure,
+Tenure, Toilet, Unit, Walls, Waste, Water
+
+\subsubsection*{election (6 values)}
+Local, LocalSummary, Parliamentary, ParliamentarySummary,
+Presidential, PresidentialSummary
+
+\subsubsection*{rivers (2 values)}
+Catchment, RiverLen
+
 \subsection{When --- the observation time}
 
 \textbf{When} binds the measurement to the point or
 interval in time at which it happened. It accepts either a
 single year or an interval. An interval is a single value,
 not two concatenated queries.
+
+Supported formats:
+\begin{itemize}
+\item Single year: e.g., \texttt{2024}
+\item Interval: e.g., \texttt{2012-2024}
+\item If exact year unavailable, closest available data
+is returned
+\end{itemize}
 
 \subsection{Where --- the region}
 
@@ -105,6 +135,19 @@ redesign. Observation time and boundary epoch are kept as
 separate values so that counts are not misattributed to the
 wrong geometry.
 
+Supported syntax patterns:
+\begin{itemize}
+\item \texttt{<region\_id>}: Single region (e.g., LK)
+\item \texttt{<region\_id>:<type>}: Child regions
+(e.g., LK:district)
+\item \texttt{<r1>,<r2>}: Multiple regions
+(e.g., LK-1,LK-2)
+\item \texttt{<r1>...<r2>}: Range between endpoints
+(e.g., LK-1...LK-2)
+\item \texttt{<region>@<distance>}: Regions within
+distance of same type
+\end{itemize}
+
 \subsection{How --- the presentation}
 
 \textbf{How} specifies the output representation. The same
@@ -117,6 +160,17 @@ transformations applied to the same underlying values. This
 is the single intentional coupling of the grammar:
 change-based modifiers are valid only when \textbf{When}
 supplies an interval.
+
+Supported visualization bases (24 total):
+BarChart, BivariateMap, BubbleMap, BumpChart, CSV,
+ChartSpec, GeoJSON, HexMap, Histogram, JSON, LineChart,
+Map, Parquet, PieChart, QuadrantChart, ScatterPlot,
+SquareMap, StackedBarChart, TSV, TreeMap, TriangleMap,
+UnitHexMap, UnitSquareMap, UnitTriangleMap
+
+Supported modifiers (12 total):
+1st, Top, 2nd, 3rd, Bottom, 1stPct, 2ndPct, Change,
+Top3, Diversity, DiversityPew
 
 \section{Datasets and Sources}
 
