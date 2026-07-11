@@ -11,7 +11,6 @@ class CompatibilityAliases:
         "Command",
         "CommandBase",
         "CommandCache",
-        "CommandIntrospectionMixin",
         "CommandLoaderMixin",
     ]
     COMMAND_ERROR_MODULES = [

@@ -4,7 +4,6 @@ from lanka_data.api.command.Command import Command
 from lanka_data.api.command.CommandBase import CommandBase
 from lanka_data.api.command.CommandBaseValidationMixin import CommandBaseValidationMixin
 from lanka_data.api.command.CommandCache import CommandCache
-from lanka_data.api.command.CommandIntrospectionMixin import CommandIntrospectionMixin
 from lanka_data.api.command.CommandLoaderMixin import CommandLoaderMixin
 from lanka_data.api.command_errors.CommandError import CommandError
 from lanka_data.api.command_errors.InvalidCommandError import InvalidCommandError
@@ -21,22 +20,14 @@ from lanka_data.api.dataset.RegionValueDataset.RegionValueDatasetTableMixin impo
 from lanka_data.api.dataset.SeriesDataset import SeriesDataset
 from lanka_data.api.fields.How import How
 from lanka_data.api.fields.HowFormatMixin import HowFormatMixin
-from lanka_data.api.fields.HowIntrospectionMixin import HowIntrospectionMixin
+from lanka_data.api.fields.HowCategoryMixin import HowCategoryMixin
 from lanka_data.api.fields.HowRegistryMixin import HowRegistryMixin
 from lanka_data.api.fields.RegionFilter import RegionFilter
-from lanka_data.api.fields.RegionTypeRegistry import RegionTypeRegistry
 from lanka_data.api.fields.What import What
-from lanka_data.api.fields.WhatIntrospectionMixin import WhatIntrospectionMixin
-from lanka_data.api.fields.WhatRegistry import WhatRegistry
-from lanka_data.api.fields.WhatWhenRegistry import WhatWhenRegistry
 from lanka_data.api.fields.When import When
-from lanka_data.api.fields.WhenIntrospectionMixin import WhenIntrospectionMixin
-from lanka_data.api.fields.WhenRegistry import WhenRegistry
 from lanka_data.api.fields.Where import Where
-from lanka_data.api.fields.WhereIntrospectionMixin import WhereIntrospectionMixin
 from lanka_data.CompatibilityAliases import CompatibilityAliases
 from lanka_data.console.ConsoleApp import ConsoleApp
-from lanka_data.console.ConsoleCommandLibrary import ConsoleCommandLibrary
 from lanka_data.console.ConsoleCompleter import ConsoleCompleter
 from lanka_data.console.ConsoleImageOpener import ConsoleImageOpener
 from lanka_data.console.ConsoleLocalCommands import ConsoleLocalCommands
@@ -55,7 +46,6 @@ from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import ElectionSu
 from lanka_data.datasets.dataset.custom.GIG2Dataset import GIG2Dataset
 from lanka_data.datasets.dataset.DatasetFactory import DatasetFactory
 from lanka_data.datasets.dataset.EmptyDataset import EmptyDataset
-from lanka_data.datasets.DatasetCommandRegistry import DatasetCommandRegistry
 from lanka_data.datasets.region.RegionLoadersMixin import RegionLoadersMixin
 from lanka_data.datasets.region.RegionParserMixin.RegionParserMixin import RegionParserMixin
 from lanka_data.datasets.region.RegionParserMixin.RegionParserRadiusMixin import RegionParserRadiusMixin
@@ -65,7 +55,6 @@ from lanka_data.datasets.region.RegionRawDataMixin.RegionRawDataMixin import Reg
 from lanka_data.datasets.region.Regions import Regions
 from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 from lanka_data.datasets.region.Where import Where
-from lanka_data.examples.CommandConstructor.CommandConstructor import CommandConstructor
 from lanka_data.examples.Example.Example import Example
 from lanka_data.examples.Example.ExampleOutputMixin import ExampleOutputMixin
 from lanka_data.readme.ReadMe import ReadMe

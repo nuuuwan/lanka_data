@@ -3,7 +3,6 @@ import time
 from lanka_data.api.command.Command import Command
 from lanka_data.api.command.CommandCache import CommandCache
 from lanka_data.api.data.DataSource import DataSource
-from lanka_data.correction.CorrectionPipeline import correct
 from lanka_data.datasets.command.CommandHelp import CommandHelp
 from lanka_data.datasets.dataset.DatasetFactory import DatasetFactory
 from lanka_data.visual.VisualFactory import VisualFactory
@@ -22,25 +21,18 @@ class CommandRunner:
     @staticmethod
     def run(command_str: str, policy=None):
         t_start = time.perf_counter()
-        result, sources, corrections, effective = CommandRunner._resolve(
-            command_str, policy
-        )
+        result, sources, effective = CommandRunner._resolve(command_str)
         elapsed = time.perf_counter() - t_start
-        return CommandRunner._payload(
-            effective, command_str, result, sources, corrections, elapsed
-        )
+        return CommandRunner._payload(effective, result, sources, elapsed)
 
     @staticmethod
-    def _resolve(command_str, policy):
+    def _resolve(command_str):
         if command_str == "Help":
             result, sources = CommandRunner._run_help()
-            return result, sources, [], command_str
+            return result, sources, command_str
         command = Command.from_str(command_str)
-        corrected, corrections = correct(command, policy)
-        # Cache key is the corrected cmd_id; the correction block stays out of
-        # the cache and is recomputed per request so shared entries are clean.
-        result, sources = CommandRunner._run_or_cache(corrected)
-        return result, sources, corrections, corrected.cmd_id
+        result, sources = CommandRunner._run_or_cache(command)
+        return result, sources, command.cmd_id
 
     @staticmethod
     def _run_help():
@@ -64,18 +56,10 @@ class CommandRunner:
         return value
 
     @staticmethod
-    def _payload(effective, original, result, sources, corrections, elapsed):
-        payload = dict(
+    def _payload(effective, result, sources, elapsed):
+        return dict(
             command_str=effective,
             result=result,
             sources=[source.__dict__ for source in sources],
             query_time_ms=int(elapsed * 1000),
-            is_corrected=bool(corrections),
-            corrections=[c.to_dict() for c in corrections],
         )
-        if corrections and effective != original:
-            payload["original_command_str"] = original
-            payload["correction_reason"] = "; ".join(
-                c.reason for c in corrections
-            )
-        return payload
