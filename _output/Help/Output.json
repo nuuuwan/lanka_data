@@ -293,9 +293,14 @@
         "PieChart",
         "QuadrantChart",
         "ScatterPlot",
+        "SquareMap",
         "StackedBarChart",
         "TSV",
-        "TreeMap"
+        "TreeMap",
+        "TriangleMap",
+        "UnitHexMap",
+        "UnitSquareMap",
+        "UnitTriangleMap"
       ],
       "modifiers": [
         "1st",
@@ -308,7 +313,8 @@
         "Change",
         "Diversity",
         "DiversityPew",
-        "Top"
+        "Top",
+        "Top3"
       ]
     },
     "source": "lanka_data",
