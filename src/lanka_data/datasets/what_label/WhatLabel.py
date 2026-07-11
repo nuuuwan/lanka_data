@@ -14,7 +14,11 @@ class WhatLabel:
 
     @property
     def group(self) -> str:
-        return self.category_labels[0] if self.category_labels else "census"
+        return '-'.join(
+            [
+                label for label in self. category_labels
+            ]
+        )
 
     @classmethod
     def definitions_file_path(cls) -> str:
@@ -27,7 +31,7 @@ class WhatLabel:
     @cache
     def list(cls) -> list["WhatLabel"]:
         definitions = JSONFile(cls.definitions_file_path()).read()
-        return [
+        labels= [
             cls(
                 label=definition["label"],
                 description=definition["description"],
@@ -35,6 +39,8 @@ class WhatLabel:
             )
             for definition in definitions
         ]
+        labels.sort(key=lambda x: (x.group, x.label))
+        return labels
 
     @classmethod
     @cache

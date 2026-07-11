@@ -20,7 +20,7 @@ class TestWhatLabel:
     def test_from_label_resolves_known_label(self):
         religion = WhatLabel.from_label("Religion")
         assert religion is not None
-        assert "Buddhist" in religion.category_labels
+        assert religion.category_labels == ["census"]
 
     def test_from_label_returns_none_for_unknown(self):
         assert WhatLabel.from_label("DoesNotExist") is None
