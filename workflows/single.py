@@ -12,6 +12,7 @@ def _write_output(output):
         return
     output_dir = os.path.join("_output", cmd_id)
     os.makedirs(output_dir, exist_ok=True)
+    output['query_time_ms'] = 0
     JSONFile(os.path.join(output_dir, "Output.json")).write(output)
 
 
