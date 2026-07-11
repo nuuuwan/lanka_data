@@ -23,7 +23,6 @@ setuptools.setup(
     name="lanka-data",
     version=VERSION,
     author="Nuwan I. Senaratna",
-    author_email="nuwans@stanford.edu",
     description=DESCRIPTION,
     long_description="",
     long_description_content_type="text/markdown",
