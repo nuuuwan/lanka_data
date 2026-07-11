@@ -8,6 +8,7 @@ class CommandHelpHowMixin:
         idx = {}
         for visual_cls in VisualFactory.CLS_LIST:
             idx[visual_cls.get_label()] = visual_cls.get_description()
+        idx = dict(sorted(idx.items(), key=lambda item: item[0]))
         return idx
 
     @staticmethod
