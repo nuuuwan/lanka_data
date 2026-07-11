@@ -82,6 +82,58 @@ class DatasetFactory:
         return None
 
     @staticmethod
+    def _get_census_whens_for_what(what_cmd):
+        whens = set()
+        for cls in DatasetFactory.CENSUS_DATASET_CLASSES:
+            if what_cmd in cls.get_labels():
+                whens.update(cls.get_supported_whens())
+        return whens
+
+    @staticmethod
+    def _get_election_whens_for_what(what_cmd):
+        whens = set()
+        election_labels = ElectionDataset.get_labels()
+        if election_labels and what_cmd in election_labels:
+            years = ElectionDataset.get_label_to_years().get(
+                what_cmd, []
+            )
+            whens.update(years)
+        summary_labels = ElectionSummaryDataset.get_labels()
+        if summary_labels and what_cmd in summary_labels:
+            years = ElectionSummaryDataset.get_label_to_years().get(
+                what_cmd, []
+            )
+            whens.update(years)
+        return whens
+
+    @staticmethod
+    def _get_available_whens_for_what(what_cmd):
+        available_whens = set()
+        available_whens.update(
+            DatasetFactory._get_census_whens_for_what(what_cmd)
+        )
+        available_whens.update(
+            DatasetFactory._get_election_whens_for_what(what_cmd)
+        )
+        if what_cmd in RiversDataset.get_labels():
+            available_whens.update(
+                RiversDataset.get_supported_whens()
+            )
+        return available_whens
+
+    @staticmethod
+    def _find_closest_when(requested_when, available_whens):
+        if not available_whens:
+            return None
+        available_whens_sorted = sorted([int(w) for w in available_whens])
+        requested_when_int = int(requested_when)
+        closest = min(
+            available_whens_sorted,
+            key=lambda x: abs(x - requested_when_int),
+        )
+        return str(closest)
+
+    @staticmethod
     def _first_dataset(command, region_data_list):
         builders = [
             DatasetFactory._try_rivers_dataset,
@@ -95,6 +147,25 @@ class DatasetFactory:
         return None
 
     @staticmethod
+    def _try_fallback_dataset(command, region_data_list):
+        if command.when.is_interval:
+            return None
+        available_whens = (
+            DatasetFactory._get_available_whens_for_what(
+                command.what_cmd
+            )
+        )
+        closest_when = DatasetFactory._find_closest_when(
+            command.when_cmd, available_whens
+        )
+        if closest_when is None or closest_when == command.when_cmd:
+            return None
+        fallback_command = command.copy(when_cmd=closest_when)
+        return DatasetFactory._first_dataset(
+            fallback_command, region_data_list
+        )
+
+    @staticmethod
     def from_command(command):
         region_data_list = DatasetFactory.get_region_data_list(command)
 
@@ -102,6 +173,12 @@ class DatasetFactory:
             return EmptyDataset(region_data_list)
 
         result = DatasetFactory._first_dataset(command, region_data_list)
+        if result is not None:
+            return DatasetFactory._with_region_filter(result, command)
+
+        result = DatasetFactory._try_fallback_dataset(
+            command, region_data_list
+        )
         if result is not None:
             return DatasetFactory._with_region_filter(result, command)
 
