@@ -111,34 +111,9 @@
     },
     "How": {
       "<base>:<Optional param>": {
-        "bases": [
-          "BarChart",
-          "BivariateMap",
-          "BubbleMap",
-          "BumpChart",
-          "CSV",
-          "Cartogram",
-          "ChartSpec",
-          "GeoJSON",
-          "HexMap",
-          "Histogram",
-          "JSON",
-          "LineChart",
-          "Map",
-          "None",
-          "Parquet",
-          "PieChart",
-          "QuadrantChart",
-          "ScatterPlot",
-          "SquareMap",
-          "StackedBarChart",
-          "TSV",
-          "TreeMap",
-          "TriangleMap",
-          "UnitHexMap",
-          "UnitSquareMap",
-          "UnitTriangleMap"
-        ],
+        "bases": {
+          "ABCMeta": "Renders data as a unit triangular map with exactly one triangle per region"
+        },
         "params": {
           "1st": "Highlights the most common category in each region",
           "Top": "Highlights the most common category in each region",
