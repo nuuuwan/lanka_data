@@ -1,0 +1,182 @@
+\documentclass[10pt,a4paper]{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+\usepackage{times}%
+\usepackage{natbib}%
+\usepackage{hyperref}%
+\usepackage{booktabs}%
+\usepackage{amsmath}%
+\usepackage{acl}%
+
+\title{Lanka Data: A Four-Field Grammar for Querying Public Data about Sri Lanka}
+\author{Nuwan I. Senaratna\\\texttt{nuuuwan@gmail.com}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Lanka Data is a software library that provides a single,
+uniform interface to public data about Sri Lanka. Rather
+than exposing a growing collection of endpoints, methods,
+and parameters, it reduces every query to one string of
+four positional fields---\emph{what} is measured,
+\emph{when}, \emph{where}, and \emph{how} it is
+presented---delimited by slashes. The same string serves
+unchanged as a Python argument, a command-line argument, a
+URL path, and a file path. This paper describes the
+motivation for the design, specifies the four-field command
+grammar and its single intentional coupling, argues that
+the grammar spans the target query space by composition
+rather than by accretion, and catalogues the datasets---
+census, election, administrative geography, and
+hydrology---and their sources that the library exposes.
+\end{abstract}
+
+\section{Introduction}
+
+The goal of Lanka Data is ``one API to rule them all'': a
+single interface that can express \emph{any} query, rather
+than a proliferation of endpoints, methods, libraries, and
+parameter sets that each answer one narrow question. Most
+data libraries grow by accretion; every new question adds
+another function, endpoint, or flag, and no single mental
+model survives contact with the result. We wanted the
+opposite: a fixed, minimal grammar that a user learns
+\emph{once} and can then aim at anything, and that a
+non-technical user can read and write without learning to
+program. The current domain is public Sri Lankan data---
+census measurements, election results, and administrative
+geography---but nothing in the grammar is specific to Sri
+Lanka: \emph{what}, \emph{when}, \emph{where}, and
+\emph{how} are the dimensions of essentially any factual
+query about the world.
+
+\section{The Command Grammar}
+
+The public interface is a single string parsed into four
+positional fields, delimited by slashes:
+
+\begin{center}
+\texttt{What / When / Where / How}
+\end{center}
+
+There is no secondary configuration surface: no options
+object, no builder API, no config files. Each field is an
+independent axis of the query, and the value chosen for one
+field does not constrain the valid values of another, with a
+single intentional coupling described below.
+
+\subsection{What --- the measurement}
+
+\textbf{What} identifies the quantity being retrieved. It
+is a measurement, independent of time, region, and
+presentation. Measurements include census quantities and
+election results. A reserved keyword denotes the
+\emph{absence} of a measurement: a request for region
+geometry with no data bound to it, used for base maps and
+for inspecting boundary changes in isolation. Because
+\textbf{What} encodes only the measurement type, a single
+measurement is reused across every combination of the
+other three fields without expanding the vocabulary.
+
+\subsection{When --- the observation time}
+
+\textbf{When} binds the measurement to the point or
+interval in time at which it happened. It accepts either a
+single year or an interval. An interval is a single value,
+not two concatenated queries.
+
+\subsection{Where --- the region}
+
+\textbf{Where} identifies the region under measurement: its
+identity within the administrative hierarchy, not merely a
+coordinate. It carries the most syntax of the four fields
+because it is the axis along which real queries vary most.
+The supported forms are a single region, resolution into
+child regions of a given type, an explicit set of named
+regions, a contiguous range between two endpoints, and a
+historical boundary variant that selects a region's
+boundaries as they existed before a given boundary
+redesign. Observation time and boundary epoch are kept as
+separate values so that counts are not misattributed to the
+wrong geometry.
+
+\subsection{How --- the presentation}
+
+\textbf{How} specifies the output representation. The same
+measurement can be emitted as a map, a chart, or raw data
+without any change to \textbf{What}. Because presentation
+is separated from measurement, \textbf{How} carries its own
+modifier grammar: rankings of a category, shares,
+differences between observations, and diversity indices are
+transformations applied to the same underlying values. This
+is the single intentional coupling of the grammar:
+change-based modifiers are valid only when \textbf{When}
+supplies an interval.
+
+\section{Datasets and Sources}
+
+The \textbf{What} vocabulary is organised into four data
+categories. \emph{census-population} exposes measurements
+such as ethnicity, religion, age group, education,
+employment, and literacy; \emph{census-housing} exposes
+housing characteristics such as construction materials,
+water, lighting, and toilet facilities;
+\emph{election} exposes presidential, parliamentary, and
+local government results and summaries; and \emph{rivers}
+exposes river length and catchment statistics. Each
+response carries the provenance of the sources below.
+
+\subsection{Census of Population and Housing}
+
+The census-population category exposes measurements such as
+ethnicity, religion, age group, education, employment, and
+literacy. The census-housing category exposes housing
+characteristics such as construction materials, water,
+lighting, and toilet facilities. Data is available from the
+2001, 2012, and 2024 census cycles \citep{census_2024}.
+All census data is sourced from the Department of Census
+and Statistics.
+
+\subsection{Elections}
+
+The election category exposes presidential, parliamentary,
+and local government results and summaries across multiple
+election years. This includes vote tallies, seat
+distributions, and electoral statistics at national,
+district, and constituency levels. All election data is
+sourced from the \citet{elections_commission}.
+
+\subsection{Administrative Geography}
+
+The administrative boundary data includes both current and
+historical boundary epochs, allowing queries to be anchored
+to the boundaries as they existed at the time of
+observation. This includes provinces, districts, divisional
+secretariat divisions, and Grama Niladhari divisions across
+different time periods. Data is sourced from the
+\citet{dcs_sri_lanka}.
+
+\subsection{Rivers}
+
+The rivers category exposes river length and catchment
+statistics for major waterways in Sri Lanka \citep{hydrorivers}. This data includes geometric
+and hydrological properties of river systems. Data is
+sourced from HydroRIVERS via the \texttt{lk\_rivers}
+project.
+
+\section*{Data Sources}
+
+All data sources are cited in the References section
+above. The primary sources include:
+\citep{dcs_sri_lanka, census_2001, census_2012,
+census_2024, elections_commission, hydrorivers}.
+
+
+\bibliographystyle{acl_natbib}
+\bibliography{lanka_data}
+\end{document}

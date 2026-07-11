@@ -3,7 +3,11 @@ tests/test_db.data.temp.json
 .vscode
 single.sh
 temp.txt
-
+*.aux
+*.out
+*.log
+*.bbl
+*.blg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

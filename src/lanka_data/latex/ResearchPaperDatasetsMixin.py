@@ -1,9 +1,4 @@
-from lanka_data.latex.ResearchPaperReferencesMixin import (
-    ResearchPaperReferencesMixin,
-)
-
-
-class ResearchPaperDatasetsMixin(ResearchPaperReferencesMixin):
+class ResearchPaperDatasetsMixin:
     DATASETS = [
         (
             "Administrative geography",
@@ -27,48 +22,32 @@ class ResearchPaperDatasetsMixin(ResearchPaperReferencesMixin):
         ),
     ]
 
-    def get_lines_for_datasets(self):
-        return (
-            self._get_lines_for_datasets_intro()
-            + self._get_lines_for_table()
-            + self._get_lines_for_references()
-        )
-
-    def _get_lines_for_datasets_intro(self):
-        return [
-            "\\section{Datasets and Sources}",
-            "",
-            "The \\textbf{What} vocabulary is organised into four data",
-            "categories. \\emph{census-population} exposes measurements",
-            "such as ethnicity, religion, age group, education,",
-            "employment, and literacy; \\emph{census-housing} exposes",
-            "housing characteristics such as construction materials,",
-            "water, lighting, and toilet facilities;",
-            "\\emph{election} exposes presidential, parliamentary, and",
-            "local government results and summaries; and \\emph{rivers}",
-            "exposes river length and catchment statistics. Each",
-            "response carries the provenance of the sources below.",
-            "",
-        ]
-
-    def _get_lines_for_table(self):
-        lines = [
-            "\\begin{table}[h]",
-            "\\centering",
-            "\\begin{tabular}{lll}",
-            "\\toprule",
-            "\\textbf{Dataset} & \\textbf{Coverage} & \\textbf{Source} \\\\",
-            "\\midrule",
-        ]
-        for dataset, coverage, source in self.DATASETS:
-            lines.append(
-                dataset + " & " + coverage + " & " + source + " \\\\"
-            )
-        lines += [
-            "\\bottomrule",
-            "\\end{tabular}",
-            "\\caption{Datasets exposed by Lanka Data and their sources.}",
-            "\\end{table}",
-            "",
-        ]
-        return lines
+    SOURCES = [
+        (
+            "Department of Census and Statistics, Sri Lanka",
+            "https://www.statistics.gov.lk/",
+        ),
+        (
+            "Census of Population and Housing 2001",
+            "https://www.statistics.gov.lk"
+            "/Population/StaticalInformation/CPH2001",
+        ),
+        (
+            "Census of Population and Housing 2012",
+            "https://www.statistics.gov.lk/Resource/en/Population"
+            "/CPH_2011/CPH_2012_5Per_Rpt.pdf",
+        ),
+        (
+            "Census of Population and Housing 2024",
+            "https://www.statistics.gov.lk"
+            "/Population/StaticalInformation/CPH2024",
+        ),
+        (
+            "Election Commission of Sri Lanka",
+            "https://www.elections.gov.lk",
+        ),
+        (
+            "HydroRIVERS (via lk\\_rivers)",
+            "https://github.com/nuuuwan/lk_rivers",
+        ),
+    ]
