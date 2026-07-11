@@ -1,7 +1,15 @@
 import os
+import warnings
 
 from lanka_data.examples.Example.ExampleOutputMixin import ExampleOutputMixin
 from utils_future import JSONFile
+
+warnings.warn(
+    "Example class is deprecated. Use individual command execution or "
+    "visual generation methods instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 
 class Example(ExampleOutputMixin):
