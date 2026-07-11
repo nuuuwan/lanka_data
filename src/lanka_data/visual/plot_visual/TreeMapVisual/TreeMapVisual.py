@@ -1,11 +1,19 @@
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import \
-    BarChartVisual
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import (
+    BarChartVisual,
+)
 
 from .TreeMapData import TreeMapData
 from .TreeMapDrawMixin import TreeMapDrawMixin
 
 
 class TreeMapVisual(TreeMapDrawMixin, BarChartVisual):
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a tree map with rectangles sized by values "
+            "and colored by categories"
+        )
+
     @staticmethod
     def _category_totals(subregions):
         totals = {}

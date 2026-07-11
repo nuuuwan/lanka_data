@@ -5,6 +5,13 @@ from .LineChartDrawMixin import LineChartDrawMixin
 
 
 class LineChartVisual(LineChartDataMixin, LineChartDrawMixin, PlotVisual):
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a line chart with categories on x-axis and "
+            "values as lines over time or categories"
+        )
+
     def draw(self, dataset, fig):
         data_table = dataset.get_data_table()
         subregions = self._build_subregions(data_table)

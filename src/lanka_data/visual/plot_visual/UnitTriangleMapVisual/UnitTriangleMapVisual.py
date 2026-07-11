@@ -1,10 +1,19 @@
-from lanka_data.visual.plot.map.TriangleData.UnitTriangleData import \
-    UnitTriangleData
-from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapVisual import \
-    TriangleMapVisual
+from lanka_data.visual.plot.map.TriangleData.UnitTriangleData import (
+    UnitTriangleData,
+)
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapVisual import (
+    TriangleMapVisual,
+)
 
 
 class UnitTriangleMapVisual(TriangleMapVisual):
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a unit triangular map with exactly one "
+            "triangle per region"
+        )
+
     @staticmethod
     def _get_data_list(dataset):
         return dataset.get_data_table()

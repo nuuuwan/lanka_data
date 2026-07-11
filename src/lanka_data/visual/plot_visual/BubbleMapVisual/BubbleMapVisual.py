@@ -1,18 +1,30 @@
-from lanka_data.visual.plot.color_spec.ColorSpecFactory import ColorSpecFactory
+from lanka_data.visual.plot.color_spec.ColorSpecFactory import (
+    ColorSpecFactory,
+)
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map.BubbleData.BubbleData import BubbleData
 from lanka_data.visual.plot.map.GeoData.GeoData import GeoData
-from lanka_data.visual.plot.map.RegionPopulationFilter import \
-    RegionPopulationFilter
-from lanka_data.visual.plot_visual.BubbleMapVisual.BubbleMapDrawMixin import \
-    BubbleMapDrawMixin
-from lanka_data.visual.plot_visual.BubbleMapVisual.BubbleMapLabelMixin import \
-    BubbleMapLabelMixin
+from lanka_data.visual.plot.map.RegionPopulationFilter import (
+    RegionPopulationFilter,
+)
+from lanka_data.visual.plot_visual.BubbleMapVisual.BubbleMapDrawMixin import (
+    BubbleMapDrawMixin,
+)
+from lanka_data.visual.plot_visual.BubbleMapVisual.BubbleMapLabelMixin import (
+    BubbleMapLabelMixin,
+)
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 
 
 class BubbleMapVisual(PlotVisual, BubbleMapDrawMixin, BubbleMapLabelMixin):
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a map with bubble markers sized by values and "
+            "colored by categories"
+        )
+
     @staticmethod
     def _region_to_name(data_list):
         return {

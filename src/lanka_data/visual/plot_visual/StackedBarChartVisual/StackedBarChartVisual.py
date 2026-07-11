@@ -1,9 +1,17 @@
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import \
-    BarChartVisual
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import (
+    BarChartVisual,
+)
 
 
 class StackedBarChartVisual(BarChartVisual):
     MIN_LABEL_HEIGHT_PX = 12
+
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a stacked bar chart with regions on x-axis "
+            "and categories as stacked segments"
+        )
 
     @staticmethod
     def _normalize_subregions(subregions):

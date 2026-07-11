@@ -1,9 +1,13 @@
+from abc import abstractmethod
+
 from lanka_data.visual.plot.Label import Label
 from lanka_data.visual.plot.map.GeoData.GeoData import GeoData
-from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateData import \
-    BivariateData
-from lanka_data.visual.plot_visual.BivariateMapVisual.BivariatePalette import \
-    BivariatePalette
+from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateData import (
+    BivariateData,
+)
+from lanka_data.visual.plot_visual.BivariateMapVisual.BivariatePalette import (
+    BivariatePalette,
+)
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 
 
@@ -11,6 +15,11 @@ class BivariateMapBaseVisual(PlotVisual):
     N_BINS = 3
     EDGE_COLOR = "#fff"
     EDGE_WIDTH = 0.2
+
+    @classmethod
+    @abstractmethod
+    def get_description(cls):
+        pass
 
     @property
     def palette(self):

@@ -7,6 +7,10 @@ from lanka_data.visual.data_export.FileExportMixin import FileExportMixin
 class ChartSpecVisual(FileExportMixin, DataExportVisual):
     SCHEMA = "lanka-data-chart-spec/v1"
 
+    @classmethod
+    def get_description(cls):
+        return "Exports data as chart specification in JSON format"
+
     def build(self):
         data_table = self._get_data_table()
         spec = {

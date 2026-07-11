@@ -1,12 +1,18 @@
-from lanka_data.visual.plot.color_spec.ColorSpecFactory import ColorSpecFactory
+from abc import abstractmethod
+
+from lanka_data.visual.plot.color_spec.ColorSpecFactory import (
+    ColorSpecFactory,
+)
 from lanka_data.visual.plot.Label import Label
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.LineLabel import LineLabel
-from lanka_data.visual.plot.map.GeoData.DistrictBackgroundGeoData import \
-    DistrictBackgroundGeoData
+from lanka_data.visual.plot.map.GeoData.DistrictBackgroundGeoData import (
+    DistrictBackgroundGeoData,
+)
 from lanka_data.visual.plot.map.GeoData.GeoData import GeoData
-from lanka_data.visual.plot.map.RegionPopulationFilter import \
-    RegionPopulationFilter
+from lanka_data.visual.plot.map.RegionPopulationFilter import (
+    RegionPopulationFilter,
+)
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 
@@ -19,6 +25,11 @@ class MapVisual(PlotVisual):
     BACKGROUND_COLOR = "#eee"
     BACKGROUND_EDGE_COLOR = "#ddd"
     BACKGROUND_EDGE_WIDTH = 0.4
+
+    @classmethod
+    @abstractmethod
+    def get_description(cls):
+        pass
 
     def _get_gdf_region(self, dataset, region_color_map):
         data_list = dataset.get_data_table()
@@ -71,12 +82,10 @@ class MapVisual(PlotVisual):
         region_color_map, value_to_color, value_to_region = (
             ColorSpecFactory.get_color_spec(dataset, self.how_cmd).unpack()
         )
-
         gdf_region = self._get_gdf_region(
             dataset,
             region_color_map,
         )
-
         gs = fig.add_gridspec(
             1,
             2,

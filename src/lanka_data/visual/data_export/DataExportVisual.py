@@ -1,7 +1,14 @@
+from abc import abstractmethod
+
 from lanka_data.visual.Visual import Visual
 
 
 class DataExportVisual(Visual):
+    @classmethod
+    @abstractmethod
+    def get_description(cls):
+        pass
+
     def _get_data_table(self):
         return self.datasets[-1].get_data_table()
 

@@ -1,17 +1,18 @@
-from lanka_data.visual.plot.color_spec.ColorSpecFactory import ColorSpecFactory
+from lanka_data.visual.plot.color_spec.ColorSpecFactory import (
+    ColorSpecFactory,
+)
 from lanka_data.visual.plot.Legend import Legend
-from lanka_data.visual.plot.map.RegionPopulationFilter import \
-    RegionPopulationFilter
+from lanka_data.visual.plot.map.RegionPopulationFilter import (
+    RegionPopulationFilter,
+)
 from lanka_data.visual.plot.map.SquareData.SquareData import SquareData
 from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
-from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapBoundaryMixin import \
-    SquareMapBoundaryMixin
-from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapDrawMixin import \
-    SquareMapDrawMixin
-from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapLabelMixin import \
-    SquareMapLabelMixin
 from utils_future import timer
+
+from .SquareMapBoundaryMixin import SquareMapBoundaryMixin
+from .SquareMapDrawMixin import SquareMapDrawMixin
+from .SquareMapLabelMixin import SquareMapLabelMixin
 
 
 class SquareMapVisual(
@@ -20,6 +21,13 @@ class SquareMapVisual(
     SquareMapLabelMixin,
     SquareMapBoundaryMixin,
 ):
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a square tile map with each region assigned a "
+            "square colored by values"
+        )
+
     @staticmethod
     def _region_to_name(data_list):
         return {

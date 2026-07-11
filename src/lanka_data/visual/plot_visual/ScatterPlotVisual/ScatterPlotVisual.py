@@ -1,8 +1,9 @@
 from matplotlib.ticker import FuncFormatter, PercentFormatter
 
 from lanka_data.visual.plot.Style import Style
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import \
-    BarChartVisual
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import (
+    BarChartVisual,
+)
 
 from .ScatterPlotData import ScatterPlotData
 from .ScatterPlotPairMixin import ScatterPlotPairMixin
@@ -11,6 +12,13 @@ from .ScatterPlotPairMixin import ScatterPlotPairMixin
 class ScatterPlotVisual(ScatterPlotPairMixin, BarChartVisual):
     MARKER_SIZE = 80
     LABEL_FONTSIZE = 7
+
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a scatter plot comparing two categories with "
+            "fitted correlation line and statistics"
+        )
 
     def _draw_points(self, ax, points, category_to_color):
         for total, share, label, name in points:
