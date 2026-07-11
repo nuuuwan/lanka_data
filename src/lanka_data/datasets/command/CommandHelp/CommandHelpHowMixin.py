@@ -1,15 +1,20 @@
-from lanka_data.api.fields.HowRegistryMixin import HowRegistryMixin
+from lanka_data.api.fields.HOW_REGISTRY_DATA import BASE_LABELS
 from lanka_data.visual.HOW_PARAMS_DATA import HOW_PARAMS
+from lanka_data.visual.VisualFactory import VisualFactory
 
 
 class CommandHelpHowMixin:
     @staticmethod
     def get_how_bases():
-        return sorted(HowRegistryMixin.BASE_LABELS.keys())
+        bases = []
+        for base_name, visual_cls in VisualFactory._VISUAL_CLS.items():
+            if visual_cls is not None:
+                bases.append(base_name)
+        return sorted(bases)
 
     @staticmethod
     def get_how_params():
-        return sorted(HowRegistryMixin.MODIFIERS.keys())
+        return sorted(HOW_PARAMS.keys())
 
     @staticmethod
     def get_how_param_descriptions():
@@ -20,7 +25,14 @@ class CommandHelpHowMixin:
 
     @staticmethod
     def get_base_label_descriptions():
-        return HowRegistryMixin.BASE_LABELS
+        descriptions = {}
+        for base_name, visual_cls in VisualFactory._VISUAL_CLS.items():
+            if visual_cls is not None:
+                description = visual_cls.get_description()
+                if description is None:
+                    description = BASE_LABELS.get(base_name)
+                descriptions[base_name] = description
+        return descriptions
 
     @staticmethod
     def get_how_help():
