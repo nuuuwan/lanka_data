@@ -1,0 +1,13 @@
+{
+  "command_str": "Presidential/1988/LK:ed/HexMap",
+  "result": {
+    "image_path": "_output/Presidential/1988/LK:ed/HexMap/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Election Commission of Sri lanka",
+      "url": "https://www.elections.gov.lk"
+    }
+  ],
+  "query_time_ms": 0
+}
