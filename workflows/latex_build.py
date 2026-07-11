@@ -47,6 +47,7 @@ def run_pdflatex(tex_abs_path, tex_dir, pass_num):
         ["pdflatex", "-interaction=nonstopmode", tex_name],
         capture_output=True,
         text=True,
+        errors='replace',
         cwd=tex_dir,
         env=env,
     )

@@ -394,7 +394,7 @@ class ResearchPaper(
         """Return dataset bibliography entries."""
         return [
             '@misc{hydrorivers,',
-            '  author={Lehner, Bernhard and Grill, G{\\\"u}nther},',
+            '  author={Lehner, Bernhard and Grill, Gunther},',
             '  title={{HydroRIVERS}: A Global Vector River Network},',
             '  howpublished={\\url{https://www.hydrosheds.org/',
             '    products/hydrorivers}},',
