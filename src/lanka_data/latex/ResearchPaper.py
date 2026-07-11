@@ -230,7 +230,6 @@ class ResearchPaper(
             + self._get_elections_lines()
             + self._get_admin_lines()
             + self._get_rivers_lines()
-            + self._get_sources_lines()
         )
 
     def _get_datasets_intro_lines(self):
@@ -310,18 +309,6 @@ class ResearchPaper(
             '',
         ]
 
-    def _get_sources_lines(self):
-        """Get data sources section lines."""
-        return [
-            '\\section*{Data Sources}',
-            '',
-            'All data sources are cited in the References section',
-            'above. The primary sources include:',
-            '\\citep{dcs_sri_lanka, census_2001, census_2012,',
-            'census_2024, elections_commission, hydrorivers}.',
-            '',
-        ]
-
     def _create_bibliography_file(self, tex_dir):
         """Create BibTeX file in output directory."""
         bib_path = os.path.join(tex_dir, 'lanka_data.bib')
@@ -346,31 +333,36 @@ class ResearchPaper(
     def _get_census_bib_entries(self):
         """Return census bibliography entries."""
         return [
-            '@book{census_2001,',
+            '@misc{census_2001,',
+            '  author={{Department of Census and Statistics}},',
             '  title={Census of Population and Housing 2001},',
-            '  author={Department of Census and Statistics},',
+            '  howpublished={\\url{https://www.statistics.gov.lk/',
+            '    Population/StaticalInformation/CPH2001}},',
             '  year={2001},',
-            '  address={Sri Lanka},',
-            '  url={https://www.statistics.gov.lk/Population/',
-            '    StaticalInformation/CPH2001}',
+            '  address={Colombo, Sri Lanka},',
+            '  urldate={2024-01-01}',
             '}',
             '',
-            '@book{census_2012,',
+            '@misc{census_2012,',
+            '  author={{Department of Census and Statistics}},',
             '  title={Census of Population and Housing 2012},',
-            '  author={Department of Census and Statistics},',
+            '  howpublished={\\url{https://www.statistics.gov.lk/',
+            '    Resource/en/Population/CPH_2011/',
+            '    CPH_2012_5Per_Rpt.pdf}},',
             '  year={2012},',
-            '  address={Sri Lanka},',
-            '  url={https://www.statistics.gov.lk/Resource/en/',
-            '    Population/CPH_2011/CPH_2012_5Per_Rpt.pdf}',
+            '  address={Colombo, Sri Lanka},',
+            '  note={Enumeration 2011; report published 2012},',
+            '  urldate={2024-01-01}',
             '}',
             '',
-            '@book{census_2024,',
+            '@misc{census_2024,',
+            '  author={{Department of Census and Statistics}},',
             '  title={Census of Population and Housing 2024},',
-            '  author={Department of Census and Statistics},',
+            '  howpublished={\\url{https://www.statistics.gov.lk/',
+            '    Population/StaticalInformation/CPH2024}},',
             '  year={2024},',
-            '  address={Sri Lanka},',
-            '  url={https://www.statistics.gov.lk/Population/',
-            '    StaticalInformation/CPH2024}',
+            '  address={Colombo, Sri Lanka},',
+            '  urldate={2024-01-01}',
             '}',
             '',
         ]
@@ -379,15 +371,21 @@ class ResearchPaper(
         """Return organization bibliography entries."""
         return [
             '@misc{dcs_sri_lanka,',
+            '  author={{Department of Census and Statistics}},',
             '  title={Department of Census and Statistics},',
-            '  url={https://www.statistics.gov.lk/},',
-            '  accessed={2024}',
+            '  howpublished={\\url{https://www.statistics.gov.lk/}},',
+            '  year={2024},',
+            '  note={Official statistics portal, Government},',
+            '  urldate={2024-01-01}',
             '}',
             '',
             '@misc{elections_commission,',
+            '  author={{Election Commission of Sri Lanka}},',
             '  title={Election Commission of Sri Lanka},',
-            '  url={https://www.elections.gov.lk},',
-            '  accessed={2024}',
+            '  howpublished={\\url{https://www.elections.gov.lk/}},',
+            '  year={2024},',
+            '  note={Official elections portal, Government},',
+            '  urldate={2024-01-01}',
             '}',
             '',
         ]
@@ -396,10 +394,14 @@ class ResearchPaper(
         """Return dataset bibliography entries."""
         return [
             '@misc{hydrorivers,',
-            '  title={HydroRIVERS: A Global Vector Network},',
-            '  author={Lin et al.},',
-            '  year={2023},',
-            '  url={https://github.com/nuuuwan/lk_rivers}',
+            '  author={Lehner, Bernhard and Grill, G{\\\"u}nther},',
+            '  title={{HydroRIVERS}: A Global Vector River Network},',
+            '  howpublished={\\url{https://www.hydrosheds.org/',
+            '    products/hydrorivers}},',
+            '  year={2013},',
+            '  note={Part of HydroSHEDS; Sri Lanka subset via',
+            '    \\url{https://github.com/nuuuwan/lk_rivers}},',
+            '  urldate={2024-01-01}',
             '}',
             '',
         ]

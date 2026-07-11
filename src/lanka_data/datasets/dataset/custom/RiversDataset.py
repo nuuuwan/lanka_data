@@ -38,7 +38,7 @@ class RiversDataset(RegionValueDataset):
         return [
             DataSource(
                 name="HydroRIVERS (via lk_rivers)",
-                url="https://github.com/nuuuwan/lk_rivers",
+                url="https://www.hydrosheds.org/products/hydrorivers",
             )
         ]
 
