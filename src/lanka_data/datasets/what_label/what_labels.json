@@ -1,19 +1,68 @@
 [
   {
-    "label": "Religion",
-    "description": "Distribution of the population by religious affiliation.",
-    "category_labels": [
-      "Buddhist",
-      "Hindu",
-      "Islam",
-      "RomanCatholic",
-      "OtherChristian",
-      "Other"
-    ]
+    "label": "Empty",
+    "description": "Empty dataset for region visualization",
+    "group": "special",
+    "category_labels": []
+  },
+  {
+    "label": "AgeGroup",
+    "description": "Population distribution by age group",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "AgriOccupations",
+    "description": "Agricultural occupations distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Attendance",
+    "description": "School attendance statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Dependency",
+    "description": "Dependency ratios by region",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Disability",
+    "description": "Disability prevalence statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Education",
+    "description": "Educational attainment levels",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Electricity",
+    "description": "Electricity access statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Employment",
+    "description": "Employment status distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Enrollment",
+    "description": "Educational enrollment statistics",
+    "group": "census",
+    "category_labels": []
   },
   {
     "label": "Ethnicity",
-    "description": "Distribution of the population by ethnic group.",
+    "description": "Distribution of the population by ethnic group",
+    "group": "census",
     "category_labels": [
       "Sinhalese",
       "SLTamil",
@@ -28,11 +77,307 @@
     ]
   },
   {
+    "label": "Fertility",
+    "description": "Fertility rates by region",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Fuel",
+    "description": "Cooking fuel type distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Growth",
+    "description": "Population growth statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Housing",
+    "description": "Housing units statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Inactive",
+    "description": "Economically inactive population",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Industry",
+    "description": "Employment by industry distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Informal",
+    "description": "Informal housing statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Laborforce",
+    "description": "Labor force participation statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Literacy",
+    "description": "Literacy rates by region",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Marital",
+    "description": "Marital status distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Materials",
+    "description": "Construction materials distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Migration",
+    "description": "Migration patterns statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "NonAgriEmployment",
+    "description": "Non-agricultural employment distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "NotAttending",
+    "description": "School non-attendance statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Occupations",
+    "description": "Occupations distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Population",
+    "description": "Population overview statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Religion",
+    "description": "Distribution of the population by religious affiliation",
+    "group": "census",
+    "category_labels": [
+      "Buddhist",
+      "Hindu",
+      "Islam",
+      "RomanCatholic",
+      "OtherChristian",
+      "Other"
+    ]
+  },
+  {
+    "label": "Rooms",
+    "description": "Room count statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Sectoral",
+    "description": "Sectoral distribution statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Sectors",
+    "description": "Employment sectors distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Speaking",
+    "description": "Speaking capacity statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Structure",
+    "description": "Household structure distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Tenure",
+    "description": "Housing tenure statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Toilet",
+    "description": "Toilet facilities distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Unemployment",
+    "description": "Unemployment by education level",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Unit",
+    "description": "Housing units types distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Water",
+    "description": "Water access statistics",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Communication",
+    "description": "Household communication items distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "ConstructionYear",
+    "description": "Year of construction distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Economy",
+    "description": "Economic activity distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Floor",
+    "description": "Floor type distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
     "label": "Gender",
-    "description": "Distribution of the population by gender.",
+    "description": "Distribution of the population by gender",
+    "group": "census",
     "category_labels": [
       "Male",
       "Female"
     ]
+  },
+  {
+    "label": "Lighting",
+    "description": "Lighting source distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Occupancy",
+    "description": "Occupation status distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Ownership",
+    "description": "Housing ownership status distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Persons",
+    "description": "Number of persons per household",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Quarters",
+    "description": "Living quarters type distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "RelationshipToHead",
+    "description": "Relationship to household head",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Roof",
+    "description": "Roof type distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Walls",
+    "description": "Wall type distribution",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Waste",
+    "description": "Solid waste disposal method",
+    "group": "census",
+    "category_labels": []
+  },
+  {
+    "label": "Local",
+    "description": "Local government election results",
+    "group": "election",
+    "category_labels": []
+  },
+  {
+    "label": "Parliamentary",
+    "description": "Parliamentary election results",
+    "group": "election",
+    "category_labels": []
+  },
+  {
+    "label": "Presidential",
+    "description": "Presidential election results",
+    "group": "election",
+    "category_labels": []
+  },
+  {
+    "label": "LocalSummary",
+    "description": "Local government election summary",
+    "group": "election_summary",
+    "category_labels": []
+  },
+  {
+    "label": "ParliamentarySummary",
+    "description": "Parliamentary election summary",
+    "group": "election_summary",
+    "category_labels": []
+  },
+  {
+    "label": "PresidentialSummary",
+    "description": "Presidential election summary",
+    "group": "election_summary",
+    "category_labels": []
+  },
+  {
+    "label": "RiverLen",
+    "description": "River length measurements",
+    "group": "rivers",
+    "category_labels": []
+  },
+  {
+    "label": "Catchment",
+    "description": "River catchment area measurements",
+    "group": "rivers",
+    "category_labels": []
   }
 ]
