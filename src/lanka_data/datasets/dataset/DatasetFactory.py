@@ -82,6 +82,40 @@ class DatasetFactory:
         return None
 
     @staticmethod
+    def _get_available_whens_for_what(what_cmd):
+        available_whens = set()
+        for cls in DatasetFactory.CENSUS_DATASET_CLASSES:
+            if what_cmd in cls.get_labels():
+                available_whens.update(cls.get_supported_whens())
+        if ElectionDataset.get_labels() and what_cmd in ElectionDataset.get_labels():
+            whens = ElectionDataset.get_label_to_years().get(
+                what_cmd, []
+            )
+            available_whens.update(whens)
+        if ElectionSummaryDataset.get_labels() and what_cmd in ElectionSummaryDataset.get_labels():
+            whens = ElectionSummaryDataset.get_label_to_years().get(
+                what_cmd, []
+            )
+            available_whens.update(whens)
+        if what_cmd in RiversDataset.get_labels():
+            available_whens.update(RiversDataset.get_supported_whens())
+        return available_whens
+
+    @staticmethod
+    def _find_closest_when(requested_when, available_whens):
+        if not available_whens:
+            return None
+        available_whens_sorted = sorted(
+            [int(w) for w in available_whens]
+        )
+        requested_when_int = int(requested_when)
+        closest = min(
+            available_whens_sorted,
+            key=lambda x: abs(x - requested_when_int),
+        )
+        return str(closest)
+
+    @staticmethod
     def _first_dataset(command, region_data_list):
         builders = [
             DatasetFactory._try_rivers_dataset,
@@ -104,6 +138,28 @@ class DatasetFactory:
         result = DatasetFactory._first_dataset(command, region_data_list)
         if result is not None:
             return DatasetFactory._with_region_filter(result, command)
+
+        if not command.when.is_interval:
+            available_whens = (
+                DatasetFactory._get_available_whens_for_what(
+                    command.what_cmd
+                )
+            )
+            closest_when = DatasetFactory._find_closest_when(
+                command.when_cmd, available_whens
+            )
+            if (
+                closest_when is not None
+                and closest_when != command.when_cmd
+            ):
+                fallback_command = command.copy(when_cmd=closest_when)
+                result = DatasetFactory._first_dataset(
+                    fallback_command, region_data_list
+                )
+                if result is not None:
+                    return DatasetFactory._with_region_filter(
+                        result, command
+                    )
 
         raise UnknownWhatError(
             f"Dataset unknown for what: {command.what_cmd}",
