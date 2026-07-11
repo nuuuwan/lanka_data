@@ -80,7 +80,7 @@ class VisualFactory:
     @staticmethod
     def from_command_and_datasets(command, datasets):
         how_cmd = command.how_cmd
-        visual_cls = VisualFactory._VISUAL_CLS.get(command.how.base)
+        visual_cls = VisualFactory.from_label(command.how.base)
         if visual_cls is None:
             raise ValueError(f"Unknown how_cmd: {command.how_cmd}")
         return visual_cls(command=command, datasets=datasets, how_cmd=how_cmd)
@@ -88,3 +88,11 @@ class VisualFactory:
     @staticmethod
     def from_commmand_and_datasets(command, datasets):
         return VisualFactory.from_command_and_datasets(command, datasets)
+
+
+    @staticmethod 
+    def from_label(label):
+        for cls in VisualFactory.CLS_LIST:
+            if cls.get_label() == label:
+                return cls
+        return None

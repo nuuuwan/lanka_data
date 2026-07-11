@@ -127,32 +127,34 @@ Returns regions of the same type within a specified distance of <region_id>.
 
 ## How
 
+<base>:<Optional param>
+
 ### Bases
 
-- **BivariateMap**: Renders data as a bivariate map showing correlation between two variables using a 3x3 color palette
-- **PieChart**: Renders data as a pie chart with slices representing categories sized by their values
-- **UnitHexMap**: Renders data as a unit hexagonal map with exactly one hexagon per region
-- **TreeMap**: Renders data as a tree map with rectangles sized by values and colored by categories
 - **BubbleMap**: Renders data as a map with bubble markers sized by values and colored by categories
 - **GeoJSON**: Exports data as GeoJSON format with geometries
-- **TriangleMap**: Renders data as a triangular tile map with each region assigned a triangle colored by values
-- **CSV**: Exports data as CSV format with regions and categories
-- **Map**: (no description)
-- **QuadrantChart**: Renders data as a quadrant chart dividing regions into 4 quadrants based on two variable values
-- **UnitTriangleMap**: Renders data as a unit triangular map with exactly one triangle per region
-- **BumpChart**: Renders data as a bump chart showing ranking changes of items across categories or time periods
+- **PieChart**: Renders data as a pie chart with slices representing categories sized by their values
+- **TreeMap**: Renders data as a tree map with rectangles sized by values and colored by categories
+- **ScatterPlot**: Renders data as a scatter plot comparing two categories with fitted correlation line and statistics
 - **SquareMap**: Renders data as a square tile map with each region assigned a square colored by values
-- **HexMap**: Renders data as a hexagonal tile map with each region assigned a hexagon colored by values
+- **LineChart**: Renders data as a line chart with categories on x-axis and values as lines over time or categories
+- **QuadrantChart**: Renders data as a quadrant chart dividing regions into 4 quadrants based on two variable values
+- **TriangleMap**: Renders data as a triangular tile map with each region assigned a triangle colored by values
 - **TSV**: Exports data as TSV format with regions and categories
+- **Parquet**: Exports data as Parquet columnar format
+- **Map**: Map
+- **BivariateMap**: Renders data as a bivariate map showing correlation between two variables using a 3x3 color palette
+- **BarChart**: Renders data as bar chart with regions on x-axis
+- **ChartSpec**: Exports data as chart specification in JSON format
+- **BumpChart**: Renders data as a bump chart showing ranking changes of items across categories or time periods
+- **CSV**: Exports data as CSV format with regions and categories
+- **HexMap**: Renders data as a hexagonal tile map with each region assigned a hexagon colored by values
 - **Histogram**: Renders data as a histogram with binned intervals showing frequency distribution
 - **JSON**: Exports data as JSON format with region and category values
-- **ChartSpec**: Exports data as chart specification in JSON format
-- **BarChart**: Renders data as bar chart with regions on x-axis
-- **UnitSquareMap**: Renders data as a unit square map with exactly one square per region
-- **ScatterPlot**: Renders data as a scatter plot comparing two categories with fitted correlation line and statistics
 - **StackedBarChart**: Renders data as a stacked bar chart with regions on x-axis and categories as stacked segments
-- **Parquet**: Exports data as Parquet columnar format
-- **LineChart**: Renders data as a line chart with categories on x-axis and values as lines over time or categories
+- **UnitHexMap**: Renders data as a unit hexagonal map with exactly one hexagon per region
+- **UnitSquareMap**: Renders data as a unit square map with exactly one square per region
+- **UnitTriangleMap**: Renders data as a unit triangular map with exactly one triangle per region
 
 ### Parameters
 

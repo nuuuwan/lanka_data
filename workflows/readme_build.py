@@ -1,4 +1,5 @@
-from lanka_data.readme import ReadMe
+from lanka_data import  HelpReadme, ExamplesReadme
 
 if __name__ == "__main__":
-    ReadMe().build()
+    HelpReadme().build()
+    ExamplesReadme().build()

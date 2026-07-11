@@ -273,3 +273,5 @@ from lanka_data.visual.plot_visual.UnitTriangleMapVisual.UnitTriangleMapVisual i
     UnitTriangleMapVisual
 from lanka_data.visual.Visual import Visual
 from lanka_data.visual.VisualFactory import VisualFactory
+from lanka_data.readme.HelpReadme import HelpReadme
+from lanka_data.readme.ExamplesReadme import ExamplesReadme

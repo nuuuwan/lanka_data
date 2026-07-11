@@ -63,6 +63,9 @@ class HelpReadme:
         bases = how_info.get("bases", {})
         params = how_info.get("params", {})
 
+        lines.append("<base>:<Optional param>")
+        lines.append("")
+
         lines.append("### Bases")
         lines.append("")
         for base_name, description in bases.items():

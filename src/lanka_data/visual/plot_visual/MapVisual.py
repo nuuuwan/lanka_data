@@ -23,9 +23,8 @@ class MapVisual(PlotVisual):
     BACKGROUND_EDGE_WIDTH = 0.4
 
     @classmethod
-    @abstractmethod
     def get_description(cls):
-        pass
+        return "Map"
 
     def _get_gdf_region(self, dataset, region_color_map):
         data_list = dataset.get_data_table()
