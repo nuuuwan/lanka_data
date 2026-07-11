@@ -127,9 +127,9 @@ split into their `start` and `end` point-in-time commands.
 - **`CommandCache`** is an LRU (`OrderedDict`, default 128 entries). Its
   `is_valid` check evicts any cached image result whose file has disappeared.
 - **`CommandHelp`** returns the payload served for the `Help` command, a live,
-  self-describing index enumerating the valid `What`/`When` pairs from
-  `WhatWhenRegistry`, the region forms from `RegionTypeRegistry`, and every
-  `How` base and modifier from `HowRegistryMixin`.
+  self-describing index with four orthogonal sections — `What`, `When`,
+  `Where`, and `How` — each produced independently from that field's
+  `describe()`, so the fields are documented as the independent axes they are.
 - **Error classes** — `CommandError` (base), `InvalidCommandError`,
   `InvalidWhenError`, `InvalidWhereError`, `UnknownWhatError`, `UnknownHowError`
   — are raised by the fields and command for precise, typed failures.

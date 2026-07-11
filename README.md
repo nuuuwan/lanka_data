@@ -62,29 +62,29 @@ Help
 {
     "command_str": "Help",
     "result": {
-        "what_to_whens": {
-            "AgeGroup": [
-                "2001",
-                "2012",
-                "2024"
-            ],
-            "AgriOccupations": [
-                "2001"
-            ],
-            "Attendance": [
-                "2001"
-            ],
-            "Catchment": [
-                "2026"
-            ],
-            "Communication": [
-                "2012"
-                ... // 286 lines ...
-                "Bottom",
-                "Change",
-                "Diversity",
-                "DiversityPew",
-                "Top"
+        "What": {
+            "values": [
+                "AgeGroup",
+                "AgriOccupations",
+                "Attendance",
+                "Catchment",
+                "Communication",
+                "ConstructionYear",
+                "Dependency",
+                "Disability",
+                "Economy",
+                "Education",
+                "Electricity",
+                "Employment",
+                "Empty",
+                "Enrollment",
+                "Ethnicity",
+                ... // 749 lines ...
+                "TreeMap:Change",
+                "TriangleMap:Change",
+                "UnitHexMap:Change",
+                "UnitSquareMap:Change",
+                "UnitTriangleMap:Change"
             ]
         },
         "source": "lanka_data",
@@ -330,7 +330,41 @@ Source: [_output/Religion/2012-2024/LK:district/Map:3rd/Output.json](_output/Rel
 
 Source: [_output/Religion/2012-2024/LK:district/Map:3rd/Image.png](_output/Religion/2012-2024/LK:district/Map:3rd/Image.png)
 
-#### 3.04) Religion/2012-2024/LK:district/Map:Change
+#### 3.04) Religion/2012-2024/LK:district/Map:Top3
+
+```bash
+Religion/2012-2024/LK:district/Map:Top3
+```
+
+```json
+{
+    "command_str": "Religion/2012-2024/LK:district/Map:Top3",
+    "result": {
+        "image_path": "_output/Religion/2012-2024/LK:district/Map:Top3/Image.png"
+    },
+    "sources": [
+        {
+            "name": "Census of Population and Housing 2012",
+            "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+        },
+        {
+            "name": "Census of Population and Housing 2024",
+            "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+        }
+    ],
+    "query_time_ms": 0,
+    "is_corrected": false,
+    "corrections": []
+}
+```
+
+Source: [_output/Religion/2012-2024/LK:district/Map:Top3/Output.json](_output/Religion/2012-2024/LK:district/Map:Top3/Output.json)
+
+![Religion/2012-2024/LK:district/Map:Top3](_output/Religion/2012-2024/LK:district/Map:Top3/Image.png)
+
+Source: [_output/Religion/2012-2024/LK:district/Map:Top3/Image.png](_output/Religion/2012-2024/LK:district/Map:Top3/Image.png)
+
+#### 3.05) Religion/2012-2024/LK:district/Map:Change
 
 ```bash
 Religion/2012-2024/LK:district/Map:Change
@@ -364,7 +398,7 @@ Source: [_output/Religion/2012-2024/LK:district/Map:Change/Output.json](_output/
 
 Source: [_output/Religion/2012-2024/LK:district/Map:Change/Image.png](_output/Religion/2012-2024/LK:district/Map:Change/Image.png)
 
-#### 3.05) Religion/2012-2024/LK-42:district/BarChart
+#### 3.06) Religion/2012-2024/LK-42:district/BarChart
 
 ```bash
 Religion/2012-2024/LK-42:district/BarChart
@@ -409,7 +443,7 @@ Source: [_output/Religion/2012-2024/LK-42:district/BarChart/Output.json](_output
 
 Source: [_output/Religion/2012-2024/LK-42/BarChart/Image.png](_output/Religion/2012-2024/LK-42/BarChart/Image.png)
 
-#### 3.06) Religion/2012-2024/LK-43:dsd/BarChart
+#### 3.07) Religion/2012-2024/LK-43:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-43:dsd/BarChart
@@ -443,7 +477,7 @@ Source: [_output/Religion/2012-2024/LK-43:dsd/BarChart/Output.json](_output/Reli
 
 Source: [_output/Religion/2012-2024/LK-43:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-43:dsd/BarChart/Image.png)
 
-#### 3.07) Religion/2012-2024/LK-53:district/BarChart
+#### 3.08) Religion/2012-2024/LK-53:district/BarChart
 
 ```bash
 Religion/2012-2024/LK-53:district/BarChart
@@ -488,7 +522,7 @@ Source: [_output/Religion/2012-2024/LK-53:district/BarChart/Output.json](_output
 
 Source: [_output/Religion/2012-2024/LK-53/BarChart/Image.png](_output/Religion/2012-2024/LK-53/BarChart/Image.png)
 
-#### 3.08) Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
+#### 3.09) Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
 
 ```bash
 Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart
@@ -522,7 +556,7 @@ Source: [_output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Output.j
 
 Source: [_output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png](_output/Religion/2012-2024/LK-33,LK-82,LK-32:district/BarChart/Image.png)
 
-#### 3.09) Religion/2012-2024/LK:district/BarChart
+#### 3.10) Religion/2012-2024/LK:district/BarChart
 
 ```bash
 Religion/2012-2024/LK:district/BarChart
@@ -556,7 +590,7 @@ Source: [_output/Religion/2012-2024/LK:district/BarChart/Output.json](_output/Re
 
 Source: [_output/Religion/2012-2024/LK:district/BarChart/Image.png](_output/Religion/2012-2024/LK:district/BarChart/Image.png)
 
-#### 3.10) Religion/2012-2024/LK-11:dsd/BarChart
+#### 3.11) Religion/2012-2024/LK-11:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-11:dsd/BarChart
@@ -590,7 +624,7 @@ Source: [_output/Religion/2012-2024/LK-11:dsd/BarChart/Output.json](_output/Reli
 
 Source: [_output/Religion/2012-2024/LK-11:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-11:dsd/BarChart/Image.png)
 
-#### 3.11) Religion/2012-2024/LK-11:lg/BarChart
+#### 3.12) Religion/2012-2024/LK-11:lg/BarChart
 
 ```bash
 Religion/2012-2024/LK-11:lg/BarChart
@@ -624,7 +658,7 @@ Source: [_output/Religion/2012-2024/LK-11:lg/BarChart/Output.json](_output/Relig
 
 Source: [_output/Religion/2012-2024/LK-11:lg/BarChart/Image.png](_output/Religion/2012-2024/LK-11:lg/BarChart/Image.png)
 
-#### 3.12) Religion/2012-2024/LK-12:dsd/BarChart
+#### 3.13) Religion/2012-2024/LK-12:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-12:dsd/BarChart
@@ -658,7 +692,7 @@ Source: [_output/Religion/2012-2024/LK-12:dsd/BarChart/Output.json](_output/Reli
 
 Source: [_output/Religion/2012-2024/LK-12:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-12:dsd/BarChart/Image.png)
 
-#### 3.13) Religion/2012-2024/LK:district/Map:DiversityPew
+#### 3.14) Religion/2012-2024/LK:district/Map:DiversityPew
 
 ```bash
 Religion/2012-2024/LK:district/Map:DiversityPew
@@ -692,7 +726,7 @@ Source: [_output/Religion/2012-2024/LK:district/Map:DiversityPew/Output.json](_o
 
 Source: [_output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png](_output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png)
 
-#### 3.14) Religion/2012-2024/LK:district/Map:2ndPct
+#### 3.15) Religion/2012-2024/LK:district/Map:2ndPct
 
 ```bash
 Religion/2012-2024/LK:district/Map:2ndPct
@@ -726,7 +760,7 @@ Source: [_output/Religion/2012-2024/LK:district/Map:2ndPct/Output.json](_output/
 
 Source: [_output/Religion/2012-2024/LK:district/Map:2ndPct/Image.png](_output/Religion/2012-2024/LK:district/Map:2ndPct/Image.png)
 
-#### 3.15) Religion/2012-2024/LK:district/Map:3rdPct
+#### 3.16) Religion/2012-2024/LK:district/Map:3rdPct
 
 ```bash
 Religion/2012-2024/LK:district/Map:3rdPct
@@ -760,7 +794,7 @@ Source: [_output/Religion/2012-2024/LK:district/Map:3rdPct/Output.json](_output/
 
 Source: [_output/Religion/2012-2024/LK:district/Map:3rdPct/Image.png](_output/Religion/2012-2024/LK:district/Map:3rdPct/Image.png)
 
-#### 3.16) Religion/2012-2024/LK-21:dsd/BarChart
+#### 3.17) Religion/2012-2024/LK-21:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-21:dsd/BarChart
@@ -794,7 +828,7 @@ Source: [_output/Religion/2012-2024/LK-21:dsd/BarChart/Output.json](_output/Reli
 
 Source: [_output/Religion/2012-2024/LK-21:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-21:dsd/BarChart/Image.png)
 
-#### 3.17) Religion/2012-2024/LK-31-pre2019:dsd/BarChart
+#### 3.18) Religion/2012-2024/LK-31-pre2019:dsd/BarChart
 
 ```bash
 Religion/2012-2024/LK-31-pre2019:dsd/BarChart
@@ -828,7 +862,7 @@ Source: [_output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Output.json](_out
 
 Source: [_output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png](_output/Religion/2012-2024/LK-31-pre2019:dsd/BarChart/Image.png)
 
-#### 3.18) Religion/2012-2024/LK-11:district/BarChart
+#### 3.19) Religion/2012-2024/LK-11:district/BarChart
 
 ```bash
 Religion/2012-2024/LK-11:district/BarChart
