@@ -1,32 +1,19 @@
-class HowRegistryMixin:
-    BASE_LABELS = {
-        "JSON": None,
-        "CSV": None,
-        "TSV": None,
-        "GeoJSON": None,
-        "Parquet": None,
-        "ChartSpec": "Chart Spec",
-        "Map": None,
-        "Cartogram": "Cartogram (Population based)",
-        "HexMap": "HexMap (Population based)",
-        "UnitHexMap": "UnitHexMap (One hexagon per region)",
-        "SquareMap": "SquareMap (Population based)",
-        "UnitSquareMap": "UnitSquareMap (One square per region)",
-        "TriangleMap": "TriangleMap (Population based)",
-        "UnitTriangleMap": "UnitTriangleMap (One triangle per region)",
-        "BubbleMap": "BubbleMap (Population based)",
-        "BarChart": "Bar Chart",
-        "StackedBarChart": "Stacked Bar Chart",
-        "PieChart": "Pie Chart",
-        "BumpChart": "Bump Chart",
-        "TreeMap": "Tree Map",
-        "Histogram": "Histogram",
-        "ScatterPlot": "Scatter Plot",
-        "BivariateMap": "Bivariate Map",
-        "QuadrantChart": "Quadrant Chart",
-        "LineChart": "Line Chart",
-        "None": None,
-    }
+import warnings
+
+from lanka_data.api.fields.HowRegistryBaseLabelsMixin import (
+    HowRegistryBaseLabelsMixin,
+)
+
+warnings.warn(
+    "HowRegistryMixin is deprecated. Use individual visual classes' "
+    "get_description() methods and "
+    "lanka_data.visual.HOW_PARAMS_DATA.HOW_PARAMS instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
+
+
+class HowRegistryMixin(HowRegistryBaseLabelsMixin):
     INTERVAL_BASES = {"BumpChart", "LineChart"}
     SERIES_BASES = {"LineChart"}
     CATEGORY_BASES = {
