@@ -34,7 +34,7 @@
         "RelationshipToHead": "Distribution of the population by relationship to household head.",
         "Occupancy": "Occupation status distribution"
       },
-      "census-households": {
+      "census-housings": {
         "Communication": "Household communication items distribution",
         "ConstructionYear": "Year of construction distribution",
         "Electricity": "Electricity access statistics",
@@ -59,7 +59,7 @@
         "Waste": "Solid waste disposal method",
         "RelationshipToHead": "Relationship to household head"
       },
-      "census": {
+      "census-housing": {
         "Electricity": "Distribution of electricity access by sector."
       },
       "election": {
