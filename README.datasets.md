@@ -148,4 +148,4 @@ River lengths and catchment areas by region
 
 ### Source Data
 
-- [HydroRIVERS (via lk_rivers)](https://github.com/nuuuwan/lk_rivers)
+- [HydroRIVERS (via lk_rivers)](https://www.hydrosheds.org/products/hydrorivers)

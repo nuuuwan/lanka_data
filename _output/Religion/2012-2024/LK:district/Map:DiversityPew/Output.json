@@ -1,0 +1,17 @@
+{
+  "command_str": "Religion/2012-2024/LK:district/Map:DiversityPew",
+  "result": {
+    "image_path": "_output/Religion/2012-2024/LK:district/Map:DiversityPew/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Census of Population and Housing 2012",
+      "url": "https://www.statistics.gov.lk/Resource/en/Population/CPH_2011/CPH_2012_5Per_Rpt.pdf"
+    },
+    {
+      "name": "Census of Population and Housing 2024",
+      "url": "https://www.statistics.gov.lk/Population/StaticalInformation/CPH2024"
+    }
+  ],
+  "query_time_ms": 0
+}
