@@ -24,6 +24,4 @@ class CommandHelp(
             "When": CommandHelp.get_when_help(),
             "Where": CommandHelp.get_where_help(),
             "How": CommandHelp.get_how_help(),
-            "source": SOURCE,
-            "source_url": SOURCE_URL,
         }
