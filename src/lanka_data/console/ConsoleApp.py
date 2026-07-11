@@ -2,7 +2,6 @@ import sys
 
 from rich.console import Console
 
-from lanka_data.console.ConsoleCommandLibrary import ConsoleCommandLibrary
 from lanka_data.console.ConsoleCompleter import ConsoleCompleter
 from lanka_data.console.ConsoleImageOpener import ConsoleImageOpener
 from lanka_data.console.ConsoleLocalCommands import ConsoleLocalCommands
@@ -14,14 +13,11 @@ from lanka_data.datasets.command.CommandRunner import CommandRunner
 class ConsoleApp:
     RUN_PREFIX = "run "
 
-    def __init__(self, console=None, runner=None, library=None):
+    def __init__(self, console=None, runner=None):
         self.console = console or Console()
         self.runner = runner or CommandRunner
-        self.library = library or ConsoleCommandLibrary()
         self.renderer = ConsoleRenderer(self.console)
-        self.completer = ConsoleCompleter(
-            self.library.suggestions(), self.library.field_values()
-        )
+        self.completer = ConsoleCompleter([])
         self.prompt = ConsolePrompt(self.completer)
         self.local_commands = ConsoleLocalCommands(self)
 

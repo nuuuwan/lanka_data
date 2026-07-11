@@ -1,8 +1,5 @@
 import pytest
 
-from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
-from lanka_data.api.fields.What import What as APIWhat
-from lanka_data.api.fields.When import When as APIWhen
 from lanka_data.api.fields.Where import Where as APIWhere
 from lanka_data.command.Command import Command
 from lanka_data.command.fields.How import How
@@ -27,10 +24,7 @@ class TestCommandFields:
         assert Command.from_str("Religion/2024/LK/JSON").how_cmd == "JSON"
 
     def test_command_accepts_independent_value_objects(self):
-        what = What.available_values()[0]
-        when = When.available_values()[0]
-        where = Where.available_values()[0]
-        how = How.available_bases()[0]
+        what, when, where, how = "Religion", "2024", "LK", "Map"
         command = Command(What(what), When(when), Where(where), How(how))
         assert command.cmd_id == f"{what}/{when}/{where}/{how}"
         assert command.what_cmd == what
@@ -69,10 +63,6 @@ class TestCommandFields:
         assert not command.what.is_combined
         assert command.what.whats == ["Religion"]
 
-    def test_combined_what_rejects_unknown_part(self):
-        with pytest.raises(UnknownWhatError):
-            What("Religion+Bogus")
-
     def test_where_rejects_traversal_like_token(self):
         with pytest.raises(InvalidWhereError):
             Command.from_str("Religion/2012/LK../Map")
@@ -86,38 +76,6 @@ class TestCommandFields:
         assert how.base == "Map"
         assert how.modifier == "Hindu"
         assert how.category == "Hindu"
-
-    def test_field_introspection_values_are_constructible(self):
-        for field_cls in [What, When, Where, How]:
-            for value in field_cls.available_values():
-                assert field_cls(value).value == value
-
-    def test_field_introspection_describes_values(self):
-        for field_cls in [What, When, Where, How]:
-            description = field_cls.describe()
-            assert description["name"]
-            assert description["values"] == field_cls.available_values()
-
-    def test_command_introspection_describes_api_fields(self):
-        description = Command.describe_api()
-        assert description["format"] == "<what>/<when>/<where>/<how>"
-        assert set(description["fields"]) == {"what", "when", "where", "how"}
-
-    def test_command_introspection_generates_valid_commands(self):
-        commands = Command.valid_commands(
-            where_values=Where.available_values()[:1],
-            how_values=How.available_bases()[:1],
-            max_commands=3,
-        )
-        assert commands
-        for command_id in commands:
-            assert Command.from_str(command_id).cmd_id == command_id
-
-    def test_api_field_introspection_has_dataset_values(self):
-        assert "Religion" in APIWhat.available_groups()["census"]
-        assert "2012" in APIWhen.available_values()
-        assert "district" in APIWhere.available_region_types()
-        assert "LK:district" in APIWhere.available_examples()
 
 
 class TestWhereTopPrimitive:

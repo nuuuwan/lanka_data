@@ -3,14 +3,10 @@ from dataclasses import dataclass
 
 from lanka_data.api.command_errors.InvalidWhereError import InvalidWhereError
 from lanka_data.api.fields.RegionFilter import RegionFilter
-from lanka_data.api.fields.RegionTypeRegistry import RegionTypeRegistry
-from lanka_data.api.fields.WhereIntrospectionMixin import (
-    WhereIntrospectionMixin,
-)
 
 
 @dataclass(frozen=True)
-class Where(WhereIntrospectionMixin):
+class Where:
     value: str
 
     TOP_RE = re.compile(r"#(\d+)$")
@@ -18,17 +14,6 @@ class Where(WhereIntrospectionMixin):
     @classmethod
     def strip_top(cls, token):
         return cls.TOP_RE.sub("", token or "")
-
-    @classmethod
-    def available_region_types(cls):
-        values = set()
-        for prefix_map in RegionTypeRegistry.PREFIX_MAPS.values():
-            values.update(prefix_map.values())
-        return sorted(values)
-
-    @classmethod
-    def available_examples(cls):
-        return RegionTypeRegistry.EXAMPLES
 
     def __post_init__(self):
         if self.value == "":

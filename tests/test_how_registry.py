@@ -17,9 +17,3 @@ class TestHowRegistry:
 
     def test_missing_modifier_has_no_modifier_label(self):
         assert How("Map").modifier_label is None
-
-    def test_all_registered_modifiers_compose_with_representative_where(self):
-        for modifier in How.available_modifiers():
-            how = How(f"Map:{modifier}")
-            assert how.base == "Map"
-            assert how.modifier == modifier

@@ -28,12 +28,10 @@ class ConsoleLocalCommands:
         )
 
     def show_fields(self):
-        self.app.renderer.show_fields(self.app.library.field_rows())
+        self.app.renderer.show_fields([])
 
     def show_examples(self):
-        self.app.renderer.show_examples(self.app.library.example_commands())
+        self.app.renderer.show_examples([])
 
     def show_commands(self):
-        self.app.renderer.show_commands(
-            self.app.library.command_suggestions()
-        )
+        self.app.renderer.show_commands([])
