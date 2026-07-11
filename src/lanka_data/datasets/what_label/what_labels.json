@@ -2,516 +2,414 @@
   {
     "label": "AgeGroup",
     "description": "Distribution of the population by age groups.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "AgriOccupations",
     "description": "Distribution of agricultural occupations.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Communication",
     "description": "Distribution of households by communication items.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "ConstructionYear",
     "description": "Distribution of housing by year of construction.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Dependency",
     "description": "Dependency ratios and age group distribution.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Economy",
     "description": "Distribution of the population by economic activity.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Education",
     "description": "Distribution of the population by educational attainment.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Electricity",
     "description": "Distribution of electricity access by sector.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Employment",
     "description": "Distribution of the population by employment status.",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "AgeGroup",
-    "description": "Population distribution by age group",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "AgriOccupations",
-    "description": "Agricultural occupations distribution",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Attendance",
     "description": "School attendance statistics",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Dependency",
-    "description": "Dependency ratios by region",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Disability",
     "description": "Disability prevalence statistics",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Education",
-    "description": "Educational attainment levels",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Electricity",
-    "description": "Electricity access statistics",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Employment",
-    "description": "Employment status distribution",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Enrollment",
     "description": "Educational enrollment statistics",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Ethnicity",
     "description": "Distribution of the population by ethnic group",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Fertility",
     "description": "Fertility rates by sector.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Floor",
     "description": "Distribution of housing by floor material type.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Fuel",
     "description": "Distribution of housing by cooking fuel type.",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Fertility",
-    "description": "Fertility rates by region",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Fuel",
-    "description": "Cooking fuel type distribution",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Growth",
     "description": "Population growth statistics",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Housing",
-    "description": "Housing units statistics",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Inactive",
-    "description": "Economically inactive population",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Industry",
-    "description": "Employment by industry distribution",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Informal",
-    "description": "Informal housing statistics",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Laborforce",
     "description": "Labor force participation statistics",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Literacy",
-    "description": "Literacy rates by region",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Marital",
-    "description": "Marital status distribution",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Materials",
-    "description": "Construction materials distribution",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Migration",
-    "description": "Migration patterns statistics",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "NonAgriEmployment",
-    "description": "Non-agricultural employment distribution",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "NotAttending",
     "description": "School non-attendance statistics",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Occupations",
-    "description": "Occupations distribution",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Population",
     "description": "Population overview statistics",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Religion",
-    "description": "Distribution of the population by religious affiliation",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Rooms",
-    "description": "Room count statistics",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Sectoral",
-    "description": "Sectoral distribution statistics",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Sectors",
-    "description": "Employment sectors distribution",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Speaking",
     "description": "Speaking capacity statistics",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Structure",
-    "description": "Household structure distribution",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Tenure",
-    "description": "Housing tenure statistics",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Toilet",
-    "description": "Toilet facilities distribution",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Unemployment",
-    "description": "Unemployment by education level",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Unit",
-    "description": "Housing units types distribution",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Water",
-    "description": "Water access statistics",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Communication",
-    "description": "Household communication items distribution",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "ConstructionYear",
-    "description": "Year of construction distribution",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Economy",
-    "description": "Economic activity distribution",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Floor",
-    "description": "Floor type distribution",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Gender",
     "description": "Distribution of the population by gender",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Growth",
-    "description": "Population growth metrics.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Housing",
     "description": "Housing distribution by sector.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Inactive",
     "description": "Usually economically inactive population.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Industry",
     "description": "Distribution of population by employment industry.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Informal",
     "description": "Distribution of informal housing.",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Laborforce",
-    "description": "Labor force participation rates.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Lighting",
     "description": "Distribution of housing by lighting source.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Literacy",
     "description": "Literacy rates by sector and gender.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Marital",
     "description": "Distribution of the population by marital status.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Materials",
     "description": "Distribution of housing construction materials.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Migration",
     "description": "Distribution of population by migration patterns.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "NonAgriEmployment",
     "description": "Non-agricultural employment by occupation.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Occupancy",
     "description": "Distribution of households by occupancy status.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Occupations",
     "description": "Distribution of population by occupations.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Ownership",
     "description": "Distribution of housing by ownership status.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Persons",
     "description": "Distribution of households by number of persons.",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Population",
-    "description": "Population overview metrics.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Quarters",
     "description": "Distribution of households by living quarters type.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "RelationshipToHead",
     "description": "Distribution of the population by relationship to household head.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Religion",
     "description": "Distribution of the population by religious affiliation.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Roof",
     "description": "Distribution of housing by roof material type.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Rooms",
     "description": "Distribution of housing by number of rooms.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Sectoral",
     "description": "Distribution of population by sector.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Sectors",
     "description": "Employment distribution by sector.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Structure",
     "description": "Distribution of housing by building structure type.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Tenure",
     "description": "Distribution of housing by tenure.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Toilet",
     "description": "Distribution of housing by toilet facility type.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Unemployment",
     "description": "Unemployment rates by education and gender.",
-    "category_labels": ["census-population"]
+    "category_labels": [
+      "census-population"
+    ]
   },
   {
     "label": "Unit",
     "description": "Distribution of housing by unit type.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Walls",
     "description": "Distribution of housing by wall material type.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Waste",
     "description": "Distribution of housing by solid waste disposal method.",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Water",
     "description": "Distribution of housing by drinking water source.",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Lighting",
-    "description": "Lighting source distribution",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Occupancy",
-    "description": "Occupation status distribution",
-    "category_labels": ["census-population"]
-  },
-  {
-    "label": "Ownership",
-    "description": "Housing ownership status distribution",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Persons",
-    "description": "Number of persons per household",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Quarters",
-    "description": "Living quarters type distribution",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "RelationshipToHead",
-    "description": "Relationship to household head",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Roof",
-    "description": "Roof type distribution",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Walls",
-    "description": "Wall type distribution",
-    "category_labels": ["census-housing"]
-  },
-  {
-    "label": "Waste",
-    "description": "Solid waste disposal method",
-    "category_labels": ["census-housing"]
+    "category_labels": [
+      "census-housing"
+    ]
   },
   {
     "label": "Local",
     "description": "Local government election results",
-    "category_labels": ["election"]
+    "category_labels": [
+      "election"
+    ]
   },
   {
     "label": "Parliamentary",
     "description": "Parliamentary election results",
-    "category_labels": ["election"]
+    "category_labels": [
+      "election"
+    ]
   },
   {
     "label": "Presidential",
     "description": "Presidential election results",
-    "category_labels": ["election"]
+    "category_labels": [
+      "election"
+    ]
   },
   {
     "label": "LocalSummary",
     "description": "Local government election summary",
-    "category_labels": ["election"]
+    "category_labels": [
+      "election"
+    ]
   },
   {
     "label": "ParliamentarySummary",
     "description": "Parliamentary election summary",
-    "category_labels": ["election"]
+    "category_labels": [
+      "election"
+    ]
   },
   {
     "label": "PresidentialSummary",
     "description": "Presidential election summary",
-    "category_labels": ["election"]
+    "category_labels": [
+      "election"
+    ]
   },
   {
     "label": "RiverLen",
     "description": "River length measurements",
-    "category_labels": ["rivers"]
+    "category_labels": [
+      "rivers"
+    ]
   },
   {
     "label": "Catchment",
     "description": "River catchment area measurements",
-    "category_labels": ["rivers"]
+    "category_labels": [
+      "rivers"
+    ]
   }
 ]
