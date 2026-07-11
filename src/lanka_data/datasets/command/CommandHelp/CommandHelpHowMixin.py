@@ -1,6 +1,5 @@
-from lanka_data.api.fields.HOW_REGISTRY_DATA import BASE_LABELS
-from lanka_data.visual.HOW_PARAMS_DATA import HOW_PARAMS
-from lanka_data.visual.VisualFactory import VisualFactory
+from lanka_data.api.fields.HowRegistryMixin import HowRegistryMixin
+from lanka_data.visual.HowParam import HowParam
 
 
 class CommandHelpHowMixin:
@@ -20,7 +19,7 @@ class CommandHelpHowMixin:
     def get_how_param_descriptions():
         return {
             key: how_param.description
-            for key, how_param in HOW_PARAMS.items()
+            for key, how_param in HowParam.list().items()
         }
 
     @staticmethod

@@ -11,8 +11,7 @@ from lanka_data.api.fields.HOW_REGISTRY_DATA import (
 
 warnings.warn(
     "HowRegistryMixin is deprecated. Use individual visual classes' "
-    "get_description() methods and "
-    "lanka_data.visual.HOW_PARAMS_DATA.HOW_PARAMS instead.",
+    "get_description() methods and HowParam.list() instead.",
     DeprecationWarning,
     stacklevel=2,
 )
