@@ -256,12 +256,12 @@
   },
   {
     "label": "Local",
-    "description": "Local government election results by district.",
+    "description": "Local government election results.",
     "category_labels": ["election"]
   },
   {
     "label": "Parliamentary",
-    "description": "Parliamentary election results by district.",
+    "description": "Parliamentary election results.",
     "category_labels": ["election"]
   },
   {
