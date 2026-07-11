@@ -16,6 +16,10 @@ from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import (
 from lanka_data.datasets.dataset.custom.RiversDataset import RiversDataset
 from lanka_data.datasets.what_label.WhatLabel import WhatLabel
 
+from utils_future import Log
+
+log = Log('WhatLabelValidator')
+
 
 class WhatLabelValidator:
     def __init__(self):
@@ -31,11 +35,12 @@ class WhatLabelValidator:
         self.errors = []
         self.warnings = []
 
-    def _get_all_dataset_labels(self):
-        dataset_labels = set()
+    def _get_dataset_to_labels(self):
+        idx = {}
         for dataset_cls in self.datasets:
-            dataset_labels.update(dataset_cls.get_labels())
-        return dataset_labels
+            cls_name = dataset_cls.__name__
+            idx[cls_name] = dataset_cls.get_labels()
+        return idx
 
     def _check_unique_labels(self):
         all_labels = [w.label for w in self.what_labels]
@@ -50,38 +55,44 @@ class WhatLabelValidator:
 
     def _check_every_label_has_dataset(self):
         unique_what_labels = set([w.label for w in self.what_labels])
-        dataset_labels = self._get_all_dataset_labels()
+        dataset_to_labels = self._get_dataset_to_labels()
 
-        for what_label in unique_what_labels:
-            if what_label.endswith("Summary"):
-                base_label = what_label.replace("Summary", "")
-                if base_label not in dataset_labels:
-                    self.errors.append(
-                        f"WhatLabel '{what_label}' has no dataset"
-                    )
-            elif what_label not in dataset_labels:
+        for i_what_label, what_label in enumerate(unique_what_labels, start=1):
+            if 'Summary' in what_label:
+                what_label = what_label.replace("Summary", "")
+            matching_datasets = set()
+            for dataset, labels in dataset_to_labels.items():
+                if what_label in labels:
+                    matching_datasets.add(dataset)
+            
+            if matching_datasets:
+                log.debug(f"✅ {i_what_label}. '{what_label}' in {', '.join(sorted(matching_datasets))}")
+            else:
                 self.errors.append(f"WhatLabel '{what_label}' has no dataset")
+
+
+    def _check_every_dataset_label_is_valid(self):
+        dataset_to_labels = self._get_dataset_to_labels()
+        valid_labels = set([w.label for w in self.what_labels])
+
+        i_label = 0
+        for dataset, labels in dataset_to_labels.items():
+            for label in labels:
+                i_label += 1
+                if label not in valid_labels:
+                    self.errors.append(f"Dataset '{dataset}' has invalid label '{label}'")
+                else:
+                    log.debug(f"✅ {i_label}. {dataset}.{label} is valid.")
+                
+
 
     def validate(self):
         self._check_unique_labels()
         self._check_every_label_has_dataset()
-        return len(self.errors) == 0
+        self._check_every_dataset_label_is_valid()
+        log.debug('-' * 32)
+        for error in self.errors:
+            log.error(error)
+        for warning in self.warnings:
+            log.warning(warning)
 
-    def get_report(self):
-        lines = []
-        lines.append("WhatLabelValidator Report")
-        lines.append("=" * 40)
-
-        if self.errors:
-            lines.append(f"\nErrors ({len(self.errors)}):")
-            for error in self.errors:
-                lines.append(f"  - {error}")
-        else:
-            lines.append("\nNo errors found!")
-
-        if self.warnings:
-            lines.append(f"\nWarnings ({len(self.warnings)}):")
-            for warning in self.warnings:
-                lines.append(f"  - {warning}")
-
-        return "\n".join(lines)

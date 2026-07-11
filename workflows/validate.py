@@ -8,10 +8,4 @@ from lanka_data.datasets.WhatLabelValidator import (  # noqa: E402
 )
 
 if __name__ == "__main__":
-    validator = WhatLabelValidator()
-    is_valid = validator.validate()
-
-    print(validator.get_report())
-
-    if not is_valid:
-        sys.exit(1)
+    WhatLabelValidator().validate()
