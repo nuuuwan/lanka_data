@@ -9,6 +9,13 @@ from .BumpChartDrawMixin import BumpChartDrawMixin
 class BumpChartVisual(
     BumpChartDataMixin, BumpChartDrawMixin, BumpChartAxisMixin, PlotVisual
 ):
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a bump chart showing ranking changes of items "
+            "across categories or time periods"
+        )
+
     def draw(self, dataset, fig):
         subregions = self._build_subregions(dataset.get_data_table())
         when_cmd = getattr(self.command, "when_cmd", None)

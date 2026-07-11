@@ -1,8 +1,9 @@
 from matplotlib.ticker import FuncFormatter
 
 from lanka_data.visual.plot.Style import Style
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import \
-    BarChartVisual
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import (
+    BarChartVisual,
+)
 
 from .HistogramData import HistogramData
 
@@ -10,6 +11,13 @@ from .HistogramData import HistogramData
 class HistogramVisual(BarChartVisual):
     N_BINS = 12
     BAR_COLOR = "#1f77b4"
+
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a histogram with binned intervals showing "
+            "frequency distribution"
+        )
 
     @staticmethod
     def _region_totals(subregions):

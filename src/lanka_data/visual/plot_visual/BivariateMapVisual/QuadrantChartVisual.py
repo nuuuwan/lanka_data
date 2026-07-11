@@ -1,16 +1,22 @@
 from matplotlib.ticker import PercentFormatter
 
 from lanka_data.visual.plot.Style import Style
-from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateData import \
-    BivariateData
-from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateMapBaseVisual import \
-    BivariateMapBaseVisual
+
+from .BivariateData import BivariateData
+from .BivariateMapBaseVisual import BivariateMapBaseVisual
 
 
 class QuadrantChartVisual(BivariateMapBaseVisual):
     N_BINS = 2
     MARKER_SIZE = 60
     LABEL_FONTSIZE = 6
+
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a quadrant chart dividing regions into 4 "
+            "quadrants based on two variable values"
+        )
 
     def _draw_points(self, ax, points):
         palette = self.palette

@@ -1,9 +1,19 @@
-from lanka_data.visual.plot.map.SquareData.UnitSquareData import UnitSquareData
-from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapVisual import \
-    SquareMapVisual
+from lanka_data.visual.plot.map.SquareData.UnitSquareData import (
+    UnitSquareData,
+)
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapVisual import (
+    SquareMapVisual,
+)
 
 
 class UnitSquareMapVisual(SquareMapVisual):
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a unit square map with exactly one square "
+            "per region"
+        )
+
     @staticmethod
     def _get_data_list(dataset):
         return dataset.get_data_table()

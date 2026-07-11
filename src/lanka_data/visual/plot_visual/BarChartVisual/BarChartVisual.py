@@ -15,6 +15,10 @@ class BarChartVisual(
     BarChartXLabelMixin,
     PlotVisual,
 ):
+    @classmethod
+    def get_description(cls):
+        return "Renders data as a bar chart with regions on x-axis and values as stacked or single bars"
+
     @staticmethod
     def _is_change_chart(subregions):
         return any(v < 0 for s in subregions for v in s["values"].values())

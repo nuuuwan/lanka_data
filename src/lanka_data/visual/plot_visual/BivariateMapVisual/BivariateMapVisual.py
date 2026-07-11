@@ -1,13 +1,20 @@
 from matplotlib.patches import Rectangle
 
 from lanka_data.visual.plot.Style import Style
-from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateMapBaseVisual import \
-    BivariateMapBaseVisual
+
+from .BivariateMapBaseVisual import BivariateMapBaseVisual
 
 
 class BivariateMapVisual(BivariateMapBaseVisual):
     N_BINS = 3
     LEGEND_FONTSIZE = 8
+
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a bivariate map showing correlation between "
+            "two variables using a 3x3 color palette"
+        )
 
     def _draw_legend_cells(self, ax):
         palette = self.palette

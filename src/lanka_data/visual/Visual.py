@@ -35,6 +35,11 @@ class Visual(ABC):
     def from_commmand_and_datasets(cls, command, datasets):
         return cls.from_command_and_datasets(command, datasets)
 
+    @classmethod
+    @abstractmethod
+    def get_description(cls):
+        pass
+
     @abstractmethod
     def build(self):
         pass

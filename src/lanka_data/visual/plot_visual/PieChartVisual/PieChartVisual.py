@@ -1,8 +1,9 @@
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map.BubbleData.BubbleData import BubbleData
 from lanka_data.visual.plot.map.GeoData.GeoData import GeoData
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import \
-    BarChartVisual
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import (
+    BarChartVisual,
+)
 
 from .PieChartMapDrawMixin import PieChartMapDrawMixin
 from .PieChartMapLabelMixin import PieChartMapLabelMixin
@@ -11,6 +12,13 @@ from .PieChartMapLabelMixin import PieChartMapLabelMixin
 class PieChartVisual(
     PieChartMapDrawMixin, PieChartMapLabelMixin, BarChartVisual
 ):
+    @classmethod
+    def get_description(cls):
+        return (
+            "Renders data as a pie chart with slices representing "
+            "categories sized by their values"
+        )
+
     @staticmethod
     def _order_positive_values_with_top_first(values_map):
         items = [(k, v) for k, v in values_map.items() if v > 0]

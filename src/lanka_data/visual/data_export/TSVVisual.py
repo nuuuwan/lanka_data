@@ -5,5 +5,9 @@ from lanka_data.visual.data_export.FileExportMixin import FileExportMixin
 
 
 class TSVVisual(FileExportMixin, DelimitedExportMixin, DataExportVisual):
+    @classmethod
+    def get_description(cls):
+        return "Exports data as TSV format with regions as rows and categories as tab-separated columns"
+
     def build(self):
         return self._write_output("Data.tsv", self._render_delimited("\t"))

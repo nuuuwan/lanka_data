@@ -11,6 +11,11 @@ from utils_future.timer import timer
 
 class PlotVisual(Visual):
 
+    @classmethod
+    @abstractmethod
+    def get_description(cls):
+        pass
+
     @abstractmethod
     def draw(self, dataset, fig):
         pass
