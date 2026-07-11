@@ -1,5 +1,5 @@
 from lanka_data.api.fields.HowRegistryMixin import HowRegistryMixin
-from lanka_data.visual.HowParam import HOW_PARAMS
+from lanka_data.visual.HOW_PARAMS_DATA import HOW_PARAMS
 
 
 class CommandHelpHowMixin:
