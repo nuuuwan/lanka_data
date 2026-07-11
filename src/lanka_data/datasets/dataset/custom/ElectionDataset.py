@@ -2,7 +2,7 @@ import os
 
 from lanka_data.api.data.DataSource import DataSource
 from lanka_data.datasets.dataset.custom.GIG2Dataset import GIG2Dataset
-from utils_future import Log, JSONFile
+from utils_future import JSONFile, Log
 
 log = Log("ElectionDataset")
 

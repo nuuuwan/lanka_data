@@ -5,7 +5,8 @@ from lanka_data.command.Command import Command
 from lanka_data.command.fields.How import How
 from lanka_data.command.InvalidCommandError import InvalidCommandError
 from lanka_data.dataset.DatasetFactory import DatasetFactory
-from lanka_data.visual.plot_visual.LineChartVisual.LineChartVisual import LineChartVisual
+from lanka_data.visual.plot_visual.LineChartVisual.LineChartVisual import \
+    LineChartVisual
 
 
 class _FakeYearDataset:

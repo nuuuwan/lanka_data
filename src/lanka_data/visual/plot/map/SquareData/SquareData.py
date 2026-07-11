@@ -1,22 +1,16 @@
 from lanka_data.visual.plot.map.GeoData.GeoData import GeoData
-from lanka_data.visual.plot.map.HexData.ContiguityRepairMixin import (
-    ContiguityRepairMixin,
-)
-from lanka_data.visual.plot.map.HexData.GridAdjacencyMixin import (
-    GridAdjacencyMixin,
-)
-from lanka_data.visual.plot.map.HexData.HexDataAssignMixin import (
-    HexDataAssignMixin,
-)
-from lanka_data.visual.plot.map.HexData.HexDataCountMixin import (
-    HexDataCountMixin,
-)
-from lanka_data.visual.plot.map.SquareData.SquareDataCacheMixin import (
-    SquareDataCacheMixin,
-)
-from lanka_data.visual.plot.map.SquareData.SquareDataGridMixin import (
-    SquareDataGridMixin,
-)
+from lanka_data.visual.plot.map.HexData.ContiguityRepairMixin import \
+    ContiguityRepairMixin
+from lanka_data.visual.plot.map.HexData.GridAdjacencyMixin import \
+    GridAdjacencyMixin
+from lanka_data.visual.plot.map.HexData.HexDataAssignMixin import \
+    HexDataAssignMixin
+from lanka_data.visual.plot.map.HexData.HexDataCountMixin import \
+    HexDataCountMixin
+from lanka_data.visual.plot.map.SquareData.SquareDataCacheMixin import \
+    SquareDataCacheMixin
+from lanka_data.visual.plot.map.SquareData.SquareDataGridMixin import \
+    SquareDataGridMixin
 from utils_future import Log
 
 log = Log("SquareData")

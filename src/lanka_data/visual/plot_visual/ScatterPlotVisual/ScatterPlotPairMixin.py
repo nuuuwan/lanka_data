@@ -1,7 +1,8 @@
 from matplotlib.ticker import PercentFormatter
 
 from lanka_data.visual.plot.Style import Style
-from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateData import BivariateData
+from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateData import \
+    BivariateData
 
 from .ScatterPlotStats import ScatterPlotStats
 

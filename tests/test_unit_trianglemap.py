@@ -1,14 +1,11 @@
 from lanka_data.api.fields.How import How
 from lanka_data.visual.plot.map.TriangleData.TriangleData import TriangleData
-from lanka_data.visual.plot.map.TriangleData.UnitTriangleData import (
-    UnitTriangleData,
-)
-from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapVisual import (
-    TriangleMapVisual,
-)
-from lanka_data.visual.plot_visual.UnitTriangleMapVisual.UnitTriangleMapVisual import (
-    UnitTriangleMapVisual,
-)
+from lanka_data.visual.plot.map.TriangleData.UnitTriangleData import \
+    UnitTriangleData
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapVisual import \
+    TriangleMapVisual
+from lanka_data.visual.plot_visual.UnitTriangleMapVisual.UnitTriangleMapVisual import \
+    UnitTriangleMapVisual
 from lanka_data.visual.VisualFactory import VisualFactory
 
 

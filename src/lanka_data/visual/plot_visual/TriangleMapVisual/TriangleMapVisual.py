@@ -1,22 +1,16 @@
-from lanka_data.visual.plot.color_spec.ColorSpecFactory import (
-    ColorSpecFactory,
-)
+from lanka_data.visual.plot.color_spec.ColorSpecFactory import ColorSpecFactory
 from lanka_data.visual.plot.Legend import Legend
-from lanka_data.visual.plot.map.RegionPopulationFilter import (
-    RegionPopulationFilter,
-)
+from lanka_data.visual.plot.map.RegionPopulationFilter import \
+    RegionPopulationFilter
 from lanka_data.visual.plot.map.TriangleData.TriangleData import TriangleData
 from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
-from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapBoundaryMixin import (
-    TriangleMapBoundaryMixin,
-)
-from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapDrawMixin import (
-    TriangleMapDrawMixin,
-)
-from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapLabelMixin import (
-    TriangleMapLabelMixin,
-)
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapBoundaryMixin import \
+    TriangleMapBoundaryMixin
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapDrawMixin import \
+    TriangleMapDrawMixin
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapLabelMixin import \
+    TriangleMapLabelMixin
 from utils_future import timer
 
 

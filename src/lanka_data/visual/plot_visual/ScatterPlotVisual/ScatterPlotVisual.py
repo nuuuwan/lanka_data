@@ -1,7 +1,8 @@
 from matplotlib.ticker import FuncFormatter, PercentFormatter
 
 from lanka_data.visual.plot.Style import Style
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import BarChartVisual
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import \
+    BarChartVisual
 
 from .ScatterPlotData import ScatterPlotData
 from .ScatterPlotPairMixin import ScatterPlotPairMixin

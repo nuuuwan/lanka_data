@@ -1,10 +1,9 @@
 from lanka_data.api.data.DataSource import DataSource
-from lanka_data.api.dataset.RegionValueDataset.RegionValueDataset import RegionValueDataset
-from lanka_data.datasets.region.rivers.RiversData import (
-    LABEL_CATCHMENT,
-    LABEL_RIVER_LEN,
-    RiversData,
-)
+from lanka_data.api.dataset.RegionValueDataset.RegionValueDataset import \
+    RegionValueDataset
+from lanka_data.datasets.region.rivers.RiversData import (LABEL_CATCHMENT,
+                                                          LABEL_RIVER_LEN,
+                                                          RiversData)
 
 RIVERS_WHEN = "2026"
 

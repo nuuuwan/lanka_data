@@ -2,19 +2,15 @@ from lanka_data.api.command_errors.UnknownWhatError import UnknownWhatError
 from lanka_data.api.dataset.CorrelationDataset import CorrelationDataset
 from lanka_data.api.dataset.DiffDataset import DiffDataset
 from lanka_data.api.dataset.SeriesDataset import SeriesDataset
-from lanka_data.datasets.dataset.custom.Census2001Dataset import (
-    Census2001Dataset,
-)
-from lanka_data.datasets.dataset.custom.Census2012Dataset import (
-    Census2012Dataset,
-)
-from lanka_data.datasets.dataset.custom.Census2024Dataset import (
-    Census2024Dataset,
-)
+from lanka_data.datasets.dataset.custom.Census2001Dataset import \
+    Census2001Dataset
+from lanka_data.datasets.dataset.custom.Census2012Dataset import \
+    Census2012Dataset
+from lanka_data.datasets.dataset.custom.Census2024Dataset import \
+    Census2024Dataset
 from lanka_data.datasets.dataset.custom.ElectionDataset import ElectionDataset
-from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import (
-    ElectionSummaryDataset,
-)
+from lanka_data.datasets.dataset.custom.ElectionSummaryDataset import \
+    ElectionSummaryDataset
 from lanka_data.datasets.dataset.custom.RiversDataset import RiversDataset
 from lanka_data.datasets.dataset.EmptyDataset import EmptyDataset
 from lanka_data.datasets.region.Regions import Regions
@@ -94,9 +90,7 @@ class DatasetFactory:
         whens = set()
         election_labels = ElectionDataset.get_labels()
         if election_labels and what_cmd in election_labels:
-            years = ElectionDataset.get_label_to_years().get(
-                what_cmd, []
-            )
+            years = ElectionDataset.get_label_to_years().get(what_cmd, [])
             whens.update(years)
         summary_labels = ElectionSummaryDataset.get_labels()
         if summary_labels and what_cmd in summary_labels:
@@ -116,9 +110,7 @@ class DatasetFactory:
             DatasetFactory._get_election_whens_for_what(what_cmd)
         )
         if what_cmd in RiversDataset.get_labels():
-            available_whens.update(
-                RiversDataset.get_supported_whens()
-            )
+            available_whens.update(RiversDataset.get_supported_whens())
         return available_whens
 
     @staticmethod
@@ -150,10 +142,8 @@ class DatasetFactory:
     def _try_fallback_dataset(command, region_data_list):
         if command.when.is_interval:
             return None
-        available_whens = (
-            DatasetFactory._get_available_whens_for_what(
-                command.what_cmd
-            )
+        available_whens = DatasetFactory._get_available_whens_for_what(
+            command.what_cmd
         )
         closest_when = DatasetFactory._find_closest_when(
             command.when_cmd, available_whens

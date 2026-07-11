@@ -1,11 +1,9 @@
 from lanka_data.visual.plot.Label import Label
 from lanka_data.visual.plot.LabelTruncator import LabelTruncator
-from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapLabelGeoMixin import (
-    TriangleMapLabelGeoMixin,
-)
-from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleTextFit import (
-    TriangleTextFit,
-)
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapLabelGeoMixin import \
+    TriangleMapLabelGeoMixin
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleTextFit import \
+    TriangleTextFit
 from utils_future import ColorUtils, timer
 
 

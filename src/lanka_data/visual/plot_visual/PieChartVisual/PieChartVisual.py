@@ -1,7 +1,8 @@
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map.BubbleData.BubbleData import BubbleData
 from lanka_data.visual.plot.map.GeoData.GeoData import GeoData
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import BarChartVisual
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import \
+    BarChartVisual
 
 from .PieChartMapDrawMixin import PieChartMapDrawMixin
 from .PieChartMapLabelMixin import PieChartMapLabelMixin

@@ -1,8 +1,7 @@
 from matplotlib.patches import Polygon
 
-from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleGeometryMixin import (
-    TriangleGeometryMixin,
-)
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleGeometryMixin import \
+    TriangleGeometryMixin
 from utils_future import ColorUtils
 
 

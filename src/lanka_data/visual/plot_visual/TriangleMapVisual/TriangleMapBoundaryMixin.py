@@ -1,9 +1,8 @@
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
 
-from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleGeometryMixin import (
-    TriangleGeometryMixin,
-)
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleGeometryMixin import \
+    TriangleGeometryMixin
 
 
 class TriangleMapBoundaryMixin(TriangleGeometryMixin):

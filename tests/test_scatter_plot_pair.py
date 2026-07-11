@@ -1,8 +1,10 @@
 import matplotlib
 
 from lanka_data.api.fields.How import How
-from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotStats import ScatterPlotStats
-from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotVisual import ScatterPlotVisual
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotStats import \
+    ScatterPlotStats
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotVisual import \
+    ScatterPlotVisual
 from lanka_data.visual.VisualFactory import VisualFactory
 
 matplotlib.use("Agg")

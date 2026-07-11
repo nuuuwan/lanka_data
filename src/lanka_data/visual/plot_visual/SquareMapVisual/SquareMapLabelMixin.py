@@ -1,8 +1,8 @@
 from lanka_data.visual.plot.LabelTruncator import LabelTruncator
-from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapLabelFitMixin \
-    import SquareMapLabelFitMixin
-from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapLabelGeoMixin \
-    import SquareMapLabelGeoMixin
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapLabelFitMixin import \
+    SquareMapLabelFitMixin
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapLabelGeoMixin import \
+    SquareMapLabelGeoMixin
 from utils_future import ColorUtils, timer
 
 

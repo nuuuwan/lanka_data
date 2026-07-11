@@ -1,7 +1,7 @@
 from functools import cache
 
-from lanka_data.datasets.region.rivers.RiversData import RiversData
 from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
+from lanka_data.datasets.region.rivers.RiversData import RiversData
 
 
 class RegionParentMixin:

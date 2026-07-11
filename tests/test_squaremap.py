@@ -1,9 +1,10 @@
 import math
 
 from lanka_data.visual.plot.map.SquareData.SquareData import SquareData
-from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapVisual import SquareMapVisual
-from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapBoundaryMixin \
-    import SquareMapBoundaryMixin
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapBoundaryMixin import \
+    SquareMapBoundaryMixin
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapVisual import \
+    SquareMapVisual
 from lanka_data.visual.plot_visual.SquareMapVisual.SquareTextFit import \
     SquareTextFit
 from lanka_data.visual.VisualFactory import VisualFactory
@@ -48,9 +49,7 @@ class TestSquareMapRouting:
         assert "SquareMap" in How.CATEGORY_BASES
 
     def test_factory_maps_squaremap_to_squaremap_visual(self):
-        assert (
-            VisualFactory._VISUAL_CLS["SquareMap"] is SquareMapVisual
-        )
+        assert VisualFactory._VISUAL_CLS["SquareMap"] is SquareMapVisual
 
 
 class TestSquareScaleRange:
@@ -82,9 +81,7 @@ class TestSquareBoundary:
     def _grid(cls):
         side = 2 * cls.SIZE
         return [
-            (col * side, row * side)
-            for row in range(6)
-            for col in range(6)
+            (col * side, row * side) for row in range(6) for col in range(6)
         ]
 
     def test_contiguous_region_merges_into_single_polygon(self):
@@ -200,17 +197,14 @@ class TestSquareContiguity:
     def _centers(cls, n=5):
         side = 2 * cls.SIZE
         return [
-            (col * side, row * side)
-            for row in range(n)
-            for col in range(n)
+            (col * side, row * side) for row in range(n) for col in range(n)
         ]
 
     @classmethod
     def _components_of(cls, repaired, centers):
         adj = SquareData._adjacency(centers)
         pos = {
-            (round(x, 9), round(y, 9)): i
-            for i, (x, y) in enumerate(centers)
+            (round(x, 9), round(y, 9)): i for i, (x, y) in enumerate(centers)
         }
         by_region = {}
         for r, x, y in repaired:
@@ -257,4 +251,3 @@ class TestSquareContiguity:
         ]
         repaired = SquareData.repair(cells, centers)
         assert sorted(map(tuple, repaired)) == sorted(map(tuple, cells))
-

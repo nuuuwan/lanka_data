@@ -1,9 +1,10 @@
 import math
 
 from lanka_data.visual.plot.map.HexData.HexData import HexData
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapVisual import HexMapVisual
 from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
     HexMapBoundaryMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapVisual import \
+    HexMapVisual
 from lanka_data.visual.plot_visual.HexMapVisual.HexTextFit import HexTextFit
 from lanka_data.visual.VisualFactory import VisualFactory
 from utils_future import HungarianUtils
@@ -274,16 +275,14 @@ class TestHexContiguity:
     def _components_of(cls, repaired, centers):
         adj = HexData._adjacency(centers)
         pos = {
-            (round(x, 9), round(y, 9)): i
-            for i, (x, y) in enumerate(centers)
+            (round(x, 9), round(y, 9)): i for i, (x, y) in enumerate(centers)
         }
         by_region = {}
         for r, x, y in repaired:
             idx = pos[(round(x, 9), round(y, 9))]
             by_region.setdefault(r, []).append(idx)
         return {
-            r: HexData._components(idxs, adj)
-            for r, idxs in by_region.items()
+            r: HexData._components(idxs, adj) for r, idxs in by_region.items()
         }
 
     def test_orphan_cell_is_reconnected(self):

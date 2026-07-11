@@ -1,8 +1,7 @@
 from functools import cache
 
-from utils_future import WWW
-
 from lanka_data.datasets.region.rivers.RiverNames import RiverNames
+from utils_future import WWW
 
 RIVER_ID_PREFIX = "R-"
 

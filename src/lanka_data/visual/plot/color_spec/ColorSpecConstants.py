@@ -116,7 +116,7 @@ class ColorSpecConstants:
         # --- Validation only ---
         "A": "#0088f1",
         "B": "#ff4401",
-        # 
+        #
         "Firewood": "#882200",
         "Gas": "#ffcc00",
     }

@@ -1,6 +1,6 @@
 from lanka_data.api.fields.Where import Where
-from lanka_data.datasets.region.rivers.RiversData import RiversData
 from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
+from lanka_data.datasets.region.rivers.RiversData import RiversData
 from utils_future import timer
 
 from .RegionParserRadiusMixin import RegionParserRadiusMixin

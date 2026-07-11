@@ -1,40 +1,30 @@
-from lanka_data.visual.plot_visual.HistogramVisual.HistogramVisual import (
-    HistogramVisual,
-)
 import matplotlib
 
-from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotData import (
-    ScatterPlotData,
-)
-from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotVisual import (
-    ScatterPlotVisual,
-)
 from lanka_data.visual.plot.color_spec.ClusterData import ClusterData
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
-from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpers import (
-    ColorSpecHelpers,
-)
-from lanka_data.visual.plot_visual.StackedBarChartVisual.StackedBarChartVisual import (
-    StackedBarChartVisual,
-)
-from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapData import (
-    TreeMapData,
-)
-from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapVisual import (
-    TreeMapVisual,
-)
+from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpers import \
+    ColorSpecHelpers
+from lanka_data.visual.plot_visual.HistogramVisual.HistogramVisual import \
+    HistogramVisual
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotData import \
+    ScatterPlotData
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotVisual import \
+    ScatterPlotVisual
+from lanka_data.visual.plot_visual.StackedBarChartVisual.StackedBarChartVisual import \
+    StackedBarChartVisual
+from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapData import TreeMapData
+from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapVisual import \
+    TreeMapVisual
 from lanka_data.visual.VisualFactory import VisualFactory
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 
 from lanka_data.api.fields.How import How  # noqa: E402
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import (
-    BarChartVisual,
-)  # noqa: E402
-from lanka_data.visual.plot_visual.HistogramVisual.HistogramData import (
-    HistogramData,
-)  # noqa: E402
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import \
+    BarChartVisual  # noqa: E402
+from lanka_data.visual.plot_visual.HistogramVisual.HistogramData import \
+    HistogramData  # noqa: E402
 
 
 class TestNewChartRouting:
@@ -370,10 +360,9 @@ class TestClusterColorSpec:
         assert (r, g, b) != (sinhalese[0], sinhalese[1], sinhalese[2])
 
     def test_diff_colours_are_reproducible(self):
-        assert (
-            ColorSpecHelpers._random_diff_colors(3)
-            == ColorSpecHelpers._random_diff_colors(3)
-        )
+        assert ColorSpecHelpers._random_diff_colors(
+            3
+        ) == ColorSpecHelpers._random_diff_colors(3)
 
     def test_legend_label_lists_top_two_fields_and_other(self):
         spec = self._spec(2)
@@ -400,9 +389,7 @@ class TestClusterColorSpec:
             _FakeDataset(rows), 1
         )
         labels = set(spec.value_to_color)
-        assert (
-            "Buddhist (70-80%), Hindu (10-20%), Other (10%)" in labels
-        )
+        assert "Buddhist (70-80%), Hindu (10-20%), Other (10%)" in labels
 
     def test_empty_dataset_does_not_crash(self):
         spec = ColorSpecHelpers.get_color_spec_for_cluster(

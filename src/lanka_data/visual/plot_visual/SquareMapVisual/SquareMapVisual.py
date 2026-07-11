@@ -5,8 +5,8 @@ from lanka_data.visual.plot.map.RegionPopulationFilter import \
 from lanka_data.visual.plot.map.SquareData.SquareData import SquareData
 from lanka_data.visual.plot.Style import Style
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
-from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapBoundaryMixin \
-    import SquareMapBoundaryMixin
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapBoundaryMixin import \
+    SquareMapBoundaryMixin
 from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapDrawMixin import \
     SquareMapDrawMixin
 from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapLabelMixin import \

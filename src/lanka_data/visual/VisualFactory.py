@@ -6,58 +6,41 @@ from lanka_data.visual.data_export.GeoJSONVisual import GeoJSONVisual
 from lanka_data.visual.data_export.ParquetVisual import ParquetVisual
 from lanka_data.visual.data_export.TSVVisual import TSVVisual
 from lanka_data.visual.JSONVisual import JSONVisual
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import (
-    BarChartVisual,
-)
-from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateMapVisual import (
-    BivariateMapVisual,
-)
-from lanka_data.visual.plot_visual.BivariateMapVisual.QuadrantChartVisual import (
-    QuadrantChartVisual,
-)
-from lanka_data.visual.plot_visual.BubbleMapVisual.BubbleMapVisual import (
-    BubbleMapVisual,
-)
-from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartVisual import (
-    BumpChartVisual,
-)
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapVisual import (
-    HexMapVisual,
-)
-from lanka_data.visual.plot_visual.HistogramVisual.HistogramVisual import (
-    HistogramVisual,
-)
-from lanka_data.visual.plot_visual.LineChartVisual.LineChartVisual import (
-    LineChartVisual,
-)
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import \
+    BarChartVisual
+from lanka_data.visual.plot_visual.BivariateMapVisual.BivariateMapVisual import \
+    BivariateMapVisual
+from lanka_data.visual.plot_visual.BivariateMapVisual.QuadrantChartVisual import \
+    QuadrantChartVisual
+from lanka_data.visual.plot_visual.BubbleMapVisual.BubbleMapVisual import \
+    BubbleMapVisual
+from lanka_data.visual.plot_visual.BumpChartVisual.BumpChartVisual import \
+    BumpChartVisual
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapVisual import \
+    HexMapVisual
+from lanka_data.visual.plot_visual.HistogramVisual.HistogramVisual import \
+    HistogramVisual
+from lanka_data.visual.plot_visual.LineChartVisual.LineChartVisual import \
+    LineChartVisual
 from lanka_data.visual.plot_visual.MapVisual import MapVisual
-from lanka_data.visual.plot_visual.PieChartVisual.PieChartVisual import (
-    PieChartVisual,
-)
-from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotVisual import (
-    ScatterPlotVisual,
-)
-from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapVisual import (
-    SquareMapVisual,
-)
-from lanka_data.visual.plot_visual.StackedBarChartVisual.StackedBarChartVisual import (
-    StackedBarChartVisual,
-)
-from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapVisual import (
-    TreeMapVisual,
-)
-from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapVisual import (
-    TriangleMapVisual,
-)
-from lanka_data.visual.plot_visual.UnitHexMapVisual.UnitHexMapVisual import (
-    UnitHexMapVisual,
-)
-from lanka_data.visual.plot_visual.UnitSquareMapVisual.UnitSquareMapVisual import (
-    UnitSquareMapVisual,
-)
-from lanka_data.visual.plot_visual.UnitTriangleMapVisual.UnitTriangleMapVisual import (
-    UnitTriangleMapVisual,
-)
+from lanka_data.visual.plot_visual.PieChartVisual.PieChartVisual import \
+    PieChartVisual
+from lanka_data.visual.plot_visual.ScatterPlotVisual.ScatterPlotVisual import \
+    ScatterPlotVisual
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapVisual import \
+    SquareMapVisual
+from lanka_data.visual.plot_visual.StackedBarChartVisual.StackedBarChartVisual import \
+    StackedBarChartVisual
+from lanka_data.visual.plot_visual.TreeMapVisual.TreeMapVisual import \
+    TreeMapVisual
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapVisual import \
+    TriangleMapVisual
+from lanka_data.visual.plot_visual.UnitHexMapVisual.UnitHexMapVisual import \
+    UnitHexMapVisual
+from lanka_data.visual.plot_visual.UnitSquareMapVisual.UnitSquareMapVisual import \
+    UnitSquareMapVisual
+from lanka_data.visual.plot_visual.UnitTriangleMapVisual.UnitTriangleMapVisual import \
+    UnitTriangleMapVisual
 from utils_future import Log
 
 log = Log("VisualFactory")

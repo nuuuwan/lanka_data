@@ -1,13 +1,10 @@
 from lanka_data.api.fields.How import How
 from lanka_data.visual.plot.map.SquareData.SquareData import SquareData
-from lanka_data.visual.plot.map.SquareData.UnitSquareData import (
-    UnitSquareData,
-)
-from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapVisual import (
-    SquareMapVisual,
-)
-from lanka_data.visual.plot_visual.UnitSquareMapVisual.UnitSquareMapVisual \
-    import UnitSquareMapVisual
+from lanka_data.visual.plot.map.SquareData.UnitSquareData import UnitSquareData
+from lanka_data.visual.plot_visual.SquareMapVisual.SquareMapVisual import \
+    SquareMapVisual
+from lanka_data.visual.plot_visual.UnitSquareMapVisual.UnitSquareMapVisual import \
+    UnitSquareMapVisual
 from lanka_data.visual.VisualFactory import VisualFactory
 
 

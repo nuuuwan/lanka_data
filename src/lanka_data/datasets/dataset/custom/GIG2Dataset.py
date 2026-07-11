@@ -2,7 +2,8 @@ import os
 from abc import abstractmethod
 
 from lanka_data.api.data.DataSource import DataSource
-from lanka_data.api.dataset.RegionValueDataset.RegionValueDataset import RegionValueDataset
+from lanka_data.api.dataset.RegionValueDataset.RegionValueDataset import \
+    RegionValueDataset
 from lanka_data.datasets.data.FieldNameUtils import FieldNameUtils
 from utils_future import WWW, JSONFile, Log
 

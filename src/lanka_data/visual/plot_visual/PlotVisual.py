@@ -2,9 +2,9 @@ from abc import abstractmethod
 
 import matplotlib.pyplot as plt
 
-from lanka_data.visual.plot.Plot import Plot
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
 from lanka_data.visual.plot.color_spec.ColorSpecFactory import ColorSpecFactory
+from lanka_data.visual.plot.Plot import Plot
 from lanka_data.visual.Visual import Visual
 from utils_future.timer import timer
 

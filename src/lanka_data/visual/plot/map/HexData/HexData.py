@@ -1,22 +1,16 @@
 from lanka_data.visual.plot.map.GeoData.GeoData import GeoData
-from lanka_data.visual.plot.map.HexData.HexDataAssignMixin import (
-    HexDataAssignMixin,
-)
-from lanka_data.visual.plot.map.HexData.ContiguityRepairMixin import (
-    ContiguityRepairMixin,
-)
-from lanka_data.visual.plot.map.HexData.GridAdjacencyMixin import (
-    GridAdjacencyMixin,
-)
-from lanka_data.visual.plot.map.HexData.HexDataCacheMixin import (
-    HexDataCacheMixin,
-)
-from lanka_data.visual.plot.map.HexData.HexDataCountMixin import (
-    HexDataCountMixin,
-)
-from lanka_data.visual.plot.map.HexData.HexDataGridMixin import (
-    HexDataGridMixin,
-)
+from lanka_data.visual.plot.map.HexData.ContiguityRepairMixin import \
+    ContiguityRepairMixin
+from lanka_data.visual.plot.map.HexData.GridAdjacencyMixin import \
+    GridAdjacencyMixin
+from lanka_data.visual.plot.map.HexData.HexDataAssignMixin import \
+    HexDataAssignMixin
+from lanka_data.visual.plot.map.HexData.HexDataCacheMixin import \
+    HexDataCacheMixin
+from lanka_data.visual.plot.map.HexData.HexDataCountMixin import \
+    HexDataCountMixin
+from lanka_data.visual.plot.map.HexData.HexDataGridMixin import \
+    HexDataGridMixin
 from utils_future import Log
 
 log = Log("HexData")

@@ -1,7 +1,6 @@
 from lanka_data.visual.plot.map.HexData.UnitHexData import UnitHexData
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapVisual import (
-    HexMapVisual,
-)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapVisual import \
+    HexMapVisual
 
 
 class UnitHexMapVisual(HexMapVisual):

@@ -1,15 +1,11 @@
-from lanka_data.datasets.command.CommandHelp.CommandHelpHowMixin import (
-    CommandHelpHowMixin,
-)
-from lanka_data.datasets.command.CommandHelp.CommandHelpWhatMixin import (
-    CommandHelpWhatMixin,
-)
-from lanka_data.datasets.command.CommandHelp.CommandHelpWhenMixin import (
-    CommandHelpWhenMixin,
-)
-from lanka_data.datasets.command.CommandHelp.CommandHelpWhereMixin import (
-    CommandHelpWhereMixin,
-)
+from lanka_data.datasets.command.CommandHelp.CommandHelpHowMixin import \
+    CommandHelpHowMixin
+from lanka_data.datasets.command.CommandHelp.CommandHelpWhatMixin import \
+    CommandHelpWhatMixin
+from lanka_data.datasets.command.CommandHelp.CommandHelpWhenMixin import \
+    CommandHelpWhenMixin
+from lanka_data.datasets.command.CommandHelp.CommandHelpWhereMixin import \
+    CommandHelpWhereMixin
 
 SOURCE = "lanka_data"
 SOURCE_URL = "https://github.com/nuuuwan/lanka_data/blob/main/README.md"

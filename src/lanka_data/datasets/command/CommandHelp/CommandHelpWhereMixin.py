@@ -1,50 +1,33 @@
-from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
-
-WHERE_VALUES = [
-    "LK",
-    "LK:province",
-    "LK:district",
-    "LK:dsd",
-    "LK:gnd",
-    "LK:rivers",
-    "LK-1,LK-2",
-    "LK-1,LK-2,LK-3",
-    "LK-1...LK-2",
-    "LK-11...LK-13",
-    "LK-pre1959",
-    "LK-pre1959:district",
-    "LK-1127025@20",
-    "LK:district#5",
-    "LK:rivers#10",
-]
-WHERE_OPERATORS = [
-    "single",
-    "comma",
-    "range",
-    "history",
-    "zoom",
-    "child_type",
-    "top",
-]
-TOKEN_PATTERN = r"[A-Za-z0-9:,@.#\-]+"
 
 
 class CommandHelpWhereMixin:
-    @staticmethod
-    def get_where_region_types():
-        prefix_maps = RegionTypeUtils.get_prefix_maps()
-        types = {
-            region_type
-            for id_map in prefix_maps.values()
-            for region_type in id_map.values()
-        }
-        return sorted(types)
+    COMMAND_TO_INFO = {
+        "<region_id>": dict(
+            description="Returns data for the specified <region_id>.",
+            examples=["LK"],
+        ),
+        "<region_id>:<region_type>": dict(
+            description="Returns data for child regions of type <region_type> in <region_id>.",
+            examples=["LK:district"],
+        ),
+        "<region_id1>,<region_id2>": dict(
+            description="Returns data for a list of regions.",
+            examples=["LK-1,LK-2"],
+        ),
+        "<region_id1>,<region_id2>,<region_id3>": dict(
+            description="Returns data for a list of regions.",
+            examples=["LK-1,LK-2,LK-3"],
+        ),
+        "<region_id1>...<region_id2>": dict(
+            description="Returns data for a range of regions.",
+            examples=["LK-1...LK-2"],
+        ),
+        "<region_id>@<distance>": dict(
+            description="Returns regions of the same type within a specified distance of <region_id>.",
+            examples=["LK-1127025@20"],
+        ),
+    }
 
     @staticmethod
     def get_where_help():
-        return {
-            "values": WHERE_VALUES,
-            "region_types": (CommandHelpWhereMixin.get_where_region_types()),
-            "operators": WHERE_OPERATORS,
-            "token_pattern": TOKEN_PATTERN,
-        }
+        return CommandHelpWhereMixin.COMMAND_TO_INFO

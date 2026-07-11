@@ -1,8 +1,7 @@
 from lanka_data.api.fields.How import How
 from lanka_data.visual.plot.color_spec.ColorSpec.ColorSpec import ColorSpec
-from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpers import (
-    ColorSpecHelpers,
-)
+from lanka_data.visual.plot.color_spec.ColorSpecHelpers.ColorSpecHelpers import \
+    ColorSpecHelpers
 from utils_future import Log
 
 log = Log("ColorSpecFactory")
