@@ -1,0 +1,13 @@
+{
+  "command_str": "PresidentialSummary/2019/LK:province/PieChart",
+  "result": {
+    "image_path": "_output/PresidentialSummary/2019/LK:province/PieChart/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Election Commission of Sri lanka",
+      "url": "https://www.elections.gov.lk"
+    }
+  ],
+  "query_time_ms": 0
+}
