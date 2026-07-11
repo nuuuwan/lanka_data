@@ -1,4 +1,4 @@
-from lanka_data.api.fields.HowRegistryMixin import HowRegistryMixin
+from lanka_data.visual.VisualFactory import VisualFactory
 from lanka_data.visual.HowParam import HowParam
 
 
@@ -13,7 +13,7 @@ class CommandHelpHowMixin:
 
     @staticmethod
     def get_how_params():
-        return sorted(HOW_PARAMS.keys())
+        return {h.label : h.description for h in HowParam.list()}
 
     @staticmethod
     def get_how_param_descriptions():
