@@ -1,38 +1,186 @@
 [
   {
-    "label": "Religion",
-    "description": "Distribution of the population by religious affiliation.",
+    "label": "Gender",
+    "description": "Distribution of the population by gender.",
     "category_labels": [
-      "Buddhist",
-      "Hindu",
-      "Islam",
-      "RomanCatholic",
-      "OtherChristian",
-      "Other"
+      "Female",
+      "Male"
     ]
   },
   {
     "label": "Ethnicity",
     "description": "Distribution of the population by ethnic group.",
     "category_labels": [
-      "Sinhalese",
-      "SLTamil",
-      "IndMalaiyagaTamil",
-      "SLMoor",
-      "Burgher",
-      "Malay",
-      "SLChetty",
       "Bharatha",
-      "Veddha",
-      "Other"
+      "Burgher",
+      "IndMalaiyagaTamil",
+      "Malay",
+      "Other",
+      "Sinhalese",
+      "SLChetty",
+      "SLMoor",
+      "SLTamil",
+      "Veddha"
     ]
   },
   {
-    "label": "Gender",
-    "description": "Distribution of the population by gender.",
+    "label": "Religion",
+    "description": "Distribution of the population by religious affiliation.",
     "category_labels": [
-      "Male",
-      "Female"
+      "Buddhist",
+      "Hindu",
+      "Islam",
+      "Other",
+      "OtherChristian",
+      "RomanCatholic"
+    ]
+  },
+  {
+    "label": "AgeGroup",
+    "description": "Distribution of the population by age groups.",
+    "category_labels": [
+      "00-04 Years",
+      "05-09 Years",
+      "10-14 Years",
+      "15-19 Years",
+      "20-24 Years",
+      "25-29 Years",
+      "30-34 Years",
+      "35-39 Years",
+      "40-44 Years",
+      "45-49 Years",
+      "50-54 Years",
+      "55-59 Years",
+      "60-64 Years",
+      "65-69 Years",
+      "70-74 Years",
+      "75-79 Years",
+      "80-84 Years",
+      "85-89 Years",
+      "90-94 Years",
+      "95+ Years"
+    ]
+  },
+  {
+    "label": "Structure",
+    "description": "Distribution of housing by building structure type.",
+    "category_labels": [
+      "AttachedHouse1StFloor",
+      "AttachedHouse2NdFloor",
+      "AttachedHouseFrom11To19Floors",
+      "AttachedHouseFrom20FloorsOrMore",
+      "AttachedHouseFrom3To4Floors",
+      "AttachedHouseFrom5To10Floors",
+      "Other",
+      "SingleHouseMoreThanTwoStoreyed",
+      "SingleHouseSingleStoreyed",
+      "SingleHouseTwoStoreyed"
+    ]
+  },
+  {
+    "label": "Walls",
+    "description": "Distribution of housing by wall material type.",
+    "category_labels": [
+      "Bricks",
+      "Cabook",
+      "CadjanPalmyrah",
+      "CementBlock",
+      "GraniteCubeStones",
+      "NotRelevant",
+      "Other",
+      "PlanksMetalSheetsAsbestos",
+      "PressedSoilBricks",
+      "WarichchiMud",
+      "ZinkAluminiumSheets"
+    ]
+  },
+  {
+    "label": "Floor",
+    "description": "Distribution of housing by floor material type.",
+    "category_labels": [
+      "Cement",
+      "Concrete",
+      "Mud",
+      "NotRelevant",
+      "Other",
+      "Sand",
+      "TerrazzoTileGraniteWoodFinished",
+      "Wood"
+    ]
+  },
+  {
+    "label": "Roof",
+    "description": "Distribution of housing by roof material type.",
+    "category_labels": [
+      "Asbestos",
+      "CadjanPalmyrahStraw",
+      "Concrete",
+      "MetalSheet",
+      "NotRelevant",
+      "Other",
+      "Tile",
+      "ZinkAluminiumSheet"
+    ]
+  },
+  {
+    "label": "Water",
+    "description": "Distribution of housing by drinking water source.",
+    "category_labels": [
+      "BottledWater",
+      "Bowser",
+      "FilterRo",
+      "Other",
+      "PipeBorneCommunity",
+      "PipeBorneLocalAuthority",
+      "PipeBorneNwsdb",
+      "PipeBornePrivate",
+      "ProtectedWell",
+      "RainWater",
+      "SemiProtectedWell",
+      "SpringFountain",
+      "TankRiverStream",
+      "TubeWell",
+      "UnprotectedWell"
+    ]
+  },
+  {
+    "label": "Fuel",
+    "description": "Distribution of housing by cooking fuel type.",
+    "category_labels": [
+      "BioGas",
+      "Electricity",
+      "Firewood",
+      "Gas",
+      "Kerosene",
+      "NotRelevant",
+      "Other",
+      "SawdustPaddyHusk"
+    ]
+  },
+  {
+    "label": "Lighting",
+    "description": "Distribution of housing by lighting source.",
+    "category_labels": [
+      "BioGas",
+      "ElectricityGrid",
+      "Generator",
+      "Kerosene",
+      "Other",
+      "SolarGrid",
+      "SolarStandalone"
+    ]
+  },
+  {
+    "label": "Toilet",
+    "description": "Distribution of housing by toilet facility type.",
+    "category_labels": [
+      "CommonPublic",
+      "NoToiletSharing",
+      "None",
+      "WithinPremisesExclusive",
+      "WithinPremisesShared",
+      "WithinUnitExclusive",
+      "WithinUnitShared"
     ]
   }
 ]
