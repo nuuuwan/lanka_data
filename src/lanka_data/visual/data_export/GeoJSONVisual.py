@@ -7,7 +7,7 @@ from lanka_data.visual.data_export.FileExportMixin import FileExportMixin
 class GeoJSONVisual(FileExportMixin, DataExportVisual):
     @classmethod
     def get_description(cls):
-        return "Exports data as GeoJSON format with region geometries and properties"
+        return "Exports data as GeoJSON format with geometries"
 
     def build(self):
         feature_collection = {

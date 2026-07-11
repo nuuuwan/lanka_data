@@ -9,7 +9,7 @@ from lanka_data.visual.data_export.FileExportMixin import FileExportMixin
 class ParquetVisual(FileExportMixin, DataExportVisual):
     @classmethod
     def get_description(cls):
-        return "Exports data as Parquet columnar format for efficient storage and analysis"
+        return "Exports data as Parquet columnar format"
 
     def build(self):
         headers, rows = self.get_table()

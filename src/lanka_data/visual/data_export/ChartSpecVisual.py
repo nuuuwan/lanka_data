@@ -9,7 +9,7 @@ class ChartSpecVisual(FileExportMixin, DataExportVisual):
 
     @classmethod
     def get_description(cls):
-        return "Exports data as a chart specification in JSON format compatible with various visualization tools"
+        return "Exports data as chart specification in JSON format"
 
     def build(self):
         data_table = self._get_data_table()
