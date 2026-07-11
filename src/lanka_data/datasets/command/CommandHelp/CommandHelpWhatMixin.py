@@ -5,5 +5,5 @@ class CommandHelpWhatMixin:
     @staticmethod
     def get_what_help():
         return {
-            w.label :  w.description for w in WhatLabel.list()
+            group: {w.label: w.description for w in for_group} for group, for_group in WhatLabel.list_by_group().items()
         }

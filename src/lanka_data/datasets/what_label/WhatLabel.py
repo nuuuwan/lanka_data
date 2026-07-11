@@ -10,8 +10,11 @@ from utils_future import JSONFile
 class WhatLabel:
     label: str
     description: str
-    group: str = "census"
     category_labels: list[str] = field(default_factory=list)
+
+    @property
+    def group(self) -> str:
+        return self.category_labels[0] if self.category_labels else "census"
 
     @classmethod
     def definitions_file_path(cls) -> str:
@@ -28,7 +31,6 @@ class WhatLabel:
             cls(
                 label=definition["label"],
                 description=definition["description"],
-                group=definition.get("group", "census"),
                 category_labels=list(definition["category_labels"]),
             )
             for definition in definitions
@@ -45,3 +47,14 @@ class WhatLabel:
 
     def __str__(self) -> str:
         return self.label
+
+    @classmethod
+    @cache
+    def list_by_group(cls):
+        groups = {}
+        for what_label in WhatLabel.list():
+            group = what_label.group
+            if group not in groups:
+                groups[group] = []
+            groups[group].append(what_label)
+        return groups
