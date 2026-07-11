@@ -100,27 +100,6 @@ class HowRegistryMixin:
         "None",
     }
     PAIR_CATEGORY_BASES = {"BivariateMap", "QuadrantChart", "ScatterPlot"}
-
-    @staticmethod
-    def _get_modifier_spec(how_param):
-        spec = {"label": how_param.label}
-        if how_param.rank is not None:
-            spec["rank"] = how_param.rank
-        if how_param.pct_rank is not None:
-            spec["pct_rank"] = how_param.pct_rank
-        if how_param.needs_interval:
-            spec["needs_interval"] = how_param.needs_interval
-        return spec
-
-    @classmethod
-    def _build_modifiers(cls):
-        from lanka_data.visual.HowParam import HOW_PARAMS
-
-        return {
-            key: cls._get_modifier_spec(how_param)
-            for key, how_param in HOW_PARAMS.items()
-        }
-
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
         "Top": {"label": "Most common", "rank": 0},

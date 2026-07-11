@@ -10,9 +10,6 @@ class HowParam:
     pct_rank: int | None = None
     needs_interval: bool = False
 
-    def get_description(self) -> str:
-        return self.description
-
 
 HOW_PARAMS = {
     "1st": HowParam(

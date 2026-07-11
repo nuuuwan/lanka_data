@@ -14,7 +14,7 @@ class CommandHelpHowMixin:
     @staticmethod
     def get_how_param_descriptions():
         return {
-            key: how_param.get_description()
+            key: how_param.description
             for key, how_param in HOW_PARAMS.items()
         }
 
