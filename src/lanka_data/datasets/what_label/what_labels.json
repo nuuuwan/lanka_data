@@ -1,0 +1,38 @@
+[
+  {
+    "label": "Religion",
+    "description": "Distribution of the population by religious affiliation.",
+    "category_labels": [
+      "Buddhist",
+      "Hindu",
+      "Islam",
+      "RomanCatholic",
+      "OtherChristian",
+      "Other"
+    ]
+  },
+  {
+    "label": "Ethnicity",
+    "description": "Distribution of the population by ethnic group.",
+    "category_labels": [
+      "Sinhalese",
+      "SLTamil",
+      "IndMalaiyagaTamil",
+      "SLMoor",
+      "Burgher",
+      "Malay",
+      "SLChetty",
+      "Bharatha",
+      "Veddha",
+      "Other"
+    ]
+  },
+  {
+    "label": "Gender",
+    "description": "Distribution of the population by gender.",
+    "category_labels": [
+      "Male",
+      "Female"
+    ]
+  }
+]
