@@ -43,5 +43,3 @@ class HowRegistryMixin(HowRegistryBaseLabelsMixin):
         "Diversity": {"label": "Diversity"},
         "DiversityPew": {"label": "Pew diversity"},
     }
-
-

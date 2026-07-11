@@ -73,4 +73,3 @@ HOW_PARAMS = {
             "Research methodology"
         )),
 }
-
