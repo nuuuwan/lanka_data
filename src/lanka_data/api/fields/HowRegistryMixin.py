@@ -1,31 +1,89 @@
+import warnings
+
+warnings.warn(
+    "HowRegistryMixin is deprecated. Use individual visual classes' "
+    "get_description() methods and lanka_data.visual.HowParam.HOW_PARAMS "
+    "instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
+
+
 class HowRegistryMixin:
+
     BASE_LABELS = {
-        "JSON": None,
-        "CSV": None,
-        "TSV": None,
-        "GeoJSON": None,
-        "Parquet": None,
-        "ChartSpec": "Chart Spec",
-        "Map": None,
-        "Cartogram": "Cartogram (Population based)",
-        "HexMap": "HexMap (Population based)",
-        "UnitHexMap": "UnitHexMap (One hexagon per region)",
-        "SquareMap": "SquareMap (Population based)",
-        "UnitSquareMap": "UnitSquareMap (One square per region)",
-        "TriangleMap": "TriangleMap (Population based)",
-        "UnitTriangleMap": "UnitTriangleMap (One triangle per region)",
-        "BubbleMap": "BubbleMap (Population based)",
-        "BarChart": "Bar Chart",
-        "StackedBarChart": "Stacked Bar Chart",
-        "PieChart": "Pie Chart",
-        "BumpChart": "Bump Chart",
-        "TreeMap": "Tree Map",
-        "Histogram": "Histogram",
-        "ScatterPlot": "Scatter Plot",
-        "BivariateMap": "Bivariate Map",
-        "QuadrantChart": "Quadrant Chart",
-        "LineChart": "Line Chart",
-        "None": None,
+        "JSON": "JSON (Structured data format)",
+        "CSV": "CSV (Comma-separated values)",
+        "TSV": "TSV (Tab-separated values)",
+        "GeoJSON": "GeoJSON (Geographic JSON format)",
+        "Parquet": "Parquet (Columnar data format)",
+        "ChartSpec": "Chart Spec (Vega-Lite specification)",
+        "Map": "Map (Geographic visualization by region)",
+        "Cartogram": (
+            "Cartogram (Area-based map where region size "
+            "represents population)"
+        ),
+        "HexMap": (
+            "HexMap (Geographic map with hexagonal tiles, "
+            "sized by population)"
+        ),
+        "UnitHexMap": (
+            "UnitHexMap (Geographic map with one hexagon "
+            "per region)"
+        ),
+        "SquareMap": (
+            "SquareMap (Geographic map with square tiles, "
+            "sized by population)"
+        ),
+        "UnitSquareMap": (
+            "UnitSquareMap (Geographic map with one square "
+            "per region)"
+        ),
+        "TriangleMap": (
+            "TriangleMap (Geographic map with triangular tiles, "
+            "sized by population)"
+        ),
+        "UnitTriangleMap": (
+            "UnitTriangleMap (Geographic map with one triangle "
+            "per region)"
+        ),
+        "BubbleMap": (
+            "BubbleMap (Geographic map with bubbles "
+            "sized by population)"
+        ),
+        "BarChart": "Bar Chart (Compares values across categories)",
+        "StackedBarChart": (
+            "Stacked Bar Chart "
+            "(Shows composition across categories)"
+        ),
+        "PieChart": (
+            "Pie Chart (Visualizes proportions of a whole)"
+        ),
+        "BumpChart": (
+            "Bump Chart (Tracks ranking changes over time)"
+        ),
+        "TreeMap": (
+            "Tree Map (Displays hierarchical data "
+            "as nested rectangles)"
+        ),
+        "Histogram": "Histogram (Shows distribution of values)",
+        "ScatterPlot": (
+            "Scatter Plot (Shows relationship "
+            "between two variables)"
+        ),
+        "BivariateMap": (
+            "Bivariate Map (Combines two variables "
+            "using color combinations)"
+        ),
+        "QuadrantChart": (
+            "Quadrant Chart (Divides space into four quadrants "
+            "for comparison)"
+        ),
+        "LineChart": (
+            "Line Chart (Displays trends over time "
+            "or ordered categories)"
+        ),
+        "None": "None (No visualization output)",
     }
     INTERVAL_BASES = {"BumpChart", "LineChart"}
     SERIES_BASES = {"LineChart"}
@@ -42,6 +100,27 @@ class HowRegistryMixin:
         "None",
     }
     PAIR_CATEGORY_BASES = {"BivariateMap", "QuadrantChart", "ScatterPlot"}
+
+    @staticmethod
+    def _get_modifier_spec(how_param):
+        spec = {"label": how_param.label}
+        if how_param.rank is not None:
+            spec["rank"] = how_param.rank
+        if how_param.pct_rank is not None:
+            spec["pct_rank"] = how_param.pct_rank
+        if how_param.needs_interval:
+            spec["needs_interval"] = how_param.needs_interval
+        return spec
+
+    @classmethod
+    def _build_modifiers(cls):
+        from lanka_data.visual.HowParam import HOW_PARAMS
+
+        return {
+            key: cls._get_modifier_spec(how_param)
+            for key, how_param in HOW_PARAMS.items()
+        }
+
     MODIFIERS = {
         "1st": {"label": "Most common", "rank": 0},
         "Top": {"label": "Most common", "rank": 0},
@@ -56,3 +135,4 @@ class HowRegistryMixin:
         "Diversity": {"label": "Diversity"},
         "DiversityPew": {"label": "Pew diversity"},
     }
+
