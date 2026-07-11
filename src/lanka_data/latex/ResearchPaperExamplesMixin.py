@@ -92,7 +92,7 @@ class ResearchPaperExamplesMixin:
         self._add_examples_figures(sec)
 
     def _img_path(self, cmd):
-        return hashlib.md5(cmd.encode()).hexdigest() + '.png'
+        return hashlib.md5(cmd.encode()).hexdigest()[:4] + '.png'
 
     def copy_images(self, tex_dir):
         for cmd, _, _ in self.EXAMPLES:
