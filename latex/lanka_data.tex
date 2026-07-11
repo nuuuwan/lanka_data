@@ -7,223 +7,258 @@
 \usepackage{times}%
 \usepackage{natbib}%
 \usepackage{hyperref}%
+\usepackage{graphicx}%
+\usepackage{float}%
 \usepackage{booktabs}%
 \usepackage{amsmath}%
+\usepackage{url}%
 \usepackage{acl}%
+\usepackage{ragged2e}%
+%
+\title{Lanka Data: A Four-Field Grammar for Querying Public Data about Sri Lanka}%
+\author{Nuwan I. Senaratna\\Independent Researcher\\\vspace{0.25em}\texttt{\href{https://github.com/nuuuwan}{https://github.com/nuuuwan}}}%
+\date{\today}%
+%
+\begin{document}%
+\pagestyle{empty}%
+\normalsize%
+\maketitle%
+\begin{abstract}%
+Lanka Data is a software library that provides a single, uniform interface to public data about Sri Lanka. Rather than exposing a growing collection of endpoints, methods, and parameters, it reduces every query to one string of four positional fields---\emph{what} is measured, \emph{when}, \emph{where}, and \emph{how} it is presented---delimited by slashes. The same string serves unchanged as a Python argument, a command-line argument, a URL path, and a file path. This paper describes the motivation for the design, specifies the four-field command grammar and its single intentional coupling, argues that the grammar spans the target query space by composition rather than by accretion, and catalogues the datasets---census, election, administrative geography, and hydrology---and their sources that the library exposes. The library is available at \url{https://github.com/nuuuwan/lanka_data}.%
+\end{abstract}%
+\section{Introduction}%
+\label{sec:Introduction}%
+The goal of Lanka Data is ``one API to rule them all'': a single interface that can express \emph{any} query, rather than a proliferation of endpoints, methods, libraries, and parameter sets that each answer one narrow question. Most data libraries grow by accretion; every new question adds another function, endpoint, or flag, and no single mental model survives contact with the result. We wanted the opposite: a fixed, minimal grammar that a user learns \emph{once} and can then aim at anything, and that a non-technical user can read and write without learning to program. The current domain is public Sri Lankan data---census measurements, election results, and administrative geography---but nothing in the grammar is specific to Sri Lanka: \emph{what}, \emph{when}, \emph{where}, and \emph{how} are the dimensions of essentially any factual query about the world.%
+Lanka Data is an open-source Python library available at \url{https://github.com/nuuuwan/lanka_data}.
 
-\title{Lanka Data: A Four-Field Grammar for Querying Public Data about Sri Lanka}
-\author{Nuwan I. Senaratna\\\texttt{nuwans@stanford.edu}}
-\date{\today}
+%
+\section{The Command Grammar}%
+\label{sec:TheCommandGrammar}%
+The public interface is a single string parsed into four positional fields, delimited by slashes:%
+\begin{center}%
+\texttt{What / When / Where / How}%
+\end{center}%
+There is no secondary configuration surface: no options object, no builder API, no config files. Each field is an independent axis of the query, and the value chosen for one field does not constrain the valid values of another, with a single intentional coupling described below.%
+\subsection{What {-}{-}{-} the measurement}%
+\label{subsec:What{-}{-}{-}themeasurement}%
+\textbf{What} identifies the quantity being retrieved. It is a measurement, independent of time, region, and presentation. Measurements include census quantities and election results. A reserved keyword denotes the \emph{absence} of a measurement: a request for region geometry with no data bound to it, used for base maps and for inspecting boundary changes in isolation. Because \textbf{What} encodes only the measurement type, a single measurement is reused across every combination of the other three fields without expanding the vocabulary.%
+\subsubsection*{census{-}population (29 values)}%
+\label{ssubsec:census{-}population(29values)}%
+AgeGroup, AgriOccupations, Attendance, Dependency, Disability, Economy, Education, Employment, Enrollment, Ethnicity, Fertility, Gender, Growth, Inactive, Industry, Laborforce, Literacy, Marital, Migration, NonAgriEmployment, NotAttending, Occupations, Population, RelationshipToHead, Religion, Sectoral, Sectors, Speaking, Unemployment
 
-\begin{document}
-\maketitle
+%
+\subsubsection*{census{-}housing (22 values)}%
+\label{ssubsec:census{-}housing(22values)}%
+Communication, ConstructionYear, Electricity, Floor, Fuel, Housing, Informal, Lighting, Materials, Occupancy, Ownership, Persons, Quarters, Roof, Rooms, Structure, Tenure, Toilet, Unit, Walls, Waste, Water
 
-\begin{abstract}
-Lanka Data is a software library that provides a single,
-uniform interface to public data about Sri Lanka. Rather
-than exposing a growing collection of endpoints, methods,
-and parameters, it reduces every query to one string of
-four positional fields---\emph{what} is measured,
-\emph{when}, \emph{where}, and \emph{how} it is
-presented---delimited by slashes. The same string serves
-unchanged as a Python argument, a command-line argument, a
-URL path, and a file path. This paper describes the
-motivation for the design, specifies the four-field command
-grammar and its single intentional coupling, argues that
-the grammar spans the target query space by composition
-rather than by accretion, and catalogues the datasets---
-census, election, administrative geography, and
-hydrology---and their sources that the library exposes.
-\end{abstract}
+%
+\subsubsection*{election (6 values)}%
+\label{ssubsec:election(6values)}%
+Local, LocalSummary, Parliamentary, ParliamentarySummary, Presidential, PresidentialSummary
 
-\section{Introduction}
-
-The goal of Lanka Data is ``one API to rule them all'': a
-single interface that can express \emph{any} query, rather
-than a proliferation of endpoints, methods, libraries, and
-parameter sets that each answer one narrow question. Most
-data libraries grow by accretion; every new question adds
-another function, endpoint, or flag, and no single mental
-model survives contact with the result. We wanted the
-opposite: a fixed, minimal grammar that a user learns
-\emph{once} and can then aim at anything, and that a
-non-technical user can read and write without learning to
-program. The current domain is public Sri Lankan data---
-census measurements, election results, and administrative
-geography---but nothing in the grammar is specific to Sri
-Lanka: \emph{what}, \emph{when}, \emph{where}, and
-\emph{how} are the dimensions of essentially any factual
-query about the world.
-
-\section{The Command Grammar}
-
-The public interface is a single string parsed into four
-positional fields, delimited by slashes:
-
-\begin{center}
-\texttt{What / When / Where / How}
-\end{center}
-
-There is no secondary configuration surface: no options
-object, no builder API, no config files. Each field is an
-independent axis of the query, and the value chosen for one
-field does not constrain the valid values of another, with a
-single intentional coupling described below.
-
-\subsection{What --- the measurement}
-
-\textbf{What} identifies the quantity being retrieved. It
-is a measurement, independent of time, region, and
-presentation. Measurements include census quantities and
-election results. A reserved keyword denotes the
-\emph{absence} of a measurement: a request for region
-geometry with no data bound to it, used for base maps and
-for inspecting boundary changes in isolation. Because
-\textbf{What} encodes only the measurement type, a single
-measurement is reused across every combination of the
-other three fields without expanding the vocabulary.
-
-\subsubsection*{census-population (29 values)}
-AgeGroup, AgriOccupations, Attendance, Dependency,
-Disability, Economy, Education, Employment, Enrollment,
-Ethnicity, Fertility, Gender, Growth, Inactive, Industry,
-Laborforce, Literacy, Marital, Migration,
-NonAgriEmployment, NotAttending, Occupations, Population,
-RelationshipToHead, Religion, Sectoral, Sectors,
-Speaking, Unemployment
-
-\subsubsection*{census-housing (22 values)}
-Communication, ConstructionYear, Electricity, Floor, Fuel,
-Housing, Informal, Lighting, Materials, Occupancy,
-Ownership, Persons, Quarters, Roof, Rooms, Structure,
-Tenure, Toilet, Unit, Walls, Waste, Water
-
-\subsubsection*{election (6 values)}
-Local, LocalSummary, Parliamentary, ParliamentarySummary,
-Presidential, PresidentialSummary
-
-\subsubsection*{rivers (2 values)}
+%
+\subsubsection*{rivers (2 values)}%
+\label{ssubsec:rivers(2values)}%
 Catchment, RiverLen
 
-\subsection{When --- the observation time}
-
-\textbf{When} binds the measurement to the point or
-interval in time at which it happened. It accepts either a
-single year or an interval. An interval is a single value,
-not two concatenated queries.
-
-Supported formats:
-\begin{itemize}
-\item Single year: e.g., \texttt{2024}
-\item Interval: e.g., \texttt{2012-2024}
-\item If exact year unavailable, closest available data
-is returned
+%
+\subsection{When {-}{-}{-} the observation time}%
+\label{subsec:When{-}{-}{-}theobservationtime}%
+\textbf{When} binds the measurement to the point or interval in time at which it happened. It accepts either a single year or an interval. An interval is a single value, not two concatenated queries.%
+Supported formats:%
+\begin{itemize}%
+\item%
+Single year: e.g., \texttt{2024}%
+\item%
+Interval: e.g., \texttt{2012-2024}%
+\item%
+If exact year unavailable, closest available data is returned%
 \end{itemize}
 
-\subsection{Where --- the region}
-
-\textbf{Where} identifies the region under measurement: its
-identity within the administrative hierarchy, not merely a
-coordinate. It carries the most syntax of the four fields
-because it is the axis along which real queries vary most.
-The supported forms are a single region, resolution into
-child regions of a given type, an explicit set of named
-regions, a contiguous range between two endpoints, and a
-historical boundary variant that selects a region's
-boundaries as they existed before a given boundary
-redesign. Observation time and boundary epoch are kept as
-separate values so that counts are not misattributed to the
-wrong geometry.
-
-Supported syntax patterns:
-\begin{itemize}
-\item \texttt{<region\_id>}: Single region (e.g., LK)
-\item \texttt{<region\_id>:<type>}: Child regions
-(e.g., LK:district)
-\item \texttt{<r1>,<r2>}: Multiple regions
-(e.g., LK-1,LK-2)
-\item \texttt{<r1>...<r2>}: Range between endpoints
-(e.g., LK-1...LK-2)
-\item \texttt{<region>@<distance>}: Regions within
-distance of same type
+%
+\subsection{Where {-}{-}{-} the region}%
+\label{subsec:Where{-}{-}{-}theregion}%
+\textbf{Where} identifies the region under measurement: its identity within the administrative hierarchy, not merely a coordinate. It carries the most syntax of the four fields because it is the axis along which real queries vary most. The supported forms are a single region, resolution into child regions of a given type, an explicit set of named regions, a contiguous range between two endpoints, and a historical boundary variant that selects a region's boundaries as they existed before a given boundary redesign. Observation time and boundary epoch are kept as separate values so that counts are not misattributed to the wrong geometry.%
+Supported syntax patterns:%
+\begin{itemize}%
+\item%
+\texttt{<region\_id>}: Single region (e.g., LK)%
+\item%
+\texttt{<region\_id>:<type>}: Child regions (e.g., LK:district)%
+\item%
+\texttt{<r1>,<r2>}: Multiple regions (e.g., LK-1,LK-2)%
+\item%
+\texttt{<r1>...<r2>}: Range between endpoints (e.g., LK-1...LK-2)%
+\item%
+\texttt{<region>@<distance>}: Regions within distance of same type%
 \end{itemize}
 
-\subsection{How --- the presentation}
-
-\textbf{How} specifies the output representation. The same
-measurement can be emitted as a map, a chart, or raw data
-without any change to \textbf{What}. Because presentation
-is separated from measurement, \textbf{How} carries its own
-modifier grammar: rankings of a category, shares,
-differences between observations, and diversity indices are
-transformations applied to the same underlying values. This
-is the single intentional coupling of the grammar:
-change-based modifiers are valid only when \textbf{When}
-supplies an interval.
-
+%
+\subsection{How {-}{-}{-} the presentation}%
+\label{subsec:How{-}{-}{-}thepresentation}%
+\textbf{How} specifies the output representation. The same measurement can be emitted as a map, a chart, or raw data without any change to \textbf{What}. Because presentation is separated from measurement, \textbf{How} carries its own modifier grammar: rankings of a category, shares, differences between observations, and diversity indices are transformations applied to the same underlying values. This is the single intentional coupling of the grammar: change-based modifiers are valid only when \textbf{When} supplies an interval.%
 Supported visualization bases (24 total):
-BarChart, BivariateMap, BubbleMap, BumpChart, CSV,
-ChartSpec, GeoJSON, HexMap, Histogram, JSON, LineChart,
-Map, Parquet, PieChart, QuadrantChart, ScatterPlot,
-SquareMap, StackedBarChart, TSV, TreeMap, TriangleMap,
-UnitHexMap, UnitSquareMap, UnitTriangleMap
-
+BarChart, BivariateMap, BubbleMap, BumpChart, CSV, ChartSpec, GeoJSON, HexMap, Histogram, JSON, LineChart, Map, Parquet, PieChart, QuadrantChart, ScatterPlot, SquareMap, StackedBarChart, TSV, TreeMap, TriangleMap, UnitHexMap, UnitSquareMap, UnitTriangleMap%
 Supported modifiers (12 total):
-1st, Top, 2nd, 3rd, Bottom, 1stPct, 2ndPct, Change,
-Top3, Diversity, DiversityPew
+1st, Top, 2nd, 3rd, Bottom, 1stPct, 2ndPct, Change, Top3, Diversity, DiversityPew
 
-\section{Datasets and Sources}
+%
+\section{Datasets and Sources}%
+\label{sec:DatasetsandSources}%
+The \textbf{What} vocabulary is organised into four data categories. \emph{census-population} exposes measurements such as ethnicity, religion, age group, education, employment, and literacy; \emph{census-housing} exposes housing characteristics such as construction materials, water, lighting, and toilet facilities; \emph{election} exposes presidential, parliamentary, and local government results and summaries; and \emph{rivers} exposes river length and catchment statistics. Each response carries the provenance of the sources below.%
+\subsection{Census of Population and Housing}%
+\label{subsec:CensusofPopulationandHousing}%
+The census-population category exposes measurements such as ethnicity, religion, age group, education, employment, and literacy. The census-housing category exposes housing characteristics such as construction materials, water, lighting, and toilet facilities. Data is available from the 2001, 2012, and 2024 census cycles \citep{census_2024}. All census data is sourced from the Department of Census and Statistics.
 
-The \textbf{What} vocabulary is organised into four data
-categories. \emph{census-population} exposes measurements
-such as ethnicity, religion, age group, education,
-employment, and literacy; \emph{census-housing} exposes
-housing characteristics such as construction materials,
-water, lighting, and toilet facilities;
-\emph{election} exposes presidential, parliamentary, and
-local government results and summaries; and \emph{rivers}
-exposes river length and catchment statistics. Each
-response carries the provenance of the sources below.
+%
+\subsection{Elections}%
+\label{subsec:Elections}%
+The election category exposes presidential, parliamentary, and local government results and summaries across multiple election years. This includes vote tallies, seat distributions, and electoral statistics at national, district, and constituency levels. All election data is sourced from the \citet{elections_commission}.
 
-\subsection{Census of Population and Housing}
+%
+\subsection{Administrative Geography}%
+\label{subsec:AdministrativeGeography}%
+The administrative boundary data includes both current and historical boundary epochs, allowing queries to be anchored to the boundaries as they existed at the time of observation. This includes provinces, districts, divisional secretariat divisions, and Grama Niladhari divisions across different time periods. Data is sourced from the \citet{dcs_sri_lanka}.
 
-The census-population category exposes measurements such as
-ethnicity, religion, age group, education, employment, and
-literacy. The census-housing category exposes housing
-characteristics such as construction materials, water,
-lighting, and toilet facilities. Data is available from the
-2001, 2012, and 2024 census cycles \citep{census_2024}.
-All census data is sourced from the Department of Census
-and Statistics.
+%
+\subsection{Rivers}%
+\label{subsec:Rivers}%
+The rivers category exposes river length and catchment statistics for major waterways in Sri Lanka \citep{hydrorivers}. This data includes geometric and hydrological properties of river systems. Data is sourced from HydroRIVERS via the \texttt{lk\_rivers} project.
 
-\subsection{Elections}
-
-The election category exposes presidential, parliamentary,
-and local government results and summaries across multiple
-election years. This includes vote tallies, seat
-distributions, and electoral statistics at national,
-district, and constituency levels. All election data is
-sourced from the \citet{elections_commission}.
-
-\subsection{Administrative Geography}
-
-The administrative boundary data includes both current and
-historical boundary epochs, allowing queries to be anchored
-to the boundaries as they existed at the time of
-observation. This includes provinces, districts, divisional
-secretariat divisions, and Grama Niladhari divisions across
-different time periods. Data is sourced from the
-\citet{dcs_sri_lanka}.
-
-\subsection{Rivers}
-
-The rivers category exposes river length and catchment
-statistics for major waterways in Sri Lanka \citep{hydrorivers}. This data includes geometric
-and hydrological properties of river systems. Data is
-sourced from HydroRIVERS via the \texttt{lk\_rivers}
-project.
+%
+\section{Examples}%
+\label{sec:Examples}%
+The following ten examples each span all four fields and are produced by a single slash-delimited string. The library is at \url{https://github.com/nuuuwan/lanka_data}.%
+\subsection{Base map: provinces}%
+\label{subsec:Basemapprovinces}%
+\path{Empty/2024/LK:province/Map}. The nine provinces with no measurement bound. Serves as reference geometry; the Where field alone controls the region type.%
 
 
-\bibliographystyle{acl_natbib}
-\bibliography{lanka_data}
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=\linewidth]{../_output/Empty/2024/LK:province/Map/Image.png}%
+\caption{Base map: provinces}%
+\label{fig:example-1}%
+\end{figure}
+
+%
+\subsection{Gender by Divisional Secretariat Division}%
+\label{subsec:GenderbyDivisionalSecretariatDivision}%
+\path{Gender/2024/LK:dsd/Map}. Dominant gender at DSD level in 2024. Changing Where from LK:province to LK:dsd reveals finer spatial structure at no other cost.%
+
+
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=\linewidth]{../_output/Gender/2024/LK:dsd/Map/Image.png}%
+\caption{Gender by Divisional Secretariat Division}%
+\label{fig:example-2}%
+\end{figure}
+
+%
+\subsection{Proximity query: ethnicity}%
+\label{subsec:Proximityqueryethnicity}%
+\path{Ethnicity/2024/LK-1127025@4/Map}. Ethnic composition of GNDs within 4 km of GND LK-1127025. The @distance syntax in Where selects regions by proximity, not by boundary.%
+
+
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=\linewidth]{../_output/Ethnicity/2024/LK-1127025@4/Map/Image.png}%
+\caption{Proximity query: ethnicity}%
+\label{fig:example-3}%
+\end{figure}
+
+%
+\subsection{The change in most common cooking fuel}%
+\label{subsec:Thechangeinmostcommoncookingfuel}%
+\path{Fuel/2012-2024/LK:district/HexMap}. by district across the 2012--2024 interval, rendered as a hexmap.%
+
+
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=\linewidth]{../_output/Fuel/2012-2024/LK:district/HexMap/Image.png}%
+\caption{The change in most common cooking fuel}%
+\label{fig:example-4}%
+\end{figure}
+
+%
+\subsection{Presidential election 2015 by electoral division}%
+\label{subsec:Presidentialelection2015byelectoraldivision}%
+\path{Presidential/2015/LK:ed/HexMap}. Winning party in each electoral division in the 2015 presidential election. HexMap normalises area, giving equal visual weight to each division.%
+
+
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=\linewidth]{../_output/Presidential/2015/LK:ed/HexMap/Image.png}%
+\caption{Presidential election 2015 by electoral division}%
+\label{fig:example-5}%
+\end{figure}
+
+%
+\subsection{Religious diversity index}%
+\label{subsec:Religiousdiversityindex}%
+\path{Religion/2024/LK:district/Map:DiversityPew}. Pew Research diversity index per district for 2024. DiversityPew computes the summary statistic directly, without post-processing.%
+
+
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=\linewidth]{../_output/Religion/2024/LK:district/Map:DiversityPew/Image.png}%
+\caption{Religious diversity index}%
+\label{fig:example-6}%
+\end{figure}
+
+%
+\subsection{Religion in Western Province DSDs (bar chart)}%
+\label{subsec:ReligioninWesternProvinceDSDs(barchart)}%
+\path{Religion/2012-2024/LK-11:dsd/BarChart}. Religious composition across DSDs in Western Province (LK-11) over 2012--2024. BarChart shows full distributions, not just a top rank.%
+
+
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=\linewidth]{../_output/Religion/2012-2024/LK-11:dsd/BarChart/Image.png}%
+\caption{Religion in Western Province DSDs (bar chart)}%
+\label{fig:example-7}%
+\end{figure}
+
+%
+\subsection{Toilet facility type by district}%
+\label{subsec:Toiletfacilitytypebydistrict}%
+\path{Toilet/2024/LK:district/SquareMap}. Dominant toilet facility type per district in 2024, as a square map where cell area is proportional to district population.%
+
+
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=\linewidth]{../_output/Toilet/2024/LK:district/SquareMap/Image.png}%
+\caption{Toilet facility type by district}%
+\label{fig:example-8}%
+\end{figure}
+
+%
+\subsection{Water source by district (triangle map)}%
+\label{subsec:Watersourcebydistrict(trianglemap)}%
+\path{Water/2024/LK:district/TriangleMap}. Primary water source per district in 2024, visualised as a triangle map---a ternary chart showing proportional distribution across three water source categories.%
+
+
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=\linewidth]{../_output/Water/2024/LK:district/TriangleMap/Image.png}%
+\caption{Water source by district (triangle map)}%
+\label{fig:example-9}%
+\end{figure}
+
+%
+\subsection{Local government elections, 2025}%
+\label{subsec:Localgovernmentelections,2025}%
+\path{Local/2025/LK:district/Map}. Winning party per district in the 2025 local elections. Switching What from census to elections requires no change to the other fields.%
+
+
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=\linewidth]{../_output/Local/2025/LK:district/Map/Image.png}%
+\caption{Local government elections, 2025}%
+\label{fig:example-10}%
+\end{figure}
+
+%
+\bibliographystyle{acl_natbib}%
+\bibliography{lanka_data}%
 \end{document}
