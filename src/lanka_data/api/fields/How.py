@@ -4,7 +4,14 @@ from dataclasses import dataclass
 from lanka_data.api.command_errors.UnknownHowError import UnknownHowError
 from lanka_data.api.fields.HowCategoryMixin import HowCategoryMixin
 from lanka_data.api.fields.HowFormatMixin import HowFormatMixin
-from lanka_data.api.fields.HowRegistryMixin import HowRegistryMixin
+from lanka_data.api.fields.HOW_REGISTRY_DATA import (
+    BASE_LABELS,
+    CATEGORY_BASES,
+    INTERVAL_BASES,
+    MODIFIERS,
+    PAIR_CATEGORY_BASES,
+    SERIES_BASES,
+)
 from lanka_data.api.fields.RegionFilter import RegionFilter
 
 CLUSTER_RE = re.compile(r"^Cluster(?:-(\d+))?$")
@@ -12,8 +19,14 @@ DEFAULT_CLUSTER_N = 5
 
 
 @dataclass(frozen=True)
-class How(HowCategoryMixin, HowFormatMixin, HowRegistryMixin):
+class How(HowCategoryMixin, HowFormatMixin):
     value: str
+    BASE_LABELS = BASE_LABELS
+    MODIFIERS = MODIFIERS
+    INTERVAL_BASES = INTERVAL_BASES
+    SERIES_BASES = SERIES_BASES
+    CATEGORY_BASES = CATEGORY_BASES
+    PAIR_CATEGORY_BASES = PAIR_CATEGORY_BASES
 
     def __post_init__(self):
         if self.value == "":
