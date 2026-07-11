@@ -84,11 +84,7 @@
   {
     "label": "Economy",
     "description": "Distribution of the population by economic activity.",
-    "category_labels": [
-      "EconomicallyNotActive",
-      "Employed",
-      "Unemployed"
-    ]
+    "category_labels": ["EconomicallyNotActive", "Employed", "Unemployed"]
   },
   {
     "label": "Education",
@@ -105,12 +101,7 @@
   {
     "label": "Electricity",
     "description": "Distribution of electricity access by sector.",
-    "category_labels": [
-      "Estate",
-      "Rural",
-      "Urban",
-      "UsingElectricity"
-    ]
+    "category_labels": ["Estate", "Rural", "Urban", "UsingElectricity"]
   },
   {
     "label": "Employment",
@@ -122,17 +113,6 @@
       "SemiGovernmentEmployees",
       "UnpaidFamilyWorkers"
     ]
-  },
-  {
-    "label": "Enrollment",
-    "description": "Distribution of school enrollment.",
-    "category_labels": [
-      "PopulationAged534Years"
-    ]
-    "label": "Empty",
-    "description": "Empty dataset for region visualization",
-    "group": "special",
-    "category_labels": []
   },
   {
     "label": "AgeGroup",
@@ -208,11 +188,7 @@
   {
     "label": "Fertility",
     "description": "Fertility rates by sector.",
-    "category_labels": [
-      "EstateRate",
-      "RuralRate",
-      "UrbanRate"
-    ]
+    "category_labels": ["EstateRate", "RuralRate", "UrbanRate"]
   },
   {
     "label": "Floor",
@@ -439,10 +415,7 @@
     "label": "Gender",
     "description": "Distribution of the population by gender",
     "group": "census",
-    "category_labels": [
-      "Female",
-      "Male"
-    ]
+    "category_labels": ["Female", "Male"]
   },
   {
     "label": "Growth",
@@ -457,11 +430,7 @@
   {
     "label": "Housing",
     "description": "Housing distribution by sector.",
-    "category_labels": [
-      "Estate",
-      "Rural",
-      "Urban"
-    ]
+    "category_labels": ["Estate", "Rural", "Urban"]
   },
   {
     "label": "Inactive",
@@ -498,17 +467,12 @@
   {
     "label": "Informal",
     "description": "Distribution of informal housing.",
-    "category_labels": [
-      "HutsAndShanties"
-    ]
+    "category_labels": ["HutsAndShanties"]
   },
   {
     "label": "Laborforce",
     "description": "Labor force participation rates.",
-    "category_labels": [
-      "FemaleRate",
-      "MaleRate"
-    ]
+    "category_labels": ["FemaleRate", "MaleRate"]
   },
   {
     "label": "Lighting",
@@ -583,10 +547,7 @@
   {
     "label": "Occupancy",
     "description": "Distribution of households by occupancy status.",
-    "category_labels": [
-      "Occupied",
-      "Vacant"
-    ]
+    "category_labels": ["Occupied", "Vacant"]
   },
   {
     "label": "Occupations",
@@ -636,12 +597,7 @@
   {
     "label": "Population",
     "description": "Population overview metrics.",
-    "category_labels": [
-      "Density",
-      "Female",
-      "Male",
-      "SexRatio"
-    ]
+    "category_labels": ["Density", "Female", "Male", "SexRatio"]
   },
   {
     "label": "Quarters",
