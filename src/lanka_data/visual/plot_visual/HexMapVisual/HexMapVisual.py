@@ -1,21 +1,15 @@
-from lanka_data.visual.plot.color_spec.ColorSpecFactory import (
-    ColorSpecFactory,
-)
+from lanka_data.visual.plot.color_spec.ColorSpecFactory import ColorSpecFactory
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.map.HexData.HexData import HexData
-from lanka_data.visual.plot.map.RegionPopulationFilter import (
-    RegionPopulationFilter,
-)
+from lanka_data.visual.plot.map.RegionPopulationFilter import \
+    RegionPopulationFilter
 from lanka_data.visual.plot.Style import Style
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import (
-    HexMapBoundaryMixin,
-)
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import (
-    HexMapDrawMixin,
-)
-from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import (
-    HexMapLabelMixin,
-)
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapBoundaryMixin import \
+    HexMapBoundaryMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapDrawMixin import \
+    HexMapDrawMixin
+from lanka_data.visual.plot_visual.HexMapVisual.HexMapLabelMixin import \
+    HexMapLabelMixin
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 

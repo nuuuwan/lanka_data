@@ -1,5 +1,3 @@
-
-
 class CommandHelpWhereMixin:
     COMMAND_TO_INFO = {
         "<region_id>": dict(

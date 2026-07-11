@@ -11,64 +11,48 @@ BASE_LABELS = {
         "represents population)"
     ),
     "HexMap": (
-        "HexMap (Geographic map with hexagonal tiles, "
-        "sized by population)"
+        "HexMap (Geographic map with hexagonal tiles, " "sized by population)"
     ),
     "UnitHexMap": (
-        "UnitHexMap (Geographic map with one hexagon "
-        "per region)"
+        "UnitHexMap (Geographic map with one hexagon " "per region)"
     ),
     "SquareMap": (
-        "SquareMap (Geographic map with square tiles, "
-        "sized by population)"
+        "SquareMap (Geographic map with square tiles, " "sized by population)"
     ),
     "UnitSquareMap": (
-        "UnitSquareMap (Geographic map with one square "
-        "per region)"
+        "UnitSquareMap (Geographic map with one square " "per region)"
     ),
     "TriangleMap": (
         "TriangleMap (Geographic map with triangular tiles, "
         "sized by population)"
     ),
     "UnitTriangleMap": (
-        "UnitTriangleMap (Geographic map with one triangle "
-        "per region)"
+        "UnitTriangleMap (Geographic map with one triangle " "per region)"
     ),
     "BubbleMap": (
-        "BubbleMap (Geographic map with bubbles "
-        "sized by population)"
+        "BubbleMap (Geographic map with bubbles " "sized by population)"
     ),
     "BarChart": "Bar Chart (Compares values across categories)",
     "StackedBarChart": (
-        "Stacked Bar Chart "
-        "(Shows composition across categories)"
+        "Stacked Bar Chart " "(Shows composition across categories)"
     ),
-    "PieChart": (
-        "Pie Chart (Visualizes proportions of a whole)"
-    ),
-    "BumpChart": (
-        "Bump Chart (Tracks ranking changes over time)"
-    ),
+    "PieChart": ("Pie Chart (Visualizes proportions of a whole)"),
+    "BumpChart": ("Bump Chart (Tracks ranking changes over time)"),
     "TreeMap": (
-        "Tree Map (Displays hierarchical data "
-        "as nested rectangles)"
+        "Tree Map (Displays hierarchical data " "as nested rectangles)"
     ),
     "Histogram": "Histogram (Shows distribution of values)",
     "ScatterPlot": (
-        "Scatter Plot (Shows relationship "
-        "between two variables)"
+        "Scatter Plot (Shows relationship " "between two variables)"
     ),
     "BivariateMap": (
-        "Bivariate Map (Combines two variables "
-        "using color combinations)"
+        "Bivariate Map (Combines two variables " "using color combinations)"
     ),
     "QuadrantChart": (
-        "Quadrant Chart (Divides space into four quadrants "
-        "for comparison)"
+        "Quadrant Chart (Divides space into four quadrants " "for comparison)"
     ),
     "LineChart": (
-        "Line Chart (Displays trends over time "
-        "or ordered categories)"
+        "Line Chart (Displays trends over time " "or ordered categories)"
     ),
     "None": "None (No visualization output)",
 }

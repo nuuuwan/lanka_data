@@ -2,16 +2,13 @@ import re
 from dataclasses import dataclass
 
 from lanka_data.api.command_errors.UnknownHowError import UnknownHowError
+from lanka_data.api.fields.HOW_REGISTRY_DATA import (BASE_LABELS,
+                                                     CATEGORY_BASES,
+                                                     INTERVAL_BASES, MODIFIERS,
+                                                     PAIR_CATEGORY_BASES,
+                                                     SERIES_BASES)
 from lanka_data.api.fields.HowCategoryMixin import HowCategoryMixin
 from lanka_data.api.fields.HowFormatMixin import HowFormatMixin
-from lanka_data.api.fields.HOW_REGISTRY_DATA import (
-    BASE_LABELS,
-    CATEGORY_BASES,
-    INTERVAL_BASES,
-    MODIFIERS,
-    PAIR_CATEGORY_BASES,
-    SERIES_BASES,
-)
 from lanka_data.api.fields.RegionFilter import RegionFilter
 
 CLUSTER_RE = re.compile(r"^Cluster(?:-(\d+))?$")

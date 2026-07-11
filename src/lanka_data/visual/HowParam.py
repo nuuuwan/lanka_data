@@ -1,5 +1,6 @@
-from dataclasses import dataclass
 import os
+from dataclasses import dataclass
+
 from utils_future import JSONFile
 
 

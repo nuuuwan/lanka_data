@@ -1,6 +1,5 @@
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import (
-    BarChartVisual,
-)
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import \
+    BarChartVisual
 
 from .TreeMapData import TreeMapData
 from .TreeMapDrawMixin import TreeMapDrawMixin

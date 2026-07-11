@@ -1,9 +1,7 @@
-from lanka_data.visual.plot.map.TriangleData.UnitTriangleData import (
-    UnitTriangleData,
-)
-from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapVisual import (
-    TriangleMapVisual,
-)
+from lanka_data.visual.plot.map.TriangleData.UnitTriangleData import \
+    UnitTriangleData
+from lanka_data.visual.plot_visual.TriangleMapVisual.TriangleMapVisual import \
+    TriangleMapVisual
 
 
 class UnitTriangleMapVisual(TriangleMapVisual):

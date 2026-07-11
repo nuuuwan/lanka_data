@@ -20,8 +20,8 @@ class Visual(ABC):
 
     def __repr__(self):
         return self.__str__()
-    
-    @classmethod 
+
+    @classmethod
     def get_label(cls):
         return cls.__name__.replace('Visual', '')
 

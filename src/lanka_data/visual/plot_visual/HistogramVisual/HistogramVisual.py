@@ -1,9 +1,8 @@
 from matplotlib.ticker import FuncFormatter
 
 from lanka_data.visual.plot.Style import Style
-from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import (
-    BarChartVisual,
-)
+from lanka_data.visual.plot_visual.BarChartVisual.BarChartVisual import \
+    BarChartVisual
 
 from .HistogramData import HistogramData
 

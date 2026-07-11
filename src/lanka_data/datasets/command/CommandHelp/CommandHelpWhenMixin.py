@@ -1,4 +1,3 @@
-
 from lanka_data.datasets.dataset.custom.Census2001Dataset import \
     Census2001Dataset
 from lanka_data.datasets.dataset.custom.Census2012Dataset import \

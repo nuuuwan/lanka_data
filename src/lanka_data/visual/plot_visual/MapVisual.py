@@ -1,18 +1,14 @@
 from abc import abstractmethod
 
-from lanka_data.visual.plot.color_spec.ColorSpecFactory import (
-    ColorSpecFactory,
-)
+from lanka_data.visual.plot.color_spec.ColorSpecFactory import ColorSpecFactory
 from lanka_data.visual.plot.Label import Label
 from lanka_data.visual.plot.Legend import Legend
 from lanka_data.visual.plot.LineLabel import LineLabel
-from lanka_data.visual.plot.map.GeoData.DistrictBackgroundGeoData import (
-    DistrictBackgroundGeoData,
-)
+from lanka_data.visual.plot.map.GeoData.DistrictBackgroundGeoData import \
+    DistrictBackgroundGeoData
 from lanka_data.visual.plot.map.GeoData.GeoData import GeoData
-from lanka_data.visual.plot.map.RegionPopulationFilter import (
-    RegionPopulationFilter,
-)
+from lanka_data.visual.plot.map.RegionPopulationFilter import \
+    RegionPopulationFilter
 from lanka_data.visual.plot_visual.PlotVisual import PlotVisual
 from utils_future import timer
 
