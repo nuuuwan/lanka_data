@@ -2,8 +2,8 @@ import re
 from dataclasses import dataclass
 
 from lanka_data.api.command_errors.UnknownHowError import UnknownHowError
+from lanka_data.api.fields.HowCategoryMixin import HowCategoryMixin
 from lanka_data.api.fields.HowFormatMixin import HowFormatMixin
-from lanka_data.api.fields.HowIntrospectionMixin import HowIntrospectionMixin
 from lanka_data.api.fields.HowRegistryMixin import HowRegistryMixin
 from lanka_data.api.fields.RegionFilter import RegionFilter
 
@@ -12,7 +12,7 @@ DEFAULT_CLUSTER_N = 5
 
 
 @dataclass(frozen=True)
-class How(HowFormatMixin, HowIntrospectionMixin, HowRegistryMixin):
+class How(HowCategoryMixin, HowFormatMixin, HowRegistryMixin):
     value: str
 
     def __post_init__(self):

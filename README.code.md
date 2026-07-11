@@ -30,11 +30,10 @@ the rest of the pipeline never has to re-parse the raw string. They live in
 ### `What`
 
 `What` names the indicator being queried (a census table label, an election
-label, an election `…Summary` label, or the special value `Empty`). On
-construction it rejects any value that is not in `known_values()` and, on
-failure, raises `UnknownWhatError` carrying up to five fuzzy `suggestions()`. The
-special value `Help` is allowed through untouched. `available_groups()` buckets
-the known values into `special`, `census`, `election`, and `election_summary`.
+label, an election `…Summary` label, or the special value `Empty`). It is a
+thin value object: it stores the raw string and exposes `whats` / `is_combined`
+for `+`-combined indicators (e.g. `Religion+Ethnicity`). It performs no
+enumeration or validation of legal values.
 
 ### `When`
 
@@ -65,18 +64,11 @@ color selection.
 
 ### Support classes for the fields
 
-- **`WhatIntrospectionMixin`, `WhenIntrospectionMixin`, `WhereIntrospectionMixin`,
-  `HowIntrospectionMixin`** — mixins each field inherits that add
-  `available_values()` and `describe()` so the field can advertise its valid
-  inputs (used by the console and `describe_api`).
 - **`HowRegistryMixin`** — holds the static tables `BASE_LABELS`, `MODIFIERS`,
   and `INTERVAL_BASES` that define every legal `How`. `How` inherits it, so
   extending the output vocabulary means editing this one class.
-- **`CensusDatasetRegistry`, `ElectionDatasetRegistry`, `RegionTypeRegistry`** —
-  tiny holders of class-level state. They exist to break an import cycle: the
-  field classes need to know which values are legal, but those values come from
-  the concrete dataset/region classes. The registries are populated at startup
-  (see `DatasetCommandRegistry` below), and `What`/`When`/`Where` read from them.
+- **`HowCategoryMixin`** — adds the `category` / `categories` accessors that
+  `How` inherits, used by the color and pair-category visual layers.
 
 ---
 
@@ -103,19 +95,11 @@ string. It special-cases `Help`, otherwise splits on `/`, requires exactly four
 tokens, and constructs the command (raising `InvalidCommandError` on a bad
 shape).
 
-### `CommandIntrospectionMixin`
-
-`CommandIntrospectionMixin` adds discovery helpers: `field_classes()`,
-`available_values()`, `describe_api()`, and the `valid_commands()` /
-`valid_what_when_pairs()` generators used to enumerate legal commands (for the
-console and README/example generation).
-
 ### `Command`
 
-`Command` simply combines the three above (`CommandIntrospectionMixin`,
-`CommandBase`, `CommandLoaderMixin`) and adds `copy(...)`, which returns a new
-command with selected fields overridden. `copy` is what lets interval queries be
-split into their `start` and `end` point-in-time commands.
+`Command` combines `CommandBase` and `CommandLoaderMixin` and adds `copy(...)`,
+which returns a new command with selected fields overridden. `copy` is what lets
+interval queries be split into their `start` and `end` point-in-time commands.
 
 ### Running a command
 
@@ -126,10 +110,9 @@ split into their `start` and `end` point-in-time commands.
   merged `DataSource` records, and the query time, and stores it in the cache.
 - **`CommandCache`** is an LRU (`OrderedDict`, default 128 entries). Its
   `is_valid` check evicts any cached image result whose file has disappeared.
-- **`CommandHelp`** returns the payload served for the `Help` command, a live,
-  self-describing index with four orthogonal sections — `What`, `When`,
-  `Where`, and `How` — each produced independently from that field's
-  `describe()`, so the fields are documented as the independent axes they are.
+- **`CommandHelp`** returns the payload served for the `Help` command. The
+  registry-driven self-describing index has been deprecated, so it now returns a
+  blank payload.
 - **Error classes** — `CommandError` (base), `InvalidCommandError`,
   `InvalidWhenError`, `InvalidWhereError`, `UnknownWhatError`, `UnknownHowError`
   — are raised by the fields and command for precise, typed failures.
@@ -327,9 +310,6 @@ These are the low-level drawing helpers used by `PlotVisual` subclasses:
 
 ### Startup wiring
 
-- **`DatasetCommandRegistry`** populates the field registries (§1) with the
-  concrete census/election dataset classes and the region prefix maps, so the
-  field classes can validate against real data without importing it directly.
 - **`CompatibilityAliases`** registers legacy import paths (e.g.
   `lanka_data.command.*`) as aliases of the current module locations, keeping
   older imports working.
@@ -389,7 +369,6 @@ pipeline itself.
 An interactive REPL for querying the API locally:
 
 - **`ConsoleApp`** — the entry point and read/eval loop.
-- **`ConsoleCommandLibrary`** — builds command and field suggestions.
 - **`ConsoleCompleter`** — matches suggestions by prefix (also drives the
   readline fallback).
 - **`ConsolePromptCompleter`** — adapts the matches into `prompt_toolkit`
@@ -469,7 +448,7 @@ metadata that backs `get_labels()`.
 There is no per-dataset branch anywhere in the pipeline. Detection is *by
 protocol*: the framework iterates a list of dataset classes and asks each one,
 through `get_labels()` / `get_supported_whens()`, whether it answers the current
-command. To wire a new class in, add it to two class-level lists:
+command. To wire a new class in, add it to the relevant class-level list:
 
 1. **`DatasetFactory.CENSUS_DATASET_CLASSES`** (or `ELECTION_DATASET_CLASSES`).
    `DatasetFactory.from_command` walks this list and, via
@@ -477,15 +456,9 @@ command. To wire a new class in, add it to two class-level lists:
    `get_supported_whens()` contains `command.when_cmd` *and* whose
    `get_labels()` contains `command.what_cmd`. Matching a command to a dataset
    is therefore data-driven — the factory never names your class.
-2. **`DatasetCommandRegistry.CENSUS_DATASET_CLASSES`**. At import time
-   `DatasetCommandRegistry.register()` feeds every class's labels and whens into
-   the generic `WhatRegistry` / `WhenRegistry` / `WhatWhenRegistry`. That is what
-   makes the new labels validate as legal `What` values, appear in
-   `describe_api()`, drive console tab-completion, and be enumerated by
-   `valid_commands()` (and hence the generated README examples).
 
-Once the class is in those two lists, every orthogonal combination comes for
-free without further work: interval queries are split by
+Once the class is in `DatasetFactory`'s list, every orthogonal combination comes
+for free without further work: interval queries are split by
 `DatasetFactory.list_from_command` and wrapped in a `DiffDataset` (so
 `When = 2012-2024` and `How = Map:Change` just work); `Where` is expanded
 independently by `Regions`; and every `How` output/modifier is applied later by
@@ -574,13 +547,12 @@ attributed answer.
 ### The grammar is domain-agnostic (§0)
 
 The philosophy claims nothing in the grammar is specific to Sri Lanka, censuses,
-or elections. The code enforces this: the `lanka_data.api` package (the fields,
-the command, the registries) must not import any concrete dataset. Instead the
-`datasets` layer *self-registers* its census/election values into the generic
-`WhatRegistry` / `WhenRegistry` / `WhatWhenRegistry` at import time
-(`DatasetCommandRegistry.register()`). The grammar knows only "there are legal
-`What` and `When` values"; the domain supplies them from outside. That
-separation is what makes §8's "add a dataset, not an endpoint" possible.
+or elections. The code enforces this: the `lanka_data.api` package (the fields
+and the command) must not import any concrete dataset. The `datasets` layer
+supplies its census/election values from outside via `DatasetFactory`. The
+grammar knows only "there are legal `What` and `When` values"; the domain
+supplies them from outside. That separation is what makes §8's "add a dataset,
+not an endpoint" possible.
 
 ---
 
