@@ -70,6 +70,8 @@ from lanka_data.datasets.region.RegionTypeUtils import RegionTypeUtils
 from lanka_data.datasets.region.Where import Where
 from lanka_data.examples.Example.Example import Example
 from lanka_data.examples.Example.ExampleOutputMixin import ExampleOutputMixin
+from lanka_data.readme.DatasetsReadme import DatasetsReadme
+from lanka_data.readme.ExamplesReadme import ExamplesReadme
 from lanka_data.readme.HelpReadme import HelpReadme
 from lanka_data.readme.ReadMe import ReadMe
 from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import \
