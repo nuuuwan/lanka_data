@@ -219,6 +219,7 @@
       }
     },
     "How": {
+      "usage": "<base>:<Optional param>",
       "bases": [
         "BarChart",
         "BivariateMap",
