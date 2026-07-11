@@ -1,0 +1,13 @@
+{
+  "command_str": "Empty/2012/LK-pre1845:province/Map",
+  "result": {
+    "image_path": "_output/Empty/2012/LK-pre1845:province/Map/Image.png"
+  },
+  "sources": [
+    {
+      "name": "Survey Department of Sri Lanka",
+      "url": "https://survey.gov.lk/"
+    }
+  ],
+  "query_time_ms": 0
+}

@@ -50,9 +50,10 @@ class HelpReadme:
             lines.append(f"{info['description']}")
             lines.append("")
             if "examples" in info and info["examples"]:
-                lines.append("**Examples:**")
+                lines.append("```bash")
                 for example in info["examples"]:
-                    lines.append(f"- `{example}`")
+                    lines.append(f"`{example}`")
+                lines.append("```")
                 lines.append("")
         return lines
 
@@ -63,7 +64,9 @@ class HelpReadme:
         bases = how_info.get("bases", {})
         params = how_info.get("params", {})
 
+        lines.append('```bash')
         lines.append("<base>:<Optional param>")
+        lines.append("```")
         lines.append("")
 
         lines.append("### Bases")
