@@ -34,7 +34,7 @@ from lanka_data.console.ConsoleLocalCommands import ConsoleLocalCommands
 from lanka_data.console.ConsolePrompt import ConsolePrompt
 from lanka_data.console.ConsolePromptCompleter import ConsolePromptCompleter
 from lanka_data.console.ConsoleRenderer import ConsoleRenderer
-from lanka_data.datasets.command.CommandHelp import CommandHelp
+from lanka_data.datasets.command.CommandHelp.CommandHelp import CommandHelp
 from lanka_data.datasets.command.CommandRunner import CommandRunner
 from lanka_data.datasets.data.Diversity import Diversity
 from lanka_data.datasets.data.FieldNameUtils import FieldNameUtils

@@ -5,6 +5,7 @@ import sys
 class CompatibilityAliases:
     COMMAND_DATASET_MODULES = [
         "CommandHelp",
+        "CommandHelp.CommandHelp",
         "CommandRunner",
     ]
     COMMAND_API_MODULES = [
