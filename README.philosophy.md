@@ -46,7 +46,6 @@ Each field is an independent axis of the query: the value chosen for one field d
 - **Resolution into child regions.** An operator that resolves a region into its constituent units of a given type, and that composes down every level of the hierarchy with no additional syntax.
 - **Explicit set.** A list that selects exactly the named regions.
 - **Contiguous range.** An operator that expands to all regions between two endpoints.
-- **Explicit zoom.** An operator that assigns a region an explicit scale, for framing regions that automatic bounds would render too small or too large.
 - **Historical boundary variant.** A suffix that selects a region's boundaries as they existed before a given boundary redesign.
 
 The last form supports a deliberate decomposition: observation time (**When**) and boundary epoch (part of **Where**) are kept as separate values. In a jurisdiction with mutable boundaries these are independent facts, and collapsing them would misattribute counts to the wrong geometry.
