@@ -139,20 +139,19 @@
           "UnitSquareMap",
           "UnitTriangleMap"
         ],
-        "params": [
-          "1st",
-          "1stPct",
-          "2nd",
-          "2ndPct",
-          "3rd",
-          "3rdPct",
-          "Bottom",
-          "Change",
-          "Diversity",
-          "DiversityPew",
-          "Top",
-          "Top3"
-        ]
+        "params": {
+          "1st": "Highlights the most common category in each region",
+          "Top": "Highlights the most common category in each region",
+          "2nd": "Highlights the 2nd most common category in each region",
+          "3rd": "Highlights the 3rd most common category in each region",
+          "Bottom": "Highlights the least common category in each region",
+          "1stPct": "Shows the percentage share of the most common category in each region",
+          "2ndPct": "Shows the percentage share of the 2nd most common category in each region",
+          "Change": "Shows the change in the selected metric between two time periods. Requires an interval (two years) in the When field.",
+          "Top3": "Colors each region based on its top 3 categories combined, assigning a unique color to each unique combination",
+          "Diversity": "Shows the Religious Diversity Index (RDI) for each region, measuring how evenly distributed the categories are",
+          "DiversityPew": "Shows the Pew-adjusted Religious Diversity Index for each region, using grouped categories similar to Pew Research methodology"
+        }
       }
     }
   },
