@@ -1,8 +1,7 @@
 import os
 
-from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import (
-    ReadMeExamplesItemMixin,
-)
+from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesItemMixin import \
+    ReadMeExamplesItemMixin
 from utils_future import File, JSONFile, Log
 
 log = Log("ExamplesReadme")

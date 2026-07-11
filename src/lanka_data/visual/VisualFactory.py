@@ -89,8 +89,7 @@ class VisualFactory:
     def from_commmand_and_datasets(command, datasets):
         return VisualFactory.from_command_and_datasets(command, datasets)
 
-
-    @staticmethod 
+    @staticmethod
     def from_label(label):
         for cls in VisualFactory.CLS_LIST:
             if cls.get_label() == label:

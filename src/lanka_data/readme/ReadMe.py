@@ -56,8 +56,7 @@ class ReadMe:
             "Or from the command line:",
             "",
             "```bash",
-            "python -m workflows.single"
-            " Presidential/2024/LK:ed/Map:NPP",
+            "python -m workflows.single" " Presidential/2024/LK:ed/Map:NPP",
             "```",
             "",
         ]

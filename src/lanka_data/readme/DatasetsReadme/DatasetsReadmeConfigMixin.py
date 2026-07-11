@@ -30,15 +30,13 @@ class DatasetsReadmeConfigMixin:
         {
             'class': ElectionDataset,
             'name': 'Election Data',
-            'description':
-                'Detailed election results by candidate/party and region',
+            'description': 'Detailed election results by candidate/party and region',
         },
         {
             'class': ElectionSummaryDataset,
             'name': 'Election Summary Data',
-            'description':
-                'Election summary statistics (Valid, Rejected,'
-                + ' Did Not Vote)',
+            'description': 'Election summary statistics (Valid, Rejected,'
+            + ' Did Not Vote)',
         },
         {
             'class': RiversDataset,

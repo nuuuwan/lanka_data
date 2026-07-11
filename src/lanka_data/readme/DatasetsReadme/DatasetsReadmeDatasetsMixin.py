@@ -44,8 +44,9 @@ class DatasetsReadmeDatasetsMixin:
         lines.append('### Source Data')
         lines.append('')
 
-        sources = \
-            DatasetsReadmeDatasetsMixin.get_sources_for_dataset(dataset_class)
+        sources = DatasetsReadmeDatasetsMixin.get_sources_for_dataset(
+            dataset_class
+        )
         for source in sources:
             source_line = f'- [{source.name}]({source.url})'
             lines.append(source_line)
