@@ -21,35 +21,7 @@ YEAR_PATTERN = r"\d{4}"
 
 
 class CommandHelpWhenMixin:
-    @staticmethod
-    def _census_years():
-        return itertools.chain.from_iterable(
-            cls.get_supported_whens() for cls in CENSUS_CLASSES
-        )
-
-    @staticmethod
-    def _election_years():
-        return itertools.chain.from_iterable(
-            ElectionDataset.get_label_to_years().values()
-        )
-
-    @staticmethod
-    def get_when_years():
-        years = set(CommandHelpWhenMixin._census_years())
-        years |= set(CommandHelpWhenMixin._election_years())
-        years |= set(RiversDataset.get_supported_whens())
-        return sorted(years)
-
-    @staticmethod
-    def _intervals(years):
-        return [f"{a}-{b}" for a, b in itertools.combinations(years, 2)]
-
+    
     @staticmethod
     def get_when_help():
-        years = CommandHelpWhenMixin.get_when_years()
-        return {
-            "values": years,
-            "intervals": CommandHelpWhenMixin._intervals(years),
-            "year_pattern": YEAR_PATTERN,
-            "supports_interval": True,
-        }
+        return "Specify the year or date for which you want to retrieve data. If the exact time is not available, the closest available data will be used."
