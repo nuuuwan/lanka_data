@@ -144,6 +144,7 @@ Returns regions of the same type within a specified distance of <region_id>.
 - **BubbleMap**: Renders data as a map with bubble markers sized by values and colored by categories
 - **BumpChart**: Renders data as a bump chart showing ranking changes of items across categories or time periods
 - **CSV**: Exports data as CSV format with regions and categories
+- **Cartogram**: Cartogram: region sizes are distorted to be proportional to data values, computed using the Dougenik-Chrisman-Niemeyer algorithm.
 - **ChartSpec**: Exports data as chart specification in JSON format
 - **GeoJSON**: Exports data as GeoJSON format with geometries
 - **HexMap**: Renders data as a hexagonal tile map with each region assigned a hexagon colored by values
