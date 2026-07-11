@@ -37,5 +37,3 @@ class DatasetsReadme(
         readme_file = File(self.PATH)
         readme_file.write('\n'.join(lines))
         log.info(f'Wrote {readme_file}')
-
-
