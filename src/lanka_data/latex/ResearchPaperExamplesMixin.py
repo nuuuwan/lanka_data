@@ -1,3 +1,7 @@
+import hashlib
+import os
+import shutil
+
 from pylatex import Figure, NoEscape, Subsection
 
 
@@ -87,10 +91,19 @@ class ResearchPaperExamplesMixin:
         )
         self._add_examples_figures(sec)
 
+    def _img_path(self, cmd):
+        return hashlib.md5(cmd.encode()).hexdigest() + '.png'
+
+    def copy_images(self, tex_dir):
+        for cmd, _, _ in self.EXAMPLES:
+            src = os.path.join('_output', cmd, 'Image.png')
+            dst = os.path.join(tex_dir, self._img_path(cmd))
+            shutil.copy(src, dst)
+
     def _add_examples_figures(self, sec):
         for i, (cmd, heading, description) in enumerate(self.EXAMPLES):
             with sec.create(Subsection(heading)) as ss:
-                img = '../_output/' + cmd + '/Image.png'
+                img = self._img_path(cmd)
                 ss.append(NoEscape(r'\path{' + cmd + r'}. ' + description))
                 with ss.create(Figure(position='H')) as fig:
                     fig.add_image(img, width=NoEscape(r'\linewidth'))
