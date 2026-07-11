@@ -1,47 +1,90 @@
-from lanka_data.examples.Example.Example import Example
-from lanka_data.readme.ReadMeExamplesMixin.ReadMeExamplesMixin import \
-    ReadMeExamplesMixin
-from lanka_data.readme.ReadMeFooterMixin import ReadMeFooterMixin
-from lanka_data.readme.ReadMeSourcesMixin import ReadMeSourcesMixin
-from lanka_data.readme.ReadMeUsageMixin import ReadMeUsageMixin
 from utils_future import File, Log
 
 log = Log("ReadMe")
 
 
-class ReadMe(
-    ReadMeSourcesMixin,
-    ReadMeUsageMixin,
-    ReadMeExamplesMixin,
-    ReadMeFooterMixin,
-):
+class ReadMe:
     PATH = "README.md"
 
-    def get_lines(self, example_idx, output_idx):
+    @staticmethod
+    def _overview_lines():
+        return [
+            "## Overview",
+            "",
+            "Lanka Data provides *one API to rule them all*:"
+            " a single interface that can express any query"
+            " against public Sri Lankan data — census measurements,"
+            " election results, and administrative geography"
+            " — without proliferating endpoints or methods.",
+            "",
+            "Every query is a slash-delimited string of four fields:",
+            "",
+            "```",
+            "What / When / Where / How",
+            "```",
+            "",
+            "| Field | Meaning | Example |",
+            "| --- | --- | --- |",
+            "| **What** | The measurement | `Religion` |",
+            "| **When** | Time of observation | `2012-2024` |",
+            "| **Where** | Region scope | `LK:district` |",
+            "| **How** | Output format | `Map:1st` |",
+            "",
+            "The same string works as a Python argument,"
+            " a CLI argument, a URL path, and a file path.",
+            "",
+        ]
+
+    @staticmethod
+    def _usage_lines():
+        return [
+            "## Installation",
+            "",
+            "```bash",
+            "pip install lanka-data",
+            "```",
+            "",
+            "## Quick Start",
+            "",
+            "```python",
+            "from lanka_data.datasets.command.CommandRunner"
+            " import CommandRunner",
+            "",
+            'CommandRunner.run("Presidential/2024/LK:ed/Map:NPP")',
+            "```",
+            "",
+            "Or from the command line:",
+            "",
+            "```bash",
+            "python -m workflows.single"
+            " Presidential/2024/LK:ed/Map:NPP",
+            "```",
+            "",
+        ]
+
+    @staticmethod
+    def _docs_lines():
+        return [
+            "## Documentation",
+            "",
+            "- [Help](README.help.md) — full API reference for all fields",
+            "- [Examples](README.examples.md) — rendered output for every example",
+            "- [Datasets](README.datasets.md) — available data sources",
+            "- [Philosophy](README.philosophy.md) — design rationale for the query grammar",
+            "- [Citation Paper](latex/lanka_data.pdf)",
+            "",
+        ]
+
+    def get_lines(self):
         return (
-            [
-                "# Lanka Data",
-                "",
-                'This repo implements "one API to rule them all":'
-                + " a single interface that can express"
-                + " *any* query to access public data about Sri Lanka 🇱🇰.",
-                "",
-                "## 0. Design Philosophy & Code",
-                "",
-                "See [README.philosophy.md](README.philosophy.md)"
-                + " and [README.code.md](README.code.md)",
-                "",
-            ]
-            + self.get_lines_for_sources(output_idx)
-            + self.get_lines_for_usage()
-            + self.get_lines_for_examples(example_idx, output_idx)
-            + self.get_lines_for_footer()
+            ["# Lanka Data", "", "Public data about Sri Lanka 🇱🇰.", ""]
+            + self._overview_lines()
+            + self._usage_lines()
+            + self._docs_lines()
         )
 
     def build(self):
-        example_idx = Example.get_group_to_examples()
-        output_idx = Example.get_cmd_to_output()
-        lines = self.get_lines(example_idx, output_idx)
+        lines = self.get_lines()
         readme_file = File(self.PATH)
         readme_file.write("\n".join(lines))
         log.info(f"Wrote {readme_file}")
