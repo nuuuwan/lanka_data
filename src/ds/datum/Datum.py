@@ -12,16 +12,20 @@ log = Log('Datum')
 class Query:
     query_str: str
 
-    @cached_property
-    def parts(self):
-        return self.query_str.split('/')
+    DELIM_PART = "/"
+    OPR_ADD = "+"
+    OPR_MULT = "*"
 
     @cached_property
-    def time_part(self):
-        return self.parts[0]
+    def parts(self):
+        return self.query_str.split(self.DELIM_PART)
 
     @cached_property
     def entity_part(self):
+        return self.parts[0]
+
+    @cached_property
+    def time_part(self):
         return self.parts[1]
 
     @cached_property
@@ -94,6 +98,12 @@ class Person(Measurement):
 
 
 @dataclass(frozen=True)
+class House(Measurement):
+    id: str
+    address: str
+
+
+@dataclass(frozen=True)
 class Time:
     _value: str
 
@@ -151,12 +161,6 @@ class Datum:
     def __hash__(self):
         return hash((self.time, frozenset(self.measurement_idx.items())))
 
-    def is_match_time(self, time_part: str) -> bool:
-        if not self.time.is_match(time_part):
-            log.warning(f'{time_part} != {self.time}')
-            return None
-        return self.time._value
-
     def get_measurement_class_names(self):
         return [type(m).__name__ for m in list(self.measurement_idx.values())]
 
@@ -164,13 +168,21 @@ class Datum:
         return self.get_measurement_class_names()[:-1]
 
     def is_match_entity(self, entity_part: str) -> bool:
-        if not self.entity_class.__name__ == entity_part:
-            log.warning(f'{entity_part} != {self.entity_class.__name__}')
-            return None
-        return self.entity_class.__name__
+        entity_class_names = entity_part.split(Query.OPR_ADD)
+        for entity_class_name in entity_class_names:
+            if self.entity_class.__name__ == entity_class_name:
+                return entity_class_name
+        return None
+
+    def is_match_time(self, time_part: str) -> bool:
+        time_values = time_part.split(Query.OPR_ADD)
+        for time_value in time_values:
+            if self.time.is_match(time_value):
+                return time_value
+        return None
 
     def is_match_measurement_idx(self, measurement_part: str) -> bool:
-        class_names_required = measurement_part.split('*')
+        class_names_required = measurement_part.split(Query.OPR_MULT)
         matches = {}
         for class_name in class_names_required:
             has_match = False
@@ -195,8 +207,8 @@ class Datum:
             return None
 
         return dict(
-            time_part=time_part,
             entity_part=entity_part,
+            time_part=time_part,
             mesurement_part=mesurement_part,
         )
 
@@ -243,7 +255,43 @@ class Datumset:
         return next(iter(self._value))
 
     def is_match(self, query: Query) -> bool:
-        return self.first_datum.is_match(query)
+        matching_subset = set()
+        matches = set()
+        for datam in self._value:
+            candidate_match = datam.is_match(query)
+            if candidate_match:
+                log.debug(f'{candidate_match=}')
+
+                matching_subset.add(datam)
+                matches.add(json.dumps(candidate_match))
+
+        if len(matching_subset) == 0:
+            return False
+
+        final_match = {}
+        for match_items in matches:
+            for k, v in json.loads(match_items).items():
+                if k not in final_match:
+                    final_match[k] = set()
+                final_match[k].add(json.dumps(v))
+
+        def flatten(x_list):
+            assert isinstance(x_list, list)
+            first_item = x_list[0]
+            if not isinstance(first_item, dict):
+                return x_list
+
+            final = {}
+            for item in x_list:
+                for k, v in item.items():
+                    final[k] = v
+            return final
+
+        final_match = {
+            k: flatten([json.loads(v_item) for v_item in v])
+            for k, v in final_match.items()
+        }
+        return Datumset(*matching_subset), final_match
 
 
 @dataclass(frozen=True)
@@ -255,14 +303,9 @@ class MatchedDatumset:
     def to_json(self):
         idx = {}
         idx_inner = {}
-        prev_entity_class = None
+
         for datum in self.datumset._value:
             entity_class = datum.entity_class.__name__
-            if prev_entity_class and prev_entity_class != entity_class:
-                raise ValueError(
-                    f"Multiple entity classes found:"
-                    + f" {prev_entity_class} and {entity_class}"
-                )
             time = datum.time._value
             idx_inner = datum.to_json_inner(
                 idx_inner, self.query.measurement_part
@@ -273,7 +316,6 @@ class MatchedDatumset:
             if time not in idx[entity_class]:
                 idx[entity_class][time] = []
             idx[entity_class][time] = idx_inner
-            prev_entity_class = entity_class
 
         return dict(
             metadata=self.match,
@@ -291,13 +333,20 @@ class LankaData:
             Datumset(
                 Datum(
                     Person,
+                    Time("2012"),
+                    district=District['LK-11'],
+                    religion=Religion['Buddhist'],
+                    n=Int(88),
+                ),
+                Datum(
+                    Person,
                     Time("2024"),
                     district=District['LK-11'],
                     religion=Religion['Buddhist'],
                     n=Int(100),
                 ),
                 Datum(
-                    Person,
+                    House,
                     Time("2024"),
                     district=District['LK-12'],
                     religion=Religion['Buddhist'],
@@ -317,9 +366,10 @@ class LankaData:
     def __class_getitem__(cls, query_str):
         query = Query(query_str)
         for datumset in cls.list():
-            match = datumset.is_match(query)
-            if match:
-                return MatchedDatumset(query, datumset, match)
+            match_info = datumset.is_match(query)
+            if match_info:
+                matching_datumset, match = match_info
+                return MatchedDatumset(query, matching_datumset, match)
 
         raise ValueError(f"No matching Datumset found for label: \"{query}\"")
 
@@ -327,10 +377,13 @@ class LankaData:
 if __name__ == '__main__':
 
     for query_str in [
-        '2024/Person/Religion*District',
-        '2024/Person/District*Religion',
-        '2024/Person/District',
-        '2024/Person/Religion',
+        'Person/2012/Religion*District',
+        'Person/2024/Religion*District',
+        'Person/2024/District*Religion',
+        'Person/2024/District',
+        'Person/2024/Religion',
+        'Person/2012+2024/Religion',
+        'Person+House/2012+2024/Religion',
     ]:
         print(LankaData[query_str].to_str())
         print('-' * 32)
