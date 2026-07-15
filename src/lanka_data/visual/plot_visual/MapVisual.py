@@ -1,4 +1,3 @@
-
 from lanka_data.visual.plot.color_spec.ColorSpecFactory import ColorSpecFactory
 from lanka_data.visual.plot.Label import Label
 from lanka_data.visual.plot.Legend import Legend

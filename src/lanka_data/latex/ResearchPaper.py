@@ -3,23 +3,18 @@ import os
 from pylatex import Command, Document, NoEscape, Package, Section
 from pylatex.base_classes import Environment
 
-from lanka_data.latex.ResearchPaperAbstractMixin import (
-    ResearchPaperAbstractMixin,
-)
-from lanka_data.latex.ResearchPaperDatasetsMixin import (
-    ResearchPaperDatasetsMixin,
-)
+from lanka_data.latex.ResearchPaperAbstractMixin import \
+    ResearchPaperAbstractMixin
+from lanka_data.latex.ResearchPaperDatasetsMixin import \
+    ResearchPaperDatasetsMixin
 from lanka_data.latex.ResearchPaperDesignMixin import ResearchPaperDesignMixin
-from lanka_data.latex.ResearchPaperExamplesMixin import (
-    ResearchPaperExamplesMixin,
-)
-from lanka_data.latex.ResearchPaperGrammarMixin import (
-    ResearchPaperGrammarMixin,
-)
+from lanka_data.latex.ResearchPaperExamplesMixin import \
+    ResearchPaperExamplesMixin
+from lanka_data.latex.ResearchPaperGrammarMixin import \
+    ResearchPaperGrammarMixin
 from lanka_data.latex.ResearchPaperIntroMixin import ResearchPaperIntroMixin
-from lanka_data.latex.ResearchPaperPreambleMixin import (
-    ResearchPaperPreambleMixin,
-)
+from lanka_data.latex.ResearchPaperPreambleMixin import \
+    ResearchPaperPreambleMixin
 from utils_future import Log
 
 log = Log("ResearchPaper")
