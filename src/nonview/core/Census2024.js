@@ -23,10 +23,10 @@ export default class Census2024 {
 
   static async getLankaDataForQuery(queryStr) {
     const metadataForQuery = await Census2024.getMetadataForQuery(queryStr);
-    return await Promise.all(
-      metadataForQuery.map(async (partialPath) => {
-        return await Census2024.getLankaDataForPartialPath(partialPath);
-      }),
-    );
+    if (metadataForQuery.length === 0) {
+      return {};
+    }
+    const partialPath = metadataForQuery[0];
+    return await Census2024.getLankaDataForPartialPath(partialPath);
   }
 }

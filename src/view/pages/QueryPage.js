@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { Typography, Box, Paper, CircularProgress } from "@mui/material";
 import { useState, useEffect } from "react";
 import Census2024 from "../../nonview/core/Census2024.js";
+import ShallowDict from "../../nonview/base/ShallowDict.js";
+
 export default function QueryPage() {
   const { "*": queryStr } = useParams();
 
@@ -25,11 +27,24 @@ export default function QueryPage() {
       {lankaData === null ? (
         <CircularProgress sx={{ m: 2 }} />
       ) : (
-        <Paper sx={{ m: 1, p: 1 }}>
-          <Typography variant="body1" sx={{ mt: 2 }}>
-            <pre>{JSON.stringify(lankaData, null, 2)}</pre>
-          </Typography>
-        </Paper>
+        <Box>
+          <Paper sx={{ m: 1, p: 1 }}>
+            <Typography variant="body1" sx={{ mt: 2 }}>
+              <pre>
+                {JSON.stringify(
+                  ShallowDict.fromDeep(lankaData).getDict(),
+                  null,
+                  2,
+                )}
+              </pre>
+            </Typography>
+          </Paper>
+          <Paper sx={{ m: 1, p: 1 }}>
+            <Typography variant="body1" sx={{ mt: 2 }}>
+              <pre>{JSON.stringify(lankaData, null, 2)}</pre>
+            </Typography>
+          </Paper>
+        </Box>
       )}
     </Box>
   );
