@@ -8,9 +8,9 @@ export default class DatumSet {
 
   static fromLankaData(lankaData) {
     const shallowDict = ShallowDict.fromDeep(lankaData);
-    const datumList = shallowDict
-      .entries()
-      .map(([shallowKey, value]) => new Datum(shallowKey, value));
+    const datumList = Array.from(shallowDict.entries()).map((entry) =>
+      Datum.fromShallowDictEntry(entry),
+    );
     return new DatumSet(datumList);
   }
 }
