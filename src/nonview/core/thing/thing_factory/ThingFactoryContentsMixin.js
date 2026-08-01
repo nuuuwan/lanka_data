@@ -1,0 +1,44 @@
+import Int from "../concept/atoms/Int.js";
+import Time from "../concept/atoms/Time.js";
+import CategoryConcept from "../concept/category_concept/CategoryConcept.js";
+import Ethnicity from "../concept/category_concept/Ethnicity.js";
+import Religion from "../concept/category_concept/Religion.js";
+import Concept from "../concept/Concept.js";
+import Entity from "../entity/Entity.js";
+import Person from "../entity/Person.js";
+import Country from "../concept/category_concept/region/Country.js";
+import DSD from "../concept/category_concept/region/DSD.js";
+import District from "../concept/category_concept/region/District.js";
+import ED from "../concept/category_concept/region/ED.js";
+import GND from "../concept/category_concept/region/GND.js";
+import PD from "../concept/category_concept/region/PD.js";
+import Province from "../concept/category_concept/region/Province.js";
+import Region from "../concept/category_concept/region/Region.js";
+
+export default class ThingFactoryContentsMixin {
+  // atoms
+  static Int = Int;
+  static Time = Time;
+
+  // category_concept
+  static CategoryConcept = CategoryConcept;
+  static Ethnicity = Ethnicity;
+  static Religion = Religion;
+
+  // concept
+  static Concept = Concept;
+
+  // entity
+  static Entity = Entity;
+  static Person = Person;
+
+  // region
+  static Country = Country;
+  static DSD = DSD;
+  static District = District;
+  static ED = ED;
+  static GND = GND;
+  static PD = PD;
+  static Province = Province;
+  static Region = Region;
+}

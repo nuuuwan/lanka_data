@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CORE_DIR = ROOT / "src" / "nonview" / "core"
-THING_FACTORY_PATH = CORE_DIR / "thing" / "ThingFactory.js"
+THING_FACTORY_PATH = CORE_DIR / "thing" / "thing_factory" / "ThingFactoryContentsMixin.js"
 
 CLASS_RE = re.compile(
     r"export\s+default\s+class\s+(\w+)\s*(?:extends\s+(\w+)\s*)?\{"
