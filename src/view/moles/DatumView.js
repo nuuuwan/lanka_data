@@ -1,6 +1,6 @@
 import React from "react";
 import FaceIcon from "@mui/icons-material/Face";
-import { Typography, Chip, ListItem } from "@mui/material";
+import { Chip, ListItem } from "@mui/material";
 
 function EntityClassView({ entityClass }) {
   return (
