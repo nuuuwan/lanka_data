@@ -6,7 +6,7 @@ export default function EntityClassView({ entityClass }) {
     <Chip
       icon={<FaceIcon />}
       label={entityClass.name}
-      color="primary.main"
+      color="primary.light"
       variant="filled"
       sx={{ m: 0.5 }}
     />

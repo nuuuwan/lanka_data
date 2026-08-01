@@ -3,7 +3,7 @@ export default class Thing {
     this.value = value;
   }
 
-  to_kv_pair() {
-    return `{${this.constructor.name}}:{${this.value}}`;
+  getHumanReadableValue() {
+    return `${this.constructor.name}=${this.value}`;
   }
 }

@@ -17,7 +17,7 @@ export default function QueryPage() {
 
   return (
     <Box sx={{ m: 1, p: 1 }}>
-      <Typography variant="h6" sx={{ mt: 2, color: "primary.light" }}>
+      <Typography variant="h6" sx={{ mt: 2, color: "info.main" }}>
         Lanka Data
       </Typography>
       <Typography variant="h4" sx={{ mt: 2 }}>
