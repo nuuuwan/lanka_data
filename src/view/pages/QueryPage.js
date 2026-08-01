@@ -3,15 +3,15 @@ import { Typography, Box, Paper, CircularProgress } from "@mui/material";
 import { useState, useEffect } from "react";
 import Census2024 from "../../nonview/core/Census2024.js";
 import ShallowDict from "../../nonview/base/ShallowDict.js";
+import DatumSetView from "../moles/DatumSetView.js";
 
 export default function QueryPage() {
   const { "*": queryStr } = useParams();
 
-  const [lankaData, setLankaData] = useState(null);
+  const [datumSet, setDatumSet] = useState(null);
   useEffect(() => {
     async function fetch() {
-      const lankaData = await Census2024.getLankaDataForQuery(queryStr);
-      setLankaData(lankaData);
+      setDatumSet(await Census2024.getDatumSetForQuery(queryStr));
     }
     fetch();
   }, [queryStr]);
@@ -24,27 +24,10 @@ export default function QueryPage() {
       <Typography variant="h4" sx={{ mt: 2 }}>
         {queryStr}
       </Typography>
-      {lankaData === null ? (
+      {datumSet === null ? (
         <CircularProgress sx={{ m: 2 }} />
       ) : (
-        <Box>
-          <Paper sx={{ m: 1, p: 1 }}>
-            <Typography variant="body1" sx={{ mt: 2 }}>
-              <pre>
-                {JSON.stringify(
-                  ShallowDict.fromDeep(lankaData).getDict(),
-                  null,
-                  2,
-                )}
-              </pre>
-            </Typography>
-          </Paper>
-          <Paper sx={{ m: 1, p: 1 }}>
-            <Typography variant="body1" sx={{ mt: 2 }}>
-              <pre>{JSON.stringify(lankaData, null, 2)}</pre>
-            </Typography>
-          </Paper>
-        </Box>
+        <DatumSetView datumSet={datumSet} />
       )}
     </Box>
   );

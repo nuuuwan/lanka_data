@@ -1,4 +1,5 @@
 import WWW from "../../nonview/base/WWW.js";
+import DatumSet from "./DatumSet.js";
 
 export default class Census2024 {
   static URL_REPO = "https://raw.githubusercontent.com/nuuuwan/lk_census_2024";
@@ -16,17 +17,18 @@ export default class Census2024 {
     return metadata[queryStr] || [];
   }
 
-  static async getLankaDataForPartialPath(partialPath) {
+  static async getDatumSetForPartialPath(partialPath) {
     const url = Census2024.URL_BASE + "/" + partialPath;
-    return await WWW.json(url);
+    const lankaData = await WWW.json(url);
+    return DatumSet.fromLankaData(lankaData);
   }
 
-  static async getLankaDataForQuery(queryStr) {
+  static async getDatumSetForQuery(queryStr) {
     const metadataForQuery = await Census2024.getMetadataForQuery(queryStr);
     if (metadataForQuery.length === 0) {
       return {};
     }
     const partialPath = metadataForQuery[0];
-    return await Census2024.getLankaDataForPartialPath(partialPath);
+    return await Census2024.getDatumSetForPartialPath(partialPath);
   }
 }
