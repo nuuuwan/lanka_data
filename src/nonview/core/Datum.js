@@ -1,15 +1,14 @@
 import ThingFactory from "./thing/ThingFactory.js";
 
-export default class Datum {
-  constructor(entityClass, dimThingList, aggregate, cellThing) {
+class Query {
+  static DELIM_KEY_VALUE = ":";
+  constructor(entityClass, dimThingList, aggregate) {
     this.entityClass = entityClass;
     this.dimThingList = dimThingList;
     this.aggregate = aggregate;
-    this.cellThing = cellThing;
   }
 
-  static fromShallowDictEntry(entry) {
-    const [keyValueList, cellKeyValue] = entry;
+  static fromKeyValueList(keyValueList) {
     const entityClassName = keyValueList[0];
     const entityClass = ThingFactory[entityClassName];
     if (!entityClass) {
@@ -18,9 +17,8 @@ export default class Datum {
       );
     }
 
-    const DELIM_KEY_VALUE = ":";
     const dimThingList = keyValueList.slice(1, -1).map((keyValue) => {
-      const [dimClassName, dimValue] = keyValue.split(DELIM_KEY_VALUE);
+      const [dimClassName, dimValue] = keyValue.split(Query.DELIM_KEY_VALUE);
       const DimClass = ThingFactory[dimClassName];
       if (!DimClass) {
         throw new Error(`DimClass "${dimClassName}" not found in ThingFactory`);
@@ -30,12 +28,30 @@ export default class Datum {
 
     const aggregate = keyValueList[keyValueList.length - 1];
 
-    const [cellClassName, cellValue] = cellKeyValue.split(DELIM_KEY_VALUE);
+    return new Query(entityClass, dimThingList, aggregate);
+  }
+}
+
+export default class Datum {
+  constructor(query, answerThing) {
+    this.query = query;
+    this.answerThing = answerThing;
+  }
+
+  static fromShallowDictEntry(entry) {
+    const [keyValueList, cellKeyValue] = entry;
+
+    const query = Query.fromKeyValueList(keyValueList);
+
+    const [cellClassName, cellValue] = cellKeyValue.split(
+      Query.DELIM_KEY_VALUE,
+    );
     const CellClass = ThingFactory[cellClassName];
     if (!CellClass) {
       throw new Error(`CellClass "${cellClassName}" not found in ThingFactory`);
     }
     const cellThing = new CellClass(cellValue);
-    return new Datum(entityClass, dimThingList, aggregate, cellThing);
+
+    return new Datum(query, cellThing);
   }
 }

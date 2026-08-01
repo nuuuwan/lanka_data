@@ -12,16 +12,24 @@ function SQLText({ children }) {
   );
 }
 
+function QueryView({ query }) {
+  return (
+    <Box>
+      <EntityClassView entityClass={query.entityClass} />
+      {query.dimThingList.map((dimThing, index) => (
+        <ThingView key={index} thing={dimThing} />
+      ))}
+      <AggregateView aggregate={query.aggregate} />
+    </Box>
+  );
+}
+
 export default function DatumView({ datum }) {
   return (
     <ListItem>
-      <EntityClassView entityClass={datum.entityClass} />
-      {datum.dimThingList.map((dimThing, index) => (
-        <ThingView key={index} thing={dimThing} />
-      ))}
-      <AggregateView aggregate={datum.aggregate} />
+      <QueryView query={datum.query} />
       <SQLText> ➜ </SQLText>
-      <ThingView thing={datum.cellThing} />
+      <ThingView thing={datum.answerThing} />
     </ListItem>
   );
 }
