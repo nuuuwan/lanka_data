@@ -1,3 +1,4 @@
+import KeyValue from "../KeyValue.js";
 export default class Thing {
   static WILDCARD = "*";
   constructor(value) {
@@ -6,5 +7,12 @@ export default class Thing {
 
   getHumanReadableValue() {
     return `${this.constructor.name}=${this.value}`;
+  }
+
+  toKeyValue() {
+    if (this.value === Thing.WILDCARD) {
+      return this.constructor.name;
+    }
+    return `${this.constructor.name}${KeyValue.DELIM}${this.value}`;
   }
 }

@@ -3,7 +3,7 @@ import QueryPage from "./view/pages/QueryPage";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppTheme } from "./AppTheme";
 
-const DEFAULT_QUERY_STR = "/Person/Time*Country*Religion/Count";
+const DEFAULT_QUERY_STR = "/Person/Time+Country+Religion/Count";
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import ThingFactory from "./thing/thing_factory/ThingFactory.js";
-
+import ShallowDict from "../base/ShallowDict.js";
 import Query from "./Query.js";
 
 export default class Datum {
@@ -16,5 +16,12 @@ export default class Datum {
     const cellThing = ThingFactory.fromKeyValue(cellKeyValue);
 
     return new Datum(query, cellThing);
+  }
+
+  static listFromLankaData(lankaData) {
+    const shallowDict = ShallowDict.fromDeep(lankaData);
+    return Array.from(shallowDict.entries()).map((entry) =>
+      Datum.fromShallowDictEntry(entry),
+    );
   }
 }

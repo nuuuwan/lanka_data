@@ -1,5 +1,6 @@
 import WWW from "../../nonview/base/WWW.js";
 import DatumSet from "./DatumSet.js";
+import Datum from "./Datum.js";
 
 export default class Census2024 {
   static URL_REPO = "https://raw.githubusercontent.com/nuuuwan/lk_census_2024";
@@ -12,23 +13,29 @@ export default class Census2024 {
     return await WWW.json(Census2024.URL_METADATA);
   }
 
-  static async getMetadataForQuery(queryStr) {
+  static async getMetadataForQuery(query) {
     const metadata = await Census2024.getMetadata();
-    return metadata[queryStr] || [];
+    return metadata[query.toString()] || [];
   }
 
-  static async getDatumSetForPartialPath(partialPath) {
+  static async getDatumListForPartialPath(partialPath) {
     const url = Census2024.URL_BASE + "/" + partialPath;
     const lankaData = await WWW.json(url);
-    return DatumSet.fromLankaData(lankaData);
+    return Datum.listFromLankaData(lankaData);
   }
 
-  static async getDatumSetForQuery(queryStr) {
-    const metadataForQuery = await Census2024.getMetadataForQuery(queryStr);
+  static async getDatumSetForQuery(query) {
+    console.debug(query.toString());
+    const metadataForQuery = await Census2024.getMetadataForQuery(query);
     if (metadataForQuery.length === 0) {
-      return {};
+      return new DatumSet([]);
     }
     const partialPath = metadataForQuery[0];
-    return await Census2024.getDatumSetForPartialPath(partialPath);
+    const candidateDatumList =
+      await Census2024.getDatumListForPartialPath(partialPath);
+    const datumList = candidateDatumList.filter((datum) =>
+      datum.query.isSubsetOf(query),
+    );
+    return new DatumSet(datumList);
   }
 }

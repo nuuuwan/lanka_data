@@ -3,6 +3,7 @@ import { Typography, Box, CircularProgress } from "@mui/material";
 import { useState, useEffect } from "react";
 import Census2024 from "../../nonview/core/Census2024.js";
 import DatumSetView from "../moles/DatumSetView.js";
+import Query from "../../nonview/core/Query.js";
 
 export default function QueryPage() {
   const { "*": queryStr } = useParams();
@@ -10,7 +11,8 @@ export default function QueryPage() {
   const [datumSet, setDatumSet] = useState(null);
   useEffect(() => {
     async function fetch() {
-      setDatumSet(await Census2024.getDatumSetForQuery(queryStr));
+      const query = Query.fromString(queryStr);
+      setDatumSet(await Census2024.getDatumSetForQuery(query));
     }
     fetch();
   }, [queryStr]);
