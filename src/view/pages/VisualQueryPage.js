@@ -9,15 +9,22 @@ import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 
 function useChartFacets(datumSet, VisualClass) {
   const { datumList } = datumSet;
-  const stackDimIndex = VisualClass.IS_STACKED
-    ? DimensionUtils.getStackDimIndex(datumList)
-    : null;
-  const xAxisDimIndex = DimensionUtils.getXAxisDimIndex(
-    datumList,
-    stackDimIndex,
-  );
+
+  let xAxisDimIndex;
+  let stackDimIndex;
+  if (VisualClass.IS_MARIMEKKO) {
+    ({ xAxisDimIndex, stackDimIndex } =
+      DimensionUtils.getMarimekkoDimIndexes(datumList));
+  } else {
+    stackDimIndex = VisualClass.IS_STACKED
+      ? DimensionUtils.getStackDimIndex(datumList)
+      : null;
+    xAxisDimIndex = DimensionUtils.getXAxisDimIndex(datumList, stackDimIndex);
+  }
+
   const facetDimIndexes = DimensionUtils.getFacetDimIndexes(
     datumList,
+    xAxisDimIndex,
     stackDimIndex,
   );
   const xAxisDimName = DimensionUtils.getDimName(datumList, xAxisDimIndex);

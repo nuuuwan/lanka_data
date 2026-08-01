@@ -1,3 +1,5 @@
+import Region from "../../../nonview/core/thing/concept/category_concept/region/Region.js";
+
 export default class DimensionUtils {
   static getDimIndexInfo(datumList) {
     const nDims = datumList[0].query.dimThingList.length;
@@ -13,6 +15,10 @@ export default class DimensionUtils {
     }
 
     return { nDims, varyingDimIndexes };
+  }
+
+  static isRegionDim(datumList, dimIndex) {
+    return datumList[0].query.dimThingList[dimIndex] instanceof Region;
   }
 
   static getXAxisDimIndex(datumList, stackDimIndex = null) {
@@ -34,11 +40,38 @@ export default class DimensionUtils {
     return varyingDimIndexes.at(-1);
   }
 
-  static getFacetDimIndexes(datumList, stackDimIndex = null) {
-    const xAxisDimIndex = DimensionUtils.getXAxisDimIndex(
-      datumList,
-      stackDimIndex,
+  static getMarimekkoDimIndexes(datumList) {
+    const { varyingDimIndexes } = DimensionUtils.getDimIndexInfo(datumList);
+
+    if (varyingDimIndexes.length === 0) {
+      return { xAxisDimIndex: 0, stackDimIndex: null };
+    }
+    if (varyingDimIndexes.length === 1) {
+      return { xAxisDimIndex: varyingDimIndexes[0], stackDimIndex: null };
+    }
+
+    const regionDimIndex = varyingDimIndexes.find((dimIndex) =>
+      DimensionUtils.isRegionDim(datumList, dimIndex),
     );
+
+    if (regionDimIndex !== undefined) {
+      const stackDimIndex = varyingDimIndexes.at(-1);
+      if (stackDimIndex === regionDimIndex) {
+        return {
+          xAxisDimIndex: regionDimIndex,
+          stackDimIndex: varyingDimIndexes.at(-2),
+        };
+      }
+      return { xAxisDimIndex: regionDimIndex, stackDimIndex };
+    }
+
+    return {
+      xAxisDimIndex: varyingDimIndexes.at(-2),
+      stackDimIndex: varyingDimIndexes.at(-1),
+    };
+  }
+
+  static getFacetDimIndexes(datumList, xAxisDimIndex, stackDimIndex = null) {
     const { nDims, varyingDimIndexes } =
       DimensionUtils.getDimIndexInfo(datumList);
     return Array.from({ length: nDims }, (_, i) => i).filter(

@@ -66,6 +66,8 @@ export default class ChartDataUtils {
         datum,
         stackDimIndex,
       );
+      facetRows.get(xLabel)._barWidth =
+        (facetRows.get(xLabel)._barWidth || 0) + getBarValue(datum);
     }
 
     return Array.from(groups.entries())

@@ -4,7 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { AppTheme } from "./AppTheme";
 
 const DEFAULT_VISUAL_QUERY_STR =
-  "/Person/Time+Province+Religion/Count/StackedBarChart";
+  "/Person/Time+Province+Religion/Count/MarimekkoChart";
 
 function App() {
   return (
