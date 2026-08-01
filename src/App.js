@@ -3,7 +3,8 @@ import VisualQueryPage from "./view/pages/VisualQueryPage";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppTheme } from "./AppTheme";
 
-const DEFAULT_VISUAL_QUERY_STR = "/Person/Time+Country+Religion/Count/JSON";
+const DEFAULT_VISUAL_QUERY_STR =
+  "/Person/Time+Province+Religion/Count/BarChart";
 
 function App() {
   return (
