@@ -9,6 +9,10 @@ export default class Thing {
     return `${this.constructor.name}=${this.value}`;
   }
 
+  getColor() {
+    return null;
+  }
+
   toKeyValue() {
     if (this.value === Thing.WILDCARD) {
       return this.constructor.name;
