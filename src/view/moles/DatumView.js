@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Chip, ListItem } from "@mui/material";
+import { Typography, Chip, ListItem } from "@mui/material";
 
 export default function DatumView({ datum }) {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, List } from "@mui/material";
+import { Box, List } from "@mui/material";
 import DatumView from "./DatumView.js";
 export default function DatumSetView({ datumSet }) {
   return (

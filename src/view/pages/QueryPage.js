@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
-import { Typography, Box, Paper, CircularProgress } from "@mui/material";
+import { Typography, Box, CircularProgress } from "@mui/material";
 import { useState, useEffect } from "react";
 import Census2024 from "../../nonview/core/Census2024.js";
-import ShallowDict from "../../nonview/base/ShallowDict.js";
 import DatumSetView from "../moles/DatumSetView.js";
 
 export default function QueryPage() {
