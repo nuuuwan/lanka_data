@@ -1,5 +1,7 @@
 import { ResponsiveMarimekko } from "@nivo/marimekko";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
+
+import { FONT_FAMILY } from "../../../AppTheme.js";
 
 function getColorForDimension(id, data) {
   const colorKey = `${id}Color`;
@@ -11,16 +13,76 @@ function getColorForDimension(id, data) {
   return undefined;
 }
 
+function getDimensionKeys(row) {
+  return Object.keys(row).filter(
+    (key) => key !== "id" && key !== "_barWidth" && !key.endsWith("Color"),
+  );
+}
+
+function getDominantKey(data) {
+  if (data.length === 0) return null;
+  const keys = getDimensionKeys(data[0]);
+  const totals = Object.fromEntries(keys.map((key) => [key, 0]));
+  for (const row of data) {
+    for (const key of keys) {
+      totals[key] += row[key] || 0;
+    }
+  }
+  return keys.reduce((best, key) => (totals[key] > totals[best] ? key : best));
+}
+
+function getPercentage(row, key) {
+  const keys = getDimensionKeys(row);
+  const total = keys.reduce((sum, k) => sum + (row[k] || 0), 0);
+  if (total === 0) return 0;
+  return (row[key] || 0) / total;
+}
+
+function sortByDominantCategory(data) {
+  const dominantKey = getDominantKey(data);
+  if (!dominantKey) return data;
+  return [...data].sort(
+    (a, b) => getPercentage(b, dominantKey) - getPercentage(a, dominantKey),
+  );
+}
+
+function BarLabelsLayer({ data }) {
+  return (
+    <>
+      {data.map((datum) => (
+        <text
+          key={datum.id}
+          x={datum.x + datum.width / 2}
+          y={datum.y + datum.height + 16}
+          textAnchor="middle"
+          dominantBaseline="hanging"
+          style={{
+            fontFamily: FONT_FAMILY,
+            fontSize: 12,
+            fill: "#333",
+            fontWeight: 500,
+          }}
+        >
+          {datum.id}
+        </text>
+      ))}
+    </>
+  );
+}
+
 export default function MarimekkoChart({
   data,
   xAxisLabel,
   yAxisLabel,
   stackDimName,
 }) {
+  const theme = useTheme();
+  const sortedData = sortByDominantCategory(data);
+
   const dimensions =
-    data.length === 0
+    sortedData.length === 0
       ? []
-      : Object.keys(data[0])
+      : Object.keys(sortedData[0])
           .filter(
             (key) =>
               key !== "id" && key !== "_barWidth" && !key.endsWith("Color"),
@@ -33,25 +95,30 @@ export default function MarimekkoChart({
   return (
     <Box sx={{ height: 400 }}>
       <ResponsiveMarimekko
-        data={data}
+        data={sortedData}
         id="id"
         value="_barWidth"
         dimensions={dimensions}
         offset="expand"
         layout="vertical"
+        theme={{
+          fontFamily: FONT_FAMILY,
+          text: { fontFamily: FONT_FAMILY },
+        }}
         axisTop={null}
         axisRight={null}
         enableGridY={false}
         axisBottom={{
           orient: "bottom",
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: -45,
+          tickSize: 0,
+          tickPadding: 0,
+          tickRotation: 0,
           legend: xAxisLabel,
-          legendOffset: 80,
+          legendOffset: 40,
           legendPosition: "middle",
-          format: (value) => value,
+          format: () => "",
         }}
+        layers={["grid", "axes", "bars", BarLabelsLayer, "legends"]}
         axisLeft={{
           orient: "left",
           tickSize: 5,
@@ -62,7 +129,9 @@ export default function MarimekkoChart({
           legendPosition: "middle",
           format: (value) => `${Math.round(value * 100)}%`,
         }}
-        colors={({ id }) => getColorForDimension(id, data) ?? "#1f77b4"}
+        colors={({ id }) =>
+          getColorForDimension(id, sortedData) ?? theme.palette.primary.main
+        }
         borderWidth={1}
         borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
         margin={{ top: 40, right: 130, bottom: 100, left: 80 }}
