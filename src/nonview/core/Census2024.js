@@ -25,7 +25,6 @@ export default class Census2024 {
   }
 
   static async getDatumSetForQuery(query) {
-    console.debug(query.toString());
     const metadataForQuery = await Census2024.getMetadataForQuery(query);
     if (metadataForQuery.length === 0) {
       return new DatumSet([]);
