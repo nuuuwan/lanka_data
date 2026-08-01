@@ -1,9 +1,9 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-import QueryPage from "./view/pages/QueryPage";
+import VisualQueryPage from "./view/pages/VisualQueryPage";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppTheme } from "./AppTheme";
 
-const DEFAULT_QUERY_STR = "/Person/Time+Country+Religion/Count";
+const DEFAULT_VISUAL_QUERY_STR = "/Person/Time+Country+Religion/Count/JSON";
 
 function App() {
   return (
@@ -11,8 +11,11 @@ function App() {
       <BrowserRouter basename="/lanka_data">
         <div className="App">
           <Routes>
-            <Route path="*" element={<QueryPage />} />
-            <Route path="" element={<Navigate to={DEFAULT_QUERY_STR} />} />
+            <Route path="*" element={<VisualQueryPage />} />
+            <Route
+              path=""
+              element={<Navigate to={DEFAULT_VISUAL_QUERY_STR} />}
+            />
           </Routes>
         </div>
       </BrowserRouter>
