@@ -13,14 +13,7 @@ export default class Datum {
 
     const query = Query.fromKeyValueList(keyValueList);
 
-    const [cellClassName, cellValue] = cellKeyValue.split(
-      Query.DELIM_KEY_VALUE,
-    );
-    const CellClass = ThingFactory[cellClassName];
-    if (!CellClass) {
-      throw new Error(`CellClass "${cellClassName}" not found in ThingFactory`);
-    }
-    const cellThing = new CellClass(cellValue);
+    const cellThing = ThingFactory.fromKeyValue(cellKeyValue);
 
     return new Datum(query, cellThing);
   }
