@@ -1,10 +1,21 @@
 import { createTheme } from "@mui/material/styles";
 
-export const PRIMARY_COLOR = "#0b6e4f";
-
 export const FONT_FAMILY = "Fira Sans,  sans-serif";
 
 export const AppTheme = createTheme({
-  palette: { mode: "light", primary: { main: PRIMARY_COLOR } },
+  palette: {
+    primary: {
+      main: "#444444",
+      light: "#888888",
+      dark: "#000000",
+      contrastText: "ffffff",
+    },
+    secondary: {
+      main: "#8d153a",
+      light: "#ba7288",
+      dark: "#540c22",
+      contrastText: "#ffffff",
+    },
+  },
   typography: { fontFamily: FONT_FAMILY },
 });
