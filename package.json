@@ -44,5 +44,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://nuuuwan.github.io/lanka_data"
+  "homepage": "https://nuuuwan.github.io/lanka_data",
+  "devDependencies": {
+    "eslint-config-react-app": "^7.0.1"
+  }
 }
