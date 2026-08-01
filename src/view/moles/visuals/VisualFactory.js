@@ -1,8 +1,10 @@
 import Blocks from "./blocks/Blocks.js";
+import BarChart from "./BarChart.js";
 import JSONVisual from "./JSONVisual.js";
 
 class VisualFactoryContentsMixin {
   static Blocks = Blocks;
+  static BarChart = BarChart;
   static JSON = JSONVisual;
 }
 
