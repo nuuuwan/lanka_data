@@ -15,21 +15,37 @@ export default class DimensionUtils {
     return { nDims, varyingDimIndexes };
   }
 
-  static getXAxisDimIndex(datumList) {
+  static getXAxisDimIndex(datumList, stackDimIndex = null) {
     const { varyingDimIndexes } = DimensionUtils.getDimIndexInfo(datumList);
     if (varyingDimIndexes.length === 0) {
       return 0;
     }
+    if (stackDimIndex === null || varyingDimIndexes.length === 1) {
+      return varyingDimIndexes.at(-1);
+    }
+    return varyingDimIndexes.at(-2);
+  }
+
+  static getStackDimIndex(datumList) {
+    const { varyingDimIndexes } = DimensionUtils.getDimIndexInfo(datumList);
+    if (varyingDimIndexes.length < 2) {
+      return null;
+    }
     return varyingDimIndexes.at(-1);
   }
 
-  static getFacetDimIndexes(datumList) {
-    const xAxisDimIndex = DimensionUtils.getXAxisDimIndex(datumList);
+  static getFacetDimIndexes(datumList, stackDimIndex = null) {
+    const xAxisDimIndex = DimensionUtils.getXAxisDimIndex(
+      datumList,
+      stackDimIndex,
+    );
     const { nDims, varyingDimIndexes } =
       DimensionUtils.getDimIndexInfo(datumList);
     return Array.from({ length: nDims }, (_, i) => i).filter(
       (dimIndex) =>
-        dimIndex !== xAxisDimIndex && varyingDimIndexes.includes(dimIndex),
+        dimIndex !== xAxisDimIndex &&
+        dimIndex !== stackDimIndex &&
+        varyingDimIndexes.includes(dimIndex),
     );
   }
 
@@ -48,6 +64,15 @@ export default class DimensionUtils {
   static getXLabel(datum, xAxisDimIndex) {
     const thing = datum.query.dimThingList[xAxisDimIndex];
     return thing.value;
+  }
+
+  static getStackLabel(datum, stackDimIndex) {
+    const thing = datum.query.dimThingList[stackDimIndex];
+    return thing.value;
+  }
+
+  static getStackColor(datum, stackDimIndex) {
+    return datum.query.dimThingList[stackDimIndex].getColor();
   }
 
   static getBarColor(datum, xAxisDimIndex) {

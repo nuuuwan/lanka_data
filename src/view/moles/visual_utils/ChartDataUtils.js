@@ -38,4 +38,45 @@ export default class ChartDataUtils {
       }))
       .sort((a, b) => b.total - a.total);
   }
+
+  static groupStackedDataByFacet(
+    datumList,
+    xAxisDimIndex,
+    stackDimIndex,
+    facetDimIndexes,
+    { getXLabel, getStackLabel, getStackColor, getBarValue, getFacetKey },
+  ) {
+    const groups = new Map();
+
+    for (const datum of datumList) {
+      const facetKey = getFacetKey(datum, facetDimIndexes);
+      if (!groups.has(facetKey)) {
+        groups.set(facetKey, new Map());
+      }
+      const facetRows = groups.get(facetKey);
+      const xLabel = FormatUtils.toTitleCase(getXLabel(datum, xAxisDimIndex));
+      if (!facetRows.has(xLabel)) {
+        facetRows.set(xLabel, { id: xLabel });
+      }
+      const stackLabel = FormatUtils.toTitleCase(
+        getStackLabel(datum, stackDimIndex),
+      );
+      facetRows.get(xLabel)[stackLabel] = getBarValue(datum);
+      facetRows.get(xLabel)[`${stackLabel}Color`] = getStackColor(
+        datum,
+        stackDimIndex,
+      );
+    }
+
+    return Array.from(groups.entries())
+      .map(([facetKey, rows]) => {
+        const data = Array.from(rows.values());
+        return {
+          facetKey,
+          data,
+          total: ChartDataUtils.getFacetTotal(data),
+        };
+      })
+      .sort((a, b) => b.total - a.total);
+  }
 }

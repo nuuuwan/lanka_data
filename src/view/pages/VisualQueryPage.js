@@ -7,28 +7,58 @@ import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 
-function useChartFacets(datumSet) {
+function useChartFacets(datumSet, VisualClass) {
   const { datumList } = datumSet;
-  const xAxisDimIndex = DimensionUtils.getXAxisDimIndex(datumList);
-  const facetDimIndexes = DimensionUtils.getFacetDimIndexes(datumList);
+  const stackDimIndex = VisualClass.IS_STACKED
+    ? DimensionUtils.getStackDimIndex(datumList)
+    : null;
+  const xAxisDimIndex = DimensionUtils.getXAxisDimIndex(
+    datumList,
+    stackDimIndex,
+  );
+  const facetDimIndexes = DimensionUtils.getFacetDimIndexes(
+    datumList,
+    stackDimIndex,
+  );
   const xAxisDimName = DimensionUtils.getDimName(datumList, xAxisDimIndex);
   const yAxisLabel = datumList[0]?.query.aggregate ?? "";
-  const facets = ChartDataUtils.groupDataByFacet(
+
+  if (stackDimIndex === null) {
+    const facets = ChartDataUtils.groupDataByFacet(
+      datumList,
+      xAxisDimIndex,
+      facetDimIndexes,
+      {
+        getXLabel: DimensionUtils.getXLabel,
+        getBarValue: ChartDataUtils.getBarValue,
+        getBarColor: DimensionUtils.getBarColor,
+        getFacetKey: DimensionUtils.getFacetKey,
+      },
+    );
+    return { facets, xAxisDimName, yAxisLabel, stackDimIndex };
+  }
+
+  const facets = ChartDataUtils.groupStackedDataByFacet(
     datumList,
     xAxisDimIndex,
+    stackDimIndex,
     facetDimIndexes,
     {
       getXLabel: DimensionUtils.getXLabel,
+      getStackLabel: DimensionUtils.getStackLabel,
+      getStackColor: DimensionUtils.getStackColor,
       getBarValue: ChartDataUtils.getBarValue,
-      getBarColor: DimensionUtils.getBarColor,
       getFacetKey: DimensionUtils.getFacetKey,
     },
   );
-  return { facets, xAxisDimName, yAxisLabel };
+  return { facets, xAxisDimName, yAxisLabel, stackDimIndex };
 }
 
 function ChartVisual({ VisualClass, datumSet }) {
-  const { facets, xAxisDimName, yAxisLabel } = useChartFacets(datumSet);
+  const { facets, xAxisDimName, yAxisLabel, stackDimIndex } = useChartFacets(
+    datumSet,
+    VisualClass,
+  );
 
   return (
     <MultiChartLayout
@@ -40,6 +70,11 @@ function ChartVisual({ VisualClass, datumSet }) {
           data={data}
           xAxisLabel={xAxisLabel}
           yAxisLabel={yAxisLabel}
+          stackDimName={
+            stackDimIndex !== null
+              ? DimensionUtils.getDimName(datumSet.datumList, stackDimIndex)
+              : undefined
+          }
         />
       )}
     />
