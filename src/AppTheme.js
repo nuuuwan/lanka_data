@@ -6,14 +6,14 @@ export const AppTheme = createTheme({
   palette: {
     primary: {
       main: "#444444",
-      light: "#888888",
+      light: "#CCDCDB",
       dark: "#000000",
       contrastText: "#ffffff",
     },
     info: {
-      main: "#00534E",
-      light: "#669794",
-      dark: "#00312E",
+      main: "#669794",
+      light: "#CCDCDB",
+      dark: "#00534E",
       contrastText: "#ffffff",
     },
   },

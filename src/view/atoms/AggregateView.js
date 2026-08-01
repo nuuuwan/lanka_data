@@ -5,7 +5,7 @@ export default function AggregateView({ aggregate }) {
     <Chip
       label={aggregate}
       variant="filled"
-      sx={{ m: 0.5, color: "white", backgroundColor: "info.light" }}
+      sx={{ m: 0.5, backgroundColor: "info.light" }}
     />
   );
 }
