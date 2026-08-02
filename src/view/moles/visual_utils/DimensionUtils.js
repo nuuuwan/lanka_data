@@ -1,4 +1,5 @@
 import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
+import Time from "../../../nonview/core/thing/concept/atoms/Time.js";
 
 export default class DimensionUtils {
   static getDimIndexInfo(datumList) {
@@ -88,6 +89,39 @@ export default class DimensionUtils {
         datum.query.dimThingList[dimIndex].getHumanReadableValue(),
       )
       .join(" / ");
+  }
+
+  static sortFacets(facets, datumList, facetDimIndexes, fallbackCompare) {
+    const timeDimIndex = facetDimIndexes.find(
+      (dimIndex) => datumList[0].query.dimThingList[dimIndex] instanceof Time,
+    );
+    if (timeDimIndex === undefined) {
+      return facets.sort(fallbackCompare);
+    }
+
+    const timeByFacetKey = new Map(
+      datumList.map((datum) => [
+        DimensionUtils.getFacetKey(datum, facetDimIndexes),
+        datum.query.dimThingList[timeDimIndex].value,
+      ]),
+    );
+    return facets.sort((a, b) => {
+      const timeComparison = String(
+        timeByFacetKey.get(a.facetKey),
+      ).localeCompare(String(timeByFacetKey.get(b.facetKey)), undefined, {
+        numeric: true,
+      });
+      return timeComparison || fallbackCompare(a, b);
+    });
+  }
+
+  static sortDataByTime(data, datumList, dimIndex) {
+    if (!(datumList[0].query.dimThingList[dimIndex] instanceof Time)) {
+      return data;
+    }
+    return data.sort((a, b) =>
+      String(a.id).localeCompare(String(b.id), undefined, { numeric: true }),
+    );
   }
 
   static getDimName(datumList, dimIndex) {

@@ -6,6 +6,7 @@ import VisualQuery from "../../nonview/core/VisualQuery.js";
 import DataContext from "../../nonview/core/data_context/DataContext.js";
 import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
+import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 function useChartFacets(datumSet, VisualClass) {
   const { datumList } = datumSet;
@@ -97,7 +98,7 @@ function ChartVisual({ VisualClass, datumSet }) {
   );
 }
 
-function VisualContent({ VisualClass, datumSet }) {
+function VisualContent({ VisualClass, datumSet, loadTimeSeconds }) {
   return (
     <>
       <Typography
@@ -105,7 +106,8 @@ function VisualContent({ VisualClass, datumSet }) {
         variant="caption"
         sx={{ color: "text.secondary" }}
       >
-        {datumSet.datumList.length} datums
+        {datumSet.datumList.length} datums loaded in{" "}
+        {FormatUtils.humanizeDuration(loadTimeSeconds)}
       </Typography>
       {VisualClass.IS_CHART ? (
         <ChartVisual VisualClass={VisualClass} datumSet={datumSet} />
@@ -132,16 +134,28 @@ export default function VisualQueryPage() {
   }, [isReady, visualQueryStr]);
 
   const [datumSet, setDatumSet] = useState(null);
+  const [loadTimeSeconds, setLoadTimeSeconds] = useState(null);
   useEffect(() => {
     if (!visualQuery) {
       return;
     }
+    let cancelled = false;
     async function fetch() {
-      setDatumSet(
-        await DataSourceFactory.getDatumSetForQuery(visualQuery.query),
+      setDatumSet(null);
+      setLoadTimeSeconds(null);
+      const startTime = performance.now();
+      const nextDatumSet = await DataSourceFactory.getDatumSetForQuery(
+        visualQuery.query,
       );
+      if (!cancelled) {
+        setDatumSet(nextDatumSet);
+        setLoadTimeSeconds((performance.now() - startTime) / 1000);
+      }
     }
     fetch();
+    return () => {
+      cancelled = true;
+    };
   }, [visualQuery]);
 
   const VisualClass = visualQuery?.visualClass;
@@ -154,11 +168,15 @@ export default function VisualQueryPage() {
       >
         {visualQueryStr}
       </Typography>
-      {!isReady || datumSet === null ? (
+      {!isReady || datumSet === null || loadTimeSeconds === null ? (
         <CircularProgress sx={{ m: 2 }} />
       ) : (
         <Box data-testid="visual-content">
-          <VisualContent VisualClass={VisualClass} datumSet={datumSet} />
+          <VisualContent
+            VisualClass={VisualClass}
+            datumSet={datumSet}
+            loadTimeSeconds={loadTimeSeconds}
+          />
         </Box>
       )}
     </Box>

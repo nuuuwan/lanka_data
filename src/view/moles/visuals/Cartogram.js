@@ -176,8 +176,8 @@ export default function Cartogram({ datumSet }) {
       matchFeatureToValue(geoFeature, allDataMap),
     );
     const legendItemMap = new Map();
-    const cartograms = groupDatumListByFacet(datumList, facetDimIndexes)
-      .map(({ facetKey, facetDatumList }) => {
+    const cartograms = groupDatumListByFacet(datumList, facetDimIndexes).map(
+      ({ facetKey, facetDatumList }) => {
         const dataMap = buildFeatureToDataMap(
           facetDatumList,
           regionDimIndex,
@@ -234,11 +234,16 @@ export default function Cartogram({ datumSet }) {
           ],
           total: data.reduce((sum, item) => sum + item.value, 0),
         };
-      })
-      .sort((a, b) => b.total - a.total);
+      },
+    );
 
     return {
-      cartograms,
+      cartograms: DimensionUtils.sortFacets(
+        cartograms,
+        datumList,
+        facetDimIndexes,
+        (a, b) => b.total - a.total,
+      ),
       legendItems: Array.from(legendItemMap.values()),
     };
   }, [geoJson, datumList, regionDimIndex, stackDimIndex]);

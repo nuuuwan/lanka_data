@@ -16,6 +16,10 @@ export default class FormatUtils {
     return int.getHumanReadableValue();
   }
 
+  static humanizeDuration(seconds) {
+    return `${seconds.toFixed(2)} seconds`;
+  }
+
   static toThingLabel(thing) {
     if (thing instanceof Party) {
       return thing.getLabel();

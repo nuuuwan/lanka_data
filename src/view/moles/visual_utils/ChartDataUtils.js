@@ -1,4 +1,5 @@
 import FormatUtils from "./FormatUtils.js";
+import DimensionUtils from "./DimensionUtils.js";
 
 export default class ChartDataUtils {
   static getBarValue(datum) {
@@ -30,13 +31,17 @@ export default class ChartDataUtils {
       });
     }
 
-    return Array.from(groups.entries())
-      .map(([facetKey, data]) => ({
-        facetKey,
-        data,
-        total: ChartDataUtils.getFacetTotal(data),
-      }))
-      .sort((a, b) => b.total - a.total);
+    const facets = Array.from(groups.entries()).map(([facetKey, data]) => ({
+      facetKey,
+      data: DimensionUtils.sortDataByTime(data, datumList, xAxisDimIndex),
+      total: ChartDataUtils.getFacetTotal(data),
+    }));
+    return DimensionUtils.sortFacets(
+      facets,
+      datumList,
+      facetDimIndexes,
+      (a, b) => b.total - a.total,
+    );
   }
 
   static groupStackedDataByFacet(
@@ -72,15 +77,19 @@ export default class ChartDataUtils {
         (facetRows.get(xLabel)._barWidth || 0) + getBarValue(datum);
     }
 
-    return Array.from(groups.entries())
-      .map(([facetKey, rows]) => {
-        const data = Array.from(rows.values());
-        return {
-          facetKey,
-          data,
-          total: ChartDataUtils.getFacetTotal(data),
-        };
-      })
-      .sort((a, b) => b.total - a.total);
+    const facets = Array.from(groups.entries()).map(([facetKey, rows]) => {
+      const data = Array.from(rows.values());
+      return {
+        facetKey,
+        data: DimensionUtils.sortDataByTime(data, datumList, xAxisDimIndex),
+        total: ChartDataUtils.getFacetTotal(data),
+      };
+    });
+    return DimensionUtils.sortFacets(
+      facets,
+      datumList,
+      facetDimIndexes,
+      (a, b) => b.total - a.total,
+    );
   }
 }

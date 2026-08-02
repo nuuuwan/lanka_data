@@ -190,8 +190,8 @@ export default function MapVisual({ datumSet }) {
       );
       const [translateX, translateY] = projection.translate();
       const legendItemMap = new Map();
-      const maps = groupDatumListByFacet(datumList, facetDimIndexes)
-        .map(({ facetKey, facetDatumList }) => {
+      const maps = groupDatumListByFacet(datumList, facetDimIndexes).map(
+        ({ facetKey, facetDatumList }) => {
           const dataMap = buildFeatureToDataMap(
             facetDatumList,
             regionDimIndex,
@@ -241,11 +241,16 @@ export default function MapVisual({ datumSet }) {
             labels,
             total: data.reduce((sum, item) => sum + item.value, 0),
           };
-        })
-        .sort((a, b) => b.total - a.total);
+        },
+      );
 
       return {
-        maps,
+        maps: DimensionUtils.sortFacets(
+          maps,
+          datumList,
+          facetDimIndexes,
+          (a, b) => b.total - a.total,
+        ),
         legendItems: Array.from(legendItemMap.values()),
         projectionScale: projection.scale(),
         projectionTranslation: [
