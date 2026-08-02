@@ -14,7 +14,7 @@ export default class ChartDataUtils {
     datumList,
     xAxisDimIndex,
     facetDimIndexes,
-    { getXLabel, getBarValue, getBarColor, getFacetKey },
+    { getBarValue, getBarColor, getFacetKey },
   ) {
     const groups = new Map();
 
@@ -24,7 +24,7 @@ export default class ChartDataUtils {
         groups.set(facetKey, []);
       }
       groups.get(facetKey).push({
-        id: FormatUtils.toTitleCase(getXLabel(datum, xAxisDimIndex)),
+        id: FormatUtils.toThingLabel(datum.query.dimThingList[xAxisDimIndex]),
         value: getBarValue(datum),
         color: getBarColor(datum, xAxisDimIndex),
       });
@@ -44,7 +44,7 @@ export default class ChartDataUtils {
     xAxisDimIndex,
     stackDimIndex,
     facetDimIndexes,
-    { getXLabel, getStackLabel, getStackColor, getBarValue, getFacetKey },
+    { getStackColor, getBarValue, getFacetKey },
   ) {
     const groups = new Map();
 
@@ -54,12 +54,14 @@ export default class ChartDataUtils {
         groups.set(facetKey, new Map());
       }
       const facetRows = groups.get(facetKey);
-      const xLabel = FormatUtils.toTitleCase(getXLabel(datum, xAxisDimIndex));
+      const xLabel = FormatUtils.toThingLabel(
+        datum.query.dimThingList[xAxisDimIndex],
+      );
       if (!facetRows.has(xLabel)) {
         facetRows.set(xLabel, { id: xLabel });
       }
-      const stackLabel = FormatUtils.toTitleCase(
-        getStackLabel(datum, stackDimIndex),
+      const stackLabel = FormatUtils.toThingLabel(
+        datum.query.dimThingList[stackDimIndex],
       );
       facetRows.get(xLabel)[stackLabel] = getBarValue(datum);
       facetRows.get(xLabel)[`${stackLabel}Color`] = getStackColor(

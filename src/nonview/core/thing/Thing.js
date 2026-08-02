@@ -13,8 +13,12 @@ export default class Thing {
     return new this(value);
   }
 
+  getLabel() {
+    return this.value;
+  }
+
   getHumanReadableValue() {
-    return `${this.constructor.name}=${this.value}`;
+    return `${this.constructor.name}=${this.getLabel()}`;
   }
 
   getColor() {

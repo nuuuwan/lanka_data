@@ -5,6 +5,10 @@ export default class Party extends Concept {
     return new this(value);
   }
 
+  getLabel() {
+    return this.value.toUpperCase();
+  }
+
   static getColorMap() {
     return {
       SLFP: "#00058f",

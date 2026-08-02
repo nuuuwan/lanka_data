@@ -48,6 +48,10 @@ const screens = [
     path: "/lanka_data/Vote/ElectionType=presidential+Time=2015+PD%3CED=gampaha+Party/Count/Cartogram",
     readyTestId: "cartogram",
   },
+  {
+    path: "/lanka_data/Vote/ElectionType=presidential+Time+PD%3CED=colombo+Party/Count/Cartogram",
+    readyTestId: "cartogram-facets",
+  },
 ];
 
 describe.each(screens)("screen: $path", ({ path, readyTestId }) => {

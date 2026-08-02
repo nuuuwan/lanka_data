@@ -48,7 +48,7 @@ function buildFeatureToDataMap(datumList, regionDimIndex, stackDimIndex) {
     }
     const stackLabel =
       stackDimIndex !== undefined
-        ? FormatUtils.toTitleCase(datum.query.dimThingList[stackDimIndex].value)
+        ? FormatUtils.toThingLabel(datum.query.dimThingList[stackDimIndex])
         : "value";
     const color =
       stackDimIndex !== undefined

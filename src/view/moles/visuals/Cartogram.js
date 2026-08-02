@@ -16,7 +16,9 @@ import {
   MAP_UNKNOWN_COLOR,
   MAP_WIDTH,
 } from "../../_cons/MapCons.js";
+import DimensionUtils from "../visual_utils/DimensionUtils.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
+import MultiChartLayout from "../visual_utils/MultiChartLayout.js";
 import Legend from "./Legend.js";
 
 function getRegionDimIndex(datumList) {
@@ -26,12 +28,8 @@ function getRegionDimIndex(datumList) {
 }
 
 function getStackDimIndex(datumList, regionDimIndex) {
-  const { length } = datumList[0].query.dimThingList;
-  return Array.from({ length }, (_, i) => i).find(
-    (i) =>
-      i !== regionDimIndex &&
-      new Set(datumList.map((d) => d.query.dimThingList[i].value)).size > 1,
-  );
+  const { varyingDimIndexes } = DimensionUtils.getDimIndexInfo(datumList);
+  return varyingDimIndexes.filter((i) => i !== regionDimIndex).at(-1);
 }
 
 function getRegionClass(datumList, regionDimIndex) {
@@ -47,7 +45,7 @@ function buildFeatureToDataMap(datumList, regionDimIndex, stackDimIndex) {
     }
     const stackLabel =
       stackDimIndex !== undefined
-        ? FormatUtils.toTitleCase(datum.query.dimThingList[stackDimIndex].value)
+        ? FormatUtils.toThingLabel(datum.query.dimThingList[stackDimIndex])
         : "value";
     const color =
       stackDimIndex !== undefined
@@ -67,6 +65,21 @@ function getDisplayItem(items) {
     return items[0];
   }
   return items.reduce((best, item) => (item.value > best.value ? item : best));
+}
+
+export function groupDatumListByFacet(datumList, facetDimIndexes) {
+  const groups = new Map();
+  for (const datum of datumList) {
+    const facetKey = DimensionUtils.getFacetKey(datum, facetDimIndexes);
+    if (!groups.has(facetKey)) {
+      groups.set(facetKey, []);
+    }
+    groups.get(facetKey).push(datum);
+  }
+  return Array.from(groups.entries()).map(([facetKey, facetDatumList]) => ({
+    facetKey,
+    facetDatumList,
+  }));
 }
 
 export function matchFeatureToValue(feature, dataMap) {
@@ -141,90 +154,92 @@ export default function Cartogram({ datumSet }) {
     load();
   }, [regionClass]);
 
-  const {
-    features,
-    data,
-    legendItems,
-    projectionScale,
-    projectionTranslation,
-  } = useMemo(() => {
+  const { cartograms, legendItems } = useMemo(() => {
     if (!geoJson) {
       return {
-        features: [],
-        data: [],
+        cartograms: [],
         legendItems: [],
-        projectionScale: 0,
-        projectionTranslation: [0.5, 0.5],
       };
     }
 
-    const dataMap = buildFeatureToDataMap(
+    const facetDimIndexes = DimensionUtils.getFacetDimIndexes(
       datumList,
       regionDimIndex,
       stackDimIndex,
     );
-
+    const allDataMap = buildFeatureToDataMap(
+      datumList,
+      regionDimIndex,
+      stackDimIndex,
+    );
     const geoFeatures = geoJson.features.filter((geoFeature) =>
-      matchFeatureToValue(geoFeature, dataMap),
+      matchFeatureToValue(geoFeature, allDataMap),
     );
-    const regionIdToWeight = buildRegionIdToWeight(geoFeatures, dataMap);
+    const legendItemMap = new Map();
+    const cartograms = groupDatumListByFacet(datumList, facetDimIndexes)
+      .map(({ facetKey, facetDatumList }) => {
+        const dataMap = buildFeatureToDataMap(
+          facetDatumList,
+          regionDimIndex,
+          stackDimIndex,
+        );
+        const regionIdToWeight = buildRegionIdToWeight(geoFeatures, dataMap);
+        const deformedFeatures = JSON.parse(JSON.stringify(geoFeatures));
+        CartogramUtils.compute(deformedFeatures, regionIdToWeight);
 
-    const deformedFeatures = JSON.parse(JSON.stringify(geoFeatures));
-    CartogramUtils.compute(deformedFeatures, regionIdToWeight);
+        const features = [];
+        const data = [];
+        for (const geoFeature of deformedFeatures) {
+          const match = matchFeatureToValue(geoFeature, dataMap);
+          const display = match ? getDisplayItem(match.items) : null;
+          const id = String(getFeatureRegionId(geoFeature));
+          features.push({
+            ...geoFeature,
+            id,
+            fill: display?.color,
+          });
+          if (display) {
+            data.push({
+              id,
+              value: display.value,
+              categoryLabel: display.label,
+            });
+            legendItemMap.set(display.label, {
+              id: display.label,
+              label: display.label,
+              color: display.color,
+            });
+          }
+        }
 
-    const features = [];
-    const data = [];
-    for (const geoFeature of deformedFeatures) {
-      const match = matchFeatureToValue(geoFeature, dataMap);
-      const display = match ? getDisplayItem(match.items) : null;
-      const id = String(getFeatureRegionId(geoFeature));
-      features.push({
-        ...geoFeature,
-        id,
-        fill: display?.color,
-      });
-      if (display) {
-        data.push({
-          id,
-          value: display.value,
-          categoryLabel: display.label,
-        });
-      }
-    }
-
-    const legendItems = [];
-    const seenLabels = new Set();
-    for (const geoFeature of deformedFeatures) {
-      const match = matchFeatureToValue(geoFeature, dataMap);
-      const display = match ? getDisplayItem(match.items) : null;
-      if (display && !seenLabels.has(display.label)) {
-        seenLabels.add(display.label);
-        legendItems.push({
-          id: display.label,
-          label: display.label,
-          color: display.color,
-        });
-      }
-    }
-
-    const projection = geoMercator().fitExtent(
-      [
-        [MAP_PADDING, MAP_PADDING],
-        [MAP_WIDTH - MAP_PADDING, MAP_HEIGHT - MAP_PADDING],
-      ],
-      {
-        type: "MultiPoint",
-        coordinates: getGeoCoordinates(deformedFeatures),
-      },
-    );
-    const [translateX, translateY] = projection.translate();
+        const projection = geoMercator().fitExtent(
+          [
+            [MAP_PADDING, MAP_PADDING],
+            [MAP_WIDTH - MAP_PADDING, MAP_HEIGHT - MAP_PADDING],
+          ],
+          {
+            type: "MultiPoint",
+            coordinates: getGeoCoordinates(deformedFeatures),
+          },
+        );
+        const [translateX, translateY] = projection.translate();
+        return {
+          facetKey,
+          features,
+          data,
+          projectionScale: projection.scale(),
+          projectionTranslation: [
+            translateX / MAP_WIDTH,
+            translateY / MAP_HEIGHT,
+          ],
+          total: data.reduce((sum, item) => sum + item.value, 0),
+        };
+      })
+      .sort((a, b) => b.total - a.total);
 
     return {
-      features,
-      data,
-      legendItems,
-      projectionScale: projection.scale(),
-      projectionTranslation: [translateX / MAP_WIDTH, translateY / MAP_HEIGHT],
+      cartograms,
+      legendItems: Array.from(legendItemMap.values()),
     };
   }, [geoJson, datumList, regionDimIndex, stackDimIndex]);
 
@@ -232,10 +247,14 @@ export default function Cartogram({ datumSet }) {
     return <Typography>Loading cartogram…</Typography>;
   }
 
-  const maxValue = Math.max(...data.map(({ value }) => value), 1);
-
-  return (
-    <Box>
+  const renderCartogram = ({
+    features,
+    data,
+    projectionScale,
+    projectionTranslation,
+  }) => {
+    const maxValue = Math.max(...data.map(({ value }) => value), 1);
+    return (
       <Box
         ref={setCartogramViewBox}
         data-testid="cartogram"
@@ -272,6 +291,23 @@ export default function Cartogram({ datumSet }) {
           role="img"
         />
       </Box>
+    );
+  };
+
+  return (
+    <Box data-testid="cartograms">
+      {cartograms.length > 1 && (
+        <Box data-testid="cartogram-facets" display="none" />
+      )}
+      <MultiChartLayout
+        facets={cartograms.map((cartogram) => ({
+          facetKey: cartogram.facetKey,
+          data: cartogram,
+        }))}
+        xAxisDimName={regionClass.name}
+        yAxisLabel=""
+        renderChart={({ data }) => renderCartogram(data)}
+      />
       <Legend items={legendItems} />
     </Box>
   );

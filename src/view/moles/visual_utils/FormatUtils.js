@@ -1,4 +1,5 @@
 import Int from "../../../nonview/core/thing/concept/atoms/Int.js";
+import Party from "../../../nonview/core/thing/concept/category_concept/election/Party.js";
 
 export default class FormatUtils {
   static isLightColor(color) {
@@ -13,6 +14,13 @@ export default class FormatUtils {
   static humanizeValue(value) {
     const int = new Int(value);
     return int.getHumanReadableValue();
+  }
+
+  static toThingLabel(thing) {
+    if (thing instanceof Party) {
+      return thing.getLabel();
+    }
+    return FormatUtils.toTitleCase(thing.getLabel());
   }
 
   static toTitleCase(value) {
