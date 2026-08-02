@@ -3,7 +3,6 @@ import { feature } from "topojson-client";
 import { Box, Typography } from "@mui/material";
 import { geoPath, geoMercator } from "d3-geo";
 
-import { FONT_FAMILY } from "../../../AppTheme.js";
 import WWW from "../../../nonview/base/WWW.js";
 import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
@@ -18,7 +17,9 @@ function getRegionDimIndex(datumList) {
 function getStackDimIndex(datumList, regionDimIndex) {
   const { length } = datumList[0].query.dimThingList;
   return Array.from({ length }, (_, i) => i).find(
-    (i) => i !== regionDimIndex && new Set(datumList.map((d) => d.query.dimThingList[i].value)).size > 1,
+    (i) =>
+      i !== regionDimIndex &&
+      new Set(datumList.map((d) => d.query.dimThingList[i].value)).size > 1,
   );
 }
 
@@ -86,17 +87,20 @@ export default function Map({ datumSet }) {
     load();
   }, [regionClass]);
 
-  const { dataWithDisplay, legendItems, projection, path } = useMemo(() => {
+  const { dataWithDisplay, legendItems, path } = useMemo(() => {
     if (!geoJson) {
       return {
         dataWithDisplay: [],
         legendItems: [],
-        projection: null,
         path: null,
       };
     }
 
-    const dataMap = buildFeatureToDataMap(datumList, regionDimIndex, stackDimIndex);
+    const dataMap = buildFeatureToDataMap(
+      datumList,
+      regionDimIndex,
+      stackDimIndex,
+    );
     const matched = [];
     for (const geoFeature of geoJson.features) {
       const match = matchFeatureToValue(geoFeature, dataMap);
@@ -120,7 +124,7 @@ export default function Map({ datumSet }) {
     const projection = geoMercator().fitSize([600, 800], geoJson);
     const path = geoPath().projection(projection);
 
-    return { dataWithDisplay: matched, legendItems, projection, path };
+    return { dataWithDisplay: matched, legendItems, path };
   }, [geoJson, datumList, regionDimIndex, stackDimIndex]);
 
   if (!geoJson || !path) {
