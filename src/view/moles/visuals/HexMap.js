@@ -152,6 +152,9 @@ export default function HexMap({ datumSet }) {
     if (!geoJson) {
       return { maps: [], legendItems: [] };
     }
+    console.debug(
+      `[HexMap] Preparing map geometry from ${datumList.length} datums`,
+    );
     const facetDimIndexes = DimensionUtils.getFacetDimIndexes(
       datumList,
       regionDimIndex,
@@ -165,13 +168,19 @@ export default function HexMap({ datumSet }) {
     const geoFeatures = geoJson.features.filter((geoFeature) =>
       matchFeatureToValue(geoFeature, allDataMap),
     );
-    const { projection, projectionScale, projectionTranslation } =
-      getProjectionInfo(geoFeatures);
-    const valuePerHexagon = getValuePerHexagon(
-      Array.from(allDataMap.values(), (items) => getDisplayItem(items).value),
+    const facetGroups = groupDatumListByFacet(datumList, facetDimIndexes);
+    console.debug(
+      `[HexMap] Matched ${geoFeatures.length}/${geoJson.features.length} geographic features across ${facetGroups.length} facets`,
+    );
+    const projection = geoMercator().fitExtent(
+      [
+        [MAP_PADDING, MAP_PADDING],
+        [MAP_WIDTH - MAP_PADDING, MAP_HEIGHT - MAP_PADDING],
+      ],
+      geoJson,
     );
     const legendItemMap = new Map();
-    const maps = groupDatumListByFacet(datumList, facetDimIndexes)
+    const maps = facetGroups
       .map(({ facetKey, facetDatumList }) => {
         const dataMap = buildFeatureToDataMap(
           facetDatumList,
@@ -232,6 +241,9 @@ export default function HexMap({ datumSet }) {
         };
       })
       .sort((a, b) => b.total - a.total);
+    console.debug(
+      `[HexMap] Built ${maps.length} maps with ${maps.reduce((count, map) => count + map.features.length, 0)} total features`,
+    );
     return { maps, legendItems: Array.from(legendItemMap.values()) };
   }, [geoJson, datumList, regionDimIndex, stackDimIndex]);
 
