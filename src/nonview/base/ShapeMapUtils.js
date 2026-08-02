@@ -2,6 +2,7 @@ const GRID_FACTOR = 1.3;
 const MAX_GRID_ITERATIONS = 12;
 const MAX_SHAPE_ERROR = 0.1;
 const HEX_AREA_FACTOR = (3 * Math.sqrt(3)) / 2;
+const SQUARE_AREA_FACTOR = 1;
 
 function roundHalfEven(value) {
   const floor = Math.floor(value);
@@ -106,20 +107,50 @@ function getHexCenters(bounds, radius) {
 }
 
 export function buildHexGrid(bounds, totalCount) {
+  const { centers, size } = buildGrid(
+    bounds,
+    totalCount,
+    HEX_AREA_FACTOR,
+    getHexCenters,
+  );
+  return { centers, radius: size };
+}
+
+function getSquareCenters(bounds, size) {
+  const [minX, minY, maxX, maxY] = bounds;
+  const centers = [];
+  for (let y = minY + size / 2; y <= maxY + size; y += size) {
+    for (let x = minX + size / 2; x <= maxX + size; x += size) {
+      centers.push([x, y]);
+    }
+  }
+  return centers;
+}
+
+function buildGrid(bounds, totalCount, areaFactor, getCenters) {
   const [minX, minY, maxX, maxY] = bounds;
   const target = Math.max(totalCount * GRID_FACTOR, totalCount + 1);
   const area = Math.max((maxX - minX) * (maxY - minY), 1e-12);
-  let radius = Math.sqrt(area / (Math.max(target, 1) * HEX_AREA_FACTOR));
-  let centers = getHexCenters(bounds, radius);
+  let size = Math.sqrt(area / (Math.max(target, 1) * areaFactor));
+  let centers = getCenters(bounds, size);
   for (
     let iteration = 0;
     iteration < MAX_GRID_ITERATIONS && centers.length < totalCount;
     iteration += 1
   ) {
-    radius *= 0.85;
-    centers = getHexCenters(bounds, radius);
+    size *= 0.85;
+    centers = getCenters(bounds, size);
   }
-  return { centers, radius };
+  return { centers, size };
+}
+
+export function buildSquareGrid(bounds, totalCount) {
+  return buildGrid(
+    bounds,
+    totalCount,
+    SQUARE_AREA_FACTOR,
+    getSquareCenters,
+  );
 }
 
 function solveAssignment(cost) {
@@ -211,6 +242,16 @@ export function getHexPoints([x, y], radius) {
   });
 }
 
+export function getSquarePoints([x, y], size) {
+  const halfSize = size / 2;
+  return [
+    [x - halfSize, y - halfSize],
+    [x + halfSize, y - halfSize],
+    [x + halfSize, y + halfSize],
+    [x - halfSize, y + halfSize],
+  ];
+}
+
 function getAxes(angleDegrees) {
   const angle = (angleDegrees * Math.PI) / 180;
   const cosine = Math.cos(angle);
@@ -257,6 +298,34 @@ export function getBestHexLabelFit(points, radius) {
       line.push([projectPoint(point, horizontalAxis), point]);
       lines.set(key, line);
     }
+
+    export function getBestSquareLabelFit(points, size) {
+      let best = null;
+      for (const angle of [0, 90]) {
+        const [horizontalAxis, verticalAxis] = getAxes(angle);
+        const lines = new Map();
+        for (const point of points) {
+          const key = Math.round(projectPoint(point, verticalAxis) / size);
+          const line = lines.get(key) ?? [];
+          line.push([projectPoint(point, horizontalAxis), point]);
+          lines.set(key, line);
+        }
+        for (const line of lines.values()) {
+          const run = getLongestRun(line, size);
+          if (!best || run.length > best.run.length) {
+            best = { angle, run };
+          }
+        }
+      }
+      const first = best.run[0][1];
+      const last = best.run.at(-1)[1];
+      return {
+        center: [(first[0] + last[0]) / 2, (first[1] + last[1]) / 2],
+        width: best.run.length * size,
+        height: size,
+        angle: best.angle,
+      };
+    }
     for (const line of lines.values()) {
       const run = getLongestRun(line, step);
       if (!best || run.length > best.run.length) {
@@ -279,10 +348,10 @@ function getEdgeKey(start, end) {
   return [pointKey(start), pointKey(end)].sort().join(":");
 }
 
-export function getHexBoundaryEdges(shapes, radius) {
+function getBoundaryEdges(shapes, getPoints) {
   const edgeGroups = new Map();
   for (const { id, center } of shapes) {
-    const points = getHexPoints(center, radius);
+    const points = getPoints(center);
     for (let index = 0; index < points.length; index += 1) {
       const start = points[index];
       const end = points[(index + 1) % points.length];
@@ -298,4 +367,12 @@ export function getHexBoundaryEdges(shapes, radius) {
         edges.length === 1 || edges.some(({ id }) => id !== edges[0].id),
     )
     .map(([edge]) => edge);
+}
+
+export function getHexBoundaryEdges(shapes, radius) {
+  return getBoundaryEdges(shapes, (center) => getHexPoints(center, radius));
+}
+
+export function getSquareBoundaryEdges(shapes, size) {
+  return getBoundaryEdges(shapes, (center) => getSquarePoints(center, size));
 }
