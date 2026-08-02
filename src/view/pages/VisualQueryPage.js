@@ -148,10 +148,7 @@ export default function VisualQueryPage() {
 
   return (
     <Box sx={{ m: 2 }}>
-      <Typography variant="h6" sx={{ color: "info.main" }}>
-        Lanka Data
-      </Typography>
-      <Typography variant="h6" sx={{ color: "primary" }}>
+      <Typography variant="title" sx={{ color: "primary" }}>
         {visualQueryStr}
       </Typography>
       {!isReady || datumSet === null ? (

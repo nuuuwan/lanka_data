@@ -1,10 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import { feature } from "topojson-client";
 import { Box, Typography } from "@mui/material";
-import { geoPath, geoMercator } from "d3-geo";
+import { Choropleth } from "@nivo/geo";
+import { geoMercator } from "d3-geo";
 
 import WWW from "../../../nonview/base/WWW.js";
 import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
+import {
+  MAP_BORDER_COLOR,
+  MAP_BORDER_WIDTH,
+  MAP_HEIGHT,
+  MAP_UNKNOWN_COLOR,
+  MAP_WIDTH,
+} from "../../_cons/MapCons.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import Legend from "./Legend.js";
 
@@ -87,12 +95,20 @@ export default function MapVisual({ datumSet }) {
     load();
   }, [regionClass]);
 
-  const { dataWithDisplay, legendItems, path } = useMemo(() => {
+  const {
+    features,
+    data,
+    legendItems,
+    projectionScale,
+    projectionTranslation,
+  } = useMemo(() => {
     if (!geoJson) {
       return {
-        dataWithDisplay: [],
+        features: [],
+        data: [],
         legendItems: [],
-        path: null,
+        projectionScale: 0,
+        projectionTranslation: [0.5, 0.5],
       };
     }
 
@@ -101,16 +117,31 @@ export default function MapVisual({ datumSet }) {
       regionDimIndex,
       stackDimIndex,
     );
-    const matched = [];
+    const features = [];
+    const data = [];
     for (const geoFeature of geoJson.features) {
       const match = matchFeatureToValue(geoFeature, dataMap);
       const display = match ? getDisplayItem(match.items) : null;
-      matched.push({ geoFeature, display });
+      const id = String(geoFeature.properties.id ?? geoFeature.properties.name);
+      features.push({
+        ...geoFeature,
+        id,
+        fill: display?.color,
+      });
+      if (display) {
+        data.push({
+          id,
+          value: display.value,
+          categoryLabel: display.label,
+        });
+      }
     }
 
     const legendItems = [];
     const seenLabels = new Set();
-    for (const { display } of matched) {
+    for (const geoFeature of geoJson.features) {
+      const match = matchFeatureToValue(geoFeature, dataMap);
+      const display = match ? getDisplayItem(match.items) : null;
       if (display && !seenLabels.has(display.label)) {
         seenLabels.add(display.label);
         legendItems.push({
@@ -121,46 +152,60 @@ export default function MapVisual({ datumSet }) {
       }
     }
 
-    const projection = geoMercator().fitSize([600, 800], geoJson);
-    const path = geoPath().projection(projection);
+    const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], geoJson);
+    const [translateX, translateY] = projection.translate();
 
-    return { dataWithDisplay: matched, legendItems, path };
+    return {
+      features,
+      data,
+      legendItems,
+      projectionScale: projection.scale(),
+      projectionTranslation: [translateX / MAP_WIDTH, translateY / MAP_HEIGHT],
+    };
   }, [geoJson, datumList, regionDimIndex, stackDimIndex]);
 
-  if (!geoJson || !path) {
+  if (!geoJson) {
     return <Typography>Loading map…</Typography>;
   }
+
+  const maxValue = Math.max(...data.map(({ value }) => value), 1);
 
   return (
     <Box>
       <Box
-        component="svg"
         data-testid="map"
-        viewBox="0 0 600 800"
         sx={{
           width: "100%",
-          maxWidth: 600,
-          height: "auto",
-          display: "block",
+          maxWidth: MAP_WIDTH,
           mx: "auto",
+          "& svg": {
+            width: "100%",
+            height: "auto",
+            display: "block",
+          },
         }}
       >
-        {dataWithDisplay.map(({ geoFeature, display }) => (
-          <path
-            key={geoFeature.properties.id}
-            d={path(geoFeature)}
-            fill={display?.color ?? "#e0e0e0"}
-            stroke="#ffffff"
-            strokeWidth={0.5}
-          >
-            <title>
-              {geoFeature.properties.name}
-              {display
-                ? `: ${display.label} ${FormatUtils.humanizeValue(display.value)}`
-                : ""}
-            </title>
-          </path>
-        ))}
+        <Choropleth
+          width={MAP_WIDTH}
+          height={MAP_HEIGHT}
+          features={features}
+          data={data}
+          domain={[0, maxValue]}
+          label={(mapFeature) =>
+            mapFeature.data
+              ? `${mapFeature.properties.name}: ${mapFeature.data.categoryLabel}`
+              : mapFeature.properties.name
+          }
+          valueFormat={FormatUtils.humanizeValue}
+          projectionType="mercator"
+          projectionScale={projectionScale}
+          projectionTranslation={projectionTranslation}
+          colors={[MAP_UNKNOWN_COLOR, MAP_UNKNOWN_COLOR]}
+          unknownColor={MAP_UNKNOWN_COLOR}
+          borderWidth={MAP_BORDER_WIDTH}
+          borderColor={MAP_BORDER_COLOR}
+          role="img"
+        />
       </Box>
       <Legend items={legendItems} />
     </Box>
