@@ -8,7 +8,7 @@ export default class FormatUtils {
     const green = parseInt(hex.substring(2, 4), 16) / 255;
     const blue = parseInt(hex.substring(4, 6), 16) / 255;
     const luminance = 0.299 * red + 0.587 * green + 0.114 * blue;
-    return luminance > 0.1;
+    return luminance > 0.4;
   }
 
   static humanizeValue(value) {
