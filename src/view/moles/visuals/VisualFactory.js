@@ -8,6 +8,7 @@ import HexMap from "./HexMap.js";
 import MarimekkoChart from "./MarimekkoChart.js";
 import PieChart from "./PieChart.js";
 import StackedBarChart from "./StackedBarChart.js";
+import TreeMap from "./TreeMap.js";
 
 class VisualFactoryContentsMixin {
   static Blocks = Blocks;
@@ -15,6 +16,7 @@ class VisualFactoryContentsMixin {
   static BarChart = BarChart;
   static StackedBarChart = StackedBarChart;
   static MarimekkoChart = MarimekkoChart;
+  static TreeMap = TreeMap;
   static PieChart = PieChart;
   static Map = Map;
   static HexMap = HexMap;
