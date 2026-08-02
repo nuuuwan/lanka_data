@@ -41,7 +41,7 @@
       "^react-router/dom$": "<rootDir>/node_modules/react-router/dist/development/dom-export.js"
     },
     "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\](?!(@nivo|d3-|internmap)/).+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+      "[/\\\\]node_modules[/\\\\](?!(@nivo|d3-[^/\\\\]*|internmap|delaunator|robust-predicates)[/\\\\]).+\\.(js|jsx|mjs|cjs|ts|tsx)$",
       "^.+\\.module\\.(css|sass|scss)$"
     ]
   },
