@@ -31,21 +31,21 @@ export default function GeoChoropleth({
     <g data-testid={`${testId}-labels`} pointerEvents="none">
       {labels.map(
         ({ backgroundColor, fontSize, id, name, position: [x, y] }) => (
-        <text
-          key={id}
-          x={x}
-          y={y}
-          textAnchor="middle"
-          dominantBaseline="central"
-          fill={
-            FormatUtils.isLightColor(backgroundColor)
-              ? MAP_LABEL_DARK_COLOR
-              : MAP_LABEL_LIGHT_COLOR
-          }
-          fontSize={fontSize}
-        >
-          {name}
-        </text>
+          <text
+            key={id}
+            x={x}
+            y={y}
+            textAnchor="middle"
+            dominantBaseline="central"
+            fill={
+              FormatUtils.isLightColor(backgroundColor)
+                ? MAP_LABEL_DARK_COLOR
+                : MAP_LABEL_LIGHT_COLOR
+            }
+            fontSize={fontSize}
+          >
+            {name}
+          </text>
         ),
       )}
     </g>

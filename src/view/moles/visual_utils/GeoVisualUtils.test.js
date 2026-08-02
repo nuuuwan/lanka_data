@@ -1,7 +1,4 @@
-import {
-  buildRegionLabels,
-  getFittedLabelFontSize,
-} from "./GeoVisualUtils.js";
+import { buildRegionLabels, getFittedLabelFontSize } from "./GeoVisualUtils.js";
 
 test("fits label font size within the available width and height", () => {
   expect(getFittedLabelFontSize("Four", 24, 20)).toBe(10);

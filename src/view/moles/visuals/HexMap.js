@@ -70,15 +70,17 @@ function getLabels(shapes, regionById, radius) {
     centers.push(center);
     centersById.set(id, centers);
   }
-  return [...centersById].map(([id, centers]) => ({
-    ...getBestHexLabelFit(centers, radius),
-    color: regionById.get(id).display.color,
-    id,
-    name: regionById.get(id).feature.properties.name,
-  })).map((label) => ({
-    ...label,
-    fontSize: getFittedLabelFontSize(label.name, label.width, label.height),
-  }));
+  return [...centersById]
+    .map(([id, centers]) => ({
+      ...getBestHexLabelFit(centers, radius),
+      color: regionById.get(id).display.color,
+      id,
+      name: regionById.get(id).feature.properties.name,
+    }))
+    .map((label) => ({
+      ...label,
+      fontSize: getFittedLabelFontSize(label.name, label.width, label.height),
+    }));
 }
 
 export function buildHexMapLayout(facetInfo, valuePerHexagon) {
