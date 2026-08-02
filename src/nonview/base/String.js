@@ -1,6 +1,6 @@
 export default class String {
   static toSnakeCase(value) {
-    return String(value)
+    return `${value}`
       .trim()
       .replace(/&/g, " and ")
       .replace(/[()]/g, "")

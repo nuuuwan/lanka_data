@@ -1,15 +1,6 @@
 import Concept from "../Concept.js";
 import Thing from "../../Thing.js";
-
-function toSnakeCase(value) {
-  return value
-    .replace(/([a-z])([A-Z])/g, "$1_$2")
-    .replace(/\s+/g, "_")
-    .replace(/[^a-zA-Z0-9_]+/g, "_")
-    .replace(/_+/g, "_")
-    .toLowerCase();
-}
-
+import String from "../../../../base/String.js";
 export default class CategoryConcept extends Concept {
   static validValues() {
     throw new Error(`validValues() not implemented for ${this.name}`);
@@ -68,8 +59,8 @@ export default class CategoryConcept extends Concept {
       return new this(value);
     }
 
-    let normalized = String(value).replace(/\*/g, "");
-    normalized = toSnakeCase(normalized);
+    let normalized = `${value}`.replace(/\*/g, "");
+    normalized = String.toSnakeCase(normalized);
     normalized = this.aliasToValue()[normalized] ?? normalized;
 
     const idx = this.idx();

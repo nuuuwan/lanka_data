@@ -1,14 +1,4 @@
-function toSnakeCase(value) {
-  return String(value)
-    .trim()
-    .replace(/&/g, " and ")
-    .replace(/[()]/g, " ")
-    .replace(/([a-z])([A-Z])/g, "$1_$2")
-    .replace(/\s+/g, "_")
-    .replace(/[^a-zA-Z0-9_]+/g, "_")
-    .replace(/_+/g, "_")
-    .toLowerCase();
-}
+import String from "../../../../../../base/String.js";
 
 export default class RegionMatcherMixin {
   static getChildRegions(parentRegion, ChildRegionClass) {
@@ -22,7 +12,7 @@ export default class RegionMatcherMixin {
     for (const childRegionEnt of childRegionEnts) {
       const childParentId = childRegionEnt[parentIdKey];
       if (childParentId === parentId) {
-        matchingChildValues.push(toSnakeCase(childRegionEnt.name));
+        matchingChildValues.push(String.toSnakeCase(childRegionEnt.name));
       }
     }
 

@@ -1,15 +1,4 @@
-function toSnakeCase(value) {
-  return String(value)
-    .trim()
-    .replace(/&/g, " and ")
-    .replace(/[()]/g, "")
-    .replace(/([a-z])([A-Z])/g, "$1_$2")
-    .replace(/\s+/g, "_")
-    .replace(/[^a-zA-Z0-9_]+/g, "_")
-    .replace(/_+/g, "_")
-    .toLowerCase();
-}
-
+import String from "../../../../../../base/String.js";
 const ENTS_CACHE = new Map();
 
 const REGION_HIERARCHY = {
@@ -43,7 +32,7 @@ export default class RegionDataMixin {
 
   static getEntIdxByValue() {
     return Object.fromEntries(
-      this.getEnts().map((d) => [toSnakeCase(d.name), d]),
+      this.getEnts().map((d) => [String.toSnakeCase(d.name), d]),
     );
   }
 
@@ -58,7 +47,7 @@ export default class RegionDataMixin {
   static fromRegionId(regionId) {
     const idx = this.getEntIdxById();
     if (regionId in idx) {
-      const value = toSnakeCase(idx[regionId].name);
+      const value = String.toSnakeCase(idx[regionId].name);
       return new this(value);
     }
     throw new Error(
@@ -76,7 +65,7 @@ export default class RegionDataMixin {
     if (value === ConceptClass.WILDCARD) {
       return new ConceptClass(value);
     }
-    const normalized = toSnakeCase(value);
+    const normalized = String.toSnakeCase(value);
     const idx = this.getEntIdxByValue();
     if (normalized in idx) {
       return new ConceptClass(normalized);
