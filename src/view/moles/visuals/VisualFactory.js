@@ -6,12 +6,14 @@ import Map from "./Map.js";
 import HexMap from "./HexMap.js";
 import MarimekkoChart from "./MarimekkoChart.js";
 import StackedBarChart from "./StackedBarChart.js";
+import TreeMap from "./TreeMap.js";
 
 class VisualFactoryContentsMixin {
   static Blocks = Blocks;
   static BarChart = BarChart;
   static StackedBarChart = StackedBarChart;
   static MarimekkoChart = MarimekkoChart;
+  static TreeMap = TreeMap;
   static Map = Map;
   static HexMap = HexMap;
   static Cartogram = Cartogram;
