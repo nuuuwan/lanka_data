@@ -99,6 +99,12 @@ function ChartVisual({ VisualClass, datumSet }) {
 }
 
 function VisualContent({ VisualClass, datumSet, loadTimeSeconds }) {
+  useEffect(() => {
+    console.debug(
+      `[VisualQueryPage] Displaying ${VisualClass.name} with ${datumSet.datumList.length} datums`,
+    );
+  }, [VisualClass, datumSet]);
+
   return (
     <>
       <Typography
@@ -125,10 +131,18 @@ export default function VisualQueryPage() {
   const [visualQuery, setVisualQuery] = useState(null);
   useEffect(() => {
     if (!isReady) {
+      console.debug(
+        `[VisualQueryPage] Waiting for application data before parsing "${visualQueryStr}"`,
+      );
       return;
     }
     async function parse() {
-      setVisualQuery(await VisualQuery.fromString(visualQueryStr));
+      console.debug(`[VisualQueryPage] Parsing "${visualQueryStr}"`);
+      const nextVisualQuery = await VisualQuery.fromString(visualQueryStr);
+      console.debug(
+        `[VisualQueryPage] Parsed "${visualQueryStr}" as ${nextVisualQuery.visualClass.name}`,
+      );
+      setVisualQuery(nextVisualQuery);
     }
     parse();
   }, [isReady, visualQueryStr]);
@@ -143,18 +157,32 @@ export default function VisualQueryPage() {
     async function fetch() {
       setDatumSet(null);
       setLoadTimeSeconds(null);
+      console.debug(
+        `[VisualQueryPage] Fetching data for "${visualQuery.query}"`,
+      );
       const startTime = performance.now();
       const nextDatumSet = await DataSourceFactory.getDatumSetForQuery(
         visualQuery.query,
       );
+      const nextLoadTimeSeconds = (performance.now() - startTime) / 1000;
       if (!cancelled) {
         setDatumSet(nextDatumSet);
-        setLoadTimeSeconds((performance.now() - startTime) / 1000);
+        setLoadTimeSeconds(nextLoadTimeSeconds);
+        console.debug(
+          `[VisualQueryPage] Data ready: ${nextDatumSet.datumList.length} datums in ${nextLoadTimeSeconds.toFixed(3)}s`,
+        );
+      } else {
+        console.debug(
+          `[VisualQueryPage] Ignoring completed data fetch for stale query "${visualQuery.query}"`,
+        );
       }
     }
     fetch();
     return () => {
       cancelled = true;
+      console.debug(
+        `[VisualQueryPage] Cancelling data update for "${visualQuery.query}"`,
+      );
     };
   }, [visualQuery]);
 
