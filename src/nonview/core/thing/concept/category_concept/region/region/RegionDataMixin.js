@@ -24,6 +24,12 @@ const REGION_CLASS_IDS = [
   "pd",
 ];
 
+const REGION_HIERARCHY = {
+  District: { parentClassName: "Province", parentIdKey: "province_id" },
+  DSD: { parentClassName: "District", parentIdKey: "district_id" },
+  ED: { parentClassName: "District", parentIdKey: "district_id" },
+};
+
 export default class RegionDataMixin {
   getEnt() {
     return this.constructor.getEntIdxByValue()[this.value];
@@ -130,15 +136,7 @@ export default class RegionDataMixin {
     );
   }
 
-  static getSubRegionClassByIdKey() {
-    const subRegionClassByIdKey = {};
-    for (const subRegionClass of Object.values(this.getSubRegionClasses())) {
-      subRegionClassByIdKey[subRegionClass.SUB_REGION_ID_KEY] = subRegionClass;
-    }
-    return subRegionClassByIdKey;
-  }
-
-  static getSubRegionClasses() {
-    return {};
+  static getParentRegionInfo() {
+    return REGION_HIERARCHY[this.name] || null;
   }
 }

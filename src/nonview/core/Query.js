@@ -95,8 +95,8 @@ export default class Query {
     }
     const aggregate = tokens[tokens.length - 1];
 
-    const subRegionDimThingList = dimThingList.filter(
-      (dimThing) => dimThing.constructor.SUB_REGION_OF,
+    const subRegionDimThingList = dimThingList.filter((dimThing) =>
+      dimThing.constructor.getParentRegionInfo?.(),
     );
     const expandedDimThingList =
       await Query.expandSubRegionDimThingList(dimThingList);
@@ -119,14 +119,13 @@ export default class Query {
   static async expandSubRegionDimThingList(dimThingList) {
     const expandedDimThingList = [];
     for (const dimThing of dimThingList) {
-      if (
-        dimThing.value !== Thing.WILDCARD &&
-        dimThing.constructor.SUB_REGION_OF
-      ) {
+      const parentRegionInfo = dimThing.constructor.getParentRegionInfo?.();
+      if (dimThing.value !== Thing.WILDCARD && parentRegionInfo) {
         const subRegionEnt = dimThing.getEnt();
-        const parentRegionId =
-          subRegionEnt[dimThing.constructor.SUB_REGION_ID_KEY];
-        const parentRegionClass = dimThing.constructor.SUB_REGION_OF;
+        const parentRegionId = subRegionEnt[parentRegionInfo.parentIdKey];
+        const parentRegionClass = ThingFactory.fromKey(
+          parentRegionInfo.parentClassName,
+        );
         await parentRegionClass.init();
         const parentRegion = parentRegionClass.fromRegionId(parentRegionId);
         expandedDimThingList.push(parentRegion);
@@ -174,7 +173,11 @@ export default class Query {
     }
     return (datum) => {
       return this.subRegionDimThingList.every((subRegionThing) => {
-        const parentRegionClass = subRegionThing.constructor.SUB_REGION_OF;
+        const parentRegionInfo =
+          subRegionThing.constructor.getParentRegionInfo();
+        const parentRegionClass = ThingFactory.fromKey(
+          parentRegionInfo.parentClassName,
+        );
         const parentRegionDimIndex = datum.query.dimThingList.findIndex(
           (dimThing) => dimThing.constructor === parentRegionClass,
         );
@@ -185,7 +188,7 @@ export default class Query {
           datum.query.dimThingList[parentRegionDimIndex];
         return (
           parentRegionThing.getEnt().id ===
-          subRegionThing.getEnt()[subRegionThing.constructor.SUB_REGION_ID_KEY]
+          subRegionThing.getEnt()[parentRegionInfo.parentIdKey]
         );
       });
     };

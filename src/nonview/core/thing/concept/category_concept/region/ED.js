@@ -1,7 +1,3 @@
-import District from "./District.js";
 import Region from "./region/Region.js";
 
-export default class ED extends Region {
-  static SUB_REGION_OF = District;
-  static SUB_REGION_ID_KEY = "district_id";
-}
+export default class ED extends Region {}
