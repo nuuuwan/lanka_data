@@ -1,5 +1,4 @@
 import WWW from "../../base/WWW.js";
-import DatumSet from "../DatumSet.js";
 import Datum from "../Datum.js";
 
 export default class AbstractDataSource {
@@ -19,7 +18,7 @@ export default class AbstractDataSource {
 
   static async getMetadataForQuery(query) {
     const metadata = await this.getMetadata();
-    return metadata[query.toString()] || [];
+    return metadata[query.getMetadataKey()] || [];
   }
 
   static async getDatumListForPartialPath(partialPath) {
@@ -35,7 +34,7 @@ export default class AbstractDataSource {
         ` for "${query}" in ${this.name}`,
     );
     if (metadataForQuery.length === 0) {
-      return new DatumSet([]);
+      return [];
     }
     const partialPath = metadataForQuery[0];
     const candidateDatumList =

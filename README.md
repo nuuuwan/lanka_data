@@ -4,3 +4,18 @@
 
 🚀 **Try it live:** [nuuuwan.github.io/lanka_data](https://nuuuwan.github.io/lanka_data)
 
+## Running locally
+
+```bash
+npm install
+npm start
+```
+
+Then open [http://localhost:3000/lanka_data](http://localhost:3000/lanka_data).
+
+## Running tests
+
+```bash
+npm test
+```
+

@@ -71,6 +71,15 @@ export default class Query {
     return [entityClassName, dimToken, aggregateToken].join(Query.DELIM_TOKEN);
   }
 
+  getMetadataKey() {
+    const dimToken = this.dimThingList
+      .map((dimThing) => dimThing.constructor.name)
+      .join(Query.DELIM_DIM);
+    return [this.entityClass.name, dimToken, this.aggregate].join(
+      Query.DELIM_TOKEN,
+    );
+  }
+
   static fromKeyValueList(keyValueList) {
     const entityClass = ThingFactory.fromKey(keyValueList[0]);
 

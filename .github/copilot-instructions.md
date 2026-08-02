@@ -38,4 +38,10 @@ npx eslint --ext .js src
 
 Fix any remaining lint errors before finishing.
 
-Then verify the running app at http://localhost:3000/lanka_data has no runtime errors. If the dev server is not running, start it with `npm start`, open the URL, and confirm the page loads without console errors before considering the task complete.
+Then run the smoke tests with:
+
+```shell
+CI=true npm test
+```
+
+Finally, verify the running app at http://localhost:3000/lanka_data has no runtime errors. If the dev server is not running, start it with `npm start`, open the URL, and confirm the page loads without console errors before considering the task complete.

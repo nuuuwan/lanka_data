@@ -9,6 +9,15 @@ import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 function useChartFacets(datumSet, VisualClass) {
   const { datumList } = datumSet;
 
+  if (datumList.length === 0) {
+    return {
+      facets: [],
+      xAxisDimName: "",
+      yAxisLabel: "",
+      stackDimIndex: null,
+    };
+  }
+
   let xAxisDimIndex;
   let stackDimIndex;
   if (VisualClass.IS_MARIMEKKO) {
@@ -124,7 +133,9 @@ export default function VisualQueryPage() {
       {datumSet === null ? (
         <CircularProgress sx={{ m: 2 }} />
       ) : (
-        <VisualContent VisualClass={VisualClass} datumSet={datumSet} />
+        <Box data-testid="visual-content">
+          <VisualContent VisualClass={VisualClass} datumSet={datumSet} />
+        </Box>
       )}
     </Box>
   );
