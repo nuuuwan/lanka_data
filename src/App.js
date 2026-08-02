@@ -4,7 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { AppTheme } from "./AppTheme";
 import AppFooter from "./view/atoms/AppFooter.js";
 const DEFAULT_VISUAL_QUERY_STR =
-  "/Person/Time+Province+Religion/Count/MarimekkoChart";
+  "/Person/Time=2024+Province+Religion/Count/MarimekkoChart";
 
 function App() {
   return (
