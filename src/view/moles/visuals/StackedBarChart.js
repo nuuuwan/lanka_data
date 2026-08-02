@@ -3,6 +3,7 @@ import { Box, Typography, useTheme } from "@mui/material";
 
 import { FONT_FAMILY } from "../../../AppTheme.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
+import Legend from "./Legend.js";
 
 function getColorForKey(key, data) {
   const colorKey = `${key}Color`;
@@ -30,63 +31,56 @@ export default function StackedBarChart({
         );
 
   return (
-    <Box sx={{ height: 400 }}>
-      <ResponsiveBar
-        data={data}
-        keys={keys}
-        indexBy="id"
-        margin={{ top: 50, right: 130, bottom: 100, left: 60 }}
-        padding={0.3}
-        valueScale={{ type: "linear" }}
-        theme={{ fontFamily: FONT_FAMILY }}
-        colors={({ id }) =>
-          getColorForKey(id, data) ?? theme.palette.primary.main
-        }
-        borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
-        axisLeft={{
-          format: FormatUtils.humanizeValue,
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: yAxisLabel,
-          legendPosition: "middle",
-          legendOffset: -50,
-        }}
-        axisBottom={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: -45,
-          legend: xAxisLabel,
-          legendPosition: "middle",
-          legendOffset: 80,
-        }}
-        legends={[
-          {
-            dataFrom: "keys",
-            anchor: "bottom-right",
-            direction: "column",
-            justify: false,
-            translateX: 120,
-            translateY: 0,
-            itemsSpacing: 2,
-            itemWidth: 100,
-            itemHeight: 20,
-            itemDirection: "left-to-right",
-            itemOpacity: 0.85,
-            symbolSize: 20,
-          },
-        ]}
-        tooltip={({ value, indexValue, id }) => (
-          <Typography variant="body2">
-            {indexValue} - {id}: {FormatUtils.humanizeValue(value)}
-          </Typography>
-        )}
-        label={({ value }) => FormatUtils.humanizeValue(value)}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
-        role="img"
-        ariaLabel="Stacked bar chart"
+    <Box>
+      <Box sx={{ height: 400 }}>
+        <ResponsiveBar
+          data={data}
+          keys={keys}
+          indexBy="id"
+          margin={{ top: 50, right: 50, bottom: 80, left: 60 }}
+          padding={0.3}
+          valueScale={{ type: "linear" }}
+          theme={{ fontFamily: FONT_FAMILY }}
+          colors={({ id }) =>
+            getColorForKey(id, data) ?? theme.palette.primary.main
+          }
+          borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
+          axisLeft={{
+            format: FormatUtils.humanizeValue,
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: yAxisLabel,
+            legendPosition: "middle",
+            legendOffset: -50,
+          }}
+          axisBottom={{
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: -45,
+            legend: xAxisLabel,
+            legendPosition: "middle",
+            legendOffset: 80,
+          }}
+          tooltip={({ value, indexValue, id }) => (
+            <Typography variant="body2">
+              {indexValue} - {id}: {FormatUtils.humanizeValue(value)}
+            </Typography>
+          )}
+          label={({ value }) => FormatUtils.humanizeValue(value)}
+          labelSkipWidth={12}
+          labelSkipHeight={12}
+          labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
+          role="img"
+          ariaLabel="Stacked bar chart"
+        />
+      </Box>
+      <Legend
+        items={keys.map((key) => ({
+          id: key,
+          label: key,
+          color: getColorForKey(key, data) ?? theme.palette.primary.main,
+        }))}
       />
     </Box>
   );
