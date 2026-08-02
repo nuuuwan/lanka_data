@@ -14,6 +14,7 @@ import {
   MAP_LABEL_DARK_COLOR,
   MAP_LABEL_FONT_SIZE,
   MAP_LABEL_LIGHT_COLOR,
+  MAP_MAX_LABEL_COUNT,
   MAP_UNKNOWN_COLOR,
   MAP_WIDTH,
 } from "../../_cons/MapCons.js";
@@ -162,14 +163,17 @@ export default function MapVisual({ datumSet }) {
     const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], geoJson);
     const path = geoPath(projection);
     const [translateX, translateY] = projection.translate();
-    const labels = features
-      .map((geoFeature) => ({
-        backgroundColor: geoFeature.fill ?? MAP_UNKNOWN_COLOR,
-        id: geoFeature.id,
-        name: geoFeature.properties.name,
-        position: path.centroid(geoFeature),
-      }))
-      .filter(({ position }) => position.every(Number.isFinite));
+    const labels =
+      features.length <= MAP_MAX_LABEL_COUNT
+        ? features
+            .map((geoFeature) => ({
+              backgroundColor: geoFeature.fill ?? MAP_UNKNOWN_COLOR,
+              id: geoFeature.id,
+              name: geoFeature.properties.name,
+              position: path.centroid(geoFeature),
+            }))
+            .filter(({ position }) => position.every(Number.isFinite))
+        : [];
 
     return {
       features,
@@ -243,7 +247,7 @@ export default function MapVisual({ datumSet }) {
           unknownColor={MAP_UNKNOWN_COLOR}
           borderWidth={MAP_BORDER_WIDTH}
           borderColor={MAP_BORDER_COLOR}
-          layers={["features", labelsLayer]}
+          layers={labels.length > 0 ? ["features", labelsLayer] : ["features"]}
           role="img"
         />
       </Box>

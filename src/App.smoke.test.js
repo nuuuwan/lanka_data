@@ -19,6 +19,7 @@ const paths = [
   "/lanka_data/Person/Time=2024+District+Religion/Count/Map",
   "/lanka_data/Person/Time=2024+Province+Religion/Count/Cartogram",
   "/lanka_data/Vote/ElectionType=presidential+Time=2024+ED+Party/Count/Map",
+  "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD+Party/Count/Map",
 ];
 
 describe.each(paths)("screen: %s", (path) => {
@@ -45,6 +46,7 @@ describe.each(paths)("screen: %s", (path) => {
         ? "cartogram"
         : "datums-count";
     const readyTestId = path.endsWith("/Map") ? "map-labels" : "datums-count";
+    const readyTestId = path.endsWith("/Map") ? "map" : "datums-count";
     expect(
       await screen.findByTestId(readyTestId, {}, { timeout: 40_000 }),
     ).toBeInTheDocument();
