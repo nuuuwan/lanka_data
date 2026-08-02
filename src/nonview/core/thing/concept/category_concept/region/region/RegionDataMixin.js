@@ -129,4 +129,16 @@ export default class RegionDataMixin {
         `Valid labels: ${Object.keys(idx)}`,
     );
   }
+
+  static getSubRegionClassByIdKey() {
+    const subRegionClassByIdKey = {};
+    for (const subRegionClass of Object.values(this.getSubRegionClasses())) {
+      subRegionClassByIdKey[subRegionClass.SUB_REGION_ID_KEY] = subRegionClass;
+    }
+    return subRegionClassByIdKey;
+  }
+
+  static getSubRegionClasses() {
+    return {};
+  }
 }

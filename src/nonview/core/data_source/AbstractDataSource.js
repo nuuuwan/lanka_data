@@ -42,6 +42,10 @@ export default class AbstractDataSource {
     const filteredDatumList = candidateDatumList.filter((datum) =>
       datum.query.isSubsetOf(query),
     );
+    const subRegionFilter = query.getSubRegionFilter();
+    if (subRegionFilter) {
+      return filteredDatumList.filter(subRegionFilter);
+    }
     return filteredDatumList;
   }
 }

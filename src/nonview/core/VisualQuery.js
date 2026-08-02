@@ -12,12 +12,12 @@ export default class VisualQuery {
     return this.visualQueryStr;
   }
 
-  static fromString(visualQueryStr) {
+  static async fromString(visualQueryStr) {
     const tokens = visualQueryStr.split(Query.DELIM_TOKEN);
     const visualClassName = tokens[tokens.length - 1];
     const visualClass = VisualFactory.get(visualClassName);
     const queryStr = tokens.slice(0, tokens.length - 1).join(Query.DELIM_TOKEN);
-    const query = Query.fromString(queryStr);
+    const query = await Query.fromString(queryStr);
     return new VisualQuery(query, visualClass, visualQueryStr);
   }
 }

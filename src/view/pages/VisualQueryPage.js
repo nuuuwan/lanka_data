@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Typography, Box, CircularProgress } from "@mui/material";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
 import Region from "../../nonview/core/thing/concept/category_concept/region/region/Region.js";
@@ -112,11 +112,15 @@ export default function VisualQueryPage() {
     Region.init().then(() => setIsReady(true));
   }, []);
 
-  const visualQuery = useMemo(() => {
+  const [visualQuery, setVisualQuery] = useState(null);
+  useEffect(() => {
     if (!isReady) {
-      return null;
+      return;
     }
-    return VisualQuery.fromString(visualQueryStr);
+    async function parse() {
+      setVisualQuery(await VisualQuery.fromString(visualQueryStr));
+    }
+    parse();
   }, [isReady, visualQueryStr]);
 
   const [datumSet, setDatumSet] = useState(null);
