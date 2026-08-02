@@ -15,6 +15,7 @@ import {
   MAP_LABEL_FONT_SIZE,
   MAP_LABEL_LIGHT_COLOR,
   MAP_MAX_LABEL_COUNT,
+  MAP_PADDING,
   MAP_UNKNOWN_COLOR,
   MAP_WIDTH,
 } from "../../_cons/MapCons.js";
@@ -69,6 +70,24 @@ function getDisplayItem(items) {
     return items[0];
   }
   return items.reduce((best, item) => (item.value > best.value ? item : best));
+}
+
+function getGeoCoordinates(features) {
+  const coordinates = [];
+
+  function collect(value) {
+    if (!Array.isArray(value)) {
+      return;
+    }
+    if (typeof value[0] === "number") {
+      coordinates.push(value);
+      return;
+    }
+    value.forEach(collect);
+  }
+
+  features.forEach(({ geometry }) => collect(geometry.coordinates));
+  return coordinates;
 }
 
 export function matchFeatureToValue(feature, dataMap) {
@@ -160,7 +179,16 @@ export default function MapVisual({ datumSet }) {
       }
     }
 
-    const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], geoJson);
+    const projection = geoMercator().fitExtent(
+      [
+        [MAP_PADDING, MAP_PADDING],
+        [MAP_WIDTH - MAP_PADDING, MAP_HEIGHT - MAP_PADDING],
+      ],
+      {
+        type: "MultiPoint",
+        coordinates: getGeoCoordinates(features),
+      },
+    );
     const path = geoPath(projection);
     const [translateX, translateY] = projection.translate();
     const labels =
