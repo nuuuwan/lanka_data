@@ -9,7 +9,11 @@ function iterCoordLists(geometry) {
 }
 
 function getFeatureId(feature) {
-  return feature.properties.region_id ?? feature.properties.id;
+  return (
+    feature.properties.region_id ??
+    feature.properties.id ??
+    feature.properties.name
+  );
 }
 
 function getPolygonAreaAndCentroid(coords) {

@@ -1,13 +1,29 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { Box, Typography } from "@mui/material";
-import { GeoMap } from "@nivo/geo";
 import { geoCentroid } from "d3-geo";
 
-import useGeoJson from "../../../nonview/base/useGeoJson.js";
 import {
+  assignShapes,
+  buildHexGrid,
+  getBestHexLabelFit,
+  getHexBoundaryEdges,
+  getHexPoints,
+  getShapeCounts,
+  getValuePerShape,
+} from "../../../nonview/base/ShapeMapUtils.js";
+import useGeoJson from "../../../nonview/base/useGeoJson.js";
+import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
+import {
+  HEX_MAP_EDGE_WIDTH,
+  HEX_MAP_LABEL_FONT_SIZE,
+  HEX_MAP_MAX_HEXAGONS,
+  HEX_MAP_REGION_BORDER_WIDTH,
+  HEX_MAP_SCALE_COLOR,
+  HEX_MAP_SCALE_FONT_SIZE,
   MAP_BORDER_COLOR,
-  MAP_BORDER_WIDTH,
   MAP_HEIGHT,
+  MAP_LABEL_DARK_COLOR,
+  MAP_LABEL_LIGHT_COLOR,
   MAP_PADDING,
   MAP_UNKNOWN_COLOR,
   MAP_WIDTH,
@@ -15,119 +31,134 @@ import {
 import DimensionUtils from "../visual_utils/DimensionUtils.js";
 import {
   buildFeatureToDataMap,
+  getFeatureRegionId,
   getGeoDimInfo,
   groupDatumListByFacet,
-  matchFeatureToValue,
   getProjectionInfo,
+  matchFeatureToValue,
 } from "../visual_utils/GeoVisualUtils.js";
+import FormatUtils from "../visual_utils/FormatUtils.js";
 import MultiChartLayout from "../visual_utils/MultiChartLayout.js";
 import Legend from "./Legend.js";
-
-const HEX_AREA_FACTOR = (3 * Math.sqrt(3)) / 2;
-const GRID_FACTOR = 1.3;
-const MAX_GRID_ITERATIONS = 12;
-const MAX_SHAPE_ERROR = 0.1;
-const MAX_HEXAGONS = 80;
 
 function getDisplayItem(items) {
   return items.reduce((best, item) => (item.value > best.value ? item : best));
 }
 
-export function getHexagonCount(value, maxValue) {
-  if (value <= 0 || maxValue <= 0) return 0;
-  return Math.max(1, Math.round((value / maxValue) * MAX_HEXAGONS));
-}
-
-function getValuePerHexagon(values) {
-  const weights = values.filter((value) => value > 0);
-  if (!weights.length) return null;
-  const maxError = (valuePerHexagon) =>
-    Math.max(
-      ...weights.map((value) => {
-        const ideal = value / valuePerHexagon;
-        return Math.abs(Math.max(1, Math.round(ideal)) - ideal) / ideal;
-      }),
-    );
-  const candidates = [Math.min(...weights) * 2 * MAX_SHAPE_ERROR];
-  weights.forEach((weight) => {
-    for (let count = 1; count <= 7; count += 1) {
-      candidates.push((weight * (1 + MAX_SHAPE_ERROR)) / count);
-    }
-  });
-  return (
-    candidates
-      .filter((candidate) => maxError(candidate) <= MAX_SHAPE_ERROR + 1e-9)
-      .sort((a, b) => b - a)[0] ?? candidates[0]
-  );
-}
-
-function buildGrid(bounds, totalCount) {
-  const [minX, minY, maxX, maxY] = bounds;
-  const target = Math.max(totalCount * GRID_FACTOR, totalCount + 1);
-  const area = Math.max((maxX - minX) * (maxY - minY), 1e-12);
-  let radius = Math.sqrt(area / (Math.max(target, 1) * HEX_AREA_FACTOR));
-  let centers = [];
-  for (let iteration = 0; iteration <= MAX_GRID_ITERATIONS; iteration += 1) {
-    const dx = Math.sqrt(3) * radius;
-    const dy = 1.5 * radius;
-    centers = [];
-    for (let row = 0, y = minY; y <= maxY + dy; row += 1, y += dy) {
-      for (let x = minX + (row % 2) * (dx / 2); x <= maxX + dx; x += dx) {
-        centers.push([x, y]);
+function buildFacetInfo(geoFeatures, facetKey, dataMap) {
+  const regions = geoFeatures
+    .map((feature) => {
+      const match = matchFeatureToValue(feature, dataMap);
+      if (!match) {
+        return null;
       }
-    }
-    if (centers.length >= totalCount) break;
-    radius *= 0.85;
-  }
-  return { centers, radius };
+      return {
+        display: getDisplayItem(match.items),
+        feature,
+        id: String(getFeatureRegionId(feature)),
+        weight: match.items.reduce((total, item) => total + item.value, 0),
+      };
+    })
+    .filter(Boolean);
+  return { facetKey, regions };
 }
 
-function assignHexagons(features, counts, centers, radius, projection) {
-  const slots = [];
-  features.forEach((geoFeature, index) => {
-    const [x, y] = projection(geoCentroid(geoFeature));
-    for (let count = 0; count < counts[index]; count += 1) {
-      slots.push({ index, x, y });
-    }
+function getLabels(shapes, regionById, radius) {
+  const centersById = new Map();
+  for (const { id, center } of shapes) {
+    const centers = centersById.get(id) ?? [];
+    centers.push(center);
+    centersById.set(id, centers);
+  }
+  return [...centersById].map(([id, centers]) => ({
+    ...getBestHexLabelFit(centers, radius),
+    color: regionById.get(id).display.color,
+    id,
+    name: regionById.get(id).feature.properties.name,
+  }));
+}
+
+function shortenLabel(label, width) {
+  const maxLength = Math.max(
+    1,
+    Math.floor(width / (HEX_MAP_LABEL_FONT_SIZE * 0.6)),
+  );
+  return label.length > maxLength
+    ? `${label.slice(0, Math.max(1, maxLength - 1))}…`
+    : label;
+}
+
+export function buildHexMapLayout(facetInfo, valuePerHexagon) {
+  const warpedFeatures = facetInfo.regions.map(({ feature }) =>
+    JSON.parse(JSON.stringify(feature)),
+  );
+  const regionIdToWeight = Object.fromEntries(
+    facetInfo.regions.map(({ id, weight }) => [id, weight]),
+  );
+  if (Object.values(regionIdToWeight).some((weight) => weight > 0)) {
+    CartogramUtils.compute(warpedFeatures, regionIdToWeight);
+  }
+  const { projection } = getProjectionInfo(warpedFeatures);
+  const counts = getShapeCounts(regionIdToWeight, valuePerHexagon);
+  const totalCount = Object.values(counts).reduce(
+    (total, count) => total + count,
+    0,
+  );
+  const { centers, radius } = buildHexGrid(
+    [
+      MAP_PADDING,
+      MAP_PADDING,
+      MAP_WIDTH - MAP_PADDING,
+      MAP_HEIGHT - MAP_PADDING,
+    ],
+    totalCount,
+  );
+  const regions = warpedFeatures.map((feature, index) => {
+    const id = facetInfo.regions[index].id;
+    return {
+      centroid: projection(geoCentroid(feature)),
+      count: counts[id],
+      id,
+    };
   });
-  const available = [...centers];
-  return slots
-    .map((slot) => {
-      let bestIndex = 0;
-      let bestDistance = Infinity;
-      available.forEach(([x, y], index) => {
-        const distance = (slot.x - x) ** 2 + (slot.y - y) ** 2;
-        if (distance < bestDistance) {
-          bestDistance = distance;
-          bestIndex = index;
-        }
-      });
-      const center = available.splice(bestIndex, 1)[0];
-      return { index: slot.index, center };
-    })
-    .filter(({ center }) => center)
-    .map(({ index, center }) => {
-      const [x, y] = center;
-      const points = Array.from({ length: 6 }, (_, pointIndex) => {
-        const angle = (Math.PI / 3) * pointIndex;
-        return projection.invert([
-          x + radius * Math.cos(angle),
-          y + radius * Math.sin(angle),
-        ]);
-      });
-      return {
-        index,
-        type: "Feature",
-        properties: { type: "hex" },
-        geometry: { type: "Polygon", coordinates: [[...points, points[0]]] },
-      };
-    });
+  const shapes = assignShapes(regions, centers);
+  const regionById = new Map(
+    facetInfo.regions.map((region) => [region.id, region]),
+  );
+  const hexagons = shapes.map(({ id, center }, index) => ({
+    ...regionById.get(id),
+    center,
+    id: `${id}-${index}`,
+    points: getHexPoints(center, radius),
+    regionId: id,
+  }));
+  const shapeValues = facetInfo.regions.map(
+    ({ id, weight }) => weight / counts[id],
+  );
+  const xValues = shapes.map(({ center }) => center[0]);
+  const yValues = shapes.map(({ center }) => center[1]);
+  const minX = Math.min(...xValues) - radius;
+  const minY = Math.min(...yValues) - radius;
+  const maxX = Math.max(...xValues) + radius;
+  const maxY = Math.max(...yValues) + radius;
+  return {
+    boundaryEdges: getHexBoundaryEdges(shapes, radius),
+    facetKey: facetInfo.facetKey,
+    hexagons,
+    labels: getLabels(shapes, regionById, radius),
+    radius,
+    shapeValueMax: Math.max(...shapeValues),
+    shapeValueMin: Math.min(...shapeValues),
+    total: facetInfo.regions.reduce((sum, { weight }) => sum + weight, 0),
+    viewBox: [minX, minY, maxX - minX, maxY - minY],
+  };
 }
 
 export default function HexMap({ datumSet }) {
   const { datumList } = datumSet;
   const { regionDimIndex, regionClass, stackDimIndex } =
     getGeoDimInfo(datumList);
+  const shapeUnit = `${datumList[0].query.entityClass.name.toLowerCase()}s`;
   const geoJson = useGeoJson(regionClass);
 
   const { maps, legendItems } = useMemo(() => {
@@ -154,86 +185,41 @@ export default function HexMap({ datumSet }) {
     console.debug(
       `[HexMap] Matched ${geoFeatures.length}/${geoJson.features.length} geographic features across ${facetGroups.length} facets`,
     );
-    const { projection, projectionScale, projectionTranslation } =
-      getProjectionInfo(geoFeatures);
-    const legendItemMap = new Map();
-    const maps = facetGroups
-      .map(({ facetKey, facetDatumList }) => {
-        const dataMap = buildFeatureToDataMap(
-          facetDatumList,
-          regionDimIndex,
-          stackDimIndex,
-        );
-        const displays = geoFeatures.map((geoFeature) => {
-          const match = matchFeatureToValue(geoFeature, dataMap);
-          return match ? getDisplayItem(match.items) : null;
-        });
-        const valuePerHexagon = getValuePerHexagon(
-          displays.map((item) => item?.value ?? 0),
-        );
-        const counts = displays.map((item) =>
-          item && valuePerHexagon
-            ? Math.max(1, Math.round(item.value / valuePerHexagon))
-            : 0,
-        );
-        const { centers, radius } = buildGrid(
-          [
-            MAP_PADDING,
-            MAP_PADDING,
-            MAP_WIDTH - MAP_PADDING,
-            MAP_HEIGHT - MAP_PADDING,
-          ],
-          counts.reduce((sum, count) => sum + count, 0),
-        );
-        const hexFeatures = assignHexagons(
+    const facetInfos = groupDatumListByFacet(datumList, facetDimIndexes).map(
+      ({ facetKey, facetDatumList }) =>
+        buildFacetInfo(
           geoFeatures,
-          counts,
-          centers,
-          radius,
-          projection,
-        );
-        hexFeatures.forEach((hexagon) => {
-          const display = displays[hexagon.index];
-          const geoFeature = geoFeatures[hexagon.index];
-          if (display) {
-            hexagon.properties = {
-              ...hexagon.properties,
-              color: display.color,
-              name: geoFeature.properties.name,
-              value: display.value,
-              label: display.label,
-            };
-          }
-          if (display) {
-            legendItemMap.set(display.label, {
-              id: display.label,
-              label: display.label,
-              color: display.color,
-            });
-          }
-        });
-        return {
           facetKey,
-          features: [...geoFeatures, ...hexFeatures],
-          projectionScale,
-          projectionTranslation,
-          total: displays.reduce((sum, item) => sum + (item?.value ?? 0), 0),
-        };
-      })
-      .sort((a, b) => b.total - a.total);
+          buildFeatureToDataMap(facetDatumList, regionDimIndex, stackDimIndex),
+        ),
+    );
+    const valuePerHexagon = getValuePerShape(
+      facetInfos.flatMap(({ regions }) => regions.map(({ weight }) => weight)),
+      HEX_MAP_MAX_HEXAGONS,
+    );
+    const legendItemMap = new Map();
+    facetInfos.forEach(({ regions }) =>
+      regions.forEach(({ display }) =>
+        legendItemMap.set(display.label, {
+          id: display.label,
+          label: display.label,
+          color: display.color,
+        }),
+      ),
+    );
+    const maps = DimensionUtils.sortFacets(
+      facetInfos.map((facetInfo) =>
+        buildHexMapLayout(facetInfo, valuePerHexagon),
+      ),
+      datumList,
+      facetDimIndexes,
+      (a, b) => b.total - a.total,
+    );
     console.debug(
-      `[HexMap] Built ${maps.length} maps with ${maps.reduce((count, map) => count + map.features.length, 0)} total features`,
+      `[HexMap] Built ${maps.length} maps with ${maps.reduce((count, map) => count + map.hexagons.length, 0)} hexagons`,
     );
     return { maps, legendItems: Array.from(legendItemMap.values()) };
   }, [geoJson, datumList, regionDimIndex, stackDimIndex]);
-
-  useEffect(() => {
-    if (geoJson) {
-      console.debug(
-        `[HexMap] Prepared ${maps.length} maps with ${legendItems.length} legend items from ${datumList.length} datums`,
-      );
-    }
-  }, [geoJson, maps, legendItems, datumList.length]);
 
   if (!geoJson) {
     return <Typography>Loading hex map…</Typography>;
@@ -256,22 +242,74 @@ export default function HexMap({ datumSet }) {
               "& svg": { width: "100%", height: "auto", display: "block" },
             }}
           >
-            <GeoMap
-              width={MAP_WIDTH}
-              height={MAP_HEIGHT}
-              features={data.features}
-              projectionType="mercator"
-              projectionScale={data.projectionScale}
-              projectionTranslation={data.projectionTranslation}
-              fillColor={(mapFeature) =>
-                mapFeature.properties.type === "hex"
-                  ? mapFeature.properties.color
-                  : MAP_UNKNOWN_COLOR
-              }
-              borderWidth={MAP_BORDER_WIDTH}
-              borderColor={MAP_BORDER_COLOR}
+            <svg
+              viewBox={data.viewBox.join(" ")}
               role="img"
-            />
+              aria-label="Hex map"
+            >
+              {data.hexagons.map((hexagon) => (
+                <polygon
+                  key={hexagon.id}
+                  points={hexagon.points.map(([x, y]) => `${x},${y}`).join(" ")}
+                  fill={hexagon.display.color ?? MAP_UNKNOWN_COLOR}
+                  stroke={MAP_BORDER_COLOR}
+                  strokeWidth={HEX_MAP_EDGE_WIDTH}
+                >
+                  <title>
+                    {hexagon.feature.properties.name}: {hexagon.display.label} (
+                    {FormatUtils.humanizeValue(hexagon.display.value)})
+                  </title>
+                </polygon>
+              ))}
+              <g pointerEvents="none">
+                {data.boundaryEdges.map(({ start, end }, index) => (
+                  <line
+                    key={`${start.join(",")}-${end.join(",")}-${index}`}
+                    x1={start[0]}
+                    y1={start[1]}
+                    x2={end[0]}
+                    y2={end[1]}
+                    stroke={MAP_BORDER_COLOR}
+                    strokeWidth={HEX_MAP_REGION_BORDER_WIDTH}
+                  />
+                ))}
+                {data.labels.map(
+                  ({ angle, center, color, id, name, width }) => (
+                    <text
+                      key={id}
+                      x={center[0]}
+                      y={center[1]}
+                      textAnchor="middle"
+                      dominantBaseline="central"
+                      fill={
+                        FormatUtils.isLightColor(color)
+                          ? MAP_LABEL_DARK_COLOR
+                          : MAP_LABEL_LIGHT_COLOR
+                      }
+                      fontSize={HEX_MAP_LABEL_FONT_SIZE}
+                      transform={`rotate(${angle} ${center[0]} ${center[1]})`}
+                    >
+                      {shortenLabel(name, width)}
+                    </text>
+                  ),
+                )}
+              </g>
+            </svg>
+            <Typography
+              variant="caption"
+              sx={{
+                color: HEX_MAP_SCALE_COLOR,
+                fontSize: HEX_MAP_SCALE_FONT_SIZE,
+              }}
+            >
+              1 hexagon ={" "}
+              {data.shapeValueMax - data.shapeValueMin < 1
+                ? FormatUtils.humanizeValue(data.shapeValueMin)
+                : `${FormatUtils.humanizeValue(
+                    data.shapeValueMin,
+                  )} to ${FormatUtils.humanizeValue(data.shapeValueMax)}`}{" "}
+              {shapeUnit}
+            </Typography>
           </Box>
         )}
       />
