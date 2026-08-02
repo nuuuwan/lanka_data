@@ -1,7 +1,8 @@
 import { ResponsiveMarimekko } from "@nivo/marimekko";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 import { FONT_FAMILY } from "../../../AppTheme.js";
+import FormatUtils from "../visual_utils/FormatUtils.js";
 
 function getColorForDimension(id, data) {
   const colorKey = `${id}Color`;
@@ -46,26 +47,81 @@ function sortByDominantCategory(data) {
   );
 }
 
-function BarLabelsLayer({ data }) {
+function getFontScale(screenWidth) {
+  return screenWidth / 1200;
+}
+
+function BarLabelsLayer({ data, screenWidth }) {
   return (
     <>
-      {data.map((datum) => (
-        <text
-          key={datum.id}
-          x={datum.x + datum.width / 2}
-          y={datum.y + datum.height + 16}
-          textAnchor="middle"
-          dominantBaseline="hanging"
-          style={{
-            fontFamily: FONT_FAMILY,
-            fontSize: 12,
-            fill: "#333",
-            fontWeight: 500,
-          }}
-        >
-          {datum.id}
-        </text>
-      ))}
+      {data.map((datum) => {
+        const fontSize = Math.max(
+          7,
+          Math.min(12, (datum.width / 10) * getFontScale(screenWidth)),
+        );
+        return (
+          <text
+            key={datum.id}
+            x={datum.x + datum.width / 2}
+            y={datum.y + datum.height + 16}
+            textAnchor="middle"
+            dominantBaseline="hanging"
+            style={{
+              fontFamily: FONT_FAMILY,
+              fontSize,
+              fill: "#333",
+            }}
+          >
+            {datum.id}
+          </text>
+        );
+      })}
+    </>
+  );
+}
+
+function isLightColor(color) {
+  const hex = color.replace("#", "");
+  const r = parseInt(hex.substring(0, 2), 16) / 255;
+  const g = parseInt(hex.substring(2, 4), 16) / 255;
+  const b = parseInt(hex.substring(4, 6), 16) / 255;
+  const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+  return luminance > 0.5;
+}
+
+function CellLabelsLayer({ bars, screenWidth }) {
+  return (
+    <>
+      {bars.map((bar) => {
+        const { x, y, width, height } = bar;
+        if (width < 24 || height < 16) {
+          return null;
+        }
+
+        const value = bar.datum.data[bar.dimension.id] ?? bar.value;
+        const fontScale = getFontScale(screenWidth);
+        const lightBackground = isLightColor(bar.color);
+        return (
+          <text
+            key={bar.key}
+            x={x + width / 2}
+            y={y + height / 2}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            style={{
+              fontFamily: FONT_FAMILY,
+              fontSize: Math.max(7, Math.min(10, 10 * fontScale)),
+              fill: lightBackground ? "black" : "white",
+              stroke: lightBackground
+                ? "rgba(255,255,255,0.5)"
+                : "rgba(0,0,0,0.5)",
+              strokeWidth: 0.3,
+            }}
+          >
+            {FormatUtils.humanizeValue(value)}
+          </text>
+        );
+      })}
     </>
   );
 }
@@ -77,6 +133,7 @@ export default function MarimekkoChart({
   stackDimName,
 }) {
   const theme = useTheme();
+  const screenWidth = useMediaQuery(theme.breakpoints.down("sm")) ? 375 : 1200;
   const sortedData = sortByDominantCategory(data);
 
   const dimensions =
@@ -118,7 +175,14 @@ export default function MarimekkoChart({
           legendPosition: "middle",
           format: () => "",
         }}
-        layers={["grid", "axes", "bars", BarLabelsLayer, "legends"]}
+        layers={[
+          "grid",
+          "axes",
+          "bars",
+          (props) => <BarLabelsLayer {...props} screenWidth={screenWidth} />,
+          (props) => <CellLabelsLayer {...props} screenWidth={screenWidth} />,
+          "legends",
+        ]}
         axisLeft={{
           orient: "left",
           tickSize: 5,

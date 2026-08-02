@@ -27,6 +27,7 @@ export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
           legendPosition: "middle",
           legendOffset: -50,
         }}
+        label={({ value }) => FormatUtils.humanizeValue(value)}
         tooltip={({ value, indexValue }) => (
           <Typography variant="body2">
             {indexValue}: {FormatUtils.humanizeValue(value)}

@@ -25,7 +25,8 @@ export default function StackedBarChart({
     data.length === 0
       ? []
       : Object.keys(data[0]).filter(
-          (key) => key !== "id" && !key.endsWith("Color"),
+          (key) =>
+            key !== "id" && key !== "_barWidth" && !key.endsWith("Color"),
         );
 
   return (
@@ -80,6 +81,7 @@ export default function StackedBarChart({
             {indexValue} - {id}: {FormatUtils.humanizeValue(value)}
           </Typography>
         )}
+        label={({ value }) => FormatUtils.humanizeValue(value)}
         labelSkipWidth={12}
         labelSkipHeight={12}
         labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
