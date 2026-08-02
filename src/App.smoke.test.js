@@ -17,6 +17,7 @@ const paths = [
   "/lanka_data/Vote/ElectionType+Time=1994+ED+Party/Count/StackedBarChart",
   "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count/MarimekkoChart",
   "/lanka_data/Person/Time=2024+District+Religion/Count/Map",
+  "/lanka_data/Person/Time=2024+Province+Religion/Count/Cartogram",
 ];
 
 describe.each(paths)("screen: %s", (path) => {
@@ -37,7 +38,11 @@ describe.each(paths)("screen: %s", (path) => {
   test("renders without crashing", async () => {
     render(<App />);
 
-    const readyTestId = path.endsWith("/Map") ? "map" : "datums-count";
+    const readyTestId = path.endsWith("/Map")
+      ? "map"
+      : path.endsWith("/Cartogram")
+        ? "cartogram"
+        : "datums-count";
     expect(
       await screen.findByTestId(readyTestId, {}, { timeout: 20_000 }),
     ).toBeInTheDocument();
