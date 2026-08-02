@@ -11,9 +11,24 @@ export default function MultiChartLayout({
   }
 
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 2,
+      }}
+    >
       {facets.map(({ facetKey, data }) => (
-        <Box key={facetKey}>
+        <Box
+          key={facetKey}
+          sx={{
+            width: {
+              xs: "100%",
+              sm: "calc(50% - 8px)",
+              md: "calc(33.333% - 11px)",
+            },
+          }}
+        >
           <Typography variant="title" sx={{ mb: 1 }}>
             {facetKey || xAxisDimName}
           </Typography>
