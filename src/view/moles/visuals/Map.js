@@ -72,7 +72,7 @@ function matchFeatureToValue(feature, dataMap) {
   return null;
 }
 
-export default function Map({ datumSet }) {
+export default function MapVisual({ datumSet }) {
   const { datumList } = datumSet;
   const regionDimIndex = getRegionDimIndex(datumList);
   const regionClass = getRegionClass(datumList, regionDimIndex);
@@ -135,6 +135,7 @@ export default function Map({ datumSet }) {
     <Box>
       <Box
         component="svg"
+        data-testid="map"
         viewBox="0 0 600 800"
         sx={{
           width: "100%",
@@ -166,4 +167,4 @@ export default function Map({ datumSet }) {
   );
 }
 
-Map.IS_CHART = false;
+MapVisual.IS_CHART = false;

@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "./App";
 
 jest.setTimeout(120_000);
@@ -37,12 +37,9 @@ describe.each(paths)("screen: %s", (path) => {
   test("renders without crashing", async () => {
     render(<App />);
 
-    await waitFor(
-      () => {
-        const count = screen.getByTestId("datums-count");
-        expect(count).toBeInTheDocument();
-      },
-      { timeout: 20_000 },
-    );
+    const readyTestId = path.endsWith("/Map") ? "map" : "datums-count";
+    expect(
+      await screen.findByTestId(readyTestId, {}, { timeout: 20_000 }),
+    ).toBeInTheDocument();
   });
 });

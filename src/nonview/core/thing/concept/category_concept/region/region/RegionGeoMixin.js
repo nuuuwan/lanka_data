@@ -6,7 +6,7 @@ export default class RegionGeoMixin {
       `/nuuuwan/lk_admin_regions` +
       `/refs/heads/main` +
       `/data/geo/topojson/e4_medium/` +
-      `${classId}.topojson`
+      `${classId}s.topojson`
     );
   }
 }
