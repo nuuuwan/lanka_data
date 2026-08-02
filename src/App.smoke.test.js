@@ -21,6 +21,10 @@ const screens = [
     readyTestId: "datums-count",
   },
   {
+    path: "/lanka_data/Person/Time=2024+District=colombo+Religion/Count/TreeMap",
+    readyTestId: "datums-count",
+  },
+  {
     path: "/lanka_data/Person/Time=2024+District=colombo+Religion/Count/PieChart",
     readyTestId: "datums-count",
   },
