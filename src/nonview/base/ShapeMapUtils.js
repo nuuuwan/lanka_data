@@ -186,3 +186,92 @@ export function getHexPoints([x, y], radius) {
     return [x + radius * Math.cos(angle), y + radius * Math.sin(angle)];
   });
 }
+
+function getAxes(angleDegrees) {
+  const angle = (angleDegrees * Math.PI) / 180;
+  const cosine = Math.cos(angle);
+  const sine = Math.sin(angle);
+  return [
+    [cosine, sine],
+    [-sine, cosine],
+  ];
+}
+
+function projectPoint(point, axis) {
+  return point[0] * axis[0] + point[1] * axis[1];
+}
+
+function getLongestRun(items, step) {
+  const sortedItems = [...items].sort((a, b) => a[0] - b[0]);
+  let run = [sortedItems[0]];
+  let longestRun = run;
+  const tolerance = step * 0.5;
+  for (let index = 1; index < sortedItems.length; index += 1) {
+    const previous = sortedItems[index - 1];
+    const current = sortedItems[index];
+    run =
+      Math.abs(current[0] - previous[0] - step) < tolerance
+        ? [...run, current]
+        : [current];
+    if (run.length > longestRun.length) {
+      longestRun = run;
+    }
+  }
+  return longestRun;
+}
+
+export function getBestHexLabelFit(points, radius) {
+  const step = Math.sqrt(3) * radius;
+  const lineSpacing = 1.5 * radius;
+  let best = null;
+  for (const angle of [0, 60, -60]) {
+    const [horizontalAxis, verticalAxis] = getAxes(angle);
+    const lines = new Map();
+    for (const point of points) {
+      const key = Math.round(projectPoint(point, verticalAxis) / lineSpacing);
+      const line = lines.get(key) ?? [];
+      line.push([projectPoint(point, horizontalAxis), point]);
+      lines.set(key, line);
+    }
+    for (const line of lines.values()) {
+      const run = getLongestRun(line, step);
+      if (!best || run.length > best.run.length) {
+        best = { angle, run };
+      }
+    }
+  }
+  const first = best.run[0][1];
+  const last = best.run.at(-1)[1];
+  return {
+    center: [(first[0] + last[0]) / 2, (first[1] + last[1]) / 2],
+    width: best.run.length * step,
+    height: lineSpacing,
+    angle: best.angle,
+  };
+}
+
+function getEdgeKey(start, end) {
+  const pointKey = ([x, y]) => `${x.toFixed(6)},${y.toFixed(6)}`;
+  return [pointKey(start), pointKey(end)].sort().join(":");
+}
+
+export function getHexBoundaryEdges(shapes, radius) {
+  const edgeGroups = new Map();
+  for (const { id, center } of shapes) {
+    const points = getHexPoints(center, radius);
+    for (let index = 0; index < points.length; index += 1) {
+      const start = points[index];
+      const end = points[(index + 1) % points.length];
+      const key = getEdgeKey(start, end);
+      const edges = edgeGroups.get(key) ?? [];
+      edges.push({ id, start, end });
+      edgeGroups.set(key, edges);
+    }
+  }
+  return [...edgeGroups.values()]
+    .filter(
+      (edges) =>
+        edges.length === 1 || edges.some(({ id }) => id !== edges[0].id),
+    )
+    .map(([edge]) => edge);
+}

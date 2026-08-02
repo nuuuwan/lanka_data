@@ -1,6 +1,8 @@
 import {
   assignShapes,
   buildHexGrid,
+  getBestHexLabelFit,
+  getHexBoundaryEdges,
   getHexPoints,
   getShapeCounts,
   getValuePerShape,
@@ -42,4 +44,31 @@ test("minimizes total placement cost instead of assigning greedily", () => {
     { id: "flexible", center: [-10, 0] },
     { id: "fixed", center: [1, 0] },
   ]);
+});
+
+test("fits labels to the longest contiguous run of hexagons", () => {
+  const radius = 10;
+  const points = [
+    [0, 0],
+    [Math.sqrt(3) * radius, 0],
+    [2 * Math.sqrt(3) * radius, 0],
+  ];
+
+  const fit = getBestHexLabelFit(points, radius);
+
+  expect(fit).toMatchObject({
+    center: [Math.sqrt(3) * radius, 0],
+    angle: 0,
+  });
+  expect(fit.width).toBeCloseTo(3 * Math.sqrt(3) * radius);
+});
+
+test("omits shared edges inside a region boundary", () => {
+  const radius = 10;
+  const shapes = [
+    { id: "same-region", center: [0, 0] },
+    { id: "same-region", center: [Math.sqrt(3) * radius, 0] },
+  ];
+
+  expect(getHexBoundaryEdges(shapes, radius)).toHaveLength(10);
 });
