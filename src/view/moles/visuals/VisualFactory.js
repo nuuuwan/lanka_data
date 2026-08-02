@@ -1,4 +1,5 @@
 import Blocks from "./blocks/Blocks.js";
+import AreaBump from "./AreaBump.js";
 import BarChart from "./BarChart.js";
 import Cartogram from "./Cartogram.js";
 import JSONVisual from "./JSONVisual.js";
@@ -10,6 +11,7 @@ import StackedBarChart from "./StackedBarChart.js";
 
 class VisualFactoryContentsMixin {
   static Blocks = Blocks;
+  static AreaBump = AreaBump;
   static BarChart = BarChart;
   static StackedBarChart = StackedBarChart;
   static MarimekkoChart = MarimekkoChart;

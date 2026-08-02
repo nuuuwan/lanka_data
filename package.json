@@ -10,6 +10,7 @@
     "@mui/styled-engine-sc": "^9.1.1",
     "@mui/x-charts": "^9.10.1",
     "@nivo/bar": "^0.99.0",
+    "@nivo/bump": "^0.99.0",
     "@nivo/geo": "^0.99.0",
     "@nivo/marimekko": "^0.99.0",
     "@nivo/pie": "^0.99.0",
