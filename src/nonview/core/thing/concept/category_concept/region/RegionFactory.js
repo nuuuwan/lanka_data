@@ -1,11 +1,11 @@
-import Country from "./region/Country.js";
-import Province from "./region/Province.js";
-import District from "./region/District.js";
-import DSD from "./region/DSD.js";
-import GND from "./region/GND.js";
+import Country from "./Country.js";
+import Province from "./Province.js";
+import District from "./District.js";
+import DSD from "./DSD.js";
+import GND from "./GND.js";
 
-import ED from "./region/ED.js";
-import PD from "./region/PD.js";
+import ED from "./ED.js";
+import PD from "./PD.js";
 
 export default class RegionFactory {
   static Country = Country;
