@@ -1,5 +1,4 @@
 import ThingFactoryContentsMixin from "./ThingFactoryContentsMixin.js";
-import KeyValue from "../../KeyValue.js";
 import Thing from "../Thing.js";
 
 export default class ThingFactory {
@@ -12,8 +11,10 @@ export default class ThingFactory {
   }
 
   static fromKeyValue(keyValue) {
-    if (keyValue.includes(KeyValue.DELIM)) {
-      const [className, value] = keyValue.split(KeyValue.DELIM);
+    const delimIndex = keyValue.search(/[:=]/);
+    if (delimIndex !== -1) {
+      const className = keyValue.slice(0, delimIndex);
+      const value = keyValue.slice(delimIndex + 1);
       const ThingClass = ThingFactory[className];
       if (!ThingClass) {
         throw new Error(`ThingClass "${className}" not found in ThingFactory`);
