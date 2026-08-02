@@ -135,7 +135,6 @@ export default function MapVisual({ datumSet }) {
         id,
         fill: display?.color,
       });
-      console.debug(id);
       if (display) {
         data.push({
           id,
