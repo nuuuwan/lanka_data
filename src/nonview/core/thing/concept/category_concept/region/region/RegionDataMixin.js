@@ -1,7 +1,6 @@
-import WWW from "../../../../../../base/WWW.js";
-
 function toSnakeCase(value) {
   return String(value)
+    .trim()
     .replace(/&/g, " and ")
     .replace(/[()]/g, "")
     .replace(/([a-z])([A-Z])/g, "$1_$2")
@@ -12,17 +11,6 @@ function toSnakeCase(value) {
 }
 
 const ENTS_CACHE = new Map();
-let initPromise = null;
-
-const REGION_CLASS_IDS = [
-  "country",
-  "province",
-  "district",
-  "dsd",
-  "ed",
-  "gnd",
-  "pd",
-];
 
 const REGION_HIERARCHY = {
   District: { parentClassName: "Province", parentIdKey: "province_id" },
@@ -39,20 +27,11 @@ export default class RegionDataMixin {
     return this.name.toLowerCase();
   }
 
-  static getEntsURL() {
-    const classId = this.regionClassId();
-    return (
-      "https://raw.githubusercontent.com" +
-      "/nuuuwan/lk_admin_regions/refs/heads/main" +
-      `/data/ents/${classId}s.json`
-    );
-  }
-
   static getEnts() {
     const classId = this.regionClassId();
     if (!ENTS_CACHE.has(classId)) {
       throw new Error(
-        `Region data not loaded. Call await Region.init() before using ${this.name}.`,
+        `Region data not loaded. Use DataProvider before using ${this.name}.`,
       );
     }
     return ENTS_CACHE.get(classId);
@@ -88,29 +67,6 @@ export default class RegionDataMixin {
     );
   }
 
-  static async init() {
-    if (initPromise) {
-      return initPromise;
-    }
-
-    initPromise = (async () => {
-      await Promise.all(
-        REGION_CLASS_IDS.map(async (classId) => {
-          if (ENTS_CACHE.has(classId)) {
-            return;
-          }
-          const url =
-            "https://raw.githubusercontent.com" +
-            "/nuuuwan/lk_admin_regions/refs/heads/main" +
-            `/data/ents/${classId}s.json`;
-          const dataList = await WWW.json(url);
-          ENTS_CACHE.set(classId, dataList);
-        }),
-      );
-    })();
-
-    return initPromise;
-  }
   static validValues() {
     return Object.keys(this.getEntIdxByValue()).sort();
   }
@@ -128,15 +84,20 @@ export default class RegionDataMixin {
     if (this.allowArbitraryValues()) {
       return new ConceptClass(normalized);
     }
-
-    console.debug(Object.keys(idx));
     throw new Error(
-      `Invalid label2: ${value} for ${this.name}. ` +
+      `Invalid label: ${value} for ${this.name}. ` +
         `Valid labels: ${Object.keys(idx)}`,
     );
   }
 
   static getParentRegionInfo() {
     return REGION_HIERARCHY[this.name] || null;
+  }
+
+  static load(regionData) {
+    ENTS_CACHE.clear();
+    for (const [classId, dataList] of Object.entries(regionData)) {
+      ENTS_CACHE.set(classId, dataList);
+    }
   }
 }

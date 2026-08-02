@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { Typography, Box, CircularProgress } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
-import Region from "../../nonview/core/thing/concept/category_concept/region/region/Region.js";
+import DataContext from "../../nonview/core/data_context/DataContext.js";
 import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
@@ -106,11 +106,7 @@ function VisualContent({ VisualClass, datumSet }) {
 
 export default function VisualQueryPage() {
   const { "*": visualQueryStr } = useParams();
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    Region.init().then(() => setIsReady(true));
-  }, []);
+  const { isReady } = useContext(DataContext);
 
   const [visualQuery, setVisualQuery] = useState(null);
   useEffect(() => {

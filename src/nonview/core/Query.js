@@ -83,7 +83,6 @@ export default class Query {
       const childClassName = token.slice(0, parentConstraintIndex);
       const parentKeyValue = token.slice(parentConstraintIndex + 1);
       const ChildClass = ThingFactory.fromKey(childClassName);
-      await ChildClass.init();
       const parentRegion = ThingFactory.fromKeyValue(parentKeyValue);
       const childRegions = ChildClass.getChildRegions(parentRegion, ChildClass);
       const childValues = childRegions.map((region) => region.value);
@@ -126,7 +125,6 @@ export default class Query {
         const parentRegionClass = ThingFactory.fromKey(
           parentRegionInfo.parentClassName,
         );
-        await parentRegionClass.init();
         const parentRegion = parentRegionClass.fromRegionId(parentRegionId);
         expandedDimThingList.push(parentRegion);
         continue;

@@ -24,7 +24,45 @@ describe.each(paths)("screen: %s", (path) => {
   });
 
   test("renders without crashing", async () => {
-    console.debug("window.location.href", window.location.href);
+    window.fetch = jest.fn((url) => {
+      if (typeof url === "string" && url.includes("/ents/provinces.json")) {
+        return Promise.resolve({
+          json: () => Promise.resolve([{ id: "LK-1", name: "Western" }]),
+        });
+      }
+      if (typeof url === "string" && url.includes("/ents/districts.json")) {
+        return Promise.resolve({
+          json: () =>
+            Promise.resolve([
+              { id: "LK-1", name: "Western", province_id: "LK-1" },
+              { id: "LK-11", name: "Colombo", province_id: "LK-1" },
+            ]),
+        });
+      }
+      if (typeof url === "string" && url.includes("/ents/eds.json")) {
+        return Promise.resolve({
+          json: () =>
+            Promise.resolve([
+              { id: "LK-1100", name: "Colombo", district_id: "LK-11" },
+            ]),
+        });
+      }
+      if (typeof url === "string" && url.includes("/ents/pds.json")) {
+        return Promise.resolve({
+          json: () =>
+            Promise.resolve([
+              {
+                id: "LK-1100001",
+                name: "Colombo PD",
+                ed_id: "LK-1100",
+              },
+            ]),
+        });
+      }
+      return Promise.resolve({
+        json: () => Promise.resolve([]),
+      });
+    });
 
     render(<App />);
 

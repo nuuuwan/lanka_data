@@ -10,10 +10,17 @@ import Religion from "./thing/concept/category_concept/Religion.js";
 import Person from "./thing/entity/Person.js";
 
 describe("Query", () => {
-  beforeAll(async () => {
-    await Region.init();
-    await Province.init();
-    await District.init();
+  beforeAll(() => {
+    Region.load({
+      province: [
+        { id: "LK-1", name: "Western" },
+        { id: "LK-3", name: "Southern" },
+      ],
+      district: [
+        { id: "LK-11", name: "Colombo", province_id: "LK-1" },
+        { id: "LK-12", name: "Gampaha", province_id: "LK-1" },
+      ],
+    });
   });
 
   test("fromString parses a normal query", async () => {
