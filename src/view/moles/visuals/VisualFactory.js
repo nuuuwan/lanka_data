@@ -1,19 +1,23 @@
 import Blocks from "./blocks/Blocks.js";
+import AreaBump from "./AreaBump.js";
 import BarChart from "./BarChart.js";
 import Cartogram from "./Cartogram.js";
 import JSONVisual from "./JSONVisual.js";
 import Map from "./Map.js";
 import HexMap from "./HexMap.js";
 import MarimekkoChart from "./MarimekkoChart.js";
+import PieChart from "./PieChart.js";
 import StackedBarChart from "./StackedBarChart.js";
 import TreeMap from "./TreeMap.js";
 
 class VisualFactoryContentsMixin {
   static Blocks = Blocks;
+  static AreaBump = AreaBump;
   static BarChart = BarChart;
   static StackedBarChart = StackedBarChart;
   static MarimekkoChart = MarimekkoChart;
   static TreeMap = TreeMap;
+  static PieChart = PieChart;
   static Map = Map;
   static HexMap = HexMap;
   static Cartogram = Cartogram;

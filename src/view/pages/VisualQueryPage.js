@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Typography, Box, CircularProgress } from "@mui/material";
+import { Typography, Box, LinearProgress } from "@mui/material";
 import { useState, useEffect, useContext } from "react";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
@@ -197,7 +197,7 @@ export default function VisualQueryPage() {
         {visualQueryStr}
       </Typography>
       {!isReady || datumSet === null || loadTimeSeconds === null ? (
-        <CircularProgress sx={{ m: 2 }} />
+        <LinearProgress sx={{ m: 2 }} />
       ) : (
         <Box data-testid="visual-content">
           <VisualContent

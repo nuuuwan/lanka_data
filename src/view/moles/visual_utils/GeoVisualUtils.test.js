@@ -1,4 +1,9 @@
-import { buildRegionLabels } from "./GeoVisualUtils.js";
+import { buildRegionLabels, getFittedLabelFontSize } from "./GeoVisualUtils.js";
+
+test("fits label font size within the available width and height", () => {
+  expect(getFittedLabelFontSize("Four", 24, 20)).toBe(10);
+  expect(getFittedLabelFontSize("Four", 48, 5)).toBe(5);
+});
 
 test("builds a centered label for each displayed region", () => {
   const features = [
@@ -24,6 +29,7 @@ test("builds a centered label for each displayed region", () => {
   expect(buildRegionLabels(features, (coordinate) => coordinate)).toEqual([
     {
       backgroundColor: "#ffffff",
+      fontSize: 20 / (13 * 0.6),
       id: "EC-01",
       name: "Colombo North",
       position: [20, 30],

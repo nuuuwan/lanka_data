@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, LinearProgress } from "@mui/material";
 
 import useGeoJson from "../../../nonview/base/useGeoJson.js";
 import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
@@ -100,7 +100,7 @@ export default function Cartogram({ datumSet }) {
   }, [geoJson, datumList, regionDimIndex, stackDimIndex]);
 
   if (!geoJson) {
-    return <Typography>Loading cartogram...</Typography>;
+    return <LinearProgress sx={{ m: 2 }} />;
   }
 
   return (

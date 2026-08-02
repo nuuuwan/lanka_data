@@ -25,7 +25,15 @@ const screens = [
     readyTestId: "datums-count",
   },
   {
+    path: "/lanka_data/Person/Time=2024+District=colombo+Religion/Count/PieChart",
+    readyTestId: "datums-count",
+  },
+  {
     path: "/lanka_data/Vote/ElectionType+Time=1994+ED+Party/Count/StackedBarChart",
+    readyTestId: "datums-count",
+  },
+  {
+    path: "/lanka_data/Vote/ElectionType+Time=1994+ED+Party/Count/AreaBump",
     readyTestId: "datums-count",
   },
   {
@@ -55,6 +63,10 @@ const screens = [
   {
     path: "/lanka_data/Vote/ElectionType=presidential+Time+PD%3CED=colombo+Party/Count/Cartogram",
     readyTestId: "cartogram-facets",
+  },
+  {
+    path: "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/HexMap",
+    readyTestId: "hexmap",
   },
 ];
 

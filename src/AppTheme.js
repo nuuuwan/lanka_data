@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-export const FONT_FAMILY = "Fira Sans,  sans-serif";
+export const FONT_FAMILY = "Fira Code,  sans-serif";
 
 export const AppTheme = createTheme({
   palette: {
