@@ -1,4 +1,9 @@
 export default class Cache {
+  static clear() {
+    console.warn("🧹 Clearing cache");
+    localStorage.clear();
+  }
+
   static async get(cacheKey, fallback) {
     if (typeof localStorage !== "undefined") {
       const cached = localStorage.getItem(cacheKey);
@@ -8,8 +13,11 @@ export default class Cache {
     }
 
     const data = await fallback();
-    if (typeof localStorage !== "undefined") {
+    try {
       localStorage.setItem(cacheKey, JSON.stringify(data));
+    } catch (e) {
+      console.warn(`Failed to cache data for key ${cacheKey}:`, e);
+      this.clear();
     }
     return data;
   }

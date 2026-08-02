@@ -36,16 +36,23 @@ export default class AbstractDataSource {
     if (metadataForQuery.length === 0) {
       return [];
     }
-    const partialPath = metadataForQuery[0];
-    const candidateDatumList =
-      await this.getDatumListForPartialPath(partialPath);
+    const candidateDatumListList = await Promise.all(
+      metadataForQuery.map((partialPath) =>
+        this.getDatumListForPartialPath(partialPath),
+      ),
+    );
+    const candidateDatumList = candidateDatumListList.flat();
+    console.debug(
+      `Found ${candidateDatumList.length} candidate datums` +
+        ` for "${query}" in ${this.name}`,
+    );
     const filteredDatumList = candidateDatumList.filter((datum) =>
       datum.query.isSubsetOf(query),
     );
-    const subRegionFilter = query.getSubRegionFilter();
-    if (subRegionFilter) {
-      return filteredDatumList.filter(subRegionFilter);
-    }
+    console.debug(
+      `Found ${filteredDatumList.length} filtered datums` +
+        ` for "${query}" in ${this.name}`,
+    );
     return filteredDatumList;
   }
 }

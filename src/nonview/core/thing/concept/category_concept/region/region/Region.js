@@ -1,5 +1,6 @@
 import CategoryConcept from "../../CategoryConcept.js";
 import RegionDataMixin from "./RegionDataMixin.js";
+import RegionMatcherMixin from "./RegionMatcherMixin.js";
 
 function applyMixin(Target, Mixin) {
   for (const name of Object.getOwnPropertyNames(Mixin.prototype)) {
@@ -21,3 +22,4 @@ export default class Region extends CategoryConcept {
 }
 
 applyMixin(Region, RegionDataMixin);
+applyMixin(Region, RegionMatcherMixin);
