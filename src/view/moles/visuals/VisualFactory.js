@@ -8,6 +8,7 @@ import HexMap from "./HexMap.js";
 import MarimekkoChart from "./MarimekkoChart.js";
 import PieChart from "./PieChart.js";
 import StackedBarChart from "./StackedBarChart.js";
+import UnitHexMap from "./UnitHexMap.js";
 
 class VisualFactoryContentsMixin {
   static Blocks = Blocks;
@@ -18,6 +19,7 @@ class VisualFactoryContentsMixin {
   static PieChart = PieChart;
   static Map = Map;
   static HexMap = HexMap;
+  static UnitHexMap = UnitHexMap;
   static Cartogram = Cartogram;
   static JSON = JSONVisual;
 }

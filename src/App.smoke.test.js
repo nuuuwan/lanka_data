@@ -64,6 +64,10 @@ const screens = [
     path: "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/HexMap",
     readyTestId: "hexmap",
   },
+  {
+    path: "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/UnitHexMap",
+    readyTestId: "hexmap",
+  },
 ];
 
 describe.each(screens)("screen: $path", ({ path, readyTestId }) => {

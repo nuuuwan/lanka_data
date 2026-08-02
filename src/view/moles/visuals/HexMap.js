@@ -83,7 +83,7 @@ function getLabels(shapes, regionById, radius) {
     }));
 }
 
-export function buildHexMapLayout(facetInfo, valuePerHexagon) {
+export function buildHexMapLayout(facetInfo, valuePerHexagon, isUnit = false) {
   const warpedFeatures = facetInfo.regions.map(({ feature }) =>
     JSON.parse(JSON.stringify(feature)),
   );
@@ -94,7 +94,9 @@ export function buildHexMapLayout(facetInfo, valuePerHexagon) {
     CartogramUtils.compute(warpedFeatures, regionIdToWeight);
   }
   const { projection } = getProjectionInfo(warpedFeatures);
-  const counts = getShapeCounts(regionIdToWeight, valuePerHexagon);
+  const counts = isUnit
+    ? Object.fromEntries(facetInfo.regions.map(({ id }) => [id, 1]))
+    : getShapeCounts(regionIdToWeight, valuePerHexagon);
   const totalCount = Object.values(counts).reduce(
     (total, count) => total + count,
     0,
@@ -158,7 +160,7 @@ export function shareHexMapScale(maps) {
   return maps.map((map) => ({ ...map, shapeValueMin, shapeValueMax }));
 }
 
-export default function HexMap({ datumSet }) {
+export default function HexMap({ datumSet, isUnit = false }) {
   const { datumList } = datumSet;
   const { regionDimIndex, regionClass, stackDimIndex } =
     getGeoDimInfo(datumList);
@@ -197,10 +199,14 @@ export default function HexMap({ datumSet }) {
           buildFeatureToDataMap(facetDatumList, regionDimIndex, stackDimIndex),
         ),
     );
-    const valuePerHexagon = getValuePerShape(
-      facetInfos.flatMap(({ regions }) => regions.map(({ weight }) => weight)),
-      HEX_MAP_MAX_HEXAGONS,
-    );
+    const valuePerHexagon = isUnit
+      ? null
+      : getValuePerShape(
+          facetInfos.flatMap(({ regions }) =>
+            regions.map(({ weight }) => weight),
+          ),
+          HEX_MAP_MAX_HEXAGONS,
+        );
     const legendItemMap = new Map();
     facetInfos.forEach(({ regions }) =>
       regions.forEach(({ display }) =>
@@ -214,7 +220,7 @@ export default function HexMap({ datumSet }) {
     const maps = DimensionUtils.sortFacets(
       shareHexMapScale(
         facetInfos.map((facetInfo) =>
-          buildHexMapLayout(facetInfo, valuePerHexagon),
+          buildHexMapLayout(facetInfo, valuePerHexagon, isUnit),
         ),
       ),
       datumList,
@@ -225,7 +231,7 @@ export default function HexMap({ datumSet }) {
       `[HexMap] Built ${maps.length} maps with ${maps.reduce((count, map) => count + map.hexagons.length, 0)} hexagons`,
     );
     return { maps, legendItems: Array.from(legendItemMap.values()) };
-  }, [geoJson, datumList, regionDimIndex, stackDimIndex]);
+  }, [geoJson, datumList, regionDimIndex, stackDimIndex, isUnit]);
 
   if (!geoJson) {
     return <LinearProgress sx={{ m: 2 }} />;
@@ -304,7 +310,7 @@ export default function HexMap({ datumSet }) {
           </Box>
         )}
       />
-      {maps.length > 0 && (
+      {!isUnit && maps.length > 0 && (
         <Typography
           variant="caption"
           sx={{
