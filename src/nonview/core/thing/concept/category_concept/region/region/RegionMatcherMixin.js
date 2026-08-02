@@ -3,7 +3,7 @@ import String from "../../../../../../base/String.js";
 export default class RegionMatcherMixin {
   static getChildRegions(parentRegion, ChildRegionClass) {
     const parentEnt = parentRegion.getEnt();
-    const childRegionEnts = ChildRegionClass.getEnts();
+    const childRegionEnts = ChildRegionClass.ents;
 
     const parentId = parentEnt.id;
     const parentIdKey = `${parentRegion.constructor.regionClassId()}_id`;

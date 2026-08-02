@@ -18,6 +18,6 @@ export default class RegionFactory {
   static PD = PD;
 
   static list() {
-    return [Country, Province, District, DSD, GND, ED, PD];
+    return [Country, Province, District, DSD, ED, PD];
   }
 }
