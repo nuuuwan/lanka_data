@@ -3,6 +3,7 @@ import { Typography, Box, CircularProgress } from "@mui/material";
 import { useState, useEffect, useMemo } from "react";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
+import Region from "../../nonview/core/thing/concept/category_concept/region/region/Region.js";
 import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
@@ -105,13 +106,24 @@ function VisualContent({ VisualClass, datumSet }) {
 
 export default function VisualQueryPage() {
   const { "*": visualQueryStr } = useParams();
-  const visualQuery = useMemo(
-    () => VisualQuery.fromString(visualQueryStr),
-    [visualQueryStr],
-  );
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    Region.init().then(() => setIsReady(true));
+  }, []);
+
+  const visualQuery = useMemo(() => {
+    if (!isReady) {
+      return null;
+    }
+    return VisualQuery.fromString(visualQueryStr);
+  }, [isReady, visualQueryStr]);
 
   const [datumSet, setDatumSet] = useState(null);
   useEffect(() => {
+    if (!visualQuery) {
+      return;
+    }
     async function fetch() {
       setDatumSet(
         await DataSourceFactory.getDatumSetForQuery(visualQuery.query),
@@ -120,7 +132,7 @@ export default function VisualQueryPage() {
     fetch();
   }, [visualQuery]);
 
-  const VisualClass = visualQuery.visualClass;
+  const VisualClass = visualQuery?.visualClass;
 
   return (
     <Box sx={{ m: 2 }}>
@@ -130,7 +142,7 @@ export default function VisualQueryPage() {
       <Typography variant="h6" sx={{ color: "primary" }}>
         {visualQueryStr}
       </Typography>
-      {datumSet === null ? (
+      {!isReady || datumSet === null ? (
         <CircularProgress sx={{ m: 2 }} />
       ) : (
         <Box data-testid="visual-content">
