@@ -148,7 +148,10 @@ export default function VisualQueryPage() {
 
   return (
     <Box sx={{ m: 2 }}>
-      <Typography variant="h6" sx={{ color: "primary" }}>
+      <Typography
+        variant="h6"
+        sx={{ color: "primary", overflowWrap: "anywhere" }}
+      >
         {visualQueryStr}
       </Typography>
       {!isReady || datumSet === null ? (

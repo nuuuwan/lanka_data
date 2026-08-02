@@ -11,18 +11,34 @@ jest.mock(
     },
 );
 
-const paths = [
-  "/lanka_data/Person/Time=2024+Province+Religion/Count/Blocks",
-  "/lanka_data/Person/Time=2024+District=colombo+Religion/Count/BarChart",
-  "/lanka_data/Vote/ElectionType+Time=1994+ED+Party/Count/StackedBarChart",
-  "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count/MarimekkoChart",
-  "/lanka_data/Person/Time=2024+District+Religion/Count/Map",
-  "/lanka_data/Person/Time=2024+Province+Religion/Count/Cartogram",
-  "/lanka_data/Vote/ElectionType=presidential+Time=2024+ED+Party/Count/Map",
-  "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD+Party/Count/Map",
+const screens = [
+  {
+    path: "/lanka_data/Person/Time=2024+Province+Religion/Count/Blocks",
+    readyTestId: "datums-count",
+  },
+  {
+    path: "/lanka_data/Person/Time=2024+District=colombo+Religion/Count/BarChart",
+    readyTestId: "datums-count",
+  },
+  {
+    path: "/lanka_data/Vote/ElectionType+Time=1994+ED+Party/Count/StackedBarChart",
+    readyTestId: "datums-count",
+  },
+  {
+    path: "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count/MarimekkoChart",
+    readyTestId: "datums-count",
+  },
+  {
+    path: "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD+Party/Count/Map",
+    readyTestId: "maps",
+  },
+  {
+    path: "/lanka_data/Vote/ElectionType=presidential+Time+Country+Party/Count/Map",
+    readyTestId: "map-facets",
+  },
 ];
 
-describe.each(paths)("screen: %s", (path) => {
+describe.each(screens)("screen: $path", ({ path, readyTestId }) => {
   const originalLocation = window.location;
 
   beforeEach(() => {
@@ -40,6 +56,7 @@ describe.each(paths)("screen: %s", (path) => {
   test("renders without crashing", async () => {
     render(<App />);
 
+<<<<<<< HEAD
     const readyTestId = path.endsWith("/Map")
       ? "map"
       : path.endsWith("/Cartogram")
@@ -47,6 +64,8 @@ describe.each(paths)("screen: %s", (path) => {
         : "datums-count";
     const readyTestId = path.endsWith("/Map") ? "map-labels" : "datums-count";
     const readyTestId = path.endsWith("/Map") ? "map" : "datums-count";
+=======
+>>>>>>> a9e9a02 (feat: refactor Map component to enhance data handling and visualization layout)
     expect(
       await screen.findByTestId(readyTestId, {}, { timeout: 40_000 }),
     ).toBeInTheDocument();

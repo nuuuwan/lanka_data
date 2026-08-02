@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { feature } from "topojson-client";
 import { Box, Typography } from "@mui/material";
 import { Choropleth } from "@nivo/geo";
-import { geoMercator, geoPath } from "d3-geo";
+import { geoMercator } from "d3-geo";
 
 import StringUtils from "../../../nonview/base/String.js";
 import WWW from "../../../nonview/base/WWW.js";
@@ -19,7 +19,9 @@ import {
   MAP_UNKNOWN_COLOR,
   MAP_WIDTH,
 } from "../../_cons/MapCons.js";
+import DimensionUtils from "../visual_utils/DimensionUtils.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
+import MultiChartLayout from "../visual_utils/MultiChartLayout.js";
 import Legend from "./Legend.js";
 
 function getRegionDimIndex(datumList) {
@@ -29,12 +31,8 @@ function getRegionDimIndex(datumList) {
 }
 
 function getStackDimIndex(datumList, regionDimIndex) {
-  const { length } = datumList[0].query.dimThingList;
-  return Array.from({ length }, (_, i) => i).find(
-    (i) =>
-      i !== regionDimIndex &&
-      new Set(datumList.map((d) => d.query.dimThingList[i].value)).size > 1,
-  );
+  const { varyingDimIndexes } = DimensionUtils.getDimIndexInfo(datumList);
+  return varyingDimIndexes.filter((i) => i !== regionDimIndex).at(-1);
 }
 
 function getRegionClass(datumList, regionDimIndex) {
@@ -72,6 +70,21 @@ function getDisplayItem(items) {
   return items.reduce((best, item) => (item.value > best.value ? item : best));
 }
 
+function groupDatumListByFacet(datumList, facetDimIndexes) {
+  const groups = new Map();
+  for (const datum of datumList) {
+    const facetKey = DimensionUtils.getFacetKey(datum, facetDimIndexes);
+    if (!groups.has(facetKey)) {
+      groups.set(facetKey, []);
+    }
+    groups.get(facetKey).push(datum);
+  }
+  return Array.from(groups.entries()).map(([facetKey, facetDatumList]) => ({
+    facetKey,
+    facetDatumList,
+  }));
+}
+
 function getGeoCoordinates(features) {
   const coordinates = [];
 
@@ -88,6 +101,27 @@ function getGeoCoordinates(features) {
 
   features.forEach(({ geometry }) => collect(geometry.coordinates));
   return coordinates;
+}
+
+function getFeatureCenter(feature, projection) {
+  const bounds = getGeoCoordinates([feature])
+    .map(projection)
+    .reduce(
+      ([minX, minY, maxX, maxY], [x, y]) => [
+        Math.min(minX, x),
+        Math.min(minY, y),
+        Math.max(maxX, x),
+        Math.max(maxY, y),
+      ],
+      [Infinity, Infinity, -Infinity, -Infinity],
+    );
+  return [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2];
+}
+
+function setMapViewBox(element) {
+  element
+    ?.querySelector("svg")
+    ?.setAttribute("viewBox", `0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`);
 }
 
 export function matchFeatureToValue(feature, dataMap) {
@@ -120,130 +154,131 @@ export default function MapVisual({ datumSet }) {
     load();
   }, [regionClass]);
 
-  const {
-    features,
-    data,
-    labels,
-    legendItems,
-    projectionScale,
-    projectionTranslation,
-  } = useMemo(() => {
-    if (!geoJson) {
+  const { maps, legendItems, projectionScale, projectionTranslation } =
+    useMemo(() => {
+      if (!geoJson) {
+        return {
+          maps: [],
+          legendItems: [],
+          projectionScale: 0,
+          projectionTranslation: [0.5, 0.5],
+        };
+      }
+
+      const facetDimIndexes = DimensionUtils.getFacetDimIndexes(
+        datumList,
+        regionDimIndex,
+        stackDimIndex,
+      );
+      const projection = geoMercator().fitExtent(
+        [
+          [MAP_PADDING, MAP_PADDING],
+          [MAP_WIDTH - MAP_PADDING, MAP_HEIGHT - MAP_PADDING],
+        ],
+        {
+          type: "MultiPoint",
+          coordinates: getGeoCoordinates(geoJson.features),
+        },
+      );
+      const [translateX, translateY] = projection.translate();
+      const legendItemMap = new Map();
+      const maps = groupDatumListByFacet(datumList, facetDimIndexes)
+        .map(({ facetKey, facetDatumList }) => {
+          const dataMap = buildFeatureToDataMap(
+            facetDatumList,
+            regionDimIndex,
+            stackDimIndex,
+          );
+          const features = [];
+          const data = [];
+          for (const geoFeature of geoJson.features) {
+            const match = matchFeatureToValue(geoFeature, dataMap);
+            const display = match ? getDisplayItem(match.items) : null;
+            const id = String(
+              geoFeature.properties.id ?? geoFeature.properties.name,
+            );
+            features.push({
+              ...geoFeature,
+              id,
+              fill: display?.color,
+            });
+            if (display) {
+              data.push({
+                id,
+                value: display.value,
+                categoryLabel: display.label,
+              });
+              legendItemMap.set(display.label, {
+                id: display.label,
+                label: display.label,
+                color: display.color,
+              });
+            }
+          }
+          const labels =
+            features.length <= MAP_MAX_LABEL_COUNT
+              ? features
+                  .map((geoFeature) => ({
+                    backgroundColor: geoFeature.fill ?? MAP_UNKNOWN_COLOR,
+                    id: geoFeature.id,
+                    name: geoFeature.properties.name,
+                    position: getFeatureCenter(geoFeature, projection),
+                  }))
+                  .filter(({ position }) => position.every(Number.isFinite))
+              : [];
+          return {
+            facetKey,
+            features,
+            data,
+            labels,
+            total: data.reduce((sum, item) => sum + item.value, 0),
+          };
+        })
+        .sort((a, b) => b.total - a.total);
+
       return {
-        features: [],
-        data: [],
-        labels: [],
-        legendItems: [],
-        projectionScale: 0,
-        projectionTranslation: [0.5, 0.5],
+        maps,
+        legendItems: Array.from(legendItemMap.values()),
+        projectionScale: projection.scale(),
+        projectionTranslation: [
+          translateX / MAP_WIDTH,
+          translateY / MAP_HEIGHT,
+        ],
       };
-    }
-
-    const dataMap = buildFeatureToDataMap(
-      datumList,
-      regionDimIndex,
-      stackDimIndex,
-    );
-    const features = [];
-    const data = [];
-    for (const geoFeature of geoJson.features) {
-      const match = matchFeatureToValue(geoFeature, dataMap);
-      const display = match ? getDisplayItem(match.items) : null;
-      const id = String(geoFeature.properties.id ?? geoFeature.properties.name);
-      features.push({
-        ...geoFeature,
-        id,
-        fill: display?.color,
-      });
-      if (display) {
-        data.push({
-          id,
-          value: display.value,
-          categoryLabel: display.label,
-        });
-      }
-    }
-
-    const legendItems = [];
-    const seenLabels = new Set();
-    for (const geoFeature of geoJson.features) {
-      const match = matchFeatureToValue(geoFeature, dataMap);
-      const display = match ? getDisplayItem(match.items) : null;
-      if (display && !seenLabels.has(display.label)) {
-        seenLabels.add(display.label);
-        legendItems.push({
-          id: display.label,
-          label: display.label,
-          color: display.color,
-        });
-      }
-    }
-
-    const projection = geoMercator().fitExtent(
-      [
-        [MAP_PADDING, MAP_PADDING],
-        [MAP_WIDTH - MAP_PADDING, MAP_HEIGHT - MAP_PADDING],
-      ],
-      {
-        type: "MultiPoint",
-        coordinates: getGeoCoordinates(features),
-      },
-    );
-    const path = geoPath(projection);
-    const [translateX, translateY] = projection.translate();
-    const labels =
-      features.length <= MAP_MAX_LABEL_COUNT
-        ? features
-            .map((geoFeature) => ({
-              backgroundColor: geoFeature.fill ?? MAP_UNKNOWN_COLOR,
-              id: geoFeature.id,
-              name: geoFeature.properties.name,
-              position: path.centroid(geoFeature),
-            }))
-            .filter(({ position }) => position.every(Number.isFinite))
-        : [];
-
-    return {
-      features,
-      data,
-      labels,
-      legendItems,
-      projectionScale: projection.scale(),
-      projectionTranslation: [translateX / MAP_WIDTH, translateY / MAP_HEIGHT],
-    };
-  }, [geoJson, datumList, regionDimIndex, stackDimIndex]);
+    }, [geoJson, datumList, regionDimIndex, stackDimIndex]);
 
   if (!geoJson) {
     return <Typography>Loading map…</Typography>;
   }
 
-  const maxValue = Math.max(...data.map(({ value }) => value), 1);
-  const labelsLayer = () => (
-    <g data-testid="map-labels" pointerEvents="none">
-      {labels.map(({ backgroundColor, id, name, position: [x, y] }) => {
-        const lightBackground = FormatUtils.isLightColor(backgroundColor);
-        return (
-          <text
-            key={id}
-            x={x}
-            y={y}
-            textAnchor="middle"
-            dominantBaseline="central"
-            fill={
-              lightBackground ? MAP_LABEL_DARK_COLOR : MAP_LABEL_LIGHT_COLOR
-            }
-            fontSize={MAP_LABEL_FONT_SIZE}
-          >
-            {name}
-          </text>
-        );
-      })}
-    </g>
-  );
+  const renderMap = ({ features, data, labels }) => {
+    const maxValue = Math.max(...data.map(({ value }) => value), 1);
+    const labelsLayer = () => (
+      <g data-testid="map-labels" pointerEvents="none">
+        {labels.map(({ backgroundColor, id, name, position: [x, y] }) => {
+          const lightBackground = FormatUtils.isLightColor(backgroundColor);
+          return (
+            <text
+              key={id}
+              x={x}
+              y={y}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill={
+                lightBackground ? MAP_LABEL_DARK_COLOR : MAP_LABEL_LIGHT_COLOR
+              }
+              fontSize={MAP_LABEL_FONT_SIZE}
+            >
+              {name}
+            </text>
+          );
+        })}
+      </g>
+    );
 
-  return (
-    <Box>
+    return (
       <Box
+        ref={setMapViewBox}
         data-testid="map"
         sx={{
           width: "100%",
@@ -279,6 +314,21 @@ export default function MapVisual({ datumSet }) {
           role="img"
         />
       </Box>
+    );
+  };
+
+  return (
+    <Box data-testid="maps">
+      {maps.length > 1 && <Box data-testid="map-facets" display="none" />}
+      <MultiChartLayout
+        facets={maps.map((map) => ({
+          facetKey: map.facetKey,
+          data: map,
+        }))}
+        xAxisDimName={regionClass.name}
+        yAxisLabel=""
+        renderChart={({ data }) => renderMap(data)}
+      />
       <Legend items={legendItems} />
     </Box>
   );
