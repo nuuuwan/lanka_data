@@ -138,6 +138,8 @@ export default function VisualQueryPage() {
     event.preventDefault();
     const nextVisualQueryStr = visualQueryInput.trim();
     if (nextVisualQueryStr && nextVisualQueryStr !== visualQueryStr) {
+      setDatumSet(null);
+      setLoadTimeSeconds(null);
       navigate(`/${nextVisualQueryStr}`);
     }
   }
