@@ -1,8 +1,15 @@
 import KeyValue from "../KeyValue.js";
+
 export default class Thing {
   static WILDCARD = "*";
+  static SPECIAL_VALUE_EXCLUDED_SMALL = "excluded_small";
+
   constructor(value) {
-    this.value = value;
+    this.value = String(value);
+  }
+
+  static fromValue(value) {
+    return new this(value);
   }
 
   getHumanReadableValue() {
