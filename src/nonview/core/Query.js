@@ -124,15 +124,16 @@ export default class Query {
   }
 
   static getThingFromToken(token) {
-    const thing = ThingFactory.fromKeyValue(token);
     const delimIndex = token.search(/[:=]/);
     if (delimIndex === -1) {
-      return thing;
+      return ThingFactory.fromKeyValue(token);
     }
+    const ThingClass = ThingFactory.fromKey(token.slice(0, delimIndex));
     const values = token
       .slice(delimIndex + 1)
       .split(Query.DELIM_VALUE)
-      .map((value) => thing.constructor.fromValue(value).value);
+      .map((value) => ThingClass.fromValue(value).value);
+    const thing = ThingClass.fromValue(values[0]);
     if (values.length > 1) {
       thing.valueList = values;
     }
@@ -154,9 +155,10 @@ export default class Query {
         const parentRegionValues = [
           ...new Set(
             Query.getThingValues(dimThing).map((value) => {
-              const subRegionEnt = dimThing.constructor.fromValue(value).getEnt();
-              const parentRegionId =
-                subRegionEnt[parentRegionInfo.parentIdKey];
+              const subRegionEnt = dimThing.constructor
+                .fromValue(value)
+                .getEnt();
+              const parentRegionId = subRegionEnt[parentRegionInfo.parentIdKey];
               return parentRegionClass.fromRegionId(parentRegionId).value;
             }),
           ),
