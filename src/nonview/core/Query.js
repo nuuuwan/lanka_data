@@ -6,11 +6,18 @@ export default class Query {
   static DELIM_DIM = "+";
   static DELIM_EQ = "=";
 
-  constructor(entityClass, dimThingList, aggregate, queryStr) {
+  constructor(
+    entityClass,
+    dimThingList,
+    aggregate,
+    queryStr,
+    subRegionDimThingList = null,
+  ) {
     this.entityClass = entityClass;
     this.dimThingList = dimThingList;
     this.aggregate = aggregate;
     this.queryStr = queryStr;
+    this.subRegionDimThingList = subRegionDimThingList;
   }
 
   toString() {
@@ -43,8 +50,8 @@ export default class Query {
     return true;
   }
 
-  static fromString(queryStr) {
-    const tokens = queryStr.split(Query.DELIM_TOKEN);
+  static async fromString(queryStr) {
+    const tokens = queryStr.split(Query.DELIM_TOKEN).filter(Boolean);
     const entityClassName = tokens[0];
     const entityClass = ThingFactory.fromKey(entityClassName);
 
@@ -53,7 +60,43 @@ export default class Query {
       return ThingFactory.fromKeyValue(token);
     });
     const aggregate = tokens[tokens.length - 1];
-    return new Query(entityClass, dimThingList, aggregate, queryStr);
+
+    const subRegionDimThingList = dimThingList.filter(
+      (dimThing) => dimThing.constructor.SUB_REGION_OF,
+    );
+    const expandedDimThingList =
+      await Query.expandSubRegionDimThingList(dimThingList);
+    const expandedQueryStr = Query.getQueryStringFromParts(
+      entityClass,
+      expandedDimThingList,
+      aggregate,
+    );
+
+    return new Query(
+      entityClass,
+      expandedDimThingList,
+      aggregate,
+      subRegionDimThingList.length > 0 ? expandedQueryStr : queryStr,
+      subRegionDimThingList.length > 0 ? subRegionDimThingList : null,
+    );
+  }
+
+  static async expandSubRegionDimThingList(dimThingList) {
+    const expandedDimThingList = [];
+    for (const dimThing of dimThingList) {
+      if (dimThing.constructor.SUB_REGION_OF) {
+        const subRegionEnt = dimThing.getEnt();
+        const parentRegionId =
+          subRegionEnt[dimThing.constructor.SUB_REGION_ID_KEY];
+        const parentRegionClass = dimThing.constructor.SUB_REGION_OF;
+        await parentRegionClass.init();
+        const parentRegion = parentRegionClass.fromRegionId(parentRegionId);
+        expandedDimThingList.push(parentRegion);
+        continue;
+      }
+      expandedDimThingList.push(dimThing);
+    }
+    return expandedDimThingList;
   }
 
   static getQueryStringFromParts(entityClass, dimThingList, aggregate) {
@@ -78,6 +121,36 @@ export default class Query {
     return [this.entityClass.name, dimToken, this.aggregate].join(
       Query.DELIM_TOKEN,
     );
+  }
+
+  static getMetadataKeyFromParts(entityClass, dimThingList, aggregate) {
+    const dimToken = dimThingList
+      .map((dimThing) => dimThing.constructor.name)
+      .join(Query.DELIM_DIM);
+    return [entityClass.name, dimToken, aggregate].join(Query.DELIM_TOKEN);
+  }
+
+  getSubRegionFilter() {
+    if (!this.subRegionDimThingList) {
+      return null;
+    }
+    return (datum) => {
+      return this.subRegionDimThingList.every((subRegionThing) => {
+        const parentRegionClass = subRegionThing.constructor.SUB_REGION_OF;
+        const parentRegionDimIndex = datum.query.dimThingList.findIndex(
+          (dimThing) => dimThing.constructor === parentRegionClass,
+        );
+        if (parentRegionDimIndex === -1) {
+          return false;
+        }
+        const parentRegionThing =
+          datum.query.dimThingList[parentRegionDimIndex];
+        return (
+          parentRegionThing.getEnt().id ===
+          subRegionThing.getEnt()[subRegionThing.constructor.SUB_REGION_ID_KEY]
+        );
+      });
+    };
   }
 
   static fromKeyValueList(keyValueList) {

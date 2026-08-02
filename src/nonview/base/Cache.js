@@ -5,9 +5,11 @@ export default class Cache {
   }
 
   static async get(cacheKey, fallback) {
-    const cached = localStorage.getItem(cacheKey);
-    if (cached) {
-      return JSON.parse(cached);
+    if (typeof localStorage !== "undefined") {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        return JSON.parse(cached);
+      }
     }
 
     const data = await fallback();

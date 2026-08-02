@@ -3,6 +3,7 @@ import App from "./App";
 
 const paths = [
   "/lanka_data/Person/Time=2024+Province+Religion/Count/MarimekkoChart",
+  "/lanka_data/Person/Time=2024+District=Western+Religion/Count/MarimekkoChart",
   "/lanka_data/Vote/ElectionType+Time=1994+ED+Party/Count/MarimekkoChart",
 ];
 
