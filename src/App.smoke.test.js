@@ -25,6 +25,10 @@ const screens = [
     readyTestId: "datums-count",
   },
   {
+    path: "/lanka_data/Vote/ElectionType+Time=1994+ED+Party/Count/AreaBump",
+    readyTestId: "datums-count",
+  },
+  {
     path: "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count/MarimekkoChart",
     readyTestId: "datums-count",
   },
