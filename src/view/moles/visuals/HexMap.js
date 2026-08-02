@@ -154,6 +154,15 @@ export function buildHexMapLayout(facetInfo, valuePerHexagon) {
   };
 }
 
+export function shareHexMapScale(maps) {
+  if (!maps.length) {
+    return maps;
+  }
+  const shapeValueMin = Math.min(...maps.map((map) => map.shapeValueMin));
+  const shapeValueMax = Math.max(...maps.map((map) => map.shapeValueMax));
+  return maps.map((map) => ({ ...map, shapeValueMin, shapeValueMax }));
+}
+
 export default function HexMap({ datumSet }) {
   const { datumList } = datumSet;
   const { regionDimIndex, regionClass, stackDimIndex } =
@@ -208,8 +217,10 @@ export default function HexMap({ datumSet }) {
       ),
     );
     const maps = DimensionUtils.sortFacets(
-      facetInfos.map((facetInfo) =>
-        buildHexMapLayout(facetInfo, valuePerHexagon),
+      shareHexMapScale(
+        facetInfos.map((facetInfo) =>
+          buildHexMapLayout(facetInfo, valuePerHexagon),
+        ),
       ),
       datumList,
       facetDimIndexes,

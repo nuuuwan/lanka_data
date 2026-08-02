@@ -1,5 +1,5 @@
 import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
-import { buildHexMapLayout } from "./HexMap.js";
+import { buildHexMapLayout, shareHexMapScale } from "./HexMap.js";
 
 afterEach(() => {
   jest.restoreAllMocks();
@@ -50,4 +50,16 @@ test("warps regions before assigning their proportional hexagons", () => {
     true,
   );
   expect(layout).not.toHaveProperty("features");
+});
+
+test("shares the scale across faceted hex maps", () => {
+  const maps = shareHexMapScale([
+    { facetKey: "first", shapeValueMin: 10, shapeValueMax: 12 },
+    { facetKey: "second", shapeValueMin: 20, shapeValueMax: 24 },
+  ]);
+
+  expect(maps).toEqual([
+    { facetKey: "first", shapeValueMin: 10, shapeValueMax: 24 },
+    { facetKey: "second", shapeValueMin: 10, shapeValueMax: 24 },
+  ]);
 });
