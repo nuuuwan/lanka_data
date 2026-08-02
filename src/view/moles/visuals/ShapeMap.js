@@ -167,11 +167,7 @@ export function shareShapeMapScale(maps) {
   return maps.map((map) => ({ ...map, shapeValueMin, shapeValueMax }));
 }
 
-export default function ShapeMap({
-  datumSet,
-  isUnit = false,
-  shapeConfig,
-}) {
+export default function ShapeMap({ datumSet, isUnit = false, shapeConfig }) {
   const { datumList } = datumSet;
   const { regionDimIndex, regionClass, stackDimIndex } =
     getGeoDimInfo(datumList);
@@ -230,12 +226,7 @@ export default function ShapeMap({
     const maps = DimensionUtils.sortFacets(
       shareShapeMapScale(
         facetInfos.map((facetInfo) =>
-          buildShapeMapLayout(
-            facetInfo,
-            valuePerShape,
-            isUnit,
-            shapeConfig,
-          ),
+          buildShapeMapLayout(facetInfo, valuePerShape, isUnit, shapeConfig),
         ),
       ),
       datumList,
@@ -246,14 +237,7 @@ export default function ShapeMap({
       `[${shapeConfig.name}] Built ${maps.length} maps with ${maps.reduce((count, map) => count + map.shapes.length, 0)} shapes`,
     );
     return { maps, legendItems: Array.from(legendItemMap.values()) };
-  }, [
-    geoJson,
-    datumList,
-    regionDimIndex,
-    stackDimIndex,
-    isUnit,
-    shapeConfig,
-  ]);
+  }, [geoJson, datumList, regionDimIndex, stackDimIndex, isUnit, shapeConfig]);
 
   if (!geoJson) {
     return <LinearProgress sx={{ m: 2 }} />;

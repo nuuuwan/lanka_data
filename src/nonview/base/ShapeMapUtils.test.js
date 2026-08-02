@@ -86,22 +86,22 @@ test("fits labels to the longest contiguous run of hexagons", () => {
     center: [Math.sqrt(3) * radius, 0],
     angle: 0,
   });
-
-  test("fits labels to the longest contiguous run of squares", () => {
-    const size = 10;
-    const fit = getBestSquareLabelFit(
-      [
-        [0, 0],
-        [size, 0],
-        [2 * size, 0],
-      ],
-      size,
-    );
-
-    expect(fit).toMatchObject({ center: [size, 0], angle: 0 });
-    expect(fit.width).toBe(3 * size);
-  });
   expect(fit.width).toBeCloseTo(3 * Math.sqrt(3) * radius);
+});
+
+test("fits labels to the longest contiguous run of squares", () => {
+  const size = 10;
+  const fit = getBestSquareLabelFit(
+    [
+      [0, 0],
+      [size, 0],
+      [2 * size, 0],
+    ],
+    size,
+  );
+
+  expect(fit).toMatchObject({ center: [size, 0], angle: 0 });
+  expect(fit.width).toBe(3 * size);
 });
 
 test("omits shared edges inside a region boundary", () => {

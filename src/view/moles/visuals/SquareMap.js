@@ -24,7 +24,11 @@ const SQUARE_SHAPE_CONFIG = {
   testId: "squaremap",
 };
 
-export function buildSquareMapLayout(facetInfo, valuePerSquare, isUnit = false) {
+export function buildSquareMapLayout(
+  facetInfo,
+  valuePerSquare,
+  isUnit = false,
+) {
   const layout = buildShapeMapLayout(
     facetInfo,
     valuePerSquare,

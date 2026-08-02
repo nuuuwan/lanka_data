@@ -145,12 +145,7 @@ function buildGrid(bounds, totalCount, areaFactor, getCenters) {
 }
 
 export function buildSquareGrid(bounds, totalCount) {
-  return buildGrid(
-    bounds,
-    totalCount,
-    SQUARE_AREA_FACTOR,
-    getSquareCenters,
-  );
+  return buildGrid(bounds, totalCount, SQUARE_AREA_FACTOR, getSquareCenters);
 }
 
 function solveAssignment(cost) {
@@ -299,33 +294,6 @@ export function getBestHexLabelFit(points, radius) {
       lines.set(key, line);
     }
 
-    export function getBestSquareLabelFit(points, size) {
-      let best = null;
-      for (const angle of [0, 90]) {
-        const [horizontalAxis, verticalAxis] = getAxes(angle);
-        const lines = new Map();
-        for (const point of points) {
-          const key = Math.round(projectPoint(point, verticalAxis) / size);
-          const line = lines.get(key) ?? [];
-          line.push([projectPoint(point, horizontalAxis), point]);
-          lines.set(key, line);
-        }
-        for (const line of lines.values()) {
-          const run = getLongestRun(line, size);
-          if (!best || run.length > best.run.length) {
-            best = { angle, run };
-          }
-        }
-      }
-      const first = best.run[0][1];
-      const last = best.run.at(-1)[1];
-      return {
-        center: [(first[0] + last[0]) / 2, (first[1] + last[1]) / 2],
-        width: best.run.length * size,
-        height: size,
-        angle: best.angle,
-      };
-    }
     for (const line of lines.values()) {
       const run = getLongestRun(line, step);
       if (!best || run.length > best.run.length) {
@@ -339,6 +307,34 @@ export function getBestHexLabelFit(points, radius) {
     center: [(first[0] + last[0]) / 2, (first[1] + last[1]) / 2],
     width: best.run.length * step,
     height: lineSpacing,
+    angle: best.angle,
+  };
+}
+
+export function getBestSquareLabelFit(points, size) {
+  let best = null;
+  for (const angle of [0, 90]) {
+    const [horizontalAxis, verticalAxis] = getAxes(angle);
+    const lines = new Map();
+    for (const point of points) {
+      const key = Math.round(projectPoint(point, verticalAxis) / size);
+      const line = lines.get(key) ?? [];
+      line.push([projectPoint(point, horizontalAxis), point]);
+      lines.set(key, line);
+    }
+    for (const line of lines.values()) {
+      const run = getLongestRun(line, size);
+      if (!best || run.length > best.run.length) {
+        best = { angle, run };
+      }
+    }
+  }
+  const first = best.run[0][1];
+  const last = best.run.at(-1)[1];
+  return {
+    center: [(first[0] + last[0]) / 2, (first[1] + last[1]) / 2],
+    width: best.run.length * size,
+    height: size,
     angle: best.angle,
   };
 }
