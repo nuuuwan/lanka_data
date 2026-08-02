@@ -204,7 +204,12 @@ export default function VisualQueryPage() {
 
   return (
     <Box sx={{ m: 2 }}>
-      <Box component="form" onSubmit={submitVisualQuery} sx={{ mb: 2 }}>
+      <Box
+        component="form"
+        aria-label="Visual query form"
+        onSubmit={submitVisualQuery}
+        sx={{ mb: 2 }}
+      >
         <TextField
           fullWidth
           label="Visual query"

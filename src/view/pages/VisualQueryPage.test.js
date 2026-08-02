@@ -28,7 +28,7 @@ test("updates the URL when the visual query is submitted", () => {
       value: " Person/Time=2024+District+Religion/Count/BarChart ",
     },
   });
-  fireEvent.submit(input.closest("form"));
+  fireEvent.submit(screen.getByRole("form", { name: "Visual query form" }));
 
   expect(navigate).toHaveBeenCalledWith(
     "/Person/Time=2024+District+Religion/Count/BarChart",
