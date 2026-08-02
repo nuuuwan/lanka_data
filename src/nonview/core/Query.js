@@ -4,6 +4,7 @@ import Thing from "./thing/Thing.js";
 export default class Query {
   static DELIM_TOKEN = "/";
   static DELIM_DIM = "+";
+  static DELIM_EQ = "=";
 
   constructor(entityClass, dimThingList, aggregate, queryStr) {
     this.entityClass = entityClass;
@@ -58,7 +59,14 @@ export default class Query {
   static getQueryStringFromParts(entityClass, dimThingList, aggregate) {
     const entityClassName = entityClass.name;
     const dimInnerTokens = dimThingList.map((dimThing) => {
-      return dimThing.toKeyValue();
+      if (dimThing.value === Thing.WILDCARD) {
+        return dimThing.constructor.name;
+      }
+      return [
+        dimThing.constructor.name,
+        Query.DELIM_EQ,
+        dimThing.value,
+      ].join("");
     });
     const dimToken = dimInnerTokens.join(Query.DELIM_DIM);
     const aggregateToken = aggregate;
