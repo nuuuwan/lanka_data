@@ -129,7 +129,7 @@ export default function Cartogram({ datumSet }) {
       regionIdToWeight[regionValue] = display.value;
     }
 
-    const deformedGeoJson = structuredClone(geoJson);
+    const deformedGeoJson = JSON.parse(JSON.stringify(geoJson));
     CartogramUtils.compute(deformedGeoJson.features, regionIdToWeight);
 
     const features = [];
