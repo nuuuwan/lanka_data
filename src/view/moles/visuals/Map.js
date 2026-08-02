@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import { Choropleth } from "@nivo/geo";
 import { geoMercator, geoPath } from "d3-geo";
 
+import StringUtils from "../../../nonview/base/String.js";
 import WWW from "../../../nonview/base/WWW.js";
 import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
 import {
@@ -69,13 +70,14 @@ function getDisplayItem(items) {
   return items.reduce((best, item) => (item.value > best.value ? item : best));
 }
 
-function matchFeatureToValue(feature, dataMap) {
-  const featureName = feature.properties.name;
+export function matchFeatureToValue(feature, dataMap) {
+  const featureName = StringUtils.toSnakeCase(feature.properties.name);
+  const compactFeatureName = featureName.replace(/_/g, "");
   for (const [regionValue, items] of dataMap) {
+    const normalizedRegionValue = StringUtils.toSnakeCase(regionValue);
     if (
-      regionValue === featureName.toLowerCase().replace(/\s+/g, "_") ||
-      regionValue === featureName.toLowerCase().replace(/\s+/g, "") ||
-      regionValue === featureName.toLowerCase()
+      normalizedRegionValue === featureName ||
+      normalizedRegionValue.replace(/_/g, "") === compactFeatureName
     ) {
       return { regionValue, items };
     }

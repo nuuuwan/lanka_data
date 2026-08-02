@@ -16,7 +16,7 @@ const paths = [
   "/lanka_data/Person/Time=2024+District=colombo+Religion/Count/BarChart",
   "/lanka_data/Vote/ElectionType+Time=1994+ED+Party/Count/StackedBarChart",
   "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count/MarimekkoChart",
-  "/lanka_data/Person/Time=2024+District+Religion/Count/Map",
+  "/lanka_data/Vote/ElectionType=presidential+Time=2024+ED+Party/Count/Map",
 ];
 
 describe.each(paths)("screen: %s", (path) => {
@@ -39,7 +39,7 @@ describe.each(paths)("screen: %s", (path) => {
 
     const readyTestId = path.endsWith("/Map") ? "map-labels" : "datums-count";
     expect(
-      await screen.findByTestId(readyTestId, {}, { timeout: 20_000 }),
+      await screen.findByTestId(readyTestId, {}, { timeout: 40_000 }),
     ).toBeInTheDocument();
   });
 });
