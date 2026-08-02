@@ -30,7 +30,7 @@ export default function GeoChoropleth({
   const labelsLayer = () => (
     <g data-testid={`${testId}-labels`} pointerEvents="none">
       {labels.map(
-        ({ backgroundColor, fontSize, id, name, position: [x, y] }) => (
+        ({ angle, backgroundColor, fontSize, id, name, position: [x, y] }) => (
           <text
             key={id}
             x={x}
@@ -43,6 +43,7 @@ export default function GeoChoropleth({
                 : MAP_LABEL_LIGHT_COLOR
             }
             fontSize={fontSize}
+            transform={`rotate(${angle} ${x} ${y})`}
           >
             {name}
           </text>
