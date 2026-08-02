@@ -12,6 +12,7 @@ import {
   MAP_BORDER_COLOR,
   MAP_BORDER_WIDTH,
   MAP_HEIGHT,
+  MAP_PADDING,
   MAP_UNKNOWN_COLOR,
   MAP_WIDTH,
 } from "../../_cons/MapCons.js";
@@ -101,6 +102,30 @@ export function buildRegionIdToWeight(features, dataMap) {
   return regionIdToWeight;
 }
 
+function getGeoCoordinates(features) {
+  const coordinates = [];
+
+  function collect(value) {
+    if (!Array.isArray(value)) {
+      return;
+    }
+    if (typeof value[0] === "number") {
+      coordinates.push(value);
+      return;
+    }
+    value.forEach(collect);
+  }
+
+  features.forEach(({ geometry }) => collect(geometry.coordinates));
+  return coordinates;
+}
+
+function setCartogramViewBox(element) {
+  element
+    ?.querySelector("svg")
+    ?.setAttribute("viewBox", `0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`);
+}
+
 export default function Cartogram({ datumSet }) {
   const { datumList } = datumSet;
   const regionDimIndex = getRegionDimIndex(datumList);
@@ -139,14 +164,17 @@ export default function Cartogram({ datumSet }) {
       stackDimIndex,
     );
 
-    const regionIdToWeight = buildRegionIdToWeight(geoJson.features, dataMap);
+    const geoFeatures = geoJson.features.filter((geoFeature) =>
+      matchFeatureToValue(geoFeature, dataMap),
+    );
+    const regionIdToWeight = buildRegionIdToWeight(geoFeatures, dataMap);
 
-    const deformedGeoJson = JSON.parse(JSON.stringify(geoJson));
-    CartogramUtils.compute(deformedGeoJson.features, regionIdToWeight);
+    const deformedFeatures = JSON.parse(JSON.stringify(geoFeatures));
+    CartogramUtils.compute(deformedFeatures, regionIdToWeight);
 
     const features = [];
     const data = [];
-    for (const geoFeature of deformedGeoJson.features) {
+    for (const geoFeature of deformedFeatures) {
       const match = matchFeatureToValue(geoFeature, dataMap);
       const display = match ? getDisplayItem(match.items) : null;
       const id = String(getFeatureRegionId(geoFeature));
@@ -166,7 +194,7 @@ export default function Cartogram({ datumSet }) {
 
     const legendItems = [];
     const seenLabels = new Set();
-    for (const geoFeature of deformedGeoJson.features) {
+    for (const geoFeature of deformedFeatures) {
       const match = matchFeatureToValue(geoFeature, dataMap);
       const display = match ? getDisplayItem(match.items) : null;
       if (display && !seenLabels.has(display.label)) {
@@ -179,9 +207,15 @@ export default function Cartogram({ datumSet }) {
       }
     }
 
-    const projection = geoMercator().fitSize(
-      [MAP_WIDTH, MAP_HEIGHT],
-      deformedGeoJson,
+    const projection = geoMercator().fitExtent(
+      [
+        [MAP_PADDING, MAP_PADDING],
+        [MAP_WIDTH - MAP_PADDING, MAP_HEIGHT - MAP_PADDING],
+      ],
+      {
+        type: "MultiPoint",
+        coordinates: getGeoCoordinates(deformedFeatures),
+      },
     );
     const [translateX, translateY] = projection.translate();
 
@@ -203,6 +237,7 @@ export default function Cartogram({ datumSet }) {
   return (
     <Box>
       <Box
+        ref={setCartogramViewBox}
         data-testid="cartogram"
         sx={{
           width: "100%",
