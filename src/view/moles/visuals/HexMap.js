@@ -16,6 +16,7 @@ import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
 import {
   HEX_MAP_EDGE_WIDTH,
   HEX_MAP_LABEL_FONT_SIZE,
+  HEX_MAP_MAX_HEXAGONS,
   HEX_MAP_REGION_BORDER_WIDTH,
   HEX_MAP_SCALE_COLOR,
   HEX_MAP_SCALE_FONT_SIZE,
@@ -194,6 +195,7 @@ export default function HexMap({ datumSet }) {
     );
     const valuePerHexagon = getValuePerShape(
       facetInfos.flatMap(({ regions }) => regions.map(({ weight }) => weight)),
+      HEX_MAP_MAX_HEXAGONS,
     );
     const legendItemMap = new Map();
     facetInfos.forEach(({ regions }) =>
@@ -255,7 +257,7 @@ export default function HexMap({ datumSet }) {
                 >
                   <title>
                     {hexagon.feature.properties.name}: {hexagon.display.label} (
-                    {FormatUtils.humanizeValue(hexagon.weight)})
+                    {FormatUtils.humanizeValue(hexagon.display.value)})
                   </title>
                 </polygon>
               ))}

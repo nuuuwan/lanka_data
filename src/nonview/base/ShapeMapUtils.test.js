@@ -21,6 +21,18 @@ test("keeps regions visible when their weight is zero", () => {
   expect(getShapeCounts({ empty: 0 })).toEqual({ empty: 1 });
 });
 
+test("caps pathological shape counts for interactive rendering", () => {
+  const weights = [1_000_000, 1];
+  const valuePerShape = getValuePerShape(weights, 400);
+  const counts = getShapeCounts(
+    { dominant: weights[0], smallest: weights[1] },
+    valuePerShape,
+  );
+
+  expect(counts.dominant + counts.smallest).toBeLessThanOrEqual(400);
+  expect(counts.smallest).toBe(1);
+});
+
 test("builds enough pointy-top hexagons for every shape", () => {
   const { centers, radius } = buildHexGrid([0, 0, 100, 100], 20);
 

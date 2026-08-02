@@ -41,17 +41,41 @@ function getCandidates(weights) {
   return [...candidates].sort((a, b) => b - a);
 }
 
-export function getValuePerShape(weights) {
+export function getValuePerShape(weights, maxTotalCount = Infinity) {
   const positiveWeights = weights.filter((weight) => weight > 0);
   if (!positiveWeights.length) {
     return null;
   }
   const tolerance = MAX_SHAPE_ERROR + 1e-9;
-  return (
+  const valuePerShape =
     getCandidates(positiveWeights).find(
       (candidate) => maxError(positiveWeights, candidate) <= tolerance,
-    ) ?? Math.min(...positiveWeights) * 2 * MAX_SHAPE_ERROR
-  );
+    ) ?? Math.min(...positiveWeights) * 2 * MAX_SHAPE_ERROR;
+  if (!Number.isFinite(maxTotalCount)) {
+    return valuePerShape;
+  }
+
+  const targetCount = Math.max(maxTotalCount, weights.length);
+  const getTotalCount = (candidate) =>
+    weights.reduce(
+      (total, weight) => total + Math.max(1, roundHalfEven(weight / candidate)),
+      0,
+    );
+  if (getTotalCount(valuePerShape) <= targetCount) {
+    return valuePerShape;
+  }
+
+  let lower = valuePerShape;
+  let upper = Math.max(...positiveWeights);
+  for (let iteration = 0; iteration < 64; iteration += 1) {
+    const middle = (lower + upper) / 2;
+    if (getTotalCount(middle) > targetCount) {
+      lower = middle;
+    } else {
+      upper = middle;
+    }
+  }
+  return upper;
 }
 
 export function getShapeCounts(regionToWeight, valuePerShape = null) {
