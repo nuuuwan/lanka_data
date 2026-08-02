@@ -38,8 +38,4 @@ npx eslint --ext .js src
 
 Fix any remaining lint errors before finishing.
 
-Then run the smoke tests with:
-
-```shell
-CI=true npm test
-```
+Finally, make sure `http://localhost:3000/lanka_data` loads without errors.
