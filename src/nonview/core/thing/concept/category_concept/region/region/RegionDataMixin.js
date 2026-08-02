@@ -2,6 +2,8 @@ import WWW from "../../../../../../base/WWW.js";
 
 function toSnakeCase(value) {
   return String(value)
+    .replace(/&/g, " and ")
+    .replace(/[()]/g, "")
     .replace(/([a-z])([A-Z])/g, "$1_$2")
     .replace(/\s+/g, "_")
     .replace(/[^a-zA-Z0-9_]+/g, "_")
@@ -60,35 +62,12 @@ export default class RegionDataMixin {
     );
   }
 
-  static validValues() {
-    return Object.keys(this.getEntIdxByValue()).sort();
-  }
-
   static list() {
     return this.validValues().map((value) => new this(value));
   }
 
   static idx() {
     return Object.fromEntries(this.list().map((item) => [item.value, item]));
-  }
-
-  static fromValue(value) {
-    const ConceptClass = this;
-    if (value === ConceptClass.WILDCARD) {
-      return new ConceptClass(value);
-    }
-    const normalized = toSnakeCase(value);
-    const idx = this.getEntIdxByValue();
-    if (normalized in idx) {
-      return new ConceptClass(normalized);
-    }
-    if (this.allowArbitraryValues()) {
-      return new ConceptClass(normalized);
-    }
-    throw new Error(
-      `Invalid label: ${value} for ${this.name}. ` +
-        `Valid labels: ${Object.keys(idx)}`,
-    );
   }
 
   static fromRegionId(regionId) {
@@ -125,5 +104,29 @@ export default class RegionDataMixin {
     })();
 
     return initPromise;
+  }
+  static validValues() {
+    return Object.keys(this.getEntIdxByValue()).sort();
+  }
+
+  static fromValue(value) {
+    const ConceptClass = this;
+    if (value === ConceptClass.WILDCARD) {
+      return new ConceptClass(value);
+    }
+    const normalized = toSnakeCase(value);
+    const idx = this.getEntIdxByValue();
+    if (normalized in idx) {
+      return new ConceptClass(normalized);
+    }
+    if (this.allowArbitraryValues()) {
+      return new ConceptClass(normalized);
+    }
+
+    console.debug(Object.keys(idx));
+    throw new Error(
+      `Invalid label2: ${value} for ${this.name}. ` +
+        `Valid labels: ${Object.keys(idx)}`,
+    );
   }
 }

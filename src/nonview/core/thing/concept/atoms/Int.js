@@ -7,6 +7,11 @@ function floorLog10(x) {
 export default class Int extends Concept {
   getHumanReadableValue() {
     let value = parseInt(this.value, 10);
+
+    if (Number.isNaN(value)) {
+      return "0";
+    }
+
     if (value < 0) {
       return "-" + new Int(-value).getHumanReadableValue();
     }
