@@ -98,10 +98,18 @@ function ChartVisual({ VisualClass, datumSet }) {
 }
 
 function VisualContent({ VisualClass, datumSet }) {
-  if (VisualClass.IS_CHART) {
-    return <ChartVisual VisualClass={VisualClass} datumSet={datumSet} />;
-  }
-  return <VisualClass datumSet={datumSet} />;
+  return (
+    <>
+      <Typography variant="caption" sx={{ color: "text.secondary" }}>
+        {datumSet.datumList.length} datums
+      </Typography>
+      {VisualClass.IS_CHART ? (
+        <ChartVisual VisualClass={VisualClass} datumSet={datumSet} />
+      ) : (
+        <VisualClass datumSet={datumSet} />
+      )}
+    </>
+  );
 }
 
 export default function VisualQueryPage() {
