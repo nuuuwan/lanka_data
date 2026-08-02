@@ -1,9 +1,13 @@
 import {
   assignShapes,
   buildHexGrid,
+  buildSquareGrid,
   getBestHexLabelFit,
+  getBestSquareLabelFit,
   getHexBoundaryEdges,
   getHexPoints,
+  getSquareBoundaryEdges,
+  getSquarePoints,
   getShapeCounts,
   getValuePerShape,
 } from "./ShapeMapUtils.js";
@@ -41,6 +45,16 @@ test("builds enough pointy-top hexagons for every shape", () => {
   expect(getHexPoints(centers[0], radius)[0][0]).toBeCloseTo(centers[0][0]);
 });
 
+test("builds enough squares for every shape", () => {
+  const { centers, size } = buildSquareGrid([0, 0, 100, 100], 20);
+
+  expect(centers.length).toBeGreaterThanOrEqual(20);
+  expect(getSquarePoints(centers[0], size)).toHaveLength(4);
+  expect(getSquarePoints(centers[0], size)[0][0]).toBeCloseTo(
+    centers[0][0] - size / 2,
+  );
+});
+
 test("minimizes total placement cost instead of assigning greedily", () => {
   const regions = [
     { id: "flexible", centroid: [0, 0], count: 1 },
@@ -72,6 +86,21 @@ test("fits labels to the longest contiguous run of hexagons", () => {
     center: [Math.sqrt(3) * radius, 0],
     angle: 0,
   });
+
+  test("fits labels to the longest contiguous run of squares", () => {
+    const size = 10;
+    const fit = getBestSquareLabelFit(
+      [
+        [0, 0],
+        [size, 0],
+        [2 * size, 0],
+      ],
+      size,
+    );
+
+    expect(fit).toMatchObject({ center: [size, 0], angle: 0 });
+    expect(fit.width).toBe(3 * size);
+  });
   expect(fit.width).toBeCloseTo(3 * Math.sqrt(3) * radius);
 });
 
@@ -83,4 +112,14 @@ test("omits shared edges inside a region boundary", () => {
   ];
 
   expect(getHexBoundaryEdges(shapes, radius)).toHaveLength(10);
+});
+
+test("omits shared square edges inside a region boundary", () => {
+  const size = 10;
+  const shapes = [
+    { id: "same-region", center: [0, 0] },
+    { id: "same-region", center: [size, 0] },
+  ];
+
+  expect(getSquareBoundaryEdges(shapes, size)).toHaveLength(6);
 });
