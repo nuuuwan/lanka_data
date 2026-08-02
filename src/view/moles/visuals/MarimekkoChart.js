@@ -52,18 +52,25 @@ function getFontScale(screenWidth) {
 }
 
 function BarLabelsLayer({ data, screenWidth }) {
+  const labelCount = data.length;
+  const congestionScale = Math.max(0.7, 1 / Math.sqrt(labelCount));
+  const fontScale = getFontScale(screenWidth) * congestionScale;
+
   return (
     <>
       {data.map((datum) => {
+        if (datum.width < 20) {
+          return null;
+        }
         const fontSize = Math.max(
-          7,
-          Math.min(12, (datum.width / 10) * getFontScale(screenWidth)),
+          6,
+          Math.min(10, (datum.width / 10) * fontScale),
         );
         return (
           <text
             key={datum.id}
             x={datum.x + datum.width / 2}
-            y={datum.y + datum.height + 16}
+            y={datum.y + datum.height + 12}
             textAnchor="middle"
             dominantBaseline="hanging"
             style={{
