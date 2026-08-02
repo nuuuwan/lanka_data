@@ -214,7 +214,6 @@ export default function VisualQueryPage() {
       >
         <TextField
           fullWidth
-          label="Visual query"
           size="small"
           value={visualQueryInput}
           onChange={(event) => setVisualQueryInput(event.target.value)}
