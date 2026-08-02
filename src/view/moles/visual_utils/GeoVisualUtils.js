@@ -151,9 +151,10 @@ export function getFittedLabelFontSize(label, width, height) {
   return Math.min(height, width / estimatedWidthAtUnitSize);
 }
 
-const LABEL_ANGLES = [0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165];
-const LABEL_GRID_SIZE = 12;
-const LABEL_FIT_ITERATIONS = 16;
+const LABEL_ANGLES = [0, 30, 60, 90, 120, 150];
+const LABEL_GRID_SIZE = 8;
+const LABEL_FIT_ITERATIONS = 10;
+const geometryToProjectionFits = new WeakMap();
 
 function getProjectedPolygons(feature, projection) {
   const projectRing = (ring) => ring.map(projection);
@@ -195,17 +196,22 @@ function isPointOnSegment([px, py], [ax, ay], [bx, by]) {
 
 function isPointInRing(point, ring) {
   let inside = false;
-  for (let index = 0, previous = ring.length - 1; index < ring.length; index += 1) {
+  for (
+    let index = 0, previous = ring.length - 1;
+    index < ring.length;
+    index += 1
+  ) {
     const start = ring[previous];
     const end = ring[index];
     if (isPointOnSegment(point, start, end)) {
       return true;
     }
+    const startIsBelow = start[1] > point[1];
+    const endIsBelow = end[1] > point[1];
     if (
-      start[1] > point[1] !== end[1] > point[1] &&
+      startIsBelow !== endIsBelow &&
       point[0] <
-        ((end[0] - start[0]) * (point[1] - start[1])) /
-          (end[1] - start[1]) +
+        ((end[0] - start[0]) * (point[1] - start[1])) / (end[1] - start[1]) +
           start[0]
     ) {
       inside = !inside;
@@ -262,12 +268,7 @@ function doesRectangleFit(rectangle, polygon) {
       const end = ring[(index + 1) % ring.length];
       return rectangleEdges.every(
         ([rectangleStart, rectangleEnd]) =>
-          !segmentsProperlyIntersect(
-            rectangleStart,
-            rectangleEnd,
-            start,
-            end,
-          ),
+          !segmentsProperlyIntersect(rectangleStart, rectangleEnd, start, end),
       );
     }),
   );
@@ -281,8 +282,7 @@ function getLabelCenters(polygon) {
       const point = [
         bounds[0] +
           ((column + 0.5) * (bounds[2] - bounds[0])) / LABEL_GRID_SIZE,
-        bounds[1] +
-          ((row + 0.5) * (bounds[3] - bounds[1])) / LABEL_GRID_SIZE,
+        bounds[1] + ((row + 0.5) * (bounds[3] - bounds[1])) / LABEL_GRID_SIZE,
       ];
       if (isPointInPolygon(point, polygon)) {
         centers.push(point);
@@ -306,7 +306,11 @@ function getBestLabelFit(name, polygons) {
       for (const angle of LABEL_ANGLES) {
         let minimum = 0;
         let maximum = maximumSize;
-        for (let iteration = 0; iteration < LABEL_FIT_ITERATIONS; iteration += 1) {
+        for (
+          let iteration = 0;
+          iteration < LABEL_FIT_ITERATIONS;
+          iteration += 1
+        ) {
           const fontSize = (minimum + maximum) / 2;
           const rectangle = getRectangle(
             center,
@@ -329,16 +333,32 @@ function getBestLabelFit(name, polygons) {
   return best;
 }
 
+function getFeatureLabelFit(feature, projection) {
+  let projectionFits = geometryToProjectionFits.get(feature.geometry);
+  if (!projectionFits) {
+    projectionFits = new WeakMap();
+    geometryToProjectionFits.set(feature.geometry, projectionFits);
+  }
+  let fit = projectionFits.get(projection);
+  if (!fit) {
+    fit = getBestLabelFit(
+      feature.properties.name,
+      getProjectedPolygons(feature, projection),
+    );
+    if (fit) {
+      projectionFits.set(projection, fit);
+    }
+  }
+  return fit;
+}
+
 export function buildRegionLabels(features, projection) {
   if (features.length > MAP_MAX_LABEL_COUNT) {
     return [];
   }
   return features
     .map((feature) => {
-      const fit = getBestLabelFit(
-        feature.properties.name,
-        getProjectedPolygons(feature, projection),
-      );
+      const fit = getFeatureLabelFit(feature, projection);
       if (!fit) {
         return null;
       }
