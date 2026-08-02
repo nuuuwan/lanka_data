@@ -14,10 +14,10 @@ export default function MultiChartLayout({
     <Box>
       {facets.map(({ facetKey, data }) => (
         <Box key={facetKey}>
-          <Typography variant="h6" sx={{ mb: 1 }}>
+          <Typography variant="title" sx={{ mb: 1 }}>
             {facetKey || xAxisDimName}
           </Typography>
-          <Box sx={{ width: "100%", minWidth: 0 }}>
+          <Box sx={{ width: "100%" }}>
             {renderChart({ data, xAxisLabel: xAxisDimName, yAxisLabel })}
           </Box>
         </Box>

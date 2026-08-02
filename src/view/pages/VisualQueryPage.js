@@ -115,11 +115,11 @@ export default function VisualQueryPage() {
   const VisualClass = visualQuery.visualClass;
 
   return (
-    <Box sx={{ m: 1, p: 1 }}>
-      <Typography variant="h6" sx={{ mt: 2, color: "info.main" }}>
+    <Box sx={{ m: 2 }}>
+      <Typography variant="h6" sx={{ color: "info.main" }}>
         Lanka Data
       </Typography>
-      <Typography variant="h4" sx={{ mt: 2 }}>
+      <Typography variant="h6" sx={{ color: "primary" }}>
         {visualQueryStr}
       </Typography>
       {datumSet === null ? (
