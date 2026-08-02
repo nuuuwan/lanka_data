@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, LinearProgress, Typography } from "@mui/material";
 import { geoCentroid } from "d3-geo";
 
 import {
@@ -222,7 +222,7 @@ export default function HexMap({ datumSet }) {
   }, [geoJson, datumList, regionDimIndex, stackDimIndex]);
 
   if (!geoJson) {
-    return <Typography>Loading hex map…</Typography>;
+    return <LinearProgress sx={{ m: 2 }} />;
   }
 
   return (
