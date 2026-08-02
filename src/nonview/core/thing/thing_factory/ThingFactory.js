@@ -1,5 +1,4 @@
 import ThingFactoryContentsMixin from "./ThingFactoryContentsMixin.js";
-import KeyValue from "../../KeyValue.js";
 import Thing from "../Thing.js";
 
 export default class ThingFactory {

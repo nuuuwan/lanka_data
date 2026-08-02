@@ -62,11 +62,9 @@ export default class Query {
       if (dimThing.value === Thing.WILDCARD) {
         return dimThing.constructor.name;
       }
-      return [
-        dimThing.constructor.name,
-        Query.DELIM_EQ,
-        dimThing.value,
-      ].join("");
+      return [dimThing.constructor.name, Query.DELIM_EQ, dimThing.value].join(
+        "",
+      );
     });
     const dimToken = dimInnerTokens.join(Query.DELIM_DIM);
     const aggregateToken = aggregate;

@@ -64,6 +64,10 @@ export default class CategoryConcept extends Concept {
   static fromValue(value) {
     this.checkMapAlias();
 
+    if (String(value) === Thing.WILDCARD) {
+      return new this(Thing.WILDCARD);
+    }
+
     let normalized = String(value).replace(/\*/g, "");
     normalized = toSnakeCase(normalized);
     normalized = this.aliasToValue()[normalized] ?? normalized;
