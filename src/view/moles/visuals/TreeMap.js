@@ -6,9 +6,23 @@ import FormatUtils from "../visual_utils/FormatUtils.js";
 
 export default function TreeMap({ data, xAxisLabel }) {
   const theme = useTheme();
+  const children = Array.from(
+    data
+      .reduce((nodesById, node) => {
+        const existingNode = nodesById.get(node.id);
+        nodesById.set(
+          node.id,
+          existingNode
+            ? { ...existingNode, value: existingNode.value + node.value }
+            : node,
+        );
+        return nodesById;
+      }, new Map())
+      .values(),
+  );
   const treeData = {
     id: xAxisLabel || "Data",
-    children: data,
+    children,
   };
 
   return (
