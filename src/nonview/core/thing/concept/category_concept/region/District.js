@@ -1,3 +1,3 @@
-import Region from "./region/Region.js";
+import Region from "./Region.js";
 
 export default class District extends Region {}

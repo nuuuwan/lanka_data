@@ -1,4 +1,4 @@
-import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
+import Region from "../../../nonview/core/thing/concept/category_concept/region/Region.js";
 
 export default class DimensionUtils {
   static getDimIndexInfo(datumList) {

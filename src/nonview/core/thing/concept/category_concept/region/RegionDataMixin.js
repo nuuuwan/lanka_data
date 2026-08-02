@@ -1,4 +1,4 @@
-import WWW from "../../../../../../base/WWW.js";
+import WWW from "../../../../../base/WWW.js";
 
 function toSnakeCase(value) {
   return String(value)
@@ -74,6 +74,9 @@ export default class RegionDataMixin {
 
   static fromValue(value) {
     const ConceptClass = this;
+    if (value === ConceptClass.WILDCARD) {
+      return new ConceptClass(value);
+    }
     const normalized = toSnakeCase(value);
     const idx = this.getEntIdxByValue();
     if (normalized in idx) {
