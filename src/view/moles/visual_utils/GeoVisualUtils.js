@@ -4,6 +4,7 @@ import StringUtils from "../../../nonview/base/String.js";
 import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
 import {
   MAP_HEIGHT,
+  MAP_LABEL_CHARACTER_WIDTH_RATIO,
   MAP_MAX_LABEL_COUNT,
   MAP_PADDING,
   MAP_UNKNOWN_COLOR,
@@ -143,6 +144,12 @@ export function getProjectionInfo(features) {
   };
 }
 
+export function getFittedLabelFontSize(label, width, height) {
+  const estimatedWidthAtUnitSize =
+    Math.max(label.length, 1) * MAP_LABEL_CHARACTER_WIDTH_RATIO;
+  return Math.min(height, width / estimatedWidthAtUnitSize);
+}
+
 export function buildRegionLabels(features, projection) {
   if (features.length > MAP_MAX_LABEL_COUNT) {
     return [];
@@ -162,6 +169,11 @@ export function buildRegionLabels(features, projection) {
         );
       return {
         backgroundColor: feature.fill ?? MAP_UNKNOWN_COLOR,
+        fontSize: getFittedLabelFontSize(
+          feature.properties.name,
+          bounds[2] - bounds[0],
+          bounds[3] - bounds[1],
+        ),
         id: feature.id,
         name: feature.properties.name,
         position: [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2],
