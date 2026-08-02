@@ -64,8 +64,8 @@ export default class CategoryConcept extends Concept {
   static fromValue(value) {
     this.checkMapAlias();
 
-    if (String(value) === Thing.WILDCARD) {
-      return new this(Thing.WILDCARD);
+    if (value === Thing.WILDCARD) {
+      return new this(value);
     }
 
     let normalized = String(value).replace(/\*/g, "");
@@ -77,10 +77,18 @@ export default class CategoryConcept extends Concept {
       return idx[normalized];
     }
 
+    if (this.allowArbitraryValues()) {
+      return new this(normalized);
+    }
+
     throw new Error(
       `Invalid label: ${value} (normalized: ${normalized}) for ${this.name}. ` +
         `Valid labels: ${Object.keys(idx)}`,
     );
+  }
+
+  static allowArbitraryValues() {
+    return false;
   }
 
   static getColorMap() {
