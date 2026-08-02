@@ -4,13 +4,21 @@ import RegionFactory from "../thing/concept/category_concept/region/RegionFactor
 
 async function loadRegionData() {
   const regionData = {};
+  console.debug("[DataProvider] Loading region data");
   await Promise.all(
     RegionFactory.list().map(async (RegionClass) => {
       const classId = RegionClass.regionClassId();
+      console.debug(`[DataProvider] Loading region class "${classId}"`);
       const ents = await RegionClass.loadEnts();
       regionData[classId] = ents;
       RegionClass.ents = ents;
+      console.debug(
+        `[DataProvider] Loaded ${ents.length} entities for region class "${classId}"`,
+      );
     }),
+  );
+  console.debug(
+    `[DataProvider] Region data ready (${Object.keys(regionData).length} classes)`,
   );
   return regionData;
 }

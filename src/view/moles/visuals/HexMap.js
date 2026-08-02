@@ -126,9 +126,27 @@ function assignHexagons(features, counts, centers, radius, projection) {
 
 export default function HexMap({ datumSet }) {
   const { datumList } = datumSet;
-  const { regionDimIndex, regionClass, stackDimIndex } =
-    getGeoDimInfo(datumList);
-  const geoJson = useGeoJson(regionClass);
+  const regionDimIndex = getRegionDimIndex(datumList);
+  const stackDimIndex = getStackDimIndex(datumList, regionDimIndex);
+  const regionClass =
+    datumList[0].query.dimThingList[regionDimIndex].constructor;
+  const [geoJson, setGeoJson] = useState(null);
+
+  useEffect(() => {
+    async function load() {
+      const geoUrl = regionClass.getGeoURL();
+      console.debug(
+        `[HexMap] Loading geography for ${regionClass.name} from ${geoUrl}`,
+      );
+      const topoJson = await WWW.json(geoUrl);
+      const nextGeoJson = feature(topoJson, topoJson.objects.data);
+      console.debug(
+        `[HexMap] Loaded ${nextGeoJson.features.length} geographic features for ${regionClass.name}`,
+      );
+      setGeoJson(nextGeoJson);
+    }
+    load();
+  }, [regionClass]);
 
   const { maps, legendItems } = useMemo(() => {
     if (!geoJson) {
@@ -216,6 +234,14 @@ export default function HexMap({ datumSet }) {
       .sort((a, b) => b.total - a.total);
     return { maps, legendItems: Array.from(legendItemMap.values()) };
   }, [geoJson, datumList, regionDimIndex, stackDimIndex]);
+
+  useEffect(() => {
+    if (geoJson) {
+      console.debug(
+        `[HexMap] Prepared ${maps.length} maps with ${legendItems.length} legend items from ${datumList.length} datums`,
+      );
+    }
+  }, [geoJson, maps, legendItems, datumList.length]);
 
   if (!geoJson) {
     return <Typography>Loading hex map…</Typography>;

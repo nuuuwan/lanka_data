@@ -7,13 +7,23 @@ export default class DataSourceFactory {
     return [Census2024, GIG];
   }
   static async getDatumSetForQuery(query) {
+    console.debug(`[DataSourceFactory] Loading datums for "${query}"`);
     const datumListList = await Promise.all(
-      this.getDataSourceClasses().map((dataSourceClass) =>
-        dataSourceClass.getDatumListForQuery(query),
-      ),
+      this.getDataSourceClasses().map(async (dataSourceClass) => {
+        console.debug(
+          `[DataSourceFactory] Querying ${dataSourceClass.name} for "${query}"`,
+        );
+        const datumList = await dataSourceClass.getDatumListForQuery(query);
+        console.debug(
+          `[DataSourceFactory] ${dataSourceClass.name} returned ${datumList.length} datums`,
+        );
+        return datumList;
+      }),
     );
     const datumList = datumListList.flat();
-    console.debug(`Found ${datumList.length} datums for "${query}"`);
+    console.debug(
+      `[DataSourceFactory] Loaded ${datumList.length} total datums for "${query}"`,
+    );
 
     return new DatumSet(datumList);
   }
