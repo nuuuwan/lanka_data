@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { feature } from "topojson-client";
 import { Box, Typography } from "@mui/material";
 import { Choropleth } from "@nivo/geo";
-import { geoMercator } from "d3-geo";
+import { geoMercator, geoPath } from "d3-geo";
 
 import WWW from "../../../nonview/base/WWW.js";
 import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
@@ -10,6 +10,9 @@ import {
   MAP_BORDER_COLOR,
   MAP_BORDER_WIDTH,
   MAP_HEIGHT,
+  MAP_LABEL_DARK_COLOR,
+  MAP_LABEL_FONT_SIZE,
+  MAP_LABEL_LIGHT_COLOR,
   MAP_UNKNOWN_COLOR,
   MAP_WIDTH,
 } from "../../_cons/MapCons.js";
@@ -98,6 +101,7 @@ export default function MapVisual({ datumSet }) {
   const {
     features,
     data,
+    labels,
     legendItems,
     projectionScale,
     projectionTranslation,
@@ -106,6 +110,7 @@ export default function MapVisual({ datumSet }) {
       return {
         features: [],
         data: [],
+        labels: [],
         legendItems: [],
         projectionScale: 0,
         projectionTranslation: [0.5, 0.5],
@@ -128,6 +133,7 @@ export default function MapVisual({ datumSet }) {
         id,
         fill: display?.color,
       });
+      console.debug(id);
       if (display) {
         data.push({
           id,
@@ -153,11 +159,21 @@ export default function MapVisual({ datumSet }) {
     }
 
     const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], geoJson);
+    const path = geoPath(projection);
     const [translateX, translateY] = projection.translate();
+    const labels = features
+      .map((geoFeature) => ({
+        backgroundColor: geoFeature.fill ?? MAP_UNKNOWN_COLOR,
+        id: geoFeature.id,
+        name: geoFeature.properties.name,
+        position: path.centroid(geoFeature),
+      }))
+      .filter(({ position }) => position.every(Number.isFinite));
 
     return {
       features,
       data,
+      labels,
       legendItems,
       projectionScale: projection.scale(),
       projectionTranslation: [translateX / MAP_WIDTH, translateY / MAP_HEIGHT],
@@ -169,6 +185,28 @@ export default function MapVisual({ datumSet }) {
   }
 
   const maxValue = Math.max(...data.map(({ value }) => value), 1);
+  const labelsLayer = () => (
+    <g data-testid="map-labels" pointerEvents="none">
+      {labels.map(({ backgroundColor, id, name, position: [x, y] }) => {
+        const lightBackground = FormatUtils.isLightColor(backgroundColor);
+        return (
+          <text
+            key={id}
+            x={x}
+            y={y}
+            textAnchor="middle"
+            dominantBaseline="central"
+            fill={
+              lightBackground ? MAP_LABEL_DARK_COLOR : MAP_LABEL_LIGHT_COLOR
+            }
+            fontSize={MAP_LABEL_FONT_SIZE}
+          >
+            {name}
+          </text>
+        );
+      })}
+    </g>
+  );
 
   return (
     <Box>
@@ -204,6 +242,7 @@ export default function MapVisual({ datumSet }) {
           unknownColor={MAP_UNKNOWN_COLOR}
           borderWidth={MAP_BORDER_WIDTH}
           borderColor={MAP_BORDER_COLOR}
+          layers={["features", labelsLayer]}
           role="img"
         />
       </Box>

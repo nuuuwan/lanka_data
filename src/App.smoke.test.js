@@ -37,7 +37,7 @@ describe.each(paths)("screen: %s", (path) => {
   test("renders without crashing", async () => {
     render(<App />);
 
-    const readyTestId = path.endsWith("/Map") ? "map" : "datums-count";
+    const readyTestId = path.endsWith("/Map") ? "map-labels" : "datums-count";
     expect(
       await screen.findByTestId(readyTestId, {}, { timeout: 20_000 }),
     ).toBeInTheDocument();
