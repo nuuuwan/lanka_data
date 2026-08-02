@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { Box, Typography } from "@mui/material";
 import { GeoMap } from "@nivo/geo";
 import { geoCentroid } from "d3-geo";
@@ -126,27 +126,9 @@ function assignHexagons(features, counts, centers, radius, projection) {
 
 export default function HexMap({ datumSet }) {
   const { datumList } = datumSet;
-  const regionDimIndex = getRegionDimIndex(datumList);
-  const stackDimIndex = getStackDimIndex(datumList, regionDimIndex);
-  const regionClass =
-    datumList[0].query.dimThingList[regionDimIndex].constructor;
-  const [geoJson, setGeoJson] = useState(null);
-
-  useEffect(() => {
-    async function load() {
-      const geoUrl = regionClass.getGeoURL();
-      console.debug(
-        `[HexMap] Loading geography for ${regionClass.name} from ${geoUrl}`,
-      );
-      const topoJson = await WWW.json(geoUrl);
-      const nextGeoJson = feature(topoJson, topoJson.objects.data);
-      console.debug(
-        `[HexMap] Loaded ${nextGeoJson.features.length} geographic features for ${regionClass.name}`,
-      );
-      setGeoJson(nextGeoJson);
-    }
-    load();
-  }, [regionClass]);
+  const { regionDimIndex, regionClass, stackDimIndex } =
+    getGeoDimInfo(datumList);
+  const geoJson = useGeoJson(regionClass);
 
   const { maps, legendItems } = useMemo(() => {
     if (!geoJson) {
@@ -172,13 +154,8 @@ export default function HexMap({ datumSet }) {
     console.debug(
       `[HexMap] Matched ${geoFeatures.length}/${geoJson.features.length} geographic features across ${facetGroups.length} facets`,
     );
-    const projection = geoMercator().fitExtent(
-      [
-        [MAP_PADDING, MAP_PADDING],
-        [MAP_WIDTH - MAP_PADDING, MAP_HEIGHT - MAP_PADDING],
-      ],
-      geoJson,
-    );
+    const { projection, projectionScale, projectionTranslation } =
+      getProjectionInfo(geoFeatures);
     const legendItemMap = new Map();
     const maps = facetGroups
       .map(({ facetKey, facetDatumList }) => {
@@ -191,6 +168,9 @@ export default function HexMap({ datumSet }) {
           const match = matchFeatureToValue(geoFeature, dataMap);
           return match ? getDisplayItem(match.items) : null;
         });
+        const valuePerHexagon = getValuePerHexagon(
+          displays.map((item) => item?.value ?? 0),
+        );
         const counts = displays.map((item) =>
           item && valuePerHexagon
             ? Math.max(1, Math.round(item.value / valuePerHexagon))
