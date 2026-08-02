@@ -90,7 +90,7 @@ export function buildHexMapLayout(facetInfo, valuePerHexagon, isUnit = false) {
   const regionIdToWeight = Object.fromEntries(
     facetInfo.regions.map(({ id, weight }) => [id, weight]),
   );
-  if (Object.values(regionIdToWeight).some((weight) => weight > 0)) {
+  if (!isUnit && Object.values(regionIdToWeight).some((weight) => weight > 0)) {
     CartogramUtils.compute(warpedFeatures, regionIdToWeight);
   }
   const { projection } = getProjectionInfo(warpedFeatures);

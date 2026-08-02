@@ -8,7 +8,9 @@ afterEach(() => {
 });
 
 test("represents every region with exactly one hexagon", () => {
-  jest.spyOn(CartogramUtils, "compute").mockImplementation(() => {});
+  const computeSpy = jest
+    .spyOn(CartogramUtils, "compute")
+    .mockImplementation(() => {});
   const feature = {
     type: "Feature",
     properties: { id: "region-a", name: "Region A" },
@@ -43,17 +45,14 @@ test("represents every region with exactly one hexagon", () => {
     },
   ];
 
-  const layout = buildHexMapLayout(
-    { facetKey: "", regions },
-    undefined,
-    true,
-  );
+  const layout = buildHexMapLayout({ facetKey: "", regions }, undefined, true);
 
   expect(layout.hexagons).toHaveLength(regions.length);
   expect(layout.hexagons.map(({ regionId }) => regionId).sort()).toEqual([
     "region-a",
     "region-b",
   ]);
+  expect(computeSpy).not.toHaveBeenCalled();
 });
 
 test("registers UnitHexMap as a non-chart visual", () => {
