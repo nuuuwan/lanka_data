@@ -23,7 +23,6 @@ import {
 import MultiChartLayout from "../visual_utils/MultiChartLayout.js";
 import Legend from "./Legend.js";
 
-const HEX_RADIUS = 5;
 const HEX_AREA_FACTOR = (3 * Math.sqrt(3)) / 2;
 const GRID_FACTOR = 1.3;
 const MAX_GRID_ITERATIONS = 12;
@@ -73,11 +72,7 @@ function buildGrid(bounds, totalCount) {
     const dy = 1.5 * radius;
     centers = [];
     for (let row = 0, y = minY; y <= maxY + dy; row += 1, y += dy) {
-      for (
-        let x = minX + (row % 2) * (dx / 2);
-        x <= maxX + dx;
-        x += dx
-      ) {
+      for (let x = minX + (row % 2) * (dx / 2); x <= maxX + dx; x += dx) {
         centers.push([x, y]);
       }
     }
@@ -175,7 +170,12 @@ export default function HexMap({ datumSet }) {
             : 0,
         );
         const { centers, radius } = buildGrid(
-          [MAP_PADDING, MAP_PADDING, MAP_WIDTH - MAP_PADDING, MAP_HEIGHT - MAP_PADDING],
+          [
+            MAP_PADDING,
+            MAP_PADDING,
+            MAP_WIDTH - MAP_PADDING,
+            MAP_HEIGHT - MAP_PADDING,
+          ],
           counts.reduce((sum, count) => sum + count, 0),
         );
         const hexFeatures = assignHexagons(
