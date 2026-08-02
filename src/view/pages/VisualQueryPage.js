@@ -6,7 +6,6 @@ import VisualQuery from "../../nonview/core/VisualQuery.js";
 import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
-
 function useChartFacets(datumSet, VisualClass) {
   const { datumList } = datumSet;
 

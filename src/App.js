@@ -2,7 +2,7 @@ import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import VisualQueryPage from "./view/pages/VisualQueryPage";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppTheme } from "./AppTheme";
-
+import AppFooter from "./view/atoms/AppFooter.js";
 const DEFAULT_VISUAL_QUERY_STR =
   "/Person/Time+Province+Religion/Count/MarimekkoChart";
 
@@ -20,6 +20,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
+      <AppFooter />
     </ThemeProvider>
   );
 }
