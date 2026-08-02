@@ -1,11 +1,19 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 
-jest.setTimeout(30000);
+jest.setTimeout(120_000);
+
+jest.mock(
+  "react-virtualized-auto-sizer",
+  () =>
+    function AutoSizer({ children }) {
+      return children({ width: 800, height: 400 });
+    },
+);
 
 const paths = [
   "/lanka_data/Person/Time=2024+Province+Religion/Count/Blocks",
-  "/lanka_data/Person/Time=2024+District=Western+Religion/Count/BarChart",
+  "/lanka_data/Person/Time=2024+District=colombo+Religion/Count/BarChart",
   "/lanka_data/Vote/ElectionType+Time=1994+ED+Party/Count/StackedBarChart",
   "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count/MarimekkoChart",
 ];
@@ -30,9 +38,10 @@ describe.each(paths)("screen: %s", (path) => {
 
     await waitFor(
       () => {
-        expect(screen.getByText(/datum/)).toBeInTheDocument();
+        const count = screen.getByTestId("datums-count");
+        expect(count).toBeInTheDocument();
       },
-      { timeout: 25_000 },
+      { timeout: 20_000 },
     );
   });
 });

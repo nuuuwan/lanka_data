@@ -100,7 +100,11 @@ function ChartVisual({ VisualClass, datumSet }) {
 function VisualContent({ VisualClass, datumSet }) {
   return (
     <>
-      <Typography variant="caption" sx={{ color: "text.secondary" }}>
+      <Typography
+        data-testid="datums-count"
+        variant="caption"
+        sx={{ color: "text.secondary" }}
+      >
         {datumSet.datumList.length} datums
       </Typography>
       {VisualClass.IS_CHART ? (
