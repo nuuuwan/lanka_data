@@ -12,12 +12,14 @@ export default class Query {
     aggregate,
     queryStr,
     subRegionDimThingList = null,
+    parentRegionConstraintList = null,
   ) {
     this.entityClass = entityClass;
     this.dimThingList = dimThingList;
     this.aggregate = aggregate;
     this.queryStr = queryStr;
     this.subRegionDimThingList = subRegionDimThingList;
+    this.parentRegionConstraintList = parentRegionConstraintList;
   }
 
   toString() {
@@ -40,10 +42,24 @@ export default class Query {
       if (thisDimThing.constructor !== otherDimThing.constructor) {
         return false;
       }
-      if (
-        otherDimThing.value !== Thing.WILDCARD &&
-        thisDimThing.value !== otherDimThing.value
-      ) {
+      if (otherDimThing.value === Thing.WILDCARD) {
+        if (
+          otherQuery.parentRegionConstraintList &&
+          otherQuery.parentRegionConstraintList.length > 0
+        ) {
+          const constraint = otherQuery.parentRegionConstraintList.find(
+            (c) => c.childClass === otherDimThing.constructor,
+          );
+          if (
+            constraint &&
+            !constraint.childValues.includes(thisDimThing.value)
+          ) {
+            return false;
+          }
+        }
+        continue;
+      }
+      if (thisDimThing.value !== otherDimThing.value) {
         return false;
       }
     }
@@ -56,9 +72,27 @@ export default class Query {
     const entityClass = ThingFactory.fromKey(entityClassName);
 
     const dimToken = tokens[1];
-    const dimThingList = dimToken.split(Query.DELIM_DIM).map((token) => {
-      return ThingFactory.fromKeyValue(token);
-    });
+    const dimThingList = [];
+    const parentRegionConstraintList = [];
+    for (const token of dimToken.split(Query.DELIM_DIM)) {
+      const parentConstraintIndex = token.indexOf("<");
+      if (parentConstraintIndex === -1) {
+        dimThingList.push(ThingFactory.fromKeyValue(token));
+        continue;
+      }
+      const childClassName = token.slice(0, parentConstraintIndex);
+      const parentKeyValue = token.slice(parentConstraintIndex + 1);
+      const ChildClass = ThingFactory.fromKey(childClassName);
+      await ChildClass.init();
+      const parentRegion = ThingFactory.fromKeyValue(parentKeyValue);
+      const childRegions = ChildClass.getChildRegions(parentRegion, ChildClass);
+      const childValues = childRegions.map((region) => region.value);
+      dimThingList.push(ChildClass.fromValue(Thing.WILDCARD));
+      parentRegionConstraintList.push({
+        childClass: ChildClass,
+        childValues,
+      });
+    }
     const aggregate = tokens[tokens.length - 1];
 
     const subRegionDimThingList = dimThingList.filter(
@@ -76,15 +110,19 @@ export default class Query {
       entityClass,
       expandedDimThingList,
       aggregate,
-      subRegionDimThingList.length > 0 ? expandedQueryStr : queryStr,
+      parentRegionConstraintList.length > 0 ? expandedQueryStr : queryStr,
       subRegionDimThingList.length > 0 ? subRegionDimThingList : null,
+      parentRegionConstraintList.length > 0 ? parentRegionConstraintList : null,
     );
   }
 
   static async expandSubRegionDimThingList(dimThingList) {
     const expandedDimThingList = [];
     for (const dimThing of dimThingList) {
-      if (dimThing.constructor.SUB_REGION_OF) {
+      if (
+        dimThing.value !== Thing.WILDCARD &&
+        dimThing.constructor.SUB_REGION_OF
+      ) {
         const subRegionEnt = dimThing.getEnt();
         const parentRegionId =
           subRegionEnt[dimThing.constructor.SUB_REGION_ID_KEY];
@@ -149,6 +187,24 @@ export default class Query {
           parentRegionThing.getEnt().id ===
           subRegionThing.getEnt()[subRegionThing.constructor.SUB_REGION_ID_KEY]
         );
+      });
+    };
+  }
+
+  getParentRegionFilter() {
+    if (!this.parentRegionConstraintList) {
+      return null;
+    }
+    return (datum) => {
+      return this.parentRegionConstraintList.every((constraint) => {
+        const dimIndex = datum.query.dimThingList.findIndex(
+          (dimThing) => dimThing.constructor === constraint.childClass,
+        );
+        if (dimIndex === -1) {
+          return false;
+        }
+        const dimThing = datum.query.dimThingList[dimIndex];
+        return constraint.childValues.includes(dimThing.value);
       });
     };
   }

@@ -46,9 +46,13 @@ export default class AbstractDataSource {
       `Found ${candidateDatumList.length} candidate datums` +
         ` for "${query}" in ${this.name}`,
     );
-    const filteredDatumList = candidateDatumList.filter((datum) =>
+    let filteredDatumList = candidateDatumList.filter((datum) =>
       datum.query.isSubsetOf(query),
     );
+    const parentRegionFilter = query.getParentRegionFilter?.();
+    if (parentRegionFilter) {
+      filteredDatumList = filteredDatumList.filter(parentRegionFilter);
+    }
     console.debug(
       `Found ${filteredDatumList.length} filtered datums` +
         ` for "${query}" in ${this.name}`,
