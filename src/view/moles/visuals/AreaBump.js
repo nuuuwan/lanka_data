@@ -37,8 +37,8 @@ export default function AreaBump({ data, xAxisLabel }) {
         colors={(serie) => serie.color ?? theme.palette.primary.main}
         blendMode="multiply"
         theme={{ fontFamily: FONT_FAMILY }}
-        startLabel="id"
-        endLabel="id"
+        startLabel
+        endLabel
         axisTop={null}
         axisBottom={{
           tickSize: 5,

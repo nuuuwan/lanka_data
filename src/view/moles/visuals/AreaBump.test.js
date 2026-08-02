@@ -43,21 +43,18 @@ describe("AreaBump", () => {
   });
 
   test("fills missing series values with zero", () => {
-    expect(
-      toAreaBumpData([
-        { id: "2020", Alpha: 10 },
-        { id: "2021" },
-      ]),
-    ).toEqual([
-      {
-        id: "Alpha",
-        color: undefined,
-        data: [
-          { x: "2020", y: 10 },
-          { x: "2021", y: 0 },
-        ],
-      },
-    ]);
+    expect(toAreaBumpData([{ id: "2020", Alpha: 10 }, { id: "2021" }])).toEqual(
+      [
+        {
+          id: "Alpha",
+          color: undefined,
+          data: [
+            { x: "2020", y: 10 },
+            { x: "2021", y: 0 },
+          ],
+        },
+      ],
+    );
   });
 
   test("is registered as a stacked chart", () => {
