@@ -6,7 +6,6 @@ import {
   MAP_BORDER_WIDTH,
   MAP_HEIGHT,
   MAP_LABEL_DARK_COLOR,
-  MAP_LABEL_FONT_SIZE,
   MAP_LABEL_LIGHT_COLOR,
   MAP_UNKNOWN_COLOR,
   MAP_WIDTH,
@@ -30,7 +29,8 @@ export default function GeoChoropleth({
   const maxValue = Math.max(...data.map(({ value }) => value), 1);
   const labelsLayer = () => (
     <g data-testid={`${testId}-labels`} pointerEvents="none">
-      {labels.map(({ backgroundColor, id, name, position: [x, y] }) => (
+      {labels.map(
+        ({ backgroundColor, fontSize, id, name, position: [x, y] }) => (
         <text
           key={id}
           x={x}
@@ -42,11 +42,12 @@ export default function GeoChoropleth({
               ? MAP_LABEL_DARK_COLOR
               : MAP_LABEL_LIGHT_COLOR
           }
-          fontSize={MAP_LABEL_FONT_SIZE}
+          fontSize={fontSize}
         >
           {name}
         </text>
-      ))}
+        ),
+      )}
     </g>
   );
 

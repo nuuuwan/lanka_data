@@ -15,7 +15,6 @@ import useGeoJson from "../../../nonview/base/useGeoJson.js";
 import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
 import {
   HEX_MAP_EDGE_WIDTH,
-  HEX_MAP_LABEL_FONT_SIZE,
   HEX_MAP_MAX_HEXAGONS,
   HEX_MAP_REGION_BORDER_WIDTH,
   HEX_MAP_SCALE_COLOR,
@@ -32,6 +31,7 @@ import DimensionUtils from "../visual_utils/DimensionUtils.js";
 import {
   buildFeatureToDataMap,
   getFeatureRegionId,
+  getFittedLabelFontSize,
   getGeoDimInfo,
   groupDatumListByFacet,
   getProjectionInfo,
@@ -75,17 +75,10 @@ function getLabels(shapes, regionById, radius) {
     color: regionById.get(id).display.color,
     id,
     name: regionById.get(id).feature.properties.name,
+  })).map((label) => ({
+    ...label,
+    fontSize: getFittedLabelFontSize(label.name, label.width, label.height),
   }));
-}
-
-function shortenLabel(label, width) {
-  const maxLength = Math.max(
-    1,
-    Math.floor(width / (HEX_MAP_LABEL_FONT_SIZE * 0.6)),
-  );
-  return label.length > maxLength
-    ? `${label.slice(0, Math.max(1, maxLength - 1))}…`
-    : label;
 }
 
 export function buildHexMapLayout(facetInfo, valuePerHexagon) {
@@ -274,7 +267,7 @@ export default function HexMap({ datumSet }) {
                   />
                 ))}
                 {data.labels.map(
-                  ({ angle, center, color, id, name, width }) => (
+                  ({ angle, center, color, fontSize, id, name }) => (
                     <text
                       key={id}
                       x={center[0]}
@@ -286,10 +279,10 @@ export default function HexMap({ datumSet }) {
                           ? MAP_LABEL_DARK_COLOR
                           : MAP_LABEL_LIGHT_COLOR
                       }
-                      fontSize={HEX_MAP_LABEL_FONT_SIZE}
+                      fontSize={fontSize}
                       transform={`rotate(${angle} ${center[0]} ${center[1]})`}
                     >
-                      {shortenLabel(name, width)}
+                      {name}
                     </text>
                   ),
                 )}
