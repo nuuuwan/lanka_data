@@ -72,7 +72,7 @@ import ED from "./../concept/category_concept/region/ED.js";
 import GND from "./../concept/category_concept/region/GND.js";
 import PD from "./../concept/category_concept/region/PD.js";
 import Province from "./../concept/category_concept/region/Province.js";
-import Region from "../concept/category_concept/region/Region.js";
+import Region from "../concept/category_concept/region/region/Region.js";
 import TimeDurationGroup from "./../concept/time/TimeDurationGroup.js";
 import TimeGroup0510More from "./../concept/time/TimeGroup0510More.js";
 

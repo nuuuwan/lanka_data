@@ -1,5 +1,5 @@
-import CategoryConcept from "../CategoryConcept.js";
-import RegionDataMixin from "./RegionDataMixin.js";
+import CategoryConcept from "../../CategoryConcept.js";
+import RegionDataMixin from "../RegionDataMixin.js";
 
 function applyMixin(Target, Mixin) {
   for (const name of Object.getOwnPropertyNames(Mixin.prototype)) {

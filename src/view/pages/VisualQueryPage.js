@@ -3,7 +3,7 @@ import { Typography, Box, CircularProgress } from "@mui/material";
 import { useState, useEffect, useMemo } from "react";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
-import Region from "../../nonview/core/thing/concept/category_concept/region/Region.js";
+import Region from "../../nonview/core/thing/concept/category_concept/region/region/Region.js";
 import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
