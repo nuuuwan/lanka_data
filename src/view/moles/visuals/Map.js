@@ -170,6 +170,14 @@ export default function MapVisual({ datumSet }) {
         regionDimIndex,
         stackDimIndex,
       );
+      const allDataMap = buildFeatureToDataMap(
+        datumList,
+        regionDimIndex,
+        stackDimIndex,
+      );
+      const geoFeatures = geoJson.features.filter((geoFeature) =>
+        matchFeatureToValue(geoFeature, allDataMap),
+      );
       const projection = geoMercator().fitExtent(
         [
           [MAP_PADDING, MAP_PADDING],
@@ -177,7 +185,7 @@ export default function MapVisual({ datumSet }) {
         ],
         {
           type: "MultiPoint",
-          coordinates: getGeoCoordinates(geoJson.features),
+          coordinates: getGeoCoordinates(geoFeatures),
         },
       );
       const [translateX, translateY] = projection.translate();
@@ -191,7 +199,7 @@ export default function MapVisual({ datumSet }) {
           );
           const features = [];
           const data = [];
-          for (const geoFeature of geoJson.features) {
+          for (const geoFeature of geoFeatures) {
             const match = matchFeatureToValue(geoFeature, dataMap);
             const display = match ? getDisplayItem(match.items) : null;
             const id = String(

@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import { Choropleth } from "@nivo/geo";
 import { geoMercator } from "d3-geo";
 
+import StringUtils from "../../../nonview/base/String.js";
 import WWW from "../../../nonview/base/WWW.js";
 import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
 import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
@@ -67,13 +68,14 @@ function getDisplayItem(items) {
   return items.reduce((best, item) => (item.value > best.value ? item : best));
 }
 
-function matchFeatureToValue(feature, dataMap) {
-  const featureName = feature.properties.name;
+export function matchFeatureToValue(feature, dataMap) {
+  const featureName = StringUtils.toSnakeCase(feature.properties.name);
+  const compactFeatureName = featureName.replace(/_/g, "");
   for (const [regionValue, items] of dataMap) {
+    const normalizedRegionValue = StringUtils.toSnakeCase(regionValue);
     if (
-      regionValue === featureName.toLowerCase().replace(/\s+/g, "_") ||
-      regionValue === featureName.toLowerCase().replace(/\s+/g, "") ||
-      regionValue === featureName.toLowerCase()
+      normalizedRegionValue === featureName ||
+      normalizedRegionValue.replace(/_/g, "") === compactFeatureName
     ) {
       return { regionValue, items };
     }
@@ -83,6 +85,20 @@ function matchFeatureToValue(feature, dataMap) {
 
 function getFeatureRegionId(feature) {
   return feature.properties.id ?? feature.properties.name;
+}
+
+export function buildRegionIdToWeight(features, dataMap) {
+  const regionIdToWeight = {};
+  for (const geoFeature of features) {
+    const match = matchFeatureToValue(geoFeature, dataMap);
+    if (match) {
+      regionIdToWeight[getFeatureRegionId(geoFeature)] = match.items.reduce(
+        (total, item) => total + item.value,
+        0,
+      );
+    }
+  }
+  return regionIdToWeight;
 }
 
 export default function Cartogram({ datumSet }) {
@@ -123,11 +139,7 @@ export default function Cartogram({ datumSet }) {
       stackDimIndex,
     );
 
-    const regionIdToWeight = {};
-    for (const [regionValue, items] of dataMap) {
-      const display = getDisplayItem(items);
-      regionIdToWeight[regionValue] = display.value;
-    }
+    const regionIdToWeight = buildRegionIdToWeight(geoJson.features, dataMap);
 
     const deformedGeoJson = JSON.parse(JSON.stringify(geoJson));
     CartogramUtils.compute(deformedGeoJson.features, regionIdToWeight);

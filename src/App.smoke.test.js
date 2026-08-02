@@ -29,12 +29,20 @@ const screens = [
     readyTestId: "datums-count",
   },
   {
+    path: "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/Map",
+    readyTestId: "maps",
+  },
+  {
     path: "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD+Party/Count/Map",
     readyTestId: "maps",
   },
   {
     path: "/lanka_data/Vote/ElectionType=presidential+Time+Country+Party/Count/Map",
     readyTestId: "map-facets",
+  },
+  {
+    path: "/lanka_data/Vote/ElectionType=presidential+Time=2005+ED+Party/Count/Cartogram",
+    readyTestId: "cartogram",
   },
 ];
 
