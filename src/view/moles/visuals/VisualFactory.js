@@ -5,6 +5,7 @@ import JSONVisual from "./JSONVisual.js";
 import Map from "./Map.js";
 import HexMap from "./HexMap.js";
 import MarimekkoChart from "./MarimekkoChart.js";
+import PieChart from "./PieChart.js";
 import StackedBarChart from "./StackedBarChart.js";
 
 class VisualFactoryContentsMixin {
@@ -12,6 +13,7 @@ class VisualFactoryContentsMixin {
   static BarChart = BarChart;
   static StackedBarChart = StackedBarChart;
   static MarimekkoChart = MarimekkoChart;
+  static PieChart = PieChart;
   static Map = Map;
   static HexMap = HexMap;
   static Cartogram = Cartogram;
