@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 
 export default function MultiChartLayout({
   facets,
@@ -11,32 +11,17 @@ export default function MultiChartLayout({
   }
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: 2,
-      }}
-    >
+    <Grid container spacing={1}>
       {facets.map(({ facetKey, data }) => (
-        <Box
-          key={facetKey}
-          sx={{
-            width: {
-              xs: "100%",
-              sm: "calc(50% - 8px)",
-              md: "calc(33.333% - 11px)",
-            },
-          }}
-        >
+        <Grid item xs={12} sm={6} md={4}>
           <Typography variant="title" sx={{ mb: 1 }}>
             {facetKey || xAxisDimName}
           </Typography>
-          <Box sx={{ width: "100%" }}>
+          <Box sx={{ width: "100%", minWidth: 400 }}>
             {renderChart({ data, xAxisLabel: xAxisDimName, yAxisLabel })}
           </Box>
-        </Box>
+        </Grid>
       ))}
-    </Box>
+    </Grid>
   );
 }
