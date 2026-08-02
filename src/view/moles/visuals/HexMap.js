@@ -306,24 +306,26 @@ export default function HexMap({ datumSet }) {
                 )}
               </g>
             </svg>
-            <Typography
-              variant="caption"
-              sx={{
-                color: HEX_MAP_SCALE_COLOR,
-                fontSize: HEX_MAP_SCALE_FONT_SIZE,
-              }}
-            >
-              1 hexagon ={" "}
-              {data.shapeValueMax - data.shapeValueMin < 1
-                ? FormatUtils.humanizeValue(data.shapeValueMin)
-                : `${FormatUtils.humanizeValue(
-                    data.shapeValueMin,
-                  )} to ${FormatUtils.humanizeValue(data.shapeValueMax)}`}{" "}
-              {shapeUnit}
-            </Typography>
           </Box>
         )}
       />
+      {maps.length > 0 && (
+        <Typography
+          variant="caption"
+          sx={{
+            color: HEX_MAP_SCALE_COLOR,
+            fontSize: HEX_MAP_SCALE_FONT_SIZE,
+          }}
+        >
+          1 hexagon ={" "}
+          {maps[0].shapeValueMax - maps[0].shapeValueMin < 1
+            ? FormatUtils.humanizeValue(maps[0].shapeValueMin)
+            : `${FormatUtils.humanizeValue(
+                maps[0].shapeValueMin,
+              )} to ${FormatUtils.humanizeValue(maps[0].shapeValueMax)}`}{" "}
+          {shapeUnit}
+        </Typography>
+      )}
       <Legend items={legendItems} />
     </Box>
   );
