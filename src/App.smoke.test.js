@@ -16,6 +16,7 @@ const paths = [
   "/lanka_data/Person/Time=2024+District=colombo+Religion/Count/BarChart",
   "/lanka_data/Vote/ElectionType+Time=1994+ED+Party/Count/StackedBarChart",
   "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count/MarimekkoChart",
+  "/lanka_data/Person/Time=2024+District+Religion/Count/Map",
 ];
 
 describe.each(paths)("screen: %s", (path) => {
