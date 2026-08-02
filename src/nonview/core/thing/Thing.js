@@ -3,6 +3,7 @@ import KeyValue from "../KeyValue.js";
 export default class Thing {
   static WILDCARD = "*";
   static SPECIAL_VALUE_EXCLUDED_SMALL = "excluded_small";
+  static SPECIAL_VALUE_EXCLUDED_SMALL_COLOR = "#ccc";
 
   constructor(value) {
     this.value = String(value);
@@ -17,6 +18,9 @@ export default class Thing {
   }
 
   getColor() {
+    if (this.value === Thing.SPECIAL_VALUE_EXCLUDED_SMALL) {
+      return Thing.SPECIAL_VALUE_EXCLUDED_SMALL_COLOR;
+    }
     return null;
   }
 

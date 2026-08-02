@@ -62,6 +62,6 @@ export default class Party extends Concept {
   }
 
   getColor() {
-    return this.constructor.getColorMap()[this.value] ?? null;
+    return this.constructor.getColorMap()[this.value] ?? super.getColor();
   }
 }

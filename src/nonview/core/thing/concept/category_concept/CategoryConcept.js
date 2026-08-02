@@ -87,7 +87,7 @@ export default class CategoryConcept extends Concept {
   }
 
   getColor() {
-    return this.constructor.getColorMap()[this.value];
+    return this.constructor.getColorMap()[this.value] ?? super.getColor();
   }
 
   static isOrdered() {

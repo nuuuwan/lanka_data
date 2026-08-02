@@ -56,16 +56,6 @@ describe.each(screens)("screen: $path", ({ path, readyTestId }) => {
   test("renders without crashing", async () => {
     render(<App />);
 
-<<<<<<< HEAD
-    const readyTestId = path.endsWith("/Map")
-      ? "map"
-      : path.endsWith("/Cartogram")
-        ? "cartogram"
-        : "datums-count";
-    const readyTestId = path.endsWith("/Map") ? "map-labels" : "datums-count";
-    const readyTestId = path.endsWith("/Map") ? "map" : "datums-count";
-=======
->>>>>>> a9e9a02 (feat: refactor Map component to enhance data handling and visualization layout)
     expect(
       await screen.findByTestId(readyTestId, {}, { timeout: 40_000 }),
     ).toBeInTheDocument();
