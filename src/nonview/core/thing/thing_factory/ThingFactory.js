@@ -18,11 +18,11 @@ export default class ThingFactory {
       if (!ThingClass) {
         throw new Error(`ThingClass "${className}" not found in ThingFactory`);
       }
-      return new ThingClass(value);
+      return ThingClass.fromValue(value);
     }
 
     const ThingClass = ThingFactory.fromKey(keyValue);
-    return new ThingClass(Thing.WILDCARD);
+    return ThingClass.fromValue(Thing.WILDCARD);
   }
 }
 

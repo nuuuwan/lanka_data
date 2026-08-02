@@ -1,6 +1,7 @@
 import CategoryConcept from "./CategoryConcept.js";
+
 export default class Religion extends CategoryConcept {
-  static valid_values() {
+  static validValues() {
     return [
       "buddhist",
       "hindu",
@@ -11,7 +12,7 @@ export default class Religion extends CategoryConcept {
     ];
   }
 
-  static get_color_map() {
+  static getColorMap() {
     return {
       buddhist: "#FFBE29",
       hindu: "#DF7500",
