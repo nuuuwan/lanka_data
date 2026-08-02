@@ -39,8 +39,16 @@ export default class AbstractDataSource {
     const partialPath = metadataForQuery[0];
     const candidateDatumList =
       await this.getDatumListForPartialPath(partialPath);
+    console.debug(
+      `Found ${candidateDatumList.length} candidate datums` +
+        ` for "${query}" in ${this.name}`,
+    );
     const filteredDatumList = candidateDatumList.filter((datum) =>
       datum.query.isSubsetOf(query),
+    );
+    console.debug(
+      `Found ${filteredDatumList.length} filtered datums` +
+        ` for "${query}" in ${this.name}`,
     );
     return filteredDatumList;
   }
