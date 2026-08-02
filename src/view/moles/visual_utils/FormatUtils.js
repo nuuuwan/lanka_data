@@ -1,6 +1,15 @@
 import Int from "../../../nonview/core/thing/concept/atoms/Int.js";
 
 export default class FormatUtils {
+  static isLightColor(color) {
+    const hex = color.replace("#", "");
+    const red = parseInt(hex.substring(0, 2), 16) / 255;
+    const green = parseInt(hex.substring(2, 4), 16) / 255;
+    const blue = parseInt(hex.substring(4, 6), 16) / 255;
+    const luminance = 0.299 * red + 0.587 * green + 0.114 * blue;
+    return luminance > 0.1;
+  }
+
   static humanizeValue(value) {
     const int = new Int(value);
     return int.getHumanReadableValue();

@@ -3,3 +3,7 @@ export const MAP_HEIGHT = 800;
 export const MAP_UNKNOWN_COLOR = "#e0e0e0";
 export const MAP_BORDER_COLOR = "#ffffff";
 export const MAP_BORDER_WIDTH = 0.5;
+export const MAP_LABEL_DARK_COLOR = "#000000";
+export const MAP_LABEL_LIGHT_COLOR = "#ffffff";
+export const MAP_LABEL_FONT_SIZE = 10;
+export const MAP_LABEL_HALO_WIDTH = 3;
