@@ -11,7 +11,7 @@ export default function PieChart({ data }) {
     <Box sx={{ height: 400 }}>
       <ResponsivePie
         data={data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        margin={{ top: 40, right: 80, bottom: 40, left: 80 }}
         theme={{ fontFamily: FONT_FAMILY }}
         colors={(arc) => arc.data.color ?? theme.palette.primary.main}
         borderWidth={1}
@@ -24,16 +24,6 @@ export default function PieChart({ data }) {
             {datum.id}: {FormatUtils.humanizeValue(datum.value)}
           </Typography>
         )}
-        legends={[
-          {
-            anchor: "bottom",
-            direction: "row",
-            translateY: 56,
-            itemWidth: 100,
-            itemHeight: 18,
-            symbolShape: "circle",
-          },
-        ]}
         role="img"
         ariaLabel="Pie chart"
       />
