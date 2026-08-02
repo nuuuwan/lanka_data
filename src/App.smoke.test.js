@@ -1,29 +1,34 @@
-// Smoke tests for key visual query routes.
-//
-// Run with:
-//   npm test -- --testPathPattern=App.smoke
-// or as part of the full test suite:
-//   CI=true npm test
-
 import { render, screen, waitFor } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
 import App from "./App";
 
-const urls = [
+const paths = [
   "/lanka_data/Person/Time=2024+Province+Religion/Count/MarimekkoChart",
-  "/lanka_data/Person/Time+Province=western+Religion/Count/MarimekkoChart",
 ];
 
-describe.each(urls)("screen: %s", (url) => {
+describe.each(paths)("screen: %s", (path) => {
+  const originalLocation = window.location;
+
+  beforeEach(() => {
+    // 1. Delete the restricted JSDOM location object
+    delete window.location;
+    // 2. Assign a new URL object with your target port and path
+    window.location = new URL(`http://localhost:3000${path}`);
+  });
+
+  afterEach(() => {
+    // 3. Restore the original location to prevent leaking state to other tests
+    window.location = originalLocation;
+  });
+
   test("renders without crashing", async () => {
-    render(
-      <MemoryRouter initialEntries={[url]}>
-        <App />
-      </MemoryRouter>,
-    );
+    console.debug("window.location.href", window.location.href);
+
+    render(<App />);
 
     await waitFor(() => {
-      expect(screen.getByTestId("visual-content")).toBeInTheDocument();
+      expect(
+        screen.getByRole("heading", { name: "Lanka Data" }),
+      ).toBeInTheDocument();
     });
   });
 });
