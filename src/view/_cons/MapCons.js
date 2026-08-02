@@ -7,3 +7,4 @@ export const MAP_LABEL_DARK_COLOR = "#000000";
 export const MAP_LABEL_LIGHT_COLOR = "#ffffff";
 export const MAP_LABEL_FONT_SIZE = 10;
 export const MAP_LABEL_HALO_WIDTH = 3;
+export const MAP_MAX_LABEL_COUNT = 30;
