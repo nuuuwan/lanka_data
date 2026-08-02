@@ -14,7 +14,14 @@ export default class Cache {
 
     const data = await fallback();
     try {
-      localStorage.setItem(cacheKey, JSON.stringify(data));
+      const payload = JSON.stringify(data);
+      const payloadSizeM = (payload.length / (1024 * 1024)).toFixed(2);
+      localStorage.setItem(cacheKey, payload);
+      if (payloadSizeM > 10) {
+        console.error(`🐳 [Cache][ ${payloadSizeM} MB  for "${cacheKey}"`);
+      } else if (payloadSizeM > 1) {
+        console.warn(`🐘 [Cache][ ${payloadSizeM} MB  for "${cacheKey}"`);
+      }
     } catch (e) {
       console.warn(`Failed to cache data for key ${cacheKey}:`, e);
       this.clear();
