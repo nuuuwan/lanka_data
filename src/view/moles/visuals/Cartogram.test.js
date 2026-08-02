@@ -1,4 +1,5 @@
-import { buildRegionIdToWeight, groupDatumListByFacet } from "./Cartogram.js";
+import { groupDatumListByFacet } from "../visual_utils/GeoVisualUtils.js";
+import { buildRegionIdToWeight } from "./Cartogram.js";
 
 test("weights a hyphenated feature by its total vote count", () => {
   const features = [{ properties: { id: "EC-06", name: "Nuwara-Eliya" } }];
