@@ -8,8 +8,7 @@ import FormatUtils from "../visual_utils/FormatUtils.js";
 const CHART_HEIGHT = 400;
 
 export default function PieChart({ data, total, maxTotal }) {
-  const scale =
-    maxTotal > 0 && total > 0 ? Math.sqrt(total / maxTotal) : 0;
+  const scale = maxTotal > 0 && total > 0 ? Math.sqrt(total / maxTotal) : 0;
 
   return (
     <Box sx={{ height: CHART_HEIGHT * scale }}>
