@@ -65,6 +65,7 @@
   },
   "homepage": "https://nuuuwan.github.io/lanka_data",
   "devDependencies": {
+    "@babel/register": "^7.29.7",
     "eslint-config-react-app": "^7.0.1"
   }
 }

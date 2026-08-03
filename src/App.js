@@ -4,6 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { AppTheme } from "./AppTheme";
 import AppFooter from "./view/atoms/AppFooter.js";
 import DataProvider from "./nonview/core/data_context/DataProvider.js";
+import { APP_PATH } from "./nonview/constants/APP.js";
 const DEFAULT_VISUAL_QUERY_STR =
   "/Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count/SquareMap";
 
@@ -11,7 +12,7 @@ function App() {
   return (
     <ThemeProvider theme={AppTheme}>
       <DataProvider>
-        <BrowserRouter basename="/lanka_data">
+        <BrowserRouter basename={APP_PATH}>
           <div className="App">
             <Routes>
               <Route path="*" element={<VisualQueryPage />} />
