@@ -118,9 +118,56 @@ test("shows visual loading stages with completion times", async () => {
   });
 
   expect(await screen.findByTestId("visual-content")).toBeInTheDocument();
+  expect(
+    screen.getByRole("button", { name: "Change this view" }),
+  ).toBeInTheDocument();
   await waitFor(() => {
     expect(RecentVisualQueries.read()).toEqual(["bad-request"]);
   });
+});
+
+test("shows collapsed query controls after the visual", async () => {
+  function TestVisual() {
+    return <div>visual result</div>;
+  }
+  VisualQuery.fromString.mockResolvedValue({
+    query: {},
+    visualClass: TestVisual,
+  });
+  let resolveDatumSet;
+  DataSourceFactory.getDatumSetForQuery.mockReturnValue(
+    new Promise((resolve) => {
+      resolveDatumSet = resolve;
+    }),
+  );
+
+  renderPage(`/${VISUAL_QUERY}`);
+
+  expect(
+    screen.queryByRole("button", { name: "Change this view" }),
+  ).not.toBeInTheDocument();
+
+  resolveDatumSet({ datumList: [{}], provenance: [] });
+
+  const visual = await screen.findByTestId("visual-content");
+  const changeViewButton = screen.getByRole("button", {
+    name: "Change this view",
+  });
+  expect(
+    visual.compareDocumentPosition(changeViewButton) &
+      Node.DOCUMENT_POSITION_FOLLOWING,
+  ).toBeTruthy();
+  expect(
+    screen.queryByRole("combobox", { name: "What data?" }),
+  ).not.toBeInTheDocument();
+
+  act(() => {
+    changeViewButton.click();
+  });
+
+  expect(
+    await screen.findByRole("combobox", { name: "What data?" }),
+  ).toBeVisible();
 });
 
 test("updates active loading time without showing a negative duration", async () => {
