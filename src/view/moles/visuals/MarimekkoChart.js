@@ -1,7 +1,6 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { ResponsiveMarimekko } from "@nivo/marimekko";
 
-import { FONT_FAMILY } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
@@ -29,7 +28,6 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
           dimensions={dimensions}
           offset="expand"
           layout="vertical"
-          theme={{ fontFamily: FONT_FAMILY, text: { fontFamily: FONT_FAMILY } }}
           axisTop={null}
           axisRight={null}
           enableGridY={false}

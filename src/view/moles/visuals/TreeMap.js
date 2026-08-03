@@ -1,7 +1,6 @@
 import { ResponsiveTreeMap } from "@nivo/treemap";
 import { Box, Typography } from "@mui/material";
 
-import { FONT_FAMILY } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
@@ -43,7 +42,6 @@ export default function TreeMap({ data, xAxisLabel }) {
           from: "color",
           modifiers: [["darker", 2]],
         }}
-        theme={{ fontFamily: FONT_FAMILY }}
         tooltip={({ node }) => (
           <Typography variant="body2">
             {node.id}: {FormatUtils.humanizeValue(node.value)}

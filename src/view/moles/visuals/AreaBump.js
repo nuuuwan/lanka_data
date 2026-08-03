@@ -1,7 +1,6 @@
 import { ResponsiveAreaBump } from "@nivo/bump";
 import { Box, Typography } from "@mui/material";
 
-import { FONT_FAMILY } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
@@ -111,7 +110,6 @@ export default function AreaBump({ data, xAxisLabel }) {
         spacing={8}
         colors={(serie) => getMarkColor(serie.color)}
         blendMode="multiply"
-        theme={{ fontFamily: FONT_FAMILY }}
         startLabel
         endLabel
         axisTop={null}
