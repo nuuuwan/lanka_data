@@ -132,10 +132,12 @@ export default function Cartogram({ datumSet }) {
         cartogram.projectionTranslation,
         projectionScale / cartogram.projectionScale,
       );
-      projection.scale(projectionScale).translate([
-        projectionTranslation[0] * MAP_WIDTH,
-        projectionTranslation[1] * MAP_HEIGHT,
-      ]);
+      projection
+        .scale(projectionScale)
+        .translate([
+          projectionTranslation[0] * MAP_WIDTH,
+          projectionTranslation[1] * MAP_HEIGHT,
+        ]);
       return {
         ...cartogramData,
         labels: buildRegionLabels(cartogram.features, projection),
