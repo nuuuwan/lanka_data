@@ -7,6 +7,11 @@ const ENTITY_LABELS = {
   Vote: "votes",
 };
 
+const COUNT_LABELS = {
+  Person: "population",
+  Vote: "valid votes",
+};
+
 const DIMENSION_LABELS = {
   DSD: "divisional secretariat division",
   ED: "electoral district",
@@ -66,9 +71,7 @@ function getConstraintText(thing) {
 function getAggregateLabel(query) {
   const entityClassName = query.entityClass.getClassName();
   if (query.aggregate.toLowerCase() === "count") {
-    return (
-      { Person: "population", Vote: "valid votes" }[entityClassName] ?? "count"
-    );
+    return COUNT_LABELS[entityClassName] ?? "count";
   }
   return humanizeIdentifier(query.aggregate);
 }
@@ -95,6 +98,11 @@ export default function getQueryFinding(query) {
     groupLabels.length > 0 ? ` by ${joinLabels(groupLabels)}` : "";
   const constrainedBy =
     constraints.length > 0 ? ` ${constraints.join(" and ")}` : "";
-  const finding = `${aggregateLabel} of ${entityLabel}${groupedBy}${constrainedBy}`;
+  const subject =
+    query.aggregate.toLowerCase() === "count" &&
+    COUNT_LABELS[entityClassName] !== undefined
+      ? aggregateLabel
+      : `${aggregateLabel} of ${entityLabel}`;
+  const finding = `${subject}${groupedBy}${constrainedBy}`;
   return finding.charAt(0).toUpperCase() + finding.slice(1);
 }
