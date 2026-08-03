@@ -28,6 +28,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
           animate={false}
           dimensions={dimensions}
           offset="expand"
+          valueScale={{ type: "linear", min: 0, max: 1 }}
           layout="vertical"
           theme={{ fontFamily: FONT_FAMILY, text: { fontFamily: FONT_FAMILY } }}
           axisTop={null}
