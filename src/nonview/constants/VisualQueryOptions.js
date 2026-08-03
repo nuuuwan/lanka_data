@@ -29,6 +29,6 @@ export const VISUAL_GROUPS = [
   },
   {
     label: "Other",
-    visuals: ["Blocks", "JSON"],
+    visuals: ["Blocks", "Table", "JSON"],
   },
 ];
