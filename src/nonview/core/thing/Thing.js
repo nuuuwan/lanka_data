@@ -6,6 +6,7 @@ import { SEMANTIC_PALETTE } from "../../constants/COLORS.js";
 export default class Thing {
   static WILDCARD = "*";
   static SPECIAL_VALUE_EXCLUDED_SMALL = "excluded_small";
+  static SPECIAL_VALUE_EXCLUDED_SMALL_LABEL = "Others";
   static SPECIAL_VALUE_EXCLUDED_SMALL_COLOR = SEMANTIC_PALETTE.neutral;
 
   static getClassName() {
@@ -25,6 +26,9 @@ export default class Thing {
   }
 
   getLabel() {
+    if (this.value === Thing.SPECIAL_VALUE_EXCLUDED_SMALL) {
+      return Thing.SPECIAL_VALUE_EXCLUDED_SMALL_LABEL;
+    }
     return this.value;
   }
 

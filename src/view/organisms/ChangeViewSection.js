@@ -8,6 +8,7 @@ export default function ChangeViewSection({
   onChange,
   onSubmit,
   queryOptions,
+  loadedVisualQuery,
 }) {
   return (
     <Box sx={{ mb: 4 }}>
@@ -17,6 +18,7 @@ export default function ChangeViewSection({
         onChange={onChange}
         onSubmit={onSubmit}
         queryOptions={queryOptions}
+        loadedVisualQuery={loadedVisualQuery}
       />
     </Box>
   );

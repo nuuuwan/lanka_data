@@ -66,7 +66,7 @@ export default function LaypersonDimensionValue({
               {group.label}
             </ListSubheader>,
             ...group.fields.map((field) => (
-              <MenuItem key={field} value={field}>
+              <MenuItem key={field} sx={{ pl: 3 }} value={field}>
                 {getVisualLabel(field)}
               </MenuItem>
             )),

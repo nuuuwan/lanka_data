@@ -3,7 +3,6 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import { Box, Button, Snackbar, Tab, Tabs, TextField } from "@mui/material";
 import { useState } from "react";
 
-import { FONT_FAMILY } from "../../AppTheme.js";
 import { copyTextToClipboard } from "../../nonview/base/Clipboard.js";
 import { SHARE_LINK_FEEDBACK_DURATION_MS } from "../../nonview/constants/APP.js";
 import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
@@ -14,6 +13,7 @@ export default function VisualQueryForm({
   onChange,
   onSubmit,
   queryOptions,
+  loadedVisualQuery = null,
 }) {
   const [mode, setMode] = useState("expert");
   const [shareFeedback, setShareFeedback] = useState(null);
@@ -102,32 +102,38 @@ export default function VisualQueryForm({
             }}
             sx={{
               "& .MuiInputBase-input": {
-                fontFamily: FONT_FAMILY,
                 overflowWrap: "anywhere",
               },
             }}
           />
         )}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            gap: 1,
-            mt: 1.5,
-          }}
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: 1,
+          mt: 1.5,
+        }}
+      >
+        <Button
+          type="button"
+          variant="outlined"
+          onClick={copyShareLink}
+          startIcon={<ContentCopyIcon />}
         >
-          <Button
-            type="button"
-            variant="outlined"
-            onClick={copyShareLink}
-            startIcon={<ContentCopyIcon />}
-          >
-            Copy Share Link
-          </Button>
-          <Button type="submit" variant="contained" startIcon={<RefreshIcon />}>
-            Update
-          </Button>
-        </Box>
+          Copy Share Link
+        </Button>
+        <Button
+          type="submit"
+          variant="contained"
+          startIcon={<RefreshIcon />}
+          disabled={
+            loadedVisualQuery !== null && value.trim() === loadedVisualQuery
+          }
+        >
+          Update
+        </Button>
       </Box>
       <Snackbar
         open={shareFeedback !== null}

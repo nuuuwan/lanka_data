@@ -1,4 +1,3 @@
-import { FONT_FAMILY } from "../../../AppTheme.js";
 import getLargestLabelFit from "../../../nonview/base/getLargestLabelFit.js";
 import { IN_BAR_LABEL_STROKE_WIDTH } from "../../../nonview/constants/ChartLabels.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
@@ -29,7 +28,6 @@ export default function InBarLabels({ bars }) {
             dominantBaseline="central"
             transform={`rotate(${fit.rotation} ${x} ${y})`}
             style={{
-              fontFamily: FONT_FAMILY,
               fontSize: fit.fontSize,
               fill: light ? "black" : "white",
               stroke: light ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.5)",

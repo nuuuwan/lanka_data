@@ -1,14 +1,13 @@
 import { ResponsiveBar } from "@nivo/bar";
 import { Box, Typography } from "@mui/material";
 
-import { FONT_FAMILY } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import InBarLabels from "./InBarLabels.js";
 
 export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
   return (
-    <Box sx={{ height: 400 }}>
+    <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
       <ResponsiveBar
         data={data}
         keys={["value"]}
@@ -17,7 +16,6 @@ export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
         margin={{ top: 50, right: 50, bottom: 100, left: 60 }}
         padding={0.3}
         valueScale={{ type: "linear" }}
-        theme={{ fontFamily: FONT_FAMILY }}
         colors={(bar) => getMarkColor(bar.data.color)}
         axisLeft={{
           format: FormatUtils.humanizeValue,
