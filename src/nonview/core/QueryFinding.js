@@ -63,11 +63,21 @@ function getConstraintText(thing) {
   return `where ${getDimensionLabel(thing)} is ${values}`;
 }
 
+function getAggregateLabel(query) {
+  const entityClassName = query.entityClass.getClassName();
+  if (query.aggregate.toLowerCase() === "count") {
+    return (
+      { Person: "population", Vote: "valid votes" }[entityClassName] ?? "count"
+    );
+  }
+  return humanizeIdentifier(query.aggregate);
+}
+
 export default function getQueryFinding(query) {
   const entityClassName = query.entityClass.getClassName();
   const entityLabel =
     ENTITY_LABELS[entityClassName] ?? `${humanizeIdentifier(entityClassName)}s`;
-  const aggregateLabel = humanizeIdentifier(query.aggregate);
+  const aggregateLabel = getAggregateLabel(query);
   const groupLabels = query.dimThingList
     .filter((thing) => thing.value === Thing.WILDCARD)
     .map(getDimensionLabel);
