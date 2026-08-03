@@ -13,7 +13,7 @@ export function getVisualLabel(value) {
 
 export function getDimensionParts(value) {
   return value.split("+").map((dimension) => {
-    const operatorIndex = dimension.search(/[=<]/);
+    const operatorIndex = dimension.search(/[=:<]/);
     return operatorIndex === -1
       ? { field: dimension, operator: "", value: "" }
       : {

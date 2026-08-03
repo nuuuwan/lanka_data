@@ -1,6 +1,7 @@
 export const DIMENSION_OPERATORS = [
   { value: "", label: "None" },
   { value: "=", label: "=" },
+  { value: ":", label: ":" },
   { value: "<", label: "<" },
 ];
 
