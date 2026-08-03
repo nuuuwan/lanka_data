@@ -84,7 +84,6 @@ export default function VisualQueryForm({
           />
         ) : (
           <TextField
-            fullWidth
             multiline
             minRows={2}
             maxRows={6}
@@ -101,6 +100,8 @@ export default function VisualQueryForm({
               },
             }}
             sx={{
+              maxWidth: "65ch",
+              width: "100%",
               "& .MuiInputBase-input": {
                 overflowWrap: "anywhere",
               },
