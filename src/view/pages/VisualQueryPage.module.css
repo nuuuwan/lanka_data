@@ -1,0 +1,10 @@
+.page {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 68rem;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+}
+
+.visual {
+  margin-top: clamp(3rem, 7vw, 6rem);
+}

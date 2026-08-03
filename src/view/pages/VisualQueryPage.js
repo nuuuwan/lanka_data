@@ -7,14 +7,18 @@ import DataContext from "../../nonview/core/data_context/DataContext.js";
 import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
-import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
 import StartExploring from "../molecules/StartExploring.js";
 import ExampleQueryGallery from "../organisms/ExampleQueryGallery.js";
 import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
+import MultiChartLayout from "../organisms/MultiChartLayout.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
+import ChangeViewSection from "../organisms/ChangeViewSection.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
 import RecentQueriesMenu from "../organisms/RecentQueriesMenu.js";
+import VisualHeading from "../molecules/VisualHeading.js";
+import styles from "./VisualQueryPage.module.css";
+
 function getElapsedTimeSeconds(startTime, currentTime) {
   return startTime === null ? 0 : Math.max(0, currentTime - startTime) / 1000;
 }
@@ -109,7 +113,7 @@ function ChartVisual({ VisualClass, datumSet }) {
   );
 }
 
-function VisualContent({ VisualClass, datumSet, loadTimeSeconds }) {
+function VisualContent({ VisualClass, datumSet, loadTimeSeconds, query }) {
   useEffect(() => {
     console.debug(
       `[VisualQueryPage] Displaying ${VisualClass.name} with ${datumSet.datumList.length} datums`,
@@ -118,6 +122,7 @@ function VisualContent({ VisualClass, datumSet, loadTimeSeconds }) {
 
   return (
     <>
+      <VisualHeading query={query} datumSet={datumSet} />
       <Typography
         data-testid="datums-count"
         variant="caption"
@@ -316,7 +321,7 @@ export default function VisualQueryPage() {
   ];
 
   return (
-    <Box sx={{ m: 5 }}>
+    <Box className={styles.page}>
       <VisualQueryForm
         value={visualQueryInput}
         onChange={setVisualQueryInput}
@@ -340,15 +345,29 @@ export default function VisualQueryPage() {
       ) : isLoading ? (
         <LoadingProgressDialog steps={loadingSteps} />
       ) : (
-        <Box data-testid="visual-content">
+        <Box className={styles.visual} data-testid="visual-content">
           <VisualErrorBoundary key={visualQueryStr}>
             <VisualContent
               VisualClass={VisualClass}
               datumSet={datumSet}
               loadTimeSeconds={loadTimeSeconds}
+              query={visualQuery.query}
             />
           </VisualErrorBoundary>
         </Box>
+      )}
+      {(errorMessage || !isLoading) && (
+        <ChangeViewSection
+          value={visualQueryInput}
+          onChange={setVisualQueryInput}
+          onSubmit={submitVisualQuery}
+          queryOptions={queryOptions}
+          loadedVisualQuery={
+            datumSet?.datumList.length > 0 && loadTimeSeconds !== null
+              ? visualQueryStr
+              : null
+          }
+        />
       )}
     </Box>
   );

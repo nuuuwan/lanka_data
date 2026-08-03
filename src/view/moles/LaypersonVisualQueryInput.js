@@ -53,11 +53,10 @@ function getValueOptions(field) {
       return null;
     }
 
-    const colorMap = ThingClass.getColorMap();
     return ThingClass.validValues().map((value) => ({
       value,
       label: value,
-      color: colorMap[value] || null,
+      color: ThingClass.fromValue(value).getColor(),
     }));
   } catch {
     return null;
@@ -267,22 +266,20 @@ export default function LaypersonVisualQueryInput({
                         ...valueOptions,
                       ].map((option) => (
                         <MenuItem key={option.value} value={option.value}>
-                          {option.color && (
-                            <Box
-                              aria-hidden="true"
-                              component="span"
-                              data-testid={`${option.value}-color`}
-                              sx={{
-                                bgcolor: option.color,
-                                border: 1,
-                                borderColor: "divider",
-                                borderRadius: "50%",
-                                height: 10,
-                                mr: 1,
-                                width: 10,
-                              }}
-                            />
-                          )}
+                          <Box
+                            aria-hidden="true"
+                            component="span"
+                            data-testid={`${option.value}-color`}
+                            sx={{
+                              bgcolor: option.color,
+                              border: 1,
+                              borderColor: "divider",
+                              borderRadius: "50%",
+                              height: 10,
+                              mr: 1,
+                              width: 10,
+                            }}
+                          />
                           {getVisualLabel(option.label)}
                         </MenuItem>
                       ))}
