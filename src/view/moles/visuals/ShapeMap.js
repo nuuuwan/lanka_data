@@ -34,7 +34,7 @@ import {
   matchFeatureToValue,
 } from "../visual_utils/GeoVisualUtils.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
-import MultiChartLayout from "../visual_utils/MultiChartLayout.js";
+import MultiChartLayout from "../../organisms/MultiChartLayout.js";
 import Legend from "./Legend.js";
 
 function getDisplayItem(items) {
