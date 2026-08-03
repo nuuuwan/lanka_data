@@ -64,11 +64,7 @@ export function sortAreaBumpXAxis(data) {
     while (remaining.length > 0) {
       const previous = path.at(-1);
       let nearestIndex = 0;
-      let nearestScore = getMixingScore(
-        previous,
-        remaining[0].row,
-        seriesKeys,
-      );
+      let nearestScore = getMixingScore(previous, remaining[0].row, seriesKeys);
 
       for (let i = 1; i < remaining.length; i++) {
         const score = getMixingScore(previous, remaining[i].row, seriesKeys);
