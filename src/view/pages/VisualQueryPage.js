@@ -128,7 +128,7 @@ function VisualContent({ VisualClass, datumSet, loadTimeSeconds }) {
 export default function VisualQueryPage() {
   const { "*": visualQueryStr } = useParams();
   const navigate = useNavigate();
-  const { isReady } = useContext(DataContext);
+  const { isReady, queryOptions } = useContext(DataContext);
   const [visualQueryInput, setVisualQueryInput] = useState(visualQueryStr);
 
   useEffect(() => {
@@ -210,6 +210,7 @@ export default function VisualQueryPage() {
         value={visualQueryInput}
         onChange={setVisualQueryInput}
         onSubmit={submitVisualQuery}
+        queryOptions={queryOptions}
       />
       {!isReady || datumSet === null || loadTimeSeconds === null ? (
         <LinearProgress sx={{ m: 2 }} />

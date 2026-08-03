@@ -9,7 +9,12 @@ import { useState } from "react";
 
 import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
 
-export default function VisualQueryForm({ value, onChange, onSubmit }) {
+export default function VisualQueryForm({
+  value,
+  onChange,
+  onSubmit,
+  queryOptions,
+}) {
   const [mode, setMode] = useState("layperson");
 
   function submit(event) {
@@ -47,6 +52,7 @@ export default function VisualQueryForm({ value, onChange, onSubmit }) {
           value={value}
           onChange={onChange}
           onSubmit={submit}
+          queryOptions={queryOptions}
         />
       ) : (
         <TextField
@@ -74,7 +80,11 @@ export default function VisualQueryForm({ value, onChange, onSubmit }) {
           }}
         />
       )}
-      <Button type="submit" variant="contained" sx={{ mt: 1.5 }}>
+      <Button
+        type="submit"
+        variant="contained"
+        sx={{ display: "block", ml: "auto", mt: 1.5 }}
+      >
         Update
       </Button>
     </Box>

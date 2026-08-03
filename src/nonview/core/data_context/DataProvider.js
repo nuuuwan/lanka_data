@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import DataContext from "./DataContext.js";
+import DataSourceFactory from "../data_source/DataSourceFactory.js";
 import RegionFactory from "../thing/concept/category_concept/region/RegionFactory.js";
 
 async function loadRegionData() {
@@ -25,19 +26,22 @@ async function loadRegionData() {
 
 export default function DataProvider({ children }) {
   const [regionData, setRegionData] = useState(null);
+  const [queryOptions, setQueryOptions] = useState(null);
 
   useEffect(() => {
     loadRegionData().then((data) => {
       setRegionData(data);
     });
+    DataSourceFactory.getQueryOptions().then(setQueryOptions);
   }, []);
 
   const value = useMemo(
     () => ({
-      isReady: regionData !== null,
+      isReady: regionData !== null && queryOptions !== null,
       regionData,
+      queryOptions,
     }),
-    [regionData],
+    [queryOptions, regionData],
   );
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

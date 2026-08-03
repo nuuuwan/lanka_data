@@ -1,5 +1,20 @@
-import { Box, MenuItem, TextField, Typography } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import {
+  Box,
+  Button,
+  IconButton,
+  ListSubheader,
+  MenuItem,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Fragment } from "react";
 
+import {
+  DIMENSION_OPERATORS,
+  VISUAL_GROUPS,
+} from "../../nonview/constants/VisualQueryOptions.js";
 import VisualFactory from "./visuals/VisualFactory.js";
 
 function getVisualQueryParts(visualQueryStr) {
@@ -12,12 +27,41 @@ function getVisualLabel(visual) {
   return visual.replace(/([a-z])([A-Z])/g, "$1 $2");
 }
 
+function getDimensionParts(dimensions) {
+  return dimensions.split("+").map((dimension) => {
+    const operatorIndex = dimension.search(/[=<]/);
+    if (operatorIndex === -1) {
+      return { field: dimension, operator: "", value: "" };
+    }
+    return {
+      field: dimension.slice(0, operatorIndex),
+      operator: dimension[operatorIndex],
+      value: dimension.slice(operatorIndex + 1),
+    };
+  });
+}
+
+function getDimensionString({ field, operator, value }) {
+  return `${field}${operator}${operator ? value : ""}`;
+}
+
 export default function LaypersonVisualQueryInput({
   value,
   onChange,
   onSubmit,
+  queryOptions,
 }) {
   const parts = getVisualQueryParts(value);
+  const dimensions = getDimensionParts(parts.dimensions);
+  const availableQueryOptions = queryOptions || {
+    entities: [],
+    dimensionsByEntity: {},
+  };
+  const entityOptions = availableQueryOptions.entities.includes(parts.entity)
+    ? availableQueryOptions.entities
+    : [parts.entity, ...availableQueryOptions.entities].filter(Boolean);
+  const dimensionOptions =
+    availableQueryOptions.dimensionsByEntity[parts.entity] || [];
 
   function updatePart(name, nextValue) {
     onChange(
@@ -34,6 +78,32 @@ export default function LaypersonVisualQueryInput({
     }
   }
 
+  function updateDimension(index, name, nextValue) {
+    const nextDimensions = dimensions.map((dimension, dimensionIndex) =>
+      dimensionIndex === index
+        ? { ...dimension, [name]: nextValue }
+        : dimension,
+    );
+    updatePart(
+      "dimensions",
+      nextDimensions.map(getDimensionString).join("+"),
+    );
+  }
+
+  function addDimension() {
+    updatePart("dimensions", `${parts.dimensions}+`);
+  }
+
+  function removeDimension(index) {
+    updatePart(
+      "dimensions",
+      dimensions
+        .filter((_dimension, dimensionIndex) => dimensionIndex !== index)
+        .map(getDimensionString)
+        .join("+"),
+    );
+  }
+
   return (
     <Box
       sx={{
@@ -41,26 +111,102 @@ export default function LaypersonVisualQueryInput({
         gap: 1.5,
         gridTemplateColumns: {
           xs: "1fr",
-          md: "minmax(8rem, 1fr) minmax(16rem, 3fr) minmax(8rem, 1fr) minmax(10rem, 1fr)",
+          md: "minmax(8rem, 1fr) minmax(20rem, 3fr) minmax(8rem, 1fr) minmax(10rem, 1fr)",
         },
       }}
     >
       <TextField
+        select
         label="What data?"
         size="small"
         value={parts.entity}
         onChange={(event) => updatePart("entity", event.target.value)}
-        onKeyDown={submitOnEnter}
-        helperText="For example, Person or Vote"
-      />
-      <TextField
-        label="Group or filter by"
-        size="small"
-        value={parts.dimensions}
-        onChange={(event) => updatePart("dimensions", event.target.value)}
-        onKeyDown={submitOnEnter}
-        helperText="Use + between fields; = adds a filter"
-      />
+        helperText="Choose the type of data"
+      >
+        {entityOptions.map((entity) => (
+          <MenuItem key={entity} value={entity}>
+            {entity}
+          </MenuItem>
+        ))}
+      </TextField>
+      <Box>
+        <Typography component="div" variant="caption" sx={{ mb: 0.5 }}>
+          Group or filter by
+        </Typography>
+        {dimensions.map((dimension, index) => (
+          <Box
+            key={index}
+            sx={{
+              alignItems: "center",
+              display: "grid",
+              gap: 0.75,
+              gridTemplateColumns: "minmax(7rem, 1fr) 6.5rem minmax(7rem, 1fr) auto",
+              mb: 0.75,
+            }}
+          >
+            <TextField
+              select
+              label="Field"
+              size="small"
+              value={dimension.field}
+              onChange={(event) =>
+                updateDimension(index, "field", event.target.value)
+              }
+            >
+              {!dimensionOptions.includes(dimension.field) &&
+                dimension.field && (
+                  <MenuItem value={dimension.field}>{dimension.field}</MenuItem>
+                )}
+              {dimensionOptions.map((dimensionName) => (
+                <MenuItem key={dimensionName} value={dimensionName}>
+                  {getVisualLabel(dimensionName)}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField
+              select
+              label="Operator"
+              size="small"
+              value={dimension.operator}
+              onChange={(event) =>
+                updateDimension(index, "operator", event.target.value)
+              }
+            >
+              {DIMENSION_OPERATORS.map((operator) => (
+                <MenuItem key={operator.label} value={operator.value}>
+                  {operator.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField
+              disabled={!dimension.operator}
+              label="Value"
+              size="small"
+              value={dimension.value}
+              onChange={(event) =>
+                updateDimension(index, "value", event.target.value)
+              }
+              onKeyDown={submitOnEnter}
+            />
+            <IconButton
+              aria-label={`Remove condition ${index + 1}`}
+              disabled={dimensions.length === 1}
+              onClick={() => removeDimension(index)}
+              size="small"
+            >
+              <DeleteOutlineIcon fontSize="small" />
+            </IconButton>
+          </Box>
+        ))}
+        <Button
+          disabled={!dimensions.at(-1).field}
+          onClick={addDimension}
+          size="small"
+          startIcon={<AddIcon />}
+        >
+          AND
+        </Button>
+      </Box>
       <TextField
         label="Calculate"
         size="small"
@@ -77,10 +223,17 @@ export default function LaypersonVisualQueryInput({
         onChange={(event) => updatePart("visual", event.target.value)}
         helperText="Choose a visual"
       >
-        {VisualFactory.list().map((visual) => (
-          <MenuItem key={visual} value={visual}>
-            {getVisualLabel(visual)}
-          </MenuItem>
+        {VISUAL_GROUPS.map((group) => (
+          <Fragment key={group.label}>
+            <ListSubheader>{group.label}</ListSubheader>
+            {group.visuals
+              .filter((visual) => VisualFactory.list().includes(visual))
+              .map((visual) => (
+                <MenuItem key={visual} value={visual}>
+                  {getVisualLabel(visual)}
+                </MenuItem>
+              ))}
+          </Fragment>
         ))}
       </TextField>
       <Typography
