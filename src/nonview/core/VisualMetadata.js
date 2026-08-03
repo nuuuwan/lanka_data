@@ -39,9 +39,12 @@ function getDimensionLabel(thing) {
 }
 
 function getValueLabels(thing) {
-  return (thing.valueList ?? [thing.value]).map((value) =>
-    humanize(thing.constructor.fromValue(value).getLabel()),
-  );
+  return (thing.valueList ?? [thing.value]).map((value) => {
+    if (value === thing.value) {
+      return humanize(thing.getLabel());
+    }
+    return humanize(thing.constructor.fromValue(value).getLabel());
+  });
 }
 
 function isSpecific(thing) {
@@ -74,7 +77,9 @@ function getPopulationLabel(query) {
 }
 
 function getGeographyLabel(query, dimensions) {
-  const regionDimensions = dimensions.filter((thing) => thing instanceof Region);
+  const regionDimensions = dimensions.filter(
+    (thing) => thing instanceof Region,
+  );
   const constrainedRegions = (query.parentRegionConstraintList ?? [])
     .map(({ parentRegion }) => parentRegion)
     .filter(Boolean);
@@ -103,7 +108,10 @@ function getGeographyLabel(query, dimensions) {
 
 function getTimePeriodLabel(dimensions) {
   const timeDimensions = dimensions.filter((thing) => thing instanceof Time);
-  if (!timeDimensions.length || timeDimensions.some((thing) => !isSpecific(thing))) {
+  if (
+    !timeDimensions.length ||
+    timeDimensions.some((thing) => !isSpecific(thing))
+  ) {
     return "all available periods";
   }
   return joinLabels(timeDimensions.flatMap(getValueLabels));

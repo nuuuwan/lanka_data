@@ -42,7 +42,7 @@ test("states varying context and reports when there are no active filters", () =
     aggregate: "Share",
     dimensions: [
       Time.fromValue("*"),
-      Province.fromValue("*"),
+      new Province("*"),
       Religion.fromValue("*"),
     ],
   });

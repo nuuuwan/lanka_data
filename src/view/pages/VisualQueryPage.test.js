@@ -5,6 +5,7 @@ import DataContext from "../../nonview/core/data_context/DataContext.js";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
 import RecentVisualQueries from "../../nonview/base/RecentVisualQueries.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
+import Person from "../../nonview/core/thing/entity/Person.js";
 import VisualQueryPage from "./VisualQueryPage.js";
 
 jest.mock("../../nonview/core/VisualQuery.js", () => ({
@@ -59,7 +60,11 @@ test("shows a friendly message when a request returns no data", async () => {
     return <div>visual</div>;
   }
   VisualQuery.fromString.mockResolvedValue({
-    query: {},
+    query: {
+      aggregate: "Count",
+      dimThingList: [],
+      entityClass: Person,
+    },
     visualClass: TestVisual,
   });
   DataSourceFactory.getDatumSetForQuery.mockResolvedValue({ datumList: [] });
@@ -79,7 +84,11 @@ test("shows visual loading stages with completion times", async () => {
     return <div>visual</div>;
   }
   VisualQuery.fromString.mockResolvedValue({
-    query: {},
+    query: {
+      aggregate: "Count",
+      dimThingList: [],
+      entityClass: Person,
+    },
     visualClass: TestVisual,
   });
   DataSourceFactory.getDatumSetForQuery.mockReturnValue(
@@ -118,6 +127,12 @@ test("shows visual loading stages with completion times", async () => {
   });
 
   expect(await screen.findByTestId("visual-content")).toBeInTheDocument();
+  expect(
+    screen.getByRole("heading", { name: "Count of people" }),
+  ).toBeInTheDocument();
+  expect(screen.getByText(/Population: people/)).toHaveTextContent(
+    "Geography: all available geographies",
+  );
   await waitFor(() => {
     expect(RecentVisualQueries.read()).toEqual(["bad-request"]);
   });
