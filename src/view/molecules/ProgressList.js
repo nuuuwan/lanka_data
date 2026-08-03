@@ -1,4 +1,4 @@
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import {
   CircularProgress,
@@ -20,7 +20,7 @@ function getStatusText(step) {
 
 function StatusIcon({ status }) {
   if (status === "complete") {
-    return <CheckCircleOutlineIcon color="success" aria-label="Complete" />;
+    return <CheckCircleIcon color="success" aria-label="Complete" />;
   }
   if (status === "active") {
     return <CircularProgress size="1.5rem" aria-label="In progress" />;
@@ -36,10 +36,7 @@ export default function ProgressList({ steps }) {
           <ListItemIcon>
             <StatusIcon status={step.status} />
           </ListItemIcon>
-          <ListItemText
-            primary={step.label}
-            secondary={getStatusText(step)}
-          />
+          <ListItemText primary={step.label} secondary={getStatusText(step)} />
         </ListItem>
       ))}
     </List>

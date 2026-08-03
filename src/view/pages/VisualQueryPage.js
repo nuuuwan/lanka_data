@@ -1,10 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  Alert,
-  AlertTitle,
-  Typography,
-  Box,
-} from "@mui/material";
+import { Alert, AlertTitle, Typography, Box } from "@mui/material";
 import { useState, useEffect, useContext, useRef } from "react";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";

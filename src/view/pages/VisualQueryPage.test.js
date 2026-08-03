@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
 import DataContext from "../../nonview/core/data_context/DataContext.js";
@@ -86,18 +86,17 @@ test("shows visual loading stages with completion times", async () => {
 
   renderPage();
 
-  expect(
-    await screen.findByRole("list", { name: "Visual loading progress" }),
-  ).toBeInTheDocument();
-  expect(screen.getByText("Loading application data").closest("li")).toHaveTextContent(
-    "0.00 seconds",
-  );
-  expect(screen.getByText("Understanding request").closest("li")).toHaveTextContent(
-    "seconds",
-  );
-  expect(screen.getByText("Loading visual data").closest("li")).toHaveTextContent(
-    "In progress",
-  );
+  const progressList = await screen.findByRole("list", {
+    name: "Visual loading progress",
+  });
+  await waitFor(() => {
+    expect(screen.getAllByLabelText("Complete")).toHaveLength(2);
+  });
+  const [applicationStep, requestStep, dataStep] =
+    within(progressList).getAllByRole("listitem");
+  expect(applicationStep).toHaveTextContent("0.00 seconds");
+  expect(requestStep).toHaveTextContent("seconds");
+  expect(dataStep).toHaveTextContent("In progress");
 
   resolveDatumSet({ datumList: [{}] });
 
