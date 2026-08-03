@@ -2,8 +2,8 @@ import { createTheme } from "@mui/material/styles";
 
 export const BODY_FONT_FAMILY =
   '"Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif';
-export const HEADING_FONT_FAMILY =
-  'Georgia, "Times New Roman", Times, serif';
+export const HEADING_FONT_FAMILY = 'Georgia, "Times New Roman", Times, serif';
+export const FONT_FAMILY = BODY_FONT_FAMILY;
 
 export const AppTheme = createTheme({
   palette: {
