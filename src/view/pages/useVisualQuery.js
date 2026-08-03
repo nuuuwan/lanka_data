@@ -26,7 +26,9 @@ export default function useVisualQuery(isReady, visualQueryStr) {
         console.error("[VisualQueryPage] Could not parse request", error);
         if (!cancelled)
           setErrorMessage(
-            "We couldn't understand that request. Please check your choices and try again.",
+            error instanceof Error && error.message
+              ? error.message
+              : "We couldn't understand that request. Please check your choices and try again.",
           );
       }
     }

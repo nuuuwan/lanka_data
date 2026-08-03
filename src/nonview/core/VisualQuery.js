@@ -13,7 +13,13 @@ export default class VisualQuery {
   }
 
   static async fromString(visualQueryStr) {
-    const tokens = visualQueryStr.split(Query.DELIM_TOKEN);
+    const tokens = visualQueryStr.split(Query.DELIM_TOKEN).filter(Boolean);
+    if (tokens.length !== 4) {
+      throw new Error(
+        "Use the format Entity/Dimensions/Aggregate/Visualization. " +
+          "For example: Vote/ElectionType=presidential+Time=2024+PD/Count/Map.",
+      );
+    }
     const visualClassName = tokens[tokens.length - 1];
     const visualClass = VisualFactory.get(visualClassName);
     const queryStr = tokens.slice(0, tokens.length - 1).join(Query.DELIM_TOKEN);
