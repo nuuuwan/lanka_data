@@ -5,7 +5,7 @@ import { AppTheme } from "./AppTheme";
 import AppFooter from "./view/atoms/AppFooter.js";
 import DataProvider from "./nonview/core/data_context/DataProvider.js";
 const DEFAULT_VISUAL_QUERY_STR =
-  "/Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count/HexMap";
+  "/Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count/SquareMap";
 
 function App() {
   return (
