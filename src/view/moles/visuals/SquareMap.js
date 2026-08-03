@@ -1,4 +1,5 @@
 import {
+  areSquareCentersAdjacent,
   buildSquareGrid,
   getBestSquareLabelFit,
   getSquareBoundaryEdges,
@@ -10,6 +11,7 @@ import ShapeMap, {
 } from "./ShapeMap.js";
 
 const SQUARE_SHAPE_CONFIG = {
+  areCentersAdjacent: areSquareCentersAdjacent,
   ariaLabel: "Square map",
   buildGrid: (bounds, totalCount) => {
     const { centers, size } = buildSquareGrid(bounds, totalCount);

@@ -217,7 +217,70 @@ function solveAssignment(cost) {
   return assignment;
 }
 
-export function assignShapes(regions, centers) {
+function getSquaredDistance([firstX, firstY], [secondX, secondY]) {
+  return (firstX - secondX) ** 2 + (firstY - secondY) ** 2;
+}
+
+function assignConnectedShapes(regions, centers, areCentersAdjacent) {
+  const activeRegions = regions.filter(({ count }) => count > 0);
+  const seedCost = activeRegions.map(({ centroid }) =>
+    centers.map((center) => getSquaredDistance(centroid, center)),
+  );
+  const seedIndexes = solveAssignment(seedCost);
+  const availableIndexes = new Set(centers.map((_, index) => index));
+  const assignments = activeRegions.map(({ id }, regionIndex) => {
+    const centerIndex = seedIndexes[regionIndex];
+    availableIndexes.delete(centerIndex);
+    return { centerIndex, id };
+  });
+  const assignedIndexesById = new Map(
+    assignments.map(({ centerIndex, id }) => [id, [centerIndex]]),
+  );
+  const remainingById = new Map(
+    activeRegions.map(({ count, id }) => [id, count - 1]),
+  );
+
+  while ([...remainingById.values()].some((remaining) => remaining > 0)) {
+    let bestCandidate = null;
+    for (const { centroid, id } of activeRegions) {
+      if (!remainingById.get(id)) {
+        continue;
+      }
+      const assignedIndexes = assignedIndexesById.get(id);
+      for (const centerIndex of availableIndexes) {
+        if (
+          !assignedIndexes.some((assignedIndex) =>
+            areCentersAdjacent(centers[assignedIndex], centers[centerIndex]),
+          )
+        ) {
+          continue;
+        }
+        const distance = getSquaredDistance(centroid, centers[centerIndex]);
+        if (!bestCandidate || distance < bestCandidate.distance) {
+          bestCandidate = { centerIndex, distance, id };
+        }
+      }
+    }
+    if (!bestCandidate) {
+      throw new Error("Unable to assign edge-connected shapes.");
+    }
+    const { centerIndex, id } = bestCandidate;
+    assignments.push({ centerIndex, id });
+    availableIndexes.delete(centerIndex);
+    assignedIndexesById.get(id).push(centerIndex);
+    remainingById.set(id, remainingById.get(id) - 1);
+  }
+
+  return assignments.map(({ centerIndex, id }) => ({
+    center: centers[centerIndex],
+    id,
+  }));
+}
+
+export function assignShapes(regions, centers, areCentersAdjacent = null) {
+  if (areCentersAdjacent) {
+    return assignConnectedShapes(regions, centers, areCentersAdjacent);
+  }
   const slots = regions.flatMap(({ id, centroid, count }) =>
     Array.from({ length: count }, () => ({ id, centroid })),
   );
@@ -228,6 +291,20 @@ export function assignShapes(regions, centers) {
     id: slots[slotIndex].id,
     center: centers[centerIndex],
   }));
+}
+
+export function areSquareCentersAdjacent(
+  [firstX, firstY],
+  [secondX, secondY],
+  size,
+) {
+  const tolerance = size * 1e-6;
+  const deltaX = Math.abs(firstX - secondX);
+  const deltaY = Math.abs(firstY - secondY);
+  return (
+    (deltaX < tolerance && Math.abs(deltaY - size) < tolerance) ||
+    (deltaY < tolerance && Math.abs(deltaX - size) < tolerance)
+  );
 }
 
 export function getHexPoints([x, y], radius) {
