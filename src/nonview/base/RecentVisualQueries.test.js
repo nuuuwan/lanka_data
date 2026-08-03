@@ -16,14 +16,19 @@ test("keeps the five most recently added queries in newest-first order", () => {
 
   queries.forEach((query) => RecentVisualQueries.add(query));
 
-  expect(RecentVisualQueries.read()).toEqual(queries.slice(1).reverse());
+  expect(RecentVisualQueries.read().map(({ query }) => query)).toEqual(
+    queries.slice(1).reverse(),
+  );
 });
 
 test("moves a duplicate query to the front instead of adding another copy", () => {
-  RecentVisualQueries.add("query-a");
-  RecentVisualQueries.add("query-b");
+  RecentVisualQueries.add("query-a", undefined, 1);
+  RecentVisualQueries.add("query-b", undefined, 2);
 
-  expect(RecentVisualQueries.add("query-a")).toEqual(["query-a", "query-b"]);
+  expect(RecentVisualQueries.add("query-a", undefined, 3)).toEqual([
+    { query: "query-a", timestamp: 3 },
+    { query: "query-b", timestamp: 2 },
+  ]);
 });
 
 test("clears only the recent queries entry", () => {
@@ -50,8 +55,19 @@ test("handles unavailable and malformed storage without throwing", () => {
   localStorage.setItem(RECENT_VISUAL_QUERIES_STORAGE_KEY, "{bad json");
 
   expect(RecentVisualQueries.read()).toEqual([]);
-  expect(RecentVisualQueries.add("query-a", unavailableStorage)).toEqual([
-    "query-a",
+  expect(RecentVisualQueries.add("query-a", unavailableStorage, 1)).toEqual([
+    { query: "query-a", timestamp: 1 },
   ]);
   expect(RecentVisualQueries.clear(unavailableStorage)).toEqual([]);
+});
+
+test("reads legacy string entries without losing saved queries", () => {
+  localStorage.setItem(
+    RECENT_VISUAL_QUERIES_STORAGE_KEY,
+    JSON.stringify(["query-a"]),
+  );
+
+  expect(RecentVisualQueries.read()).toEqual([
+    { query: "query-a", timestamp: null },
+  ]);
 });
