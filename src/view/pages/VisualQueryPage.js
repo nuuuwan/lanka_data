@@ -8,7 +8,7 @@ import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
-import ProgressList from "../molecules/ProgressList.js";
+import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
 function useChartFacets(datumSet, VisualClass) {
@@ -294,7 +294,7 @@ export default function VisualQueryPage() {
         !VisualClass ||
         datumSet === null ||
         loadTimeSeconds === null ? (
-        <ProgressList steps={loadingSteps} />
+        <LoadingProgressDialog steps={loadingSteps} />
       ) : (
         <Box data-testid="visual-content">
           <VisualErrorBoundary key={visualQueryStr}>

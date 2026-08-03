@@ -89,6 +89,9 @@ test("shows visual loading stages with completion times", async () => {
   const progressList = await screen.findByRole("list", {
     name: "Visual loading progress",
   });
+  expect(
+    screen.getByRole("dialog", { name: "Loading visual" }),
+  ).toBeInTheDocument();
   await waitFor(() => {
     expect(screen.getAllByLabelText("Complete")).toHaveLength(2);
   });
