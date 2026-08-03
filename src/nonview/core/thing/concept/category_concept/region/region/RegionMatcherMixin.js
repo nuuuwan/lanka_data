@@ -18,7 +18,7 @@ export default class RegionMatcherMixin {
 
     if (matchingChildValues.length === 0) {
       throw new Error(
-        `No child regions of type ${ChildRegionClass.name}` +
+        `No child regions of type ${ChildRegionClass.getClassName()}` +
           ` found for parent region: ${parentRegion.getHumanReadableValue()}`,
       );
     }

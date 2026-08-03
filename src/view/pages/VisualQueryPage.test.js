@@ -1,8 +1,9 @@
-import { render, screen, waitFor, within } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
 import DataContext from "../../nonview/core/data_context/DataContext.js";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
+import RecentVisualQueries from "../../nonview/base/RecentVisualQueries.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
 import VisualQueryPage from "./VisualQueryPage.js";
 
@@ -33,10 +34,12 @@ function renderPage(path = "/bad-request") {
 }
 
 beforeEach(() => {
+  localStorage.clear();
   jest.spyOn(console, "error").mockImplementation(() => undefined);
 });
 
 afterEach(() => {
+  jest.useRealTimers();
   jest.restoreAllMocks();
 });
 
@@ -67,6 +70,7 @@ test("shows a friendly message when a request returns no data", async () => {
     "We couldn't find any data for that request.",
   );
   expect(screen.queryByTestId("visual-content")).not.toBeInTheDocument();
+  expect(RecentVisualQueries.read()).toEqual([]);
 });
 
 test("shows visual loading stages with completion times", async () => {
@@ -102,7 +106,72 @@ test("shows visual loading stages with completion times", async () => {
   expect(dataStep).toHaveTextContent(/\d+\.\d{2} seconds/);
   expect(dataStep).not.toHaveTextContent("In progress");
 
-  resolveDatumSet({ datumList: [{}] });
+  resolveDatumSet({
+    datumList: [{}],
+    provenance: [
+      {
+        source: "Department of Census and Statistics of Sri Lanka",
+        title: "Census of Population and Housing 2024",
+        url: "https://www.statistics.gov.lk",
+      },
+    ],
+  });
 
   expect(await screen.findByTestId("visual-content")).toBeInTheDocument();
+  await waitFor(() => {
+    expect(RecentVisualQueries.read()).toEqual(["bad-request"]);
+  });
+});
+
+test("updates active loading time without showing a negative duration", async () => {
+  VisualQuery.fromString.mockReturnValue(new Promise(() => {}));
+  jest.useFakeTimers();
+
+  renderPage();
+
+  const requestStep = within(
+    await screen.findByRole("list", {
+      name: "Visual loading progress",
+    }),
+  ).getAllByRole("listitem")[1];
+  expect(requestStep).toHaveTextContent("0.00 seconds");
+
+  act(() => {
+    jest.advanceTimersByTime(1000);
+  });
+
+  expect(requestStep).toHaveTextContent(/\d+\.\d{2} seconds/);
+  expect(requestStep).not.toHaveTextContent("0.00 seconds");
+  expect(requestStep).not.toHaveTextContent("-");
+});
+
+test("updates elapsed time while visual data is loading", async () => {
+  function TestVisual() {
+    return <div>visual</div>;
+  }
+  VisualQuery.fromString.mockResolvedValue({
+    query: {},
+    visualClass: TestVisual,
+  });
+  DataSourceFactory.getDatumSetForQuery.mockReturnValue(new Promise(() => {}));
+  jest.useFakeTimers();
+
+  renderPage();
+
+  await waitFor(() => {
+    expect(screen.getAllByLabelText("Complete")).toHaveLength(2);
+  });
+  const dataStep = within(
+    screen.getByRole("list", {
+      name: "Visual loading progress",
+    }),
+  ).getAllByRole("listitem")[2];
+  expect(dataStep).toHaveTextContent("0.00 seconds");
+
+  act(() => {
+    jest.advanceTimersByTime(1000);
+  });
+
+  expect(dataStep).toHaveTextContent(/\d+\.\d{2} seconds/);
+  expect(dataStep).not.toHaveTextContent("0.00 seconds");
 });

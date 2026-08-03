@@ -17,6 +17,10 @@ export default class AbstractDataSource {
     return await WWW.json(this.getMetadataURL());
   }
 
+  static getProvenanceForQuery() {
+    return null;
+  }
+
   static async getMetadataForQuery(query) {
     const metadata = await this.getMetadata();
     const queryMetadataKey = query.getMetadataKey();

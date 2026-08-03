@@ -45,7 +45,7 @@ export default class DataSourceFactory {
 
   static async getDatumSetForQuery(query) {
     console.debug(`[DataSourceFactory] Loading datums for "${query}"`);
-    const datumListList = await Promise.all(
+    const results = await Promise.all(
       this.getDataSourceClasses().map(async (dataSourceClass) => {
         console.debug(
           `[DataSourceFactory] Querying ${dataSourceClass.name} for "${query}"`,
@@ -54,14 +54,23 @@ export default class DataSourceFactory {
         console.debug(
           `[DataSourceFactory] ${dataSourceClass.name} returned ${datumList.length} datums`,
         );
-        return datumList;
+        return {
+          datumList,
+          provenance:
+            datumList.length > 0
+              ? dataSourceClass.getProvenanceForQuery(query)
+              : null,
+        };
       }),
     );
-    const datumList = datumListList.flat();
+    const datumList = results.flatMap(({ datumList }) => datumList);
+    const provenance = results
+      .map((result) => result.provenance)
+      .filter(Boolean);
     console.debug(
       `[DataSourceFactory] Loaded ${datumList.length} total datums for "${query}"`,
     );
 
-    return new DatumSet(datumList);
+    return new DatumSet(datumList, provenance);
   }
 }

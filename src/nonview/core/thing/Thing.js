@@ -5,6 +5,10 @@ export default class Thing {
   static SPECIAL_VALUE_EXCLUDED_SMALL = "excluded_small";
   static SPECIAL_VALUE_EXCLUDED_SMALL_COLOR = "#ccc";
 
+  static getClassName() {
+    return this.className || this.name;
+  }
+
   constructor(value) {
     this.value = String(value);
   }
@@ -18,7 +22,7 @@ export default class Thing {
   }
 
   getHumanReadableValue() {
-    return `${this.constructor.name}=${this.getLabel()}`;
+    return `${this.constructor.getClassName()}=${this.getLabel()}`;
   }
 
   getColor() {
@@ -30,8 +34,8 @@ export default class Thing {
 
   toKeyValue() {
     if (this.value === Thing.WILDCARD) {
-      return this.constructor.name;
+      return this.constructor.getClassName();
     }
-    return `${this.constructor.name}${KeyValue.DELIM}${this.value}`;
+    return `${this.constructor.getClassName()}${KeyValue.DELIM}${this.value}`;
   }
 }
