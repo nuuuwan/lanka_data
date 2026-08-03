@@ -17,18 +17,14 @@ test("shows the first facet and lets readers select another facet", () => {
     />,
   );
 
-  expect(
-    screen.getByRole("heading", { name: "Western" }),
-  ).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: "Western" })).toBeInTheDocument();
   expect(screen.getByText("western-data")).toBeInTheDocument();
   expect(screen.queryByText("central-data")).not.toBeInTheDocument();
 
   fireEvent.mouseDown(screen.getByRole("combobox", { name: "Facet" }));
   fireEvent.click(screen.getByRole("option", { name: "Central" }));
 
-  expect(
-    screen.getByRole("heading", { name: "Central" }),
-  ).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: "Central" })).toBeInTheDocument();
   expect(screen.getByText("central-data")).toBeInTheDocument();
   expect(screen.queryByText("western-data")).not.toBeInTheDocument();
 });
@@ -44,7 +40,5 @@ test("does not show a facet selector for a single result", () => {
   );
 
   expect(screen.queryByRole("combobox")).not.toBeInTheDocument();
-  expect(
-    screen.getByRole("heading", { name: "Western" }),
-  ).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: "Western" })).toBeInTheDocument();
 });
