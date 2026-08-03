@@ -1,5 +1,4 @@
 import {
-  areSquareCentersAdjacent,
   buildSquareGrid,
   getBestSquareLabelFit,
   getSquareBoundaryEdges,

@@ -249,7 +249,9 @@ function assignConnectedShapes(regions, centers, orderCenters) {
     const start = Math.max(cursor, Math.min(idealStart, latestStart));
     cursor = start + count;
     remainingCount -= count;
-    return orderedCenters.slice(start, cursor).map((center) => ({ center, id }));
+    return orderedCenters
+      .slice(start, cursor)
+      .map((center) => ({ center, id }));
   });
 }
 
