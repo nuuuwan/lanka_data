@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Typography, Box, LinearProgress, TextField } from "@mui/material";
+import { Typography, Box, LinearProgress } from "@mui/material";
 import { useState, useEffect, useContext } from "react";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
@@ -8,6 +8,7 @@ import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
+import VisualQueryForm from "../organisms/VisualQueryForm.js";
 function useChartFacets(datumSet, VisualClass) {
   const { datumList } = datumSet;
 
@@ -134,8 +135,7 @@ export default function VisualQueryPage() {
     setVisualQueryInput(visualQueryStr);
   }, [visualQueryStr]);
 
-  function submitVisualQuery(event) {
-    event.preventDefault();
+  function submitVisualQuery() {
     const nextVisualQueryStr = visualQueryInput.trim();
     if (nextVisualQueryStr && nextVisualQueryStr !== visualQueryStr) {
       setDatumSet(null);
@@ -206,31 +206,11 @@ export default function VisualQueryPage() {
 
   return (
     <Box sx={{ m: 2 }}>
-      <Box
-        component="form"
-        aria-label="Visual query form"
+      <VisualQueryForm
+        value={visualQueryInput}
+        onChange={setVisualQueryInput}
         onSubmit={submitVisualQuery}
-        sx={{ mb: 2 }}
-      >
-        <TextField
-          fullWidth
-          size="small"
-          value={visualQueryInput}
-          onChange={(event) => setVisualQueryInput(event.target.value)}
-          helperText="Press Enter to update"
-          slotProps={{
-            htmlInput: {
-              autoComplete: "off",
-              spellCheck: false,
-            },
-          }}
-          sx={{
-            "& .MuiInputBase-input": {
-              fontFamily: "monospace",
-            },
-          }}
-        />
-      </Box>
+      />
       {!isReady || datumSet === null || loadTimeSeconds === null ? (
         <LinearProgress sx={{ m: 2 }} />
       ) : (

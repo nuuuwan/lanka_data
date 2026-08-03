@@ -31,6 +31,10 @@ class VisualFactoryContentsMixin {
 }
 
 export default class VisualFactory {
+  static list() {
+    return Object.keys(VisualFactoryContentsMixin);
+  }
+
   static get(visualType) {
     const VisualClass = VisualFactoryContentsMixin[visualType];
     if (!VisualClass) {
