@@ -99,7 +99,8 @@ test("shows visual loading stages with completion times", async () => {
     within(progressList).getAllByRole("listitem");
   expect(applicationStep).toHaveTextContent("0.00 seconds");
   expect(requestStep).toHaveTextContent("seconds");
-  expect(dataStep).toHaveTextContent("In progress");
+  expect(dataStep).toHaveTextContent(/\d+\.\d{2} seconds/);
+  expect(dataStep).not.toHaveTextContent("In progress");
 
   resolveDatumSet({ datumList: [{}] });
 
