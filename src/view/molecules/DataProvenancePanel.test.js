@@ -19,7 +19,7 @@ test("shows only a single data source with a safe external link", () => {
     screen.getByRole("heading", { name: "About this data" }),
   ).toBeInTheDocument();
   expect(
-   screen.queryByText("Sri Lanka election results"),
+    screen.queryByText("Sri Lanka election results"),
   ).not.toBeInTheDocument();
   expect(
     screen.getByRole("link", {
