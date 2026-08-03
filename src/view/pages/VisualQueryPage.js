@@ -1,5 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Typography, Box, LinearProgress } from "@mui/material";
+import {
+  Alert,
+  AlertTitle,
+  Typography,
+  Box,
+  LinearProgress,
+} from "@mui/material";
 import { useState, useEffect, useContext } from "react";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
@@ -8,6 +14,7 @@ import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
+import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
 function useChartFacets(datumSet, VisualClass) {
   const { datumList } = datumSet;
@@ -130,6 +137,7 @@ export default function VisualQueryPage() {
   const navigate = useNavigate();
   const { isReady, queryOptions } = useContext(DataContext);
   const [visualQueryInput, setVisualQueryInput] = useState(visualQueryStr);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     setVisualQueryInput(visualQueryStr);
@@ -152,15 +160,32 @@ export default function VisualQueryPage() {
       );
       return;
     }
+    let cancelled = false;
     async function parse() {
       console.debug(`[VisualQueryPage] Parsing "${visualQueryStr}"`);
-      const nextVisualQuery = await VisualQuery.fromString(visualQueryStr);
-      console.debug(
-        `[VisualQueryPage] Parsed "${visualQueryStr}" as ${nextVisualQuery.visualClass.name}`,
-      );
-      setVisualQuery(nextVisualQuery);
+      setVisualQuery(null);
+      setErrorMessage(null);
+      try {
+        const nextVisualQuery = await VisualQuery.fromString(visualQueryStr);
+        if (!cancelled) {
+          console.debug(
+            `[VisualQueryPage] Parsed "${visualQueryStr}" as ${nextVisualQuery.visualClass.name}`,
+          );
+          setVisualQuery(nextVisualQuery);
+        }
+      } catch (error) {
+        console.error("[VisualQueryPage] Could not parse request", error);
+        if (!cancelled) {
+          setErrorMessage(
+            "We couldn't understand that request. Please check your choices and try again.",
+          );
+        }
+      }
     }
     parse();
+    return () => {
+      cancelled = true;
+    };
   }, [isReady, visualQueryStr]);
 
   const [datumSet, setDatumSet] = useState(null);
@@ -177,20 +202,34 @@ export default function VisualQueryPage() {
         `[VisualQueryPage] Fetching data for "${visualQuery.query}"`,
       );
       const startTime = performance.now();
-      const nextDatumSet = await DataSourceFactory.getDatumSetForQuery(
-        visualQuery.query,
-      );
-      const nextLoadTimeSeconds = (performance.now() - startTime) / 1000;
-      if (!cancelled) {
-        setDatumSet(nextDatumSet);
-        setLoadTimeSeconds(nextLoadTimeSeconds);
-        console.debug(
-          `[VisualQueryPage] Data ready: ${nextDatumSet.datumList.length} datums in ${nextLoadTimeSeconds.toFixed(3)}s`,
+      try {
+        const nextDatumSet = await DataSourceFactory.getDatumSetForQuery(
+          visualQuery.query,
         );
-      } else {
-        console.debug(
-          `[VisualQueryPage] Ignoring completed data fetch for stale query "${visualQuery.query}"`,
-        );
+        const nextLoadTimeSeconds = (performance.now() - startTime) / 1000;
+        if (!cancelled) {
+          setDatumSet(nextDatumSet);
+          setLoadTimeSeconds(nextLoadTimeSeconds);
+          setErrorMessage(
+            nextDatumSet.datumList.length === 0
+              ? "We couldn't find any data for that request. Please check your choices and try again."
+              : null,
+          );
+          console.debug(
+            `[VisualQueryPage] Data ready: ${nextDatumSet.datumList.length} datums in ${nextLoadTimeSeconds.toFixed(3)}s`,
+          );
+        } else {
+          console.debug(
+            `[VisualQueryPage] Ignoring completed data fetch for stale query "${visualQuery.query}"`,
+          );
+        }
+      } catch (error) {
+        console.error("[VisualQueryPage] Could not load requested data", error);
+        if (!cancelled) {
+          setErrorMessage(
+            "We couldn't load the data for that request. Please try again.",
+          );
+        }
       }
     }
     fetch();
@@ -212,15 +251,25 @@ export default function VisualQueryPage() {
         onSubmit={submitVisualQuery}
         queryOptions={queryOptions}
       />
-      {!isReady || datumSet === null || loadTimeSeconds === null ? (
+      {errorMessage ? (
+        <Alert severity="error" data-testid="query-error">
+          <AlertTitle>Sorry, something went wrong.</AlertTitle>
+          {errorMessage}
+        </Alert>
+      ) : !isReady ||
+        !VisualClass ||
+        datumSet === null ||
+        loadTimeSeconds === null ? (
         <LinearProgress sx={{ m: 2 }} />
       ) : (
         <Box data-testid="visual-content">
-          <VisualContent
-            VisualClass={VisualClass}
-            datumSet={datumSet}
-            loadTimeSeconds={loadTimeSeconds}
-          />
+          <VisualErrorBoundary key={visualQueryStr}>
+            <VisualContent
+              VisualClass={VisualClass}
+              datumSet={datumSet}
+              loadTimeSeconds={loadTimeSeconds}
+            />
+          </VisualErrorBoundary>
         </Box>
       )}
     </Box>
