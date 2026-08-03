@@ -1,12 +1,15 @@
 import {
   Box,
   Button,
+  Snackbar,
   TextField,
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
 import { useState } from "react";
 
+import { copyTextToClipboard } from "../../nonview/base/Clipboard.js";
+import { SHARE_LINK_FEEDBACK_DURATION_MS } from "../../nonview/constants/APP.js";
 import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
 
 export default function VisualQueryForm({
@@ -16,6 +19,7 @@ export default function VisualQueryForm({
   queryOptions,
 }) {
   const [mode, setMode] = useState("layperson");
+  const [shareFeedback, setShareFeedback] = useState(null);
 
   function submit(event) {
     event?.preventDefault();
@@ -26,6 +30,15 @@ export default function VisualQueryForm({
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
       submit();
+    }
+
+    async function copyShareLink() {
+      try {
+        await copyTextToClipboard(window.location.href);
+        setShareFeedback("Share link copied");
+      } catch {
+        setShareFeedback("Could not copy share link");
+      }
     }
   }
 
@@ -80,13 +93,27 @@ export default function VisualQueryForm({
           }}
         />
       )}
-      <Button
-        type="submit"
-        variant="contained"
-        sx={{ display: "block", ml: "auto", mt: 1.5 }}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: 1,
+          mt: 1.5,
+        }}
       >
-        Update
-      </Button>
+        <Button type="button" variant="outlined" onClick={copyShareLink}>
+          Copy Share Link
+        </Button>
+        <Button type="submit" variant="contained">
+          Update
+        </Button>
+      </Box>
+      <Snackbar
+        open={shareFeedback !== null}
+        autoHideDuration={SHARE_LINK_FEEDBACK_DURATION_MS}
+        message={shareFeedback}
+        onClose={() => setShareFeedback(null)}
+      />
     </Box>
   );
 }
