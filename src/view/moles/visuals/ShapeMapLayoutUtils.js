@@ -5,16 +5,9 @@ import {
   getShapeCounts,
 } from "../../../nonview/base/ShapeMapUtils.js";
 import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
-import {
-  MAP_HEIGHT,
-  MAP_PADDING,
-  MAP_WIDTH,
-} from "../../_cons/MapCons.js";
+import { MAP_HEIGHT, MAP_PADDING, MAP_WIDTH } from "../../_cons/MapCons.js";
 import { getProjectionInfo } from "../visual_utils/GeoVisualUtils.js";
-import {
-  getShapeMapLabels,
-  getShapeMapViewBox,
-} from "./ShapeMapLabelUtils.js";
+import { getShapeMapLabels, getShapeMapViewBox } from "./ShapeMapLabelUtils.js";
 
 export function buildShapeMapLayout(
   facetInfo,
@@ -34,14 +27,26 @@ export function buildShapeMapLayout(
   const counts = isUnit
     ? Object.fromEntries(facetInfo.regions.map(({ id }) => [id, 1]))
     : getShapeCounts(weights, valuePerShape);
-  const totalCount = Object.values(counts).reduce((sum, count) => sum + count, 0);
+  const totalCount = Object.values(counts).reduce(
+    (sum, count) => sum + count,
+    0,
+  );
   const { centers, shapeSize } = shapeConfig.buildGrid(
-    [MAP_PADDING, MAP_PADDING, MAP_WIDTH - MAP_PADDING, MAP_HEIGHT - MAP_PADDING],
+    [
+      MAP_PADDING,
+      MAP_PADDING,
+      MAP_WIDTH - MAP_PADDING,
+      MAP_HEIGHT - MAP_PADDING,
+    ],
     totalCount,
   );
   const regions = features.map((feature, index) => {
     const id = facetInfo.regions[index].id;
-    return { centroid: projection(geoCentroid(feature)), count: counts[id], id };
+    return {
+      centroid: projection(geoCentroid(feature)),
+      count: counts[id],
+      id,
+    };
   });
   const assigned = assignShapes(regions, centers);
   const regionById = new Map(

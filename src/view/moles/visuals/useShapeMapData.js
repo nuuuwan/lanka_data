@@ -63,12 +63,5 @@ export default function useShapeMapData(
       (a, b) => b.total - a.total,
     );
     return { maps, legendItems: getLegendItems(facets) };
-  }, [
-    geoJson,
-    datumList,
-    regionIndex,
-    stackIndex,
-    isUnit,
-    shapeConfig,
-  ]);
+  }, [geoJson, datumList, regionIndex, stackIndex, isUnit, shapeConfig]);
 }

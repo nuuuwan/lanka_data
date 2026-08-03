@@ -1,8 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import {
-  StatefulVisualQueryForm,
-} from "./VisualQueryFormTestUtils.js";
+import { StatefulVisualQueryForm } from "./VisualQueryFormTestUtils.js";
 
 test("adds AND conditions with explicit operators", () => {
   const onChange = jest.fn();

@@ -50,7 +50,10 @@ export function matchFeatureToValue(feature, dataMap) {
   const compactName = featureName.replace(/_/g, "");
   for (const [regionValue, items] of dataMap) {
     const normalized = StringUtils.toSnakeCase(regionValue);
-    if (normalized === featureName || normalized.replace(/_/g, "") === compactName)
+    if (
+      normalized === featureName ||
+      normalized.replace(/_/g, "") === compactName
+    )
       return { regionValue, items };
   }
   return null;

@@ -1,9 +1,6 @@
 import { Box, MenuItem, TextField } from "@mui/material";
 
-import {
-  getValueOptions,
-  getVisualLabel,
-} from "./LaypersonQueryUtils.js";
+import { getValueOptions, getVisualLabel } from "./LaypersonQueryUtils.js";
 
 export default function LaypersonDimensionValue({
   dimension,

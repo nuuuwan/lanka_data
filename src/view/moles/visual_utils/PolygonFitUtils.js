@@ -34,12 +34,18 @@ function isPointOnSegment([px, py], [ax, ay], [bx, by]) {
 
 function isPointInRing(point, ring) {
   let inside = false;
-  for (let index = 0, previous = ring.length - 1; index < ring.length; index++) {
+  for (
+    let index = 0, previous = ring.length - 1;
+    index < ring.length;
+    index++
+  ) {
     const start = ring[previous];
     const end = ring[index];
     if (isPointOnSegment(point, start, end)) return true;
+    const startIsBelow = start[1] > point[1];
+    const endIsBelow = end[1] > point[1];
     if (
-      (start[1] > point[1]) !== (end[1] > point[1]) &&
+      startIsBelow !== endIsBelow &&
       point[0] <
         ((end[0] - start[0]) * (point[1] - start[1])) / (end[1] - start[1]) +
           start[0]

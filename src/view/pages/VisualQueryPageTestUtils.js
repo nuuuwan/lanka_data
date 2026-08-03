@@ -17,8 +17,7 @@ jest.mock("../../nonview/core/data_source/DataSourceFactory.js", () => ({
   default: { getDatumSetForQuery: jest.fn() },
 }));
 
-export const VISUAL_QUERY =
-  "Person/Time=2024+Province+Religion/Count/BarChart";
+export const VISUAL_QUERY = "Person/Time=2024+Province+Religion/Count/BarChart";
 export { DataSourceFactory, Person, RecentVisualQueries, VisualQuery };
 
 const originalScrollIntoView = HTMLElement.prototype.scrollIntoView;
@@ -55,7 +54,12 @@ export function renderPage(path = "/bad-request") {
 
 export function mockVisual(VisualClass, query = {}) {
   VisualQuery.fromString.mockResolvedValue({
-    query: { aggregate: "Count", dimThingList: [], entityClass: Person, ...query },
+    query: {
+      aggregate: "Count",
+      dimThingList: [],
+      entityClass: Person,
+      ...query,
+    },
     visualClass: VisualClass,
   });
 }

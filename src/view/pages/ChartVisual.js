@@ -4,7 +4,12 @@ import MultiChartLayout from "../organisms/MultiChartLayout.js";
 
 function getChartFacets(datumList, VisualClass) {
   if (!datumList.length)
-    return { facets: [], xAxisDimName: "", yAxisLabel: "", stackDimIndex: null };
+    return {
+      facets: [],
+      xAxisDimName: "",
+      yAxisLabel: "",
+      stackDimIndex: null,
+    };
   let xAxisDimIndex;
   let stackDimIndex;
   if (VisualClass.IS_MARIMEKKO) {

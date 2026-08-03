@@ -39,7 +39,12 @@ export function getLegendItems(facetInfos) {
   return [...items.values()];
 }
 
-export function getMatchedFeatures(geoJson, datumList, regionIndex, stackIndex) {
+export function getMatchedFeatures(
+  geoJson,
+  datumList,
+  regionIndex,
+  stackIndex,
+) {
   const dataMap = buildFeatureToDataMap(datumList, regionIndex, stackIndex);
   return geoJson.features.filter((feature) =>
     matchFeatureToValue(feature, dataMap),

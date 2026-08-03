@@ -39,8 +39,7 @@ export function getProjectionInfo(features) {
 }
 
 export function getFittedLabelFontSize(label, width, height) {
-  const unitWidth =
-    Math.max(label.length, 1) * MAP_LABEL_CHARACTER_WIDTH_RATIO;
+  const unitWidth = Math.max(label.length, 1) * MAP_LABEL_CHARACTER_WIDTH_RATIO;
   const padding = 1 + MAP_LABEL_MARGIN_RATIO;
   return Math.min(height / padding, width / (unitWidth * padding));
 }

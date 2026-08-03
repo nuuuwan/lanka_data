@@ -3,8 +3,7 @@ import { useState } from "react";
 
 import VisualQueryForm from "./VisualQueryForm.js";
 
-export const VISUAL_QUERY =
-  "Person/Time=2024+Province+Religion/Count/BarChart";
+export const VISUAL_QUERY = "Person/Time=2024+Province+Religion/Count/BarChart";
 export const QUERY_OPTIONS = {
   entities: ["House", "Person", "Vote"],
   dimensionsByEntity: {

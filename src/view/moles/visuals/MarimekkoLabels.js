@@ -18,7 +18,10 @@ export function BarLabelsLayer({ data, screenWidth }) {
             dominantBaseline="hanging"
             style={{
               fontFamily: FONT_FAMILY,
-              fontSize: Math.max(6, Math.min(10, (datum.width / 10) * fontScale)),
+              fontSize: Math.max(
+                6,
+                Math.min(10, (datum.width / 10) * fontScale),
+              ),
               fill: "#333",
             }}
           >

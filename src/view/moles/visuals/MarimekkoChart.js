@@ -16,8 +16,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
   const screenWidth = useMediaQuery(theme.breakpoints.down("sm")) ? 375 : 1200;
   const sortedData = sortByDominantCategory(data);
   const dimensions = getDimensions(sortedData);
-  const color = (id) =>
-    getMarkColor(getColorForDimension(id, sortedData));
+  const color = (id) => getMarkColor(getColorForDimension(id, sortedData));
   return (
     <Box>
       <Box sx={{ height: 400 }}>
@@ -73,7 +72,11 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
         />
       </Box>
       <Legend
-        items={dimensions.map(({ id }) => ({ id, label: id, color: color(id) }))}
+        items={dimensions.map(({ id }) => ({
+          id,
+          label: id,
+          color: color(id),
+        }))}
       />
     </Box>
   );
