@@ -1,3 +1,4 @@
+import DownloadIcon from "@mui/icons-material/Download";
 import { Button } from "@mui/material";
 
 import { getJSONDownloadURL } from "../../../nonview/base/RawJSON.js";
@@ -14,6 +15,7 @@ export default function JSONVisual({ datumSet }) {
         component="a"
         download={JSON_DOWNLOAD_FILE_NAME}
         href={downloadURL}
+        startIcon={<DownloadIcon />}
         variant="contained"
       >
         Download JSON
