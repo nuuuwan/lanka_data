@@ -9,10 +9,13 @@ function elapsed(startTime, currentTime) {
 export default function useLoadingSteps({
   application,
   datumSet,
+  generationStartTime,
   isLoading,
   isReady,
+  isVisualReady,
   load,
   parse,
+  visualDataReady,
   VisualClass,
 }) {
   const [currentTime, setCurrentTime] = useState(() => performance.now());
@@ -49,6 +52,15 @@ export default function useLoadingSteps({
           : "complete",
       durationSeconds:
         load.loadTimeSeconds ?? elapsed(load.loadStartTime, currentTime),
+    },
+    {
+      label: "Generating visual",
+      status: !visualDataReady
+        ? "pending"
+        : isVisualReady
+          ? "complete"
+          : "active",
+      durationSeconds: elapsed(generationStartTime, currentTime),
     },
   ];
 }
