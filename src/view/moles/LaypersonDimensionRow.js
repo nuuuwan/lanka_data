@@ -1,0 +1,81 @@
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import { Box, IconButton, MenuItem, TextField } from "@mui/material";
+
+import { DIMENSION_OPERATORS } from "../../nonview/constants/VisualQueryOptions.js";
+import LaypersonDimensionValue from "./LaypersonDimensionValue.js";
+import { getVisualLabel } from "./LaypersonQueryUtils.js";
+
+export default function LaypersonDimensionRow({
+  dimension,
+  dimensionOptions,
+  dimensionsCount,
+  index,
+  onChange,
+  onKeyDown,
+  onRemove,
+}) {
+  return (
+    <Box
+      sx={{
+        alignItems: "center",
+        display: "grid",
+        gap: 0.75,
+        gridTemplateColumns: {
+          xs: "minmax(0, 1fr) auto",
+          sm: "minmax(10rem, 2fr) minmax(7rem, 1fr) minmax(10rem, 2fr) auto",
+        },
+        mb: 0.75,
+      }}
+    >
+      <TextField
+        select
+        label={index === 0 ? "Field" : undefined}
+        size="small"
+        slotProps={{ htmlInput: { "aria-label": "Field" } }}
+        value={dimension.field}
+        onChange={(event) => onChange("field", event.target.value)}
+      >
+        {!dimensionOptions.includes(dimension.field) && dimension.field && (
+          <MenuItem value={dimension.field}>{dimension.field}</MenuItem>
+        )}
+        {dimensionOptions.map((name) => (
+          <MenuItem key={name} value={name}>
+            {getVisualLabel(name)}
+          </MenuItem>
+        ))}
+      </TextField>
+      <TextField
+        select
+        label={index === 0 ? "Operator" : undefined}
+        size="small"
+        slotProps={{
+          htmlInput: { "aria-label": "Operator" },
+          inputLabel: { shrink: true },
+          select: { displayEmpty: true },
+        }}
+        value={dimension.operator}
+        onChange={(event) => onChange("operator", event.target.value)}
+      >
+        {DIMENSION_OPERATORS.map((operator) => (
+          <MenuItem key={operator.label} value={operator.value}>
+            {operator.label}
+          </MenuItem>
+        ))}
+      </TextField>
+      <LaypersonDimensionValue
+        dimension={dimension}
+        index={index}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+      />
+      <IconButton
+        aria-label={`Remove condition ${index + 1}`}
+        disabled={dimensionsCount === 1}
+        onClick={onRemove}
+        size="small"
+      >
+        <DeleteOutlinedIcon fontSize="small" />
+      </IconButton>
+    </Box>
+  );
+}
