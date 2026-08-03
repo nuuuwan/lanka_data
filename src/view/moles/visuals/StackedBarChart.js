@@ -1,7 +1,6 @@
 import { ResponsiveBar } from "@nivo/bar";
 import { Box, Typography } from "@mui/material";
 
-import { FONT_FAMILY } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import InBarLabels from "./InBarLabels.js";
@@ -42,7 +41,6 @@ export default function StackedBarChart({
           margin={{ top: 50, right: 50, bottom: 80, left: 60 }}
           padding={0.3}
           valueScale={{ type: "linear" }}
-          theme={{ fontFamily: FONT_FAMILY }}
           colors={({ id }) => getMarkColor(getColorForKey(id, data))}
           borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
           axisLeft={{
