@@ -59,15 +59,18 @@ function getChartFacets(datumList, VisualClass) {
 
 export default function ChartVisual({ VisualClass, datumSet }) {
   const info = getChartFacets(datumSet.datumList, VisualClass);
+  const maxTotal = Math.max(...info.facets.map(({ total }) => total), 0);
   return (
     <MultiChartLayout
       facets={info.facets}
       xAxisDimName={info.xAxisDimName}
       yAxisLabel={info.yAxisLabel}
       fullWidth={VisualClass.IS_FULL_WIDTH}
-      renderChart={({ data, xAxisLabel }) => (
+      renderChart={({ data, total, xAxisLabel }) => (
         <VisualClass
           data={data}
+          total={total}
+          maxTotal={maxTotal}
           xAxisLabel={xAxisLabel}
           yAxisLabel={info.yAxisLabel}
           stackDimName={

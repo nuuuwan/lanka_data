@@ -51,7 +51,7 @@ export default function MultiChartLayout({
 
   return (
     <Box className={styles.grid}>
-      {facets.map(({ facetKey, data }) => (
+      {facets.map(({ facetKey, data, total }) => (
         <Box
           className={[styles.item, fullWidth && styles.fullWidth]
             .filter(Boolean)
@@ -66,6 +66,7 @@ export default function MultiChartLayout({
           <Box sx={{ width: "100%", minWidth: 0 }}>
             {renderChart({
               data,
+              total,
               xAxisLabel: xAxisDimName,
               yAxisLabel,
             })}
