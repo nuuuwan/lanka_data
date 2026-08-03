@@ -139,3 +139,4 @@ export default function AreaBump({ data, xAxisLabel }) {
 
 AreaBump.IS_CHART = true;
 AreaBump.IS_STACKED = true;
+AreaBump.IS_FULL_WIDTH = true;

@@ -8,6 +8,10 @@
   min-width: 0;
 }
 
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
 @media (min-width: 600px) {
   .grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
