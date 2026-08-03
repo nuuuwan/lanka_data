@@ -25,6 +25,7 @@ src/view/              UI code
 - Each component's CSS Module is co-located and named to match: `SearchBar.js` + `SearchBar.module.css`. Import as `import styles from './SearchBar.module.css'` and reference classes via `styles.foo`, never string literals.
 - Shared state goes through React Context, defined in `nonview/core` or alongside the `organism`/`page` that owns it. Expose access via a custom hook (`useXxxContext`), not by importing the raw context object into descendants.
 - Custom hooks live in `nonview/core` (or `nonview/base` if generic) and are named `useXxx`.
+- Do not create unittests
 
 ## After every code change
 
