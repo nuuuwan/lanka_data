@@ -3,8 +3,9 @@ import { ResponsiveMarimekko } from "@nivo/marimekko";
 
 import { FONT_FAMILY } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
+import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
-import { BarLabelsLayer, CellLabelsLayer } from "./MarimekkoLabels.js";
+import { BarLabelsLayer } from "./MarimekkoLabels.js";
 import {
   getColorForDimension,
   getDimensions,
@@ -24,6 +25,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
           data={sortedData}
           id="id"
           value="_barWidth"
+          animate={false}
           dimensions={dimensions}
           offset="expand"
           layout="vertical"
@@ -46,7 +48,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
             "axes",
             "bars",
             (props) => <BarLabelsLayer {...props} screenWidth={screenWidth} />,
-            (props) => <CellLabelsLayer {...props} screenWidth={screenWidth} />,
+            InBarLabels,
           ]}
           axisLeft={{
             orient: "left",
