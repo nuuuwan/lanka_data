@@ -63,6 +63,8 @@ const screens = [
   {
     path: "/lanka_data/Vote/ElectionType=presidential+Time+PD%3CED=colombo+Party/Count/Cartogram",
     readyTestId: "cartogram-facets",
+    visualTestId: "cartogram",
+    expectedVisualCount: 9,
   },
   {
     path: "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/HexMap",
@@ -82,26 +84,33 @@ const screens = [
   },
 ];
 
-describe.each(screens)("screen: $path", ({ path, readyTestId }) => {
-  const originalLocation = window.location;
+describe.each(screens)(
+  "screen: $path",
+  ({ path, readyTestId, visualTestId, expectedVisualCount }) => {
+    const originalLocation = window.location;
 
-  beforeEach(() => {
-    // 1. Delete the restricted JSDOM location object
-    delete window.location;
-    // 2. Assign a new URL object with your target port and path
-    window.location = new URL(`http://localhost:3000${path}`);
-  });
+    beforeEach(() => {
+      // 1. Delete the restricted JSDOM location object
+      delete window.location;
+      // 2. Assign a new URL object with your target port and path
+      window.location = new URL(`http://localhost:3000${path}`);
+    });
 
-  afterEach(() => {
-    // 3. Restore the original location to prevent leaking state to other tests
-    window.location = originalLocation;
-  });
+    afterEach(() => {
+      // 3. Restore the original location to prevent leaking state to other tests
+      window.location = originalLocation;
+    });
 
-  test("renders without crashing", async () => {
-    render(<App />);
+    test("renders without crashing", async () => {
+      render(<App />);
 
-    expect(
-      await screen.findByTestId(readyTestId, {}, { timeout: 40_000 }),
-    ).toBeInTheDocument();
-  });
-});
+      expect(
+        await screen.findByTestId(readyTestId, {}, { timeout: 40_000 }),
+      ).toBeInTheDocument();
+      const visuals = expectedVisualCount
+        ? screen.getAllByTestId(visualTestId)
+        : [];
+      expect(visuals).toHaveLength(expectedVisualCount || 0);
+    });
+  },
+);

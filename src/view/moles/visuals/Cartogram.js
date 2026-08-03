@@ -3,6 +3,7 @@ import { Box, LinearProgress } from "@mui/material";
 
 import useGeoJson from "../../../nonview/base/useGeoJson.js";
 import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
+import { MAP_HEIGHT, MAP_WIDTH } from "../../_cons/MapCons.js";
 import DimensionUtils from "../visual_utils/DimensionUtils.js";
 import {
   buildFeatureToDataMap,
@@ -54,6 +55,15 @@ export function getGlobalAreaProjectionScales(cartograms) {
 
   return areaScaleFactors.map(
     (areaScaleFactor) => globalProjectionScale * areaScaleFactor,
+  );
+}
+
+export function getScaledProjectionTranslation(
+  projectionTranslation,
+  scaleRatio,
+) {
+  return projectionTranslation.map(
+    (translation) => 0.5 + (translation - 0.5) * scaleRatio,
   );
 }
 
@@ -118,11 +128,21 @@ export default function Cartogram({ datumSet }) {
     const cartograms = fittedCartograms.map((cartogram, index) => {
       const { projection, ...cartogramData } = cartogram;
       const projectionScale = projectionScales[index];
-      projection.scale(projectionScale);
+      const projectionTranslation = getScaledProjectionTranslation(
+        cartogram.projectionTranslation,
+        projectionScale / cartogram.projectionScale,
+      );
+      projection
+        .scale(projectionScale)
+        .translate([
+          projectionTranslation[0] * MAP_WIDTH,
+          projectionTranslation[1] * MAP_HEIGHT,
+        ]);
       return {
         ...cartogramData,
         labels: buildRegionLabels(cartogram.features, projection),
         projectionScale,
+        projectionTranslation,
       };
     });
 

@@ -1,4 +1,7 @@
-import { getGlobalAreaProjectionScales } from "./Cartogram.js";
+import {
+  getGlobalAreaProjectionScales,
+  getScaledProjectionTranslation,
+} from "./Cartogram.js";
 
 test("scales cartogram area in proportion to facet totals", () => {
   const scales = getGlobalAreaProjectionScales([
@@ -29,4 +32,10 @@ test("returns zero scales when every facet total is zero", () => {
       { projectionScale: 100, total: 0 },
     ]),
   ).toEqual([0, 0]);
+});
+
+test("keeps a scaled cartogram centered in its viewport", () => {
+  expect(getScaledProjectionTranslation([0.25, 0.75], 0.5)).toEqual([
+    0.375, 0.625,
+  ]);
 });
