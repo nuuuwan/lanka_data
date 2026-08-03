@@ -14,6 +14,7 @@ import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import ChangeViewSection from "../organisms/ChangeViewSection.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
 import RecentQueriesMenu from "../organisms/RecentQueriesMenu.js";
+import VisualHeading from "../molecules/VisualHeading.js";
 import styles from "./VisualQueryPage.module.css";
 
 function getElapsedTimeSeconds(startTime, currentTime) {
@@ -110,7 +111,7 @@ function ChartVisual({ VisualClass, datumSet }) {
   );
 }
 
-function VisualContent({ VisualClass, datumSet, loadTimeSeconds }) {
+function VisualContent({ VisualClass, datumSet, loadTimeSeconds, query }) {
   useEffect(() => {
     console.debug(
       `[VisualQueryPage] Displaying ${VisualClass.name} with ${datumSet.datumList.length} datums`,
@@ -119,6 +120,7 @@ function VisualContent({ VisualClass, datumSet, loadTimeSeconds }) {
 
   return (
     <>
+      <VisualHeading query={query} datumSet={datumSet} />
       <Typography
         data-testid="datums-count"
         variant="caption"
@@ -347,6 +349,7 @@ export default function VisualQueryPage() {
               VisualClass={VisualClass}
               datumSet={datumSet}
               loadTimeSeconds={loadTimeSeconds}
+              query={visualQuery.query}
             />
           </VisualErrorBoundary>
         </Box>
