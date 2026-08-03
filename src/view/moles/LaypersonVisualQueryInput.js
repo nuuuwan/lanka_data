@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
+import { VISUAL_CONTENT_MAX_WIDTH_PX } from "../../nonview/constants/APP.js";
 import LaypersonDimensions from "./LaypersonDimensions.js";
 import LaypersonQueryFields from "./LaypersonQueryFields.js";
 import {
@@ -41,6 +42,7 @@ export default function LaypersonVisualQueryInput({
         display: "grid",
         gap: 1.5,
         gridTemplateColumns: { xs: "1fr", md: "repeat(3, minmax(0, 1fr))" },
+        maxWidth: VISUAL_CONTENT_MAX_WIDTH_PX,
       }}
     >
       <LaypersonQueryFields

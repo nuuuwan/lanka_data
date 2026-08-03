@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
+import { VISUAL_CONTENT_MAX_WIDTH_PX } from "../../nonview/constants/APP.js";
 import getQueryFinding from "../../nonview/core/QueryFinding.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 
@@ -10,7 +11,11 @@ export default function VisualHeader({
   titleRef,
 }) {
   return (
-    <Box component="header" ref={titleRef} sx={{ mb: 2 }}>
+    <Box
+      component="header"
+      ref={titleRef}
+      sx={{ mb: 2, maxWidth: VISUAL_CONTENT_MAX_WIDTH_PX }}
+    >
       <Typography component="h1" variant="h4" data-testid="query-finding">
         {getQueryFinding(query)}
       </Typography>
