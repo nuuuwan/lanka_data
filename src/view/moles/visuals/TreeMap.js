@@ -1,6 +1,7 @@
 import { ResponsiveTreeMap } from "@nivo/treemap";
 import { Box, Typography } from "@mui/material";
 
+import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
@@ -27,6 +28,7 @@ export default function TreeMap({ data, xAxisLabel }) {
   return (
     <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
       <ResponsiveTreeMap
+        theme={NIVO_THEME}
         data={treeData}
         identity="id"
         value="value"

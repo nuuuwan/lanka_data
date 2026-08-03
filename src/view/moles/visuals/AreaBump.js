@@ -1,6 +1,7 @@
 import { ResponsiveAreaBump } from "@nivo/bump";
 import { Box, Typography } from "@mui/material";
 
+import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
@@ -105,6 +106,7 @@ export default function AreaBump({ data, xAxisLabel }) {
   return (
     <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
       <ResponsiveAreaBump
+        theme={NIVO_THEME}
         data={series}
         margin={{ top: 40, right: 100, bottom: 60, left: 100 }}
         spacing={8}
