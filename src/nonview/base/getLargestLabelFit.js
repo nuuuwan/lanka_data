@@ -9,8 +9,8 @@ export default function getLargestLabelFit(label, width, height) {
   const availableHeight = height - IN_BAR_LABEL_PADDING * 2;
   if (availableWidth <= 0 || availableHeight <= 0) return null;
 
-  const textWidth = Math.max(String(label).length, 1) *
-    IN_BAR_LABEL_CHARACTER_WIDTH_RATIO;
+  const textWidth =
+    Math.max(String(label).length, 1) * IN_BAR_LABEL_CHARACTER_WIDTH_RATIO;
   const horizontalFontSize = Math.min(
     availableHeight,
     availableWidth / textWidth,

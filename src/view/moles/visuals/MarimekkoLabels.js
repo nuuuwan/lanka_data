@@ -1,5 +1,4 @@
 import { FONT_FAMILY } from "../../../AppTheme.js";
-import FormatUtils from "../visual_utils/FormatUtils.js";
 
 const getFontScale = (screenWidth) => screenWidth / 1200;
 
