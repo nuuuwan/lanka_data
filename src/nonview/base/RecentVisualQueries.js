@@ -29,9 +29,7 @@ export default class RecentVisualQueries {
       const seenQueries = new Set();
       return queries
         .map((entry) =>
-          typeof entry === "string"
-            ? { query: entry, timestamp: null }
-            : entry,
+          typeof entry === "string" ? { query: entry, timestamp: null } : entry,
         )
         .filter(
           (entry) =>

@@ -55,9 +55,9 @@ test("handles unavailable and malformed storage without throwing", () => {
   localStorage.setItem(RECENT_VISUAL_QUERIES_STORAGE_KEY, "{bad json");
 
   expect(RecentVisualQueries.read()).toEqual([]);
-  expect(
-    RecentVisualQueries.add("query-a", unavailableStorage, 1),
-  ).toEqual([{ query: "query-a", timestamp: 1 }]);
+  expect(RecentVisualQueries.add("query-a", unavailableStorage, 1)).toEqual([
+    { query: "query-a", timestamp: 1 },
+  ]);
   expect(RecentVisualQueries.clear(unavailableStorage)).toEqual([]);
 });
 

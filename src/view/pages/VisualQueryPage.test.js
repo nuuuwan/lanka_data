@@ -119,7 +119,9 @@ test("shows visual loading stages with completion times", async () => {
 
   expect(await screen.findByTestId("visual-content")).toBeInTheDocument();
   await waitFor(() => {
-    expect(RecentVisualQueries.read()).toEqual(["bad-request"]);
+    expect(RecentVisualQueries.read()).toEqual([
+      expect.objectContaining({ query: "bad-request" }),
+    ]);
   });
 });
 

@@ -30,17 +30,15 @@ test("lists recent queries with timestamps before example queries", () => {
   renderAppBar();
   fireEvent.click(screen.getByRole("button", { name: "Queries" }));
 
-  const recentHeading = screen.getByText("Recent queries");
-  const recentQuery = screen.getByText(query).closest('[role="menuitem"]');
-  const exampleHeading = screen.getByText("Example queries");
+  const menuItems = screen.getAllByRole("menuitem");
+  const recentQuery = menuItems[0];
+  const firstExampleQuery = menuItems[2];
 
-  expect(recentHeading.compareDocumentPosition(recentQuery)).toBe(
-    Node.DOCUMENT_POSITION_FOLLOWING,
-  );
-  expect(recentQuery.compareDocumentPosition(exampleHeading)).toBe(
-    Node.DOCUMENT_POSITION_FOLLOWING,
-  );
+  expect(screen.getByText("Recent queries")).toBeVisible();
+  expect(screen.getByText("Example queries")).toBeVisible();
+  expect(recentQuery).toHaveTextContent(query);
   expect(recentQuery).toHaveTextContent(new Date(timestamp).toLocaleString());
+  expect(firstExampleQuery).toHaveTextContent(EXAMPLE_QUERIES[0].label);
 });
 
 test.each([
@@ -53,11 +51,11 @@ test.each([
   renderAppBar();
   fireEvent.click(screen.getByRole("button", { name: "Queries" }));
 
-  const accessibleName =
+  const menuItem =
     _kind === "recent"
-      ? screen.getByText(query).closest('[role="menuitem"]')
+      ? screen.getAllByRole("menuitem")[0]
       : screen.getByRole("menuitem", { name: /Religions in Colombo/i });
-  fireEvent.click(accessibleName);
+  fireEvent.click(menuItem);
 
   expect(screen.getByLabelText("Current path")).toHaveTextContent(`/${query}`);
 });
