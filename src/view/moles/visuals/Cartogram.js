@@ -85,39 +85,36 @@ export default function Cartogram({ datumSet }) {
     const fittedCartograms = groupDatumListByFacet(
       datumList,
       facetDimIndexes,
-    ).map(
-      ({ facetKey, facetDatumList }) => {
-        const dataMap = buildFeatureToDataMap(
-          facetDatumList,
-          regionDimIndex,
-          stackDimIndex,
-        );
-        const regionIdToWeight = buildRegionIdToWeight(geoFeatures, dataMap);
-        const deformedFeatures = JSON.parse(JSON.stringify(geoFeatures));
-        CartogramUtils.compute(deformedFeatures, regionIdToWeight);
-        const { features, data } = buildGeoVisualData(
-          deformedFeatures,
-          dataMap,
-          legendItemMap,
-        );
-        const { projection, projectionScale, projectionTranslation } =
-          getProjectionInfo(features);
-        return {
-          facetKey,
-          features,
-          data,
-          projection,
-          projectionScale,
-          projectionTranslation,
-          total: Object.values(regionIdToWeight).reduce(
-            (sum, weight) => sum + weight,
-            0,
-          ),
-        };
-      },
-    );
-    const projectionScales =
-      getGlobalAreaProjectionScales(fittedCartograms);
+    ).map(({ facetKey, facetDatumList }) => {
+      const dataMap = buildFeatureToDataMap(
+        facetDatumList,
+        regionDimIndex,
+        stackDimIndex,
+      );
+      const regionIdToWeight = buildRegionIdToWeight(geoFeatures, dataMap);
+      const deformedFeatures = JSON.parse(JSON.stringify(geoFeatures));
+      CartogramUtils.compute(deformedFeatures, regionIdToWeight);
+      const { features, data } = buildGeoVisualData(
+        deformedFeatures,
+        dataMap,
+        legendItemMap,
+      );
+      const { projection, projectionScale, projectionTranslation } =
+        getProjectionInfo(features);
+      return {
+        facetKey,
+        features,
+        data,
+        projection,
+        projectionScale,
+        projectionTranslation,
+        total: Object.values(regionIdToWeight).reduce(
+          (sum, weight) => sum + weight,
+          0,
+        ),
+      };
+    });
+    const projectionScales = getGlobalAreaProjectionScales(fittedCartograms);
     const cartograms = fittedCartograms.map((cartogram, index) => {
       const { projection, ...cartogramData } = cartogram;
       const projectionScale = projectionScales[index];
