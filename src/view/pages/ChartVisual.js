@@ -64,6 +64,7 @@ export default function ChartVisual({ VisualClass, datumSet }) {
       facets={info.facets}
       xAxisDimName={info.xAxisDimName}
       yAxisLabel={info.yAxisLabel}
+      fullWidth={VisualClass.IS_FULL_WIDTH}
       renderChart={({ data, xAxisLabel }) => (
         <VisualClass
           data={data}
