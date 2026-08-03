@@ -3,10 +3,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { QRCodeSVG } from "qrcode.react";
 
 import VERSION from "../../nonview/cons/VERSION.js";
-import {
-  APP_QR_CODE_SIZE,
-  APP_URL,
-} from "../../nonview/constants/APP.js";
+import { APP_QR_CODE_SIZE, APP_URL } from "../../nonview/constants/APP.js";
 import styles from "./AppFooter.module.css";
 
 export default function AppFooter() {
