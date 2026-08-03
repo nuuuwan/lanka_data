@@ -2,6 +2,7 @@ import { Box, MenuItem, TextField } from "@mui/material";
 import { useMemo } from "react";
 
 import { DIMENSION_OPERATORS } from "../../nonview/constants/VisualQueryOptions.js";
+import FieldOptions from "../molecules/FieldOptions.js";
 import {
   getDimensionParts,
   getDimensionString,
@@ -58,11 +59,7 @@ export default function LaypersonDimensionValue({
             updateParentDimension("field", event.target.value)
           }
         >
-          {parentFieldOptions.map((name) => (
-            <MenuItem key={name} value={name}>
-              {getVisualLabel(name)}
-            </MenuItem>
-          ))}
+          <FieldOptions fields={parentFieldOptions} />
         </TextField>
         <TextField
           select
