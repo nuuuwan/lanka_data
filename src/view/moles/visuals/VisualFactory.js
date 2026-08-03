@@ -8,7 +8,9 @@ import HexMap from "./HexMap.js";
 import MarimekkoChart from "./MarimekkoChart.js";
 import PieChart from "./PieChart.js";
 import StackedBarChart from "./StackedBarChart.js";
+import SquareMap from "./SquareMap.js";
 import UnitHexMap from "./UnitHexMap.js";
+import UnitSquareMap from "./UnitSquareMap.js";
 import TreeMap from "./TreeMap.js";
 
 class VisualFactoryContentsMixin {
@@ -22,6 +24,8 @@ class VisualFactoryContentsMixin {
   static Map = Map;
   static HexMap = HexMap;
   static UnitHexMap = UnitHexMap;
+  static SquareMap = SquareMap;
+  static UnitSquareMap = UnitSquareMap;
   static Cartogram = Cartogram;
   static JSON = JSONVisual;
 }
