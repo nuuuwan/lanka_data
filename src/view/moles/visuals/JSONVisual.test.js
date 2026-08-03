@@ -1,13 +1,15 @@
 import { render, screen } from "@testing-library/react";
 
-import {
-  JSON_DATA_URL_PREFIX,
-  JSON_DOWNLOAD_FILE_NAME,
-} from "../../../nonview/constants/APP.js";
+import { JSON_DOWNLOAD_FILE_NAME } from "../../../nonview/constants/APP.js";
 import JSONVisual from "./JSONVisual.js";
 
 test("renders JSON with a direct download link", () => {
   const datumSet = { datumList: [{ count: 42 }] };
+  window.history.pushState(
+    {},
+    "",
+    "/lanka_data/Vote/Time=2024+Party/Count/JSON",
+  );
 
   render(<JSONVisual datumSet={datumSet} />);
 
@@ -17,8 +19,6 @@ test("renders JSON with a direct download link", () => {
   expect(downloadLink).toHaveAttribute("download", JSON_DOWNLOAD_FILE_NAME);
   expect(downloadLink).toHaveAttribute(
     "href",
-    `${JSON_DATA_URL_PREFIX}${encodeURIComponent(
-      JSON.stringify(datumSet, null, 2),
-    )}`,
+    "http://localhost/lanka_data/Vote/Time=2024+Party/Count/JSON/raw.json",
   );
 });

@@ -13,6 +13,9 @@ export default class Cache {
     }
 
     const data = await fallback();
+    if (typeof localStorage === "undefined") {
+      return data;
+    }
     try {
       const payload = JSON.stringify(data);
       const payloadSizeM = (payload.length / (1024 * 1024)).toFixed(2);
