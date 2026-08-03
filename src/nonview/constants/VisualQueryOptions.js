@@ -12,7 +12,16 @@ export const FIELD_GROUPS = [
   },
   {
     label: "Geography",
-    fields: ["Country", "Province", "District", "DSD", "ED", "GND", "PD", "Region"],
+    fields: [
+      "Country",
+      "Province",
+      "District",
+      "DSD",
+      "ED",
+      "GND",
+      "PD",
+      "Region",
+    ],
   },
   {
     label: "Demographics",

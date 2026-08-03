@@ -1,5 +1,5 @@
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-import { Box, IconButton, TextField } from "@mui/material";
+import { Box, IconButton, MenuItem, TextField } from "@mui/material";
 
 import { DIMENSION_OPERATORS } from "../../nonview/constants/VisualQueryOptions.js";
 import FieldOptions from "../molecules/FieldOptions.js";
