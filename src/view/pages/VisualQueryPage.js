@@ -14,6 +14,7 @@ import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
 import RecentQueriesMenu from "../organisms/RecentQueriesMenu.js";
+import VisualHeader from "../molecules/VisualHeader.js";
 import { LOADING_PROGRESS_UPDATE_INTERVAL_MS } from "../../nonview/constants/APP.js";
 
 function getElapsedTimeSeconds(startTime, currentTime) {
@@ -110,7 +111,13 @@ function ChartVisual({ VisualClass, datumSet }) {
   );
 }
 
-function VisualContent({ VisualClass, datumSet, loadTimeSeconds }) {
+function VisualContent({
+  VisualClass,
+  datumSet,
+  loadTimeSeconds,
+  query,
+  encodedQuery,
+}) {
   useEffect(() => {
     console.debug(
       `[VisualQueryPage] Displaying ${VisualClass.name} with ${datumSet.datumList.length} datums`,
@@ -119,14 +126,12 @@ function VisualContent({ VisualClass, datumSet, loadTimeSeconds }) {
 
   return (
     <>
-      <Typography
-        data-testid="datums-count"
-        variant="caption"
-        sx={{ color: "text.secondary" }}
-      >
-        {datumSet.datumList.length} datums loaded in{" "}
-        {FormatUtils.humanizeDuration(loadTimeSeconds)}
-      </Typography>
+      <VisualHeader
+        query={query}
+        encodedQuery={encodedQuery}
+        datumCount={datumSet.datumList.length}
+        loadTimeSeconds={loadTimeSeconds}
+      />
       {VisualClass.IS_CHART ? (
         <ChartVisual VisualClass={VisualClass} datumSet={datumSet} />
       ) : (
@@ -346,6 +351,8 @@ export default function VisualQueryPage() {
               VisualClass={VisualClass}
               datumSet={datumSet}
               loadTimeSeconds={loadTimeSeconds}
+              query={visualQuery.query}
+              encodedQuery={visualQueryStr}
             />
           </VisualErrorBoundary>
         </Box>
