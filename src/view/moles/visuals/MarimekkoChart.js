@@ -221,9 +221,7 @@ export default function MarimekkoChart({
         items={dimensions.map((dimension) => ({
           id: dimension.id,
           label: dimension.id,
-          color: getMarkColor(
-            getColorForDimension(dimension.id, sortedData),
-          ),
+          color: getMarkColor(getColorForDimension(dimension.id, sortedData)),
         }))}
       />
     </Box>
