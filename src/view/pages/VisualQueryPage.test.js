@@ -68,3 +68,38 @@ test("shows a friendly message when a request returns no data", async () => {
   );
   expect(screen.queryByTestId("visual-content")).not.toBeInTheDocument();
 });
+
+test("shows visual loading stages with completion times", async () => {
+  let resolveDatumSet;
+  function TestVisual() {
+    return <div>visual</div>;
+  }
+  VisualQuery.fromString.mockResolvedValue({
+    query: {},
+    visualClass: TestVisual,
+  });
+  DataSourceFactory.getDatumSetForQuery.mockReturnValue(
+    new Promise((resolve) => {
+      resolveDatumSet = resolve;
+    }),
+  );
+
+  renderPage();
+
+  expect(
+    await screen.findByRole("list", { name: "Visual loading progress" }),
+  ).toBeInTheDocument();
+  expect(screen.getByText("Loading application data").closest("li")).toHaveTextContent(
+    "0.00 seconds",
+  );
+  expect(screen.getByText("Understanding request").closest("li")).toHaveTextContent(
+    "seconds",
+  );
+  expect(screen.getByText("Loading visual data").closest("li")).toHaveTextContent(
+    "In progress",
+  );
+
+  resolveDatumSet({ datumList: [{}] });
+
+  expect(await screen.findByTestId("visual-content")).toBeInTheDocument();
+});
