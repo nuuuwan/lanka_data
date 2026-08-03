@@ -5,6 +5,7 @@ export default class Query {
   static DELIM_TOKEN = "/";
   static DELIM_DIM = "+";
   static DELIM_EQ = "=";
+  static DELIM_VALUE = ",";
 
   constructor(
     entityClass,
@@ -59,7 +60,9 @@ export default class Query {
         }
         continue;
       }
-      if (thisDimThing.value !== otherDimThing.value) {
+      const thisValues = Query.getThingValues(thisDimThing);
+      const otherValues = Query.getThingValues(otherDimThing);
+      if (!thisValues.every((value) => otherValues.includes(value))) {
         return false;
       }
     }
@@ -77,14 +80,19 @@ export default class Query {
     for (const token of dimToken.split(Query.DELIM_DIM)) {
       const parentConstraintIndex = token.indexOf("<");
       if (parentConstraintIndex === -1) {
-        dimThingList.push(ThingFactory.fromKeyValue(token));
+        dimThingList.push(Query.getThingFromToken(token));
         continue;
       }
       const childClassName = token.slice(0, parentConstraintIndex);
       const parentKeyValue = token.slice(parentConstraintIndex + 1);
       const ChildClass = ThingFactory.fromKey(childClassName);
-      const parentRegion = ThingFactory.fromKeyValue(parentKeyValue);
-      const childRegions = ChildClass.getChildRegions(parentRegion, ChildClass);
+      const parentRegion = Query.getThingFromToken(parentKeyValue);
+      const childRegions = Query.getThingValues(parentRegion).flatMap((value) =>
+        ChildClass.getChildRegions(
+          parentRegion.constructor.fromValue(value),
+          ChildClass,
+        ),
+      );
       const childValues = childRegions.map((region) => region.value);
       dimThingList.push(ChildClass.fromValue(Thing.WILDCARD));
       parentRegionConstraintList.push({
@@ -115,17 +123,50 @@ export default class Query {
     );
   }
 
+  static getThingFromToken(token) {
+    const delimIndex = token.search(/[:=]/);
+    if (delimIndex === -1) {
+      return ThingFactory.fromKeyValue(token);
+    }
+    const ThingClass = ThingFactory.fromKey(token.slice(0, delimIndex));
+    const values = token
+      .slice(delimIndex + 1)
+      .split(Query.DELIM_VALUE)
+      .map((value) => ThingClass.fromValue(value).value);
+    const thing = ThingClass.fromValue(values[0]);
+    if (values.length > 1) {
+      thing.valueList = values;
+    }
+    return thing;
+  }
+
+  static getThingValues(thing) {
+    return thing.valueList || [thing.value];
+  }
+
   static async expandSubRegionDimThingList(dimThingList) {
     const expandedDimThingList = [];
     for (const dimThing of dimThingList) {
       const parentRegionInfo = dimThing.constructor.getParentRegionInfo?.();
       if (dimThing.value !== Thing.WILDCARD && parentRegionInfo) {
-        const subRegionEnt = dimThing.getEnt();
-        const parentRegionId = subRegionEnt[parentRegionInfo.parentIdKey];
         const parentRegionClass = ThingFactory.fromKey(
           parentRegionInfo.parentClassName,
         );
-        const parentRegion = parentRegionClass.fromRegionId(parentRegionId);
+        const parentRegionValues = [
+          ...new Set(
+            Query.getThingValues(dimThing).map((value) => {
+              const subRegionEnt = dimThing.constructor
+                .fromValue(value)
+                .getEnt();
+              const parentRegionId = subRegionEnt[parentRegionInfo.parentIdKey];
+              return parentRegionClass.fromRegionId(parentRegionId).value;
+            }),
+          ),
+        ];
+        const parentRegion = parentRegionClass.fromValue(parentRegionValues[0]);
+        if (parentRegionValues.length > 1) {
+          parentRegion.valueList = parentRegionValues;
+        }
         expandedDimThingList.push(parentRegion);
         continue;
       }
@@ -140,9 +181,11 @@ export default class Query {
       if (dimThing.value === Thing.WILDCARD) {
         return dimThing.constructor.name;
       }
-      return [dimThing.constructor.name, Query.DELIM_EQ, dimThing.value].join(
-        "",
-      );
+      return [
+        dimThing.constructor.name,
+        Query.DELIM_EQ,
+        Query.getThingValues(dimThing).join(Query.DELIM_VALUE),
+      ].join("");
     });
     const dimToken = dimInnerTokens.join(Query.DELIM_DIM);
     const aggregateToken = aggregate;

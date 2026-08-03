@@ -138,6 +138,8 @@ export default function VisualQueryPage() {
     event.preventDefault();
     const nextVisualQueryStr = visualQueryInput.trim();
     if (nextVisualQueryStr && nextVisualQueryStr !== visualQueryStr) {
+      setDatumSet(null);
+      setLoadTimeSeconds(null);
       navigate(`/${nextVisualQueryStr}`);
     }
   }
@@ -212,7 +214,6 @@ export default function VisualQueryPage() {
       >
         <TextField
           fullWidth
-          label="Visual query"
           size="small"
           value={visualQueryInput}
           onChange={(event) => setVisualQueryInput(event.target.value)}
