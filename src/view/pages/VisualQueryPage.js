@@ -320,7 +320,6 @@ export default function VisualQueryPage() {
   ];
 
   return (
-
     <Box className={styles.page}>
       <VisualQueryForm
         value={visualQueryInput}
