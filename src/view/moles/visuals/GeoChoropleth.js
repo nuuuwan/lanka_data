@@ -58,8 +58,6 @@ export default function GeoChoropleth({
       data-testid={testId}
       sx={{
         width: "100%",
-        maxWidth: MAP_WIDTH,
-        mx: "auto",
         "& svg": { width: "100%", height: "auto", display: "block" },
       }}
     >

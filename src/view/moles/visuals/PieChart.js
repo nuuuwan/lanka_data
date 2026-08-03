@@ -11,7 +11,7 @@ export default function PieChart({ data, total, maxTotal }) {
   const scale = maxTotal > 0 && total > 0 ? Math.sqrt(total / maxTotal) : 0;
 
   return (
-    <Box sx={{ height: CHART_HEIGHT * scale }}>
+    <Box sx={{ width: "100%", height: CHART_HEIGHT * scale }}>
       <Box
         sx={{
           height: CHART_HEIGHT,

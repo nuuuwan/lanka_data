@@ -1,7 +1,6 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { ResponsiveMarimekko } from "@nivo/marimekko";
 
-import { FONT_FAMILY } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
@@ -20,7 +19,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
   const color = (id) => getMarkColor(getColorForDimension(id, sortedData));
   return (
     <Box>
-      <Box sx={{ height: 400 }}>
+      <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
         <ResponsiveMarimekko
           data={sortedData}
           id="id"
@@ -28,8 +27,8 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
           animate={false}
           dimensions={dimensions}
           offset="expand"
+          valueScale={{ type: "linear", min: 0, max: 1 }}
           layout="vertical"
-          theme={{ fontFamily: FONT_FAMILY, text: { fontFamily: FONT_FAMILY } }}
           axisTop={null}
           axisRight={null}
           enableGridY={false}

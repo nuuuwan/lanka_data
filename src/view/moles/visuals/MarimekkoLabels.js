@@ -1,5 +1,3 @@
-import { FONT_FAMILY } from "../../../AppTheme.js";
-
 const getFontScale = (screenWidth) => screenWidth / 1200;
 
 export function BarLabelsLayer({ data, screenWidth }) {
@@ -16,7 +14,6 @@ export function BarLabelsLayer({ data, screenWidth }) {
             textAnchor="middle"
             dominantBaseline="hanging"
             style={{
-              fontFamily: FONT_FAMILY,
               fontSize: Math.max(
                 6,
                 Math.min(10, (datum.width / 10) * fontScale),

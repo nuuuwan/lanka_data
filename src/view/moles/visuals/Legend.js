@@ -1,6 +1,5 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 
-import { FONT_FAMILY } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 
 export default function Legend({ items }) {
@@ -42,7 +41,6 @@ export default function Legend({ items }) {
           <Typography
             variant="caption"
             sx={{
-              fontFamily: FONT_FAMILY,
               fontSize: isSmall ? "0.65rem" : "0.75rem",
               whiteSpace: "nowrap",
               overflow: "hidden",
