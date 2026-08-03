@@ -37,10 +37,15 @@ export default class Query {
     if (this.dimThingList.length !== otherQuery.dimThingList.length) {
       return false;
     }
-    for (let i = 0; i < this.dimThingList.length; i++) {
-      const thisDimThing = this.dimThingList[i];
-      const otherDimThing = otherQuery.dimThingList[i];
-      if (thisDimThing.constructor !== otherDimThing.constructor) {
+    const otherDimThingByClass = new Map(
+      otherQuery.dimThingList.map((dimThing) => [
+        dimThing.constructor,
+        dimThing,
+      ]),
+    );
+    for (const thisDimThing of this.dimThingList) {
+      const otherDimThing = otherDimThingByClass.get(thisDimThing.constructor);
+      if (!otherDimThing) {
         return false;
       }
       if (otherDimThing.value === Thing.WILDCARD) {
@@ -77,7 +82,8 @@ export default class Query {
     const dimToken = tokens[1];
     const dimThingList = [];
     const parentRegionConstraintList = [];
-    for (const token of dimToken.split(Query.DELIM_DIM)) {
+    for (const rawToken of dimToken.split(Query.DELIM_DIM)) {
+      const token = rawToken.trim();
       const parentConstraintIndex = token.indexOf("<");
       if (parentConstraintIndex === -1) {
         dimThingList.push(Query.getThingFromToken(token));
@@ -206,6 +212,20 @@ export default class Query {
       .map((dimThing) => dimThing.constructor.name)
       .join(Query.DELIM_DIM);
     return [entityClass.name, dimToken, aggregate].join(Query.DELIM_TOKEN);
+  }
+
+  static normalizeMetadataKey(metadataKey) {
+    const [entityClassName, dimToken, aggregate] = metadataKey.split(
+      Query.DELIM_TOKEN,
+    );
+    const normalizedDimToken = dimToken
+      .split(Query.DELIM_DIM)
+      .filter(Boolean)
+      .sort()
+      .join(Query.DELIM_DIM);
+    return [entityClassName, normalizedDimToken, aggregate].join(
+      Query.DELIM_TOKEN,
+    );
   }
 
   getSubRegionFilter() {
