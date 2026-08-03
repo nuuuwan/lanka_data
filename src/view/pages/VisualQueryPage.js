@@ -13,6 +13,11 @@ import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
 import RecentQueriesMenu from "../organisms/RecentQueriesMenu.js";
 import { LOADING_PROGRESS_UPDATE_INTERVAL_MS } from "../../nonview/constants/APP.js";
+
+function getElapsedTimeSeconds(startTime, currentTime) {
+  return startTime === null ? 0 : Math.max(0, currentTime - startTime) / 1000;
+}
+
 function useChartFacets(datumSet, VisualClass) {
   const { datumList } = datumSet;
 
@@ -183,6 +188,7 @@ export default function VisualQueryPage() {
       setErrorMessage(null);
       const startTime = performance.now();
       parseStartTime.current = startTime;
+      setCurrentTime(startTime);
       try {
         const nextVisualQuery = await VisualQuery.fromString(visualQueryStr);
         if (!cancelled) {
@@ -222,6 +228,7 @@ export default function VisualQueryPage() {
       );
       const startTime = performance.now();
       dataLoadStartTime.current = startTime;
+      setCurrentTime(startTime);
       try {
         const nextDatumSet = await DataSourceFactory.getDatumSetForQuery(
           visualQuery.query,
@@ -281,16 +288,14 @@ export default function VisualQueryPage() {
       status: isReady ? "complete" : "active",
       durationSeconds:
         applicationLoadTimeSeconds ??
-        (currentTime - applicationLoadStartTime.current) / 1000,
+        getElapsedTimeSeconds(applicationLoadStartTime.current, currentTime),
     },
     {
       label: "Understanding request",
       status: !isReady ? "pending" : VisualClass ? "complete" : "active",
       durationSeconds:
         parseTimeSeconds ??
-        (parseStartTime.current
-          ? (currentTime - parseStartTime.current) / 1000
-          : 0),
+        getElapsedTimeSeconds(parseStartTime.current, currentTime),
     },
     {
       label: "Loading visual data",
@@ -301,14 +306,12 @@ export default function VisualQueryPage() {
           : "complete",
       durationSeconds:
         loadTimeSeconds ??
-        (dataLoadStartTime.current
-          ? (currentTime - dataLoadStartTime.current) / 1000
-          : 0),
+        getElapsedTimeSeconds(dataLoadStartTime.current, currentTime),
     },
   ];
 
   return (
-    <Box sx={{ m: 2 }}>
+    <Box sx={{ m: 5 }}>
       <VisualQueryForm
         value={visualQueryInput}
         onChange={setVisualQueryInput}
