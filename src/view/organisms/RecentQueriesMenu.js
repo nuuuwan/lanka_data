@@ -1,4 +1,4 @@
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import HistoryIcon from "@mui/icons-material/History";
 import {
   Divider,
@@ -64,7 +64,7 @@ export default function RecentQueriesMenu({ loadedVisualQuery }) {
         {queries.length > 0 && (
           <MenuItem onClick={clearQueries}>
             <ListItemIcon>
-              <DeleteOutlineIcon fontSize="small" />
+              <DeleteOutlinedIcon fontSize="small" />
             </ListItemIcon>
             Clear recent queries
           </MenuItem>
