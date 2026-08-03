@@ -1,3 +1,5 @@
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+
 import CategoryConcept from "../../CategoryConcept.js";
 import RegionDataMixin from "./RegionDataMixin.js";
 import RegionMatcherMixin from "./RegionMatcherMixin.js";
@@ -17,6 +19,10 @@ function applyMixin(Target, Mixin) {
 }
 
 export default class Region extends CategoryConcept {
+  static getMUIICON() {
+    return LocationOnIcon;
+  }
+
   static allowArbitraryValues() {
     return false;
   }

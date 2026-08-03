@@ -1,3 +1,5 @@
+import NumbersIcon from "@mui/icons-material/Numbers";
+
 import Concept from "../Concept.js";
 
 function floorLog10(x) {
@@ -5,6 +7,10 @@ function floorLog10(x) {
 }
 
 export default class Int extends Concept {
+  static getMUIICON() {
+    return NumbersIcon;
+  }
+
   getHumanReadableValue() {
     let value = parseInt(this.value, 10);
 

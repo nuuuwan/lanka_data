@@ -1,3 +1,5 @@
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+
 import KeyValue from "../KeyValue.js";
 import { SEMANTIC_PALETTE } from "../../constants/COLORS.js";
 
@@ -8,6 +10,10 @@ export default class Thing {
 
   static getClassName() {
     return this.className || this.name;
+  }
+
+  static getMUIICON() {
+    return FilterAltIcon;
   }
 
   constructor(value) {
