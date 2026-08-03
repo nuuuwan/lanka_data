@@ -1,3 +1,4 @@
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { Box, Link, Paper, Typography } from "@mui/material";
 
 import styles from "./DataProvenancePanel.module.css";
@@ -18,8 +19,18 @@ export default function DataProvenancePanel({ provenance }) {
             <Typography variant="body2">
               <strong>Source:</strong>{" "}
               {url ? (
-                <Link href={url} target="_blank" rel="noopener noreferrer">
+                <Link
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    alignItems: "center",
+                    display: "inline-flex",
+                    gap: 0.25,
+                  }}
+                >
                   {source}
+                  <OpenInNewIcon sx={{ fontSize: "inherit" }} />
                 </Link>
               ) : (
                 source

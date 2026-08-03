@@ -1,3 +1,5 @@
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import RefreshIcon from "@mui/icons-material/Refresh";
 import {
   Box,
   Button,
@@ -101,10 +103,19 @@ export default function VisualQueryForm({
           mt: 1.5,
         }}
       >
-        <Button type="button" variant="outlined" onClick={copyShareLink}>
+        <Button
+          type="button"
+          variant="outlined"
+          onClick={copyShareLink}
+          startIcon={<ContentCopyIcon />}
+        >
           Copy Share Link
         </Button>
-        <Button type="submit" variant="contained">
+        <Button
+          type="submit"
+          variant="contained"
+          startIcon={<RefreshIcon />}
+        >
           Update
         </Button>
       </Box>
