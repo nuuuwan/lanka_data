@@ -7,8 +7,6 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-import ExampleQueryGallery from "./ExampleQueryGallery.js";
-import RecentQueriesMenu from "./RecentQueriesMenu.js";
 import VisualQueryForm from "./VisualQueryForm.js";
 
 export default function ChangeViewSection({
@@ -16,7 +14,6 @@ export default function ChangeViewSection({
   onChange,
   onSubmit,
   queryOptions,
-  loadedVisualQuery,
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -42,8 +39,6 @@ export default function ChangeViewSection({
           onSubmit={onSubmit}
           queryOptions={queryOptions}
         />
-        <ExampleQueryGallery />
-        <RecentQueriesMenu loadedVisualQuery={loadedVisualQuery} />
       </AccordionDetails>
     </Accordion>
   );

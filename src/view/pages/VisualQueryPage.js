@@ -7,11 +7,13 @@ import DataContext from "../../nonview/core/data_context/DataContext.js";
 import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
+import StartExploring from "../molecules/StartExploring.js";
 import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
 import MultiChartLayout from "../organisms/MultiChartLayout.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import ChangeViewSection from "../organisms/ChangeViewSection.js";
 import VisualHeader from "../molecules/VisualHeader.js";
+import QueryMenuAppBar from "../organisms/QueryMenuAppBar.js";
 import styles from "./VisualQueryPage.module.css";
 
 function getElapsedTimeSeconds(startTime, currentTime) {
@@ -320,40 +322,45 @@ export default function VisualQueryPage() {
   ];
 
   return (
-    <Box className={styles.page}>
-      {errorMessage ? (
-        <Alert severity="error" data-testid="query-error">
-          <AlertTitle>Sorry, something went wrong.</AlertTitle>
-          {errorMessage}
-        </Alert>
-      ) : isLoading ? (
-        <LoadingProgressDialog steps={loadingSteps} />
-      ) : (
-        <Box className={styles.visual} data-testid="visual-content">
-          <VisualErrorBoundary key={visualQueryStr}>
-            <VisualContent
-              VisualClass={VisualClass}
-              datumSet={datumSet}
-              loadTimeSeconds={loadTimeSeconds}
-              query={visualQuery.query}
-              encodedQuery={visualQueryStr}
-            />
-          </VisualErrorBoundary>
-        </Box>
-      )}
-      {(errorMessage || !isLoading) && (
-        <ChangeViewSection
-          value={visualQueryInput}
-          onChange={setVisualQueryInput}
-          onSubmit={submitVisualQuery}
-          queryOptions={queryOptions}
-          loadedVisualQuery={
-            datumSet?.datumList.length > 0 && loadTimeSeconds !== null
-              ? visualQueryStr
-              : null
-          }
-        />
-      )}
-    </Box>
+    <>
+      <QueryMenuAppBar
+        loadedVisualQuery={
+          datumSet?.datumList.length > 0 && loadTimeSeconds !== null
+            ? visualQueryStr
+            : null
+        }
+      />
+      <Box className={styles.page}>
+        <StartExploring />
+        {errorMessage ? (
+          <Alert severity="error" data-testid="query-error">
+            <AlertTitle>Sorry, something went wrong.</AlertTitle>
+            {errorMessage}
+          </Alert>
+        ) : isLoading ? (
+          <LoadingProgressDialog steps={loadingSteps} />
+        ) : (
+          <Box className={styles.visual} data-testid="visual-content">
+            <VisualErrorBoundary key={visualQueryStr}>
+              <VisualContent
+                VisualClass={VisualClass}
+                datumSet={datumSet}
+                loadTimeSeconds={loadTimeSeconds}
+                query={visualQuery.query}
+                encodedQuery={visualQueryStr}
+              />
+            </VisualErrorBoundary>
+          </Box>
+        )}
+        {(errorMessage || !isLoading) && (
+          <ChangeViewSection
+            value={visualQueryInput}
+            onChange={setVisualQueryInput}
+            onSubmit={submitVisualQuery}
+            queryOptions={queryOptions}
+          />
+        )}
+      </Box>
+    </>
   );
 }
