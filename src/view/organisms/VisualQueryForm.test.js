@@ -233,7 +233,7 @@ describe("copy share link", () => {
     await waitFor(() => {
       expect(document.execCommand).toHaveBeenCalledWith("copy");
     });
-    expect(screen.getByText("Share link copied")).toBeInTheDocument();
+    expect(await screen.findByText("Share link copied")).toBeInTheDocument();
   });
 
   test("reports failure when the link cannot be copied", async () => {

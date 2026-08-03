@@ -31,14 +31,14 @@ export default function VisualQueryForm({
       event.preventDefault();
       submit();
     }
+  }
 
-    async function copyShareLink() {
-      try {
-        await copyTextToClipboard(window.location.href);
-        setShareFeedback("Share link copied");
-      } catch {
-        setShareFeedback("Could not copy share link");
-      }
+  async function copyShareLink() {
+    try {
+      await copyTextToClipboard(window.location.href);
+      setShareFeedback("Share link copied");
+    } catch {
+      setShareFeedback("Could not copy share link");
     }
   }
 
