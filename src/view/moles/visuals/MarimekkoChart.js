@@ -27,6 +27,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
           animate={false}
           dimensions={dimensions}
           offset="expand"
+          valueScale={{ type: "linear", min: 0, max: 1 }}
           layout="vertical"
           axisTop={null}
           axisRight={null}
