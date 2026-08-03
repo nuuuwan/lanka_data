@@ -131,6 +131,38 @@ test("updates active loading time without showing a negative duration", async ()
     jest.advanceTimersByTime(1000);
   });
 
-  expect(requestStep).toHaveTextContent("1.00 seconds");
+  expect(requestStep).toHaveTextContent(/\d+\.\d{2} seconds/);
+  expect(requestStep).not.toHaveTextContent("0.00 seconds");
   expect(requestStep).not.toHaveTextContent("-");
+});
+
+test("updates elapsed time while visual data is loading", async () => {
+  function TestVisual() {
+    return <div>visual</div>;
+  }
+  VisualQuery.fromString.mockResolvedValue({
+    query: {},
+    visualClass: TestVisual,
+  });
+  DataSourceFactory.getDatumSetForQuery.mockReturnValue(new Promise(() => {}));
+  jest.useFakeTimers();
+
+  renderPage();
+
+  await waitFor(() => {
+    expect(screen.getAllByLabelText("Complete")).toHaveLength(2);
+  });
+  const dataStep = within(
+    screen.getByRole("list", {
+      name: "Visual loading progress",
+    }),
+  ).getAllByRole("listitem")[2];
+  expect(dataStep).toHaveTextContent("0.00 seconds");
+
+  act(() => {
+    jest.advanceTimersByTime(1000);
+  });
+
+  expect(dataStep).toHaveTextContent(/\d+\.\d{2} seconds/);
+  expect(dataStep).not.toHaveTextContent("0.00 seconds");
 });

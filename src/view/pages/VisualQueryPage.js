@@ -276,10 +276,13 @@ export default function VisualQueryPage() {
     if (!isLoading) {
       return;
     }
-    const intervalId = setInterval(() => {
+    let animationFrameId;
+    function updateCurrentTime() {
       setCurrentTime(performance.now());
-    }, LOADING_PROGRESS_UPDATE_INTERVAL_MS);
-    return () => clearInterval(intervalId);
+      animationFrameId = requestAnimationFrame(updateCurrentTime);
+    }
+    animationFrameId = requestAnimationFrame(updateCurrentTime);
+    return () => cancelAnimationFrame(animationFrameId);
   }, [isLoading]);
 
   const loadingSteps = [
