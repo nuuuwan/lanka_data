@@ -1,4 +1,5 @@
 import { Box, MenuItem, TextField } from "@mui/material";
+import { useMemo } from "react";
 
 import { DIMENSION_OPERATORS } from "../../nonview/constants/VisualQueryOptions.js";
 import {
@@ -15,6 +16,13 @@ export default function LaypersonDimensionValue({
   onChange,
   onKeyDown,
 }) {
+  const valueOptions = useMemo(
+    () =>
+      dimension.operator && dimension.operator !== "<"
+        ? getValueOptions(dimension.field)
+        : null,
+    [dimension.field, dimension.operator],
+  );
   if (!dimension.operator)
     return <Box sx={{ display: { xs: "none", sm: "block" } }} />;
   if (dimension.operator === "<") {
@@ -84,7 +92,6 @@ export default function LaypersonDimensionValue({
       </Box>
     );
   }
-  const valueOptions = getValueOptions(dimension.field);
   const isYear = dimension.field === "Time";
   const selectedValues = dimension.value
     ? dimension.value.split(",").filter(Boolean)
