@@ -132,13 +132,16 @@ test("shows visual loading stages with completion times", async () => {
   expect(
     screen.getByRole("button", { name: "Change this view" }),
   ).toBeInTheDocument();
+  expect(
     screen.getByRole("heading", { name: "Count of people" }),
   ).toBeInTheDocument();
   expect(screen.getByText(/Population: people/)).toHaveTextContent(
     "Geography: all available geographies",
   );
   await waitFor(() => {
-    expect(RecentVisualQueries.read()).toEqual(["bad-request"]);
+    expect(RecentVisualQueries.read()).toEqual([
+      expect.objectContaining({ query: "bad-request" }),
+    ]);
   });
 });
 

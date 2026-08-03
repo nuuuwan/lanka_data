@@ -9,13 +9,11 @@ import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
 import StartExploring from "../molecules/StartExploring.js";
-import ExampleQueryGallery from "../organisms/ExampleQueryGallery.js";
 import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
 import MultiChartLayout from "../organisms/MultiChartLayout.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import ChangeViewSection from "../organisms/ChangeViewSection.js";
-import VisualQueryForm from "../organisms/VisualQueryForm.js";
-import RecentQueriesMenu from "../organisms/RecentQueriesMenu.js";
+import QueryMenuAppBar from "../organisms/QueryMenuAppBar.js";
 import VisualHeading from "../molecules/VisualHeading.js";
 import styles from "./VisualQueryPage.module.css";
 
@@ -321,54 +319,44 @@ export default function VisualQueryPage() {
   ];
 
   return (
-    <Box className={styles.page}>
-      <VisualQueryForm
-        value={visualQueryInput}
-        onChange={setVisualQueryInput}
-        onSubmit={submitVisualQuery}
-        queryOptions={queryOptions}
-      />
-      <StartExploring />
-      <ExampleQueryGallery />
-      <RecentQueriesMenu
+    <>
+      <QueryMenuAppBar
         loadedVisualQuery={
           datumSet?.datumList.length > 0 && loadTimeSeconds !== null
             ? visualQueryStr
             : null
         }
       />
-      {errorMessage ? (
-        <Alert severity="error" data-testid="query-error">
-          <AlertTitle>Sorry, something went wrong.</AlertTitle>
-          {errorMessage}
-        </Alert>
-      ) : isLoading ? (
-        <LoadingProgressDialog steps={loadingSteps} />
-      ) : (
-        <Box className={styles.visual} data-testid="visual-content">
-          <VisualErrorBoundary key={visualQueryStr}>
-            <VisualContent
-              VisualClass={VisualClass}
-              datumSet={datumSet}
-              loadTimeSeconds={loadTimeSeconds}
-              query={visualQuery.query}
-            />
-          </VisualErrorBoundary>
-        </Box>
-      )}
-      {(errorMessage || !isLoading) && (
-        <ChangeViewSection
-          value={visualQueryInput}
-          onChange={setVisualQueryInput}
-          onSubmit={submitVisualQuery}
-          queryOptions={queryOptions}
-          loadedVisualQuery={
-            datumSet?.datumList.length > 0 && loadTimeSeconds !== null
-              ? visualQueryStr
-              : null
-          }
-        />
-      )}
-    </Box>
+      <Box className={styles.page}>
+        <StartExploring />
+        {errorMessage ? (
+          <Alert severity="error" data-testid="query-error">
+            <AlertTitle>Sorry, something went wrong.</AlertTitle>
+            {errorMessage}
+          </Alert>
+        ) : isLoading ? (
+          <LoadingProgressDialog steps={loadingSteps} />
+        ) : (
+          <Box className={styles.visual} data-testid="visual-content">
+            <VisualErrorBoundary key={visualQueryStr}>
+              <VisualContent
+                VisualClass={VisualClass}
+                datumSet={datumSet}
+                loadTimeSeconds={loadTimeSeconds}
+                query={visualQuery.query}
+              />
+            </VisualErrorBoundary>
+          </Box>
+        )}
+        {(errorMessage || !isLoading) && (
+          <ChangeViewSection
+            value={visualQueryInput}
+            onChange={setVisualQueryInput}
+            onSubmit={submitVisualQuery}
+            queryOptions={queryOptions}
+          />
+        )}
+      </Box>
+    </>
   );
 }
