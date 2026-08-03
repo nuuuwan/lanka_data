@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-import { getQueryFindingParts } from "../../nonview/core/QueryFinding.js";
+import getQueryFinding from "../../nonview/core/QueryFinding.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 
 export default function VisualHeader({
@@ -9,18 +9,10 @@ export default function VisualHeader({
   loadTimeSeconds,
   titleRef,
 }) {
-  const titleParts = getQueryFindingParts(query);
-
   return (
     <Box component="header" ref={titleRef} sx={{ mb: 2 }}>
       <Typography component="h1" variant="h4" data-testid="query-finding">
-        {titleParts.map((part, index) =>
-          typeof part === "string" ? (
-            part
-          ) : (
-            <strong key={index}>{part.text}</strong>
-          ),
-        )}
+        {getQueryFinding(query)}
       </Typography>
       <Typography
         data-testid="datums-count"
