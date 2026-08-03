@@ -1,13 +1,6 @@
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import {
-  Box,
-  Button,
-  Snackbar,
-  Tab,
-  Tabs,
-  TextField,
-} from "@mui/material";
+import { Box, Button, Snackbar, Tab, Tabs, TextField } from "@mui/material";
 import { useState } from "react";
 
 import { FONT_FAMILY } from "../../AppTheme.js";
