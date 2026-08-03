@@ -217,48 +217,7 @@ function solveAssignment(cost) {
   return assignment;
 }
 
-function getSquaredDistance([firstX, firstY], [secondX, secondY]) {
-  return (firstX - secondX) ** 2 + (firstY - secondY) ** 2;
-}
-
-function assignConnectedShapes(regions, centers, orderCenters) {
-  const activeRegions = regions.filter(({ count }) => count > 0);
-  const orderedCenters = orderCenters(centers);
-  const regionsByPathPosition = activeRegions
-    .map((region) => {
-      const targetIndex = orderedCenters.reduce(
-        (bestIndex, center, index) =>
-          getSquaredDistance(region.centroid, center) <
-          getSquaredDistance(region.centroid, orderedCenters[bestIndex])
-            ? index
-            : bestIndex,
-        0,
-      );
-      return { ...region, targetIndex };
-    })
-    .sort((first, second) => first.targetIndex - second.targetIndex);
-  let cursor = 0;
-  let remainingCount = regionsByPathPosition.reduce(
-    (total, { count }) => total + count,
-    0,
-  );
-
-  return regionsByPathPosition.flatMap(({ count, id, targetIndex }) => {
-    const latestStart = orderedCenters.length - remainingCount;
-    const idealStart = targetIndex - Math.floor(count / 2);
-    const start = Math.max(cursor, Math.min(idealStart, latestStart));
-    cursor = start + count;
-    remainingCount -= count;
-    return orderedCenters
-      .slice(start, cursor)
-      .map((center) => ({ center, id }));
-  });
-}
-
-export function assignShapes(regions, centers, orderCenters = null) {
-  if (orderCenters) {
-    return assignConnectedShapes(regions, centers, orderCenters);
-  }
+export function assignShapes(regions, centers) {
   const slots = regions.flatMap(({ id, centroid, count }) =>
     Array.from({ length: count }, () => ({ id, centroid })),
   );
@@ -269,36 +228,6 @@ export function assignShapes(regions, centers, orderCenters = null) {
     id: slots[slotIndex].id,
     center: centers[centerIndex],
   }));
-}
-
-export function orderSquareCenters(centers) {
-  const rows = new Map();
-  for (const center of centers) {
-    const row = rows.get(center[1]) ?? [];
-    row.push(center);
-    rows.set(center[1], row);
-  }
-  return [...rows.entries()]
-    .sort(([firstY], [secondY]) => firstY - secondY)
-    .flatMap(([, row], rowIndex) =>
-      row.sort(([firstX], [secondX]) =>
-        rowIndex % 2 === 0 ? firstX - secondX : secondX - firstX,
-      ),
-    );
-}
-
-export function areSquareCentersAdjacent(
-  [firstX, firstY],
-  [secondX, secondY],
-  size,
-) {
-  const tolerance = size * 1e-6;
-  const deltaX = Math.abs(firstX - secondX);
-  const deltaY = Math.abs(firstY - secondY);
-  return (
-    (deltaX < tolerance && Math.abs(deltaY - size) < tolerance) ||
-    (deltaY < tolerance && Math.abs(deltaX - size) < tolerance)
-  );
 }
 
 export function getHexPoints([x, y], radius) {

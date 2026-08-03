@@ -3,7 +3,6 @@ import {
   getBestSquareLabelFit,
   getSquareBoundaryEdges,
   getSquarePoints,
-  orderSquareCenters,
 } from "../../../nonview/base/ShapeMapUtils.js";
 import ShapeMap, {
   buildShapeMapLayout,
@@ -21,7 +20,6 @@ const SQUARE_SHAPE_CONFIG = {
   getExtent: (size) => size / 2,
   getPoints: getSquarePoints,
   name: "SquareMap",
-  orderCenters: orderSquareCenters,
   shapeName: "square",
   testId: "squaremap",
 };

@@ -119,11 +119,7 @@ export function buildShapeMapLayout(
       id,
     };
   });
-  const assignedShapes = assignShapes(
-    regions,
-    centers,
-    shapeConfig.orderCenters,
-  );
+  const assignedShapes = assignShapes(regions, centers);
   const regionById = new Map(
     facetInfo.regions.map((region) => [region.id, region]),
   );

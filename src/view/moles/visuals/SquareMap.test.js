@@ -1,9 +1,4 @@
 import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
-import {
-  areSquareCentersAdjacent,
-  assignShapes,
-  orderSquareCenters,
-} from "../../../nonview/base/ShapeMapUtils.js";
 import { buildSquareMapLayout, shareSquareMapScale } from "./SquareMap.js";
 
 afterEach(() => {
@@ -67,37 +62,4 @@ test("shares the scale across faceted square maps", () => {
     { facetKey: "first", shapeValueMin: 10, shapeValueMax: 24 },
     { facetKey: "second", shapeValueMin: 10, shapeValueMax: 24 },
   ]);
-});
-
-test("assigns each region through edge-connected squares", () => {
-  const size = 10;
-  const centers = Array.from({ length: 3 }, (_, row) =>
-    Array.from({ length: 3 }, (_, column) => [column * size, row * size]),
-  ).flat();
-  const assignments = assignShapes(
-    [
-      { id: "region-a", centroid: [10, 10], count: 4 },
-      { id: "region-b", centroid: [0, 0], count: 3 },
-    ],
-    centers,
-    orderSquareCenters,
-  );
-
-  for (const regionId of ["region-a", "region-b"]) {
-    const regionCenters = assignments
-      .filter(({ id }) => id === regionId)
-      .map(({ center }) => center);
-    const connectedCenters = [regionCenters[0]];
-    while (connectedCenters.length < regionCenters.length) {
-      const nextCenter = regionCenters.find(
-        (center) =>
-          !connectedCenters.includes(center) &&
-          connectedCenters.some((connectedCenter) =>
-            areSquareCentersAdjacent(connectedCenter, center, size),
-          ),
-      );
-      expect(nextCenter).toBeDefined();
-      connectedCenters.push(nextCenter);
-    }
-  }
 });
