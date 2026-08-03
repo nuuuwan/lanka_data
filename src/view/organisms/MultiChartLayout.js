@@ -1,8 +1,10 @@
 import { useState } from "react";
 import {
   Box,
+  Checkbox,
   FormControl,
   InputLabel,
+  ListItemText,
   MenuItem,
   Select,
   Typography,
@@ -14,47 +16,57 @@ export default function MultiChartLayout({
   yAxisLabel,
   renderChart,
 }) {
-  const [selectedFacetKey, setSelectedFacetKey] = useState(
-    facets[0]?.facetKey ?? "",
+  const [selectedFacetKeys, setSelectedFacetKeys] = useState(() =>
+    facets.map(({ facetKey }) => facetKey),
   );
 
   if (facets.length === 0) {
     return <Typography>No data to display.</Typography>;
   }
 
-  const activeFacet =
-    facets.find(({ facetKey }) => facetKey === selectedFacetKey) ?? facets[0];
-  const activeFacetTitle = activeFacet.facetKey || xAxisDimName;
+  const selectedFacetKeySet = new Set(selectedFacetKeys);
+  const selectedFacets = facets.filter(({ facetKey }) =>
+    selectedFacetKeySet.has(facetKey),
+  );
 
   return (
     <Box>
       {facets.length > 1 && (
         <FormControl size="small" sx={{ mb: 2, minWidth: 160 }}>
-          <InputLabel id="facet-select-label">Facet</InputLabel>
+          <InputLabel id="facet-select-label">Facets</InputLabel>
           <Select
-            label="Facet"
+            label="Facets"
             labelId="facet-select-label"
-            value={activeFacet.facetKey}
-            onChange={({ target }) => setSelectedFacetKey(target.value)}
+            multiple
+            value={selectedFacetKeys}
+            onChange={({ target }) => setSelectedFacetKeys(target.value)}
+            renderValue={(selected) =>
+              selected.length === 0 ? "None" : selected.join(", ")
+            }
           >
             {facets.map(({ facetKey }) => (
               <MenuItem key={facetKey} value={facetKey}>
-                {facetKey}
+                <Checkbox checked={selectedFacetKeySet.has(facetKey)} />
+                <ListItemText primary={facetKey} />
               </MenuItem>
             ))}
           </Select>
         </FormControl>
       )}
-      <Typography component="h2" variant="h6" sx={{ mb: 1 }}>
-        {activeFacetTitle}
-      </Typography>
-      <Box sx={{ width: "100%", minWidth: 0 }}>
-        {renderChart({
-          data: activeFacet.data,
-          xAxisLabel: xAxisDimName,
-          yAxisLabel,
-        })}
-      </Box>
+      {selectedFacets.map(({ facetKey, data }) => (
+        <Box key={facetKey}>
+          <Typography component="h2" variant="h6" sx={{ mb: 1 }}>
+            {facetKey || xAxisDimName}
+          </Typography>
+          <Box sx={{ width: "100%", minWidth: 0 }}>
+            {renderChart({
+              data,
+              xAxisLabel: xAxisDimName,
+              yAxisLabel,
+            })}
+          </Box>
+        </Box>
+      ))}
     </Box>
   );
 }

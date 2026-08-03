@@ -7,7 +7,7 @@ const FACETS = [
   { facetKey: "Central", data: "central-data" },
 ];
 
-test("shows the first facet and lets readers select another facet", () => {
+test("shows every facet by default and lets readers deselect and reselect them", () => {
   render(
     <MultiChartLayout
       facets={FACETS}
@@ -19,14 +19,22 @@ test("shows the first facet and lets readers select another facet", () => {
 
   expect(screen.getByRole("heading", { name: "Western" })).toBeInTheDocument();
   expect(screen.getByText("western-data")).toBeInTheDocument();
-  expect(screen.queryByText("central-data")).not.toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: "Central" })).toBeInTheDocument();
+  expect(screen.getByText("central-data")).toBeInTheDocument();
 
-  fireEvent.mouseDown(screen.getByRole("combobox", { name: "Facet" }));
+  fireEvent.mouseDown(screen.getByRole("combobox", { name: "Facets" }));
+  fireEvent.click(screen.getByRole("option", { name: "Central" }));
+
+  expect(
+    screen.queryByRole("heading", { name: "Central" }),
+  ).not.toBeInTheDocument();
+  expect(screen.queryByText("central-data")).not.toBeInTheDocument();
+  expect(screen.getByText("western-data")).toBeInTheDocument();
+
   fireEvent.click(screen.getByRole("option", { name: "Central" }));
 
   expect(screen.getByRole("heading", { name: "Central" })).toBeInTheDocument();
   expect(screen.getByText("central-data")).toBeInTheDocument();
-  expect(screen.queryByText("western-data")).not.toBeInTheDocument();
 });
 
 test("does not show a facet selector for a single result", () => {
