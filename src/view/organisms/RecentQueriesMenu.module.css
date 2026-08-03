@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.25rem;
+}
+
+.query {
+  display: block;
+  max-width: min(36rem, 80vw);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -11,6 +11,7 @@ import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
+import RecentQueriesMenu from "../organisms/RecentQueriesMenu.js";
 import { LOADING_PROGRESS_UPDATE_INTERVAL_MS } from "../../nonview/constants/APP.js";
 function useChartFacets(datumSet, VisualClass) {
   const { datumList } = datumSet;
@@ -313,6 +314,13 @@ export default function VisualQueryPage() {
         onChange={setVisualQueryInput}
         onSubmit={submitVisualQuery}
         queryOptions={queryOptions}
+      />
+      <RecentQueriesMenu
+        loadedVisualQuery={
+          datumSet?.datumList.length > 0 && loadTimeSeconds !== null
+            ? visualQueryStr
+            : null
+        }
       />
       {errorMessage ? (
         <Alert severity="error" data-testid="query-error">
