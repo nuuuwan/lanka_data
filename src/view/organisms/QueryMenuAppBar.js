@@ -2,7 +2,7 @@ import BugReportOutlinedIcon from "@mui/icons-material/BugReportOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import {
   AppBar,
@@ -161,7 +161,7 @@ export default function QueryMenuAppBar({ loadedVisualQuery }) {
             onClick={() => setLinksMenuAnchor(null)}
           >
             <ListItemIcon>
-              <PersonOutlineIcon fontSize="small" />
+              <PersonOutlinedIcon fontSize="small" />
             </ListItemIcon>
             GitHub profile
           </MenuItem>
