@@ -11,7 +11,6 @@ import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
-import { LOADING_PROGRESS_UPDATE_INTERVAL_MS } from "../../nonview/constants/APP.js";
 
 function getElapsedTimeSeconds(startTime, currentTime) {
   return startTime === null ? 0 : Math.max(0, currentTime - startTime) / 1000;
@@ -275,10 +274,13 @@ export default function VisualQueryPage() {
     if (!isLoading) {
       return;
     }
-    const intervalId = setInterval(() => {
+    let animationFrameId;
+    function updateCurrentTime() {
       setCurrentTime(performance.now());
-    }, LOADING_PROGRESS_UPDATE_INTERVAL_MS);
-    return () => clearInterval(intervalId);
+      animationFrameId = requestAnimationFrame(updateCurrentTime);
+    }
+    animationFrameId = requestAnimationFrame(updateCurrentTime);
+    return () => cancelAnimationFrame(animationFrameId);
   }, [isLoading]);
 
   const loadingSteps = [
