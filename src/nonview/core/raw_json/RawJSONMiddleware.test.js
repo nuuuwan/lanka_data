@@ -4,10 +4,8 @@ import {
 } from "./RawJSONMiddleware.js";
 
 const RAW_URL =
-  "/lanka_data/Vote/ElectionType=presidential+Time=2024+" +
-  "PD%3CED=colombo+Party/Count/JSON/raw.json";
-const QUERY_STRING =
-  "Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count";
+  "/lanka_data/Vote/ElectionType+Time=1994+ED+Party/Count/JSON/raw.json";
+const QUERY_STRING = "Vote/ElectionType+Time=1994+ED+Party/Count";
 
 test("extracts the query from a raw JSON URL", () => {
   expect(getQueryStringFromRawJSONURL(RAW_URL)).toBe(QUERY_STRING);
