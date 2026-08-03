@@ -15,7 +15,7 @@ export default function VisualQueryForm({
   onSubmit,
   queryOptions,
 }) {
-  const [mode, setMode] = useState("layperson");
+  const [mode, setMode] = useState("expert");
   const [shareFeedback, setShareFeedback] = useState(null);
 
   function submit(event) {
@@ -72,8 +72,8 @@ export default function VisualQueryForm({
             },
           }}
         >
-          <Tab label="Layperson" value="layperson" />
           <Tab label="Expert" value="expert" />
+          <Tab label="Layperson" value="layperson" />
         </Tabs>
         {mode === "layperson" ? (
           <LaypersonVisualQueryInput
