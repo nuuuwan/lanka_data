@@ -12,7 +12,6 @@ import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
 import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import ChangeViewSection from "../organisms/ChangeViewSection.js";
-import { LOADING_PROGRESS_UPDATE_INTERVAL_MS } from "../../nonview/constants/APP.js";
 
 function getElapsedTimeSeconds(startTime, currentTime) {
   return startTime === null ? 0 : Math.max(0, currentTime - startTime) / 1000;
