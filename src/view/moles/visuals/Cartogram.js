@@ -171,7 +171,7 @@ export default function Cartogram({ datumSet }) {
           facetKey: cartogram.facetKey,
           data: cartogram,
         }))}
-        xAxisDimName={regionClass.name}
+        xAxisDimName={regionClass.getClassName()}
         yAxisLabel=""
         renderChart={({ data }) => (
           <GeoChoropleth testId="cartogram" {...data} />

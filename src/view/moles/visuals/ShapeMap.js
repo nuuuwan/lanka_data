@@ -171,7 +171,9 @@ export default function ShapeMap({ datumSet, isUnit = false, shapeConfig }) {
   const { datumList } = datumSet;
   const { regionDimIndex, regionClass, stackDimIndex } =
     getGeoDimInfo(datumList);
-  const shapeUnit = `${datumList[0].query.entityClass.name.toLowerCase()}s`;
+  const shapeUnit = `${datumList[0].query.entityClass
+    .getClassName()
+    .toLowerCase()}s`;
   const geoJson = useGeoJson(regionClass);
 
   const { maps, legendItems } = useMemo(() => {
@@ -250,7 +252,7 @@ export default function ShapeMap({ datumSet, isUnit = false, shapeConfig }) {
       )}
       <MultiChartLayout
         facets={maps.map((map) => ({ facetKey: map.facetKey, data: map }))}
-        xAxisDimName={regionClass.name}
+        xAxisDimName={regionClass.getClassName()}
         yAxisLabel=""
         renderChart={({ data }) => (
           <Box

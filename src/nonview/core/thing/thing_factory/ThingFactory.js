@@ -28,3 +28,9 @@ export default class ThingFactory {
 }
 
 Object.assign(ThingFactory, ThingFactoryContentsMixin);
+
+for (const [className, ThingClass] of Object.entries(
+  ThingFactoryContentsMixin,
+)) {
+  ThingClass.className = className;
+}

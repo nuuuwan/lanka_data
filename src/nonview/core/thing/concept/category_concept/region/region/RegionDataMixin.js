@@ -3,7 +3,7 @@ import WWW from "../../../../../../base/WWW.js";
 
 export default class RegionDataMixin {
   static regionClassId() {
-    return this.name.toLowerCase();
+    return this.getClassName().toLowerCase();
   }
 
   static async loadEnts() {
@@ -24,8 +24,8 @@ export default class RegionDataMixin {
   static assertEntsLoaded() {
     if (!this.ents) {
       throw new Error(
-        `Ents not loaded for ${this.name}. ` +
-          `Call ${this.name}.loadEnts() before using this method.`,
+        `Ents not loaded for ${this.getClassName()}. ` +
+          `Call ${this.getClassName()}.loadEnts() before using this method.`,
       );
     }
   }
@@ -65,7 +65,7 @@ export default class RegionDataMixin {
       return new this(value);
     }
     throw new Error(
-      `Invalid region_id: ${regionId} for ${this.name}. ` +
+      `Invalid region_id: ${regionId} for ${this.getClassName()}. ` +
         `Valid region_ids: ${Object.keys(idx)}`,
     );
   }

@@ -93,7 +93,7 @@ export default function MapVisual({ datumSet }) {
       {maps.length > 1 && <Box data-testid="map-facets" display="none" />}
       <MultiChartLayout
         facets={maps.map((map) => ({ facetKey: map.facetKey, data: map }))}
-        xAxisDimName={regionClass.name}
+        xAxisDimName={regionClass.getClassName()}
         yAxisLabel=""
         renderChart={({ data }) => (
           <GeoChoropleth
