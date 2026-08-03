@@ -12,10 +12,10 @@ import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import styles from "./ProgressList.module.css";
 
 function getStatusText(step) {
-  if (step.status === "complete") {
+  if (step.status === "complete" || step.status === "active") {
     return FormatUtils.humanizeDuration(step.durationSeconds);
   }
-  return step.status === "active" ? "In progress" : "Waiting";
+  return "Waiting";
 }
 
 function StatusIcon({ status }) {
@@ -23,7 +23,7 @@ function StatusIcon({ status }) {
     return <CheckCircleIcon color="success" aria-label="Complete" />;
   }
   if (status === "active") {
-    return <CircularProgress size="1.5rem" aria-label="In progress" />;
+    return <CircularProgress size="1.5rem" aria-label="Loading" />;
   }
   return <RadioButtonUncheckedIcon color="disabled" aria-label="Waiting" />;
 }

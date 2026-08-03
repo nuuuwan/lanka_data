@@ -11,6 +11,7 @@ import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
+import { LOADING_PROGRESS_UPDATE_INTERVAL_MS } from "../../nonview/constants/APP.js";
 function useChartFacets(datumSet, VisualClass) {
   const { datumList } = datumSet;
 
@@ -137,6 +138,9 @@ export default function VisualQueryPage() {
   const [applicationLoadTimeSeconds, setApplicationLoadTimeSeconds] = useState(
     isReady ? 0 : null,
   );
+  const [currentTime, setCurrentTime] = useState(() => performance.now());
+  const parseStartTime = useRef(null);
+  const dataLoadStartTime = useRef(null);
 
   useEffect(() => {
     if (isReady && applicationLoadTimeSeconds === null) {
@@ -177,6 +181,7 @@ export default function VisualQueryPage() {
       setLoadTimeSeconds(null);
       setErrorMessage(null);
       const startTime = performance.now();
+      parseStartTime.current = startTime;
       try {
         const nextVisualQuery = await VisualQuery.fromString(visualQueryStr);
         if (!cancelled) {
@@ -215,6 +220,7 @@ export default function VisualQueryPage() {
         `[VisualQueryPage] Fetching data for "${visualQuery.query}"`,
       );
       const startTime = performance.now();
+      dataLoadStartTime.current = startTime;
       try {
         const nextDatumSet = await DataSourceFactory.getDatumSetForQuery(
           visualQuery.query,
@@ -255,16 +261,38 @@ export default function VisualQueryPage() {
   }, [visualQuery]);
 
   const VisualClass = visualQuery?.visualClass;
+  const isLoading =
+    !isReady ||
+    !VisualClass ||
+    datumSet === null ||
+    loadTimeSeconds === null;
+
+  useEffect(() => {
+    if (!isLoading) {
+      return;
+    }
+    const intervalId = setInterval(() => {
+      setCurrentTime(performance.now());
+    }, LOADING_PROGRESS_UPDATE_INTERVAL_MS);
+    return () => clearInterval(intervalId);
+  }, [isLoading]);
+
   const loadingSteps = [
     {
       label: "Loading application data",
       status: isReady ? "complete" : "active",
-      durationSeconds: applicationLoadTimeSeconds,
+      durationSeconds:
+        applicationLoadTimeSeconds ??
+        (currentTime - applicationLoadStartTime.current) / 1000,
     },
     {
       label: "Understanding request",
       status: !isReady ? "pending" : VisualClass ? "complete" : "active",
-      durationSeconds: parseTimeSeconds,
+      durationSeconds:
+        parseTimeSeconds ??
+        (parseStartTime.current
+          ? (currentTime - parseStartTime.current) / 1000
+          : 0),
     },
     {
       label: "Loading visual data",
@@ -273,7 +301,11 @@ export default function VisualQueryPage() {
         : datumSet === null || loadTimeSeconds === null
           ? "active"
           : "complete",
-      durationSeconds: loadTimeSeconds,
+      durationSeconds:
+        loadTimeSeconds ??
+        (dataLoadStartTime.current
+          ? (currentTime - dataLoadStartTime.current) / 1000
+          : 0),
     },
   ];
 
@@ -290,10 +322,7 @@ export default function VisualQueryPage() {
           <AlertTitle>Sorry, something went wrong.</AlertTitle>
           {errorMessage}
         </Alert>
-      ) : !isReady ||
-        !VisualClass ||
-        datumSet === null ||
-        loadTimeSeconds === null ? (
+      ) : isLoading ? (
         <LoadingProgressDialog steps={loadingSteps} />
       ) : (
         <Box data-testid="visual-content">
