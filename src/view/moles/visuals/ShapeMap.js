@@ -32,10 +32,7 @@ export default function ShapeMap({ datumSet, isUnit = false, shapeConfig }) {
   );
   if (!geoJson) {
     return (
-      <LoadingProgress
-        ariaLabel="Loading map data"
-        label="Loading map data…"
-      />
+      <LoadingProgress ariaLabel="Loading map data" label="Loading map data…" />
     );
   }
   return (
