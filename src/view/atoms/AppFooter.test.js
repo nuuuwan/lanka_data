@@ -5,7 +5,7 @@ import { AppTheme } from "../../AppTheme";
 import { APP_URL } from "../../nonview/constants/APP";
 import AppFooter from "./AppFooter";
 
-test("renders a QR code linking to the application", () => {
+test("renders a themed QR code below the author link", () => {
   render(
     <ThemeProvider theme={AppTheme}>
       <AppFooter />
@@ -16,5 +16,12 @@ test("renders a QR code linking to the application", () => {
     "href",
     APP_URL,
   );
-  expect(screen.getByTitle("Scan to open Lanka Data")).toBeInTheDocument();
+
+  const authorLink = screen.getByRole("link", { name: /@nuuuwan/ });
+  const links = screen.getAllByRole("link");
+  const qrCode = screen.getByTitle("Scan to open Lanka Data");
+  const qrCodeLink = screen.getByRole("link", { name: "Open Lanka Data" });
+
+  expect(links.indexOf(authorLink)).toBeLessThan(links.indexOf(qrCodeLink));
+  expect(qrCode).toContainHTML(`<path fill="${AppTheme.palette.info.main}"`);
 });
