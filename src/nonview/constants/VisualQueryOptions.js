@@ -1,5 +1,5 @@
 export const DIMENSION_OPERATORS = [
-  { value: "", label: "Group by" },
+  { value: "", label: "None" },
   { value: "=", label: "=" },
   { value: "<", label: "<" },
 ];

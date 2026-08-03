@@ -104,6 +104,35 @@ test("adds AND conditions with explicit operators", () => {
   );
 });
 
+test("defaults new conditions to None and hides their value", () => {
+  render(<StatefulVisualQueryForm />);
+
+  fireEvent.click(screen.getByRole("button", { name: "AND" }));
+
+  expect(screen.getAllByLabelText("Operator").at(-1)).toHaveTextContent("None");
+  expect(screen.getAllByLabelText("Value")).toHaveLength(1);
+});
+
+test("offers known category values with their colors", () => {
+  const onChange = jest.fn();
+  render(<StatefulVisualQueryForm onChange={onChange} />);
+
+  fireEvent.mouseDown(screen.getAllByLabelText("Operator")[2]);
+  fireEvent.click(screen.getByRole("option", { name: "=" }));
+  fireEvent.mouseDown(screen.getAllByLabelText("Value").at(-1));
+
+  const buddhistOption = screen.getByRole("option", { name: "buddhist" });
+  expect(buddhistOption).toBeVisible();
+  expect(screen.getByTestId("buddhist-color")).toHaveStyle(
+    "background-color: #FFBE29",
+  );
+
+  fireEvent.click(buddhistOption);
+  expect(onChange).toHaveBeenLastCalledWith(
+    "Person/Time=2024+Province+Religion=buddhist/Count/BarChart",
+  );
+});
+
 test("groups related visual choices under headings", () => {
   render(
     <VisualQueryForm
