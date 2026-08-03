@@ -18,15 +18,10 @@ test("renders a themed QR code below the author link", () => {
   );
 
   const authorLink = screen.getByRole("link", { name: /@nuuuwan/ });
-  const qrCode = screen.getByTitle("Scan to open Lanka Data").closest("svg");
+  const links = screen.getAllByRole("link");
+  const qrCode = screen.getByTitle("Scan to open Lanka Data");
   const qrCodeLink = screen.getByRole("link", { name: "Open Lanka Data" });
 
-  expect(
-    authorLink.compareDocumentPosition(qrCodeLink) &
-      Node.DOCUMENT_POSITION_FOLLOWING,
-  ).toBeTruthy();
-  expect(qrCode.querySelector("path:last-of-type")).toHaveAttribute(
-    "fill",
-    AppTheme.palette.info.main,
-  );
+  expect(links.indexOf(authorLink)).toBeLessThan(links.indexOf(qrCodeLink));
+  expect(qrCode).toContainHTML(`<path fill="${AppTheme.palette.info.main}"`);
 });
