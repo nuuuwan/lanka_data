@@ -26,18 +26,39 @@ export default class RecentVisualQueries {
         return [];
       }
 
-      return [...new Set(queries.filter((query) => typeof query === "string"))]
-        .filter(Boolean)
+      const seenQueries = new Set();
+      return queries
+        .map((entry) =>
+          typeof entry === "string" ? { query: entry, timestamp: null } : entry,
+        )
+        .filter(
+          (entry) =>
+            entry &&
+            typeof entry.query === "string" &&
+            entry.query &&
+            (entry.timestamp === null ||
+              (typeof entry.timestamp === "number" &&
+                Number.isFinite(entry.timestamp))),
+        )
+        .filter(({ query }) => {
+          if (seenQueries.has(query)) {
+            return false;
+          }
+          seenQueries.add(query);
+          return true;
+        })
         .slice(0, RECENT_VISUAL_QUERIES_LIMIT);
     } catch {
       return [];
     }
   }
 
-  static add(query, storage) {
+  static add(query, storage, timestamp = Date.now()) {
     const queries = [
-      query,
-      ...this.read(storage).filter((recentQuery) => recentQuery !== query),
+      { query, timestamp },
+      ...this.read(storage).filter(
+        (recentQuery) => recentQuery.query !== query,
+      ),
     ].slice(0, RECENT_VISUAL_QUERIES_LIMIT);
 
     try {
