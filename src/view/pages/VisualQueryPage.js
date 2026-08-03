@@ -9,6 +9,7 @@ import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
+import ExampleQueryGallery from "../organisms/ExampleQueryGallery.js";
 import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
@@ -323,6 +324,7 @@ export default function VisualQueryPage() {
         onSubmit={submitVisualQuery}
         queryOptions={queryOptions}
       />
+      <ExampleQueryGallery />
       <RecentQueriesMenu
         loadedVisualQuery={
           datumSet?.datumList.length > 0 && loadTimeSeconds !== null
