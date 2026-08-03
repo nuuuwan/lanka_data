@@ -12,7 +12,8 @@ export const START_EXPLORING_STEPS = [
     query: "Vote/ElectionType+Time=1994+ED+Party/Count/StackedBarChart",
   },
   {
-    question: "What did the 2005 presidential result look like across Sri Lanka?",
+    question:
+      "What did the 2005 presidential result look like across Sri Lanka?",
     interpretation:
       "The cartogram emphasizes electoral districts according to their result totals.",
     query: "Vote/ElectionType=presidential+Time=2005+ED+Party/Count/Cartogram",

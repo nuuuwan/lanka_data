@@ -14,16 +14,14 @@ export default function StartExploring() {
         Start exploring
       </Typography>
       <ol className={styles.steps}>
-        {START_EXPLORING_STEPS.map(
-          ({ question, interpretation, query }) => (
-            <li className={styles.step} key={query}>
-              <MuiLink component={RouterLink} to={`/${query}`}>
-                {question}
-              </MuiLink>
-              <Typography variant="body2">{interpretation}</Typography>
-            </li>
-          ),
-        )}
+        {START_EXPLORING_STEPS.map(({ question, interpretation, query }) => (
+          <li className={styles.step} key={query}>
+            <MuiLink component={RouterLink} to={`/${query}`}>
+              {question}
+            </MuiLink>
+            <Typography variant="body2">{interpretation}</Typography>
+          </li>
+        ))}
       </ol>
     </section>
   );
