@@ -32,6 +32,31 @@ export function buildRegionIdToWeight(features, dataMap) {
   return regionIdToWeight;
 }
 
+export function getGlobalAreaProjectionScales(cartograms) {
+  const maxTotal = Math.max(...cartograms.map(({ total }) => total), 0);
+  if (maxTotal === 0) {
+    return cartograms.map(() => 0);
+  }
+
+  const areaScaleFactors = cartograms.map(({ total }) =>
+    Math.sqrt(total / maxTotal),
+  );
+  const globalProjectionScale = Math.min(
+    ...cartograms
+      .map(({ projectionScale }, index) => {
+        const areaScaleFactor = areaScaleFactors[index];
+        return areaScaleFactor > 0
+          ? projectionScale / areaScaleFactor
+          : Infinity;
+      })
+      .filter(Number.isFinite),
+  );
+
+  return areaScaleFactors.map(
+    (areaScaleFactor) => globalProjectionScale * areaScaleFactor,
+  );
+}
+
 export default function Cartogram({ datumSet }) {
   const { datumList } = datumSet;
   const { regionDimIndex, regionClass, stackDimIndex } =
@@ -57,36 +82,49 @@ export default function Cartogram({ datumSet }) {
       matchFeatureToValue(geoFeature, allDataMap),
     );
     const legendItemMap = new Map();
-    const cartograms = groupDatumListByFacet(datumList, facetDimIndexes).map(
-      ({ facetKey, facetDatumList }) => {
-        const dataMap = buildFeatureToDataMap(
-          facetDatumList,
-          regionDimIndex,
-          stackDimIndex,
-        );
-        const deformedFeatures = JSON.parse(JSON.stringify(geoFeatures));
-        CartogramUtils.compute(
-          deformedFeatures,
-          buildRegionIdToWeight(geoFeatures, dataMap),
-        );
-        const { features, data } = buildGeoVisualData(
-          deformedFeatures,
-          dataMap,
-          legendItemMap,
-        );
-        const { projection, projectionScale, projectionTranslation } =
-          getProjectionInfo(features);
-        return {
-          facetKey,
-          features,
-          data,
-          labels: buildRegionLabels(features, projection),
-          projectionScale,
-          projectionTranslation,
-          total: data.reduce((sum, item) => sum + item.value, 0),
-        };
-      },
-    );
+    const fittedCartograms = groupDatumListByFacet(
+      datumList,
+      facetDimIndexes,
+    ).map(({ facetKey, facetDatumList }) => {
+      const dataMap = buildFeatureToDataMap(
+        facetDatumList,
+        regionDimIndex,
+        stackDimIndex,
+      );
+      const regionIdToWeight = buildRegionIdToWeight(geoFeatures, dataMap);
+      const deformedFeatures = JSON.parse(JSON.stringify(geoFeatures));
+      CartogramUtils.compute(deformedFeatures, regionIdToWeight);
+      const { features, data } = buildGeoVisualData(
+        deformedFeatures,
+        dataMap,
+        legendItemMap,
+      );
+      const { projection, projectionScale, projectionTranslation } =
+        getProjectionInfo(features);
+      return {
+        facetKey,
+        features,
+        data,
+        projection,
+        projectionScale,
+        projectionTranslation,
+        total: Object.values(regionIdToWeight).reduce(
+          (sum, weight) => sum + weight,
+          0,
+        ),
+      };
+    });
+    const projectionScales = getGlobalAreaProjectionScales(fittedCartograms);
+    const cartograms = fittedCartograms.map((cartogram, index) => {
+      const { projection, ...cartogramData } = cartogram;
+      const projectionScale = projectionScales[index];
+      projection.scale(projectionScale);
+      return {
+        ...cartogramData,
+        labels: buildRegionLabels(cartogram.features, projection),
+        projectionScale,
+      };
+    });
 
     return {
       cartograms: DimensionUtils.sortFacets(
