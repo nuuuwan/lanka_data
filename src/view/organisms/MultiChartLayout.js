@@ -33,11 +33,14 @@ export default function MultiChartLayout({
     <Box>
       {facets.length > 1 && (
         <FormControl size="small" sx={{ mb: 2, minWidth: 160 }}>
-          <InputLabel id="facet-select-label">Facets</InputLabel>
+          <InputLabel id="facet-select-label" shrink>
+            Facets
+          </InputLabel>
           <Select
             label="Facets"
             labelId="facet-select-label"
             multiple
+            displayEmpty
             value={selectedFacetKeys}
             onChange={({ target }) => setSelectedFacetKeys(target.value)}
             renderValue={(selected) =>
