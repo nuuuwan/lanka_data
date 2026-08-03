@@ -1,4 +1,4 @@
-import { Box, LinearProgress } from "@mui/material";
+import { Box, LinearProgress, Typography } from "@mui/material";
 
 import useGeoJson from "../../../nonview/base/useGeoJson.js";
 import { getGeoDimInfo } from "../visual_utils/GeoVisualUtils.js";
@@ -29,7 +29,16 @@ export default function ShapeMap({ datumSet, isUnit = false, shapeConfig }) {
     isUnit,
     shapeConfig,
   );
-  if (!geoJson) return <LinearProgress sx={{ m: 2 }} />;
+  if (!geoJson) {
+    return (
+      <Box sx={{ m: 2 }}>
+        <LinearProgress />
+        <Typography color="text.secondary" variant="body2">
+          Loading map data…
+        </Typography>
+      </Box>
+    );
+  }
   return (
     <Box data-testid={`${shapeConfig.testId}s`}>
       {maps.length > 1 && (
