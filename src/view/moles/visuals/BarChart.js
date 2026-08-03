@@ -13,6 +13,7 @@ export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
         data={data}
         keys={["value"]}
         indexBy="id"
+        animate={false}
         margin={{ top: 50, right: 50, bottom: 100, left: 60 }}
         padding={0.3}
         valueScale={{ type: "linear" }}

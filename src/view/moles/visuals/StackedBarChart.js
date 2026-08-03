@@ -38,6 +38,7 @@ export default function StackedBarChart({
           data={data}
           keys={keys}
           indexBy="id"
+          animate={false}
           margin={{ top: 50, right: 50, bottom: 80, left: 60 }}
           padding={0.3}
           valueScale={{ type: "linear" }}

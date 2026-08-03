@@ -25,6 +25,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
           data={sortedData}
           id="id"
           value="_barWidth"
+          animate={false}
           dimensions={dimensions}
           offset="expand"
           layout="vertical"
