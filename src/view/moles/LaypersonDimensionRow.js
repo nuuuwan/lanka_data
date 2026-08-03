@@ -1,7 +1,16 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, IconButton, MenuItem, TextField } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  ListSubheader,
+  MenuItem,
+  TextField,
+} from "@mui/material";
 
-import { DIMENSION_OPERATORS } from "../../nonview/constants/VisualQueryOptions.js";
+import {
+  DIMENSION_OPERATORS,
+  getFieldGroups,
+} from "../../nonview/constants/VisualQueryOptions.js";
 import LaypersonDimensionValue from "./LaypersonDimensionValue.js";
 import { getVisualLabel } from "./LaypersonQueryUtils.js";
 
@@ -14,6 +23,10 @@ export default function LaypersonDimensionRow({
   onKeyDown,
   onRemove,
 }) {
+  const fieldOptions = dimensionOptions.includes(dimension.field)
+    ? dimensionOptions
+    : [dimension.field, ...dimensionOptions].filter(Boolean);
+
   return (
     <Box
       sx={{
@@ -35,14 +48,16 @@ export default function LaypersonDimensionRow({
         value={dimension.field}
         onChange={(event) => onChange("field", event.target.value)}
       >
-        {!dimensionOptions.includes(dimension.field) && dimension.field && (
-          <MenuItem value={dimension.field}>{dimension.field}</MenuItem>
-        )}
-        {dimensionOptions.map((name) => (
-          <MenuItem key={name} value={name}>
-            {getVisualLabel(name)}
-          </MenuItem>
-        ))}
+        {getFieldGroups(fieldOptions).flatMap((group) => [
+          <ListSubheader key={`group-${group.label}`}>
+            {group.label}
+          </ListSubheader>,
+          ...group.fields.map((field) => (
+            <MenuItem key={field} value={field}>
+              {getVisualLabel(field)}
+            </MenuItem>
+          )),
+        ])}
       </TextField>
       <TextField
         select

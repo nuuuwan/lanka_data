@@ -1,7 +1,10 @@
-import { Box, MenuItem, TextField } from "@mui/material";
+import { Box, ListSubheader, MenuItem, TextField } from "@mui/material";
 import { useMemo } from "react";
 
-import { DIMENSION_OPERATORS } from "../../nonview/constants/VisualQueryOptions.js";
+import {
+  DIMENSION_OPERATORS,
+  getFieldGroups,
+} from "../../nonview/constants/VisualQueryOptions.js";
 import {
   getDimensionParts,
   getDimensionString,
@@ -58,11 +61,16 @@ export default function LaypersonDimensionValue({
             updateParentDimension("field", event.target.value)
           }
         >
-          {parentFieldOptions.map((name) => (
-            <MenuItem key={name} value={name}>
-              {getVisualLabel(name)}
-            </MenuItem>
-          ))}
+          {getFieldGroups(parentFieldOptions).flatMap((group) => [
+            <ListSubheader key={`group-${group.label}`}>
+              {group.label}
+            </ListSubheader>,
+            ...group.fields.map((field) => (
+              <MenuItem key={field} value={field}>
+                {getVisualLabel(field)}
+              </MenuItem>
+            )),
+          ])}
         </TextField>
         <TextField
           select
