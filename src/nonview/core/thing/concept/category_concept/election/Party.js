@@ -6,7 +6,8 @@ export default class Party extends Concept {
   }
 
   getLabel() {
-    return this.value.toUpperCase();
+    const label = super.getLabel();
+    return label === this.value ? label.toUpperCase() : label;
   }
 
   static getColorMap() {
