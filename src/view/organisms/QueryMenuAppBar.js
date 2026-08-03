@@ -18,6 +18,7 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import formatRelativeTime from "../../nonview/base/formatRelativeTime.js";
 import RecentVisualQueries from "../../nonview/base/RecentVisualQueries.js";
 import {
   GITHUB_PROFILE_URL,
@@ -30,7 +31,7 @@ import styles from "./QueryMenuAppBar.module.css";
 function formatTimestamp(timestamp) {
   return timestamp === null
     ? "Saved previously"
-    : new Date(timestamp).toLocaleString();
+    : `${new Date(timestamp).toLocaleString()} (${formatRelativeTime(timestamp)})`;
 }
 
 export default function QueryMenuAppBar({ loadedVisualQuery }) {
@@ -104,11 +105,10 @@ export default function QueryMenuAppBar({ loadedVisualQuery }) {
           )}
           <Divider />
           <ListSubheader>Example queries</ListSubheader>
-          {EXAMPLE_QUERIES.map(({ label, description, query }) => (
+          {EXAMPLE_QUERIES.map(({ query }) => (
             <MenuItem key={query} onClick={() => openQuery(query)}>
               <span className={styles.queryDetails}>
-                <span>{label}</span>
-                <span className={styles.description}>{description}</span>
+                <span className={styles.query}>{query}</span>
               </span>
             </MenuItem>
           ))}
