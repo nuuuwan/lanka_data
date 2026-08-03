@@ -262,10 +262,7 @@ export default function VisualQueryPage() {
 
   const VisualClass = visualQuery?.visualClass;
   const isLoading =
-    !isReady ||
-    !VisualClass ||
-    datumSet === null ||
-    loadTimeSeconds === null;
+    !isReady || !VisualClass || datumSet === null || loadTimeSeconds === null;
 
   useEffect(() => {
     if (!isLoading) {
