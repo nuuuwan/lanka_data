@@ -36,20 +36,22 @@ export default function AppFooter() {
         </Link>
       </Typography>
       <br />
-      <Link
-        aria-label="Open Lanka Data"
-        className={styles.qrCodeLink}
-        href={APP_URL}
-      >
-        <QRCodeSVG
-          bgColor="#ffffff"
-          fgColor={AppTheme.palette.info.main}
-          level="M"
-          size={APP_QR_CODE_SIZE}
-          title="Scan to open Lanka Data"
-          value={APP_URL}
-        />
-      </Link>
+      <Box sx={{ m: 2 }}>
+        <Link
+          aria-label="Open Lanka Data"
+          className={styles.qrCodeLink}
+          href={APP_URL}
+        >
+          <QRCodeSVG
+            bgColor="#ffffff"
+            fgColor={AppTheme.palette.info.main}
+            level="M"
+            size={APP_QR_CODE_SIZE}
+            title="Scan to open Lanka Data"
+            value={APP_URL}
+          />
+        </Link>
+      </Box>
     </Box>
   );
 }
