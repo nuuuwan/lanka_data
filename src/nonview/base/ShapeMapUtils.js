@@ -241,11 +241,12 @@ function assignConnectedShapes(regions, centers, areCentersAdjacent) {
   );
 
   while ([...remainingById.values()].some((remaining) => remaining > 0)) {
-    let bestCandidate = null;
+    let assignedThisRound = false;
     for (const { centroid, id } of activeRegions) {
       if (!remainingById.get(id)) {
         continue;
       }
+      let bestCandidate = null;
       const assignedIndexes = assignedIndexesById.get(id);
       for (const centerIndex of availableIndexes) {
         if (
@@ -257,18 +258,22 @@ function assignConnectedShapes(regions, centers, areCentersAdjacent) {
         }
         const distance = getSquaredDistance(centroid, centers[centerIndex]);
         if (!bestCandidate || distance < bestCandidate.distance) {
-          bestCandidate = { centerIndex, distance, id };
+          bestCandidate = { centerIndex, distance };
         }
       }
+      if (!bestCandidate) {
+        continue;
+      }
+      const { centerIndex } = bestCandidate;
+      assignments.push({ centerIndex, id });
+      availableIndexes.delete(centerIndex);
+      assignedIndexes.push(centerIndex);
+      remainingById.set(id, remainingById.get(id) - 1);
+      assignedThisRound = true;
     }
-    if (!bestCandidate) {
+    if (!assignedThisRound) {
       throw new Error("Unable to assign edge-connected shapes.");
     }
-    const { centerIndex, id } = bestCandidate;
-    assignments.push({ centerIndex, id });
-    availableIndexes.delete(centerIndex);
-    assignedIndexesById.get(id).push(centerIndex);
-    remainingById.set(id, remainingById.get(id) - 1);
   }
 
   return assignments.map(({ centerIndex, id }) => ({
