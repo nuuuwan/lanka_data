@@ -125,7 +125,7 @@ export default class DimensionUtils {
   }
 
   static getDimName(datumList, dimIndex) {
-    return datumList[0].query.dimThingList[dimIndex].constructor.name;
+    return datumList[0].query.dimThingList[dimIndex].constructor.getClassName();
   }
 
   static getXLabel(datum, xAxisDimIndex) {

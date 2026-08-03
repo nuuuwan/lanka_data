@@ -182,13 +182,13 @@ export default class Query {
   }
 
   static getQueryStringFromParts(entityClass, dimThingList, aggregate) {
-    const entityClassName = entityClass.name;
+    const entityClassName = entityClass.getClassName();
     const dimInnerTokens = dimThingList.map((dimThing) => {
       if (dimThing.value === Thing.WILDCARD) {
-        return dimThing.constructor.name;
+        return dimThing.constructor.getClassName();
       }
       return [
-        dimThing.constructor.name,
+        dimThing.constructor.getClassName(),
         Query.DELIM_EQ,
         Query.getThingValues(dimThing).join(Query.DELIM_VALUE),
       ].join("");
@@ -200,18 +200,20 @@ export default class Query {
 
   getMetadataKey() {
     const dimToken = this.dimThingList
-      .map((dimThing) => dimThing.constructor.name)
+      .map((dimThing) => dimThing.constructor.getClassName())
       .join(Query.DELIM_DIM);
-    return [this.entityClass.name, dimToken, this.aggregate].join(
+    return [this.entityClass.getClassName(), dimToken, this.aggregate].join(
       Query.DELIM_TOKEN,
     );
   }
 
   static getMetadataKeyFromParts(entityClass, dimThingList, aggregate) {
     const dimToken = dimThingList
-      .map((dimThing) => dimThing.constructor.name)
+      .map((dimThing) => dimThing.constructor.getClassName())
       .join(Query.DELIM_DIM);
-    return [entityClass.name, dimToken, aggregate].join(Query.DELIM_TOKEN);
+    return [entityClass.getClassName(), dimToken, aggregate].join(
+      Query.DELIM_TOKEN,
+    );
   }
 
   static normalizeMetadataKey(metadataKey) {
