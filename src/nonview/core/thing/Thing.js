@@ -1,9 +1,10 @@
 import KeyValue from "../KeyValue.js";
+import { SEMANTIC_PALETTE } from "../../constants/COLORS.js";
 
 export default class Thing {
   static WILDCARD = "*";
   static SPECIAL_VALUE_EXCLUDED_SMALL = "excluded_small";
-  static SPECIAL_VALUE_EXCLUDED_SMALL_COLOR = "#ccc";
+  static SPECIAL_VALUE_EXCLUDED_SMALL_COLOR = SEMANTIC_PALETTE.neutral;
 
   static getClassName() {
     return this.className || this.name;
@@ -29,7 +30,7 @@ export default class Thing {
     if (this.value === Thing.SPECIAL_VALUE_EXCLUDED_SMALL) {
       return Thing.SPECIAL_VALUE_EXCLUDED_SMALL_COLOR;
     }
-    return null;
+    return SEMANTIC_PALETTE.neutral;
   }
 
   toKeyValue() {

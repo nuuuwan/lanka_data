@@ -1,7 +1,8 @@
 import { ResponsiveBar } from "@nivo/bar";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import { FONT_FAMILY } from "../../../AppTheme.js";
+import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import Legend from "./Legend.js";
 
@@ -21,7 +22,6 @@ export default function StackedBarChart({
   yAxisLabel,
   stackDimName,
 }) {
-  const theme = useTheme();
   const keys =
     data.length === 0
       ? []
@@ -41,9 +41,7 @@ export default function StackedBarChart({
           padding={0.3}
           valueScale={{ type: "linear" }}
           theme={{ fontFamily: FONT_FAMILY }}
-          colors={({ id }) =>
-            getColorForKey(id, data) ?? theme.palette.primary.main
-          }
+          colors={({ id }) => getMarkColor(getColorForKey(id, data))}
           borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
           axisLeft={{
             format: FormatUtils.humanizeValue,
@@ -79,7 +77,7 @@ export default function StackedBarChart({
         items={keys.map((key) => ({
           id: key,
           label: key,
-          color: getColorForKey(key, data) ?? theme.palette.primary.main,
+          color: getMarkColor(getColorForKey(key, data)),
         }))}
       />
     </Box>

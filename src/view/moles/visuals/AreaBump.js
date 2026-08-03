@@ -1,7 +1,8 @@
 import { ResponsiveAreaBump } from "@nivo/bump";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import { FONT_FAMILY } from "../../../AppTheme.js";
+import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
 function getSeriesKeys(data) {
@@ -100,7 +101,6 @@ export function toAreaBumpData(data) {
 }
 
 export default function AreaBump({ data, xAxisLabel }) {
-  const theme = useTheme();
   const series = toAreaBumpData(data);
 
   return (
@@ -109,7 +109,7 @@ export default function AreaBump({ data, xAxisLabel }) {
         data={series}
         margin={{ top: 40, right: 100, bottom: 60, left: 100 }}
         spacing={8}
-        colors={(serie) => serie.color ?? theme.palette.primary.main}
+        colors={(serie) => getMarkColor(serie.color)}
         blendMode="multiply"
         theme={{ fontFamily: FONT_FAMILY }}
         startLabel
