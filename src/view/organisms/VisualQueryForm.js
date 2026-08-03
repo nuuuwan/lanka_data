@@ -130,8 +130,7 @@ export default function VisualQueryForm({
             variant="contained"
             startIcon={<RefreshIcon />}
             disabled={
-              loadedVisualQuery !== null &&
-              value.trim() === loadedVisualQuery
+              loadedVisualQuery !== null && value.trim() === loadedVisualQuery
             }
           >
             Update
