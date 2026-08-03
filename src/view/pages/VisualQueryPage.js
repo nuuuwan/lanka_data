@@ -319,44 +319,39 @@ export default function VisualQueryPage() {
   ];
 
   return (
-    <>
-      <QueryMenuAppBar
-        loadedVisualQuery={
-          datumSet?.datumList.length > 0 && loadTimeSeconds !== null
-            ? visualQueryStr
-            : null
-        }
-      />
-      <Box className={styles.page}>
-        <StartExploring />
-        {errorMessage ? (
-          <Alert severity="error" data-testid="query-error">
-            <AlertTitle>Sorry, something went wrong.</AlertTitle>
-            {errorMessage}
-          </Alert>
-        ) : isLoading ? (
-          <LoadingProgressDialog steps={loadingSteps} />
-        ) : (
-          <Box className={styles.visual} data-testid="visual-content">
-            <VisualErrorBoundary key={visualQueryStr}>
-              <VisualContent
-                VisualClass={VisualClass}
-                datumSet={datumSet}
-                loadTimeSeconds={loadTimeSeconds}
-                query={visualQuery.query}
-              />
-            </VisualErrorBoundary>
-          </Box>
-        )}
-        {(errorMessage || !isLoading) && (
-          <ChangeViewSection
-            value={visualQueryInput}
-            onChange={setVisualQueryInput}
-            onSubmit={submitVisualQuery}
-            queryOptions={queryOptions}
-          />
-        )}
-      </Box>
-    </>
+    <Box className={styles.page}>
+      {errorMessage ? (
+        <Alert severity="error" data-testid="query-error">
+          <AlertTitle>Sorry, something went wrong.</AlertTitle>
+          {errorMessage}
+        </Alert>
+      ) : isLoading ? (
+        <LoadingProgressDialog steps={loadingSteps} />
+      ) : (
+        <Box className={styles.visual} data-testid="visual-content">
+          <VisualErrorBoundary key={visualQueryStr}>
+            <VisualContent
+              VisualClass={VisualClass}
+              datumSet={datumSet}
+              loadTimeSeconds={loadTimeSeconds}
+              query={visualQuery.query}
+            />
+          </VisualErrorBoundary>
+        </Box>
+      )}
+      {(errorMessage || !isLoading) && (
+        <ChangeViewSection
+          value={visualQueryInput}
+          onChange={setVisualQueryInput}
+          onSubmit={submitVisualQuery}
+          queryOptions={queryOptions}
+          loadedVisualQuery={
+            datumSet?.datumList.length > 0 && loadTimeSeconds !== null
+              ? visualQueryStr
+              : null
+          }
+        />
+      )}
+    </Box>
   );
 }
