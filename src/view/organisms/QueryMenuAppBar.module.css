@@ -1,0 +1,22 @@
+.menu {
+  max-width: min(40rem, calc(100vw - 2rem));
+}
+
+.queryDetails {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.query {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.timestamp,
+.description {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  white-space: normal;
+}

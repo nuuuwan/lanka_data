@@ -9,11 +9,10 @@ import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
-import ExampleQueryGallery from "../organisms/ExampleQueryGallery.js";
 import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
-import RecentQueriesMenu from "../organisms/RecentQueriesMenu.js";
+import QueryMenuAppBar from "../organisms/QueryMenuAppBar.js";
 import { LOADING_PROGRESS_UPDATE_INTERVAL_MS } from "../../nonview/constants/APP.js";
 
 function getElapsedTimeSeconds(startTime, currentTime) {
@@ -317,39 +316,40 @@ export default function VisualQueryPage() {
   ];
 
   return (
-    <Box sx={{ m: 5 }}>
-      <VisualQueryForm
-        value={visualQueryInput}
-        onChange={setVisualQueryInput}
-        onSubmit={submitVisualQuery}
-        queryOptions={queryOptions}
-      />
-      <ExampleQueryGallery />
-      <RecentQueriesMenu
+    <>
+      <QueryMenuAppBar
         loadedVisualQuery={
           datumSet?.datumList.length > 0 && loadTimeSeconds !== null
             ? visualQueryStr
             : null
         }
       />
-      {errorMessage ? (
-        <Alert severity="error" data-testid="query-error">
-          <AlertTitle>Sorry, something went wrong.</AlertTitle>
-          {errorMessage}
-        </Alert>
-      ) : isLoading ? (
-        <LoadingProgressDialog steps={loadingSteps} />
-      ) : (
-        <Box data-testid="visual-content">
-          <VisualErrorBoundary key={visualQueryStr}>
-            <VisualContent
-              VisualClass={VisualClass}
-              datumSet={datumSet}
-              loadTimeSeconds={loadTimeSeconds}
-            />
-          </VisualErrorBoundary>
-        </Box>
-      )}
-    </Box>
+      <Box sx={{ m: 5 }}>
+        <VisualQueryForm
+          value={visualQueryInput}
+          onChange={setVisualQueryInput}
+          onSubmit={submitVisualQuery}
+          queryOptions={queryOptions}
+        />
+        {errorMessage ? (
+          <Alert severity="error" data-testid="query-error">
+            <AlertTitle>Sorry, something went wrong.</AlertTitle>
+            {errorMessage}
+          </Alert>
+        ) : isLoading ? (
+          <LoadingProgressDialog steps={loadingSteps} />
+        ) : (
+          <Box data-testid="visual-content">
+            <VisualErrorBoundary key={visualQueryStr}>
+              <VisualContent
+                VisualClass={VisualClass}
+                datumSet={datumSet}
+                loadTimeSeconds={loadTimeSeconds}
+              />
+            </VisualErrorBoundary>
+          </Box>
+        )}
+      </Box>
+    </>
   );
 }
