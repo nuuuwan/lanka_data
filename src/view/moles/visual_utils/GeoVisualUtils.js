@@ -148,7 +148,11 @@ export function getProjectionInfo(features) {
 export function getFittedLabelFontSize(label, width, height) {
   const estimatedWidthAtUnitSize =
     Math.max(label.length, 1) * MAP_LABEL_CHARACTER_WIDTH_RATIO;
-  return Math.min(height, width / estimatedWidthAtUnitSize);
+  const paddedSizeRatio = 1 + MAP_LABEL_MARGIN_RATIO;
+  return Math.min(
+    height / paddedSizeRatio,
+    width / (estimatedWidthAtUnitSize * paddedSizeRatio),
+  );
 }
 
 const LABEL_ANGLES = [0, 30, 60, 90, 120, 150];
