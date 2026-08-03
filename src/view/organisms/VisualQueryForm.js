@@ -111,11 +111,7 @@ export default function VisualQueryForm({
         >
           Copy Share Link
         </Button>
-        <Button
-          type="submit"
-          variant="contained"
-          startIcon={<RefreshIcon />}
-        >
+        <Button type="submit" variant="contained" startIcon={<RefreshIcon />}>
           Update
         </Button>
       </Box>
