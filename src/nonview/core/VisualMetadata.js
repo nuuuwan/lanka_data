@@ -161,7 +161,9 @@ function getUnitsLabel(query, datumSet, populationLabel) {
 function getTitleLabel(query) {
   const entityName = query.entityClass.getClassName();
   if (query.aggregate.toLowerCase() === "count") {
-    const countLabel = { Person: "Population", Vote: "Valid votes" }[entityName];
+    const countLabel = { Person: "Population", Vote: "Valid votes" }[
+      entityName
+    ];
     if (countLabel) {
       return countLabel;
     }

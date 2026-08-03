@@ -66,7 +66,9 @@ function getConstraintText(thing) {
 function getAggregateLabel(query) {
   const entityClassName = query.entityClass.getClassName();
   if (query.aggregate.toLowerCase() === "count") {
-    return { Person: "population", Vote: "valid votes" }[entityClassName] ?? "count";
+    return (
+      { Person: "population", Vote: "valid votes" }[entityClassName] ?? "count"
+    );
   }
   return humanizeIdentifier(query.aggregate);
 }
