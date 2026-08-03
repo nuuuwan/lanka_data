@@ -1,5 +1,5 @@
 import AddIcon from "@mui/icons-material/Add";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import {
   Box,
   Button,
@@ -9,7 +9,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Fragment } from "react";
 
 import {
   DIMENSION_OPERATORS,
@@ -84,10 +83,7 @@ export default function LaypersonVisualQueryInput({
         ? { ...dimension, [name]: nextValue }
         : dimension,
     );
-    updatePart(
-      "dimensions",
-      nextDimensions.map(getDimensionString).join("+"),
-    );
+    updatePart("dimensions", nextDimensions.map(getDimensionString).join("+"));
   }
 
   function addDimension() {
@@ -140,7 +136,8 @@ export default function LaypersonVisualQueryInput({
               alignItems: "center",
               display: "grid",
               gap: 0.75,
-              gridTemplateColumns: "minmax(7rem, 1fr) 6.5rem minmax(7rem, 1fr) auto",
+              gridTemplateColumns:
+                "minmax(7rem, 1fr) 6.5rem minmax(7rem, 1fr) auto",
               mb: 0.75,
             }}
           >
@@ -194,7 +191,7 @@ export default function LaypersonVisualQueryInput({
               onClick={() => removeDimension(index)}
               size="small"
             >
-              <DeleteOutlineIcon fontSize="small" />
+              <DeleteOutlinedIcon fontSize="small" />
             </IconButton>
           </Box>
         ))}
@@ -223,18 +220,16 @@ export default function LaypersonVisualQueryInput({
         onChange={(event) => updatePart("visual", event.target.value)}
         helperText="Choose a visual"
       >
-        {VISUAL_GROUPS.map((group) => (
-          <Fragment key={group.label}>
-            <ListSubheader>{group.label}</ListSubheader>
-            {group.visuals
-              .filter((visual) => VisualFactory.list().includes(visual))
-              .map((visual) => (
-                <MenuItem key={visual} value={visual}>
-                  {getVisualLabel(visual)}
-                </MenuItem>
-              ))}
-          </Fragment>
-        ))}
+        {VISUAL_GROUPS.flatMap((group) => [
+          <ListSubheader key={group.label}>{group.label}</ListSubheader>,
+          ...group.visuals
+            .filter((visual) => VisualFactory.list().includes(visual))
+            .map((visual) => (
+              <MenuItem key={visual} value={visual}>
+                {getVisualLabel(visual)}
+              </MenuItem>
+            )),
+        ])}
       </TextField>
       <Typography
         variant="caption"

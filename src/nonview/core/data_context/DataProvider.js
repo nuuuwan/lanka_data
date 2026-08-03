@@ -26,18 +26,25 @@ async function loadRegionData() {
 
 export default function DataProvider({ children }) {
   const [regionData, setRegionData] = useState(null);
-  const [queryOptions, setQueryOptions] = useState(null);
+  const [queryOptions, setQueryOptions] = useState({
+    entities: [],
+    dimensionsByEntity: {},
+  });
 
   useEffect(() => {
     loadRegionData().then((data) => {
       setRegionData(data);
     });
-    DataSourceFactory.getQueryOptions().then(setQueryOptions);
+    DataSourceFactory.getQueryOptions()
+      .then(setQueryOptions)
+      .catch(() => {
+        console.warn("[DataProvider] Query metadata could not be loaded");
+      });
   }, []);
 
   const value = useMemo(
     () => ({
-      isReady: regionData !== null && queryOptions !== null,
+      isReady: regionData !== null,
       regionData,
       queryOptions,
     }),

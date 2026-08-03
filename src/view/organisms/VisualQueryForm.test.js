@@ -36,7 +36,9 @@ test("switches between layperson and expert modes", () => {
     />,
   );
 
-  expect(screen.getByLabelText("What data?")).toHaveValue("Person");
+  expect(
+    screen.getByRole("combobox", { name: "What data?" }),
+  ).toHaveTextContent("Person");
 
   fireEvent.click(screen.getByRole("button", { name: "Expert Mode" }));
 
@@ -57,62 +59,66 @@ test("updates a layperson query part without changing the other parts", () => {
     target: { value: "Total" },
   });
 
-  test("offers metadata-derived data choices", () => {
-    render(
-      <VisualQueryForm
-        value={VISUAL_QUERY}
-        onChange={jest.fn()}
-        onSubmit={jest.fn()}
-        queryOptions={QUERY_OPTIONS}
-      />,
-    );
-
-    fireEvent.mouseDown(screen.getByLabelText("What data?"));
-
-    const listbox = screen.getByRole("listbox");
-    expect(within(listbox).getByRole("option", { name: "House" })).toBeVisible();
-    expect(within(listbox).getByRole("option", { name: "Vote" })).toBeVisible();
-  });
-
-  test("adds AND conditions with explicit operators", () => {
-    const onChange = jest.fn();
-    render(<StatefulVisualQueryForm onChange={onChange} />);
-
-    fireEvent.click(screen.getByRole("button", { name: "AND" }));
-    const fieldInputs = screen.getAllByLabelText("Field");
-    const operatorInputs = screen.getAllByLabelText("Operator");
-    const valueInputs = screen.getAllByLabelText("Value");
-    const lastIndex = fieldInputs.length - 1;
-
-    fireEvent.change(fieldInputs[lastIndex], { target: { value: "District" } });
-    fireEvent.change(operatorInputs[lastIndex], { target: { value: "=" } });
-    fireEvent.change(valueInputs[lastIndex], { target: { value: "colombo" } });
-
-    expect(onChange).toHaveBeenLastCalledWith(
-      "Person/Time=2024+Province+Religion+District=colombo/Count/BarChart",
-    );
-  });
-
-  test("groups related visual choices under headings", () => {
-    render(
-      <VisualQueryForm
-        value={VISUAL_QUERY}
-        onChange={jest.fn()}
-        onSubmit={jest.fn()}
-        queryOptions={QUERY_OPTIONS}
-      />,
-    );
-
-    fireEvent.mouseDown(screen.getByLabelText("Show as"));
-
-    expect(screen.getByText("Charts")).toBeVisible();
-    expect(screen.getByText("Maps")).toBeVisible();
-    expect(screen.getByText("Other")).toBeVisible();
-  });
-
   expect(onChange).toHaveBeenCalledWith(
     "Person/Time=2024+Province+Religion/Total/BarChart",
   );
+});
+
+test("offers metadata-derived data choices", () => {
+  render(
+    <VisualQueryForm
+      value={VISUAL_QUERY}
+      onChange={jest.fn()}
+      onSubmit={jest.fn()}
+      queryOptions={QUERY_OPTIONS}
+    />,
+  );
+
+  fireEvent.mouseDown(screen.getByLabelText("What data?"));
+
+  const listbox = screen.getByRole("listbox");
+  expect(within(listbox).getByRole("option", { name: "House" })).toBeVisible();
+  expect(within(listbox).getByRole("option", { name: "Vote" })).toBeVisible();
+});
+
+test("adds AND conditions with explicit operators", () => {
+  const onChange = jest.fn();
+  render(<StatefulVisualQueryForm onChange={onChange} />);
+
+  fireEvent.click(screen.getByRole("button", { name: "AND" }));
+  let lastIndex = screen.getAllByLabelText("Field").length - 1;
+  fireEvent.mouseDown(screen.getAllByLabelText("Field")[lastIndex]);
+  fireEvent.click(screen.getByRole("option", { name: "District" }));
+
+  lastIndex = screen.getAllByLabelText("Operator").length - 1;
+  fireEvent.mouseDown(screen.getAllByLabelText("Operator")[lastIndex]);
+  fireEvent.click(screen.getByRole("option", { name: "=" }));
+
+  lastIndex = screen.getAllByLabelText("Value").length - 1;
+  fireEvent.change(screen.getAllByLabelText("Value")[lastIndex], {
+    target: { value: "colombo" },
+  });
+
+  expect(onChange).toHaveBeenLastCalledWith(
+    "Person/Time=2024+Province+Religion+District=colombo/Count/BarChart",
+  );
+});
+
+test("groups related visual choices under headings", () => {
+  render(
+    <VisualQueryForm
+      value={VISUAL_QUERY}
+      onChange={jest.fn()}
+      onSubmit={jest.fn()}
+      queryOptions={QUERY_OPTIONS}
+    />,
+  );
+
+  fireEvent.mouseDown(screen.getByLabelText("Show as"));
+
+  expect(screen.getByText("Charts")).toBeVisible();
+  expect(screen.getByText("Maps")).toBeVisible();
+  expect(screen.getByText("Other")).toBeVisible();
 });
 
 test("submits expert queries on Enter while allowing shifted line breaks", () => {
