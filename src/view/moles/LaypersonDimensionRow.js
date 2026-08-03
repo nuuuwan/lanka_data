@@ -1,4 +1,4 @@
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import CloseIcon from "@mui/icons-material/Close";
 import {
   Box,
   IconButton,
@@ -96,7 +96,7 @@ export default function LaypersonDimensionRow({
           },
         }}
       >
-        <DeleteOutlinedIcon />
+        <CloseIcon />
       </IconButton>
     </Box>
   );

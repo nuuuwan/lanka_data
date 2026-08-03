@@ -17,7 +17,7 @@ export default function VisualQueryPage() {
   const { isReady, queryOptions } = useContext(DataContext);
   const [input, setInput] = useState(queryString);
   const [visualReadyQuery, setVisualReadyQuery] = useState(null);
-  const visualRef = useRef(null);
+  const visualTitleRef = useRef(null);
   const parse = useVisualQuery(isReady, queryString);
   const load = useVisualData(parse.visualQuery);
   const VisualClass = parse.visualQuery?.visualClass;
@@ -40,26 +40,11 @@ export default function VisualQueryPage() {
     return () => cancelAnimationFrame(frameId);
   }, [errorMessage, queryString, visualDataReady]);
   useEffect(() => {
-    const visual = visualRef.current;
-    if (isLoading || errorMessage || !visual) return undefined;
-    let animationFrameId;
-    const scrollToVisual = () => {
-      animationFrameId = requestAnimationFrame(() =>
-        visual.scrollIntoView?.({ behavior: "smooth", block: "start" }),
-      );
-    };
-    const scrollWhenReady = () => {
-      if (visual.querySelector('[role="progressbar"]')) return;
-      observer.disconnect();
-      scrollToVisual();
-    };
-    const observer = new MutationObserver(scrollWhenReady);
-    observer.observe(visual, { childList: true, subtree: true });
-    scrollWhenReady();
-    return () => {
-      observer.disconnect();
-      cancelAnimationFrame(animationFrameId);
-    };
+    if (isLoading || errorMessage || !visualTitleRef.current) return;
+    visualTitleRef.current.scrollIntoView?.({
+      behavior: "smooth",
+      block: "start",
+    });
   }, [errorMessage, isLoading]);
   const loadedQuery =
     load.datumSet?.datumList.length > 0 && load.loadTimeSeconds !== null
@@ -89,10 +74,7 @@ export default function VisualQueryPage() {
             {errorMessage}
           </Alert>
         ) : (
-          <Box
-            data-testid={isLoading ? undefined : "visual-content"}
-            ref={visualRef}
-          >
+          <Box data-testid={isLoading ? undefined : "visual-content"}>
             {isLoading ? (
               <LoadingProgress />
             ) : (
@@ -102,6 +84,7 @@ export default function VisualQueryPage() {
                   datumSet={load.datumSet}
                   loadTimeSeconds={load.loadTimeSeconds}
                   query={parse.visualQuery.query}
+                  visualTitleRef={visualTitleRef}
                 />
               </VisualErrorBoundary>
             )}
