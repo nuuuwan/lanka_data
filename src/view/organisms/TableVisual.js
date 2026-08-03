@@ -24,25 +24,29 @@ export default function TableVisual({ datumSet }) {
   const { datumList } = datumSet;
   const [sort, setSort] = useState(null);
   const firstDatum = datumList[0];
-  const dimensionColumns =
-    firstDatum?.query.dimThingList.map((thing, index) => ({
-      id: `dimension-${index}`,
-      label: thing.constructor.name,
-      value: (datum) =>
-        FormatUtils.toThingLabel(datum.query.dimThingList[index]),
-    })) ?? [];
-  const columns = firstDatum
-    ? [
-        ...dimensionColumns,
-        {
-          id: "aggregate",
-          label: firstDatum.query.aggregate,
-          numeric: true,
-          value: (datum) => FormatUtils.humanizeValue(datum.answerThing.value),
-          sortValue: (datum) => Number(datum.answerThing.value),
-        },
-      ]
-    : [];
+  const columns = useMemo(() => {
+    if (!firstDatum) {
+      return [];
+    }
+    const dimensionColumns = firstDatum.query.dimThingList.map(
+      (thing, index) => ({
+        id: `dimension-${index}`,
+        label: thing.constructor.name,
+        value: (datum) =>
+          FormatUtils.toThingLabel(datum.query.dimThingList[index]),
+      }),
+    );
+    return [
+      ...dimensionColumns,
+      {
+        id: "aggregate",
+        label: firstDatum.query.aggregate,
+        numeric: true,
+        value: (datum) => FormatUtils.humanizeValue(datum.answerThing.value),
+        sortValue: (datum) => Number(datum.answerThing.value),
+      },
+    ];
+  }, [firstDatum]);
 
   const sortedDatumList = useMemo(() => {
     if (!sort) {
@@ -69,8 +73,7 @@ export default function TableVisual({ datumSet }) {
     setSort((currentSort) => ({
       columnId,
       direction:
-        currentSort?.columnId === columnId &&
-        currentSort.direction === "asc"
+        currentSort?.columnId === columnId && currentSort.direction === "asc"
           ? "desc"
           : "asc",
     }));

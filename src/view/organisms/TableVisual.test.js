@@ -35,17 +35,14 @@ test("renders dimensions and a formatted aggregate for a single row", () => {
     <TableVisual datumSet={{ datumList: [createDatum("colombo", 1234)] }} />,
   );
 
-  expect(
-    screen.getByRole("columnheader", { name: "District" }),
-  ).toBeVisible();
+  expect(screen.getByRole("columnheader", { name: "District" })).toBeVisible();
   expect(screen.getByRole("columnheader", { name: "Count" })).toBeVisible();
   const row = screen.getAllByRole("row")[1];
   expect(within(row).getByText("Colombo")).toBeVisible();
   expect(within(row).getByText("1.2K")).toBeVisible();
 });
 
-test("sorts rows by dimension and aggregate values", async () => {
-  const user = userEvent.setup();
+test("sorts rows by dimension and aggregate values", () => {
   render(
     <TableVisual
       datumSet={{
@@ -61,7 +58,7 @@ test("sorts rows by dimension and aggregate values", async () => {
   const districtHeader = screen.getByRole("columnheader", {
     name: "District",
   });
-  await user.click(within(districtHeader).getByRole("button"));
+  userEvent.click(within(districtHeader).getByRole("button"));
   expect(
     screen
       .getAllByRole("row")
@@ -70,14 +67,14 @@ test("sorts rows by dimension and aggregate values", async () => {
   ).toEqual(["Colombo", "Galle", "Kandy"]);
 
   const countHeader = screen.getByRole("columnheader", { name: "Count" });
-  await user.click(within(countHeader).getByRole("button"));
+  userEvent.click(within(countHeader).getByRole("button"));
   expect(
     screen
       .getAllByRole("row")
       .slice(1)
       .map((row) => within(row).getAllByRole("cell")[1].textContent),
   ).toEqual(["3", "20", "100"]);
-  await user.click(within(countHeader).getByRole("button"));
+  userEvent.click(within(countHeader).getByRole("button"));
   expect(
     screen
       .getAllByRole("row")
