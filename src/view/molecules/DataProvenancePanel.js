@@ -8,19 +8,12 @@ export default function DataProvenancePanel({ provenance }) {
   }
 
   return (
-    <Paper
-      className={styles.root}
-      component="aside"
-      variant="outlined"
-    >
+    <Paper className={styles.root} component="aside" variant="outlined">
       <Typography component="h2" variant="subtitle2">
         About this data
       </Typography>
       {provenance.map(({ source, title, url }, index) => (
-        <Box
-          className={styles.entry}
-          key={`${source}-${title}-${index}`}
-        >
+        <Box className={styles.entry} key={`${source}-${title}-${index}`}>
           {title && (
             <Typography variant="body2">
               <strong>Dataset:</strong> {title}
@@ -30,11 +23,7 @@ export default function DataProvenancePanel({ provenance }) {
             <Typography variant="body2">
               <strong>Source:</strong>{" "}
               {url ? (
-                <Link
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href={url} target="_blank" rel="noopener noreferrer">
                   {source}
                 </Link>
               ) : (
