@@ -14,7 +14,7 @@ import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
 import RecentQueriesMenu from "../organisms/RecentQueriesMenu.js";
-import { LOADING_PROGRESS_UPDATE_INTERVAL_MS } from "../../nonview/constants/APP.js";
+import styles from "./VisualQueryPage.module.css";
 
 function getElapsedTimeSeconds(startTime, currentTime) {
   return startTime === null ? 0 : Math.max(0, currentTime - startTime) / 1000;
@@ -317,7 +317,7 @@ export default function VisualQueryPage() {
   ];
 
   return (
-    <Box sx={{ m: 5 }}>
+    <Box className={styles.page}>
       <VisualQueryForm
         value={visualQueryInput}
         onChange={setVisualQueryInput}
@@ -340,7 +340,7 @@ export default function VisualQueryPage() {
       ) : isLoading ? (
         <LoadingProgressDialog steps={loadingSteps} />
       ) : (
-        <Box data-testid="visual-content">
+        <Box className={styles.visual} data-testid="visual-content">
           <VisualErrorBoundary key={visualQueryStr}>
             <VisualContent
               VisualClass={VisualClass}
