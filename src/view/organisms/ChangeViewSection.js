@@ -9,7 +9,7 @@ export default function ChangeViewSection({
   queryOptions,
 }) {
   return (
-    <Box sx={{ mt: 2 }}>
+    <Box sx={{ mb: 4 }}>
       <VisualQueryForm
         value={value}
         onChange={onChange}

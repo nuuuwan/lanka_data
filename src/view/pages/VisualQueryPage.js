@@ -58,6 +58,13 @@ export default function VisualQueryPage() {
     <>
       <QueryMenuAppBar loadedVisualQuery={loadedQuery} />
       <Box className={styles.page}>
+        <ChangeViewSection
+          value={input}
+          onChange={setInput}
+          onSubmit={submit}
+          queryOptions={queryOptions}
+          loadedVisualQuery={loadedQuery}
+        />
         {errorMessage ? (
           <Alert severity="error" data-testid="query-error">
             <AlertTitle>Sorry, something went wrong.</AlertTitle>
@@ -81,15 +88,6 @@ export default function VisualQueryPage() {
               </VisualErrorBoundary>
             )}
           </Box>
-        )}
-        {(errorMessage || !isLoading) && (
-          <ChangeViewSection
-            value={input}
-            onChange={setInput}
-            onSubmit={submit}
-            queryOptions={queryOptions}
-            loadedVisualQuery={loadedQuery}
-          />
         )}
       </Box>
     </>
