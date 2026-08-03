@@ -1,9 +1,18 @@
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-import { Box, IconButton, MenuItem, TextField } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  ListSubheader,
+  MenuItem,
+  TextField,
+} from "@mui/material";
 
-import { DIMENSION_OPERATORS } from "../../nonview/constants/VisualQueryOptions.js";
-import FieldOptions from "../molecules/FieldOptions.js";
+import {
+  DIMENSION_OPERATORS,
+  getFieldGroups,
+} from "../../nonview/constants/VisualQueryOptions.js";
 import LaypersonDimensionValue from "./LaypersonDimensionValue.js";
+import { getVisualLabel } from "./LaypersonQueryUtils.js";
 
 export default function LaypersonDimensionRow({
   dimension,
@@ -39,7 +48,16 @@ export default function LaypersonDimensionRow({
         value={dimension.field}
         onChange={(event) => onChange("field", event.target.value)}
       >
-        <FieldOptions fields={fieldOptions} />
+        {getFieldGroups(fieldOptions).flatMap((group) => [
+          <ListSubheader key={`group-${group.label}`}>
+            {group.label}
+          </ListSubheader>,
+          ...group.fields.map((field) => (
+            <MenuItem key={field} value={field}>
+              {getVisualLabel(field)}
+            </MenuItem>
+          )),
+        ])}
       </TextField>
       <TextField
         select

@@ -91,6 +91,20 @@ export const FIELD_GROUPS = [
   },
 ];
 
+export function getFieldGroups(fields) {
+  const knownFields = new Set(FIELD_GROUPS.flatMap((group) => group.fields));
+  return [
+    ...FIELD_GROUPS.map((group) => ({
+      label: group.label,
+      fields: fields.filter((field) => group.fields.includes(field)),
+    })),
+    {
+      label: "Other",
+      fields: fields.filter((field) => !knownFields.has(field)),
+    },
+  ].filter((group) => group.fields.length);
+}
+
 export const VISUAL_GROUPS = [
   {
     label: "Charts",
