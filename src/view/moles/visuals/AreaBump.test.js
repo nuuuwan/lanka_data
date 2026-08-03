@@ -31,7 +31,7 @@ test("handles empty data without mutating the input", () => {
     { id: "A", Alpha: 2, Beta: 1 },
     { id: "B", Alpha: 1, Beta: 2 },
   ];
-  const original = structuredClone(data);
+  const original = JSON.parse(JSON.stringify(data));
 
   expect(sortAreaBumpXAxis(empty)).toEqual([]);
   sortAreaBumpXAxis(data);
