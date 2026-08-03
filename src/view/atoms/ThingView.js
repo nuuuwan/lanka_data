@@ -1,10 +1,11 @@
-import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { Chip } from "@mui/material";
 
 export default function ThingView({ thing }) {
+  const MUIIcon = thing.constructor.getMUIICON();
+
   return (
     <Chip
-      icon={<FilterAltIcon />}
+      icon={<MUIIcon />}
       label={thing.getHumanReadableValue()}
       color="info.light"
       variant="outlined"

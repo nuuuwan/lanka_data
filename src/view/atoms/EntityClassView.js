@@ -1,10 +1,11 @@
-import FaceIcon from "@mui/icons-material/Face";
 import { Chip } from "@mui/material";
 
 export default function EntityClassView({ entityClass }) {
+  const MUIIcon = entityClass.getMUIICON();
+
   return (
     <Chip
-      icon={<FaceIcon />}
+      icon={<MUIIcon />}
       label={entityClass.getClassName()}
       color="primary.light"
       variant="filled"
