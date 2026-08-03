@@ -221,70 +221,41 @@ function getSquaredDistance([firstX, firstY], [secondX, secondY]) {
   return (firstX - secondX) ** 2 + (firstY - secondY) ** 2;
 }
 
-function assignConnectedShapes(regions, centers, areCentersAdjacent) {
+function assignConnectedShapes(regions, centers, orderCenters) {
   const activeRegions = regions.filter(({ count }) => count > 0);
-  const seedCost = activeRegions.map(({ centroid }) =>
-    centers.map((center) => getSquaredDistance(centroid, center)),
+  const orderedCenters = orderCenters(centers);
+  const regionsByPathPosition = activeRegions
+    .map((region) => {
+      const targetIndex = orderedCenters.reduce(
+        (bestIndex, center, index) =>
+          getSquaredDistance(region.centroid, center) <
+          getSquaredDistance(region.centroid, orderedCenters[bestIndex])
+            ? index
+            : bestIndex,
+        0,
+      );
+      return { ...region, targetIndex };
+    })
+    .sort((first, second) => first.targetIndex - second.targetIndex);
+  let cursor = 0;
+  let remainingCount = regionsByPathPosition.reduce(
+    (total, { count }) => total + count,
+    0,
   );
-  const seedIndexes = solveAssignment(seedCost);
-  const availableIndexes = new Set(centers.map((_, index) => index));
-  const assignments = activeRegions.map(({ id }, regionIndex) => {
-    const centerIndex = seedIndexes[regionIndex];
-    availableIndexes.delete(centerIndex);
-    return { centerIndex, id };
+
+  return regionsByPathPosition.flatMap(({ count, id, targetIndex }) => {
+    const latestStart = orderedCenters.length - remainingCount;
+    const idealStart = targetIndex - Math.floor(count / 2);
+    const start = Math.max(cursor, Math.min(idealStart, latestStart));
+    cursor = start + count;
+    remainingCount -= count;
+    return orderedCenters.slice(start, cursor).map((center) => ({ center, id }));
   });
-  const assignedIndexesById = new Map(
-    assignments.map(({ centerIndex, id }) => [id, [centerIndex]]),
-  );
-  const remainingById = new Map(
-    activeRegions.map(({ count, id }) => [id, count - 1]),
-  );
-
-  while ([...remainingById.values()].some((remaining) => remaining > 0)) {
-    let assignedThisRound = false;
-    for (const { centroid, id } of activeRegions) {
-      if (!remainingById.get(id)) {
-        continue;
-      }
-      let bestCandidate = null;
-      const assignedIndexes = assignedIndexesById.get(id);
-      for (const centerIndex of availableIndexes) {
-        if (
-          !assignedIndexes.some((assignedIndex) =>
-            areCentersAdjacent(centers[assignedIndex], centers[centerIndex]),
-          )
-        ) {
-          continue;
-        }
-        const distance = getSquaredDistance(centroid, centers[centerIndex]);
-        if (!bestCandidate || distance < bestCandidate.distance) {
-          bestCandidate = { centerIndex, distance };
-        }
-      }
-      if (!bestCandidate) {
-        continue;
-      }
-      const { centerIndex } = bestCandidate;
-      assignments.push({ centerIndex, id });
-      availableIndexes.delete(centerIndex);
-      assignedIndexes.push(centerIndex);
-      remainingById.set(id, remainingById.get(id) - 1);
-      assignedThisRound = true;
-    }
-    if (!assignedThisRound) {
-      throw new Error("Unable to assign edge-connected shapes.");
-    }
-  }
-
-  return assignments.map(({ centerIndex, id }) => ({
-    center: centers[centerIndex],
-    id,
-  }));
 }
 
-export function assignShapes(regions, centers, areCentersAdjacent = null) {
-  if (areCentersAdjacent) {
-    return assignConnectedShapes(regions, centers, areCentersAdjacent);
+export function assignShapes(regions, centers, orderCenters = null) {
+  if (orderCenters) {
+    return assignConnectedShapes(regions, centers, orderCenters);
   }
   const slots = regions.flatMap(({ id, centroid, count }) =>
     Array.from({ length: count }, () => ({ id, centroid })),
@@ -296,6 +267,22 @@ export function assignShapes(regions, centers, areCentersAdjacent = null) {
     id: slots[slotIndex].id,
     center: centers[centerIndex],
   }));
+}
+
+export function orderSquareCenters(centers) {
+  const rows = new Map();
+  for (const center of centers) {
+    const row = rows.get(center[1]) ?? [];
+    row.push(center);
+    rows.set(center[1], row);
+  }
+  return [...rows.entries()]
+    .sort(([firstY], [secondY]) => firstY - secondY)
+    .flatMap(([, row], rowIndex) =>
+      row.sort(([firstX], [secondX]) =>
+        rowIndex % 2 === 0 ? firstX - secondX : secondX - firstX,
+      ),
+    );
 }
 
 export function areSquareCentersAdjacent(

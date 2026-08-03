@@ -2,6 +2,7 @@ import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
 import {
   areSquareCentersAdjacent,
   assignShapes,
+  orderSquareCenters,
 } from "../../../nonview/base/ShapeMapUtils.js";
 import { buildSquareMapLayout, shareSquareMapScale } from "./SquareMap.js";
 
@@ -79,7 +80,7 @@ test("assigns each region through edge-connected squares", () => {
       { id: "region-b", centroid: [0, 0], count: 3 },
     ],
     centers,
-    (first, second) => areSquareCentersAdjacent(first, second, size),
+    orderSquareCenters,
   );
 
   for (const regionId of ["region-a", "region-b"]) {
