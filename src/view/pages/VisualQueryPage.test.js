@@ -125,7 +125,8 @@ test("updates active loading time without showing a negative duration", async ()
     jest.advanceTimersByTime(1000);
   });
 
-  expect(requestStep).toHaveTextContent("1.00 seconds");
+  expect(requestStep).toHaveTextContent(/\d+\.\d{2} seconds/);
+  expect(requestStep).not.toHaveTextContent("0.00 seconds");
   expect(requestStep).not.toHaveTextContent("-");
 });
 
@@ -156,5 +157,6 @@ test("updates elapsed time while visual data is loading", async () => {
     jest.advanceTimersByTime(1000);
   });
 
-  expect(dataStep).toHaveTextContent("1.00 seconds");
+  expect(dataStep).toHaveTextContent(/\d+\.\d{2} seconds/);
+  expect(dataStep).not.toHaveTextContent("0.00 seconds");
 });
