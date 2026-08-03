@@ -1,12 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  Alert,
-  AlertTitle,
-  Typography,
-  Box,
-  LinearProgress,
-} from "@mui/material";
-import { useState, useEffect, useContext } from "react";
+import { Alert, AlertTitle, Typography, Box } from "@mui/material";
+import { useState, useEffect, useContext, useRef } from "react";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
 import DataContext from "../../nonview/core/data_context/DataContext.js";
@@ -14,6 +8,7 @@ import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
+import ProgressList from "../molecules/ProgressList.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
 function useChartFacets(datumSet, VisualClass) {
@@ -138,6 +133,18 @@ export default function VisualQueryPage() {
   const { isReady, queryOptions } = useContext(DataContext);
   const [visualQueryInput, setVisualQueryInput] = useState(visualQueryStr);
   const [errorMessage, setErrorMessage] = useState(null);
+  const applicationLoadStartTime = useRef(performance.now());
+  const [applicationLoadTimeSeconds, setApplicationLoadTimeSeconds] = useState(
+    isReady ? 0 : null,
+  );
+
+  useEffect(() => {
+    if (isReady && applicationLoadTimeSeconds === null) {
+      setApplicationLoadTimeSeconds(
+        (performance.now() - applicationLoadStartTime.current) / 1000,
+      );
+    }
+  }, [applicationLoadTimeSeconds, isReady]);
 
   useEffect(() => {
     setVisualQueryInput(visualQueryStr);
@@ -153,6 +160,7 @@ export default function VisualQueryPage() {
   }
 
   const [visualQuery, setVisualQuery] = useState(null);
+  const [parseTimeSeconds, setParseTimeSeconds] = useState(null);
   useEffect(() => {
     if (!isReady) {
       console.debug(
@@ -164,10 +172,15 @@ export default function VisualQueryPage() {
     async function parse() {
       console.debug(`[VisualQueryPage] Parsing "${visualQueryStr}"`);
       setVisualQuery(null);
+      setParseTimeSeconds(null);
+      setDatumSet(null);
+      setLoadTimeSeconds(null);
       setErrorMessage(null);
+      const startTime = performance.now();
       try {
         const nextVisualQuery = await VisualQuery.fromString(visualQueryStr);
         if (!cancelled) {
+          setParseTimeSeconds((performance.now() - startTime) / 1000);
           console.debug(
             `[VisualQueryPage] Parsed "${visualQueryStr}" as ${nextVisualQuery.visualClass.name}`,
           );
@@ -242,6 +255,27 @@ export default function VisualQueryPage() {
   }, [visualQuery]);
 
   const VisualClass = visualQuery?.visualClass;
+  const loadingSteps = [
+    {
+      label: "Loading application data",
+      status: isReady ? "complete" : "active",
+      durationSeconds: applicationLoadTimeSeconds,
+    },
+    {
+      label: "Understanding request",
+      status: !isReady ? "pending" : VisualClass ? "complete" : "active",
+      durationSeconds: parseTimeSeconds,
+    },
+    {
+      label: "Loading visual data",
+      status: !VisualClass
+        ? "pending"
+        : datumSet === null || loadTimeSeconds === null
+          ? "active"
+          : "complete",
+      durationSeconds: loadTimeSeconds,
+    },
+  ];
 
   return (
     <Box sx={{ m: 2 }}>
@@ -260,7 +294,7 @@ export default function VisualQueryPage() {
         !VisualClass ||
         datumSet === null ||
         loadTimeSeconds === null ? (
-        <LinearProgress sx={{ m: 2 }} />
+        <ProgressList steps={loadingSteps} />
       ) : (
         <Box data-testid="visual-content">
           <VisualErrorBoundary key={visualQueryStr}>

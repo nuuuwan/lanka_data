@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
 import DataContext from "../../nonview/core/data_context/DataContext.js";
@@ -67,4 +67,38 @@ test("shows a friendly message when a request returns no data", async () => {
     "We couldn't find any data for that request.",
   );
   expect(screen.queryByTestId("visual-content")).not.toBeInTheDocument();
+});
+
+test("shows visual loading stages with completion times", async () => {
+  let resolveDatumSet;
+  function TestVisual() {
+    return <div>visual</div>;
+  }
+  VisualQuery.fromString.mockResolvedValue({
+    query: {},
+    visualClass: TestVisual,
+  });
+  DataSourceFactory.getDatumSetForQuery.mockReturnValue(
+    new Promise((resolve) => {
+      resolveDatumSet = resolve;
+    }),
+  );
+
+  renderPage();
+
+  const progressList = await screen.findByRole("list", {
+    name: "Visual loading progress",
+  });
+  await waitFor(() => {
+    expect(screen.getAllByLabelText("Complete")).toHaveLength(2);
+  });
+  const [applicationStep, requestStep, dataStep] =
+    within(progressList).getAllByRole("listitem");
+  expect(applicationStep).toHaveTextContent("0.00 seconds");
+  expect(requestStep).toHaveTextContent("seconds");
+  expect(dataStep).toHaveTextContent("In progress");
+
+  resolveDatumSet({ datumList: [{}] });
+
+  expect(await screen.findByTestId("visual-content")).toBeInTheDocument();
 });
