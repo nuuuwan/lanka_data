@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Box, LinearProgress } from "@mui/material";
+import { Box, LinearProgress, Typography } from "@mui/material";
 
 import useGeoJson from "../../../nonview/base/useGeoJson.js";
 import DimensionUtils from "../visual_utils/DimensionUtils.js";
@@ -85,7 +85,14 @@ export default function MapVisual({ datumSet }) {
     }, [geoJson, datumList, regionDimIndex, stackDimIndex]);
 
   if (!geoJson) {
-    return <LinearProgress sx={{ m: 2 }} />;
+    return (
+      <Box sx={{ m: 2 }}>
+        <LinearProgress />
+        <Typography color="text.secondary" variant="body2">
+          Loading map data…
+        </Typography>
+      </Box>
+    );
   }
 
   return (
