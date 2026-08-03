@@ -310,7 +310,7 @@ export default function VisualQueryPage() {
   ];
 
   return (
-    <Box sx={{ m: 2 }}>
+    <Box sx={{ m: 5 }}>
       <VisualQueryForm
         value={visualQueryInput}
         onChange={setVisualQueryInput}
