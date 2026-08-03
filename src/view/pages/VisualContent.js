@@ -9,6 +9,7 @@ export default function VisualContent({
   datumSet,
   loadTimeSeconds,
   query,
+  visualTitleRef,
 }) {
   useEffect(() => {
     console.debug(
@@ -21,6 +22,7 @@ export default function VisualContent({
         query={query}
         datumCount={datumSet.datumList.length}
         loadTimeSeconds={loadTimeSeconds}
+        titleRef={visualTitleRef}
       />
       {VisualClass.IS_CHART ? (
         <ChartVisual VisualClass={VisualClass} datumSet={datumSet} />
