@@ -9,6 +9,7 @@ import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
+import ExampleQueryGallery from "../organisms/ExampleQueryGallery.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
 import { LOADING_PROGRESS_UPDATE_INTERVAL_MS } from "../../nonview/constants/APP.js";
@@ -314,6 +315,7 @@ export default function VisualQueryPage() {
         onSubmit={submitVisualQuery}
         queryOptions={queryOptions}
       />
+      <ExampleQueryGallery />
       {errorMessage ? (
         <Alert severity="error" data-testid="query-error">
           <AlertTitle>Sorry, something went wrong.</AlertTitle>
