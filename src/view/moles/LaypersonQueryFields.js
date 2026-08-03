@@ -8,7 +8,6 @@ export default function LaypersonQueryFields({
   parts,
   entityOptions,
   onUpdate,
-  onKeyDown,
 }) {
   return (
     <>
@@ -29,10 +28,14 @@ export default function LaypersonQueryFields({
       <TextField
         label="Calculate"
         size="small"
-        value={parts.aggregate}
-        onChange={(event) => onUpdate("aggregate", event.target.value)}
-        onKeyDown={onKeyDown}
-        helperText="For example, Count"
+        value="Count"
+        helperText="Count is currently the only calculation"
+        slotProps={{
+          htmlInput: {
+            "aria-readonly": true,
+            readOnly: true,
+          },
+        }}
       />
       <TextField
         select
