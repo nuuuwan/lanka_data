@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
+import { FONT_FAMILY } from "../../AppTheme.js";
 import { copyTextToClipboard } from "../../nonview/base/Clipboard.js";
 import { SHARE_LINK_FEEDBACK_DURATION_MS } from "../../nonview/constants/APP.js";
 import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
@@ -87,7 +88,7 @@ export default function VisualQueryForm({
           }}
           sx={{
             "& .MuiInputBase-input": {
-              fontFamily: "monospace",
+              fontFamily: FONT_FAMILY,
               overflowWrap: "anywhere",
             },
           }}
