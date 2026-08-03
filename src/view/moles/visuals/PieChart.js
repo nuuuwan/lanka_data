@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
+import Legend from "./Legend.js";
 
 const CHART_HEIGHT = 400;
 
@@ -10,7 +11,7 @@ export default function PieChart({ data, total, maxTotal }) {
   const scale = maxTotal > 0 && total > 0 ? Math.sqrt(total / maxTotal) : 0;
 
   return (
-    <Box sx={{ width: "100%", height: CHART_HEIGHT * scale }}>
+    <Box sx={{ width: "100%", minHeight: CHART_HEIGHT * scale }}>
       <Box
         sx={{
           height: CHART_HEIGHT,
@@ -27,6 +28,7 @@ export default function PieChart({ data, total, maxTotal }) {
           arcLabel={({ value }) => FormatUtils.humanizeValue(value)}
           arcLabelsSkipAngle={10}
           arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
+          innerRadius={0.5}
           tooltip={({ datum }) => (
             <Typography variant="body2">
               {datum.id}: {FormatUtils.humanizeValue(datum.value)}
@@ -36,6 +38,13 @@ export default function PieChart({ data, total, maxTotal }) {
           ariaLabel="Pie chart"
         />
       </Box>
+      <Legend
+        items={data.map((item) => ({
+          id: item.id,
+          label: item.id,
+          color: item.color,
+        }))}
+      />
     </Box>
   );
 }
