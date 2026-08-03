@@ -10,7 +10,7 @@ export default class RecentVisualQueries {
     }
 
     try {
-      return globalThis.localStorage;
+      return typeof localStorage === "undefined" ? null : localStorage;
     } catch {
       return null;
     }
