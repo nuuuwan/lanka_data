@@ -1,12 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Alert, AlertTitle, Typography, Box } from "@mui/material";
+import { Alert, AlertTitle, Box } from "@mui/material";
 import { useState, useEffect, useContext, useRef } from "react";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
 import DataContext from "../../nonview/core/data_context/DataContext.js";
 import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
-import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
 import ExampleQueryGallery from "../organisms/ExampleQueryGallery.js";
@@ -15,7 +14,6 @@ import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
 import RecentQueriesMenu from "../organisms/RecentQueriesMenu.js";
 import VisualHeader from "../molecules/VisualHeader.js";
-import { LOADING_PROGRESS_UPDATE_INTERVAL_MS } from "../../nonview/constants/APP.js";
 
 function getElapsedTimeSeconds(startTime, currentTime) {
   return startTime === null ? 0 : Math.max(0, currentTime - startTime) / 1000;

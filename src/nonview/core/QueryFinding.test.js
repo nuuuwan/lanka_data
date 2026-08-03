@@ -8,7 +8,11 @@ function makeThing(className, value, label = value) {
     constructor: {
       getClassName: () => className,
       fromValue: (nextValue) =>
-        makeThing(className, nextValue, nextValue === value ? label : nextValue),
+        makeThing(
+          className,
+          nextValue,
+          nextValue === value ? label : nextValue,
+        ),
     },
   };
 }
