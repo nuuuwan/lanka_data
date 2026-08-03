@@ -12,8 +12,7 @@ export default function formatRelativeTime(timestamp, now = Date.now()) {
   const differenceInSeconds = (timestamp - now) / 1000;
   const [unit, secondsPerUnit] =
     RELATIVE_TIME_UNITS.find(
-      ([, unitDuration]) =>
-        Math.abs(differenceInSeconds) >= unitDuration,
+      ([, unitDuration]) => Math.abs(differenceInSeconds) >= unitDuration,
     ) ?? RELATIVE_TIME_UNITS.at(-1);
 
   return new Intl.RelativeTimeFormat(undefined, {
