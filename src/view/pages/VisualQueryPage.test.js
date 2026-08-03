@@ -7,6 +7,8 @@ import RecentVisualQueries from "../../nonview/base/RecentVisualQueries.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
 import VisualQueryPage from "./VisualQueryPage.js";
 
+const VISUAL_QUERY = "Person/Time=2024+Province+Religion/Count/BarChart";
+
 jest.mock("../../nonview/core/VisualQuery.js", () => ({
   __esModule: true,
   default: { fromString: jest.fn() },
