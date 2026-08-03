@@ -9,6 +9,7 @@ import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import MultiChartLayout from "../moles/visual_utils/MultiChartLayout.js";
 import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
+import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
 import RecentQueriesMenu from "../organisms/RecentQueriesMenu.js";
@@ -130,6 +131,7 @@ function VisualContent({ VisualClass, datumSet, loadTimeSeconds }) {
       ) : (
         <VisualClass datumSet={datumSet} />
       )}
+      <DataProvenancePanel provenance={datumSet.provenance} />
     </>
   );
 }

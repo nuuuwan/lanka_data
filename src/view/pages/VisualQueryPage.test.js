@@ -106,7 +106,16 @@ test("shows visual loading stages with completion times", async () => {
   expect(dataStep).toHaveTextContent(/\d+\.\d{2} seconds/);
   expect(dataStep).not.toHaveTextContent("In progress");
 
-  resolveDatumSet({ datumList: [{}] });
+  resolveDatumSet({
+    datumList: [{}],
+    provenance: [
+      {
+        source: "Department of Census and Statistics of Sri Lanka",
+        title: "Census of Population and Housing 2024",
+        url: "https://www.statistics.gov.lk",
+      },
+    ],
+  });
 
   expect(await screen.findByTestId("visual-content")).toBeInTheDocument();
   await waitFor(() => {
