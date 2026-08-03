@@ -8,6 +8,7 @@ import {
   MAP_LABEL_DARK_COLOR,
   MAP_LABEL_LIGHT_COLOR,
   MAP_UNKNOWN_COLOR,
+  MAP_WIDTH,
 } from "../../_cons/MapCons.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
