@@ -9,6 +9,11 @@ const ENTITY_LABELS = {
   Vote: "votes",
 };
 
+const TITLE_ENTITY_LABELS = {
+  House: "households",
+  Person: "population",
+};
+
 const DIMENSION_LABELS = {
   DSD: "divisional secretariat division",
   ED: "electoral district",
@@ -74,6 +79,11 @@ function getRequestedDimensions(query) {
 function getPopulationLabel(query) {
   const entityName = query.entityClass.getClassName();
   return ENTITY_LABELS[entityName] ?? `${humanize(entityName)} records`;
+}
+
+function getTitlePopulationLabel(query) {
+  const entityName = query.entityClass.getClassName();
+  return TITLE_ENTITY_LABELS[entityName] ?? getPopulationLabel(query);
 }
 
 function getGeographyLabel(query, dimensions) {
@@ -152,9 +162,10 @@ export default class VisualMetadata {
   static from(query, datumSet) {
     const dimensions = getRequestedDimensions(query);
     const population = getPopulationLabel(query);
+    const titlePopulation = getTitlePopulationLabel(query);
     const measure = humanize(query.aggregate);
     return {
-      title: `${measure.charAt(0).toUpperCase()}${measure.slice(1)} of ${population}`,
+      title: `${measure.charAt(0).toUpperCase()}${measure.slice(1)} of ${titlePopulation}`,
       subtitle: [
         `Population: ${population}`,
         `Geography: ${getGeographyLabel(query, dimensions)}`,

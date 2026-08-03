@@ -3,7 +3,7 @@ import Thing from "./thing/Thing.js";
 const ENTITY_LABELS = {
   Census: "census records",
   House: "households",
-  Person: "people",
+  Person: "population",
   Vote: "votes",
 };
 
