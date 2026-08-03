@@ -18,27 +18,45 @@ export default function VisualQueryPage() {
   const navigate = useNavigate();
   const { isReady, queryOptions } = useContext(DataContext);
   const [input, setInput] = useState(queryString);
+  const [visualReadyQuery, setVisualReadyQuery] = useState(null);
   const visualRef = useRef(null);
+  const generationStartTime = useRef(null);
   const application = useApplicationLoad(isReady);
   const parse = useVisualQuery(isReady, queryString);
   const load = useVisualData(parse.visualQuery);
   const VisualClass = parse.visualQuery?.visualClass;
   const errorMessage = parse.errorMessage || load.errorMessage;
-  const isLoading =
-    !isReady ||
-    !VisualClass ||
-    load.datumSet === null ||
-    load.loadTimeSeconds === null;
+  const visualDataReady =
+    isReady &&
+    Boolean(VisualClass) &&
+    load.datumSet !== null &&
+    load.loadTimeSeconds !== null;
+  const isVisualReady = visualDataReady && visualReadyQuery === queryString;
+  const isLoading = !isVisualReady;
   const steps = useLoadingSteps({
     application,
     datumSet: load.datumSet,
+    generationStartTime,
     isLoading,
     isReady,
+    isVisualReady,
     load,
     parse,
+    visualDataReady,
     VisualClass,
   });
   useEffect(() => setInput(queryString), [queryString]);
+  useEffect(() => {
+    if (!visualDataReady || errorMessage) {
+      generationStartTime.current = null;
+      return undefined;
+    }
+    generationStartTime.current = performance.now();
+    const frameId = requestAnimationFrame(() =>
+      setVisualReadyQuery(queryString),
+    );
+    return () => cancelAnimationFrame(frameId);
+  }, [errorMessage, queryString, visualDataReady]);
   useEffect(() => {
     const visual = visualRef.current;
     if (isLoading || errorMessage || !visual) return undefined;
@@ -73,13 +91,16 @@ export default function VisualQueryPage() {
     <>
       <QueryMenuAppBar loadedVisualQuery={loadedQuery} />
       <Box className={styles.page}>
-        <ChangeViewSection
-          value={input}
-          onChange={setInput}
-          onSubmit={submit}
-          queryOptions={queryOptions}
-          loadedVisualQuery={loadedQuery}
-        />
+        {isReady && (
+          <ChangeViewSection
+            value={input}
+            onChange={setInput}
+            onSubmit={submit}
+            queryOptions={queryOptions}
+            disabled={isLoading && !errorMessage}
+            loadedVisualQuery={loadedQuery}
+          />
+        )}
         {errorMessage ? (
           <Alert severity="error" data-testid="query-error">
             <AlertTitle>Sorry, something went wrong.</AlertTitle>
@@ -91,7 +112,12 @@ export default function VisualQueryPage() {
             ref={visualRef}
           >
             {isLoading ? (
-              <LoadingProgress steps={steps} />
+              <LoadingProgress
+                heading={
+                  visualDataReady ? "Generating visual" : "Loading visual"
+                }
+                steps={steps}
+              />
             ) : (
               <VisualErrorBoundary key={queryString}>
                 <VisualContent

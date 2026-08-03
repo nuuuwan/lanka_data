@@ -9,6 +9,7 @@ import { SHARE_LINK_FEEDBACK_DURATION_MS } from "../../nonview/constants/APP.js"
 import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
 
 export default function VisualQueryForm({
+  disabled = false,
   value,
   onChange,
   onSubmit,
@@ -45,81 +46,88 @@ export default function VisualQueryForm({
       onSubmit={submit}
       sx={{ mb: 2 }}
     >
-      <Tabs
-        value={mode}
-        onChange={(_event, nextMode) => setMode(nextMode)}
-        aria-label="Query input mode"
-        sx={{
-          borderBottom: 1,
-          borderColor: "divider",
-          mb: 2,
-          minHeight: 40,
-          "& .MuiTab-root": {
-            minHeight: 40,
-            px: 2.5,
-            textTransform: "none",
-          },
-          "& .Mui-selected": {
-            color: "text.primary",
-            fontWeight: 700,
-          },
-        }}
-      >
-        <Tab label="Layperson" value="layperson" />
-        <Tab label="Expert" value="expert" />
-      </Tabs>
-      {mode === "layperson" ? (
-        <LaypersonVisualQueryInput
-          value={value}
-          onChange={onChange}
-          onSubmit={submit}
-          queryOptions={queryOptions}
-        />
-      ) : (
-        <TextField
-          fullWidth
-          multiline
-          minRows={2}
-          maxRows={6}
-          size="small"
-          label="Visual query"
-          value={value}
-          onChange={(event) => onChange(event.target.value)}
-          onKeyDown={submitExpertQuery}
-          helperText="Press Enter to update; use Shift+Enter for a new line"
-          slotProps={{
-            htmlInput: {
-              autoComplete: "off",
-              spellCheck: false,
-            },
-          }}
-          sx={{
-            "& .MuiInputBase-input": {
-              fontFamily: FONT_FAMILY,
-              overflowWrap: "anywhere",
-            },
-          }}
-        />
-      )}
       <Box
-        sx={{
-          display: "flex",
-          justifyContent: "flex-end",
-          gap: 1,
-          mt: 1.5,
-        }}
+        component="fieldset"
+        disabled={disabled}
+        aria-busy={disabled}
+        sx={{ border: 0, m: 0, minWidth: 0, p: 0 }}
       >
-        <Button
-          type="button"
-          variant="outlined"
-          onClick={copyShareLink}
-          startIcon={<ContentCopyIcon />}
+        <Tabs
+          value={mode}
+          onChange={(_event, nextMode) => setMode(nextMode)}
+          aria-label="Query input mode"
+          sx={{
+            borderBottom: 1,
+            borderColor: "divider",
+            mb: 2,
+            minHeight: 40,
+            "& .MuiTab-root": {
+              minHeight: 40,
+              px: 2.5,
+              textTransform: "none",
+            },
+            "& .Mui-selected": {
+              color: "text.primary",
+              fontWeight: 700,
+            },
+          }}
         >
-          Copy Share Link
-        </Button>
-        <Button type="submit" variant="contained" startIcon={<RefreshIcon />}>
-          Update
-        </Button>
+          <Tab label="Layperson" value="layperson" />
+          <Tab label="Expert" value="expert" />
+        </Tabs>
+        {mode === "layperson" ? (
+          <LaypersonVisualQueryInput
+            value={value}
+            onChange={onChange}
+            onSubmit={submit}
+            queryOptions={queryOptions}
+          />
+        ) : (
+          <TextField
+            fullWidth
+            multiline
+            minRows={2}
+            maxRows={6}
+            size="small"
+            label="Visual query"
+            value={value}
+            onChange={(event) => onChange(event.target.value)}
+            onKeyDown={submitExpertQuery}
+            helperText="Press Enter to update; use Shift+Enter for a new line"
+            slotProps={{
+              htmlInput: {
+                autoComplete: "off",
+                spellCheck: false,
+              },
+            }}
+            sx={{
+              "& .MuiInputBase-input": {
+                fontFamily: FONT_FAMILY,
+                overflowWrap: "anywhere",
+              },
+            }}
+          />
+        )}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            gap: 1,
+            mt: 1.5,
+          }}
+        >
+          <Button
+            type="button"
+            variant="outlined"
+            onClick={copyShareLink}
+            startIcon={<ContentCopyIcon />}
+          >
+            Copy Share Link
+          </Button>
+          <Button type="submit" variant="contained" startIcon={<RefreshIcon />}>
+            Update
+          </Button>
+        </Box>
       </Box>
       <Snackbar
         open={shareFeedback !== null}
