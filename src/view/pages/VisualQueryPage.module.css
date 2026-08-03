@@ -2,5 +2,6 @@
   box-sizing: border-box;
   margin: 0 auto;
   max-width: 68rem;
-  padding: clamp(2rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+  padding: clamp(1.5rem, 2vw, 2rem) clamp(1.25rem, 4vw, 3rem)
+    clamp(2rem, 6vw, 5rem);
 }
