@@ -8,8 +8,6 @@ import QueryMenuAppBar from "../organisms/QueryMenuAppBar.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import styles from "./VisualQueryPage.module.css";
 import VisualContent from "./VisualContent.js";
-import useApplicationLoad from "./useApplicationLoad.js";
-import useLoadingSteps from "./useLoadingSteps.js";
 import useVisualData from "./useVisualData.js";
 import useVisualQuery from "./useVisualQuery.js";
 
@@ -20,8 +18,6 @@ export default function VisualQueryPage() {
   const [input, setInput] = useState(queryString);
   const [visualReadyQuery, setVisualReadyQuery] = useState(null);
   const visualRef = useRef(null);
-  const generationStartTime = useRef(null);
-  const application = useApplicationLoad(isReady);
   const parse = useVisualQuery(isReady, queryString);
   const load = useVisualData(parse.visualQuery);
   const VisualClass = parse.visualQuery?.visualClass;
@@ -33,25 +29,11 @@ export default function VisualQueryPage() {
     load.loadTimeSeconds !== null;
   const isVisualReady = visualDataReady && visualReadyQuery === queryString;
   const isLoading = !isVisualReady;
-  const steps = useLoadingSteps({
-    application,
-    datumSet: load.datumSet,
-    generationStartTime,
-    isLoading,
-    isReady,
-    isVisualReady,
-    load,
-    parse,
-    visualDataReady,
-    VisualClass,
-  });
   useEffect(() => setInput(queryString), [queryString]);
   useEffect(() => {
     if (!visualDataReady || errorMessage) {
-      generationStartTime.current = null;
       return undefined;
     }
-    generationStartTime.current = performance.now();
     const frameId = requestAnimationFrame(() =>
       setVisualReadyQuery(queryString),
     );
@@ -112,12 +94,7 @@ export default function VisualQueryPage() {
             ref={visualRef}
           >
             {isLoading ? (
-              <LoadingProgress
-                heading={
-                  visualDataReady ? "Generating visual" : "Loading visual"
-                }
-                steps={steps}
-              />
+              <LoadingProgress />
             ) : (
               <VisualErrorBoundary key={queryString}>
                 <VisualContent
