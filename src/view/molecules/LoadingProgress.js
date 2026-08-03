@@ -1,6 +1,9 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
 
-export default function LoadingProgress() {
+export default function LoadingProgress({
+  ariaLabel = "Loading visual",
+  label = "Loading visual…",
+}) {
   return (
     <Box
       sx={{
@@ -12,13 +15,13 @@ export default function LoadingProgress() {
       }}
     >
       <CircularProgress
-        aria-label="Loading visual"
+        aria-label={ariaLabel}
         color="info"
         size={64}
         thickness={5}
       />
       <Typography color="text.secondary" variant="body2" sx={{ mt: 1 }}>
-        Loading visual…
+        {label}
       </Typography>
     </Box>
   );

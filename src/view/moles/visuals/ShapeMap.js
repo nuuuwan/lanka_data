@@ -1,6 +1,7 @@
-import { Box, LinearProgress, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 import useGeoJson from "../../../nonview/base/useGeoJson.js";
+import LoadingProgress from "../../molecules/LoadingProgress.js";
 import { getGeoDimInfo } from "../visual_utils/GeoVisualUtils.js";
 import MultiChartLayout from "../../organisms/MultiChartLayout.js";
 import Legend from "./Legend.js";
@@ -31,12 +32,10 @@ export default function ShapeMap({ datumSet, isUnit = false, shapeConfig }) {
   );
   if (!geoJson) {
     return (
-      <Box sx={{ m: 2 }}>
-        <LinearProgress />
-        <Typography color="text.secondary" variant="body2">
-          Loading map data…
-        </Typography>
-      </Box>
+      <LoadingProgress
+        ariaLabel="Loading map data"
+        label="Loading map data…"
+      />
     );
   }
   return (

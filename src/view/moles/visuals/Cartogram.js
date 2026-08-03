@@ -1,9 +1,10 @@
 import { useMemo } from "react";
-import { Box, LinearProgress, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 import useGeoJson from "../../../nonview/base/useGeoJson.js";
 import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
 import { MAP_HEIGHT, MAP_WIDTH } from "../../_cons/MapCons.js";
+import LoadingProgress from "../../molecules/LoadingProgress.js";
 import DimensionUtils from "../visual_utils/DimensionUtils.js";
 import {
   buildFeatureToDataMap,
@@ -159,12 +160,10 @@ export default function Cartogram({ datumSet }) {
 
   if (!geoJson) {
     return (
-      <Box sx={{ m: 2 }}>
-        <LinearProgress />
-        <Typography color="text.secondary" variant="body2">
-          Loading map data…
-        </Typography>
-      </Box>
+      <LoadingProgress
+        ariaLabel="Loading map data"
+        label="Loading map data…"
+      />
     );
   }
 
