@@ -4,7 +4,10 @@ import { Box, Button, Snackbar, Tab, Tabs, TextField } from "@mui/material";
 import { useState } from "react";
 
 import { copyTextToClipboard } from "../../nonview/base/Clipboard.js";
-import { SHARE_LINK_FEEDBACK_DURATION_MS } from "../../nonview/constants/APP.js";
+import {
+  SHARE_LINK_FEEDBACK_DURATION_MS,
+  VISUAL_CONTENT_MAX_WIDTH_PX,
+} from "../../nonview/constants/APP.js";
 import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
 
 export default function VisualQueryForm({
@@ -100,7 +103,7 @@ export default function VisualQueryForm({
               },
             }}
             sx={{
-              maxWidth: "65ch",
+              maxWidth: VISUAL_CONTENT_MAX_WIDTH_PX,
               width: "100%",
               "& .MuiInputBase-input": {
                 overflowWrap: "anywhere",
