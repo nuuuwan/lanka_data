@@ -19,7 +19,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
   const color = (id) => getMarkColor(getColorForDimension(id, sortedData));
   return (
     <Box>
-      <Box sx={{ height: 400 }}>
+      <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
         <ResponsiveMarimekko
           data={sortedData}
           id="id"

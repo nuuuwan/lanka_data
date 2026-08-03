@@ -7,7 +7,7 @@ import InBarLabels from "./InBarLabels.js";
 
 export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
   return (
-    <Box sx={{ height: 400 }}>
+    <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
       <ResponsiveBar
         data={data}
         keys={["value"]}

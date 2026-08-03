@@ -5,7 +5,6 @@ import {
   MAP_LABEL_DARK_COLOR,
   MAP_LABEL_LIGHT_COLOR,
   MAP_UNKNOWN_COLOR,
-  MAP_WIDTH,
   SHAPE_MAP_EDGE_WIDTH,
   SHAPE_MAP_REGION_BORDER_WIDTH,
 } from "../../_cons/MapCons.js";
@@ -17,8 +16,6 @@ export default function ShapeMapGraphic({ data, shapeConfig }) {
       data-testid={shapeConfig.testId}
       sx={{
         width: "100%",
-        maxWidth: MAP_WIDTH,
-        mx: "auto",
         "& svg": { width: "100%", height: "auto", display: "block" },
       }}
     >
