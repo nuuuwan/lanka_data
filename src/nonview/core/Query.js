@@ -104,6 +104,7 @@ export default class Query {
       parentRegionConstraintList.push({
         childClass: ChildClass,
         childValues,
+        parentRegion,
       });
     }
     const aggregate = tokens[tokens.length - 1];
