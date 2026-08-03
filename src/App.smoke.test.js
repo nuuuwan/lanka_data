@@ -63,6 +63,8 @@ const screens = [
   {
     path: "/lanka_data/Vote/ElectionType=presidential+Time+PD%3CED=colombo+Party/Count/Cartogram",
     readyTestId: "cartogram-facets",
+    visualTestId: "cartogram",
+    expectedVisualCount: 9,
   },
   {
     path: "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/HexMap",
@@ -82,7 +84,9 @@ const screens = [
   },
 ];
 
-describe.each(screens)("screen: $path", ({ path, readyTestId }) => {
+describe.each(screens)(
+  "screen: $path",
+  ({ path, readyTestId, visualTestId, expectedVisualCount }) => {
   const originalLocation = window.location;
 
   beforeEach(() => {
@@ -103,5 +107,11 @@ describe.each(screens)("screen: $path", ({ path, readyTestId }) => {
     expect(
       await screen.findByTestId(readyTestId, {}, { timeout: 40_000 }),
     ).toBeInTheDocument();
+    if (expectedVisualCount) {
+      expect(screen.getAllByTestId(visualTestId)).toHaveLength(
+        expectedVisualCount,
+      );
+    }
   });
-});
+  },
+);
