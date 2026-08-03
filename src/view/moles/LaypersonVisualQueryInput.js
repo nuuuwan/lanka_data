@@ -25,7 +25,7 @@ function getVisualQueryParts(visualQueryStr) {
 }
 
 function getVisualLabel(visual) {
-  return visual.replace(/([a-z])([A-Z])/g, "$1 $2");
+  return visual.replaceAll("_", " ").replace(/([a-z])([A-Z])/g, "$1 $2");
 }
 
 function getDimensionParts(dimensions) {
@@ -53,14 +53,12 @@ function getValueOptions(field) {
       return null;
     }
 
-    return ThingClass.validValues().map((value) => {
-      const thing = new ThingClass(value);
-      return {
-        value,
-        label: thing.getLabel(),
-        color: thing.getColor(),
-      };
-    });
+    const colorMap = ThingClass.getColorMap();
+    return ThingClass.validValues().map((value) => ({
+      value,
+      label: value,
+      color: colorMap[value] || null,
+    }));
   } catch {
     return null;
   }
