@@ -13,6 +13,7 @@ export default function VisualQueryForm({
   onChange,
   onSubmit,
   queryOptions,
+  loadedVisualQuery = null,
 }) {
   const [mode, setMode] = useState("expert");
   const [shareFeedback, setShareFeedback] = useState(null);
@@ -106,26 +107,33 @@ export default function VisualQueryForm({
             }}
           />
         )}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            gap: 1,
-            mt: 1.5,
-          }}
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: 1,
+          mt: 1.5,
+        }}
+      >
+        <Button
+          type="button"
+          variant="outlined"
+          onClick={copyShareLink}
+          startIcon={<ContentCopyIcon />}
         >
-          <Button
-            type="button"
-            variant="outlined"
-            onClick={copyShareLink}
-            startIcon={<ContentCopyIcon />}
-          >
-            Copy Share Link
-          </Button>
-          <Button type="submit" variant="contained" startIcon={<RefreshIcon />}>
-            Update
-          </Button>
-        </Box>
+          Copy Share Link
+        </Button>
+        <Button
+          type="submit"
+          variant="contained"
+          startIcon={<RefreshIcon />}
+          disabled={
+            loadedVisualQuery !== null && value.trim() === loadedVisualQuery
+          }
+        >
+          Update
+        </Button>
       </Box>
       <Snackbar
         open={shareFeedback !== null}
