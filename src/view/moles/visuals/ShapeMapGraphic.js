@@ -1,13 +1,13 @@
 import { Box } from "@mui/material";
 
 import {
-  HEX_MAP_EDGE_WIDTH,
-  HEX_MAP_REGION_BORDER_WIDTH,
   MAP_BORDER_COLOR,
   MAP_LABEL_DARK_COLOR,
   MAP_LABEL_LIGHT_COLOR,
   MAP_UNKNOWN_COLOR,
   MAP_WIDTH,
+  SHAPE_MAP_EDGE_WIDTH,
+  SHAPE_MAP_REGION_BORDER_WIDTH,
 } from "../../_cons/MapCons.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
@@ -33,7 +33,7 @@ export default function ShapeMapGraphic({ data, shapeConfig }) {
             points={shape.points.map(([x, y]) => `${x},${y}`).join(" ")}
             fill={shape.display.color ?? MAP_UNKNOWN_COLOR}
             stroke={MAP_BORDER_COLOR}
-            strokeWidth={HEX_MAP_EDGE_WIDTH}
+            strokeWidth={SHAPE_MAP_EDGE_WIDTH}
           >
             <title>
               {shape.feature.properties.name}: {shape.display.label} (
@@ -50,7 +50,7 @@ export default function ShapeMapGraphic({ data, shapeConfig }) {
               x2={end[0]}
               y2={end[1]}
               stroke={MAP_BORDER_COLOR}
-              strokeWidth={HEX_MAP_REGION_BORDER_WIDTH}
+              strokeWidth={SHAPE_MAP_REGION_BORDER_WIDTH}
             />
           ))}
           {data.labels.map(({ angle, center, color, fontSize, id, name }) => (
