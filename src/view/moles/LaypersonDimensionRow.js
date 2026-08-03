@@ -64,6 +64,7 @@ export default function LaypersonDimensionRow({
       </TextField>
       <LaypersonDimensionValue
         dimension={dimension}
+        dimensionOptions={dimensionOptions}
         index={index}
         onChange={onChange}
         onKeyDown={onKeyDown}
