@@ -1,5 +1,6 @@
 export default class DatumSet {
-  constructor(datumList) {
+  constructor(datumList, provenance = []) {
     this.datumList = datumList;
+    this.provenance = provenance;
   }
 }
