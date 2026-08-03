@@ -106,6 +106,10 @@ test("shows visual loading stages with completion times", async () => {
 
   renderPage();
 
+  expect(
+    screen.getByRole("heading", { name: "Lanka Data" }),
+  ).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: "Queries" })).toBeInTheDocument();
   const progressList = await screen.findByRole("list", {
     name: "Visual loading progress",
   });
