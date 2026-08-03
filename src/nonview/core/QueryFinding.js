@@ -33,6 +33,12 @@ function humanizeIdentifier(value) {
     .toLowerCase();
 }
 
+function titleCase(value) {
+  return humanizeIdentifier(value).replace(/\b\w/g, (character) =>
+    character.toUpperCase(),
+  );
+}
+
 function getDimensionLabel(thing) {
   const className = thing.constructor.getClassName();
   return DIMENSION_LABELS[className] ?? humanizeIdentifier(className);
@@ -44,6 +50,15 @@ function getThingValues(thing) {
   );
 }
 
+function getValueParts(values) {
+  return values.flatMap((value, index) => [
+    ...(index > 0
+      ? [index === values.length - 1 ? " and " : ", "]
+      : []),
+    { bold: true, text: titleCase(value) },
+  ]);
+}
+
 function joinLabels(labels) {
   if (labels.length < 2) {
     return labels[0] ?? "";
@@ -51,16 +66,24 @@ function joinLabels(labels) {
   return `${labels.slice(0, -1).join(", ")} and ${labels.at(-1)}`;
 }
 
-function getConstraintText(thing) {
+function getConstraintParts(thing) {
   const className = thing.constructor.getClassName();
-  const values = joinLabels(getThingValues(thing));
+  const values = getThingValues(thing);
+  const valueParts = getValueParts(values);
   if (className === "Time") {
-    return `in ${values}`;
+    return ["in ", ...valueParts];
   }
   if (REGION_DIMENSIONS.has(className)) {
-    return `in ${values} ${getDimensionLabel(thing)}`;
+    return [
+      "in ",
+      ...valueParts,
+      ` ${titleCase(getDimensionLabel(thing))}`,
+    ];
   }
-  return `where ${getDimensionLabel(thing)} is ${values}`;
+  return [
+    `where ${titleCase(getDimensionLabel(thing))} is `,
+    ...valueParts,
+  ];
 }
 
 function getAggregateLabel(query) {
@@ -73,28 +96,38 @@ function getAggregateLabel(query) {
   return humanizeIdentifier(query.aggregate);
 }
 
-export default function getQueryFinding(query) {
+export function getQueryFindingParts(query) {
   const entityClassName = query.entityClass.getClassName();
   const entityLabel =
     ENTITY_LABELS[entityClassName] ?? `${humanizeIdentifier(entityClassName)}s`;
-  const aggregateLabel = getAggregateLabel(query);
+  const aggregateLabel = titleCase(getAggregateLabel(query));
   const groupLabels = query.dimThingList
     .filter((thing) => thing.value === Thing.WILDCARD)
-    .map(getDimensionLabel);
+    .map((thing) => titleCase(getDimensionLabel(thing)));
   const constraints = query.dimThingList
     .filter((thing) => thing.value !== Thing.WILDCARD)
-    .map(getConstraintText);
-  constraints.push(
+    .map(getConstraintParts);
+  constraints.push(...(
     ...(query.parentRegionConstraintList ?? [])
       .map(({ parentRegion }) => parentRegion)
       .filter(Boolean)
-      .map(getConstraintText),
-  );
+      .map(getConstraintParts)
+  ));
 
-  const groupedBy =
-    groupLabels.length > 0 ? ` by ${joinLabels(groupLabels)}` : "";
-  const constrainedBy =
-    constraints.length > 0 ? ` ${constraints.join(" and ")}` : "";
-  const finding = `${aggregateLabel} of ${entityLabel}${groupedBy}${constrainedBy}`;
-  return finding.charAt(0).toUpperCase() + finding.slice(1);
+  return [
+    `${aggregateLabel} of ${titleCase(entityLabel)}`,
+    ...(groupLabels.length > 0 ? [` by ${joinLabels(groupLabels)}`] : []),
+    ...(constraints.length > 0
+      ? [" ", ...constraints.flatMap((constraint, index) => [
+          ...(index > 0 ? [" and "] : []),
+          ...constraint,
+        ])]
+      : []),
+  ];
+}
+
+export default function getQueryFinding(query) {
+  return getQueryFindingParts(query)
+    .map((part) => (typeof part === "string" ? part : part.text))
+    .join("");
 }
