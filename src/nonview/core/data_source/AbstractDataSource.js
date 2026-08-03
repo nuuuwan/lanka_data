@@ -1,5 +1,6 @@
 import WWW from "../../base/WWW.js";
 import Datum from "../Datum.js";
+import Query from "../Query.js";
 
 export default class AbstractDataSource {
   static getBaseURL() {
@@ -18,7 +19,17 @@ export default class AbstractDataSource {
 
   static async getMetadataForQuery(query) {
     const metadata = await this.getMetadata();
-    return metadata[query.getMetadataKey()] || [];
+    const queryMetadataKey = query.getMetadataKey();
+    if (metadata[queryMetadataKey]) {
+      return metadata[queryMetadataKey];
+    }
+    const normalizedQueryMetadataKey =
+      Query.normalizeMetadataKey(queryMetadataKey);
+    const matchingEntry = Object.entries(metadata).find(
+      ([metadataKey]) =>
+        Query.normalizeMetadataKey(metadataKey) === normalizedQueryMetadataKey,
+    );
+    return matchingEntry?.[1] || [];
   }
 
   static async getDatumListForPartialPath(partialPath) {
