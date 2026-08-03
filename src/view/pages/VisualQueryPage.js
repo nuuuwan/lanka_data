@@ -1,7 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Alert, AlertTitle, Box } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-
 import DataContext from "../../nonview/core/data_context/DataContext.js";
 import LoadingProgress from "../molecules/LoadingProgress.js";
 import ChangeViewSection from "../organisms/ChangeViewSection.js";
@@ -77,6 +76,7 @@ export default function VisualQueryPage() {
                 <VisualContent
                   VisualClass={VisualClass}
                   datumSet={load.datumSet}
+                  encodedQuery={queryString}
                   loadTimeSeconds={load.loadTimeSeconds}
                   query={parse.visualQuery.query}
                 />
