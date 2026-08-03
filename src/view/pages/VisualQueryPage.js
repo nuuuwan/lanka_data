@@ -65,7 +65,6 @@ export default function VisualQueryPage() {
           </Alert>
         ) : (
           <Box
-            className={styles.visual}
             data-testid={isLoading ? undefined : "visual-content"}
             ref={visualRef}
           >
@@ -76,7 +75,6 @@ export default function VisualQueryPage() {
                 <VisualContent
                   VisualClass={VisualClass}
                   datumSet={load.datumSet}
-                  encodedQuery={queryString}
                   loadTimeSeconds={load.loadTimeSeconds}
                   query={parse.visualQuery.query}
                 />
