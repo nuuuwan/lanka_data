@@ -1,6 +1,7 @@
 import { ResponsiveBar } from "@nivo/bar";
 import { Box, Typography } from "@mui/material";
 
+import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import InBarLabels from "./InBarLabels.js";
@@ -34,6 +35,7 @@ export default function StackedBarChart({
     <Box>
       <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
         <ResponsiveBar
+          theme={NIVO_THEME}
           data={data}
           keys={keys}
           indexBy="id"

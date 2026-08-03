@@ -1,6 +1,7 @@
 import { ResponsivePie } from "@nivo/pie";
 import { Box, Typography } from "@mui/material";
 
+import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
@@ -8,6 +9,7 @@ export default function PieChart({ data }) {
   return (
     <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
       <ResponsivePie
+        theme={NIVO_THEME}
         data={data}
         margin={{ top: 40, right: 80, bottom: 40, left: 80 }}
         colors={(arc) => getMarkColor(arc.data.color)}

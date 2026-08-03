@@ -1,6 +1,7 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { ResponsiveMarimekko } from "@nivo/marimekko";
 
+import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
@@ -21,6 +22,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
     <Box>
       <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
         <ResponsiveMarimekko
+          theme={NIVO_THEME}
           data={sortedData}
           id="id"
           value="_barWidth"

@@ -1,6 +1,17 @@
 import { createTheme } from "@mui/material/styles";
 
+export const APP_FONT_FAMILY = '"Fira Code", monospace';
+
+export const NIVO_THEME = {
+  text: {
+    fontFamily: APP_FONT_FAMILY,
+  },
+};
+
 export const AppTheme = createTheme({
+  typography: {
+    fontFamily: APP_FONT_FAMILY,
+  },
   palette: {
     primary: {
       main: "#444444",

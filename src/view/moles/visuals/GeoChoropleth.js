@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { Choropleth } from "@nivo/geo";
 
+import { NIVO_THEME } from "../../../AppTheme.js";
 import {
   MAP_BORDER_COLOR,
   MAP_BORDER_WIDTH,
@@ -62,6 +63,7 @@ export default function GeoChoropleth({
       }}
     >
       <Choropleth
+        theme={NIVO_THEME}
         width={MAP_WIDTH}
         height={MAP_HEIGHT}
         features={features}
