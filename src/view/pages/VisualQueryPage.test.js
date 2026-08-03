@@ -74,6 +74,7 @@ test("shows a friendly message when a request returns no data", async () => {
     },
     visualClass: TestVisual,
   });
+
   DataSourceFactory.getDatumSetForQuery.mockResolvedValue({ datumList: [] });
 
   renderPage();
@@ -83,6 +84,43 @@ test("shows a friendly message when a request returns no data", async () => {
   );
   expect(screen.queryByTestId("visual-content")).not.toBeInTheDocument();
   expect(RecentVisualQueries.read()).toEqual([]);
+});
+
+test("shows an answer-first header with secondary query details", async () => {
+  function TestVisual() {
+    return <div>visual</div>;
+  }
+  const query = {
+    aggregate: "Count",
+    entityClass: { getClassName: () => "Person" },
+    dimThingList: [
+      {
+        value: "*",
+        constructor: { getClassName: () => "Religion" },
+      },
+    ],
+  };
+  VisualQuery.fromString.mockResolvedValue({
+    query,
+    visualClass: TestVisual,
+  });
+  DataSourceFactory.getDatumSetForQuery.mockResolvedValue({
+    datumList: [{ query }],
+    provenance: [],
+  });
+
+  renderPage("/Person/Religion/Count/TestVisual");
+
+  const finding = await screen.findByRole("heading", {
+    level: 1,
+    name: "Count of people by religion",
+  });
+  const visual = screen.getByText("visual");
+  expect(finding.compareDocumentPosition(visual)).toBe(
+    Node.DOCUMENT_POSITION_FOLLOWING,
+  );
+  expect(screen.getByText(/Person\/Religion\/Count\/TestVisual/)).toBeVisible();
+  expect(screen.getByTestId("datums-count")).toHaveTextContent("1 datum");
 });
 
 test("shows visual loading stages with completion times", async () => {
@@ -164,7 +202,11 @@ test("shows collapsed query controls after the visual", async () => {
     return <div>visual result</div>;
   }
   VisualQuery.fromString.mockResolvedValue({
-    query: {},
+    query: {
+      aggregate: "Count",
+      dimThingList: [],
+      entityClass: Person,
+    },
     visualClass: TestVisual,
   });
   let resolveDatumSet;

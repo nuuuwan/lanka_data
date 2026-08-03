@@ -1,19 +1,18 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Alert, AlertTitle, Typography, Box } from "@mui/material";
+import { Alert, AlertTitle, Box } from "@mui/material";
 import { useState, useEffect, useContext, useRef } from "react";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
 import DataContext from "../../nonview/core/data_context/DataContext.js";
 import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
-import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import LoadingProgress from "../molecules/LoadingProgress.js";
 import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
 import MultiChartLayout from "../organisms/MultiChartLayout.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import ChangeViewSection from "../organisms/ChangeViewSection.js";
 import QueryMenuAppBar from "../organisms/QueryMenuAppBar.js";
-import VisualHeading from "../molecules/VisualHeading.js";
+import VisualHeader from "../molecules/VisualHeader.js";
 import styles from "./VisualQueryPage.module.css";
 
 function getElapsedTimeSeconds(startTime, currentTime) {
@@ -110,7 +109,13 @@ function ChartVisual({ VisualClass, datumSet }) {
   );
 }
 
-function VisualContent({ VisualClass, datumSet, loadTimeSeconds, query }) {
+function VisualContent({
+  VisualClass,
+  datumSet,
+  loadTimeSeconds,
+  query,
+  encodedQuery,
+}) {
   useEffect(() => {
     console.debug(
       `[VisualQueryPage] Displaying ${VisualClass.name} with ${datumSet.datumList.length} datums`,
@@ -119,15 +124,13 @@ function VisualContent({ VisualClass, datumSet, loadTimeSeconds, query }) {
 
   return (
     <>
-      <VisualHeading query={query} datumSet={datumSet} />
-      <Typography
-        data-testid="datums-count"
-        variant="caption"
-        sx={{ color: "text.secondary" }}
-      >
-        {datumSet.datumList.length} datums loaded in{" "}
-        {FormatUtils.humanizeDuration(loadTimeSeconds)}
-      </Typography>
+      <VisualHeader
+        query={query}
+        encodedQuery={encodedQuery}
+        datumCount={datumSet.datumList.length}
+        datumSet={datumSet}
+        loadTimeSeconds={loadTimeSeconds}
+      />
       {VisualClass.IS_CHART ? (
         <ChartVisual VisualClass={VisualClass} datumSet={datumSet} />
       ) : (
@@ -357,6 +360,7 @@ export default function VisualQueryPage() {
                   datumSet={datumSet}
                   loadTimeSeconds={loadTimeSeconds}
                   query={visualQuery.query}
+                  encodedQuery={visualQueryStr}
                 />
               </VisualErrorBoundary>
             )}
