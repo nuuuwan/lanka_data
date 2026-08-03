@@ -1,4 +1,4 @@
-import { render, screen, waitFor, within } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
 import DataContext from "../../nonview/core/data_context/DataContext.js";
@@ -37,6 +37,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  jest.useRealTimers();
   jest.restoreAllMocks();
 });
 
@@ -105,4 +106,25 @@ test("shows visual loading stages with completion times", async () => {
   resolveDatumSet({ datumList: [{}] });
 
   expect(await screen.findByTestId("visual-content")).toBeInTheDocument();
+});
+
+test("updates active loading time without showing a negative duration", async () => {
+  VisualQuery.fromString.mockReturnValue(new Promise(() => {}));
+  jest.useFakeTimers();
+
+  renderPage();
+
+  const requestStep = within(
+    await screen.findByRole("list", {
+      name: "Visual loading progress",
+    }),
+  ).getAllByRole("listitem")[1];
+  expect(requestStep).toHaveTextContent("0.00 seconds");
+
+  act(() => {
+    jest.advanceTimersByTime(1000);
+  });
+
+  expect(requestStep).toHaveTextContent("1.00 seconds");
+  expect(requestStep).not.toHaveTextContent("-");
 });
