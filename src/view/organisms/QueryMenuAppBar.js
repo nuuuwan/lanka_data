@@ -47,7 +47,7 @@ export default function QueryMenuAppBar({ loadedVisualQuery }) {
   }
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky" sx={{ top: 0 }}>
       <Toolbar>
         <Typography component="h1" variant="h6" sx={{ flexGrow: 1 }}>
           Lanka Data
