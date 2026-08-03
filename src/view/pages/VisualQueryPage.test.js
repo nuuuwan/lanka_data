@@ -3,6 +3,7 @@ import { MemoryRouter, Route, Routes } from "react-router-dom";
 
 import DataContext from "../../nonview/core/data_context/DataContext.js";
 import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
+import RecentVisualQueries from "../../nonview/base/RecentVisualQueries.js";
 import VisualQuery from "../../nonview/core/VisualQuery.js";
 import VisualQueryPage from "./VisualQueryPage.js";
 
@@ -33,6 +34,7 @@ function renderPage(path = "/bad-request") {
 }
 
 beforeEach(() => {
+  localStorage.clear();
   jest.spyOn(console, "error").mockImplementation(() => undefined);
 });
 
@@ -68,6 +70,7 @@ test("shows a friendly message when a request returns no data", async () => {
     "We couldn't find any data for that request.",
   );
   expect(screen.queryByTestId("visual-content")).not.toBeInTheDocument();
+  expect(RecentVisualQueries.read()).toEqual([]);
 });
 
 test("shows visual loading stages with completion times", async () => {
@@ -106,6 +109,9 @@ test("shows visual loading stages with completion times", async () => {
   resolveDatumSet({ datumList: [{}] });
 
   expect(await screen.findByTestId("visual-content")).toBeInTheDocument();
+  await waitFor(() => {
+    expect(RecentVisualQueries.read()).toEqual(["bad-request"]);
+  });
 });
 
 test("updates active loading time without showing a negative duration", async () => {

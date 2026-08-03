@@ -12,6 +12,7 @@ import SquareMap from "./SquareMap.js";
 import UnitHexMap from "./UnitHexMap.js";
 import UnitSquareMap from "./UnitSquareMap.js";
 import TreeMap from "./TreeMap.js";
+import TableVisual from "../../organisms/TableVisual.js";
 
 class VisualFactoryContentsMixin {
   static Blocks = Blocks;
@@ -27,6 +28,7 @@ class VisualFactoryContentsMixin {
   static SquareMap = SquareMap;
   static UnitSquareMap = UnitSquareMap;
   static Cartogram = Cartogram;
+  static Table = TableVisual;
   static JSON = JSONVisual;
 }
 

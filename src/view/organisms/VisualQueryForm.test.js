@@ -1,4 +1,10 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import { useState } from "react";
 
 import VisualQueryForm from "./VisualQueryForm.js";
@@ -10,6 +16,13 @@ const QUERY_OPTIONS = {
     Person: ["Time", "Province", "Religion", "District"],
   },
 };
+
+function setClipboard(clipboard) {
+  Object.defineProperty(navigator, "clipboard", {
+    configurable: true,
+    value: clipboard,
+  });
+}
 
 function StatefulVisualQueryForm({ onChange = jest.fn() }) {
   const [value, setValue] = useState(VISUAL_QUERY);
@@ -181,4 +194,57 @@ test("submits layperson changes with the update button", () => {
   fireEvent.click(screen.getByRole("button", { name: "Update" }));
 
   expect(onSubmit).toHaveBeenCalledTimes(1);
+});
+
+describe("copy share link", () => {
+  beforeEach(() => {
+    window.history.pushState(
+      {},
+      "",
+      `/lanka_data/${VISUAL_QUERY}?view=compact#results`,
+    );
+  });
+
+  afterEach(() => {
+    setClipboard(undefined);
+    delete document.execCommand;
+  });
+
+  test("copies the full visualization URL and confirms success", async () => {
+    const writeText = jest.fn().mockResolvedValue(undefined);
+    setClipboard({ writeText });
+    render(<StatefulVisualQueryForm />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Copy Share Link" }));
+
+    await waitFor(() => {
+      expect(writeText).toHaveBeenCalledWith(window.location.href);
+    });
+    expect(await screen.findByText("Share link copied")).toBeInTheDocument();
+  });
+
+  test("falls back when the Clipboard API is unavailable", async () => {
+    setClipboard(undefined);
+    document.execCommand = jest.fn().mockReturnValue(true);
+    render(<StatefulVisualQueryForm />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Copy Share Link" }));
+
+    await waitFor(() => {
+      expect(document.execCommand).toHaveBeenCalledWith("copy");
+    });
+    expect(await screen.findByText("Share link copied")).toBeInTheDocument();
+  });
+
+  test("reports failure when the link cannot be copied", async () => {
+    setClipboard(undefined);
+    document.execCommand = jest.fn().mockReturnValue(false);
+    render(<StatefulVisualQueryForm />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Copy Share Link" }));
+
+    expect(
+      await screen.findByText("Could not copy share link"),
+    ).toBeInTheDocument();
+  });
 });
