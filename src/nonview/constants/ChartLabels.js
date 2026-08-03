@@ -1,0 +1,4 @@
+export const IN_BAR_LABEL_CHARACTER_WIDTH_RATIO = 0.6;
+export const IN_BAR_LABEL_MIN_FONT_SIZE = 6;
+export const IN_BAR_LABEL_PADDING = 2;
+export const IN_BAR_LABEL_STROKE_WIDTH = 0.3;

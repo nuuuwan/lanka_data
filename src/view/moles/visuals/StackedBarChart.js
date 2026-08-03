@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import { FONT_FAMILY } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
+import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
 
 function getColorForKey(key, data) {
@@ -66,9 +67,17 @@ export default function StackedBarChart({
             </Typography>
           )}
           label={({ value }) => FormatUtils.humanizeValue(value)}
-          labelSkipWidth={12}
-          labelSkipHeight={12}
-          labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
+          enableLabel={false}
+          layers={[
+            "grid",
+            "axes",
+            "bars",
+            InBarLabels,
+            "totals",
+            "markers",
+            "legends",
+            "annotations",
+          ]}
           role="img"
           ariaLabel="Stacked bar chart"
         />

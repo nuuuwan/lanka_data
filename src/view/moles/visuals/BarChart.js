@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import { FONT_FAMILY } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
+import InBarLabels from "./InBarLabels.js";
 
 export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
   return (
@@ -27,6 +28,17 @@ export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
           legendOffset: -50,
         }}
         label={({ value }) => FormatUtils.humanizeValue(value)}
+        enableLabel={false}
+        layers={[
+          "grid",
+          "axes",
+          "bars",
+          InBarLabels,
+          "totals",
+          "markers",
+          "legends",
+          "annotations",
+        ]}
         tooltip={({ value, indexValue }) => (
           <Typography variant="body2">
             {indexValue}: {FormatUtils.humanizeValue(value)}
@@ -40,9 +52,6 @@ export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
           legendPosition: "middle",
           legendOffset: 80,
         }}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
         role="img"
         ariaLabel="Bar chart"
       />
