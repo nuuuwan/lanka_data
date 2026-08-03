@@ -6,13 +6,14 @@ import {
 const RAW_URL =
   "/lanka_data/Vote/ElectionType=presidential+Time=2024+" +
   "PD%3CED=colombo+Party/Count/JSON/raw.json";
+const QUERY_STRING =
+  "Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count";
 
 test("extracts the query from a raw JSON URL", () => {
-  expect(getQueryStringFromRawJSONURL(RAW_URL)).toBe(
-    "Vote/ElectionType=presidential+Time=2024+" +
-      "PD<ED=colombo+Party/Count",
-  );
-  expect(getQueryStringFromRawJSONURL("/lanka_data/Vote/Count/JSON")).toBeNull();
+  expect(getQueryStringFromRawJSONURL(RAW_URL)).toBe(QUERY_STRING);
+  expect(
+    getQueryStringFromRawJSONURL("/lanka_data/Vote/Count/JSON"),
+  ).toBeNull();
 });
 
 test("returns queried data as a JSON attachment", async () => {
@@ -38,10 +39,7 @@ test("returns queried data as a JSON attachment", async () => {
 
   expect(next).not.toHaveBeenCalled();
   expect(ensureRegionData).toHaveBeenCalledTimes(1);
-  expect(parseQuery).toHaveBeenCalledWith(
-    "Vote/ElectionType=presidential+Time=2024+" +
-      "PD<ED=colombo+Party/Count",
-  );
+  expect(parseQuery).toHaveBeenCalledWith(QUERY_STRING);
   expect(getDatumSet).toHaveBeenCalledWith(query);
   expect(response.status).toHaveBeenCalledWith(200);
   expect(response.set).toHaveBeenCalledWith(

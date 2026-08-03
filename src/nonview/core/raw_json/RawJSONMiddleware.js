@@ -1,10 +1,7 @@
 import Query from "../Query.js";
 import DataSourceFactory from "../data_source/DataSourceFactory.js";
 import RegionFactory from "../thing/concept/category_concept/region/RegionFactory.js";
-import {
-  APP_PATH,
-  JSON_DOWNLOAD_FILE_NAME,
-} from "../../constants/APP.js";
+import { APP_PATH, JSON_DOWNLOAD_FILE_NAME } from "../../constants/APP.js";
 
 const RAW_JSON_SUFFIX = `/JSON/${JSON_DOWNLOAD_FILE_NAME}`;
 
@@ -24,7 +21,10 @@ export function getQueryStringFromRawJSONURL(url) {
     return null;
   }
 
-  if (!pathname.startsWith(`${APP_PATH}/`) || !pathname.endsWith(RAW_JSON_SUFFIX)) {
+  if (
+    !pathname.startsWith(`${APP_PATH}/`) ||
+    !pathname.endsWith(RAW_JSON_SUFFIX)
+  ) {
     return null;
   }
 
