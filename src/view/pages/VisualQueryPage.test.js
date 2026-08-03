@@ -139,7 +139,9 @@ test("shows visual loading stages with completion times", async () => {
     "Geography: all available geographies",
   );
   await waitFor(() => {
-    expect(RecentVisualQueries.read()).toEqual(["bad-request"]);
+    expect(RecentVisualQueries.read()).toEqual([
+      expect.objectContaining({ query: "bad-request" }),
+    ]);
   });
 });
 
