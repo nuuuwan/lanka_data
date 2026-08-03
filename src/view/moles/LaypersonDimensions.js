@@ -14,10 +14,11 @@ export default function LaypersonDimensions({
   return (
     <Box
       sx={{
-        bgcolor: "info.light",
-        borderLeft: 4,
-        borderColor: "info.main",
+        bgcolor: "background.paper",
+        border: 1,
+        borderColor: "divider",
         borderRadius: 1,
+        boxShadow: 1,
         gridColumn: "1 / -1",
         p: 1.5,
       }}

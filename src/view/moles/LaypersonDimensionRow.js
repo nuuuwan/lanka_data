@@ -73,8 +73,14 @@ export default function LaypersonDimensionRow({
         disabled={dimensionsCount === 1}
         onClick={onRemove}
         size="small"
+        sx={{
+          color: "error.dark",
+          "&:hover": {
+            bgcolor: "error.light",
+          },
+        }}
       >
-        <DeleteOutlinedIcon fontSize="small" />
+        <DeleteOutlinedIcon />
       </IconButton>
     </Box>
   );

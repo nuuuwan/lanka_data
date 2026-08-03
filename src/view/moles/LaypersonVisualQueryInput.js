@@ -47,7 +47,6 @@ export default function LaypersonVisualQueryInput({
         parts={parts}
         entityOptions={entities}
         onUpdate={updatePart}
-        onKeyDown={submitOnEnter}
       />
       <LaypersonDimensions
         dimensions={dimensions}

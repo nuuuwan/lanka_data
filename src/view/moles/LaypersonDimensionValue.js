@@ -11,6 +11,7 @@ export default function LaypersonDimensionValue({
   if (!dimension.operator)
     return <Box sx={{ display: { xs: "none", sm: "block" } }} />;
   const valueOptions = getValueOptions(dimension.field);
+  const isYear = dimension.field === "Time";
   const options = [
     ...(!valueOptions?.some((option) => option.value === dimension.value) &&
     dimension.value
@@ -21,9 +22,15 @@ export default function LaypersonDimensionValue({
   return (
     <TextField
       select={Boolean(valueOptions)}
-      label={index === 0 ? "Value" : undefined}
+      type={isYear ? "number" : undefined}
+      label={index === 0 ? (isYear ? "Year" : "Value") : undefined}
       size="small"
-      slotProps={{ htmlInput: { "aria-label": "Value" } }}
+      slotProps={{
+        htmlInput: {
+          "aria-label": isYear ? "Year" : "Value",
+          ...(isYear ? { inputMode: "numeric", step: 1 } : {}),
+        },
+      }}
       value={dimension.value}
       onChange={(event) => onChange("value", event.target.value)}
       onKeyDown={onKeyDown}

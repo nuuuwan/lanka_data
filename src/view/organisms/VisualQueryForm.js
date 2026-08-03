@@ -4,9 +4,9 @@ import {
   Box,
   Button,
   Snackbar,
+  Tab,
+  Tabs,
   TextField,
-  ToggleButton,
-  ToggleButtonGroup,
 } from "@mui/material";
 import { useState } from "react";
 
@@ -52,17 +52,29 @@ export default function VisualQueryForm({
       onSubmit={submit}
       sx={{ mb: 2 }}
     >
-      <ToggleButtonGroup
-        exclusive
-        size="small"
+      <Tabs
         value={mode}
-        onChange={(_event, nextMode) => nextMode && setMode(nextMode)}
+        onChange={(_event, nextMode) => setMode(nextMode)}
         aria-label="Query input mode"
-        sx={{ mb: 1.5 }}
+        sx={{
+          borderBottom: 1,
+          borderColor: "divider",
+          mb: 2,
+          minHeight: 40,
+          "& .MuiTab-root": {
+            minHeight: 40,
+            px: 2.5,
+            textTransform: "none",
+          },
+          "& .Mui-selected": {
+            color: "text.primary",
+            fontWeight: 700,
+          },
+        }}
       >
-        <ToggleButton value="layperson">Layperson Mode</ToggleButton>
-        <ToggleButton value="expert">Expert Mode</ToggleButton>
-      </ToggleButtonGroup>
+        <Tab label="Layperson" value="layperson" />
+        <Tab label="Expert" value="expert" />
+      </Tabs>
       {mode === "layperson" ? (
         <LaypersonVisualQueryInput
           value={value}
