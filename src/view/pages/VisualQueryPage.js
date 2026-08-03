@@ -174,10 +174,7 @@ export default function VisualQueryPage() {
           setVisualQuery(nextVisualQuery);
         }
       } catch (error) {
-        console.error(
-          `[VisualQueryPage] Could not parse "${visualQueryStr}"`,
-          error,
-        );
+        console.error("[VisualQueryPage] Could not parse request", error);
         if (!cancelled) {
           setErrorMessage(
             "We couldn't understand that request. Please check your choices and try again.",
@@ -227,10 +224,7 @@ export default function VisualQueryPage() {
           );
         }
       } catch (error) {
-        console.error(
-          `[VisualQueryPage] Could not load data for "${visualQuery.query}"`,
-          error,
-        );
+        console.error("[VisualQueryPage] Could not load requested data", error);
         if (!cancelled) {
           setErrorMessage(
             "We couldn't load the data for that request. Please try again.",
