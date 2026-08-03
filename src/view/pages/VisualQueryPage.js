@@ -7,7 +7,7 @@ import DataContext from "../../nonview/core/data_context/DataContext.js";
 import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
-import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
+import LoadingProgress from "../molecules/LoadingProgress.js";
 import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
 import MultiChartLayout from "../organisms/MultiChartLayout.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
@@ -152,6 +152,7 @@ export default function VisualQueryPage() {
   const [currentTime, setCurrentTime] = useState(() => performance.now());
   const parseStartTime = useRef(null);
   const dataLoadStartTime = useRef(null);
+  const visualRef = useRef(null);
 
   useEffect(() => {
     if (isReady && applicationLoadTimeSeconds === null) {
@@ -278,6 +279,15 @@ export default function VisualQueryPage() {
     !isReady || !VisualClass || datumSet === null || loadTimeSeconds === null;
 
   useEffect(() => {
+    if (!isLoading && !errorMessage) {
+      visualRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [errorMessage, isLoading]);
+
+  useEffect(() => {
     if (!isLoading) {
       return;
     }
@@ -319,7 +329,6 @@ export default function VisualQueryPage() {
   ];
 
   return (
-
     <Box className={styles.page}>
       <VisualQueryForm
         value={visualQueryInput}
@@ -340,18 +349,24 @@ export default function VisualQueryPage() {
           <AlertTitle>Sorry, something went wrong.</AlertTitle>
           {errorMessage}
         </Alert>
-      ) : isLoading ? (
-        <LoadingProgressDialog steps={loadingSteps} />
       ) : (
-        <Box className={styles.visual} data-testid="visual-content">
-          <VisualErrorBoundary key={visualQueryStr}>
-            <VisualContent
-              VisualClass={VisualClass}
-              datumSet={datumSet}
-              loadTimeSeconds={loadTimeSeconds}
-              query={visualQuery.query}
-            />
-          </VisualErrorBoundary>
+        <Box
+          className={styles.visual}
+          data-testid={isLoading ? undefined : "visual-content"}
+          ref={visualRef}
+        >
+          {isLoading ? (
+            <LoadingProgress steps={loadingSteps} />
+          ) : (
+            <VisualErrorBoundary key={visualQueryStr}>
+              <VisualContent
+                VisualClass={VisualClass}
+                datumSet={datumSet}
+                loadTimeSeconds={loadTimeSeconds}
+                query={visualQuery.query}
+              />
+            </VisualErrorBoundary>
+          )}
         </Box>
       )}
       {(errorMessage || !isLoading) && (

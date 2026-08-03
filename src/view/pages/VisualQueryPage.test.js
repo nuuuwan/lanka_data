@@ -9,6 +9,8 @@ import Person from "../../nonview/core/thing/entity/Person.js";
 import VisualQueryPage from "./VisualQueryPage.js";
 
 const VISUAL_QUERY = "Person/Time=2024+Province+Religion/Count/BarChart";
+const originalScrollIntoView = HTMLElement.prototype.scrollIntoView;
+const scrollIntoView = jest.fn();
 
 jest.mock("../../nonview/core/VisualQuery.js", () => ({
   __esModule: true,
@@ -39,11 +41,14 @@ function renderPage(path = "/bad-request") {
 beforeEach(() => {
   localStorage.clear();
   jest.spyOn(console, "error").mockImplementation(() => undefined);
+  HTMLElement.prototype.scrollIntoView = scrollIntoView;
+  scrollIntoView.mockClear();
 });
 
 afterEach(() => {
   jest.useRealTimers();
   jest.restoreAllMocks();
+  HTMLElement.prototype.scrollIntoView = originalScrollIntoView;
 });
 
 test("shows a friendly message when a request cannot be understood", async () => {
@@ -105,8 +110,9 @@ test("shows visual loading stages with completion times", async () => {
     name: "Visual loading progress",
   });
   expect(
-    screen.getByRole("dialog", { name: "Loading visual" }),
+    screen.getByRole("heading", { name: "Loading visual" }),
   ).toBeInTheDocument();
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   await waitFor(() => {
     expect(screen.getAllByLabelText("Complete")).toHaveLength(2);
   });
@@ -129,6 +135,10 @@ test("shows visual loading stages with completion times", async () => {
   });
 
   expect(await screen.findByTestId("visual-content")).toBeInTheDocument();
+  expect(scrollIntoView).toHaveBeenCalledWith({
+    behavior: "smooth",
+    block: "start",
+  });
   expect(
     screen.getByRole("button", { name: "Change this view" }),
   ).toBeInTheDocument();
