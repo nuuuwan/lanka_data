@@ -74,6 +74,12 @@ export default function getQueryFinding(query) {
   const constraints = query.dimThingList
     .filter((thing) => thing.value !== Thing.WILDCARD)
     .map(getConstraintText);
+  constraints.push(
+    ...(query.parentRegionConstraintList ?? [])
+      .map(({ parentRegion }) => parentRegion)
+      .filter(Boolean)
+      .map(getConstraintText),
+  );
 
   const groupedBy =
     groupLabels.length > 0 ? ` by ${joinLabels(groupLabels)}` : "";

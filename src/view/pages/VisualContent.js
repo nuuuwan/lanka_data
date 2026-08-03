@@ -7,7 +7,6 @@ import ChartVisual from "./ChartVisual.js";
 export default function VisualContent({
   VisualClass,
   datumSet,
-  encodedQuery,
   loadTimeSeconds,
   query,
 }) {
@@ -20,9 +19,7 @@ export default function VisualContent({
     <>
       <VisualHeader
         query={query}
-        encodedQuery={encodedQuery}
         datumCount={datumSet.datumList.length}
-        datumSet={datumSet}
         loadTimeSeconds={loadTimeSeconds}
       />
       {VisualClass.IS_CHART ? (
