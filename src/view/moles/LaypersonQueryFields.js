@@ -50,7 +50,7 @@ export default function LaypersonQueryFields({
           ...group.visuals
             .filter((visual) => VisualFactory.list().includes(visual))
             .map((visual) => (
-              <MenuItem key={visual} value={visual}>
+              <MenuItem key={visual} sx={{ pl: 3 }} value={visual}>
                 {getVisualLabel(visual)}
               </MenuItem>
             )),
