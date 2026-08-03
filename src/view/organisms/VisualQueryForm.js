@@ -14,6 +14,7 @@ export default function VisualQueryForm({
   onChange,
   onSubmit,
   queryOptions,
+  loadedVisualQuery = null,
 }) {
   const [mode, setMode] = useState("expert");
   const [shareFeedback, setShareFeedback] = useState(null);
@@ -124,7 +125,15 @@ export default function VisualQueryForm({
           >
             Copy Share Link
           </Button>
-          <Button type="submit" variant="contained" startIcon={<RefreshIcon />}>
+          <Button
+            type="submit"
+            variant="contained"
+            startIcon={<RefreshIcon />}
+            disabled={
+              loadedVisualQuery !== null &&
+              value.trim() === loadedVisualQuery
+            }
+          >
             Update
           </Button>
         </Box>
