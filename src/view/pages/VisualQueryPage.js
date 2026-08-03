@@ -8,6 +8,7 @@ import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
 import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import LoadingProgressDialog from "../molecules/LoadingProgressDialog.js";
+import StartExploring from "../molecules/StartExploring.js";
 import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
 import MultiChartLayout from "../organisms/MultiChartLayout.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
@@ -327,6 +328,7 @@ export default function VisualQueryPage() {
         }
       />
       <Box className={styles.page}>
+        <StartExploring />
         {errorMessage ? (
           <Alert severity="error" data-testid="query-error">
             <AlertTitle>Sorry, something went wrong.</AlertTitle>
