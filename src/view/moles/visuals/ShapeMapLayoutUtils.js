@@ -16,7 +16,7 @@ export function buildShapeMapLayout(
   shapeConfig,
 ) {
   const features = facetInfo.regions.map(({ feature }) =>
-    structuredClone(feature),
+    JSON.parse(JSON.stringify(feature)),
   );
   const weights = Object.fromEntries(
     facetInfo.regions.map(({ id, weight }) => [id, weight]),

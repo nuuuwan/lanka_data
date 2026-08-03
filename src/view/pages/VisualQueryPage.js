@@ -42,7 +42,10 @@ export default function VisualQueryPage() {
   useEffect(() => setInput(queryString), [queryString]);
   useEffect(() => {
     if (!isLoading && !errorMessage)
-      visualRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      visualRef.current?.scrollIntoView?.({
+        behavior: "smooth",
+        block: "start",
+      });
   }, [errorMessage, isLoading]);
   const loadedQuery =
     load.datumSet?.datumList.length > 0 && load.loadTimeSeconds !== null
