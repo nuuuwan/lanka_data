@@ -2,6 +2,7 @@ import { ResponsiveMarimekko } from "@nivo/marimekko";
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 import { FONT_FAMILY } from "../../../AppTheme.js";
+import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import Legend from "./Legend.js";
 
@@ -202,7 +203,7 @@ export default function MarimekkoChart({
             format: (value) => `${Math.round(value * 100)}%`,
           }}
           colors={({ id }) =>
-            getColorForDimension(id, sortedData) ?? theme.palette.primary.main
+            getMarkColor(getColorForDimension(id, sortedData))
           }
           borderWidth={1}
           borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
@@ -220,9 +221,9 @@ export default function MarimekkoChart({
         items={dimensions.map((dimension) => ({
           id: dimension.id,
           label: dimension.id,
-          color:
-            getColorForDimension(dimension.id, sortedData) ??
-            theme.palette.primary.main,
+          color: getMarkColor(
+            getColorForDimension(dimension.id, sortedData),
+          ),
         }))}
       />
     </Box>

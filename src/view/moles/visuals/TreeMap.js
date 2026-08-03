@@ -1,11 +1,11 @@
 import { ResponsiveTreeMap } from "@nivo/treemap";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import { FONT_FAMILY } from "../../../AppTheme.js";
+import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
 export default function TreeMap({ data, xAxisLabel }) {
-  const theme = useTheme();
   const children = Array.from(
     data
       .reduce((nodesById, node) => {
@@ -33,7 +33,7 @@ export default function TreeMap({ data, xAxisLabel }) {
         value="value"
         margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
         tile="squarify"
-        colors={(node) => node.data.color ?? theme.palette.primary.main}
+        colors={(node) => getMarkColor(node.data.color)}
         borderColor={{ from: "color", modifiers: [["darker", 0.3]] }}
         label={({ id }) => id}
         labelSkipSize={24}

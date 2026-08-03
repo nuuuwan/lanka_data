@@ -1,19 +1,18 @@
 import { ResponsivePie } from "@nivo/pie";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import { FONT_FAMILY } from "../../../AppTheme.js";
+import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
 export default function PieChart({ data }) {
-  const theme = useTheme();
-
   return (
     <Box sx={{ height: 400 }}>
       <ResponsivePie
         data={data}
         margin={{ top: 40, right: 80, bottom: 40, left: 80 }}
         theme={{ fontFamily: FONT_FAMILY }}
-        colors={(arc) => arc.data.color ?? theme.palette.primary.main}
+        colors={(arc) => getMarkColor(arc.data.color)}
         borderWidth={1}
         borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
         arcLabel={({ value }) => FormatUtils.humanizeValue(value)}
