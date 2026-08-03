@@ -1,4 +1,4 @@
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import CloseIcon from "@mui/icons-material/Close";
 import { Box, IconButton, MenuItem, TextField } from "@mui/material";
 
 import { DIMENSION_OPERATORS } from "../../nonview/constants/VisualQueryOptions.js";
@@ -81,7 +81,7 @@ export default function LaypersonDimensionRow({
           },
         }}
       >
-        <DeleteOutlinedIcon />
+        <CloseIcon />
       </IconButton>
     </Box>
   );

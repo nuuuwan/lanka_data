@@ -24,7 +24,7 @@ export default function LaypersonDimensions({
       }}
     >
       <Typography component="div" variant="subtitle2" sx={{ mb: 1 }}>
-        Group or filter
+        Facets
       </Typography>
       {dimensions.map((dimension, index) => (
         <LaypersonDimensionRow
