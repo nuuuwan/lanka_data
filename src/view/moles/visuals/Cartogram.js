@@ -15,7 +15,7 @@ import {
   groupDatumListByFacet,
   matchFeatureToValue,
 } from "../visual_utils/GeoVisualUtils.js";
-import MultiChartLayout from "../visual_utils/MultiChartLayout.js";
+import MultiChartLayout from "../../organisms/MultiChartLayout.js";
 import GeoChoropleth from "./GeoChoropleth.js";
 import Legend from "./Legend.js";
 
