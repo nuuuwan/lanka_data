@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 
 import DataProvenancePanel from "./DataProvenancePanel.js";
 
-test("shows a single data source with a safe external link", () => {
+test("shows only a single data source with a safe external link", () => {
   render(
     <DataProvenancePanel
       provenance={[
@@ -18,7 +18,9 @@ test("shows a single data source with a safe external link", () => {
   expect(
     screen.getByRole("heading", { name: "About this data" }),
   ).toBeInTheDocument();
-  expect(screen.getByText("Sri Lanka election results")).toBeInTheDocument();
+  expect(
+   screen.queryByText("Sri Lanka election results"),
+  ).not.toBeInTheDocument();
   expect(
     screen.getByRole("link", {
       name: "The Elections Commission of Sri Lanka",
@@ -31,7 +33,7 @@ test("shows a single data source with a safe external link", () => {
   ).toHaveAttribute("rel", "noopener noreferrer");
 });
 
-test("shows mixed data sources and omits an unavailable URL", () => {
+test("shows mixed data sources only and omits unavailable URLs", () => {
   render(
     <DataProvenancePanel
       provenance={[
@@ -49,11 +51,11 @@ test("shows mixed data sources and omits an unavailable URL", () => {
   );
 
   expect(
-    screen.getByText("Census of Population and Housing 2024"),
-  ).toBeInTheDocument();
+    screen.queryByText("Census of Population and Housing 2024"),
+  ).not.toBeInTheDocument();
   expect(
-    screen.getByText("Census of Population and Housing 2012"),
-  ).toBeInTheDocument();
+    screen.queryByText("Census of Population and Housing 2012"),
+  ).not.toBeInTheDocument();
   expect(screen.getByText("Archived census source")).toBeInTheDocument();
   expect(
     screen.queryByRole("link", { name: "Archived census source" }),
