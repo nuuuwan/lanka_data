@@ -40,11 +40,26 @@ export default function VisualQueryPage() {
   });
   useEffect(() => setInput(queryString), [queryString]);
   useEffect(() => {
-    if (!isLoading && !errorMessage)
-      visualRef.current?.scrollIntoView?.({
-        behavior: "smooth",
-        block: "start",
-      });
+    const visual = visualRef.current;
+    if (isLoading || errorMessage || !visual) return undefined;
+    let animationFrameId;
+    const scrollToVisual = () => {
+      animationFrameId = requestAnimationFrame(() =>
+        visual.scrollIntoView?.({ behavior: "smooth", block: "start" }),
+      );
+    };
+    const scrollWhenReady = () => {
+      if (visual.querySelector('[role="progressbar"]')) return;
+      observer.disconnect();
+      scrollToVisual();
+    };
+    const observer = new MutationObserver(scrollWhenReady);
+    observer.observe(visual, { childList: true, subtree: true });
+    scrollWhenReady();
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(animationFrameId);
+    };
   }, [errorMessage, isLoading]);
   const loadedQuery =
     load.datumSet?.datumList.length > 0 && load.loadTimeSeconds !== null
