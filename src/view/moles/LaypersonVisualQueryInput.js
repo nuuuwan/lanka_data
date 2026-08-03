@@ -22,9 +22,7 @@ export default function LaypersonVisualQueryInput({
   function updatePart(name, nextValue) {
     onChange(
       ["entity", "dimensions", "aggregate", "visual"]
-        .map((partName) =>
-          partName === name ? nextValue : parts[partName],
-        )
+        .map((partName) => (partName === name ? nextValue : parts[partName]))
         .join("/"),
     );
   }

@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   TextField,
   ToggleButton,
   ToggleButtonGroup,
@@ -73,6 +74,9 @@ export default function VisualQueryForm({ value, onChange, onSubmit }) {
           }}
         />
       )}
+      <Button type="submit" variant="contained" sx={{ mt: 1.5 }}>
+        Update
+      </Button>
     </Box>
   );
 }

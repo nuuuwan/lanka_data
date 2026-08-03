@@ -2,8 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 
 import VisualQueryForm from "./VisualQueryForm.js";
 
-const VISUAL_QUERY =
-  "Person/Time=2024+Province+Religion/Count/BarChart";
+const VISUAL_QUERY = "Person/Time=2024+Province+Religion/Count/BarChart";
 
 test("switches between layperson and expert modes", () => {
   render(
@@ -54,6 +53,21 @@ test("submits expert queries on Enter while allowing shifted line breaks", () =>
   const input = screen.getByLabelText("Visual query");
   fireEvent.keyDown(input, { key: "Enter" });
   fireEvent.keyDown(input, { key: "Enter", shiftKey: true });
+
+  expect(onSubmit).toHaveBeenCalledTimes(1);
+});
+
+test("submits layperson changes with the update button", () => {
+  const onSubmit = jest.fn();
+  render(
+    <VisualQueryForm
+      value={VISUAL_QUERY}
+      onChange={jest.fn()}
+      onSubmit={onSubmit}
+    />,
+  );
+
+  fireEvent.click(screen.getByRole("button", { name: "Update" }));
 
   expect(onSubmit).toHaveBeenCalledTimes(1);
 });
