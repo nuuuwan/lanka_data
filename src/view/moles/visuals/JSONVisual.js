@@ -1,11 +1,11 @@
 import { Button } from "@mui/material";
 
-import { getRawJSONURL } from "../../../nonview/base/RawJSON.js";
+import { getJSONDownloadURL } from "../../../nonview/base/RawJSON.js";
 import { JSON_DOWNLOAD_FILE_NAME } from "../../../nonview/constants/APP.js";
 
 export default function JSONVisual({ datumSet }) {
   const json = JSON.stringify(datumSet, null, 2);
-  const downloadURL = getRawJSONURL(window.location);
+  const downloadURL = getJSONDownloadURL(window.location, json);
 
   return (
     <>
