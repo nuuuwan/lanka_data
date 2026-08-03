@@ -104,7 +104,7 @@ export default function AreaBump({ data, xAxisLabel }) {
   const series = toAreaBumpData(data);
 
   return (
-    <Box sx={{ height: 400 }}>
+    <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
       <ResponsiveAreaBump
         data={series}
         margin={{ top: 40, right: 100, bottom: 60, left: 100 }}

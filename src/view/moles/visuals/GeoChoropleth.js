@@ -8,7 +8,6 @@ import {
   MAP_LABEL_DARK_COLOR,
   MAP_LABEL_LIGHT_COLOR,
   MAP_UNKNOWN_COLOR,
-  MAP_WIDTH,
 } from "../../_cons/MapCons.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
@@ -58,8 +57,6 @@ export default function GeoChoropleth({
       data-testid={testId}
       sx={{
         width: "100%",
-        maxWidth: MAP_WIDTH,
-        mx: "auto",
         "& svg": { width: "100%", height: "auto", display: "block" },
       }}
     >
