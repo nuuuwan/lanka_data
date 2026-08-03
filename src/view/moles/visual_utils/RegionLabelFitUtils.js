@@ -9,7 +9,7 @@ import {
   isPointInPolygon,
 } from "./PolygonFitUtils.js";
 
-const ANGLES = [0, 30, 60, 90, 120, 150];
+const ANGLES = [0, 30, 60, 90, -60, -30];
 const GRID_SIZE = 8;
 const ITERATIONS = 10;
 
