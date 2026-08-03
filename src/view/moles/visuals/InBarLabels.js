@@ -4,8 +4,8 @@ import { IN_BAR_LABEL_STROKE_WIDTH } from "../../../nonview/constants/ChartLabel
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
 function getLabel(bar) {
-  if (bar.label !== undefined) return bar.label;
-  const value = bar.datum?.data?.[bar.dimension?.id] ?? bar.value;
+  const value =
+    bar.data?.value ?? bar.datum?.data?.[bar.dimension?.id] ?? bar.value;
   return FormatUtils.humanizeValue(value);
 }
 
