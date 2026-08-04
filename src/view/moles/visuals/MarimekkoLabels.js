@@ -5,9 +5,11 @@ const getFontScale = (screenWidth) => screenWidth / 1200;
 const CHARACTER_WIDTH_RATIO = 0.6;
 const LABEL_ROTATION_RADIANS =
   (Math.abs(X_AXIS_LABEL_ROTATION) * Math.PI) / 180;
+const LABEL_WIDTH_ALLOWANCE = 3;
 
 function getAxisLabel(value, width, fontSize) {
-  const availableWidth = width / Math.cos(LABEL_ROTATION_RADIANS);
+  const availableWidth =
+    (width / Math.cos(LABEL_ROTATION_RADIANS)) * LABEL_WIDTH_ALLOWANCE;
   for (const candidate of [
     value,
     StringUtils.shorten(value, 3),
