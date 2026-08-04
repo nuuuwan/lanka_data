@@ -61,7 +61,9 @@ export default function VisualQueryForm({
 
   function selectRandomQuery() {
     const randomIndex = Math.floor(Math.random() * randomQueries.length);
-    onChange(randomQueries[randomIndex]);
+    const randomQuery = randomQueries[randomIndex];
+    onChange(randomQuery);
+    onSubmit(randomQuery);
   }
 
   return (

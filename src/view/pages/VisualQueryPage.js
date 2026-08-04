@@ -50,8 +50,8 @@ export default function VisualQueryPage() {
     load.datumSet?.datumList.length > 0 && load.loadTimeSeconds !== null
       ? queryString
       : null;
-  const submit = () => {
-    const nextQuery = input.trim();
+  const submit = (valueToSubmit = input) => {
+    const nextQuery = valueToSubmit.trim();
     if (nextQuery && nextQuery !== queryString) navigate(`/${nextQuery}`);
   };
   return (
