@@ -1,15 +1,9 @@
 import { deepEqual, deepToEntries, entriesToDeep } from "./ShallowDictUtils.js";
-export class KeyError extends Error {
-  constructor(key) {
-    super(`Key not found: ${JSON.stringify(key)}`);
-    this.name = "KeyError";
-  }
-}
+import KeyError from "./KeyError.js";
+
+export { default as KeyError } from "./KeyError.js";
 
 export default class ShallowDict {
-  /**
-   * @param {Map<Array, any> | Array<[Array, any]>} [initial]
-   */
   constructor(initial) {
     this._dict = new Map(); // strKey -> { key, value }
     if (initial) {

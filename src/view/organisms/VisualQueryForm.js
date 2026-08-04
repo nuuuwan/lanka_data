@@ -1,14 +1,10 @@
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import RefreshIcon from "@mui/icons-material/Refresh";
-import { Box, Button, Snackbar, Tab, Tabs, TextField } from "@mui/material";
+import { Box, Snackbar } from "@mui/material";
 import { useState } from "react";
 
 import { copyTextToClipboard } from "../../nonview/base/Clipboard.js";
-import {
-  SHARE_LINK_FEEDBACK_DURATION_MS,
-  VISUAL_CONTENT_MAX_WIDTH_PX,
-} from "../../nonview/constants/APP.js";
-import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
+import { SHARE_LINK_FEEDBACK_DURATION_MS } from "../../nonview/constants/APP.js";
+import VisualQueryActions from "../moles/VisualQueryActions.js";
+import VisualQueryFields from "../moles/VisualQueryFields.js";
 
 export default function VisualQueryForm({
   disabled = false,
@@ -55,90 +51,21 @@ export default function VisualQueryForm({
         aria-busy={disabled}
         sx={{ border: 0, m: 0, minWidth: 0, p: 0 }}
       >
-        <Tabs
-          value={mode}
-          onChange={(_event, nextMode) => setMode(nextMode)}
-          aria-label="Query input mode"
-          sx={{
-            borderBottom: 1,
-            borderColor: "divider",
-            mb: 2,
-            minHeight: 40,
-            "& .MuiTab-root": {
-              minHeight: 40,
-              px: 2.5,
-              textTransform: "none",
-            },
-            "& .Mui-selected": {
-              color: "text.primary",
-              fontWeight: 700,
-            },
-          }}
-        >
-          <Tab label="Expert" value="expert" />
-          <Tab label="Layperson" value="layperson" />
-        </Tabs>
-        {mode === "layperson" ? (
-          <LaypersonVisualQueryInput
-            value={value}
-            onChange={onChange}
-            onSubmit={submit}
-            queryOptions={queryOptions}
-          />
-        ) : (
-          <TextField
-            multiline
-            minRows={2}
-            maxRows={6}
-            size="small"
-            label="Visual query"
-            value={value}
-            onChange={(event) => onChange(event.target.value)}
-            onKeyDown={submitExpertQuery}
-            helperText="Press Enter to update; use Shift+Enter for a new line"
-            slotProps={{
-              htmlInput: {
-                autoComplete: "off",
-                spellCheck: false,
-              },
-            }}
-            sx={{
-              maxWidth: VISUAL_CONTENT_MAX_WIDTH_PX,
-              width: "100%",
-              "& .MuiInputBase-input": {
-                overflowWrap: "anywhere",
-              },
-            }}
-          />
-        )}
+        <VisualQueryFields
+          mode={mode}
+          onModeChange={setMode}
+          onChange={onChange}
+          onExpertKeyDown={submitExpertQuery}
+          onSubmit={submit}
+          queryOptions={queryOptions}
+          value={value}
+        />
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "flex-end",
-          gap: 1,
-          mt: 1.5,
-        }}
-      >
-        <Button
-          type="button"
-          variant="outlined"
-          onClick={copyShareLink}
-          startIcon={<ContentCopyIcon />}
-        >
-          Copy Share Link
-        </Button>
-        <Button
-          type="submit"
-          variant="contained"
-          startIcon={<RefreshIcon />}
-          disabled={
-            loadedVisualQuery !== null && value.trim() === loadedVisualQuery
-          }
-        >
-          Update
-        </Button>
-      </Box>
+      <VisualQueryActions
+        loadedVisualQuery={loadedVisualQuery}
+        onCopy={copyShareLink}
+        value={value}
+      />
       <Snackbar
         open={shareFeedback !== null}
         autoHideDuration={SHARE_LINK_FEEDBACK_DURATION_MS}

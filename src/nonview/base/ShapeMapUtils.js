@@ -1,9 +1,4 @@
-export {
-  buildHexGrid,
-  buildSquareGrid,
-  getShapeCounts,
-  getValuePerShape,
-} from "./ShapeMapGrid.js";
+export { getShapeCounts, getValuePerShape } from "./ShapeMapValues.js";
 export { assignShapes } from "./ShapeMapAssignment.js";
 export {
   getBestHexLabelFit,
@@ -14,3 +9,4 @@ export {
   getHexBoundaryEdges,
   getSquareBoundaryEdges,
 } from "./ShapeMapBoundary.js";
+export { buildHexGrid, buildSquareGrid } from "./ShapeMapGrid.js";
