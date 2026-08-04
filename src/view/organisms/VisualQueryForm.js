@@ -2,11 +2,12 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import {
   Box,
-  Button,
   FormControlLabel,
+  IconButton,
   Snackbar,
   Switch,
   TextField,
+  Tooltip,
 } from "@mui/material";
 import { useState } from "react";
 
@@ -62,24 +63,7 @@ export default function VisualQueryForm({
         aria-busy={disabled}
         sx={{ border: 0, m: 0, minWidth: 0, p: 0 }}
       >
-        <FormControlLabel
-          control={
-            <Switch
-              checked={editorOpen}
-              onChange={(event) => setEditorOpen(event.target.checked)}
-            />
-          }
-          label="Editor"
-          sx={{ mb: 1 }}
-        />
-        {editorOpen ? (
-          <LaypersonVisualQueryInput
-            value={value}
-            onChange={onChange}
-            onSubmit={submit}
-            queryOptions={queryOptions}
-          />
-        ) : (
+        <Box sx={{ alignItems: "flex-start", display: "flex", gap: 0.5 }}>
           <TextField
             multiline
             minRows={2}
@@ -97,41 +81,57 @@ export default function VisualQueryForm({
               },
             }}
             sx={{
-              maxWidth: VISUAL_CONTENT_MAX_WIDTH_PX,
-              width: "100%",
+              flex: 1,
+              minWidth: 0,
               "& .MuiInputBase-input": {
                 overflowWrap: "anywhere",
               },
             }}
           />
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Tooltip title="Copy share link">
+              <IconButton
+                aria-label="Copy share link"
+                onClick={copyShareLink}
+                type="button"
+              >
+                <ContentCopyIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Update visualization">
+              <IconButton
+                aria-label="Update visualization"
+                color="primary"
+                disabled={
+                  loadedVisualQuery !== null &&
+                  value.trim() === loadedVisualQuery
+                }
+                type="submit"
+              >
+                <RefreshIcon />
+              </IconButton>
+            </Tooltip>
+          </Box>
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 1 }}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={editorOpen}
+                onChange={(event) => setEditorOpen(event.target.checked)}
+              />
+            }
+            label="Editor"
+          />
+        </Box>
+        {editorOpen && (
+          <LaypersonVisualQueryInput
+            value={value}
+            onChange={onChange}
+            onSubmit={submit}
+            queryOptions={queryOptions}
+          />
         )}
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "flex-end",
-          gap: 1,
-          mt: 1.5,
-        }}
-      >
-        <Button
-          type="button"
-          variant="outlined"
-          onClick={copyShareLink}
-          startIcon={<ContentCopyIcon />}
-        >
-          Copy Share Link
-        </Button>
-        <Button
-          type="submit"
-          variant="contained"
-          startIcon={<RefreshIcon />}
-          disabled={
-            loadedVisualQuery !== null && value.trim() === loadedVisualQuery
-          }
-        >
-          Update
-        </Button>
       </Box>
       <Snackbar
         open={shareFeedback !== null}
