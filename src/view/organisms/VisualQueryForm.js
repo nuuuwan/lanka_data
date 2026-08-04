@@ -1,4 +1,5 @@
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import CasinoIcon from "@mui/icons-material/Casino";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import {
   Box,
@@ -12,10 +13,12 @@ import {
 import { useState } from "react";
 
 import { copyTextToClipboard } from "../../nonview/base/Clipboard.js";
+import RecentVisualQueries from "../../nonview/base/RecentVisualQueries.js";
 import {
   SHARE_LINK_FEEDBACK_DURATION_MS,
   VISUAL_CONTENT_MAX_WIDTH_PX,
 } from "../../nonview/constants/APP.js";
+import { EXAMPLE_QUERIES } from "../../nonview/constants/ExampleQueries.js";
 import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
 
 export default function VisualQueryForm({
@@ -28,6 +31,12 @@ export default function VisualQueryForm({
 }) {
   const [editorOpen, setEditorOpen] = useState(false);
   const [shareFeedback, setShareFeedback] = useState(null);
+  const randomQueries = Array.from(
+    new Set([
+      ...RecentVisualQueries.read().map(({ query }) => query),
+      ...EXAMPLE_QUERIES.map(({ query }) => query),
+    ]),
+  );
 
   function submit(event) {
     event?.preventDefault();
@@ -48,6 +57,11 @@ export default function VisualQueryForm({
     } catch {
       setShareFeedback("Could not copy share link");
     }
+  }
+
+  function selectRandomQuery() {
+    const randomIndex = Math.floor(Math.random() * randomQueries.length);
+    onChange(randomQueries[randomIndex]);
   }
 
   return (
@@ -89,6 +103,18 @@ export default function VisualQueryForm({
             }}
           />
           <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Tooltip title="Choose a random query">
+              <span>
+                <IconButton
+                  aria-label="Choose a random query"
+                  disabled={randomQueries.length === 0}
+                  onClick={selectRandomQuery}
+                  type="button"
+                >
+                  <CasinoIcon />
+                </IconButton>
+              </span>
+            </Tooltip>
             <Tooltip title="Copy share link">
               <IconButton
                 aria-label="Copy share link"
