@@ -5,6 +5,7 @@ import {
   Box,
   FormControlLabel,
   IconButton,
+  Paper,
   Snackbar,
   Switch,
   Tooltip,
@@ -152,7 +153,7 @@ export default function VisualQueryForm({
           />
         </Box>
         {editorOpen && (
-          <Box sx={{ pt: 3 }}>
+          <Paper elevation={1} sx={{ mt: 3, p: { xs: 1.5, sm: 2 } }}>
             <LaypersonVisualQueryInput
               value={value}
               onChange={onChange}
@@ -162,7 +163,7 @@ export default function VisualQueryForm({
             <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 1 }}>
               {refreshButton}
             </Box>
-          </Box>
+          </Paper>
         )}
       </Box>
       <Snackbar
