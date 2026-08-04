@@ -14,7 +14,11 @@ export default function VisualHeader({
     <Box
       component="header"
       ref={titleRef}
-      sx={{ mb: 2, maxWidth: VISUAL_CONTENT_MAX_WIDTH_PX }}
+      sx={{
+        mb: 2,
+        maxWidth: VISUAL_CONTENT_MAX_WIDTH_PX,
+        textAlign: "center",
+      }}
     >
       <Typography component="h1" variant="h4" data-testid="query-finding">
         {getQueryFinding(query)}

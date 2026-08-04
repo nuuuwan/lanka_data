@@ -58,7 +58,11 @@ export default function MultiChartLayout({
             .join(" ")}
           key={facetKey}
         >
-          <Typography component="h2" variant="h6" sx={{ mb: 1 }}>
+          <Typography
+            component="h2"
+            variant="h6"
+            sx={{ mb: 1, textAlign: "center" }}
+          >
             {facetKey
               ? renderFacetTitle(facetKey)
               : humanizeTitle(xAxisDimName)}
