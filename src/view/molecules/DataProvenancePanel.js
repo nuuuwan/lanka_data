@@ -4,9 +4,15 @@ import { Box, Link, Typography } from "@mui/material";
 import styles from "./DataProvenancePanel.module.css";
 
 export default function DataProvenancePanel({ provenance }) {
-  const sources = provenance?.filter(({ source }) => source);
+  const sources = [
+    ...new Map(
+      provenance
+        ?.filter(({ source }) => source)
+        .map((item) => [[item.source, item.url].join("\n"), item]),
+    ).values(),
+  ];
 
-  if (!sources?.length) {
+  if (!sources.length) {
     return null;
   }
 
