@@ -63,9 +63,11 @@ export default function MultiChartLayout({
             variant="h6"
             sx={{ mb: 1, textAlign: "center" }}
           >
-            {facetKey
-              ? renderFacetTitle(facetKey)
-              : humanizeTitle(xAxisDimName)}
+            <Box component="span" sx={{ display: "block", width: "100%" }}>
+              {facetKey
+                ? renderFacetTitle(facetKey)
+                : humanizeTitle(xAxisDimName)}
+            </Box>
           </Typography>
           <Box sx={{ width: "100%", minWidth: 0 }}>
             {renderChart({
