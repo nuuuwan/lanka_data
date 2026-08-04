@@ -1,5 +1,7 @@
 import StringUtils from "../../../nonview/base/String.js";
+import CategoryConcept from "../../../nonview/core/thing/concept/category_concept/CategoryConcept.js";
 import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
+import Thing from "../../../nonview/core/thing/Thing.js";
 import DimensionUtils from "./DimensionUtils.js";
 import FormatUtils from "./FormatUtils.js";
 
@@ -19,7 +21,37 @@ export function getGeoDimInfo(datumList) {
   };
 }
 
+function getFixedCategoryColor(datumList, regionIndex, stackIndex) {
+  if (!datumList.length) {
+    return null;
+  }
+  const { varyingDimIndexes } = DimensionUtils.getDimIndexInfo(datumList);
+  const usedIndexes = new Set(
+    [regionIndex, stackIndex, ...varyingDimIndexes].filter(
+      (index) => index !== null && index !== undefined,
+    ),
+  );
+  const fixedDimThings = datumList[0].query.dimThingList.filter(
+    (_, index) => !usedIndexes.has(index),
+  );
+  const fixedCategoryThings = fixedDimThings.filter(
+    (thing) =>
+      thing instanceof CategoryConcept &&
+      thing.value !== Thing.WILDCARD &&
+      thing.value !== Thing.SPECIAL_VALUE_EXCLUDED_SMALL,
+  );
+  if (fixedCategoryThings.length !== 1) {
+    return null;
+  }
+  return fixedCategoryThings[0].getColor();
+}
+
 export function buildFeatureToDataMap(datumList, regionIndex, stackIndex) {
+  const fixedCategoryColor = getFixedCategoryColor(
+    datumList,
+    regionIndex,
+    stackIndex,
+  );
   const dataMap = new Map();
   for (const datum of datumList) {
     const regionThing = datum.query.dimThingList[regionIndex];
@@ -28,7 +60,9 @@ export function buildFeatureToDataMap(datumList, regionIndex, stackIndex) {
     dataMap.get(regionThing.value).push({
       label: stackThing ? FormatUtils.toThingLabel(stackThing) : "value",
       value: parseFloat(datum.answerThing.value) || 0,
-      color: stackThing ? stackThing.getColor() : regionThing.getColor(),
+      color: stackThing
+        ? stackThing.getColor()
+        : (fixedCategoryColor ?? regionThing.getColor()),
     });
   }
   return dataMap;
