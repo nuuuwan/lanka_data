@@ -1,6 +1,13 @@
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import { Box, Button, Snackbar, Tab, Tabs, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControlLabel,
+  Snackbar,
+  Switch,
+  TextField,
+} from "@mui/material";
 import { useState } from "react";
 
 import { copyTextToClipboard } from "../../nonview/base/Clipboard.js";
@@ -18,7 +25,7 @@ export default function VisualQueryForm({
   queryOptions,
   loadedVisualQuery = null,
 }) {
-  const [mode, setMode] = useState("expert");
+  const [editorOpen, setEditorOpen] = useState(false);
   const [shareFeedback, setShareFeedback] = useState(null);
 
   function submit(event) {
@@ -55,33 +62,17 @@ export default function VisualQueryForm({
         aria-busy={disabled}
         sx={{ border: 0, m: 0, minWidth: 0, p: 0 }}
       >
-        <Tabs
-          value={mode}
-          onChange={(_event, nextMode) => setMode(nextMode)}
-          aria-label="Query input mode"
-          sx={{
-            borderBottom: 1,
-            borderColor: "divider",
-            mb: 2,
-            minHeight: 40,
-            "& .MuiTab-root": {
-              minHeight: 40,
-              px: 2.5,
-              textTransform: "none",
-            },
-            "& .MuiTabs-flexContainer": {
-              justifyContent: "center",
-            },
-            "& .Mui-selected": {
-              color: "text.primary",
-              fontWeight: 700,
-            },
-          }}
-        >
-          <Tab label="Expert" value="expert" />
-          <Tab label="Layperson" value="layperson" />
-        </Tabs>
-        {mode === "layperson" ? (
+        <FormControlLabel
+          control={
+            <Switch
+              checked={editorOpen}
+              onChange={(event) => setEditorOpen(event.target.checked)}
+            />
+          }
+          label="Editor"
+          sx={{ mb: 1 }}
+        />
+        {editorOpen ? (
           <LaypersonVisualQueryInput
             value={value}
             onChange={onChange}
