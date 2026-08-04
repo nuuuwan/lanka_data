@@ -61,7 +61,9 @@ export function buildShapeMapLayout(
   }));
   const facetColor = facetInfo.regions
     .map(({ display }) => display.color)
-    .find((color, index, colors) => color && colors.every((item) => item === color));
+    .find(
+      (color, index, colors) => color && colors.every((item) => item === color),
+    );
   const shapeValues = facetInfo.regions.map(
     ({ id, weight }) => weight / counts[id],
   );
