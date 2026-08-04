@@ -1,11 +1,7 @@
 import { Box, Link, Typography } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { QRCodeSVG } from "qrcode.react";
 
-import { AppTheme } from "../../AppTheme.js";
 import VERSION from "../../nonview/cons/VERSION.js";
-import { APP_QR_CODE_SIZE, APP_URL } from "../../nonview/constants/APP.js";
-import styles from "./AppFooter.module.css";
 
 export default function AppFooter() {
   return (
@@ -35,23 +31,6 @@ export default function AppFooter() {
           @nuuuwan
         </Link>
       </Typography>
-      <br />
-      <Box sx={{ m: 2 }}>
-        <Link
-          aria-label="Open Lanka Data"
-          className={styles.qrCodeLink}
-          href={APP_URL}
-        >
-          <QRCodeSVG
-            bgColor="#ffffff"
-            fgColor={AppTheme.palette.info.main}
-            level="M"
-            size={APP_QR_CODE_SIZE}
-            title="Scan to open Lanka Data"
-            value={APP_URL}
-          />
-        </Link>
-      </Box>
     </Box>
   );
 }
