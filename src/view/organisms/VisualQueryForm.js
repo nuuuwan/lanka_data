@@ -47,7 +47,7 @@ export default function VisualQueryForm({
       component="form"
       aria-label="Visual query form"
       onSubmit={submit}
-      sx={{ mb: 2 }}
+      sx={{ mb: 2, maxWidth: VISUAL_CONTENT_MAX_WIDTH_PX, mx: "auto" }}
     >
       <Box
         component="fieldset"
