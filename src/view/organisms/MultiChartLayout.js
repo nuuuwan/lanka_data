@@ -53,7 +53,10 @@ export default function MultiChartLayout({
     <Box className={styles.grid}>
       {facets.map(({ facetKey, data, total }) => (
         <Box
-          className={[styles.item, fullWidth && styles.fullWidth]
+          className={[
+            styles.item,
+            (fullWidth || facets.length === 1) && styles.fullWidth,
+          ]
             .filter(Boolean)
             .join(" ")}
           key={facetKey}
