@@ -59,6 +59,11 @@ export function buildShapeMapLayout(
     points: shapeConfig.getPoints(center, shapeSize),
     regionId: id,
   }));
+  const facetColor = facetInfo.regions
+    .map(({ display }) => display.color)
+    .find(
+      (color, index, colors) => color && colors.every((item) => item === color),
+    );
   const shapeValues = facetInfo.regions.map(
     ({ id, weight }) => weight / counts[id],
   );
@@ -73,6 +78,7 @@ export function buildShapeMapLayout(
     ),
     shapeSize,
     shapes,
+    facetColor,
     shapeValueMax: Math.max(...shapeValues),
     shapeValueMin: Math.min(...shapeValues),
     total: facetInfo.regions.reduce((sum, { weight }) => sum + weight, 0),

@@ -39,6 +39,13 @@ export function getLegendItems(facetInfos) {
   return [...items.values()];
 }
 
+export function getFacetColor(facetInfo) {
+  const colors = new Set(
+    facetInfo.regions.map(({ display }) => display.color).filter(Boolean),
+  );
+  return colors.size === 1 ? [...colors][0] : null;
+}
+
 export function getMatchedFeatures(
   geoJson,
   datumList,
