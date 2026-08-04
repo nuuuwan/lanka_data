@@ -35,7 +35,7 @@ export default function LaypersonDimensionRow({
         display: "grid",
         gap: 0.75,
         gridTemplateColumns: {
-          xs: "minmax(0, 1fr) auto",
+          xs: "minmax(0, 1fr)",
           sm: "minmax(10rem, 2fr) minmax(7rem, 1fr) minmax(10rem, 2fr) auto",
           ...(isParentDimension
             ? {
@@ -97,6 +97,7 @@ export default function LaypersonDimensionRow({
         size="small"
         sx={{
           color: "error.dark",
+          justifySelf: { xs: "end", sm: "auto" },
           "&:hover": {
             bgcolor: "error.light",
           },
