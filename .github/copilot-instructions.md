@@ -9,31 +9,50 @@ src/nonview/           Non-UI code
   constants/           Constants
 src/view/              UI code
   atoms/               Single-purpose, stateless components (e.g. Button, Input, Icon)
-  moles/           Compositions of atoms, stateless (e.g. SearchBar = Input + Button)
+  moles/               Short for "Molecules": stateless compositions of atoms (e.g. SearchBar = Input + Button)
   organisms/           Stateful components, may compose atoms/moles/other organisms
   pages/               Page-level components, route entry points
 ```
 
+Within any of these folders, add subfolders by function when it improves organization.
+
+## Where new code goes
+
+Answer in order. The first match wins.
+
+1. Does it touch the DOM or render JSX? If no, it goes in `nonview`.
+2. In `nonview`: does it depend on anything specific to this repo (domain models, app constants, API shapes)? If no, it goes in `nonview/base`. If yes, `nonview/core`.
+3. Is it a fixed value rather than logic? `nonview/constants`.
+4. In `view`: does it hold state (`useState`, `useEffect`, `useReducer`, `useContext`, or any other stateful hook)? If yes, it is an organism, or a page if it is a route entry point.
+5. Stateless and composed of other components? A mole.
+6. Stateless and composed of nothing but primitives? An atom.
+
 ## Rules
 
-- Place new code in the correct directory. If a module in `nonview/core` has no repo-specific dependencies, it belongs in `nonview/base`.
-- `view/atoms` and `view/moles` must be stateless: no `useState`, `useEffect`, `useContext`, or other stateful hooks. State lives in `view/organisms` and `view/pages`.
-- moles, short for molecules, compose atoms and other moles. Atoms do not compose other atoms or moles.
-- No magic numbers or config values (URLs, timeouts, thresholds, feature flags) in components. Put them in `nonview/constants`. User-facing copy (JSX text, labels) may stay inline unless the file already imports from a copy/i18n source.
-- UI code may import from `nonview`. `nonview` must never import from `view`.
-- One component per file. File name matches the component name (`SearchBar.js` exports `SearchBar`).
-- Each component's CSS Module is co-located and named to match: `SearchBar.js` + `SearchBar.module.css`. Import as `import styles from './SearchBar.module.css'` and reference classes via `styles.foo`, never string literals.
-- Shared state goes through React Context, defined in `nonview/core` or alongside the `organism`/`page` that owns it. Expose access via a custom hook (`useXxxContext`), not by importing the raw context object into descendants.
-- Custom hooks live in `nonview/core` (or `nonview/base` if generic) and are named `useXxx`.
-- Do not create unittests
+### Layering
 
-### Large files
+1. `view` may import from `nonview`. `nonview` must never import from `view`.
+2. Atoms and moles must be stateless. All state lives in organisms and pages.
+3. Atoms do not import other atoms or moles. Moles compose atoms and other moles.
+4. Shared state goes through React Context, defined in `nonview/core` or alongside the organism or page that owns it. Descendants access it through a custom `useXxxContext` hook, never by importing the raw context object.
+5. Custom hooks live in `nonview/core`, or `nonview/base` if generic. Name them `useXxx`.
 
-- Keep files under 100 lines. If a file grows larger, consider splitting it into smaller, reusable components (atoms or moles) or Mixins or Util classes.
+### Files
 
-### Organization
+1. One component per file. The file name matches the component name: `SearchBar.js` exports `SearchBar`.
+2. Each component's CSS Module is co-located and named to match: `SearchBar.js` and `SearchBar.module.css`. Import as `import styles from './SearchBar.module.css'` and reference classes via `styles.foo`, never string literals.
+3. Target under 100 lines per file. Past that, split into smaller components, mixins, or util classes rather than letting the file grow.
 
-- within high level folders (atoms, moles etc) feel free to add sub folders by function for better organization.
+### Values
+
+1. No magic numbers or config values in components. URLs, timeouts, thresholds, and feature flags belong in `nonview/constants`.
+2. User-facing copy in JSX (labels, text) may stay inline, unless the file already imports from a copy or i18n source, in which case follow that source.
+
+### Scope of change
+
+1. Do not create unit tests.
+2. Delete code that your change leaves unused. Do not delete unrelated code that merely looks unused.
+3. When a file you are already editing violates these rules, fix it. Do not refactor untouched files as a side quest; if you notice a violation elsewhere, mention it instead.
 
 ## After every code change
 
@@ -43,8 +62,9 @@ Run, in order:
 npx prettier --write --log-level warn src
 npx eslint --fix --ext .js src
 npx eslint --ext .js src
+npm run build
 ```
 
-Fix any remaining lint errors before finishing.
+All four must pass with no remaining errors. Fix anything that does not.
 
-Finally, make sure `http://localhost:3000/lanka_data` loads without errors.
+Then confirm `http://localhost:3000/lanka_data` loads with no errors in the page or the browser console.
