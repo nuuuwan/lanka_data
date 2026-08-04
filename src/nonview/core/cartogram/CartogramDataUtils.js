@@ -1,0 +1,60 @@
+import { MAP_HEIGHT, MAP_WIDTH } from "../../constants/MAP.js";
+import {
+  getFeatureRegionId,
+  matchFeatureToValue,
+} from "../visual/GeoVisualUtils.js";
+
+export function buildRegionIdToWeight(features, dataMap) {
+  const regionIdToWeight = {};
+  for (const feature of features) {
+    const match = matchFeatureToValue(feature, dataMap);
+    if (match) {
+      regionIdToWeight[getFeatureRegionId(feature)] = match.items.reduce(
+        (total, item) => total + item.value,
+        0,
+      );
+    }
+  }
+  return regionIdToWeight;
+}
+
+export function getGlobalAreaProjectionScales(cartograms) {
+  const maxTotal = Math.max(...cartograms.map(({ total }) => total), 0);
+  if (maxTotal === 0) {
+    return cartograms.map(() => 0);
+  }
+  const areaScaleFactors = cartograms.map(({ total }) =>
+    Math.sqrt(total / maxTotal),
+  );
+  const globalProjectionScale = Math.min(
+    ...cartograms
+      .map(({ projectionScale }, index) => {
+        const areaScaleFactor = areaScaleFactors[index];
+        return areaScaleFactor > 0
+          ? projectionScale / areaScaleFactor
+          : Infinity;
+      })
+      .filter(Number.isFinite),
+  );
+  return areaScaleFactors.map(
+    (areaScaleFactor) => globalProjectionScale * areaScaleFactor,
+  );
+}
+
+export function getScaledProjectionTranslation(translation, scaleRatio) {
+  return translation.map((value) => 0.5 + (value - 0.5) * scaleRatio);
+}
+
+export function applyProjectionScale(cartogram, projectionScale) {
+  const projectionTranslation = getScaledProjectionTranslation(
+    cartogram.projectionTranslation,
+    projectionScale / cartogram.projectionScale,
+  );
+  cartogram.projection
+    .scale(projectionScale)
+    .translate([
+      projectionTranslation[0] * MAP_WIDTH,
+      projectionTranslation[1] * MAP_HEIGHT,
+    ]);
+  return projectionTranslation;
+}
