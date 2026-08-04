@@ -1,4 +1,5 @@
 import StringUtils from "../../../nonview/base/String.js";
+import Time from "../../../nonview/core/thing/concept/atoms/Time.js";
 import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
 import DimensionUtils from "./DimensionUtils.js";
 import FormatUtils from "./FormatUtils.js";
@@ -12,7 +13,11 @@ export function getGeoDimInfo(datumList) {
     regionDimIndex,
     regionClass: datumList[0].query.dimThingList[regionDimIndex].constructor,
     stackDimIndex: varyingDimIndexes
-      .filter((dimIndex) => dimIndex !== regionDimIndex)
+      .filter(
+        (dimIndex) =>
+          dimIndex !== regionDimIndex &&
+          !(datumList[0].query.dimThingList[dimIndex] instanceof Time),
+      )
       .at(-1),
   };
 }
