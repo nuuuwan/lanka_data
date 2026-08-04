@@ -1,12 +1,28 @@
+import StringUtils from "../../../nonview/base/String.js";
+
 const getFontScale = (screenWidth) => screenWidth / 1200;
+
+function getAxisLabel(value, width) {
+  if (width >= 20) {
+    return value;
+  }
+  if (width >= 14) {
+    return StringUtils.shorten(value, 3);
+  }
+  if (width >= 9) {
+    return StringUtils.shorten(value, 2);
+  }
+  return StringUtils.shorten(value, 1);
+}
 
 export function BarLabelsLayer({ data, screenWidth }) {
   const congestionScale = Math.max(0.7, 1 / Math.sqrt(data.length));
   const fontScale = getFontScale(screenWidth) * congestionScale;
   return (
     <>
-      {data.map((datum) =>
-        datum.width < 20 ? null : (
+      {data.map((datum) => {
+        const label = getAxisLabel(datum.id, datum.width);
+        return (
           <text
             key={datum.id}
             x={datum.x + datum.width / 2}
@@ -16,15 +32,15 @@ export function BarLabelsLayer({ data, screenWidth }) {
             style={{
               fontSize: Math.max(
                 6,
-                Math.min(10, (datum.width / 10) * fontScale),
+                Math.min(10, (Math.max(datum.width, 8) / 10) * fontScale),
               ),
               fill: "#333",
             }}
           >
-            {datum.id}
+            {label}
           </text>
-        ),
-      )}
+        );
+      })}
     </>
   );
 }
