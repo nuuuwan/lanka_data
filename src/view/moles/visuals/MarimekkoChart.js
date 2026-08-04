@@ -3,6 +3,7 @@ import { ResponsiveMarimekko } from "@nivo/marimekko";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
+import { getSlantedXAxis } from "../visual_utils/ChartAxisUtils.js";
 import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
 import { BarLabelsLayer } from "./MarimekkoLabels.js";
@@ -34,16 +35,11 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
           axisTop={null}
           axisRight={null}
           enableGridY={false}
-          axisBottom={{
-            orient: "bottom",
+          axisBottom={getSlantedXAxis(xAxisLabel, {
+            format: () => "",
             tickSize: 0,
             tickPadding: 0,
-            tickRotation: 0,
-            legend: xAxisLabel,
-            legendOffset: 40,
-            legendPosition: "middle",
-            format: () => "",
-          }}
+          })}
           layers={[
             "grid",
             "axes",
@@ -64,7 +60,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
           colors={({ id }) => color(id)}
           borderWidth={1}
           borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
-          margin={{ top: 40, right: 50, bottom: 40, left: 80 }}
+          margin={{ top: 40, right: 50, bottom: 100, left: 80 }}
           tooltip={({ id, value, color: markColor }) => (
             <Box sx={{ backgroundColor: "white", p: 1, border: 1 }}>
               <Typography variant="body2" sx={{ color: markColor }}>

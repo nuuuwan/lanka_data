@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
+import { getSlantedXAxis } from "../visual_utils/ChartAxisUtils.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
@@ -54,14 +55,7 @@ export default function StackedBarChart({
             legendPosition: "middle",
             legendOffset: -50,
           }}
-          axisBottom={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: -45,
-            legend: xAxisLabel,
-            legendPosition: "middle",
-            legendOffset: 80,
-          }}
+          axisBottom={getSlantedXAxis(xAxisLabel)}
           tooltip={({ value, indexValue, id }) => (
             <Typography variant="body2">
               {indexValue} - {id}: {FormatUtils.humanizeValue(value)}

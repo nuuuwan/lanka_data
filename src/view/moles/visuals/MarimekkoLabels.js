@@ -1,4 +1,5 @@
 import StringUtils from "../../../nonview/base/String.js";
+import { X_AXIS_LABEL_ROTATION } from "../visual_utils/ChartAxisUtils.js";
 
 const getFontScale = (screenWidth) => screenWidth / 1200;
 
@@ -26,9 +27,12 @@ export function BarLabelsLayer({ data, screenWidth }) {
           <text
             key={datum.id}
             x={datum.x + datum.width / 2}
-            y={datum.y + datum.height + 12}
-            textAnchor="middle"
+            y={datum.y + datum.height + 8}
+            textAnchor="end"
             dominantBaseline="hanging"
+            transform={`rotate(${X_AXIS_LABEL_ROTATION} ${
+              datum.x + datum.width / 2
+            } ${datum.y + datum.height + 8})`}
             style={{
               fontSize: Math.max(
                 6,
