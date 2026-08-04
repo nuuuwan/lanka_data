@@ -23,10 +23,16 @@ export function buildFeatureToDataMap(datumList, regionIndex, stackIndex) {
     const regionThing = datum.query.dimThingList[regionIndex];
     if (!dataMap.has(regionThing.value)) dataMap.set(regionThing.value, []);
     const stackThing = datum.query.dimThingList[stackIndex];
+    const colorThing =
+      stackThing ??
+      datum.query.dimThingList.findLast(
+        (_, dimIndex) => dimIndex !== regionIndex,
+      ) ??
+      regionThing;
     dataMap.get(regionThing.value).push({
       label: stackThing ? FormatUtils.toThingLabel(stackThing) : "value",
       value: parseFloat(datum.answerThing.value) || 0,
-      color: stackThing ? stackThing.getColor() : regionThing.getColor(),
+      color: colorThing.getColor(),
     });
   }
   return dataMap;
