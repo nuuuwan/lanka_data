@@ -1,5 +1,4 @@
 import BugReportOutlinedIcon from "@mui/icons-material/BugReportOutlined";
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
@@ -53,10 +52,6 @@ export default function QueryMenuAppBar({ loadedVisualQuery }) {
     navigate(`/${query}`);
   }
 
-  function clearRecentQueries() {
-    setRecentQueries(RecentVisualQueries.clear());
-  }
-
   return (
     <AppBar position="sticky" sx={{ top: 0 }}>
       <Toolbar>
@@ -95,23 +90,19 @@ export default function QueryMenuAppBar({ loadedVisualQuery }) {
               </MenuItem>
             ))
           )}
-          {recentQueries.length > 0 && (
-            <MenuItem onClick={clearRecentQueries}>
-              <ListItemIcon>
-                <DeleteOutlinedIcon fontSize="small" />
-              </ListItemIcon>
-              Clear recent queries
-            </MenuItem>
+          {recentQueries.length < 5 && (
+            <>
+              <Divider />
+              <ListSubheader>Example queries</ListSubheader>
+              {EXAMPLE_QUERIES.map(({ query }) => (
+                <MenuItem key={query} onClick={() => openQuery(query)}>
+                  <span className={styles.queryDetails}>
+                    <span className={styles.query}>{query}</span>
+                  </span>
+                </MenuItem>
+              ))}
+            </>
           )}
-          <Divider />
-          <ListSubheader>Example queries</ListSubheader>
-          {EXAMPLE_QUERIES.map(({ query }) => (
-            <MenuItem key={query} onClick={() => openQuery(query)}>
-              <span className={styles.queryDetails}>
-                <span className={styles.query}>{query}</span>
-              </span>
-            </MenuItem>
-          ))}
         </Menu>
         <IconButton
           aria-label="Open links menu"

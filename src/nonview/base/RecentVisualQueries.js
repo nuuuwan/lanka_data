@@ -72,14 +72,4 @@ export default class RecentVisualQueries {
 
     return queries;
   }
-
-  static clear(storage) {
-    try {
-      this.getStorage(storage)?.removeItem(RECENT_VISUAL_QUERIES_STORAGE_KEY);
-    } catch {
-      // Clearing the in-memory menu is still safe when storage is unavailable.
-    }
-
-    return [];
-  }
 }
