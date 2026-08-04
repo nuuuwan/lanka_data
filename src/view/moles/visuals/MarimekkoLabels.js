@@ -2,16 +2,22 @@ import StringUtils from "../../../nonview/base/String.js";
 import { X_AXIS_LABEL_ROTATION } from "../visual_utils/ChartAxisUtils.js";
 
 const getFontScale = (screenWidth) => screenWidth / 1200;
+const CHARACTER_WIDTH_RATIO = 0.6;
+const LABEL_ROTATION_RADIANS =
+  (Math.abs(X_AXIS_LABEL_ROTATION) * Math.PI) / 180;
 
-function getAxisLabel(value, width) {
-  if (width >= 20) {
-    return value;
-  }
-  if (width >= 14) {
-    return StringUtils.shorten(value, 3);
-  }
-  if (width >= 9) {
-    return StringUtils.shorten(value, 2);
+function getAxisLabel(value, width, fontSize) {
+  const availableWidth = width / Math.cos(LABEL_ROTATION_RADIANS);
+  for (const candidate of [
+    value,
+    StringUtils.shorten(value, 3),
+    StringUtils.shorten(value, 2),
+    StringUtils.shorten(value, 1),
+  ]) {
+    const textWidth = candidate.length * fontSize * CHARACTER_WIDTH_RATIO;
+    if (textWidth <= availableWidth) {
+      return candidate;
+    }
   }
   return StringUtils.shorten(value, 1);
 }
@@ -22,7 +28,11 @@ export function BarLabelsLayer({ data, screenWidth }) {
   return (
     <>
       {data.map((datum) => {
-        const label = getAxisLabel(datum.id, datum.width);
+        const fontSize = Math.max(
+          6,
+          Math.min(10, (Math.max(datum.width, 8) / 10) * fontScale),
+        );
+        const label = getAxisLabel(datum.id, datum.width, fontSize);
         return (
           <text
             key={datum.id}
@@ -34,10 +44,7 @@ export function BarLabelsLayer({ data, screenWidth }) {
               datum.x + datum.width / 2
             } ${datum.y + datum.height + 8})`}
             style={{
-              fontSize: Math.max(
-                6,
-                Math.min(10, (Math.max(datum.width, 8) / 10) * fontScale),
-              ),
+              fontSize,
               fill: "#333",
             }}
           >
