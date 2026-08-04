@@ -7,9 +7,20 @@ import FormatUtils from "../visual_utils/FormatUtils.js";
 import PieArcLabel from "./PieArcLabel.js";
 
 const CHART_HEIGHT = 400;
+const PIE_START_ANGLE = -90;
+const TOTAL_LABEL_OFFSET_PX = 12;
+
+function getSortedData(data) {
+  return [...data].sort(
+    (first, second) =>
+      second.value - first.value || first.id.localeCompare(second.id),
+  );
+}
 
 export default function PieChart({ data, total, maxTotal }) {
   const scale = maxTotal > 0 && total > 0 ? Math.sqrt(total / maxTotal) : 0;
+  const sortedData = getSortedData(data);
+  const totalLabel = FormatUtils.humanizeValue(total);
 
   return (
     <Box sx={{ width: "100%", minHeight: CHART_HEIGHT * scale }}>
@@ -22,7 +33,7 @@ export default function PieChart({ data, total, maxTotal }) {
       >
         <ResponsivePie
           theme={NIVO_THEME}
-          data={data}
+          data={sortedData}
           margin={{ top: 40, right: 80, bottom: 40, left: 80 }}
           colors={(arc) => getMarkColor(arc.data.color)}
           borderWidth={1}
@@ -32,6 +43,21 @@ export default function PieChart({ data, total, maxTotal }) {
           arcLabelsComponent={PieArcLabel}
           enableArcLinkLabels={false}
           innerRadius={0.5}
+          startAngle={PIE_START_ANGLE}
+          layers={[
+            "arcs",
+            "arcLabels",
+            ({ centerX, centerY }) => (
+              <text
+                x={centerX}
+                y={centerY + TOTAL_LABEL_OFFSET_PX}
+                textAnchor="middle"
+                style={{ fontSize: 18, fontWeight: 600 }}
+              >
+                {totalLabel}
+              </text>
+            ),
+          ]}
           tooltip={({ datum }) => (
             <Typography variant="body2">
               {datum.id}: {FormatUtils.humanizeValue(datum.value)}
