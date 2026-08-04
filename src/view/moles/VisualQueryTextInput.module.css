@@ -1,0 +1,40 @@
+.container {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  min-height: 56px;
+}
+
+.container:focus-within {
+  border-color: #444444;
+  box-shadow: 0 0 0 1px #444444;
+}
+
+.textarea {
+  caret-color: #000000;
+  outline: none;
+}
+
+.highlight :global(.token.entity) {
+  color: #00534e;
+}
+
+.highlight :global(.token.dimension) {
+  color: #9e1420;
+}
+
+.highlight :global(.token.aggregate) {
+  color: #880088;
+}
+
+.highlight :global(.token.visual) {
+  color: #00058f;
+}
+
+.highlight :global(.token.value) {
+  color: #444444;
+}
+
+.highlight :global(.token.operator) {
+  color: #669794;
+}

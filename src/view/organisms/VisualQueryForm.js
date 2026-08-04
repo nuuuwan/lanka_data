@@ -7,7 +7,6 @@ import {
   IconButton,
   Snackbar,
   Switch,
-  TextField,
   Tooltip,
   Typography,
 } from "@mui/material";
@@ -17,10 +16,11 @@ import { copyTextToClipboard } from "../../nonview/base/Clipboard.js";
 import RecentVisualQueries from "../../nonview/base/RecentVisualQueries.js";
 import {
   SHARE_LINK_FEEDBACK_DURATION_MS,
-  VISUAL_CONTENT_MAX_WIDTH_PX,
+  VISUAL_QUERY_MAX_WIDTH_PX,
 } from "../../nonview/constants/APP.js";
 import { EXAMPLE_QUERIES } from "../../nonview/constants/ExampleQueries.js";
 import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
+import VisualQueryTextInput from "../moles/VisualQueryTextInput.js";
 
 export default function VisualQueryForm({
   disabled = false,
@@ -93,7 +93,7 @@ export default function VisualQueryForm({
       component="form"
       aria-label="Visual query form"
       onSubmit={submit}
-      sx={{ mb: 2, maxWidth: VISUAL_CONTENT_MAX_WIDTH_PX, mx: "auto" }}
+      sx={{ mb: 2, maxWidth: VISUAL_QUERY_MAX_WIDTH_PX, mx: "auto" }}
     >
       <Box
         component="fieldset"
@@ -101,28 +101,11 @@ export default function VisualQueryForm({
         aria-busy={disabled}
         sx={{ border: 0, m: 0, minWidth: 0, p: 0 }}
       >
-        <TextField
-          multiline
-          minRows={2}
-          maxRows={6}
-          size="small"
-          label="Visual query"
+        <VisualQueryTextInput
+          disabled={disabled}
+          onChange={onChange}
           value={value}
-          onChange={(event) => onChange(event.target.value)}
           onKeyDown={submitExpertQuery}
-          helperText="Press Enter to update"
-          slotProps={{
-            htmlInput: {
-              autoComplete: "off",
-              spellCheck: false,
-            },
-          }}
-          sx={{
-            width: "100%",
-            "& .MuiInputBase-input": {
-              overflowWrap: "anywhere",
-            },
-          }}
         />
         <Box
           sx={{
