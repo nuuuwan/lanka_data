@@ -9,7 +9,7 @@ src/nonview/           Non-UI code
   constants/           Constants
 src/view/              UI code
   atoms/               Single-purpose, stateless components (e.g. Button, Input, Icon)
-  molecules/           Compositions of atoms, stateless (e.g. SearchBar = Input + Button)
+  moles/           Compositions of atoms, stateless (e.g. SearchBar = Input + Button)
   organisms/           Stateful components, may compose atoms/molecules/other organisms
   pages/               Page-level components, route entry points
 ```
