@@ -23,6 +23,7 @@ export default function LaypersonDimensionRow({
   onKeyDown,
   onRemove,
 }) {
+  const isParentDimension = dimension.operator === "<";
   const fieldOptions = dimensionOptions.includes(dimension.field)
     ? dimensionOptions
     : [dimension.field, ...dimensionOptions].filter(Boolean);
@@ -36,6 +37,11 @@ export default function LaypersonDimensionRow({
         gridTemplateColumns: {
           xs: "minmax(0, 1fr) auto",
           sm: "minmax(10rem, 2fr) minmax(7rem, 1fr) minmax(10rem, 2fr) auto",
+          ...(isParentDimension
+            ? {
+                md: "minmax(10rem, 1fr) minmax(7rem, auto) minmax(23rem, 3fr) auto",
+              }
+            : {}),
         },
         mb: 0.75,
       }}

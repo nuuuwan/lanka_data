@@ -47,7 +47,7 @@ export default function LaypersonDimensionValue({
           gap: 0.75,
           gridTemplateColumns: {
             xs: "1fr",
-            sm: "minmax(8rem, 1fr) minmax(5rem, auto) minmax(8rem, 1fr)",
+            md: "minmax(8rem, 1fr) minmax(5rem, auto) minmax(8rem, 1fr)",
           },
         }}
       >
