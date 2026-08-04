@@ -5,7 +5,6 @@ import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import PieArcLabel from "./PieArcLabel.js";
-import Legend from "./Legend.js";
 
 const CHART_HEIGHT = 400;
 
@@ -31,6 +30,7 @@ export default function PieChart({ data, total, maxTotal }) {
           arcLabel={({ value }) => FormatUtils.humanizeValue(value)}
           arcLabelsSkipAngle={10}
           arcLabelsComponent={PieArcLabel}
+          enableArcLinkLabels={false}
           innerRadius={0.5}
           tooltip={({ datum }) => (
             <Typography variant="body2">
@@ -41,15 +41,9 @@ export default function PieChart({ data, total, maxTotal }) {
           ariaLabel="Pie chart"
         />
       </Box>
-      <Legend
-        items={data.map((item) => ({
-          id: item.id,
-          label: item.id,
-          color: item.color,
-        }))}
-      />
     </Box>
   );
 }
 
 PieChart.IS_CHART = true;
+PieChart.IS_PIE = true;

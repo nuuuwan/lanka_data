@@ -57,6 +57,18 @@ function getChartFacets(datumList, VisualClass) {
   };
 }
 
+function getPieLegendItems(facets) {
+  const itemsById = new Map();
+  for (const { data } of facets) {
+    for (const { id, color } of data) {
+      if (!itemsById.has(id)) {
+        itemsById.set(id, { id, label: id, color });
+      }
+    }
+  }
+  return Array.from(itemsById.values());
+}
+
 export default function ChartVisual({ VisualClass, datumSet }) {
   const info = getChartFacets(datumSet.datumList, VisualClass);
   const maxTotal = Math.max(...info.facets.map(({ total }) => total), 0);
@@ -66,6 +78,9 @@ export default function ChartVisual({ VisualClass, datumSet }) {
       xAxisDimName={info.xAxisDimName}
       yAxisLabel={info.yAxisLabel}
       fullWidth={VisualClass.IS_FULL_WIDTH}
+      legendItems={
+        VisualClass.IS_PIE ? getPieLegendItems(info.facets) : undefined
+      }
       renderChart={({ data, total, xAxisLabel }) => (
         <VisualClass
           data={data}

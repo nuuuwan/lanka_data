@@ -30,7 +30,9 @@ export default function PieArcLabel({ datum, label, style }) {
     <animated.text
       dominantBaseline="central"
       textAnchor="middle"
-      style={{ ...style, fill: color, fontSize }}
+      transform={style.transform}
+      fill={color}
+      style={{ fontSize }}
     >
       {label}
     </animated.text>
