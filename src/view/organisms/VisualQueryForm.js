@@ -9,6 +9,7 @@ import {
   Switch,
   TextField,
   Tooltip,
+  Typography,
 } from "@mui/material";
 import { useState } from "react";
 
@@ -31,6 +32,9 @@ export default function VisualQueryForm({
 }) {
   const [editorOpen, setEditorOpen] = useState(false);
   const [shareFeedback, setShareFeedback] = useState(null);
+  const isEdited =
+    loadedVisualQuery !== null && value.trim() !== loadedVisualQuery;
+  const isRefreshDisabled = loadedVisualQuery !== null && !isEdited;
   const randomQueries = Array.from(
     new Set([
       ...RecentVisualQueries.read().map(({ query }) => query),
@@ -67,20 +71,21 @@ export default function VisualQueryForm({
   }
 
   const refreshButton = (
-    <Tooltip title="Update visualization">
-      <span>
-        <IconButton
-          aria-label="Update visualization"
-          color="primary"
-          disabled={
-            loadedVisualQuery !== null && value.trim() === loadedVisualQuery
-          }
-          type="submit"
-        >
-          <RefreshIcon />
-        </IconButton>
-      </span>
-    </Tooltip>
+    <Box sx={{ alignItems: "center", display: "flex", gap: 0.5 }}>
+      {isEdited && <Typography variant="caption">Edited</Typography>}
+      <Tooltip title="Update visualization">
+        <span>
+          <IconButton
+            aria-label="Update visualization"
+            color="primary"
+            disabled={isRefreshDisabled}
+            type="submit"
+          >
+            <RefreshIcon />
+          </IconButton>
+        </span>
+      </Tooltip>
+    </Box>
   );
 
   return (
