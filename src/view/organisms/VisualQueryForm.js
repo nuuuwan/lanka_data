@@ -69,6 +69,9 @@ export default function VisualQueryForm({
               px: 2.5,
               textTransform: "none",
             },
+            "& .MuiTabs-flexContainer": {
+              justifyContent: "center",
+            },
             "& .Mui-selected": {
               color: "text.primary",
               fontWeight: 700,
