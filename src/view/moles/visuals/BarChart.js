@@ -3,20 +3,25 @@ import { Box, Typography } from "@mui/material";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
-import { getSlantedXAxis } from "../visual_utils/ChartAxisUtils.js";
+import {
+  BAR_CHART_MIN_HEIGHT_PX,
+  getSlantedXAxis,
+} from "../visual_utils/ChartAxisUtils.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import InBarLabels from "./InBarLabels.js";
 
 export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
   return (
-    <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
+    <Box
+      sx={{ width: "100%", height: "100%", minHeight: BAR_CHART_MIN_HEIGHT_PX }}
+    >
       <ResponsiveBar
         theme={NIVO_THEME}
         data={data}
         keys={["value"]}
         indexBy="id"
         animate={false}
-        margin={{ top: 50, right: 50, bottom: 100, left: 60 }}
+        margin={{ top: 50, right: 50, bottom: 120, left: 70 }}
         padding={0.3}
         valueScale={{ type: "linear" }}
         colors={(bar) => getMarkColor(bar.data.color)}

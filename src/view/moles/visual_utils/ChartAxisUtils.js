@@ -1,5 +1,6 @@
 export const X_AXIS_LABEL_ROTATION = -45;
-export const X_AXIS_LEGEND_OFFSET = 80;
+export const X_AXIS_LEGEND_OFFSET = 100;
+export const BAR_CHART_MIN_HEIGHT_PX = 480;
 
 export function getSlantedXAxis(xAxisLabel, overrides = {}) {
   return {

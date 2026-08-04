@@ -3,7 +3,10 @@ import { ResponsiveMarimekko } from "@nivo/marimekko";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
-import { getSlantedXAxis } from "../visual_utils/ChartAxisUtils.js";
+import {
+  BAR_CHART_MIN_HEIGHT_PX,
+  getSlantedXAxis,
+} from "../visual_utils/ChartAxisUtils.js";
 import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
 import { BarLabelsLayer } from "./MarimekkoLabels.js";
@@ -21,7 +24,13 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
   const color = (id) => getMarkColor(getColorForDimension(id, sortedData));
   return (
     <Box>
-      <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+          minHeight: BAR_CHART_MIN_HEIGHT_PX,
+        }}
+      >
         <ResponsiveMarimekko
           theme={NIVO_THEME}
           data={sortedData}
@@ -60,7 +69,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
           colors={({ id }) => color(id)}
           borderWidth={1}
           borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
-          margin={{ top: 40, right: 50, bottom: 100, left: 80 }}
+          margin={{ top: 40, right: 50, bottom: 120, left: 80 }}
           tooltip={({ id, value, color: markColor }) => (
             <Box sx={{ backgroundColor: "white", p: 1, border: 1 }}>
               <Typography variant="body2" sx={{ color: markColor }}>

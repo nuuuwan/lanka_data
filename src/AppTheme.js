@@ -6,6 +6,18 @@ export const NIVO_THEME = {
   text: {
     fontFamily: APP_FONT_FAMILY,
   },
+  axis: {
+    legend: {
+      text: {
+        fontSize: 16,
+      },
+    },
+    ticks: {
+      text: {
+        fontSize: 14,
+      },
+    },
+  },
 };
 
 export const AppTheme = createTheme({

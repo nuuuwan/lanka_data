@@ -3,7 +3,10 @@ import { Box, Typography } from "@mui/material";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
-import { getSlantedXAxis } from "../visual_utils/ChartAxisUtils.js";
+import {
+  BAR_CHART_MIN_HEIGHT_PX,
+  getSlantedXAxis,
+} from "../visual_utils/ChartAxisUtils.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
@@ -34,14 +37,20 @@ export default function StackedBarChart({
 
   return (
     <Box>
-      <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+          minHeight: BAR_CHART_MIN_HEIGHT_PX,
+        }}
+      >
         <ResponsiveBar
           theme={NIVO_THEME}
           data={data}
           keys={keys}
           indexBy="id"
           animate={false}
-          margin={{ top: 50, right: 50, bottom: 80, left: 60 }}
+          margin={{ top: 50, right: 50, bottom: 120, left: 70 }}
           padding={0.3}
           valueScale={{ type: "linear" }}
           colors={({ id }) => getMarkColor(getColorForKey(id, data))}

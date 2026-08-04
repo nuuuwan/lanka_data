@@ -29,8 +29,8 @@ export function BarLabelsLayer({ data, screenWidth }) {
     <>
       {data.map((datum) => {
         const fontSize = Math.max(
-          6,
-          Math.min(10, (Math.max(datum.width, 8) / 10) * fontScale),
+          10,
+          Math.min(14, (Math.max(datum.width, 10) / 10) * fontScale),
         );
         const label = getAxisLabel(datum.id, datum.width, fontSize);
         return (
