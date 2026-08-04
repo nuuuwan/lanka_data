@@ -1,4 +1,8 @@
 import CategoryConcept from "../CategoryConcept.js";
+import {
+  SOURCE_OF_DRINKING_WATER_COLORS,
+  SOURCE_OF_DRINKING_WATER_VALUES,
+} from "./SourceOfDrinkingWaterData.js";
 
 export default class SourceOfDrinkingWater extends CategoryConcept {
   static PIPE_BORNE_NWSDB =
@@ -44,64 +48,10 @@ export default class SourceOfDrinkingWater extends CategoryConcept {
   }
 
   static validValues() {
-    return [
-      "bottled_water",
-      "bowser",
-      "filter_ro",
-      "ground_water",
-      "other",
-      "outside_premises",
-      "pipe_borne_comm",
-      "pipe_borne_local",
-      "pipe_borne_nwsdb",
-      "pipe_borne_private",
-      "pipe_borne_water",
-      "protected_well",
-      "protected_well_in",
-      "protected_well_out",
-      "rain_water",
-      "rural_water_projects",
-      "semi_protected_well",
-      "spring_or_fountain",
-      "tank_river_stream",
-      "tap_outside",
-      "tap_outside_unit",
-      "tap_unit_main",
-      "tube_well",
-      "unprotected_well",
-      "within_housing_unit",
-      "within_premises",
-    ];
+    return SOURCE_OF_DRINKING_WATER_VALUES;
   }
 
   static getColorMap() {
-    return {
-      bottled_water: "#D038CB",
-      bowser: "#D03847",
-      filter_ro: "#D038AC",
-      ground_water: "#D07C38",
-      other: "#cccccc",
-      outside_premises: "#D03879",
-      pipe_borne_comm: "#D04938",
-      pipe_borne_local: "#38D076",
-      pipe_borne_nwsdb: "#A238D0",
-      pipe_borne_private: "#3853D0",
-      pipe_borne_water: "#38D0A8",
-      protected_well: "#38A6D0",
-      protected_well_in: "#D05D38",
-      protected_well_out: "#3840D0",
-      rain_water: "#9FD038",
-      rural_water_projects: "#8238D0",
-      semi_protected_well: "#D0CE38",
-      spring_or_fountain: "#80D038",
-      tank_river_stream: "#3873D0",
-      tap_outside: "#D0AF38",
-      tap_outside_unit: "#38C5D0",
-      tap_unit_main: "#D03899",
-      tube_well: "#38D056",
-      unprotected_well: "#6CD038",
-      within_housing_unit: "#5038D0",
-      within_premises: "#4DD038",
-    };
+    return SOURCE_OF_DRINKING_WATER_COLORS;
   }
 }

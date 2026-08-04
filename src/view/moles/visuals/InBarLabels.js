@@ -1,6 +1,6 @@
 import getLargestLabelFit from "../../../nonview/base/getLargestLabelFit.js";
 import { IN_BAR_LABEL_STROKE_WIDTH } from "../../../nonview/constants/ChartLabels.js";
-import FormatUtils from "../visual_utils/FormatUtils.js";
+import FormatUtils from "../../../nonview/core/visual/FormatUtils.js";
 
 function getLabel(bar) {
   const value =

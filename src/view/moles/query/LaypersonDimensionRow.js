@@ -11,6 +11,7 @@ import {
   DIMENSION_OPERATORS,
   getFieldGroups,
 } from "../../../nonview/constants/VisualQueryOptions.js";
+import { DIMENSION_ROW_SX } from "../../../nonview/constants/VisualQueryLayout.js";
 import LaypersonDimensionValue from "./LaypersonDimensionValue.js";
 import { getVisualLabel } from "./LaypersonQueryUtils.js";
 
@@ -28,18 +29,7 @@ export default function LaypersonDimensionRow({
     : [dimension.field, ...dimensionOptions].filter(Boolean);
 
   return (
-    <Box
-      sx={{
-        alignItems: "center",
-        display: "grid",
-        gap: 0.75,
-        gridTemplateColumns: {
-          xs: "minmax(0, 1fr) auto",
-          sm: "minmax(10rem, 2fr) minmax(7rem, 1fr) minmax(10rem, 2fr) auto",
-        },
-        mb: 0.75,
-      }}
-    >
+    <Box sx={DIMENSION_ROW_SX}>
       <TextField
         select
         label={index === 0 ? "Field" : undefined}

@@ -7,8 +7,8 @@ import {
   MAP_UNKNOWN_COLOR,
   SHAPE_MAP_EDGE_WIDTH,
   SHAPE_MAP_REGION_BORDER_WIDTH,
-} from "../../_cons/MapCons.js";
-import FormatUtils from "../visual_utils/FormatUtils.js";
+} from "../../../nonview/constants/MAP.js";
+import FormatUtils from "../../../nonview/core/visual/FormatUtils.js";
 
 export default function ShapeMapGraphic({ data, shapeConfig }) {
   return (

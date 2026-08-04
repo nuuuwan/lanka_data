@@ -1,0 +1,97 @@
+export const DIMENSION_OPERATORS = [
+  { value: "", label: "None" },
+  { value: "=", label: "=" },
+  { value: ":", label: ":" },
+  { value: "<", label: "<" },
+];
+
+export const FIELD_GROUPS = [
+  {
+    label: "Time",
+    fields: ["Time", "TimeDurationGroup", "TimeGroup0510More"],
+  },
+  {
+    label: "Geography",
+    fields: [
+      "Country",
+      "Province",
+      "District",
+      "DSD",
+      "ED",
+      "GND",
+      "PD",
+      "Region",
+    ],
+  },
+  {
+    label: "Demographics",
+    fields: [
+      "AgeGroup",
+      "AgeGroupWorking",
+      "DisabilityTypes",
+      "EconomicInactivityReason",
+      "EducationActivity",
+      "EmmigrationReason",
+      "EmploymentStatus",
+      "Ethnicity",
+      "HighestEducationLevel",
+      "HighestEducationLevel2",
+      "HighestEducationLevel3",
+      "IsEconomicallyActive",
+      "LanguageLiteracy",
+      "LiveBirths",
+      "MaritalStatus",
+      "MigrationDirection",
+      "MigrationLifetimeDirection",
+      "MigrationReason",
+      "MigrationStatus",
+      "NonCommunicableDisease",
+      "Religion",
+      "ResidentRelativeToDistrict",
+      "Sex",
+      "SingleOrMultipleDisabilities",
+    ],
+  },
+  {
+    label: "Households",
+    fields: [
+      "CookingFuel",
+      "FloorType",
+      "HouseholdAppliances",
+      "HouseholdOccupancy",
+      "HouseholdSize",
+      "HouseholdStructure",
+      "HouseholdType",
+      "Lighting",
+      "LiquidWasteDisposal",
+      "LivingQuarters",
+      "OccupationStatus",
+      "OneRoomOrMore",
+      "OwnershipStatus",
+      "RoofType",
+      "SolidWasteDisposal",
+      "SourceOfDrinkingWater",
+      "ToiletFacilities",
+      "TypeOfUnit",
+      "WallType",
+      "WaterSupplyAvailability",
+    ],
+  },
+  { label: "Census", fields: ["Census", "CensusOfficer", "CensusTopic"] },
+  { label: "Government", fields: ["AdministrativeEntity", "Sector"] },
+  { label: "Elections", fields: ["ElectionType", "Party", "Summary"] },
+];
+
+export function getFieldGroups(fields) {
+  const knownFields = new Set(FIELD_GROUPS.flatMap((group) => group.fields));
+  return [
+    ...FIELD_GROUPS.map((group) => ({
+      label: group.label,
+      fields: fields.filter((field) => group.fields.includes(field)),
+    })),
+    {
+      label: "Other",
+      fields: fields.filter((field) => !knownFields.has(field)),
+    },
+  ].filter((group) => group.fields.length);
+}

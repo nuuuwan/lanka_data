@@ -2,7 +2,7 @@ import {
   buildFeatureToDataMap,
   getFeatureRegionId,
   matchFeatureToValue,
-} from "../visual_utils/GeoVisualUtils.js";
+} from "../../../nonview/core/visual/GeoVisualUtils.js";
 
 function getDisplayItem(items) {
   return items.reduce((best, item) => (item.value > best.value ? item : best));

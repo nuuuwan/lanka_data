@@ -1,4 +1,4 @@
-import { SEMANTIC_PALETTE } from "../../nonview/constants/COLORS.js";
+import { SEMANTIC_PALETTE } from "./COLORS.js";
 
 export const MAP_WIDTH = 600;
 export const MAP_HEIGHT = 800;

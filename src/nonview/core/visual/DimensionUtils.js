@@ -1,5 +1,5 @@
-import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
-import Time from "../../../nonview/core/thing/concept/atoms/Time.js";
+import Region from "../thing/concept/category_concept/region/region/Region.js";
+import Time from "../thing/concept/atoms/Time.js";
 
 export default class DimensionUtils {
   static getDimIndexInfo(datumList) {

@@ -1,5 +1,5 @@
-import Int from "../../../nonview/core/thing/concept/atoms/Int.js";
-import Party from "../../../nonview/core/thing/concept/category_concept/election/Party.js";
+import Int from "../thing/concept/atoms/Int.js";
+import Party from "../thing/concept/category_concept/election/Party.js";
 
 export default class FormatUtils {
   static isLightColor(color) {

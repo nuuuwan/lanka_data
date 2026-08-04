@@ -1,5 +1,5 @@
-import ChartDataUtils from "../moles/visual_utils/ChartDataUtils.js";
-import DimensionUtils from "../moles/visual_utils/DimensionUtils.js";
+import ChartDataUtils from "../../nonview/core/visual/ChartDataUtils.js";
+import DimensionUtils from "../../nonview/core/visual/DimensionUtils.js";
 import MultiChartLayout from "../organisms/MultiChartLayout.js";
 
 function getChartFacets(datumList, VisualClass) {

@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
-import FormatUtils from "../visual_utils/FormatUtils.js";
+import FormatUtils from "../../../nonview/core/visual/FormatUtils.js";
 import InBarLabels from "./InBarLabels.js";
 
 export default function BarChart({ data, xAxisLabel, yAxisLabel }) {

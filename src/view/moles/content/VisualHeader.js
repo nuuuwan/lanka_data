@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 import { VISUAL_CONTENT_MAX_WIDTH_PX } from "../../../nonview/constants/APP.js";
 import getQueryFinding from "../../../nonview/core/QueryFinding.js";
-import FormatUtils from "../visual_utils/FormatUtils.js";
+import FormatUtils from "../../../nonview/core/visual/FormatUtils.js";
 
 export default function VisualHeader({
   query,

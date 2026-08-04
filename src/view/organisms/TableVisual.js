@@ -1,16 +1,9 @@
+import { Paper, Table, TableContainer } from "@mui/material";
 import { useMemo, useState } from "react";
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TableSortLabel,
-} from "@mui/material";
 
-import FormatUtils from "../moles/visual_utils/FormatUtils.js";
+import FormatUtils from "../../nonview/core/visual/FormatUtils.js";
+import SortableTableHead from "../moles/table/SortableTableHead.js";
+import TableResultRows from "../moles/table/TableResultRows.js";
 import styles from "./TableVisual.module.css";
 
 function compareValues(left, right) {
@@ -20,34 +13,34 @@ function compareValues(left, right) {
   });
 }
 
+function getColumns(firstDatum) {
+  if (!firstDatum) {
+    return [];
+  }
+  const dimensionColumns = firstDatum.query.dimThingList.map(
+    (thing, index) => ({
+      id: `dimension-${index}`,
+      label: thing.constructor.name,
+      value: (datum) =>
+        FormatUtils.toThingLabel(datum.query.dimThingList[index]),
+    }),
+  );
+  return [
+    ...dimensionColumns,
+    {
+      id: "aggregate",
+      label: firstDatum.query.aggregate,
+      numeric: true,
+      value: (datum) => FormatUtils.humanizeValue(datum.answerThing.value),
+      sortValue: (datum) => Number(datum.answerThing.value),
+    },
+  ];
+}
+
 export default function TableVisual({ datumSet }) {
   const { datumList } = datumSet;
   const [sort, setSort] = useState(null);
-  const firstDatum = datumList[0];
-  const columns = useMemo(() => {
-    if (!firstDatum) {
-      return [];
-    }
-    const dimensionColumns = firstDatum.query.dimThingList.map(
-      (thing, index) => ({
-        id: `dimension-${index}`,
-        label: thing.constructor.name,
-        value: (datum) =>
-          FormatUtils.toThingLabel(datum.query.dimThingList[index]),
-      }),
-    );
-    return [
-      ...dimensionColumns,
-      {
-        id: "aggregate",
-        label: firstDatum.query.aggregate,
-        numeric: true,
-        value: (datum) => FormatUtils.humanizeValue(datum.answerThing.value),
-        sortValue: (datum) => Number(datum.answerThing.value),
-      },
-    ];
-  }, [firstDatum]);
-
+  const columns = useMemo(() => getColumns(datumList[0]), [datumList]);
   const sortedDatumList = useMemo(() => {
     if (!sort) {
       return datumList;
@@ -68,8 +61,7 @@ export default function TableVisual({ datumSet }) {
       })
       .map(({ datum }) => datum);
   }, [columns, datumList, sort]);
-
-  function sortBy(columnId) {
+  const sortBy = (columnId) =>
     setSort((currentSort) => ({
       columnId,
       direction:
@@ -77,58 +69,13 @@ export default function TableVisual({ datumSet }) {
           ? "desc"
           : "asc",
     }));
-  }
 
   return (
     <TableContainer component={Paper} className={styles.container}>
       <Table aria-label="Query results">
         <caption>Query results</caption>
-        <TableHead>
-          <TableRow>
-            {columns.map((column) => (
-              <TableCell
-                align={column.numeric ? "right" : "left"}
-                key={column.id}
-                sortDirection={
-                  sort?.columnId === column.id ? sort.direction : false
-                }
-              >
-                <TableSortLabel
-                  active={sort?.columnId === column.id}
-                  direction={
-                    sort?.columnId === column.id ? sort.direction : "asc"
-                  }
-                  onClick={() => sortBy(column.id)}
-                >
-                  {column.label}
-                </TableSortLabel>
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {sortedDatumList.length === 0 ? (
-            <TableRow>
-              <TableCell colSpan={Math.max(columns.length, 1)}>
-                No query results available.
-              </TableCell>
-            </TableRow>
-          ) : (
-            sortedDatumList.map((datum, rowIndex) => (
-              <TableRow key={rowIndex}>
-                {columns.map((column) => (
-                  <TableCell
-                    align={column.numeric ? "right" : "left"}
-                    className={column.numeric ? styles.numericCell : undefined}
-                    key={column.id}
-                  >
-                    {column.value(datum)}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          )}
-        </TableBody>
+        <SortableTableHead columns={columns} onSort={sortBy} sort={sort} />
+        <TableResultRows columns={columns} datumList={sortedDatumList} />
       </Table>
     </TableContainer>
   );

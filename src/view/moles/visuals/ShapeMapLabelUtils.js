@@ -1,4 +1,4 @@
-import { getFittedLabelFontSize } from "../visual_utils/GeoVisualUtils.js";
+import { getFittedLabelFontSize } from "../../../nonview/core/visual/GeoVisualUtils.js";
 
 export function getShapeMapLabels(
   shapes,

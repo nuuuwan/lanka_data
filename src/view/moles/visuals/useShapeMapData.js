@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 
 import { getValuePerShape } from "../../../nonview/base/ShapeMapUtils.js";
-import { HEX_MAP_MAX_HEXAGONS } from "../../_cons/MapCons.js";
-import DimensionUtils from "../visual_utils/DimensionUtils.js";
+import { HEX_MAP_MAX_HEXAGONS } from "../../../nonview/constants/MAP.js";
+import DimensionUtils from "../../../nonview/core/visual/DimensionUtils.js";
 import {
   buildFeatureToDataMap,
   groupDatumListByFacet,
-} from "../visual_utils/GeoVisualUtils.js";
+} from "../../../nonview/core/visual/GeoVisualUtils.js";
 import {
   buildShapeMapFacetInfo,
   getLegendItems,

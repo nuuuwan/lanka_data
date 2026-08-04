@@ -1,5 +1,5 @@
-import StringUtils from "../../../nonview/base/String.js";
-import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
+import StringUtils from "../../base/String.js";
+import Region from "../thing/concept/category_concept/region/region/Region.js";
 import DimensionUtils from "./DimensionUtils.js";
 import FormatUtils from "./FormatUtils.js";
 

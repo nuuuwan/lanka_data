@@ -1,4 +1,4 @@
-import { MAP_MAX_LABEL_COUNT, MAP_UNKNOWN_COLOR } from "../../_cons/MapCons.js";
+import { MAP_MAX_LABEL_COUNT, MAP_UNKNOWN_COLOR } from "../../constants/MAP.js";
 import { getBestLabelFit } from "./RegionLabelFitUtils.js";
 
 const geometryToProjectionFits = new WeakMap();

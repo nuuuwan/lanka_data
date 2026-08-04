@@ -3,8 +3,8 @@ import { Typography } from "@mui/material";
 import {
   HEX_MAP_SCALE_COLOR,
   HEX_MAP_SCALE_FONT_SIZE,
-} from "../../_cons/MapCons.js";
-import FormatUtils from "../visual_utils/FormatUtils.js";
+} from "../../../nonview/constants/MAP.js";
+import FormatUtils from "../../../nonview/core/visual/FormatUtils.js";
 
 export default function ShapeMapScale({ map, shapeName, shapeUnit }) {
   const { shapeValueMin: min, shapeValueMax: max } = map;
