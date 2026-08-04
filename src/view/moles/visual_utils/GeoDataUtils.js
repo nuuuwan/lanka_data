@@ -8,12 +8,14 @@ export function getGeoDimInfo(datumList) {
     (thing) => thing instanceof Region,
   );
   const { varyingDimIndexes } = DimensionUtils.getDimIndexInfo(datumList);
+  const nonRegionDimIndexes = varyingDimIndexes.filter(
+    (dimIndex) => dimIndex !== regionDimIndex,
+  );
   return {
     regionDimIndex,
     regionClass: datumList[0].query.dimThingList[regionDimIndex].constructor,
-    stackDimIndex: varyingDimIndexes
-      .filter((dimIndex) => dimIndex !== regionDimIndex)
-      .at(-1),
+    stackDimIndex:
+      nonRegionDimIndexes.length > 1 ? nonRegionDimIndexes.at(-1) : null,
   };
 }
 
