@@ -11,6 +11,7 @@ import {
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
 export default function ShapeMapGraphic({ data, shapeConfig }) {
+  const fillColor = data.facetColor ?? MAP_UNKNOWN_COLOR;
   return (
     <Box
       data-testid={shapeConfig.testId}
@@ -28,7 +29,7 @@ export default function ShapeMapGraphic({ data, shapeConfig }) {
           <polygon
             key={shape.id}
             points={shape.points.map(([x, y]) => `${x},${y}`).join(" ")}
-            fill={shape.display.color ?? MAP_UNKNOWN_COLOR}
+            fill={fillColor}
             stroke={MAP_BORDER_COLOR}
             strokeWidth={SHAPE_MAP_EDGE_WIDTH}
           >
