@@ -1,5 +1,6 @@
 import FormatUtils from "./FormatUtils.js";
 import DimensionUtils from "./DimensionUtils.js";
+import { getLargestStackKey, sortByStackValue } from "./StackedChartUtils.js";
 
 export default class ChartDataUtils {
   static getBarValue(datum) {
@@ -77,8 +78,12 @@ export default class ChartDataUtils {
         (facetRows.get(xLabel)._barWidth || 0) + getBarValue(datum);
     }
 
+    const allData = Array.from(groups.values()).flatMap((rows) =>
+      Array.from(rows.values()),
+    );
+    const largestStackKey = getLargestStackKey(allData);
     const facets = Array.from(groups.entries()).map(([facetKey, rows]) => {
-      const data = Array.from(rows.values());
+      const data = sortByStackValue(Array.from(rows.values()), largestStackKey);
       return {
         facetKey,
         data: DimensionUtils.sortDataByTime(data, datumList, xAxisDimIndex),
