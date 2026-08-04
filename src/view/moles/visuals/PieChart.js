@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
+import PieArcLabel from "./PieArcLabel.js";
 import Legend from "./Legend.js";
 
 const CHART_HEIGHT = 400;
@@ -29,7 +30,7 @@ export default function PieChart({ data, total, maxTotal }) {
           borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
           arcLabel={({ value }) => FormatUtils.humanizeValue(value)}
           arcLabelsSkipAngle={10}
-          arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
+          arcLabelsComponent={PieArcLabel}
           innerRadius={0.5}
           tooltip={({ datum }) => (
             <Typography variant="body2">
