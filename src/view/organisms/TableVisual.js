@@ -85,6 +85,7 @@ export default function TableVisual({ datumSet }) {
         <caption>Query results</caption>
         <TableHead>
           <TableRow>
+            <TableCell align="right">#</TableCell>
             {columns.map((column) => (
               <TableCell
                 align={column.numeric ? "right" : "left"}
@@ -109,13 +110,16 @@ export default function TableVisual({ datumSet }) {
         <TableBody>
           {sortedDatumList.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={Math.max(columns.length, 1)}>
+              <TableCell colSpan={Math.max(columns.length + 1, 1)}>
                 No query results available.
               </TableCell>
             </TableRow>
           ) : (
             sortedDatumList.map((datum, rowIndex) => (
               <TableRow key={rowIndex}>
+                <TableCell align="right" className={styles.numericCell}>
+                  {rowIndex + 1}
+                </TableCell>
                 {columns.map((column) => (
                   <TableCell
                     align={column.numeric ? "right" : "left"}
