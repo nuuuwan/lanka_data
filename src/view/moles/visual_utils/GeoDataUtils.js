@@ -13,11 +13,14 @@ export function getGeoDimInfo(datumList) {
   const nonRegionDimIndexes = varyingDimIndexes.filter(
     (dimIndex) => dimIndex !== regionDimIndex,
   );
+  const stackDimIndex = nonRegionDimIndexes.findLast(
+    (dimIndex) =>
+      datumList[0].query.dimThingList[dimIndex] instanceof CategoryConcept,
+  );
   return {
     regionDimIndex,
     regionClass: datumList[0].query.dimThingList[regionDimIndex].constructor,
-    stackDimIndex:
-      nonRegionDimIndexes.length > 1 ? nonRegionDimIndexes.at(-1) : null,
+    stackDimIndex: stackDimIndex ?? null,
   };
 }
 

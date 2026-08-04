@@ -15,7 +15,12 @@ export default function ShapeMapScale({ map, shapeName, shapeUnit }) {
   return (
     <Typography
       variant="caption"
-      sx={{ color: HEX_MAP_SCALE_COLOR, fontSize: HEX_MAP_SCALE_FONT_SIZE }}
+      sx={{
+        color: HEX_MAP_SCALE_COLOR,
+        display: "block",
+        fontSize: HEX_MAP_SCALE_FONT_SIZE,
+        textAlign: "center",
+      }}
     >
       1 {shapeName} = {value} {shapeUnit}
     </Typography>

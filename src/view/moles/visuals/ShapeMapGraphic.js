@@ -29,7 +29,7 @@ export default function ShapeMapGraphic({ data, shapeConfig }) {
           <polygon
             key={shape.id}
             points={shape.points.map(([x, y]) => `${x},${y}`).join(" ")}
-            fill={fillColor}
+            fill={shape.display.color ?? fillColor}
             stroke={MAP_BORDER_COLOR}
             strokeWidth={SHAPE_MAP_EDGE_WIDTH}
           >
