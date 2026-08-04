@@ -66,6 +66,23 @@ export default function VisualQueryForm({
     onSubmit(randomQuery);
   }
 
+  const refreshButton = (
+    <Tooltip title="Update visualization">
+      <span>
+        <IconButton
+          aria-label="Update visualization"
+          color="primary"
+          disabled={
+            loadedVisualQuery !== null && value.trim() === loadedVisualQuery
+          }
+          type="submit"
+        >
+          <RefreshIcon />
+        </IconButton>
+      </span>
+    </Tooltip>
+  );
+
   return (
     <Box
       component="form"
@@ -132,20 +149,10 @@ export default function VisualQueryForm({
                 <ContentCopyIcon />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Update visualization">
-              <IconButton
-                aria-label="Update visualization"
-                color="primary"
-                disabled={
-                  loadedVisualQuery !== null &&
-                  value.trim() === loadedVisualQuery
-                }
-                type="submit"
-              >
-                <RefreshIcon />
-              </IconButton>
-            </Tooltip>
+            {!editorOpen && refreshButton}
           </Box>
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
           <FormControlLabel
             control={
               <Switch
@@ -157,12 +164,17 @@ export default function VisualQueryForm({
           />
         </Box>
         {editorOpen && (
-          <LaypersonVisualQueryInput
-            value={value}
-            onChange={onChange}
-            onSubmit={submit}
-            queryOptions={queryOptions}
-          />
+          <Box sx={{ pt: 3 }}>
+            <LaypersonVisualQueryInput
+              value={value}
+              onChange={onChange}
+              onSubmit={submit}
+              queryOptions={queryOptions}
+            />
+            <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 1 }}>
+              {refreshButton}
+            </Box>
+          </Box>
         )}
       </Box>
       <Snackbar
