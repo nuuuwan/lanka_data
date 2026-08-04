@@ -2,7 +2,7 @@ import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import VisualQueryPage from "./view/pages/VisualQueryPage";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppTheme } from "./AppTheme";
-import AppFooter from "./view/atoms/AppFooter.js";
+import AppFooter from "./view/atoms/app/AppFooter.js";
 import DataProvider from "./nonview/core/data_context/DataProvider.js";
 import { APP_PATH } from "./nonview/constants/APP.js";
 const DEFAULT_VISUAL_QUERY_STR =

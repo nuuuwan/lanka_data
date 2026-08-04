@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import useGeoJson from "../../../nonview/base/useGeoJson.js";
 import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
 import { MAP_HEIGHT, MAP_WIDTH } from "../../_cons/MapCons.js";
-import LoadingProgress from "../../molecules/LoadingProgress.js";
+import LoadingProgress from "../feedback/LoadingProgress.js";
 import DimensionUtils from "../visual_utils/DimensionUtils.js";
 import {
   buildFeatureToDataMap,

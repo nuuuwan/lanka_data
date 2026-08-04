@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 
 import useGeoJson from "../../../nonview/base/useGeoJson.js";
-import LoadingProgress from "../../molecules/LoadingProgress.js";
+import LoadingProgress from "../feedback/LoadingProgress.js";
 import { getGeoDimInfo } from "../visual_utils/GeoVisualUtils.js";
 import MultiChartLayout from "../../organisms/MultiChartLayout.js";
 import Legend from "./Legend.js";

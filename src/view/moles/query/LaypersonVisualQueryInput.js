@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-import { VISUAL_CONTENT_MAX_WIDTH_PX } from "../../nonview/constants/APP.js";
+import { VISUAL_CONTENT_MAX_WIDTH_PX } from "../../../nonview/constants/APP.js";
 import LaypersonDimensions from "./LaypersonDimensions.js";
 import LaypersonQueryFields from "./LaypersonQueryFields.js";
 import {

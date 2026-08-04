@@ -1,7 +1,7 @@
 import { ListSubheader, MenuItem, TextField } from "@mui/material";
 
-import { VISUAL_GROUPS } from "../../nonview/constants/VisualQueryOptions.js";
-import VisualFactory from "./visuals/VisualFactory.js";
+import { VISUAL_GROUPS } from "../../../nonview/constants/VisualQueryOptions.js";
+import VisualFactory from "../visuals/VisualFactory.js";
 import { getVisualLabel } from "./LaypersonQueryUtils.js";
 
 export default function LaypersonQueryFields({

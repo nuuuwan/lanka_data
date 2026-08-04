@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
-import VisualHeader from "../molecules/VisualHeader.js";
+import DataProvenancePanel from "../moles/content/DataProvenancePanel.js";
+import VisualHeader from "../moles/content/VisualHeader.js";
 import ChartVisual from "./ChartVisual.js";
 
 export default function VisualContent({

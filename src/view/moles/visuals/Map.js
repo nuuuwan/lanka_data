@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Box } from "@mui/material";
 
 import useGeoJson from "../../../nonview/base/useGeoJson.js";
-import LoadingProgress from "../../molecules/LoadingProgress.js";
+import LoadingProgress from "../feedback/LoadingProgress.js";
 import DimensionUtils from "../visual_utils/DimensionUtils.js";
 import {
   buildFeatureToDataMap,

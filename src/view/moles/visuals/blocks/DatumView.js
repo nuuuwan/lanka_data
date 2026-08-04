@@ -1,8 +1,8 @@
 import { ListItem } from "@mui/material";
 
-import SQLText from "../../../atoms/SQLText.js";
+import SQLText from "../../../atoms/query/SQLText.js";
 import QueryView from "./QueryView.js";
-import ThingView from "../../../atoms/ThingView.js";
+import ThingView from "../../../atoms/query/ThingView.js";
 
 export default function DatumView({ datum }) {
   return (

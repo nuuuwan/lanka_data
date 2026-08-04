@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Alert, AlertTitle, Box } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import DataContext from "../../nonview/core/data_context/DataContext.js";
-import LoadingProgress from "../molecules/LoadingProgress.js";
+import LoadingProgress from "../moles/feedback/LoadingProgress.js";
 import ChangeViewSection from "../organisms/ChangeViewSection.js";
 import QueryMenuAppBar from "../organisms/QueryMenuAppBar.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";

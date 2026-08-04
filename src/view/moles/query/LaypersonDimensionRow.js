@@ -10,7 +10,7 @@ import {
 import {
   DIMENSION_OPERATORS,
   getFieldGroups,
-} from "../../nonview/constants/VisualQueryOptions.js";
+} from "../../../nonview/constants/VisualQueryOptions.js";
 import LaypersonDimensionValue from "./LaypersonDimensionValue.js";
 import { getVisualLabel } from "./LaypersonQueryUtils.js";
 

@@ -8,7 +8,7 @@ import {
   SHARE_LINK_FEEDBACK_DURATION_MS,
   VISUAL_CONTENT_MAX_WIDTH_PX,
 } from "../../nonview/constants/APP.js";
-import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
+import LaypersonVisualQueryInput from "../moles/query/LaypersonVisualQueryInput.js";
 
 export default function VisualQueryForm({
   disabled = false,

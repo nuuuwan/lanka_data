@@ -1,5 +1,5 @@
-import CategoryConcept from "../../nonview/core/thing/concept/category_concept/CategoryConcept.js";
-import ThingFactory from "../../nonview/core/thing/thing_factory/ThingFactory.js";
+import CategoryConcept from "../../../nonview/core/thing/concept/category_concept/CategoryConcept.js";
+import ThingFactory from "../../../nonview/core/thing/thing_factory/ThingFactory.js";
 
 export function getVisualQueryParts(value) {
   const [entity = "", dimensions = "", aggregate = "", visual = ""] =
