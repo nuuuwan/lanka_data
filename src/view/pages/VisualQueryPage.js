@@ -74,7 +74,10 @@ export default function VisualQueryPage() {
             {errorMessage}
           </Alert>
         ) : (
-          <Box data-testid={isLoading ? undefined : "visual-content"}>
+          <Box
+            className={isLoading ? undefined : styles.visualContent}
+            data-testid={isLoading ? undefined : "visual-content"}
+          >
             {isLoading ? (
               <LoadingProgress />
             ) : (

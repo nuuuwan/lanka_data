@@ -5,3 +5,7 @@
   padding: clamp(1.5rem, 2vw, 2rem) clamp(1.25rem, 4vw, 3rem)
     clamp(2rem, 6vw, 5rem);
 }
+
+.visualContent {
+  padding-block: 200px;
+}
