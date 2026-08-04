@@ -77,32 +77,38 @@ export default function VisualQueryForm({
         aria-busy={disabled}
         sx={{ border: 0, m: 0, minWidth: 0, p: 0 }}
       >
-        <Box sx={{ alignItems: "flex-start", display: "flex", gap: 0.5 }}>
-          <TextField
-            multiline
-            minRows={2}
-            maxRows={6}
-            size="small"
-            label="Visual query"
-            value={value}
-            onChange={(event) => onChange(event.target.value)}
-            onKeyDown={submitExpertQuery}
-            helperText="Press Enter to update; use Shift+Enter for a new line"
-            slotProps={{
-              htmlInput: {
-                autoComplete: "off",
-                spellCheck: false,
-              },
-            }}
-            sx={{
-              flex: 1,
-              minWidth: 0,
-              "& .MuiInputBase-input": {
-                overflowWrap: "anywhere",
-              },
-            }}
-          />
-          <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <TextField
+          multiline
+          minRows={2}
+          maxRows={6}
+          size="small"
+          label="Visual query"
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          onKeyDown={submitExpertQuery}
+          helperText="Press Enter to update; use Shift+Enter for a new line"
+          slotProps={{
+            htmlInput: {
+              autoComplete: "off",
+              spellCheck: false,
+            },
+          }}
+          sx={{
+            width: "100%",
+            "& .MuiInputBase-input": {
+              overflowWrap: "anywhere",
+            },
+          }}
+        />
+        <Box
+          sx={{
+            alignItems: "center",
+            display: "flex",
+            justifyContent: "flex-end",
+            mt: 1,
+          }}
+        >
+          <Box sx={{ display: "flex" }}>
             <Tooltip title="Choose a random query">
               <span>
                 <IconButton
@@ -138,8 +144,6 @@ export default function VisualQueryForm({
               </IconButton>
             </Tooltip>
           </Box>
-        </Box>
-        <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 1 }}>
           <FormControlLabel
             control={
               <Switch
