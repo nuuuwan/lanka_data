@@ -1,18 +1,13 @@
 import { Box } from "@mui/material";
 
 import useGeoJson from "../../../nonview/base/useGeoJson.js";
-import LoadingProgress from "../../molecules/LoadingProgress.js";
-import { getGeoDimInfo } from "../visual_utils/GeoVisualUtils.js";
-import MultiChartLayout from "../../organisms/MultiChartLayout.js";
-import Legend from "./Legend.js";
-import ShapeMapGraphic from "./ShapeMapGraphic.js";
-import ShapeMapScale from "./ShapeMapScale.js";
-import useShapeMapData from "./useShapeMapData.js";
-
-export {
-  buildShapeMapLayout,
-  shareShapeMapScale,
-} from "./ShapeMapLayoutUtils.js";
+import LoadingProgress from "../../moles/LoadingProgress.js";
+import { getGeoDimInfo } from "../../moles/visual_utils/GeoVisualUtils.js";
+import getShapeMapData from "../../moles/visuals/getShapeMapData.js";
+import Legend from "../../moles/visuals/Legend.js";
+import ShapeMapGraphic from "../../moles/visuals/ShapeMapGraphic.js";
+import ShapeMapScale from "../../moles/visuals/ShapeMapScale.js";
+import MultiChartLayout from "../MultiChartLayout.js";
 
 export default function ShapeMap({ datumSet, isUnit = false, shapeConfig }) {
   const { datumList } = datumSet;
@@ -22,7 +17,7 @@ export default function ShapeMap({ datumSet, isUnit = false, shapeConfig }) {
     .getClassName()
     .toLowerCase()}s`;
   const geoJson = useGeoJson(regionClass);
-  const { maps, legendItems } = useShapeMapData(
+  const { maps, legendItems } = getShapeMapData(
     geoJson,
     datumList,
     regionDimIndex,

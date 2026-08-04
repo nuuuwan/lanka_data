@@ -1,26 +1,9 @@
+import { deepEqual, deepToEntries, entriesToDeep } from "./ShallowDictUtils.js";
 export class KeyError extends Error {
   constructor(key) {
     super(`Key not found: ${JSON.stringify(key)}`);
     this.name = "KeyError";
   }
-}
-
-function deepEqual(a, b) {
-  if (a === b) return true;
-  if (
-    typeof a !== "object" ||
-    typeof b !== "object" ||
-    a === null ||
-    b === null
-  ) {
-    return false;
-  }
-  const aKeys = Object.keys(a);
-  const bKeys = Object.keys(b);
-  if (aKeys.length !== bKeys.length) return false;
-  return aKeys.every(
-    (k) => Object.prototype.hasOwnProperty.call(b, k) && deepEqual(a[k], b[k]),
-  );
 }
 
 export default class ShallowDict {
@@ -100,32 +83,11 @@ export default class ShallowDict {
   }
 
   toDeep() {
-    const result = {};
-    for (const [keys, value] of this.entries()) {
-      let node = result;
-      for (let i = 0; i < keys.length - 1; i++) {
-        const k = keys[i];
-        if (!(k in node)) node[k] = {};
-        node = node[k];
-      }
-      node[keys[keys.length - 1]] = value;
-    }
-    return result;
+    return entriesToDeep(this.entries());
   }
 
   static fromDeep(deepObj) {
-    const flat = [];
-    const recurse = (node, path) => {
-      if (typeof node !== "object" || node === null || Array.isArray(node)) {
-        flat.push([path, node]);
-        return;
-      }
-      for (const [key, child] of Object.entries(node)) {
-        recurse(child, [...path, key]);
-      }
-    };
-    recurse(deepObj, []);
-    return new ShallowDict(flat);
+    return new ShallowDict(deepToEntries(deepObj));
   }
 
   equals(other) {

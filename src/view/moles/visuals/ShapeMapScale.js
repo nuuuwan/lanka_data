@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import {
   HEX_MAP_SCALE_COLOR,
   HEX_MAP_SCALE_FONT_SIZE,
-} from "../../_cons/MapCons.js";
+} from "../../../nonview/constants/Map.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
 export default function ShapeMapScale({ map, shapeName, shapeUnit }) {

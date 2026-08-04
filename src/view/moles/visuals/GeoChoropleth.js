@@ -10,7 +10,7 @@ import {
   MAP_LABEL_LIGHT_COLOR,
   MAP_UNKNOWN_COLOR,
   MAP_WIDTH,
-} from "../../_cons/MapCons.js";
+} from "../../../nonview/constants/Map.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 
 function setViewBox(element) {

@@ -60,6 +60,6 @@ export function mockVisual(VisualClass, query = {}) {
       entityClass: Person,
       ...query,
     },
-    visualClass: VisualClass,
+    visualClassName: VisualClass.name,
   });
 }

@@ -1,7 +1,7 @@
 import {
   MAP_LABEL_CHARACTER_WIDTH_RATIO,
   MAP_LABEL_MARGIN_RATIO,
-} from "../../_cons/MapCons.js";
+} from "../../../nonview/constants/Map.js";
 import {
   doesRectangleFit,
   getProjectedPolygons,

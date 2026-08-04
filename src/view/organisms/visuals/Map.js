@@ -2,8 +2,8 @@ import { useMemo } from "react";
 import { Box } from "@mui/material";
 
 import useGeoJson from "../../../nonview/base/useGeoJson.js";
-import LoadingProgress from "../../molecules/LoadingProgress.js";
-import DimensionUtils from "../visual_utils/DimensionUtils.js";
+import LoadingProgress from "../../moles/LoadingProgress.js";
+import DimensionUtils from "../../moles/visual_utils/DimensionUtils.js";
 import {
   buildFeatureToDataMap,
   buildGeoVisualData,
@@ -12,10 +12,10 @@ import {
   getProjectionInfo,
   groupDatumListByFacet,
   matchFeatureToValue,
-} from "../visual_utils/GeoVisualUtils.js";
-import MultiChartLayout from "../../organisms/MultiChartLayout.js";
-import GeoChoropleth from "./GeoChoropleth.js";
-import Legend from "./Legend.js";
+} from "../../moles/visual_utils/GeoVisualUtils.js";
+import GeoChoropleth from "../../moles/visuals/GeoChoropleth.js";
+import Legend from "../../moles/visuals/Legend.js";
+import MultiChartLayout from "../MultiChartLayout.js";
 
 export default function MapVisual({ datumSet }) {
   const { datumList } = datumSet;

@@ -1,10 +1,9 @@
 import Query from "./Query.js";
-import VisualFactory from "../../view/moles/visuals/VisualFactory.js";
 
 export default class VisualQuery {
-  constructor(query, visualClass, visualQueryStr) {
+  constructor(query, visualClassName, visualQueryStr) {
     this.query = query;
-    this.visualClass = visualClass;
+    this.visualClassName = visualClassName;
     this.visualQueryStr = visualQueryStr;
   }
 
@@ -21,9 +20,8 @@ export default class VisualQuery {
       );
     }
     const visualClassName = tokens[tokens.length - 1];
-    const visualClass = VisualFactory.get(visualClassName);
     const queryStr = tokens.slice(0, tokens.length - 1).join(Query.DELIM_TOKEN);
     const query = await Query.fromString(queryStr);
-    return new VisualQuery(query, visualClass, visualQueryStr);
+    return new VisualQuery(query, visualClassName, visualQueryStr);
   }
 }

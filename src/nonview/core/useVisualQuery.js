@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-import VisualQuery from "../../nonview/core/VisualQuery.js";
+import VisualQuery from "./VisualQuery.js";
 
-export default function useVisualQuery(isReady, visualQueryStr) {
+export default function useVisualQuery(
+  isReady,
+  visualQueryStr,
+  getVisualClass,
+) {
   const [visualQuery, setVisualQuery] = useState(null);
   const [parseTimeSeconds, setParseTimeSeconds] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -18,6 +22,7 @@ export default function useVisualQuery(isReady, visualQueryStr) {
       parseStartTime.current = startTime;
       try {
         const nextQuery = await VisualQuery.fromString(visualQueryStr);
+        nextQuery.visualClass = getVisualClass(nextQuery.visualClassName);
         if (!cancelled) {
           setParseTimeSeconds((performance.now() - startTime) / 1000);
           setVisualQuery(nextQuery);
@@ -36,7 +41,7 @@ export default function useVisualQuery(isReady, visualQueryStr) {
     return () => {
       cancelled = true;
     };
-  }, [isReady, visualQueryStr]);
+  }, [getVisualClass, isReady, visualQueryStr]);
   return {
     errorMessage,
     parseStartTime,

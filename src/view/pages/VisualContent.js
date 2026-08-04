@@ -1,7 +1,5 @@
-import { useEffect } from "react";
-
-import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
-import VisualHeader from "../molecules/VisualHeader.js";
+import DataProvenancePanel from "../moles/DataProvenancePanel.js";
+import VisualHeader from "../moles/VisualHeader.js";
 import ChartVisual from "./ChartVisual.js";
 
 export default function VisualContent({
@@ -11,11 +9,6 @@ export default function VisualContent({
   query,
   visualTitleRef,
 }) {
-  useEffect(() => {
-    console.debug(
-      `[VisualQueryPage] Displaying ${VisualClass.name} with ${datumSet.datumList.length} datums`,
-    );
-  }, [VisualClass, datumSet]);
   return (
     <>
       <VisualHeader

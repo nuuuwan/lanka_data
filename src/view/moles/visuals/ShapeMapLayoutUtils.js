@@ -5,7 +5,11 @@ import {
   getShapeCounts,
 } from "../../../nonview/base/ShapeMapUtils.js";
 import CartogramUtils from "../../../nonview/core/cartogram/CartogramUtils.js";
-import { MAP_HEIGHT, MAP_PADDING, MAP_WIDTH } from "../../_cons/MapCons.js";
+import {
+  MAP_HEIGHT,
+  MAP_PADDING,
+  MAP_WIDTH,
+} from "../../../nonview/constants/Map.js";
 import { getProjectionInfo } from "../visual_utils/GeoVisualUtils.js";
 import { getShapeMapLabels, getShapeMapViewBox } from "./ShapeMapLabelUtils.js";
 

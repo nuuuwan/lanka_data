@@ -1,24 +1,25 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Alert, AlertTitle, Box } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import DataContext from "../../nonview/core/data_context/DataContext.js";
-import LoadingProgress from "../molecules/LoadingProgress.js";
+import useDataContext from "../../nonview/core/data_context/useDataContext.js";
+import useVisualData from "../../nonview/core/useVisualData.js";
+import useVisualQuery from "../../nonview/core/useVisualQuery.js";
+import LoadingProgress from "../moles/LoadingProgress.js";
+import VisualFactory from "../moles/visuals/VisualFactory.js";
 import ChangeViewSection from "../organisms/ChangeViewSection.js";
 import QueryMenuAppBar from "../organisms/QueryMenuAppBar.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import styles from "./VisualQueryPage.module.css";
 import VisualContent from "./VisualContent.js";
-import useVisualData from "./useVisualData.js";
-import useVisualQuery from "./useVisualQuery.js";
 
 export default function VisualQueryPage() {
   const { "*": queryString } = useParams();
   const navigate = useNavigate();
-  const { isReady, queryOptions } = useContext(DataContext);
+  const { isReady, queryOptions } = useDataContext();
   const [input, setInput] = useState(queryString);
   const [visualReadyQuery, setVisualReadyQuery] = useState(null);
   const visualTitleRef = useRef(null);
-  const parse = useVisualQuery(isReady, queryString);
+  const parse = useVisualQuery(isReady, queryString, VisualFactory.get);
   const load = useVisualData(parse.visualQuery);
   const VisualClass = parse.visualQuery?.visualClass;
   const errorMessage = parse.errorMessage || load.errorMessage;

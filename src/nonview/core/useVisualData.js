@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import DataSourceFactory from "../../nonview/core/data_source/DataSourceFactory.js";
+import DataSourceFactory from "./data_source/DataSourceFactory.js";
 
 export default function useVisualData(visualQuery) {
   const [datumSet, setDatumSet] = useState(null);

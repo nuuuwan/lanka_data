@@ -4,10 +4,11 @@ import {
   getHexBoundaryEdges,
   getHexPoints,
 } from "../../../nonview/base/ShapeMapUtils.js";
-import ShapeMap, {
+import {
   buildShapeMapLayout,
   shareShapeMapScale,
-} from "./ShapeMap.js";
+} from "../../moles/visuals/ShapeMapLayoutUtils.js";
+import ShapeMap from "./ShapeMap.js";
 
 const HEX_SHAPE_CONFIG = {
   ariaLabel: "Hex map",

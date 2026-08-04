@@ -6,7 +6,7 @@ import {
   MAP_LABEL_MARGIN_RATIO,
   MAP_PADDING,
   MAP_WIDTH,
-} from "../../_cons/MapCons.js";
+} from "../../../nonview/constants/Map.js";
 
 export function getGeoCoordinates(features) {
   const coordinates = [];
