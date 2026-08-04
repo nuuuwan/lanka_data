@@ -1,5 +1,6 @@
 import StringUtils from "../../../nonview/base/String.js";
 import CategoryConcept from "../../../nonview/core/thing/concept/category_concept/CategoryConcept.js";
+import Party from "../../../nonview/core/thing/concept/category_concept/election/Party.js";
 import Region from "../../../nonview/core/thing/concept/category_concept/region/region/Region.js";
 import Thing from "../../../nonview/core/thing/Thing.js";
 import DimensionUtils from "./DimensionUtils.js";
@@ -15,7 +16,8 @@ export function getGeoDimInfo(datumList) {
   );
   const stackDimIndex = nonRegionDimIndexes.findLast(
     (dimIndex) =>
-      datumList[0].query.dimThingList[dimIndex] instanceof CategoryConcept,
+      datumList[0].query.dimThingList[dimIndex] instanceof CategoryConcept ||
+      datumList[0].query.dimThingList[dimIndex] instanceof Party,
   );
   return {
     regionDimIndex,
