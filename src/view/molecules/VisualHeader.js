@@ -18,6 +18,7 @@ export default function VisualHeader({
         mb: 2,
         maxWidth: VISUAL_CONTENT_MAX_WIDTH_PX,
         mx: "auto",
+        scrollMarginTop: "80px",
         textAlign: "center",
       }}
     >
