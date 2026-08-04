@@ -44,7 +44,7 @@ export default function VisualQueryForm({
   }
 
   function submitExpertQuery(event) {
-    if (event.key === "Enter" && !event.shiftKey) {
+    if (event.key === "Enter") {
       event.preventDefault();
       submit();
     }
@@ -86,7 +86,7 @@ export default function VisualQueryForm({
           value={value}
           onChange={(event) => onChange(event.target.value)}
           onKeyDown={submitExpertQuery}
-          helperText="Press Enter to update; use Shift+Enter for a new line"
+          helperText="Press Enter to update"
           slotProps={{
             htmlInput: {
               autoComplete: "off",
