@@ -14,12 +14,10 @@ import {
 import { useState } from "react";
 
 import { copyTextToClipboard } from "../../nonview/base/Clipboard.js";
-import RecentVisualQueries from "../../nonview/base/RecentVisualQueries.js";
 import {
   SHARE_LINK_FEEDBACK_DURATION_MS,
   VISUAL_QUERY_MAX_WIDTH_PX,
 } from "../../nonview/constants/APP.js";
-import { EXAMPLE_QUERIES } from "../../nonview/constants/ExampleQueries.js";
 import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
 import VisualQueryTextInput from "../moles/VisualQueryTextInput.js";
 
@@ -36,11 +34,8 @@ export default function VisualQueryForm({
   const isEdited =
     loadedVisualQuery !== null && value.trim() !== loadedVisualQuery;
   const isRefreshDisabled = loadedVisualQuery !== null && !isEdited;
-  const randomQueries = Array.from(
-    new Set([
-      ...RecentVisualQueries.read().map(({ query }) => query),
-      ...EXAMPLE_QUERIES.map(({ query }) => query),
-    ]),
+  const metadataKeyLists = queryOptions.metadataKeyLists.filter(
+    (metadataKeys) => metadataKeys.length > 0,
   );
 
   function submit(event) {
@@ -65,8 +60,10 @@ export default function VisualQueryForm({
   }
 
   function selectRandomQuery() {
-    const randomIndex = Math.floor(Math.random() * randomQueries.length);
-    const randomQuery = randomQueries[randomIndex];
+    const sourceIndex = Math.floor(Math.random() * metadataKeyLists.length);
+    const metadataKeys = metadataKeyLists[sourceIndex];
+    const metadataKeyIndex = Math.floor(Math.random() * metadataKeys.length);
+    const randomQuery = `${metadataKeys[metadataKeyIndex]}/Table`;
     onChange(randomQuery);
     onSubmit(randomQuery);
   }
@@ -121,7 +118,7 @@ export default function VisualQueryForm({
               <span>
                 <IconButton
                   aria-label="Choose a random query"
-                  disabled={randomQueries.length === 0}
+                  disabled={metadataKeyLists.length === 0}
                   onClick={selectRandomQuery}
                   type="button"
                 >

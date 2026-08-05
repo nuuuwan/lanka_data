@@ -31,6 +31,7 @@ export default class DataSourceFactory {
           [...dimensions].sort(),
         ]),
       ),
+      metadataKeyLists: metadataList.map((metadata) => Object.keys(metadata)),
     };
   }
 

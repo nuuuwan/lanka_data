@@ -5,6 +5,7 @@ const DataContext = createContext({
   queryOptions: {
     entities: [],
     dimensionsByEntity: {},
+    metadataKeyLists: [],
   },
 });
 

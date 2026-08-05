@@ -29,6 +29,7 @@ export default function DataProvider({ children }) {
   const [queryOptions, setQueryOptions] = useState({
     entities: [],
     dimensionsByEntity: {},
+    metadataKeyLists: [],
   });
 
   useEffect(() => {
