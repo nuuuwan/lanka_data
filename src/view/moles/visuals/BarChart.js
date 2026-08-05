@@ -5,7 +5,9 @@ import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import {
   BAR_CHART_MIN_HEIGHT_PX,
+  getDenseAxisTheme,
   getSlantedXAxis,
+  X_AXIS_BOTTOM_MARGIN,
 } from "../visual_utils/ChartAxisUtils.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import InBarLabels from "./InBarLabels.js";
@@ -16,12 +18,12 @@ export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
       sx={{ width: "100%", height: "100%", minHeight: BAR_CHART_MIN_HEIGHT_PX }}
     >
       <ResponsiveBar
-        theme={NIVO_THEME}
+        theme={getDenseAxisTheme(NIVO_THEME, data.length)}
         data={data}
         keys={["value"]}
         indexBy="id"
         animate={false}
-        margin={{ top: 50, right: 50, bottom: 120, left: 70 }}
+        margin={{ top: 50, right: 50, bottom: X_AXIS_BOTTOM_MARGIN, left: 70 }}
         padding={0.3}
         valueScale={{ type: "linear" }}
         colors={(bar) => getMarkColor(bar.data.color)}
@@ -60,3 +62,4 @@ export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
 }
 
 BarChart.IS_CHART = true;
+BarChart.IS_FULL_WIDTH = true;

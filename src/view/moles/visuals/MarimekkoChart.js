@@ -6,6 +6,7 @@ import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import {
   BAR_CHART_MIN_HEIGHT_PX,
   getSlantedXAxis,
+  X_AXIS_BOTTOM_MARGIN,
 } from "../visual_utils/ChartAxisUtils.js";
 import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
@@ -69,7 +70,12 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
           colors={({ id }) => color(id)}
           borderWidth={1}
           borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
-          margin={{ top: 40, right: 50, bottom: 120, left: 80 }}
+          margin={{
+            top: 40,
+            right: 50,
+            bottom: X_AXIS_BOTTOM_MARGIN,
+            left: 80,
+          }}
           tooltip={({ id, value, color: markColor }) => (
             <Box sx={{ backgroundColor: "white", p: 1, border: 1 }}>
               <Typography variant="body2" sx={{ color: markColor }}>
@@ -91,5 +97,6 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
 }
 
 MarimekkoChart.IS_CHART = true;
+MarimekkoChart.IS_FULL_WIDTH = true;
 MarimekkoChart.IS_STACKED = true;
 MarimekkoChart.IS_MARIMEKKO = true;

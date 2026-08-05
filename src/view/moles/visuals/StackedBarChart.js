@@ -5,7 +5,9 @@ import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import {
   BAR_CHART_MIN_HEIGHT_PX,
+  getDenseAxisTheme,
   getSlantedXAxis,
+  X_AXIS_BOTTOM_MARGIN,
 } from "../visual_utils/ChartAxisUtils.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import InBarLabels from "./InBarLabels.js";
@@ -45,12 +47,17 @@ export default function StackedBarChart({
         }}
       >
         <ResponsiveBar
-          theme={NIVO_THEME}
+          theme={getDenseAxisTheme(NIVO_THEME, data.length)}
           data={data}
           keys={keys}
           indexBy="id"
           animate={false}
-          margin={{ top: 50, right: 50, bottom: 120, left: 70 }}
+          margin={{
+            top: 50,
+            right: 50,
+            bottom: X_AXIS_BOTTOM_MARGIN,
+            left: 70,
+          }}
           padding={0.3}
           valueScale={{ type: "linear" }}
           colors={({ id }) => getMarkColor(getColorForKey(id, data))}
@@ -98,4 +105,5 @@ export default function StackedBarChart({
 }
 
 StackedBarChart.IS_CHART = true;
+StackedBarChart.IS_FULL_WIDTH = true;
 StackedBarChart.IS_STACKED = true;

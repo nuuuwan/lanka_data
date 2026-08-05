@@ -47,3 +47,7 @@
     grid-column: 4 / span 2;
   }
 }
+
+.grid > .item.fullWidth {
+  grid-column: 1 / -1;
+}
