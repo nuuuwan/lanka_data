@@ -49,10 +49,17 @@ export default function useShapeMapData(
     );
     const valuePerShape = isUnit
       ? null
-      : getValuePerShape(
-          facets.flatMap(({ regions }) => regions.map(({ weight }) => weight)),
-          SHAPE_MAP_MAX_SHAPES,
-        );
+      : facets.reduce(
+          (sharedValue, { regions }) =>
+            Math.max(
+              sharedValue,
+              getValuePerShape(
+                regions.map(({ weight }) => weight),
+                SHAPE_MAP_MAX_SHAPES,
+              ) ?? 0,
+            ),
+          0,
+        ) || null;
     const gridShapeCount = Math.max(
       ...facets.map((facet) =>
         getShapeMapShapeCount(facet, valuePerShape, isUnit),

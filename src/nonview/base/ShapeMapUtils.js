@@ -61,12 +61,11 @@ export function getValuePerShape(weights, maxTotalCount = Infinity) {
       (total, weight) => total + roundHalfEven(weight / candidate),
       0,
     );
-  if (getTotalCount(valuePerShape) <= maxTotalCount) {
-    return valuePerShape;
+  let lower = 0;
+  let upper = valuePerShape;
+  while (getTotalCount(upper) > maxTotalCount) {
+    upper *= 2;
   }
-
-  let lower = valuePerShape;
-  let upper = Math.max(...positiveWeights);
   for (let iteration = 0; iteration < 64; iteration += 1) {
     const middle = (lower + upper) / 2;
     if (getTotalCount(middle) > maxTotalCount) {
