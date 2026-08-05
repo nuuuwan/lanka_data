@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import { getValuePerShape } from "../../../nonview/base/ShapeMapUtils.js";
-import { HEX_MAP_MAX_HEXAGONS } from "../../_cons/MapCons.js";
+import { SHAPE_MAP_MAX_SHAPES } from "../../_cons/MapCons.js";
 import DimensionUtils from "../visual_utils/DimensionUtils.js";
 import {
   buildFeatureToDataMap,
@@ -14,6 +14,7 @@ import {
 } from "./ShapeMapDataUtils.js";
 import {
   buildShapeMapLayout,
+  getShapeMapShapeCount,
   shareShapeMapScale,
 } from "./ShapeMapLayoutUtils.js";
 
@@ -50,12 +51,23 @@ export default function useShapeMapData(
       ? null
       : getValuePerShape(
           facets.flatMap(({ regions }) => regions.map(({ weight }) => weight)),
-          HEX_MAP_MAX_HEXAGONS,
+          SHAPE_MAP_MAX_SHAPES,
         );
+    const gridShapeCount = Math.max(
+      ...facets.map((facet) =>
+        getShapeMapShapeCount(facet, valuePerShape, isUnit),
+      ),
+    );
     const maps = DimensionUtils.sortFacets(
       shareShapeMapScale(
         facets.map((facet) =>
-          buildShapeMapLayout(facet, valuePerShape, isUnit, shapeConfig),
+          buildShapeMapLayout(
+            facet,
+            valuePerShape,
+            isUnit,
+            shapeConfig,
+            gridShapeCount,
+          ),
         ),
       ),
       datumList,

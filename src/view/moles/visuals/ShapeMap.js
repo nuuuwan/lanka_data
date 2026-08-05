@@ -1,7 +1,9 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import useGeoJson from "../../../nonview/base/useGeoJson.js";
+import { SHAPE_MAP_OMISSION_FONT_SIZE } from "../../_cons/MapCons.js";
 import LoadingProgress from "../../molecules/LoadingProgress.js";
+import FormatUtils from "../visual_utils/FormatUtils.js";
 import { getGeoDimInfo } from "../visual_utils/GeoVisualUtils.js";
 import MultiChartLayout from "../../organisms/MultiChartLayout.js";
 import Legend from "./Legend.js";
@@ -49,11 +51,27 @@ export default function ShapeMap({ datumSet, isUnit = false, shapeConfig }) {
         )}
       />
       {!isUnit && maps.length > 0 && (
-        <ShapeMapScale
-          map={maps[0]}
-          shapeName={shapeConfig.shapeName}
-          shapeUnit={shapeUnit}
-        />
+        <>
+          <ShapeMapScale
+            map={maps[0]}
+            shapeName={shapeConfig.shapeName}
+            shapeUnit={shapeUnit}
+          />
+          {maps.some(({ omittedBelow }) => omittedBelow !== null) && (
+            <Typography
+              variant="caption"
+              sx={{
+                display: "block",
+                fontSize: SHAPE_MAP_OMISSION_FONT_SIZE,
+                textAlign: "center",
+              }}
+            >
+              Regions with &lt;
+              {FormatUtils.humanizeValue(maps[0].omittedBelow)} {shapeUnit} are
+              not displayed
+            </Typography>
+          )}
+        </>
       )}
       <Legend items={legendItems} />
     </Box>

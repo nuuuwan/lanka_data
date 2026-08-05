@@ -56,13 +56,12 @@ export function getValuePerShape(weights, maxTotalCount = Infinity) {
     return valuePerShape;
   }
 
-  const targetCount = Math.max(maxTotalCount, weights.length);
   const getTotalCount = (candidate) =>
     weights.reduce(
-      (total, weight) => total + Math.max(1, roundHalfEven(weight / candidate)),
+      (total, weight) => total + roundHalfEven(weight / candidate),
       0,
     );
-  if (getTotalCount(valuePerShape) <= targetCount) {
+  if (getTotalCount(valuePerShape) <= maxTotalCount) {
     return valuePerShape;
   }
 
@@ -70,7 +69,7 @@ export function getValuePerShape(weights, maxTotalCount = Infinity) {
   let upper = Math.max(...positiveWeights);
   for (let iteration = 0; iteration < 64; iteration += 1) {
     const middle = (lower + upper) / 2;
-    if (getTotalCount(middle) > targetCount) {
+    if (getTotalCount(middle) > maxTotalCount) {
       lower = middle;
     } else {
       upper = middle;
@@ -86,9 +85,7 @@ export function getShapeCounts(regionToWeight, valuePerShape = null) {
   return Object.fromEntries(
     entries.map(([regionId, weight]) => [
       regionId,
-      resolvedValuePerShape
-        ? Math.max(1, roundHalfEven(weight / resolvedValuePerShape))
-        : 1,
+      resolvedValuePerShape ? roundHalfEven(weight / resolvedValuePerShape) : 1,
     ]),
   );
 }
