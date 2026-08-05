@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/lanka_data/static/css/main.70c1bb62.css",
-    "main.js": "/lanka_data/static/js/main.93c298af.js",
+    "main.js": "/lanka_data/static/js/main.1e0a9ebc.js",
     "static/js/453.819ec5cd.chunk.js": "/lanka_data/static/js/453.819ec5cd.chunk.js",
     "index.html": "/lanka_data/index.html",
     "main.70c1bb62.css.map": "/lanka_data/static/css/main.70c1bb62.css.map",
-    "main.93c298af.js.map": "/lanka_data/static/js/main.93c298af.js.map",
+    "main.1e0a9ebc.js.map": "/lanka_data/static/js/main.1e0a9ebc.js.map",
     "453.819ec5cd.chunk.js.map": "/lanka_data/static/js/453.819ec5cd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.70c1bb62.css",
-    "static/js/main.93c298af.js"
+    "static/js/main.1e0a9ebc.js"
   ]
 }
