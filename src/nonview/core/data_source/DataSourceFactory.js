@@ -2,6 +2,20 @@ import Census2024 from "./Census2024.js";
 import GIG from "./GIG.js";
 import DatumSet from "../DatumSet.js";
 
+function getTimeValues(metadataList) {
+  const years = new Set();
+  metadataList.forEach((metadata) =>
+    Object.values(metadata)
+      .flat()
+      .forEach((partialPath) =>
+        partialPath
+          .match(/(?:18|19|20)\d{2}/g)
+          ?.forEach((year) => years.add(year)),
+      ),
+  );
+  return [...years].sort((a, b) => Number(a) - Number(b));
+}
+
 export default class DataSourceFactory {
   static getDataSourceClasses() {
     return [Census2024, GIG];
@@ -32,6 +46,7 @@ export default class DataSourceFactory {
         ]),
       ),
       metadataKeyLists: metadataList.map((metadata) => Object.keys(metadata)),
+      valuesByField: { Time: getTimeValues(metadataList) },
     };
   }
 

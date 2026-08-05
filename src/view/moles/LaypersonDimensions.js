@@ -6,6 +6,7 @@ import LaypersonDimensionRow from "./LaypersonDimensionRow.js";
 export default function LaypersonDimensions({
   dimensions,
   dimensionOptions,
+  valueOptionsByField,
   onAdd,
   onChange,
   onKeyDown,
@@ -31,6 +32,7 @@ export default function LaypersonDimensions({
           key={index}
           dimension={dimension}
           dimensionOptions={dimensionOptions}
+          valueOptionsByField={valueOptionsByField}
           dimensionsCount={dimensions.length}
           index={index}
           onChange={(name, value) => onChange(index, name, value)}

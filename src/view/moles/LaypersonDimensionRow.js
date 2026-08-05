@@ -17,6 +17,7 @@ import { getVisualLabel } from "./LaypersonQueryUtils.js";
 export default function LaypersonDimensionRow({
   dimension,
   dimensionOptions,
+  valueOptionsByField,
   dimensionsCount,
   index,
   onChange,
@@ -86,6 +87,7 @@ export default function LaypersonDimensionRow({
       <LaypersonDimensionValue
         dimension={dimension}
         dimensionOptions={dimensionOptions}
+        valueOptionsByField={valueOptionsByField}
         index={index}
         onChange={onChange}
         onKeyDown={onKeyDown}

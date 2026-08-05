@@ -30,6 +30,7 @@ export default function DataProvider({ children }) {
     entities: [],
     dimensionsByEntity: {},
     metadataKeyLists: [],
+    valuesByField: {},
   });
 
   useEffect(() => {

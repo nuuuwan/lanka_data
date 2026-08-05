@@ -15,6 +15,7 @@ import {
 export default function LaypersonDimensionValue({
   dimension,
   dimensionOptions,
+  valueOptionsByField,
   index,
   onChange,
   onKeyDown,
@@ -22,9 +23,9 @@ export default function LaypersonDimensionValue({
   const valueOptions = useMemo(
     () =>
       dimension.operator && dimension.operator !== "<"
-        ? getValueOptions(dimension.field)
+        ? getValueOptions(dimension.field, valueOptionsByField[dimension.field])
         : null,
-    [dimension.field, dimension.operator],
+    [dimension.field, dimension.operator, valueOptionsByField],
   );
   if (!dimension.operator)
     return <Box sx={{ display: { xs: "none", sm: "block" } }} />;
@@ -93,6 +94,7 @@ export default function LaypersonDimensionValue({
         <LaypersonDimensionValue
           dimension={parentDimension}
           dimensionOptions={dimensionOptions}
+          valueOptionsByField={valueOptionsByField}
           index={0}
           onChange={updateParentDimension}
           onKeyDown={onKeyDown}

@@ -22,6 +22,7 @@ export default function LaypersonVisualQueryInput({
     ? options.entities
     : [parts.entity, ...options.entities].filter(Boolean);
   const dimensionOptions = options.dimensionsByEntity[parts.entity] || [];
+  const valueOptionsByField = options.valuesByField || {};
   const updatePart = (name, nextValue) =>
     onChange(
       ["entity", "dimensions", "aggregate", "visual"]
@@ -54,6 +55,7 @@ export default function LaypersonVisualQueryInput({
       <LaypersonDimensions
         dimensions={dimensions}
         dimensionOptions={dimensionOptions}
+        valueOptionsByField={valueOptionsByField}
         onAdd={() => updatePart("dimensions", `${parts.dimensions}+`)}
         onChange={(index, name, nextValue) =>
           updateDimensions(

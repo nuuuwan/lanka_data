@@ -28,7 +28,10 @@ export function getDimensionString({ field, operator, value }) {
   return `${field}${operator}${operator ? value : ""}`;
 }
 
-export function getValueOptions(field) {
+export function getValueOptions(field, configuredValues = null) {
+  if (configuredValues) {
+    return configuredValues.map((value) => ({ value, label: value }));
+  }
   try {
     const ThingClass = ThingFactory.fromKey(field);
     if (!(ThingClass.prototype instanceof CategoryConcept)) return null;
