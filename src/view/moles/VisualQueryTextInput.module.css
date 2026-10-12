@@ -1,6 +1,5 @@
 .container {
   background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.23);
   border-radius: 4px;
   min-height: 56px;
 }
@@ -20,8 +19,7 @@
 }
 
 .container:focus-within {
-  border-color: #444444;
-  box-shadow: 0 0 0 1px #444444;
+  background: #e0eeee;
 }
 
 .textarea {

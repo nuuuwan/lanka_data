@@ -78,17 +78,17 @@ export default function VisualQueryPage() {
                 />
               </VisualErrorBoundary>
             )}
-            {isReady && (
-              <VisualQueryForm
-                value={input}
-                onChange={setInput}
-                onSubmit={submit}
-                queryOptions={queryOptions}
-                disabled={isLoading && !errorMessage}
-                loadedVisualQuery={loadedQuery}
-              />
-            )}
           </Box>
+        )}
+        {isReady && (
+          <VisualQueryForm
+            value={input}
+            onChange={setInput}
+            onSubmit={submit}
+            queryOptions={queryOptions}
+            disabled={isLoading && !errorMessage}
+            loadedVisualQuery={loadedQuery}
+          />
         )}
       </Box>
     </>

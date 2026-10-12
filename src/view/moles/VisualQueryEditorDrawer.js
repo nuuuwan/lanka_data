@@ -2,6 +2,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Box, Button, Drawer, IconButton, Typography } from "@mui/material";
 
 import LaypersonVisualQueryInput from "./LaypersonVisualQueryInput.js";
+import VisualQueryEditorHelp from "./VisualQueryEditorHelp.js";
 import styles from "./VisualQueryEditorDrawer.module.css";
 
 export default function VisualQueryEditorDrawer({
@@ -40,6 +41,7 @@ export default function VisualQueryEditorDrawer({
             <CloseIcon />
           </IconButton>
         </Box>
+        <VisualQueryEditorHelp />
         <Box component="form" onSubmit={onSubmit}>
           <Box
             component="fieldset"

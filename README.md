@@ -13,3 +13,11 @@ The visual is shown first, with the query and its update, random-query, and shar
 controls in a fixed bottom bar. Open **Editor** to edit facets and visual options
 in a bottom drawer above the compact grey query bar. Updating from the drawer
 closes it and displays the new visual.
+Info alerts in the drawer explain data selection, facet grouping and filtering,
+and how to apply or retain edits.
+
+Version information is at the bottom of the **...** menu. Choose **Share with QR**
+in that menu to open a QR code for the current visual. The old footer QR is retired.
+
+UI components are borderless, with background shades and focus highlights
+distinguishing controls. Map boundaries and chart data outlines remain visible.

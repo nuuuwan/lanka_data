@@ -39,6 +39,23 @@ export const AppTheme = createTheme({
     },
   },
   components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#f5f5f5",
+          "&.Mui-focused": {
+            backgroundColor: "#e0eeee",
+          },
+        },
+      },
+    },
+    MuiDivider: {
+      styleOverrides: {
+        root: {
+          marginBlock: "8px",
+        },
+      },
+    },
     MuiAlert: {
       styleOverrides: {
         message: {

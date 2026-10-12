@@ -1,0 +1,14 @@
+.content {
+  text-align: center;
+}
+
+.code {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 16px auto;
+}
+
+.url {
+  overflow-wrap: anywhere;
+}
