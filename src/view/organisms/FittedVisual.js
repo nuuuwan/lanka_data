@@ -49,7 +49,7 @@ export default function FittedVisual({ children, header, footer, visualRef }) {
           data-testid="fitted-visual"
           elevation={0}
           sx={{
-            bgcolor: "grey.100",
+            bgcolor: "common.white",
             boxSizing: "border-box",
             overflow: "hidden",
             p: `${VISUAL_PAPER_PADDING_PX}px`,

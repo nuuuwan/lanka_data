@@ -83,8 +83,9 @@ natural grid sizes and may extend below the viewport.
 Visuals remain horizontally centered in their panels when scaled; charts measure
 their unscaled layout size to avoid shrinking twice.
 
-UI components are borderless, using background shades and focus highlights to
-distinguish controls. Map boundaries and chart data outlines remain visible.
+Visual panels use a plain white background. UI controls are borderless, using
+background shades and focus highlights to distinguish controls. Map boundaries
+and chart data outlines remain visible.
 
 ## Use the same query from code
 
