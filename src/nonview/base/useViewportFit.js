@@ -8,7 +8,7 @@ export default function useViewportFit(
   reservedHeight = 0,
   enabled = true,
 ) {
-  const [fit, setFit] = useState({ scale: 1, height: 0, left: 0 });
+  const [fit, setFit] = useState({ scale: 1, height: 0 });
 
   useLayoutEffect(() => {
     if (!enabled) return undefined;
@@ -30,12 +30,9 @@ export default function useViewportFit(
       const next = {
         scale,
         height: contentHeight * scale,
-        left: (width - contentWidth * scale) / 2,
       };
       setFit((previous) =>
-        previous.scale === next.scale &&
-        previous.height === next.height &&
-        previous.left === next.left
+        previous.scale === next.scale && previous.height === next.height
           ? previous
           : next,
       );

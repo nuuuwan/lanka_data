@@ -18,7 +18,7 @@ export default function FittedVisual({ children, header, footer, visualRef }) {
     useElementHeight(headerRef) + useElementHeight(footerRef);
   const containerRef = useRef(null);
   const contentRef = useRef(null);
-  const { scale, height, left } = useViewportFit(
+  const { scale, height } = useViewportFit(
     containerRef,
     contentRef,
     VISUAL_VIEWPORT_MAX_RATIO,
@@ -68,11 +68,13 @@ export default function FittedVisual({ children, header, footer, visualRef }) {
               sx={{
                 position: fitToViewport ? "absolute" : "relative",
                 top: 0,
-                left: fitToViewport ? left : 0,
+                left: fitToViewport ? "50%" : 0,
                 width: "100%",
                 display: "flow-root",
-                transform: fitToViewport ? `scale(${scale})` : undefined,
-                transformOrigin: "top left",
+                transform: fitToViewport
+                  ? `translateX(-50%) scale(${scale})`
+                  : undefined,
+                transformOrigin: "top center",
               }}
             >
               {children}
