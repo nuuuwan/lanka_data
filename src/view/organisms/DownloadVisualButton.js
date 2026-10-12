@@ -9,7 +9,11 @@ import {
   SHARE_LINK_FEEDBACK_DURATION_MS,
 } from "../../nonview/constants/APP.js";
 
-export default function DownloadVisualButton({ visualElement, bottomOffset }) {
+export default function DownloadVisualButton({
+  visualElement,
+  bottomOffset,
+  disabled = false,
+}) {
   const [downloading, setDownloading] = useState(false);
   const [error, setError] = useState(null);
   async function download() {
@@ -34,7 +38,7 @@ export default function DownloadVisualButton({ visualElement, bottomOffset }) {
         <span>
           <IconButton
             aria-label="Download visual as PNG"
-            disabled={downloading || !visualElement}
+            disabled={disabled || downloading || !visualElement}
             type="button"
             aria-busy={downloading}
             onClick={download}

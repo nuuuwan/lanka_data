@@ -26,6 +26,9 @@ Examples illustrate only some of the available options. Wizard edits update the
 query bar immediately without applying it. Close the wizard, then use Refresh
 or Enter in the query bar to apply changes. Enter in a wizard field only advances
 to the next step. Reopening starts at Data with edits preserved.
+While the wizard is open, the query bar and all its buttons are disabled.
+Wizard edits still update the displayed query; closing restores the controls
+subject to their normal loading and visual-availability rules.
 
 Version information is at the bottom of the **...** menu. Choose **Share with QR**
 in that menu to open a QR code for the current visual. The old footer QR is retired.

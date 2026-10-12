@@ -20,6 +20,7 @@ export default function VisualQueryForm({
   visualElement = null,
 }) {
   const [editorOpen, setEditorOpen] = useState(false);
+  const barDisabled = disabled || editorOpen;
   const barRef = useRef(null);
   const barHeight = useElementHeight(barRef);
   const actions = useVisualQueryActions();
@@ -45,13 +46,13 @@ export default function VisualQueryForm({
         <Box component="form" aria-label="Visual query form" onSubmit={submit}>
           <Box
             component="fieldset"
-            disabled={disabled}
+            disabled={barDisabled}
             aria-busy={disabled}
             className={styles.fields}
           >
             <VisualQueryTextInput
               compact
-              disabled={disabled}
+              disabled={barDisabled}
               onChange={onChange}
               value={value}
               onKeyDown={(event) => {
@@ -59,13 +60,14 @@ export default function VisualQueryForm({
               }}
             />
             <VisualQueryActions
-              disabled={disabled}
+              disabled={barDisabled}
               refreshDisabled={refreshDisabled}
               isEdited={isEdited}
               onCopy={actions.copyShareLink}
               onOpenEditor={() => setEditorOpen(true)}
             >
               <DownloadVisualButton
+                disabled={barDisabled}
                 visualElement={visualElement}
                 bottomOffset={barHeight}
               />
