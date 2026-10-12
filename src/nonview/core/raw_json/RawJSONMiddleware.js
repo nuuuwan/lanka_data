@@ -5,7 +5,7 @@ import { APP_PATH, JSON_DOWNLOAD_FILE_NAME } from "../../constants/APP.js";
 
 const RAW_JSON_SUFFIX = `/JSON/${JSON_DOWNLOAD_FILE_NAME}`;
 
-async function loadRegionData() {
+export async function loadRegionData() {
   await Promise.all(
     RegionFactory.list().map(async (RegionClass) => {
       RegionClass.ents = await RegionClass.loadEnts();

@@ -1,7 +1,7 @@
 import DownloadIcon from "@mui/icons-material/Download";
 import { Box, Button } from "@mui/material";
 
-import { getJSONDownloadURL } from "../../../nonview/base/RawJSON.js";
+import { getJSONDownloadURL } from "../../../nonview/core/raw_json/RawJSON.js";
 import { JSON_DOWNLOAD_FILE_NAME } from "../../../nonview/constants/APP.js";
 
 export default function JSONVisual({ datumSet }) {

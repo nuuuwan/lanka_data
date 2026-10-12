@@ -46,26 +46,31 @@ download button are excluded. Download is enabled only when a rendered visual is
 
 ## Querying JSON from code
 
-With the local development server (`npm start`), a direct HTTP request to a query
-ending in `/JSON/raw.json` returns `application/json`, not the React HTML page:
+The published query below is available directly from GitHub Pages as
+`application/json`, without running the React app:
 
 ```python
 import requests
 
-url = "http://localhost:3000/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/JSON/raw.json"
+url = "https://nuuuwan.github.io/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/JSON/raw.json"
 response = requests.get(url, timeout=60)
 response.raise_for_status()
 data = response.json()
 print(data)
 ```
 
-The response contains `datumList` and `provenance` and is served as an attachment.
-Data is fetched from upstream sources, so allow more than 10 seconds for large
-queries.
-Query failures return a non-success status
-with a JSON error. Restart the development server after server middleware changes.
-GitHub Pages serves static files and cannot run this endpoint; use a running
-development server for programmatic queries. `/JSON` shows the JSON view;
-append `/raw.json` for programmatic access.
+The response contains `datumList` and `provenance`. `npm run build` fetches data
+from upstream sources and writes static `/JSON/raw.json` files for the queries
+listed in `src/nonview/constants/RawJSON.js`. The deployment includes these files;
+their data is a snapshot from the latest successful build. Builds fail if fetching
+or generating the published data fails.
+
+GitHub Pages supports only those listed queries, not arbitrary dynamic queries.
+Other queries still support **Download JSON** in the `/JSON` browser view.
+For arbitrary programmatic queries, use the same path with
+`http://localhost:3000` while running the local development server (`npm start`).
+Local responses are served as attachments; query failures return a non-success
+status with a JSON error. Allow more than 10 seconds for large local queries and
+restart the development server after server middleware changes.
 
 The Blocks visual has been retired; use Table for tabular results.
