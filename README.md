@@ -78,8 +78,13 @@ Use **Table** for tabular results; the Blocks visual has been retired.
 
 The visual comes first, with query controls fixed at the bottom. Single visuals
 fit their title, panel, and source footer within 95% of the viewport width and
-height, updating as the viewport or content changes. Multiple charts or maps use
-natural grid sizes and may extend below the viewport.
+height where possible, updating as the viewport or content changes. Scaling is
+limited to preserve readable text; taller visuals may extend below the viewport.
+Multiple charts or maps use natural grid sizes. Dense bar charts scroll
+horizontally on narrow screens instead of compressing category labels.
+Value and map labels have maximum font sizes; values too small to label legibly
+remain available in tooltips. Tiny map regions retain their hover details rather
+than displaying unreadably small labels.
 Visuals remain horizontally centered in their panels when scaled; charts measure
 their unscaled layout size to avoid shrinking twice.
 

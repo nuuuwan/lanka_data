@@ -1,11 +1,12 @@
 import { animated } from "@react-spring/web";
 
 import FormatUtils from "../visual_utils/FormatUtils.js";
+import { VISUAL_LABEL_MIN_FONT_SIZE } from "../../../nonview/constants/ChartLabels.js";
 
 const CHARACTER_WIDTH_RATIO = 0.6;
 const LABEL_PADDING_RATIO = 0.6;
 const MAX_FONT_SIZE = 28;
-const MIN_FONT_SIZE = 10;
+const MIN_FONT_SIZE = VISUAL_LABEL_MIN_FONT_SIZE;
 
 function getFontSize(
   { endAngle, innerRadius, outerRadius, startAngle },

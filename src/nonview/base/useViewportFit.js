@@ -7,6 +7,7 @@ export default function useViewportFit(
   paddingPx,
   reservedHeight = 0,
   enabled = true,
+  minScale = 0,
 ) {
   const [fit, setFit] = useState({ scale: 1, height: 0 });
 
@@ -25,7 +26,9 @@ export default function useViewportFit(
       const scale = Math.min(
         1,
         contentWidth > 0 ? width / contentWidth : 1,
-        contentHeight > 0 ? availableHeight / contentHeight : 1,
+        contentHeight > 0
+          ? Math.max(minScale, availableHeight / contentHeight)
+          : 1,
       );
       const next = {
         scale,
@@ -59,6 +62,7 @@ export default function useViewportFit(
     paddingPx,
     reservedHeight,
     enabled,
+    minScale,
   ]);
 
   return fit;

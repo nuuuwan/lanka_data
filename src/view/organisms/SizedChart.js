@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 
 import styles from "./SizedChart.module.css";
 
-export default function SizedChart({ chart: Chart, ...props }) {
+export default function SizedChart({ chart: Chart, minWidth = 0, ...props }) {
   const ref = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
 
@@ -21,10 +21,12 @@ export default function SizedChart({ chart: Chart, ...props }) {
   }, []);
 
   return (
-    <div ref={ref} className={styles.container}>
-      {size.width > 0 && size.height > 0 && (
-        <Chart {...props} width={size.width} height={size.height} />
-      )}
+    <div className={styles.viewport} tabIndex={minWidth > 0 ? 0 : undefined}>
+      <div ref={ref} className={styles.container} style={{ minWidth }}>
+        {size.width > 0 && size.height > 0 && (
+          <Chart {...props} width={size.width} height={size.height} />
+        )}
+      </div>
     </div>
   );
 }

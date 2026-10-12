@@ -2,13 +2,13 @@ import { Box } from "@mui/material";
 
 import {
   MAP_BORDER_COLOR,
-  MAP_LABEL_DARK_COLOR,
-  MAP_LABEL_LIGHT_COLOR,
+  MAP_WIDTH,
   MAP_UNKNOWN_COLOR,
   SHAPE_MAP_EDGE_WIDTH,
   SHAPE_MAP_REGION_BORDER_WIDTH,
 } from "../../_cons/MapCons.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
+import MapLabels from "../../organisms/MapLabels.js";
 
 export default function ShapeMapGraphic({ data, shapeConfig }) {
   const fillColor = data.facetColor ?? MAP_UNKNOWN_COLOR;
@@ -17,6 +17,8 @@ export default function ShapeMapGraphic({ data, shapeConfig }) {
       data-testid={shapeConfig.testId}
       sx={{
         width: "100%",
+        maxWidth: MAP_WIDTH,
+        mx: "auto",
         "& svg": { width: "100%", height: "auto", display: "block" },
       }}
     >
@@ -51,24 +53,7 @@ export default function ShapeMapGraphic({ data, shapeConfig }) {
               strokeWidth={SHAPE_MAP_REGION_BORDER_WIDTH}
             />
           ))}
-          {data.labels.map(({ angle, center, color, fontSize, id, name }) => (
-            <text
-              key={id}
-              x={center[0]}
-              y={center[1]}
-              textAnchor="middle"
-              dominantBaseline="central"
-              fill={
-                FormatUtils.isLightColor(color)
-                  ? MAP_LABEL_DARK_COLOR
-                  : MAP_LABEL_LIGHT_COLOR
-              }
-              fontSize={fontSize}
-              transform={`rotate(${angle} ${center[0]} ${center[1]})`}
-            >
-              {name}
-            </text>
-          ))}
+          <MapLabels labels={data.labels} />
         </g>
       </svg>
     </Box>

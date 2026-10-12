@@ -1,6 +1,7 @@
 import {
   IN_BAR_LABEL_CHARACTER_WIDTH_RATIO,
   IN_BAR_LABEL_MIN_FONT_SIZE,
+  IN_BAR_LABEL_MAX_FONT_SIZE,
   IN_BAR_LABEL_PADDING,
 } from "../constants/ChartLabels.js";
 
@@ -20,7 +21,10 @@ export default function getLargestLabelFit(label, width, height) {
     availableHeight / textWidth,
   );
   const isVertical = verticalFontSize > horizontalFontSize;
-  const fontSize = isVertical ? verticalFontSize : horizontalFontSize;
+  const fontSize = Math.min(
+    IN_BAR_LABEL_MAX_FONT_SIZE,
+    isVertical ? verticalFontSize : horizontalFontSize,
+  );
 
   return fontSize >= IN_BAR_LABEL_MIN_FONT_SIZE
     ? { fontSize, rotation: isVertical ? -90 : 0 }

@@ -1,5 +1,10 @@
 export const IN_BAR_LABEL_CHARACTER_WIDTH_RATIO = 0.6;
-export const IN_BAR_LABEL_MIN_FONT_SIZE = 6;
+export const IN_BAR_LABEL_MIN_FONT_SIZE = 12;
+export const IN_BAR_LABEL_MAX_FONT_SIZE = 24;
+export const VISUAL_LABEL_MIN_FONT_SIZE = 14;
+export const VISUAL_LABEL_MAX_FONT_SIZE = 26;
+export const CHART_MIN_CATEGORY_WIDTH = 28;
+export const CHART_HORIZONTAL_MARGIN = 130;
 export const IN_BAR_LABEL_PADDING = 2;
 export const IN_BAR_LABEL_STROKE_WIDTH = 0.3;
 export const PIE_CHART_HEIGHT = 400;

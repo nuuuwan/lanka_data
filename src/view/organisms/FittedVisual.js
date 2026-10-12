@@ -7,6 +7,7 @@ import { VisualLayoutContext } from "../../nonview/core/VisualLayoutContext.js";
 import {
   VISUAL_PAPER_PADDING_PX,
   VISUAL_VIEWPORT_MAX_RATIO,
+  VISUAL_MIN_SCALE,
 } from "../../nonview/constants/APP.js";
 
 export default function FittedVisual({ children, header, footer, visualRef }) {
@@ -25,6 +26,7 @@ export default function FittedVisual({ children, header, footer, visualRef }) {
     VISUAL_PAPER_PADDING_PX,
     reservedHeight,
     fitToViewport,
+    VISUAL_MIN_SCALE,
   );
 
   return (

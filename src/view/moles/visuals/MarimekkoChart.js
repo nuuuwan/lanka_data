@@ -1,9 +1,13 @@
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Marimekko } from "@nivo/marimekko";
 import SizedChart from "../../organisms/SizedChart.js";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
+import {
+  CHART_MIN_CATEGORY_WIDTH,
+  CHART_HORIZONTAL_MARGIN,
+} from "../../../nonview/constants/ChartLabels.js";
 import {
   BAR_CHART_MIN_HEIGHT_PX,
   getSlantedXAxis,
@@ -19,8 +23,6 @@ import {
 } from "./MarimekkoUtils.js";
 
 export default function MarimekkoChart({ data, xAxisLabel }) {
-  const theme = useTheme();
-  const screenWidth = useMediaQuery(theme.breakpoints.down("sm")) ? 375 : 1200;
   const sortedData = sortByDominantCategory(data);
   const dimensions = getDimensions(sortedData);
   const color = (id) => getMarkColor(getColorForDimension(id, sortedData));
@@ -34,6 +36,10 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
       >
         <SizedChart
           chart={Marimekko}
+          minWidth={
+            sortedData.length * CHART_MIN_CATEGORY_WIDTH +
+            CHART_HORIZONTAL_MARGIN
+          }
           theme={NIVO_THEME}
           data={sortedData}
           id="id"
@@ -51,13 +57,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
             tickSize: 0,
             tickPadding: 0,
           })}
-          layers={[
-            "grid",
-            "axes",
-            "bars",
-            (props) => <BarLabelsLayer {...props} screenWidth={screenWidth} />,
-            InBarLabels,
-          ]}
+          layers={["grid", "axes", "bars", BarLabelsLayer, InBarLabels]}
           axisLeft={{
             orient: "left",
             tickSize: 5,

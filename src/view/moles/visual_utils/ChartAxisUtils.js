@@ -1,10 +1,10 @@
-export const X_AXIS_BOTTOM_MARGIN = 220;
+export const X_AXIS_BOTTOM_MARGIN = 140;
 export const X_AXIS_LABEL_ROTATION = -90;
-export const X_AXIS_LEGEND_OFFSET = 200;
-export const BAR_CHART_MIN_HEIGHT_PX = 580;
+export const X_AXIS_LEGEND_OFFSET = 120;
+export const BAR_CHART_MIN_HEIGHT_PX = 460;
 
 const X_AXIS_MAX_TICK_FONT_SIZE = 14;
-const X_AXIS_MIN_TICK_FONT_SIZE = 10;
+const X_AXIS_MIN_TICK_FONT_SIZE = 14;
 const X_AXIS_TICK_FONT_BUDGET = 168;
 
 export function getDenseAxisTheme(theme, tickCount) {

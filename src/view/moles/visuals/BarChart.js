@@ -5,6 +5,10 @@ import { Box, Typography } from "@mui/material";
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import {
+  CHART_MIN_CATEGORY_WIDTH,
+  CHART_HORIZONTAL_MARGIN,
+} from "../../../nonview/constants/ChartLabels.js";
+import {
   BAR_CHART_MIN_HEIGHT_PX,
   getDenseAxisTheme,
   getSlantedXAxis,
@@ -18,6 +22,9 @@ export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
     <Box sx={{ width: "100%", height: BAR_CHART_MIN_HEIGHT_PX }}>
       <SizedChart
         chart={Bar}
+        minWidth={
+          data.length * CHART_MIN_CATEGORY_WIDTH + CHART_HORIZONTAL_MARGIN
+        }
         theme={getDenseAxisTheme(NIVO_THEME, data.length)}
         data={data}
         keys={["value"]}

@@ -6,12 +6,11 @@ import {
   MAP_BORDER_COLOR,
   MAP_BORDER_WIDTH,
   MAP_HEIGHT,
-  MAP_LABEL_DARK_COLOR,
-  MAP_LABEL_LIGHT_COLOR,
   MAP_UNKNOWN_COLOR,
   MAP_WIDTH,
 } from "../../_cons/MapCons.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
+import MapLabels from "../../organisms/MapLabels.js";
 
 function setViewBox(element) {
   element
@@ -29,28 +28,7 @@ export default function GeoChoropleth({
 }) {
   const maxValue = Math.max(...data.map(({ value }) => value), 1);
   const labelsLayer = () => (
-    <g data-testid={`${testId}-labels`} pointerEvents="none">
-      {labels.map(
-        ({ angle, backgroundColor, fontSize, id, name, position: [x, y] }) => (
-          <text
-            key={id}
-            x={x}
-            y={y}
-            textAnchor="middle"
-            dominantBaseline="central"
-            fill={
-              FormatUtils.isLightColor(backgroundColor)
-                ? MAP_LABEL_DARK_COLOR
-                : MAP_LABEL_LIGHT_COLOR
-            }
-            fontSize={fontSize}
-            transform={`rotate(${angle} ${x} ${y})`}
-          >
-            {name}
-          </text>
-        ),
-      )}
-    </g>
+    <MapLabels labels={labels} testId={`${testId}-labels`} />
   );
 
   return (
@@ -59,6 +37,8 @@ export default function GeoChoropleth({
       data-testid={testId}
       sx={{
         width: "100%",
+        maxWidth: MAP_WIDTH,
+        mx: "auto",
         "& svg": { width: "100%", height: "auto", display: "block" },
       }}
     >
