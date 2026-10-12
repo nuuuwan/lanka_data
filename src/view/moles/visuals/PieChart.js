@@ -3,15 +3,26 @@ import { Box, Typography } from "@mui/material";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
+import {
+  PIE_CHART_HEIGHT,
+  PIE_START_ANGLE,
+  PIE_TOTAL_LABEL_OFFSET_PX,
+  PIE_TOTAL_LABEL_FONT_SIZE,
+  PIE_ARC_LABEL_MIN_ANGLE,
+} from "../../../nonview/constants/ChartLabels.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import PieArcLabel from "./PieArcLabel.js";
 
-const CHART_HEIGHT = 400;
-const PIE_START_ANGLE = -90;
-const TOTAL_LABEL_OFFSET_PX = 12;
-
 function getSortedData(data) {
-  return [...data].sort(
+  const categories = new Map();
+  for (const datum of data) {
+    const existing = categories.get(datum.id);
+    categories.set(datum.id, {
+      ...datum,
+      value: (existing?.value ?? 0) + datum.value,
+    });
+  }
+  return [...categories.values()].sort(
     (first, second) =>
       second.value - first.value || first.id.localeCompare(second.id),
   );
@@ -23,10 +34,10 @@ export default function PieChart({ data, total, maxTotal }) {
   const totalLabel = FormatUtils.humanizeValue(total);
 
   return (
-    <Box sx={{ width: "100%", minHeight: CHART_HEIGHT * scale }}>
+    <Box sx={{ width: "100%", minHeight: PIE_CHART_HEIGHT * scale }}>
       <Box
         sx={{
-          height: CHART_HEIGHT,
+          height: PIE_CHART_HEIGHT,
           transform: `scale(${scale})`,
           transformOrigin: "center",
         }}
@@ -39,7 +50,7 @@ export default function PieChart({ data, total, maxTotal }) {
           borderWidth={1}
           borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
           arcLabel={({ value }) => FormatUtils.humanizeValue(value)}
-          arcLabelsSkipAngle={10}
+          arcLabelsSkipAngle={PIE_ARC_LABEL_MIN_ANGLE}
           arcLabelsComponent={PieArcLabel}
           enableArcLinkLabels={false}
           innerRadius={0.5}
@@ -50,9 +61,9 @@ export default function PieChart({ data, total, maxTotal }) {
             ({ centerX, centerY }) => (
               <text
                 x={centerX}
-                y={centerY + TOTAL_LABEL_OFFSET_PX}
+                y={centerY + PIE_TOTAL_LABEL_OFFSET_PX}
                 textAnchor="middle"
-                style={{ fontSize: 18, fontWeight: 600 }}
+                style={{ fontSize: PIE_TOTAL_LABEL_FONT_SIZE, fontWeight: 600 }}
               >
                 {totalLabel}
               </text>
