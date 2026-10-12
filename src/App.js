@@ -10,17 +10,12 @@ function App() {
   return (
     <ThemeProvider theme={AppTheme}>
       <BrowserRouter basename={APP_PATH}>
-        <Routes>
-          <Route index element={<HomePage />} />
-          <Route
-            path="*"
-            element={
-              <DataProvider>
-                <VisualQueryPage />
-              </DataProvider>
-            }
-          />
-        </Routes>
+        <DataProvider>
+          <Routes>
+            <Route index element={<HomePage />} />
+            <Route path="*" element={<VisualQueryPage />} />
+          </Routes>
+        </DataProvider>
       </BrowserRouter>
     </ThemeProvider>
   );

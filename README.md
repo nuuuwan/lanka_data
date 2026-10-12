@@ -7,6 +7,10 @@ visual exploration and programmatic access.
 
 ## Philosophy: one query, one tool
 
+I've wanted a single place to explore Sri Lanka's data, with a unified
+visualization tool and programmatic API. Lanka Data is a step toward that goal,
+starting with census and election data—not yet all data about Sri Lanka.
+
 My aim is simplicity: **one query, one tool—for people and code**. Exploring data
 visually and using it in a program should not require two separate workflows.
 
@@ -17,7 +21,14 @@ query logic, with source provenance included alongside the results.
 
 ## Explore visually
 
-1. Open **Query Wizard** from the bottom query bar.
+Opening `/lanka_data` or `/lanka_data/` without a query shows the home page,
+with links to all six examples. Choose an example to open its visualization.
+The AppBar and bottom query navigator remain visible on the home page. You can
+also enter a query or use Query Wizard there once the data options are ready.
+PNG download stays disabled until a visual is available.
+Query URLs continue to open their visuals directly.
+
+1. Choose a home-page example or open **Query Wizard** from the bottom query bar.
 2. Follow **Data → Facets → Visual** to choose what to explore, how to group or
    filter it, and how to display it.
 3. Close the wizard, then use **Update visualization** or press **Enter** in the
@@ -48,7 +59,7 @@ Use **Table** for tabular results; the Blocks visual has been retired.
 - **Download JSON** in the `JSON` view saves data for use in your own code.
 - **Refresh** in the **...** menu clears all local storage, including cached data
   and recent queries, then reloads `/lanka_data` with no query path, URL parameters,
-  or fragment. The default visual loads without changing the base URL.
+  or fragment. The home page shows the example links at the base URL.
 - Version information is at the bottom of the **...** menu.
 
 ### Layout
