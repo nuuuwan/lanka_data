@@ -17,16 +17,11 @@ import {
 import FormatUtils from "../visual_utils/FormatUtils.js";
 import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
-
-function getColorForKey(key, data) {
-  const colorKey = `${key}Color`;
-  for (const row of data) {
-    if (row[colorKey]) {
-      return row[colorKey];
-    }
-  }
-  return undefined;
-}
+import {
+  getColorForKey,
+  getStackKeys,
+  getStackLegendItems,
+} from "../../../nonview/core/StackedBarUtils.js";
 
 export default function StackedBarChart({
   data,
@@ -34,13 +29,7 @@ export default function StackedBarChart({
   yAxisLabel,
   stackDimName,
 }) {
-  const keys =
-    data.length === 0
-      ? []
-      : Object.keys(data[0]).filter(
-          (key) =>
-            key !== "id" && key !== "_barWidth" && !key.endsWith("Color"),
-        );
+  const keys = getStackKeys(data);
 
   return (
     <Box>
@@ -101,13 +90,7 @@ export default function StackedBarChart({
           ariaLabel="Stacked bar chart"
         />
       </Box>
-      <Legend
-        items={keys.map((key) => ({
-          id: key,
-          label: key,
-          color: getMarkColor(getColorForKey(key, data)),
-        }))}
-      />
+      <Legend items={getStackLegendItems(keys, data)} />
     </Box>
   );
 }

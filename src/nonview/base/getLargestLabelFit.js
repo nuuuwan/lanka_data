@@ -13,18 +13,17 @@ export default function getLargestLabelFit(label, width, height) {
   const textWidth =
     Math.max(String(label).length, 1) * IN_BAR_LABEL_CHARACTER_WIDTH_RATIO;
   const horizontalFontSize = Math.min(
+    IN_BAR_LABEL_MAX_FONT_SIZE,
     availableHeight,
     availableWidth / textWidth,
   );
   const verticalFontSize = Math.min(
+    IN_BAR_LABEL_MAX_FONT_SIZE,
     availableWidth,
     availableHeight / textWidth,
   );
   const isVertical = verticalFontSize > horizontalFontSize;
-  const fontSize = Math.min(
-    IN_BAR_LABEL_MAX_FONT_SIZE,
-    isVertical ? verticalFontSize : horizontalFontSize,
-  );
+  const fontSize = isVertical ? verticalFontSize : horizontalFontSize;
 
   return fontSize >= IN_BAR_LABEL_MIN_FONT_SIZE
     ? { fontSize, rotation: isVertical ? -90 : 0 }

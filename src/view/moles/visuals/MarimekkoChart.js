@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { Marimekko } from "@nivo/marimekko";
 import SizedChart from "../../organisms/SizedChart.js";
 
@@ -16,6 +16,7 @@ import {
 import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
 import { BarLabelsLayer } from "./MarimekkoLabels.js";
+import MarimekkoTooltip from "./MarimekkoTooltip.js";
 import {
   getColorForDimension,
   getDimensions,
@@ -77,13 +78,7 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
             bottom: X_AXIS_BOTTOM_MARGIN,
             left: 80,
           }}
-          tooltip={({ id, value, color: markColor }) => (
-            <Box sx={{ backgroundColor: "white", p: 1, border: 1 }}>
-              <Typography variant="body2" sx={{ color: markColor }}>
-                {id}: {Math.round(value * 100)}%
-              </Typography>
-            </Box>
-          )}
+          tooltip={MarimekkoTooltip}
         />
       </Box>
       <Legend

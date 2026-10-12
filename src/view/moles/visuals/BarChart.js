@@ -23,7 +23,8 @@ export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
       <SizedChart
         chart={Bar}
         minWidth={
-          data.length * CHART_MIN_CATEGORY_WIDTH + CHART_HORIZONTAL_MARGIN
+          new Set(data.map(({ id }) => id)).size * CHART_MIN_CATEGORY_WIDTH +
+          CHART_HORIZONTAL_MARGIN
         }
         theme={getDenseAxisTheme(NIVO_THEME, data.length)}
         data={data}

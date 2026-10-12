@@ -32,10 +32,14 @@ export default function DataProvenancePanel({ provenance }) {
                   alignItems: "center",
                   display: "inline-flex",
                   gap: 0.25,
+                  maxWidth: "100%",
+                  verticalAlign: "middle",
                 }}
               >
-                {source}
-                <OpenInNewIcon sx={{ fontSize: "inherit" }} />
+                <Box component="span" sx={{ minWidth: 0 }}>
+                  {source}
+                </Box>
+                <OpenInNewIcon sx={{ fontSize: "inherit", flexShrink: 0 }} />
               </Link>
             ) : (
               source

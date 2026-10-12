@@ -84,7 +84,8 @@ Multiple charts or maps use natural grid sizes. Dense bar charts scroll
 horizontally on narrow screens instead of compressing category labels.
 Value and map labels have maximum font sizes; values too small to label legibly
 remain available in tooltips. Tiny map regions retain their hover details rather
-than displaying unreadably small labels.
+than displaying unreadably small labels. Shape maps abbreviate long region names
+when needed; the full names remain in hover details.
 Visuals remain horizontally centered in their panels when scaled; charts measure
 their unscaled layout size to avoid shrinking twice.
 

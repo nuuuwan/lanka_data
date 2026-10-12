@@ -12,3 +12,6 @@ export const PIE_START_ANGLE = -90;
 export const PIE_TOTAL_LABEL_OFFSET_PX = 12;
 export const PIE_TOTAL_LABEL_FONT_SIZE = 18;
 export const PIE_ARC_LABEL_MIN_ANGLE = 10;
+export const PIE_LABEL_CHARACTER_WIDTH_RATIO = 0.6;
+export const PIE_LABEL_PADDING_RATIO = 0.45;
+export const PIE_LABEL_MAX_FONT_SIZE = 24;
