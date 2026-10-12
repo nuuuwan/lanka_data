@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-export const APP_FONT_FAMILY = '"Fira Code", monospace';
+export const APP_FONT_FAMILY = '"Ubuntu", monospace';
 
 export const NIVO_THEME = {
   text: {
