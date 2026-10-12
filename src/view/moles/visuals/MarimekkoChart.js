@@ -1,5 +1,6 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { ResponsiveMarimekko } from "@nivo/marimekko";
+import { Marimekko } from "@nivo/marimekko";
+import SizedChart from "../../organisms/SizedChart.js";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
@@ -32,7 +33,8 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
           minHeight: BAR_CHART_MIN_HEIGHT_PX,
         }}
       >
-        <ResponsiveMarimekko
+        <SizedChart
+          chart={Marimekko}
           theme={NIVO_THEME}
           data={sortedData}
           id="id"

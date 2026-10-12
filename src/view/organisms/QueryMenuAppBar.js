@@ -1,6 +1,6 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, IconButton, Link, Toolbar, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -40,7 +40,9 @@ export default function QueryMenuAppBar({ loadedVisualQuery }) {
         }}
       >
         <Typography component="h1" variant="h6" sx={{ flexGrow: 1 }}>
-          Lanka Data
+          <Link href={APP_PATH} color="inherit" underline="none">
+            Lanka Data
+          </Link>
         </Typography>
         <IconButton
           aria-label="Open query menu"

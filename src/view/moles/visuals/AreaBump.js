@@ -1,4 +1,5 @@
-import { ResponsiveAreaBump } from "@nivo/bump";
+import { AreaBump as NivoAreaBump } from "@nivo/bump";
+import SizedChart from "../../organisms/SizedChart.js";
 import { Box, Typography } from "@mui/material";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
@@ -105,7 +106,8 @@ export default function AreaBump({ data, xAxisLabel }) {
 
   return (
     <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
-      <ResponsiveAreaBump
+      <SizedChart
+        chart={NivoAreaBump}
         theme={NIVO_THEME}
         data={series}
         margin={{ top: 40, right: 100, bottom: 60, left: 100 }}

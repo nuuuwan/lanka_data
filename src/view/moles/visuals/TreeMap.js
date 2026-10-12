@@ -1,4 +1,5 @@
-import { ResponsiveTreeMap } from "@nivo/treemap";
+import { TreeMap as NivoTreeMap } from "@nivo/treemap";
+import SizedChart from "../../organisms/SizedChart.js";
 import { Box, Typography } from "@mui/material";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
@@ -27,7 +28,8 @@ export default function TreeMap({ data, xAxisLabel }) {
 
   return (
     <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
-      <ResponsiveTreeMap
+      <SizedChart
+        chart={NivoTreeMap}
         theme={NIVO_THEME}
         data={treeData}
         identity="id"

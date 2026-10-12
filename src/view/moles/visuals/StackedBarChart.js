@@ -1,4 +1,5 @@
-import { ResponsiveBar } from "@nivo/bar";
+import { Bar } from "@nivo/bar";
+import SizedChart from "../../organisms/SizedChart.js";
 import { Box, Typography } from "@mui/material";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
@@ -46,7 +47,8 @@ export default function StackedBarChart({
           minHeight: BAR_CHART_MIN_HEIGHT_PX,
         }}
       >
-        <ResponsiveBar
+        <SizedChart
+          chart={Bar}
           theme={getDenseAxisTheme(NIVO_THEME, data.length)}
           data={data}
           keys={keys}

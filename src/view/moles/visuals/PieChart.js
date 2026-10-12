@@ -1,4 +1,5 @@
-import { ResponsivePie } from "@nivo/pie";
+import { Pie } from "@nivo/pie";
+import SizedChart from "../../organisms/SizedChart.js";
 import { Box, Typography } from "@mui/material";
 
 import { NIVO_THEME } from "../../../AppTheme.js";
@@ -42,7 +43,8 @@ export default function PieChart({ data, total, maxTotal }) {
           transformOrigin: "center",
         }}
       >
-        <ResponsivePie
+        <SizedChart
+          chart={Pie}
           theme={NIVO_THEME}
           data={sortedData}
           margin={{ top: 40, right: 80, bottom: 40, left: 80 }}

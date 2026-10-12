@@ -10,7 +10,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { EXAMPLE_IMAGES_PATH } from "../../nonview/constants/APP.js";
 import styles from "./ExampleQueryCard.module.css";
 
-export default function ExampleQueryCard({ description, image, query }) {
+export default function ExampleQueryCard({ label, image, query }) {
   return (
     <Card component="li" elevation={0} className={styles.card}>
       <CardActionArea
@@ -26,8 +26,8 @@ export default function ExampleQueryCard({ description, image, query }) {
           className={styles.image}
         />
         <CardContent className={styles.content}>
-          <Typography component="h3" variant="body1">
-            {description}
+          <Typography component="h3" variant="h6">
+            {label}
           </Typography>
         </CardContent>
       </CardActionArea>

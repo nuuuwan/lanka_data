@@ -23,11 +23,13 @@ query logic, with source provenance included alongside the results.
 
 Opening `/lanka_data` or `/lanka_data/` without a query shows the home page,
 with a responsive gallery of example cards. Each card has a saved preview and
-a single descriptive link; choose one to open its live visualization.
+a prominent title without a separate description; choose one to open its live visualization.
 The AppBar and bottom query navigator remain visible on the home page. You can
 also enter a query or use Query Wizard there once the data options are ready.
 PNG download stays disabled until a visual is available.
 Query URLs continue to open their visuals directly.
+Click **Lanka Data** in the AppBar to return to the parameter-free home URL
+without clearing local storage.
 
 1. Choose a home-page example or open **Query Wizard** from the bottom query bar.
 2. Follow **Data → Facets → Visual** to choose what to explore, how to group or
@@ -60,8 +62,9 @@ Use **Table** for tabular results; the Blocks visual has been retired.
 - **Share with QR** in the **...** menu opens a QR code for the current visual.
 - **Download visual as PNG** saves the title, all facets, and source footer,
   including content below the viewport. App/query bars are excluded; a rendered
-  visual must be available. The filename comes from the current URL, with unsafe
-  characters replaced by hyphens and its length capped at 200 characters.
+  visual must be available. The filename comes from the current query URL,
+  excluding the host and `/lanka_data` prefix, with unsafe characters replaced
+  by hyphens and its length capped at 200 characters.
 - **Download JSON** in the `JSON` view saves data for use in your own code.
 - **Access data Programmatically** in the **...** menu opens the API guide below.
 - **Refresh** in the **...** menu clears all local storage, including cached data
