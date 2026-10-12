@@ -12,9 +12,12 @@ viewport or visual content changes.
 
 The visual is shown first, with the query and its update, random-query, and share
 controls in a fixed bottom bar. Open **Query Wizard** in a drawer above the compact
-grey query bar. Follow **Data → Facets → Visual → Review**, using **Back** and
-**Next** to navigate. Each step has an info alert with guidance. Enter advances
-from a text field; only **Update visualization** on the Review step applies the
+grey query bar. Follow **Data → Facets → Visual**, using the back and forward
+arrow buttons to navigate. Each step has an info alert with examples. Facet rows
+use alternating background shades and white inputs to distinguish borderless controls.
+The plus adds a facet and the cross removes one. Count has no wizard control,
+but remains in the query and URL. Enter advances
+from a text field; only the refresh button on the Visual step applies the
 query and closes the wizard. Closing without updating retains edits in the query
 bar. Reopening starts at Data with those edits preserved.
 

@@ -5,7 +5,6 @@ import { Box, Drawer, IconButton, Typography } from "@mui/material";
 import { QUERY_WIZARD_STEPS } from "../../nonview/constants/QueryWizard.js";
 import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
 import QueryWizardNavigation from "../moles/QueryWizardNavigation.js";
-import QueryWizardReview from "../moles/QueryWizardReview.js";
 import QueryWizardProgress from "../moles/QueryWizardProgress.js";
 import styles from "./QueryWizardDrawer.module.css";
 
@@ -24,10 +23,10 @@ export default function QueryWizardDrawer({
   useEffect(() => {
     if (open) setStep(0);
   }, [open]);
-  const isReview = step === QUERY_WIZARD_STEPS.length - 1;
+  const isLastStep = step === QUERY_WIZARD_STEPS.length - 1;
   const advance = (event) => {
     event?.preventDefault();
-    if (isReview) onSubmit();
+    if (isLastStep) onSubmit();
     else setStep((current) => current + 1);
   };
   return (
@@ -62,29 +61,16 @@ export default function QueryWizardDrawer({
             disabled={disabled}
             className={styles.fields}
           >
-            <Typography
-              component="h3"
-              variant="subtitle1"
-              sx={{ mb: 2 }}
-              aria-live="polite"
-            >
-              Step {step + 1}: {QUERY_WIZARD_STEPS[step]}
-            </Typography>
-            {isReview ? (
-              <QueryWizardReview value={value} />
-            ) : (
-              <LaypersonVisualQueryInput
-                step={QUERY_WIZARD_STEPS[step]}
-                value={value}
-                onChange={onChange}
-                onSubmit={advance}
-                queryOptions={queryOptions}
-              />
-            )}
+            <LaypersonVisualQueryInput
+              step={QUERY_WIZARD_STEPS[step]}
+              value={value}
+              onChange={onChange}
+              onSubmit={advance}
+              queryOptions={queryOptions}
+            />
             <QueryWizardNavigation
               step={step}
               onBack={() => setStep((current) => current - 1)}
-              onClose={onClose}
               refreshDisabled={refreshDisabled}
             />
           </Box>

@@ -1,0 +1,18 @@
+.row {
+  background-color: #e3eeed;
+  border-radius: 4px;
+  padding: 16px 8px 8px;
+  margin-bottom: 8px;
+}
+
+.row:nth-child(even) {
+  background-color: #e7eaf2;
+}
+
+.row :global(.MuiOutlinedInput-root) {
+  background-color: #ffffff;
+}
+
+.row :global(.MuiOutlinedInput-root.Mui-focused) {
+  background-color: #ccdcdb;
+}

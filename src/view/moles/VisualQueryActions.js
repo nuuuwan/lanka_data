@@ -2,7 +2,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CasinoIcon from "@mui/icons-material/Casino";
 import EditIcon from "@mui/icons-material/Edit";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import { Box, Button, IconButton, Tooltip, Typography } from "@mui/material";
+import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 
 export default function VisualQueryActions({
   disabled,
@@ -54,15 +54,19 @@ export default function VisualQueryActions({
           </IconButton>
         </span>
       </Tooltip>
-      <Button
-        aria-haspopup="dialog"
-        disabled={disabled}
-        onClick={onOpenEditor}
-        startIcon={<EditIcon />}
-        type="button"
-      >
-        Query Wizard
-      </Button>
+      <Tooltip title="Query Wizard">
+        <span>
+          <IconButton
+            aria-label="Query Wizard"
+            aria-haspopup="dialog"
+            disabled={disabled}
+            onClick={onOpenEditor}
+            type="button"
+          >
+            <EditIcon />
+          </IconButton>
+        </span>
+      </Tooltip>
     </Box>
   );
 }

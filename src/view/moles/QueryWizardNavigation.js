@@ -1,29 +1,48 @@
-import { Box, Button } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import { Box, IconButton, Tooltip } from "@mui/material";
 
 import { QUERY_WIZARD_STEPS } from "../../nonview/constants/QueryWizard.js";
 
 export default function QueryWizardNavigation({
   step,
   onBack,
-  onClose,
   refreshDisabled,
 }) {
   return (
     <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1, mt: 2 }}>
-      <Button onClick={onClose} type="button">
-        Close
-      </Button>
-      <Button disabled={step === 0} onClick={onBack} type="button">
-        Back
-      </Button>
+      <Tooltip title="Back">
+        <span>
+          <IconButton
+            aria-label="Back"
+            disabled={step === 0}
+            onClick={onBack}
+            type="button"
+          >
+            <ArrowBackIcon />
+          </IconButton>
+        </span>
+      </Tooltip>
       {step < QUERY_WIZARD_STEPS.length - 1 ? (
-        <Button type="submit" variant="contained">
-          Next
-        </Button>
+        <Tooltip title="Next">
+          <IconButton aria-label="Next" type="submit" color="primary">
+            <ArrowForwardIcon />
+          </IconButton>
+        </Tooltip>
       ) : (
-        <Button disabled={refreshDisabled} type="submit" variant="contained">
-          Update visualization
-        </Button>
+        <Tooltip title="Update visualization">
+          <span>
+            <IconButton
+              aria-label="Update visualization"
+              disabled={refreshDisabled}
+              type="submit"
+              color="primary"
+            >
+              <RefreshIcon />
+            </IconButton>
+          </span>
+        </Tooltip>
       )}
     </Box>
   );

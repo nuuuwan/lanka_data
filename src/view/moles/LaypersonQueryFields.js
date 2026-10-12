@@ -19,7 +19,6 @@ export default function LaypersonQueryFields({
           size="small"
           value={parts.entity}
           onChange={(event) => onUpdate("entity", event.target.value)}
-          helperText="Choose the type of data"
         >
           {entityOptions.map((entity) => (
             <MenuItem key={entity} value={entity}>
@@ -35,7 +34,6 @@ export default function LaypersonQueryFields({
           size="small"
           value={parts.visual}
           onChange={(event) => onUpdate("visual", event.target.value)}
-          helperText="Choose a visual"
         >
           {VISUAL_GROUPS.flatMap((group) => [
             <ListSubheader key={group.label}>{group.label}</ListSubheader>,

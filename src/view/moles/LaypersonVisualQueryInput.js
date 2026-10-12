@@ -1,4 +1,4 @@
-import { Box, TextField } from "@mui/material";
+import { Box } from "@mui/material";
 
 import { VISUAL_QUERY_MAX_WIDTH_PX } from "../../nonview/constants/APP.js";
 import LaypersonDimensions from "./LaypersonDimensions.js";
@@ -74,20 +74,6 @@ export default function LaypersonVisualQueryInput({
               dimensions.filter((_dimension, position) => position !== index),
             )
           }
-        />
-      )}
-      {step === "Data" && (
-        <TextField
-          label="Calculate"
-          size="small"
-          value="Count"
-          helperText="Count is currently the only calculation"
-          slotProps={{
-            htmlInput: {
-              "aria-readonly": true,
-              readOnly: true,
-            },
-          }}
         />
       )}
     </Box>

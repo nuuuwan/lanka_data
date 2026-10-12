@@ -1,7 +1,8 @@
 import AddIcon from "@mui/icons-material/Add";
-import { Button, Paper, Typography } from "@mui/material";
+import { Box, IconButton, Paper, Tooltip } from "@mui/material";
 
 import LaypersonDimensionRow from "./LaypersonDimensionRow.js";
+import styles from "./LaypersonDimensions.module.css";
 
 export default function LaypersonDimensions({
   dimensions,
@@ -16,35 +17,37 @@ export default function LaypersonDimensions({
     <Paper
       elevation={0}
       sx={{
-        bgcolor: "grey.100",
+        bgcolor: "grey.200",
         gridColumn: "1 / -1",
         p: 1.5,
       }}
     >
-      <Typography component="div" variant="subtitle2" sx={{ mb: 1 }}>
-        Facets
-      </Typography>
       {dimensions.map((dimension, index) => (
-        <LaypersonDimensionRow
-          key={index}
-          dimension={dimension}
-          dimensionOptions={dimensionOptions}
-          valueOptionsByField={valueOptionsByField}
-          dimensionsCount={dimensions.length}
-          index={index}
-          onChange={(name, value) => onChange(index, name, value)}
-          onKeyDown={onKeyDown}
-          onRemove={() => onRemove(index)}
-        />
+        <Box key={index} className={styles.row}>
+          <LaypersonDimensionRow
+            dimension={dimension}
+            dimensionOptions={dimensionOptions}
+            valueOptionsByField={valueOptionsByField}
+            dimensionsCount={dimensions.length}
+            index={index}
+            onChange={(name, value) => onChange(index, name, value)}
+            onKeyDown={onKeyDown}
+            onRemove={() => onRemove(index)}
+          />
+        </Box>
       ))}
-      <Button
-        disabled={!dimensions.at(-1).field}
-        onClick={onAdd}
-        size="small"
-        startIcon={<AddIcon />}
-      >
-        AND
-      </Button>
+      <Tooltip title="Add facet (AND)">
+        <span>
+          <IconButton
+            aria-label="Add facet"
+            disabled={!dimensions.at(-1).field}
+            onClick={onAdd}
+            size="small"
+          >
+            <AddIcon />
+          </IconButton>
+        </span>
+      </Tooltip>
     </Paper>
   );
 }
