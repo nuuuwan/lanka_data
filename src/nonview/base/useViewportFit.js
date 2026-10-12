@@ -6,10 +6,12 @@ export default function useViewportFit(
   maxViewportRatio,
   paddingPx,
   reservedHeight = 0,
+  enabled = true,
 ) {
   const [fit, setFit] = useState({ scale: 1, height: 0, left: 0 });
 
   useLayoutEffect(() => {
+    if (!enabled) return undefined;
     const container = containerRef.current;
     const content = contentRef.current;
     let contentHeight = content.offsetHeight;
@@ -53,7 +55,14 @@ export default function useViewportFit(
       observer.disconnect();
       window.removeEventListener("resize", update);
     };
-  }, [containerRef, contentRef, maxViewportRatio, paddingPx, reservedHeight]);
+  }, [
+    containerRef,
+    contentRef,
+    maxViewportRatio,
+    paddingPx,
+    reservedHeight,
+    enabled,
+  ]);
 
   return fit;
 }

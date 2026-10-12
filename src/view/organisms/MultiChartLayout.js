@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { useVisualCount } from "../../nonview/core/VisualLayoutContext.js";
 
 import Legend from "../moles/visuals/Legend.js";
 import styles from "./MultiChartLayout.module.css";
@@ -47,6 +48,7 @@ export default function MultiChartLayout({
   fullWidth = false,
   legendItems,
 }) {
+  useVisualCount(facets.length);
   if (facets.length === 0) {
     return <Typography>No data to display.</Typography>;
   }

@@ -4,11 +4,12 @@
 
 🚀 **Try it live:** [nuuuwan.github.io/lanka_data](https://nuuuwan.github.io/lanka_data)
 
-The visual title and light-grey Paper panel span 95% of the viewport width.
-Visuals shrink proportionally when needed so the entire visual, including its
+A single visual's title and light-grey Paper panel span 95% of the viewport width.
+Single visuals shrink proportionally when needed so the entire visual, including its
 panel padding, title header, and source footer, fits within 95% of the viewport
 height. The fit updates when the
-viewport or visual content changes.
+viewport or visual content changes. Multiple charts or maps use their natural
+grid sizes without viewport fitting and may extend below the viewport.
 
 The visual is shown first, with the query and its update and share
 controls in a fixed bottom bar. Open **Query Wizard** in a drawer above the compact
