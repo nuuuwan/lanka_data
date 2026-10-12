@@ -1,7 +1,11 @@
-I've wanted one place to explore Sri Lanka's data—for people and code. 🇱🇰
-
-Lanka Data is a step toward that: census and election data, one query for charts, maps, and a JSON API. 📊
+🆕 LANKA DATA APP
 
 <https://nuuuwan.github.io/lanka_data>
 
-#SriLanka #OpenData
+I've wanted one place to explore  🇱🇰 #SriLanka's data—for people and code.
+
+This App is a step toward that: census, election and other data, one query for charts, maps, and a JSON API.
+
+🙏 #WorkInProgress. Feedback/Suggestions/Questions Appreciated.
+
+📊 #OpenData #LankaDataApp
