@@ -21,6 +21,9 @@ query logic, with source provenance included alongside the results.
 
 ## Explore visually
 
+The query menu always includes example queries below the recent queries,
+regardless of how many recent queries are saved.
+
 Opening `/lanka_data` or `/lanka_data/` without a query shows the home page,
 with nine example cards in a 3-by-3 desktop gallery, adapting to smaller screens.
 Each card shows a saved screenshot containing the visual title, chart or map,
@@ -39,8 +42,8 @@ Click **Lanka Data** in the AppBar to return to the parameter-free home URL
 without clearing local storage.
 
 1. Choose a home-page example or open **Query Wizard** from the bottom query bar.
-2. Follow **Data → Facets → Visual** to choose what to explore, how to group or
-   filter it, and how to display it.
+2. Choose the data, display, and facets together in a single view, with compact
+   inline examples alongside the controls.
 3. Close the wizard, then use **Update visualization** or press **Enter** in the
    query bar to apply your changes.
 
@@ -52,16 +55,34 @@ or UnitHexMap, and province populations and religious shares in a Marimekko char
 Marimekko percentage axes always run from 0% to 100%, with ticks every 10%.
 Use **Table** for tabular results; the Blocks visual has been retired.
 
+### Rebuild example screenshots
+
+After editing `src/nonview/constants/ExampleQueries.js`, start the app with
+`npm start`. In another terminal, run:
+
+```shell
+npx playwright install chromium # Required once after installing dependencies
+npm run screenshots:examples
+```
+
+The script reads the current query list, downloads each complete visual with
+its title and source footer, and captures the desktop home page. It updates
+`public/example-images`, deriving preview filenames from the queries. Existing
+images are preserved, and captures are staged before replacing the current set.
+Run `npm run build` afterward to include the refreshed images in deployment.
+For a different running server, use
+`npm run screenshots:examples -- http://localhost:3001`.
+
 ### Query Wizard tips
 
-- Move with Back/Next or click a step title. Each step includes dismissible help
-  and examples; help returns when the wizard reopens.
+- All parameters are shown together; there are no steps or Back/Next buttons.
+  Short examples appear inline in a small font.
 - Use the plus to add a facet and the cross to remove one. `Count` stays in the
   query and URL without a separate wizard control.
 - Edits appear immediately in the query bar but are not applied until you close
-  the wizard and update the visualization. Enter in a wizard field only advances
-  to the next step.
-- Reopening starts at Data with edits preserved. The bottom query bar and its
+  the wizard and update the visualization. Enter in a wizard field does not
+  apply the query or close the wizard.
+- Reopening preserves your edits. The bottom query bar and its
   buttons are disabled while the wizard is open.
 
 ### Share, download, and refresh
@@ -187,6 +208,9 @@ func main() {
 GitHub Pages is static-only: it does not run an API server for arbitrary queries.
 `npm run build` fetches upstream data and generates the listed static JSON files
 for deployment. A failed fetch or generation fails the build.
+The deployment workflow transfers the build between jobs as a tar archive,
+then extracts it before publishing. This preserves query paths containing `<`
+without violating GitHub Actions artifact filename restrictions.
 
 ## Run locally
 

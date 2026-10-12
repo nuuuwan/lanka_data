@@ -38,6 +38,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build && npm run build:raw-json",
     "build:raw-json": "node scripts/buildRawJSON.cjs",
+    "screenshots:examples": "node scripts/buildExampleImages.cjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -72,6 +73,7 @@
   "homepage": "https://nuuuwan.github.io/lanka_data",
   "devDependencies": {
     "eslint-config-react-app": "^7.0.1",
-    "jiti": "^2.7.0"
+    "jiti": "^2.7.0",
+    "playwright": "^1.56.0"
   }
 }

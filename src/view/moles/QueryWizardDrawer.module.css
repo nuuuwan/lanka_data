@@ -36,3 +36,9 @@
 .fields :global(.MuiOutlinedInput-notchedOutline) {
   display: none;
 }
+
+.tip.tip {
+  color: #666666;
+  font-size: 0.75rem;
+  margin-top: 12px;
+}

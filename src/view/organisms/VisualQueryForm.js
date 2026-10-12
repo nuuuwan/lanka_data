@@ -6,7 +6,7 @@ import useElementHeight from "../../nonview/base/useElementHeight.js";
 import useVisualQueryActions from "../../nonview/core/useVisualQueryActions.js";
 import { SHARE_LINK_FEEDBACK_DURATION_MS } from "../../nonview/constants/APP.js";
 import VisualQueryActions from "../moles/VisualQueryActions.js";
-import QueryWizardDrawer from "./QueryWizardDrawer.js";
+import QueryWizardDrawer from "../moles/QueryWizardDrawer.js";
 import DownloadVisualButton from "./DownloadVisualButton.js";
 import VisualQueryTextInput from "../moles/VisualQueryTextInput.js";
 import styles from "./VisualQueryForm.module.css";

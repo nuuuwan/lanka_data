@@ -39,19 +39,15 @@ export default function RecentQueriesMenu({
           </MenuItem>
         ))
       )}
-      {recentQueries.length < 5 && (
-        <>
-          <Divider />
-          <ListSubheader>Example queries</ListSubheader>
-          {EXAMPLE_QUERIES.map((query) => (
-            <MenuItem key={query} onClick={() => onOpenQuery(query)}>
-              <span className={styles.queryDetails}>
-                <span className={styles.query}>{query}</span>
-              </span>
-            </MenuItem>
-          ))}
-        </>
-      )}
+      <Divider />
+      <ListSubheader>Example queries</ListSubheader>
+      {EXAMPLE_QUERIES.map((query) => (
+        <MenuItem key={query} onClick={() => onOpenQuery(query)}>
+          <span className={styles.queryDetails}>
+            <span className={styles.query}>{query}</span>
+          </span>
+        </MenuItem>
+      ))}
     </Menu>
   );
 }
