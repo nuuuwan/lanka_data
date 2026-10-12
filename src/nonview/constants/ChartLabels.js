@@ -15,3 +15,8 @@ export const PIE_ARC_LABEL_MIN_ANGLE = 10;
 export const PIE_LABEL_CHARACTER_WIDTH_RATIO = 0.6;
 export const PIE_LABEL_PADDING_RATIO = 0.45;
 export const PIE_LABEL_MAX_FONT_SIZE = 24;
+export const PERCENTAGE_AXIS_TICKS = Array.from(
+  { length: 11 },
+  (_, index) => index / 10,
+);
+export const PERCENTAGE_AXIS_LEGEND_OFFSET = -50;

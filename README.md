@@ -39,9 +39,11 @@ without clearing local storage.
    query bar to apply your changes.
 
 Available visuals include bar, stacked bar, pie, Marimekko, TreeMap, and maps.
-Examples include presidential results on a HexMap, religious composition on a
-UnitSquareMap or UnitHexMap, and province populations and religious shares in a
-Marimekko chart.
+Examples span the 2012 and 2024 censuses, the 1994 and 2020 parliamentary
+elections, the 2005 presidential election, and the 2025 local government
+election. They include election maps, religious composition on a UnitSquareMap
+or UnitHexMap, and province populations and religious shares in a Marimekko chart.
+Marimekko percentage axes always run from 0% to 100%, with ticks every 10%.
 Use **Table** for tabular results; the Blocks visual has been retired.
 
 ### Query Wizard tips

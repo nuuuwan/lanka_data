@@ -13,10 +13,8 @@ import {
   getSlantedXAxis,
   X_AXIS_BOTTOM_MARGIN,
 } from "../visual_utils/ChartAxisUtils.js";
-import InBarLabels from "./InBarLabels.js";
 import Legend from "./Legend.js";
-import { BarLabelsLayer } from "./MarimekkoLabels.js";
-import MarimekkoTooltip from "./MarimekkoTooltip.js";
+import MarimekkoPercentageLayer from "../../organisms/MarimekkoPercentageLayer.js";
 import {
   getColorForDimension,
   getDimensions,
@@ -48,7 +46,6 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
           animate={false}
           dimensions={dimensions}
           offset="expand"
-          valueScale={{ type: "linear", min: 0, max: 1 }}
           layout="vertical"
           axisTop={null}
           axisRight={null}
@@ -58,17 +55,8 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
             tickSize: 0,
             tickPadding: 0,
           })}
-          layers={["grid", "axes", "bars", BarLabelsLayer, InBarLabels]}
-          axisLeft={{
-            orient: "left",
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: "%",
-            legendOffset: -50,
-            legendPosition: "middle",
-            format: (value) => `${Math.round(value * 100)}%`,
-          }}
+          layers={["grid", "axes", MarimekkoPercentageLayer]}
+          axisLeft={null}
           colors={({ id }) => color(id)}
           borderWidth={1}
           borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
@@ -78,7 +66,6 @@ export default function MarimekkoChart({ data, xAxisLabel }) {
             bottom: X_AXIS_BOTTOM_MARGIN,
             left: 80,
           }}
-          tooltip={MarimekkoTooltip}
         />
       </Box>
       <Legend
