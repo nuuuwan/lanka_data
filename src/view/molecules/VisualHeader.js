@@ -1,6 +1,9 @@
 import { Box, Typography } from "@mui/material";
 
-import { VISUAL_CONTENT_MAX_WIDTH_PX } from "../../nonview/constants/APP.js";
+import {
+  VISUAL_TITLE_SCROLL_MARGIN_PX,
+  VISUAL_VIEWPORT_MAX_RATIO,
+} from "../../nonview/constants/APP.js";
 import getQueryFinding from "../../nonview/core/QueryFinding.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 
@@ -16,13 +19,15 @@ export default function VisualHeader({
       ref={titleRef}
       sx={{
         mb: 2,
-        maxWidth: VISUAL_CONTENT_MAX_WIDTH_PX,
-        mx: "auto",
-        scrollMarginTop: "80px",
+        width: `${VISUAL_VIEWPORT_MAX_RATIO * 100}vw`,
+        position: "relative",
+        left: "50%",
+        transform: "translateX(-50%)",
+        scrollMarginTop: `${VISUAL_TITLE_SCROLL_MARGIN_PX}px`,
         textAlign: "center",
       }}
     >
-      <Typography component="h1" variant="h4" data-testid="query-finding">
+      <Typography component="h1" variant="h6" data-testid="query-finding">
         {getQueryFinding(query)}
       </Typography>
       <Typography

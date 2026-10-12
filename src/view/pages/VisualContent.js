@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import DataProvenancePanel from "../molecules/DataProvenancePanel.js";
 import VisualHeader from "../molecules/VisualHeader.js";
+import FittedVisual from "../organisms/FittedVisual.js";
 import ChartVisual from "./ChartVisual.js";
 
 export default function VisualContent({
@@ -24,11 +25,13 @@ export default function VisualContent({
         loadTimeSeconds={loadTimeSeconds}
         titleRef={visualTitleRef}
       />
-      {VisualClass.IS_CHART ? (
-        <ChartVisual VisualClass={VisualClass} datumSet={datumSet} />
-      ) : (
-        <VisualClass datumSet={datumSet} />
-      )}
+      <FittedVisual>
+        {VisualClass.IS_CHART ? (
+          <ChartVisual VisualClass={VisualClass} datumSet={datumSet} />
+        ) : (
+          <VisualClass datumSet={datumSet} />
+        )}
+      </FittedVisual>
       <DataProvenancePanel provenance={datumSet.provenance} />
     </>
   );

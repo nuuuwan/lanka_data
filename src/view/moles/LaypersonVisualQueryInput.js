@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 
 import { VISUAL_QUERY_MAX_WIDTH_PX } from "../../nonview/constants/APP.js";
 import LaypersonDimensions from "./LaypersonDimensions.js";
@@ -42,7 +42,7 @@ export default function LaypersonVisualQueryInput({
       sx={{
         display: "grid",
         gap: 1.5,
-        gridTemplateColumns: { xs: "1fr", md: "repeat(3, minmax(0, 1fr))" },
+        gridTemplateColumns: { xs: "1fr", md: "repeat(2, minmax(0, 1fr))" },
         maxWidth: VISUAL_QUERY_MAX_WIDTH_PX,
         width: "100%",
       }}
@@ -72,6 +72,18 @@ export default function LaypersonVisualQueryInput({
             dimensions.filter((_dimension, position) => position !== index),
           )
         }
+      />
+      <TextField
+        label="Calculate"
+        size="small"
+        value="Count"
+        helperText="Count is currently the only calculation"
+        slotProps={{
+          htmlInput: {
+            "aria-readonly": true,
+            readOnly: true,
+          },
+        }}
       />
       <Typography
         variant="caption"

@@ -26,18 +26,6 @@ export default function LaypersonQueryFields({
         ))}
       </TextField>
       <TextField
-        label="Calculate"
-        size="small"
-        value="Count"
-        helperText="Count is currently the only calculation"
-        slotProps={{
-          htmlInput: {
-            "aria-readonly": true,
-            readOnly: true,
-          },
-        }}
-      />
-      <TextField
         select
         label="Show as"
         size="small"

@@ -1,5 +1,5 @@
 import AddIcon from "@mui/icons-material/Add";
-import { Box, Button, Typography } from "@mui/material";
+import { Button, Paper, Typography } from "@mui/material";
 
 import LaypersonDimensionRow from "./LaypersonDimensionRow.js";
 
@@ -13,13 +13,10 @@ export default function LaypersonDimensions({
   onRemove,
 }) {
   return (
-    <Box
+    <Paper
+      elevation={0}
       sx={{
-        bgcolor: "background.paper",
-        border: 1,
-        borderColor: "divider",
-        borderRadius: 1,
-        boxShadow: 1,
+        bgcolor: "grey.100",
         gridColumn: "1 / -1",
         p: 1.5,
       }}
@@ -48,6 +45,6 @@ export default function LaypersonDimensions({
       >
         AND
       </Button>
-    </Box>
+    </Paper>
   );
 }
