@@ -3,8 +3,8 @@ import DownloadIcon from "@mui/icons-material/Download";
 import { Alert, IconButton, Snackbar, Tooltip } from "@mui/material";
 
 import downloadElementPNG from "../../nonview/base/downloadElementPNG.js";
+import fileNameFromURL from "../../nonview/base/fileNameFromURL.js";
 import {
-  VISUAL_PNG_FILE_NAME,
   VISUAL_PNG_PIXEL_RATIO,
   SHARE_LINK_FEEDBACK_DURATION_MS,
 } from "../../nonview/constants/APP.js";
@@ -22,7 +22,7 @@ export default function DownloadVisualButton({
     try {
       await downloadElementPNG(
         visualElement,
-        VISUAL_PNG_FILE_NAME,
+        fileNameFromURL(window.location.href, "png"),
         VISUAL_PNG_PIXEL_RATIO,
       );
     } catch (cause) {

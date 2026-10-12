@@ -5,8 +5,8 @@ export const GITHUB_PROFILE_URL = "https://github.com/nuuuwan";
 export const GITHUB_REPOSITORY_ISSUES_URL =
   "https://github.com/nuuuwan/lanka_data/issues";
 export const GITHUB_REPOSITORY_URL = "https://github.com/nuuuwan/lanka_data";
+export const PROGRAMMATIC_DATA_DOCS_URL = `${GITHUB_REPOSITORY_URL}#use-the-same-query-from-code`;
 export const SHARE_QR_CODE_SIZE = 240;
-export const VISUAL_PNG_FILE_NAME = "lanka-data-visual.png";
 export const VISUAL_PNG_PIXEL_RATIO = 2;
 export const JSON_DOWNLOAD_FILE_NAME = "raw.json";
 export const JSON_DATA_URL_PREFIX = "data:application/json;charset=utf-8,";

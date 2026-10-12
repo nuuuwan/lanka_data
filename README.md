@@ -57,8 +57,10 @@ Use **Table** for tabular results; the Blocks visual has been retired.
 - **Share with QR** in the **...** menu opens a QR code for the current visual.
 - **Download visual as PNG** saves the title, all facets, and source footer,
   including content below the viewport. App/query bars are excluded; a rendered
-  visual must be available.
+  visual must be available. The filename comes from the current URL, with unsafe
+  characters replaced by hyphens and its length capped at 200 characters.
 - **Download JSON** in the `JSON` view saves data for use in your own code.
+- **Access data Programmatically** in the **...** menu opens the API guide below.
 - **Refresh** in the **...** menu clears all local storage, including cached data
   and recent queries, then reloads `/lanka_data` with no query path, URL parameters,
   or fragment. The home page shows the example links at the base URL.
@@ -80,10 +82,15 @@ Change a query's final visual segment to `JSON` for the browser view; append
 `/raw.json` for direct programmatic access where the endpoint is available.
 The response contains `datumList` and `provenance`.
 
-### Published API example
+### Published API examples
 
 The published query below is available directly from GitHub Pages as
-`application/json`, without running the React app:
+`application/json`, without running the React app. All three examples request
+the same data and check for HTTP errors.
+
+#### Python
+
+Requires the `requests` package.
 
 ```python
 import requests
@@ -93,6 +100,55 @@ response = requests.get(url, timeout=60)
 response.raise_for_status()
 data = response.json()
 print(data)
+```
+
+#### JavaScript (Node.js 18+)
+
+Uses built-in `fetch`; save as an `.mjs` file to use top-level `await`.
+
+```javascript
+const url = "https://nuuuwan.github.io/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/JSON/raw.json";
+const response = await fetch(url, { signal: AbortSignal.timeout(60_000) });
+if (!response.ok) {
+  throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+}
+const data = await response.json();
+console.log(data);
+```
+
+#### Go
+
+Uses only the standard library.
+
+```go
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "log"
+    "net/http"
+    "time"
+)
+
+func main() {
+    url := "https://nuuuwan.github.io/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/JSON/raw.json"
+    client := &http.Client{Timeout: 60 * time.Second}
+    response, err := client.Get(url)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer response.Body.Close()
+    if response.StatusCode != http.StatusOK {
+        log.Fatalf("HTTP %s", response.Status)
+    }
+    var data map[string]json.RawMessage
+    if err := json.NewDecoder(response.Body).Decode(&data); err != nil {
+        log.Fatal(err)
+    }
+    fmt.Println(string(data["datumList"]))
+    fmt.Println(string(data["provenance"]))
+}
 ```
 
 ### Hosted and local availability

@@ -1,4 +1,5 @@
 import BugReportOutlinedIcon from "@mui/icons-material/BugReportOutlined";
+import CodeIcon from "@mui/icons-material/Code";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import QrCodeIcon from "@mui/icons-material/QrCode";
@@ -16,7 +17,9 @@ import {
   GITHUB_PROFILE_URL,
   GITHUB_REPOSITORY_ISSUES_URL,
   GITHUB_REPOSITORY_URL,
+  PROGRAMMATIC_DATA_DOCS_URL,
 } from "../../nonview/constants/APP.js";
+import AppExternalLinkMenuItem from "./AppExternalLinkMenuItem.js";
 
 export default function AppLinksMenu({
   anchorEl,
@@ -31,42 +34,34 @@ export default function AppLinksMenu({
       open={Boolean(anchorEl)}
       onClose={onClose}
     >
-      <MenuItem
-        component="a"
+      <AppExternalLinkMenuItem
         href={GITHUB_REPOSITORY_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={onClose}
+        onClose={onClose}
+        icon={GitHubIcon}
       >
-        <ListItemIcon>
-          <GitHubIcon fontSize="small" />
-        </ListItemIcon>
         Repository
-      </MenuItem>
-      <MenuItem
-        component="a"
+      </AppExternalLinkMenuItem>
+      <AppExternalLinkMenuItem
+        href={PROGRAMMATIC_DATA_DOCS_URL}
+        onClose={onClose}
+        icon={CodeIcon}
+      >
+        Access data Programmatically
+      </AppExternalLinkMenuItem>
+      <AppExternalLinkMenuItem
         href={GITHUB_REPOSITORY_ISSUES_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={onClose}
+        onClose={onClose}
+        icon={BugReportOutlinedIcon}
       >
-        <ListItemIcon>
-          <BugReportOutlinedIcon fontSize="small" />
-        </ListItemIcon>
         Report a bug
-      </MenuItem>
-      <MenuItem
-        component="a"
+      </AppExternalLinkMenuItem>
+      <AppExternalLinkMenuItem
         href={GITHUB_PROFILE_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={onClose}
+        onClose={onClose}
+        icon={PersonOutlinedIcon}
       >
-        <ListItemIcon>
-          <PersonOutlinedIcon fontSize="small" />
-        </ListItemIcon>
         GitHub profile
-      </MenuItem>
+      </AppExternalLinkMenuItem>
       <MenuItem onClick={onShareQR}>
         <ListItemIcon>
           <QrCodeIcon fontSize="small" />
