@@ -10,16 +10,20 @@ panel padding, title header, and source footer, fits within 95% of the viewport
 height. The fit updates when the
 viewport or visual content changes.
 
-The visual is shown first, with the query and its update, random-query, and share
+The visual is shown first, with the query and its update and share
 controls in a fixed bottom bar. Open **Query Wizard** in a drawer above the compact
 grey query bar. Follow **Data → Facets → Visual**, using the back and forward
-arrow buttons to navigate. Each step has an info alert with examples. Facet rows
-use alternating background shades and white inputs to distinguish borderless controls.
+arrow buttons or clicking a step title to navigate directly. Each step has an info alert with indented examples
+on separate lines and a short navigation tip. Facets
+use one neutral background with white inputs to distinguish borderless controls.
+Field labels sit above their inputs rather than floating inside them.
 The plus adds a facet and the cross removes one. Count has no wizard control,
-but remains in the query and URL. Enter advances
-from a text field; only the refresh button on the Visual step applies the
-query and closes the wizard. Closing without updating retains edits in the query
-bar. Reopening starts at Data with those edits preserved.
+but remains in the query and URL. Back/Next are at the top and Close is at the
+bottom. Help can be dismissed for each step and returns when the wizard reopens.
+Examples illustrate only some of the available options. Wizard edits update the
+query bar immediately without applying it. Close the wizard, then use Refresh
+or Enter in the query bar to apply changes. Enter in a wizard field only advances
+to the next step. Reopening starts at Data with edits preserved.
 
 Version information is at the bottom of the **...** menu. Choose **Share with QR**
 in that menu to open a QR code for the current visual. The old footer QR is retired.

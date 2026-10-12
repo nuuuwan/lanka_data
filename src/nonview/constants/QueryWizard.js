@@ -1,6 +1,28 @@
 export const QUERY_WIZARD_STEPS = ["Data", "Facets", "Visual"];
 export const QUERY_WIZARD_HELP = [
-  "Choose what to explore. For example, Person shows population data, while Vote shows election results. Use the right arrow to continue; changes are not applied until the final step.",
-  "Each row groups or filters your data. For example, Province with Operator None groups results by province; Time = 2024 filters to 2024. For elections, Party with None compares parties, and PD < ED = colombo selects polling divisions in Colombo electoral district. The plus adds another row; the cross removes a row.",
-  "Choose a display for your question. For example, Bar Chart compares parties or provinces, Pie Chart shows their shares, and Table lists exact values. Use the refresh icon to apply your query. The back arrow lets you change earlier choices. Closing retains edits without updating the visual.",
+  {
+    introduction: "Choose what to explore. A few examples:",
+    examples: ["Person: population data.", "Vote: election results."],
+    tip: "The wizard updates the query as you edit. To apply it, close the wizard and use Refresh or press Enter in the query bar.",
+  },
+  {
+    introduction:
+      "Each row groups or filters your data. Here are a few examples; explore the dropdowns for more fields, operators, and values:",
+    examples: [
+      "Province, Operator None: group by province.",
+      "Time = 2024: filter to 2024.",
+      "Party, Operator None: compare parties.",
+      "PD < ED = colombo: polling divisions in Colombo electoral district.",
+    ],
+  },
+  {
+    introduction:
+      "Choose a display for your question. A few of the available options:",
+    examples: [
+      "Bar Chart: compare parties or provinces.",
+      "Pie Chart: show their shares.",
+      "Table: list exact values.",
+    ],
+    tip: "Close the wizard, then use Refresh or press Enter in the query bar to update the visual.",
+  },
 ];

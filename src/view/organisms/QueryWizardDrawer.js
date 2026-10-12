@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, Drawer, IconButton, Typography } from "@mui/material";
+import { Box, Drawer, IconButton, Tooltip, Typography } from "@mui/material";
 
 import { QUERY_WIZARD_STEPS } from "../../nonview/constants/QueryWizard.js";
 import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
@@ -13,21 +13,21 @@ export default function QueryWizardDrawer({
   barHeight,
   onClose,
   disabled,
-  refreshDisabled,
   value,
   onChange,
-  onSubmit,
   queryOptions,
 }) {
   const [step, setStep] = useState(0);
+  const [hiddenHelpSteps, setHiddenHelpSteps] = useState([]);
   useEffect(() => {
-    if (open) setStep(0);
+    if (open) {
+      setStep(0);
+      setHiddenHelpSteps([]);
+    }
   }, [open]);
-  const isLastStep = step === QUERY_WIZARD_STEPS.length - 1;
   const advance = (event) => {
     event?.preventDefault();
-    if (isLastStep) onSubmit();
-    else setStep((current) => current + 1);
+    setStep((current) => Math.min(current + 1, QUERY_WIZARD_STEPS.length - 1));
   };
   return (
     <Drawer
@@ -50,11 +50,22 @@ export default function QueryWizardDrawer({
           <Typography id="query-wizard-title" component="h2" variant="h6">
             Query Wizard
           </Typography>
-          <IconButton aria-label="Close Query Wizard" onClick={onClose}>
-            <CloseIcon />
-          </IconButton>
+          <QueryWizardNavigation
+            step={step}
+            onBack={() => setStep((current) => current - 1)}
+            onNext={advance}
+            disabled={disabled}
+          />
         </Box>
-        <QueryWizardProgress step={step} />
+        <QueryWizardProgress
+          step={step}
+          onStepChange={setStep}
+          disabled={disabled}
+          helpVisible={!hiddenHelpSteps.includes(step)}
+          onCloseHelp={() =>
+            setHiddenHelpSteps((current) => [...current, step])
+          }
+        />
         <Box component="form" onSubmit={advance}>
           <Box
             component="fieldset"
@@ -68,11 +79,13 @@ export default function QueryWizardDrawer({
               onSubmit={advance}
               queryOptions={queryOptions}
             />
-            <QueryWizardNavigation
-              step={step}
-              onBack={() => setStep((current) => current - 1)}
-              refreshDisabled={refreshDisabled}
-            />
+          </Box>
+          <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+            <Tooltip title="Close Query Wizard">
+              <IconButton aria-label="Close Query Wizard" onClick={onClose}>
+                <CloseIcon />
+              </IconButton>
+            </Tooltip>
           </Box>
         </Box>
       </Box>

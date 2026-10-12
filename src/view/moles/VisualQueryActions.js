@@ -1,15 +1,12 @@
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import CasinoIcon from "@mui/icons-material/Casino";
-import EditIcon from "@mui/icons-material/Edit";
+import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 
 export default function VisualQueryActions({
   disabled,
-  randomDisabled,
   refreshDisabled,
   isEdited,
-  onRandom,
   onCopy,
   onOpenEditor,
 }) {
@@ -18,18 +15,6 @@ export default function VisualQueryActions({
       sx={{ alignItems: "center", display: "flex", justifyContent: "flex-end" }}
     >
       {isEdited && <Typography variant="caption">Edited</Typography>}
-      <Tooltip title="Choose a random query">
-        <span>
-          <IconButton
-            aria-label="Choose a random query"
-            disabled={disabled || randomDisabled}
-            onClick={onRandom}
-            type="button"
-          >
-            <CasinoIcon />
-          </IconButton>
-        </span>
-      </Tooltip>
       <Tooltip title="Copy share link">
         <span>
           <IconButton
@@ -63,7 +48,7 @@ export default function VisualQueryActions({
             onClick={onOpenEditor}
             type="button"
           >
-            <EditIcon />
+            <AutoFixHighIcon />
           </IconButton>
         </span>
       </Tooltip>

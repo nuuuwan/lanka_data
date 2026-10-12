@@ -20,7 +20,7 @@ export default function VisualQueryForm({
   const [editorOpen, setEditorOpen] = useState(false);
   const barRef = useRef(null);
   const barHeight = useElementHeight(barRef);
-  const actions = useVisualQueryActions(queryOptions, onChange, onSubmit);
+  const actions = useVisualQueryActions();
   const isEdited =
     loadedVisualQuery !== null && value.trim() !== loadedVisualQuery;
   const refreshDisabled = loadedVisualQuery !== null && !isEdited;
@@ -58,10 +58,8 @@ export default function VisualQueryForm({
             />
             <VisualQueryActions
               disabled={disabled}
-              randomDisabled={actions.randomDisabled}
               refreshDisabled={refreshDisabled}
               isEdited={isEdited}
-              onRandom={actions.selectRandomQuery}
               onCopy={actions.copyShareLink}
               onOpenEditor={() => setEditorOpen(true)}
             />
@@ -73,10 +71,8 @@ export default function VisualQueryForm({
         open={editorOpen}
         onClose={() => setEditorOpen(false)}
         disabled={disabled}
-        refreshDisabled={refreshDisabled}
         value={value}
         onChange={onChange}
-        onSubmit={submit}
         queryOptions={queryOptions}
       />
       <Snackbar

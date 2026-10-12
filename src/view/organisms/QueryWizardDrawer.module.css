@@ -26,3 +26,13 @@
   min-width: 0;
   padding: 0;
 }
+
+.fields :global(.MuiInputLabel-root) {
+  position: static;
+  transform: none;
+  margin-bottom: 4px;
+}
+
+.fields :global(.MuiOutlinedInput-notchedOutline) {
+  display: none;
+}
