@@ -3,7 +3,7 @@ export const START_EXPLORING_STEPS = [
     question: "How does religion vary across Sri Lanka's provinces?",
     interpretation:
       "The 2024 census view highlights regional differences in religious affiliation.",
-    query: "Person/Time=2024+Province+Religion/Count/Blocks",
+    query: "Person/Time=2024+Province+Religion/Count/Table",
   },
   {
     question: "How did party support differ by district in the 1994 election?",

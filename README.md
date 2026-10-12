@@ -39,3 +39,29 @@ distinguishing controls. Map boundaries and chart data outlines remain visible.
 Use the download icon in the bottom query bar to save a PNG with its title and source
 footer. All facets are included, even below the viewport; app/query bars and the
 download button are excluded. Download is enabled only when a rendered visual is available.
+
+## Querying JSON from code
+
+With the local development server (`npm start`), a direct HTTP request to a query
+ending in `/JSON/raw.json` returns `application/json`, not the React HTML page:
+
+```python
+import requests
+
+url = "http://localhost:3000/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/JSON/raw.json"
+response = requests.get(url, timeout=60)
+response.raise_for_status()
+data = response.json()
+print(data)
+```
+
+The response contains `datumList` and `provenance` and is served as an attachment.
+Data is fetched from upstream sources, so allow more than 10 seconds for large
+queries.
+Query failures return a non-success status
+with a JSON error. Restart the development server after server middleware changes.
+GitHub Pages serves static files and cannot run this endpoint; use a running
+development server for programmatic queries. `/JSON` shows the JSON view;
+append `/raw.json` for programmatic access.
+
+The Blocks visual has been retired; use Table for tabular results.

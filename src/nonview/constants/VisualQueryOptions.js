@@ -130,6 +130,6 @@ export const VISUAL_GROUPS = [
   },
   {
     label: "Other",
-    visuals: ["Blocks", "Table", "JSON"],
+    visuals: ["Table", "JSON"],
   },
 ];

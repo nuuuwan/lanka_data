@@ -1,4 +1,3 @@
-import Blocks from "./blocks/Blocks.js";
 import AreaBump from "./AreaBump.js";
 import BarChart from "./BarChart.js";
 import Cartogram from "./Cartogram.js";
@@ -15,7 +14,6 @@ import TreeMap from "./TreeMap.js";
 import TableVisual from "../../organisms/TableVisual.js";
 
 class VisualFactoryContentsMixin {
-  static Blocks = Blocks;
   static AreaBump = AreaBump;
   static BarChart = BarChart;
   static StackedBarChart = StackedBarChart;

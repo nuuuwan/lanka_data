@@ -1,8 +1,8 @@
 export const EXAMPLE_QUERIES = [
   {
     label: "2024 census by province",
-    description: "Explore population and religion counts as blocks.",
-    query: "Person/Time=2024+Province+Religion/Count/Blocks",
+    description: "Explore population and religion counts in a table.",
+    query: "Person/Time=2024+Province+Religion/Count/Table",
   },
   {
     label: "Religions in Colombo",
