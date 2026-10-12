@@ -5,6 +5,7 @@ import { Box, Typography } from "@mui/material";
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
+import { BAR_CHART_MIN_HEIGHT_PX } from "../visual_utils/ChartAxisUtils.js";
 
 export default function TreeMap({ data, xAxisLabel }) {
   const children = Array.from(
@@ -27,7 +28,7 @@ export default function TreeMap({ data, xAxisLabel }) {
   };
 
   return (
-    <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
+    <Box sx={{ width: "100%", height: BAR_CHART_MIN_HEIGHT_PX }}>
       <SizedChart
         chart={NivoTreeMap}
         theme={NIVO_THEME}

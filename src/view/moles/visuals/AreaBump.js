@@ -5,6 +5,7 @@ import { Box, Typography } from "@mui/material";
 import { NIVO_THEME } from "../../../AppTheme.js";
 import { getMarkColor } from "../../../nonview/constants/COLORS.js";
 import FormatUtils from "../visual_utils/FormatUtils.js";
+import { BAR_CHART_MIN_HEIGHT_PX } from "../visual_utils/ChartAxisUtils.js";
 
 function getSeriesKeys(data) {
   if (data.length === 0) {
@@ -105,7 +106,7 @@ export default function AreaBump({ data, xAxisLabel }) {
   const series = toAreaBumpData(data);
 
   return (
-    <Box sx={{ width: "100%", height: "100%", minHeight: 400 }}>
+    <Box sx={{ width: "100%", height: BAR_CHART_MIN_HEIGHT_PX }}>
       <SizedChart
         chart={NivoAreaBump}
         theme={NIVO_THEME}

@@ -22,7 +22,8 @@ query logic, with source provenance included alongside the results.
 ## Explore visually
 
 Opening `/lanka_data` or `/lanka_data/` without a query shows the home page,
-with a responsive gallery of example cards. Each card has a saved preview and
+with nine example cards in a 3-by-3 desktop gallery, adapting to smaller screens.
+Each card has a saved preview and
 a prominent title without a separate description; choose one to open its live visualization.
 The AppBar and bottom query navigator remain visible on the home page. You can
 also enter a query or use Query Wizard there once the data options are ready.
@@ -39,7 +40,8 @@ without clearing local storage.
 
 Available visuals include bar, stacked bar, pie, Marimekko, TreeMap, and maps.
 Examples include presidential results on a HexMap, religious composition on a
-UnitSquareMap, and province populations and religious shares in a Marimekko chart.
+UnitSquareMap or UnitHexMap, and province populations and religious shares in a
+Marimekko chart.
 Use **Table** for tabular results; the Blocks visual has been retired.
 
 ### Query Wizard tips
@@ -78,6 +80,8 @@ The visual comes first, with query controls fixed at the bottom. Single visuals
 fit their title, panel, and source footer within 95% of the viewport width and
 height, updating as the viewport or content changes. Multiple charts or maps use
 natural grid sizes and may extend below the viewport.
+Visuals remain horizontally centered in their panels when scaled; charts measure
+their unscaled layout size to avoid shrinking twice.
 
 UI components are borderless, using background shades and focus highlights to
 distinguish controls. Map boundaries and chart data outlines remain visible.
