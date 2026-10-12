@@ -22,7 +22,8 @@ query logic, with source provenance included alongside the results.
 ## Explore visually
 
 Opening `/lanka_data` or `/lanka_data/` without a query shows the home page,
-with links to example queries. Choose an example to open its visualization.
+with a responsive gallery of example cards. Each card has a saved preview and
+a single descriptive link; choose one to open its live visualization.
 The AppBar and bottom query navigator remain visible on the home page. You can
 also enter a query or use Query Wizard there once the data options are ready.
 PNG download stays disabled until a visual is available.
@@ -177,5 +178,7 @@ queries. Restart the development server after server middleware changes.
 
 ## Social sharing
 
-Use [the short social post](README.social.md) with the four screenshots in
-[README.social.images](README.social.images/).
+Use [the short social post](README.social.md) with any of the nine saved previews
+in [public/example-images](public/example-images/). These same images appear on
+the home page. They are snapshots, not live data; recapture the corresponding
+visual when updating them. The separate `README.social.images` folder is retired.

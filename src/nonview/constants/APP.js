@@ -1,4 +1,5 @@
 export const APP_PATH = "/lanka_data";
+export const EXAMPLE_IMAGES_PATH = `${APP_PATH}/example-images`;
 export const DEFAULT_VISUAL_QUERY_STR =
   "Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count/SquareMap";
 export const GITHUB_PROFILE_URL = "https://github.com/nuuuwan";

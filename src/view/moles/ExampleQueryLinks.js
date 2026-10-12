@@ -1,7 +1,7 @@
-import { Link as MuiLink, Typography } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 import { EXAMPLE_QUERIES } from "../../nonview/constants/ExampleQueries.js";
+import ExampleQueryCard from "./ExampleQueryCard.js";
 import styles from "./ExampleQueryLinks.module.css";
 
 export default function ExampleQueryLinks() {
@@ -11,12 +11,8 @@ export default function ExampleQueryLinks() {
         Examples
       </Typography>
       <ul className={styles.list}>
-        {EXAMPLE_QUERIES.map(({ description, query }) => (
-          <li className={styles.example} key={query}>
-            <MuiLink component={RouterLink} to={`/${query}`}>
-              {description}
-            </MuiLink>
-          </li>
+        {EXAMPLE_QUERIES.map((example) => (
+          <ExampleQueryCard key={example.query} {...example} />
         ))}
       </ul>
     </section>
