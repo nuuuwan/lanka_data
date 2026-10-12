@@ -1,0 +1,10 @@
+.list {
+  display: grid;
+  gap: 1.25rem;
+  margin-block: 1rem;
+  padding-inline-start: 1.5rem;
+}
+
+.example {
+  padding-inline-start: 0.25rem;
+}

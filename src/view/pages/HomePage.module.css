@@ -1,0 +1,10 @@
+.page {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 60rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.introduction {
+  margin-block: 1rem 2rem;
+}
