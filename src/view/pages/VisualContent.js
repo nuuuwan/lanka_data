@@ -18,21 +18,22 @@ export default function VisualContent({
     );
   }, [VisualClass, datumSet]);
   return (
-    <>
-      <VisualHeader
-        query={query}
-        datumCount={datumSet.datumList.length}
-        loadTimeSeconds={loadTimeSeconds}
-        titleRef={visualTitleRef}
-      />
-      <FittedVisual>
-        {VisualClass.IS_CHART ? (
-          <ChartVisual VisualClass={VisualClass} datumSet={datumSet} />
-        ) : (
-          <VisualClass datumSet={datumSet} />
-        )}
-      </FittedVisual>
-      <DataProvenancePanel provenance={datumSet.provenance} />
-    </>
+    <FittedVisual
+      header={
+        <VisualHeader
+          query={query}
+          datumCount={datumSet.datumList.length}
+          loadTimeSeconds={loadTimeSeconds}
+          titleRef={visualTitleRef}
+        />
+      }
+      footer={<DataProvenancePanel provenance={datumSet.provenance} />}
+    >
+      {VisualClass.IS_CHART ? (
+        <ChartVisual VisualClass={VisualClass} datumSet={datumSet} />
+      ) : (
+        <VisualClass datumSet={datumSet} />
+      )}
+    </FittedVisual>
   );
 }

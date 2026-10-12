@@ -5,6 +5,7 @@ export default function useViewportFit(
   contentRef,
   maxViewportRatio,
   paddingPx,
+  reservedHeight = 0,
 ) {
   const [fit, setFit] = useState({ scale: 1, height: 0, left: 0 });
 
@@ -17,7 +18,7 @@ export default function useViewportFit(
       const contentWidth = Math.max(width, content.scrollWidth);
       const availableHeight = Math.max(
         0,
-        window.innerHeight * maxViewportRatio - paddingPx * 2,
+        window.innerHeight * maxViewportRatio - paddingPx * 2 - reservedHeight,
       );
       const scale = Math.min(
         1,
@@ -52,7 +53,7 @@ export default function useViewportFit(
       observer.disconnect();
       window.removeEventListener("resize", update);
     };
-  }, [containerRef, contentRef, maxViewportRatio, paddingPx]);
+  }, [containerRef, contentRef, maxViewportRatio, paddingPx, reservedHeight]);
 
   return fit;
 }
