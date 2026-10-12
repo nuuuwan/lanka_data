@@ -15,9 +15,7 @@ import InBarLabels from "./InBarLabels.js";
 
 export default function BarChart({ data, xAxisLabel, yAxisLabel }) {
   return (
-    <Box
-      sx={{ width: "100%", height: BAR_CHART_MIN_HEIGHT_PX }}
-    >
+    <Box sx={{ width: "100%", height: BAR_CHART_MIN_HEIGHT_PX }}>
       <SizedChart
         chart={Bar}
         theme={getDenseAxisTheme(NIVO_THEME, data.length)}
