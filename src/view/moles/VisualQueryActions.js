@@ -9,21 +9,23 @@ export default function VisualQueryActions({
   isEdited,
   onCopy,
   onOpenEditor,
+  children,
 }) {
   return (
     <Box
       sx={{ alignItems: "center", display: "flex", justifyContent: "flex-end" }}
     >
       {isEdited && <Typography variant="caption">Edited</Typography>}
-      <Tooltip title="Copy share link">
+      <Tooltip title="Query Wizard">
         <span>
           <IconButton
-            aria-label="Copy share link"
+            aria-label="Query Wizard"
+            aria-haspopup="dialog"
             disabled={disabled}
-            onClick={onCopy}
+            onClick={onOpenEditor}
             type="button"
           >
-            <ContentCopyIcon />
+            <AutoFixHighIcon />
           </IconButton>
         </span>
       </Tooltip>
@@ -39,19 +41,19 @@ export default function VisualQueryActions({
           </IconButton>
         </span>
       </Tooltip>
-      <Tooltip title="Query Wizard">
+      <Tooltip title="Copy share link">
         <span>
           <IconButton
-            aria-label="Query Wizard"
-            aria-haspopup="dialog"
+            aria-label="Copy share link"
             disabled={disabled}
-            onClick={onOpenEditor}
+            onClick={onCopy}
             type="button"
           >
-            <AutoFixHighIcon />
+            <ContentCopyIcon />
           </IconButton>
         </span>
       </Tooltip>
+      {children}
     </Box>
   );
 }

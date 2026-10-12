@@ -11,6 +11,7 @@ export default function VisualContent({
   loadTimeSeconds,
   query,
   visualTitleRef,
+  visualRef,
 }) {
   useEffect(() => {
     console.debug(
@@ -19,6 +20,7 @@ export default function VisualContent({
   }, [VisualClass, datumSet]);
   return (
     <FittedVisual
+      visualRef={visualRef}
       header={
         <VisualHeader
           query={query}

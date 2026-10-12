@@ -9,7 +9,7 @@ import {
   VISUAL_VIEWPORT_MAX_RATIO,
 } from "../../nonview/constants/APP.js";
 
-export default function FittedVisual({ children, header, footer }) {
+export default function FittedVisual({ children, header, footer, visualRef }) {
   const [visualCount, setVisualCount] = useState(1);
   const fitToViewport = visualCount <= 1;
   const headerRef = useRef(null);
@@ -30,6 +30,7 @@ export default function FittedVisual({ children, header, footer }) {
   return (
     <VisualLayoutContext.Provider value={setVisualCount}>
       <Box
+        ref={visualRef}
         data-testid="fitted-visual-section"
         data-visual-count={visualCount}
         sx={{

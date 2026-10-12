@@ -7,9 +7,12 @@
   background-color: #eeeeee;
   border-radius: 0;
   box-sizing: border-box;
-  max-height: 35vh;
-  overflow-y: auto;
+  height: var(--app-bar-height);
   padding: 4px 2.5vw calc(4px + env(safe-area-inset-bottom));
+}
+
+.bar > form {
+  height: 100%;
 }
 
 .fields {
@@ -21,11 +24,17 @@
   margin: 0;
   min-width: 0;
   padding: 0;
+  height: 100%;
+}
+
+.fields > :first-child {
+  min-width: 0;
+  max-height: 100%;
+  overflow-y: auto;
 }
 
 @media (max-width: 599px) {
   .fields {
-    grid-template-columns: minmax(0, 1fr);
     gap: 4px;
   }
 }

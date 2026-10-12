@@ -18,6 +18,7 @@ export default function VisualQueryPage() {
   const [input, setInput] = useState(queryString);
   const [visualReadyQuery, setVisualReadyQuery] = useState(null);
   const visualTitleRef = useRef(null);
+  const [visualElement, setVisualElement] = useState(null);
   const parse = useVisualQuery(isReady, queryString);
   const load = useVisualData(parse.visualQuery);
   const VisualClass = parse.visualQuery?.visualClass;
@@ -75,6 +76,7 @@ export default function VisualQueryPage() {
                   loadTimeSeconds={load.loadTimeSeconds}
                   query={parse.visualQuery.query}
                   visualTitleRef={visualTitleRef}
+                  visualRef={setVisualElement}
                 />
               </VisualErrorBoundary>
             )}
@@ -88,6 +90,9 @@ export default function VisualQueryPage() {
             queryOptions={queryOptions}
             disabled={isLoading && !errorMessage}
             loadedVisualQuery={loadedQuery}
+            visualElement={
+              isVisualReady && !errorMessage ? visualElement : null
+            }
           />
         )}
       </Box>

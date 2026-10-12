@@ -1,3 +1,13 @@
+:root {
+  --app-bar-height: calc(64px + env(safe-area-inset-bottom));
+}
+
+@media (max-width: 599px) {
+  :root {
+    --app-bar-height: calc(56px + env(safe-area-inset-bottom));
+  }
+}
+
 body {
   margin: 0;
   font-family: "Ubuntu", monospace;

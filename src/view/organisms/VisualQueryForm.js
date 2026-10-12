@@ -6,6 +6,7 @@ import useVisualQueryActions from "../../nonview/core/useVisualQueryActions.js";
 import { SHARE_LINK_FEEDBACK_DURATION_MS } from "../../nonview/constants/APP.js";
 import VisualQueryActions from "../moles/VisualQueryActions.js";
 import QueryWizardDrawer from "./QueryWizardDrawer.js";
+import DownloadVisualButton from "./DownloadVisualButton.js";
 import VisualQueryTextInput from "../moles/VisualQueryTextInput.js";
 import styles from "./VisualQueryForm.module.css";
 
@@ -16,6 +17,7 @@ export default function VisualQueryForm({
   onSubmit,
   queryOptions,
   loadedVisualQuery = null,
+  visualElement = null,
 }) {
   const [editorOpen, setEditorOpen] = useState(false);
   const barRef = useRef(null);
@@ -62,7 +64,12 @@ export default function VisualQueryForm({
               isEdited={isEdited}
               onCopy={actions.copyShareLink}
               onOpenEditor={() => setEditorOpen(true)}
-            />
+            >
+              <DownloadVisualButton
+                visualElement={visualElement}
+                bottomOffset={barHeight}
+              />
+            </VisualQueryActions>
           </Box>
         </Box>
       </Paper>

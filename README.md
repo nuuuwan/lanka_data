@@ -13,7 +13,8 @@ grid sizes without viewport fitting and may extend below the viewport.
 
 The visual is shown first, with the query and its update and share
 controls in a fixed bottom bar. Open **Query Wizard** in a drawer above the compact
-grey query bar. Follow **Data → Facets → Visual**, using the back and forward
+query bar. The top AppBar and bottom query bar share the same responsive height.
+Follow **Data → Facets → Visual**, using the back and forward
 arrow buttons or clicking a step title to navigate directly. Each step has an info alert with indented examples
 on separate lines and a short navigation tip. Facets
 use one neutral background with white inputs to distinguish borderless controls.
@@ -31,3 +32,7 @@ in that menu to open a QR code for the current visual. The old footer QR is reti
 
 UI components are borderless, with background shades and focus highlights
 distinguishing controls. Map boundaries and chart data outlines remain visible.
+
+Use the download icon in the bottom query bar to save a PNG with its title and source
+footer. All facets are included, even below the viewport; app/query bars and the
+download button are excluded. Download is enabled only when a rendered visual is available.
