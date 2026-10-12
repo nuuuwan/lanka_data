@@ -32,6 +32,10 @@ subject to their normal loading and visual-availability rules.
 
 Version information is at the bottom of the **...** menu. Choose **Share with QR**
 in that menu to open a QR code for the current visual. The old footer QR is retired.
+Choose **Refresh** in the same menu to clear all local storage (including cached
+data and recent queries) and reload `/lanka_data` without query paths, URL
+parameters, or a fragment. The default visual loads while the URL stays at the
+app's base path.
 
 UI components are borderless, with background shades and focus highlights
 distinguishing controls. Map boundaries and chart data outlines remain visible.

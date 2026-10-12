@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Alert, AlertTitle, Box } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
+import { DEFAULT_VISUAL_QUERY_STR } from "../../nonview/constants/APP.js";
 import useDataContext from "../../nonview/core/data_context/useDataContext.js";
 import LoadingProgress from "../molecules/LoadingProgress.js";
 import VisualQueryForm from "../organisms/VisualQueryForm.js";
@@ -12,7 +13,8 @@ import useVisualData from "./useVisualData.js";
 import useVisualQuery from "./useVisualQuery.js";
 
 export default function VisualQueryPage() {
-  const { "*": queryString } = useParams();
+  const { "*": routeQueryString } = useParams();
+  const queryString = routeQueryString || DEFAULT_VISUAL_QUERY_STR;
   const navigate = useNavigate();
   const { isReady, queryOptions } = useDataContext();
   const [input, setInput] = useState(queryString);

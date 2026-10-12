@@ -4,7 +4,9 @@ import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Cache from "../../nonview/base/Cache.js";
 import RecentVisualQueries from "../../nonview/base/RecentVisualQueries.js";
+import { APP_PATH } from "../../nonview/constants/APP.js";
 import AppLinksMenu from "../moles/AppLinksMenu.js";
 import RecentQueriesMenu from "../moles/RecentQueriesMenu.js";
 import ShareQRDialog from "../moles/ShareQRDialog.js";
@@ -69,6 +71,10 @@ export default function QueryMenuAppBar({ loadedVisualQuery }) {
         <AppLinksMenu
           anchorEl={linksMenuAnchor}
           onClose={() => setLinksMenuAnchor(null)}
+          onRefresh={() => {
+            Cache.clear();
+            window.location.assign(APP_PATH);
+          }}
           onShareQR={() => {
             setLinksMenuAnchor(null);
             setShareURL(window.location.href);

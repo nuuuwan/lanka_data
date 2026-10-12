@@ -2,6 +2,7 @@ import BugReportOutlinedIcon from "@mui/icons-material/BugReportOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import QrCodeIcon from "@mui/icons-material/QrCode";
+import RefreshIcon from "@mui/icons-material/Refresh";
 import {
   Divider,
   ListItemIcon,
@@ -17,7 +18,12 @@ import {
   GITHUB_REPOSITORY_URL,
 } from "../../nonview/constants/APP.js";
 
-export default function AppLinksMenu({ anchorEl, onClose, onShareQR }) {
+export default function AppLinksMenu({
+  anchorEl,
+  onClose,
+  onShareQR,
+  onRefresh,
+}) {
   return (
     <Menu
       id="links-menu"
@@ -66,6 +72,12 @@ export default function AppLinksMenu({ anchorEl, onClose, onShareQR }) {
           <QrCodeIcon fontSize="small" />
         </ListItemIcon>
         Share with QR
+      </MenuItem>
+      <MenuItem onClick={onRefresh}>
+        <ListItemIcon>
+          <RefreshIcon fontSize="small" />
+        </ListItemIcon>
+        Refresh
       </MenuItem>
       <Divider />
       <Typography
