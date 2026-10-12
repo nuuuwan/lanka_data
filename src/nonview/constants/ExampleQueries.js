@@ -1,10 +1,5 @@
 export const EXAMPLE_QUERIES = [
   {
-    label: "2024 census by province",
-    description: "Explore population and religion counts in a table.",
-    query: "Person/Time=2024+Province+Religion/Count/Table",
-  },
-  {
     label: "Religions in Colombo",
     description: "Compare Colombo district religion counts in a bar chart.",
     query: "Person/Time=2024+District=colombo+Religion/Count/BarChart",
@@ -46,5 +41,10 @@ export const EXAMPLE_QUERIES = [
     description:
       "Compare province population sizes and religious shares in one chart.",
     query: "Person/Time=2024+Province+Religion/Count/MarimekkoChart",
+  },
+  {
+    label: "2024 census by province",
+    description: "Explore population and religion counts in a table.",
+    query: "Person/Time=2024+Province+Religion/Count/Table",
   },
 ];

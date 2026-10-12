@@ -11,12 +11,11 @@ export default function ExampleQueryLinks() {
         Examples
       </Typography>
       <ul className={styles.list}>
-        {EXAMPLE_QUERIES.map(({ label, description, query }) => (
+        {EXAMPLE_QUERIES.map(({ description, query }) => (
           <li className={styles.example} key={query}>
             <MuiLink component={RouterLink} to={`/${query}`}>
-              {label}
+              {description}
             </MuiLink>
-            <Typography variant="body2">{description}</Typography>
           </li>
         ))}
       </ul>
