@@ -1,0 +1,31 @@
+.bar.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  background-color: #eeeeee;
+  border-radius: 0;
+  box-sizing: border-box;
+  max-height: 35vh;
+  overflow-y: auto;
+  padding: 4px 2.5vw calc(4px + env(safe-area-inset-bottom));
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  border: 0;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+@media (max-width: 599px) {
+  .fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}

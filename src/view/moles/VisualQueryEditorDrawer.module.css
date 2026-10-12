@@ -1,0 +1,35 @@
+.drawer.drawer {
+  bottom: var(--query-bar-height);
+  max-height: min(75vh, calc(100dvh - var(--query-bar-height)));
+  border-radius: 12px 12px 0 0;
+}
+
+.content {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
+  width: 100%;
+}
+
+.heading,
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.actions {
+  justify-content: flex-end;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.fields {
+  border: 0;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}

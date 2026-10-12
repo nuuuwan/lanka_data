@@ -1,9 +1,9 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Alert, AlertTitle, Box } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import DataContext from "../../nonview/core/data_context/DataContext.js";
+import useDataContext from "../../nonview/core/data_context/useDataContext.js";
 import LoadingProgress from "../molecules/LoadingProgress.js";
-import ChangeViewSection from "../organisms/ChangeViewSection.js";
+import VisualQueryForm from "../organisms/VisualQueryForm.js";
 import QueryMenuAppBar from "../organisms/QueryMenuAppBar.js";
 import VisualErrorBoundary from "../organisms/VisualErrorBoundary.js";
 import styles from "./VisualQueryPage.module.css";
@@ -14,7 +14,7 @@ import useVisualQuery from "./useVisualQuery.js";
 export default function VisualQueryPage() {
   const { "*": queryString } = useParams();
   const navigate = useNavigate();
-  const { isReady, queryOptions } = useContext(DataContext);
+  const { isReady, queryOptions } = useDataContext();
   const [input, setInput] = useState(queryString);
   const [visualReadyQuery, setVisualReadyQuery] = useState(null);
   const visualTitleRef = useRef(null);
@@ -58,26 +58,13 @@ export default function VisualQueryPage() {
     <>
       <QueryMenuAppBar loadedVisualQuery={loadedQuery} />
       <Box className={styles.page}>
-        {isReady && (
-          <ChangeViewSection
-            value={input}
-            onChange={setInput}
-            onSubmit={submit}
-            queryOptions={queryOptions}
-            disabled={isLoading && !errorMessage}
-            loadedVisualQuery={loadedQuery}
-          />
-        )}
         {errorMessage ? (
           <Alert severity="error" data-testid="query-error">
             <AlertTitle>Sorry, something went wrong.</AlertTitle>
             {errorMessage}
           </Alert>
         ) : (
-          <Box
-            className={isLoading ? undefined : styles.visualContent}
-            data-testid={isLoading ? undefined : "visual-content"}
-          >
+          <Box data-testid={isLoading ? undefined : "visual-content"}>
             {isLoading ? (
               <LoadingProgress />
             ) : (
@@ -90,6 +77,16 @@ export default function VisualQueryPage() {
                   visualTitleRef={visualTitleRef}
                 />
               </VisualErrorBoundary>
+            )}
+            {isReady && (
+              <VisualQueryForm
+                value={input}
+                onChange={setInput}
+                onSubmit={submit}
+                queryOptions={queryOptions}
+                disabled={isLoading && !errorMessage}
+                loadedVisualQuery={loadedQuery}
+              />
             )}
           </Box>
         )}

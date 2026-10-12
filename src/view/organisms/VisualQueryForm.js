@@ -1,25 +1,13 @@
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import CasinoIcon from "@mui/icons-material/Casino";
-import RefreshIcon from "@mui/icons-material/Refresh";
-import {
-  Box,
-  FormControlLabel,
-  IconButton,
-  Paper,
-  Snackbar,
-  Switch,
-  Tooltip,
-  Typography,
-} from "@mui/material";
-import { useState } from "react";
+import { Box, Paper, Snackbar } from "@mui/material";
+import { useRef, useState } from "react";
 
-import { copyTextToClipboard } from "../../nonview/base/Clipboard.js";
-import {
-  SHARE_LINK_FEEDBACK_DURATION_MS,
-  VISUAL_QUERY_MAX_WIDTH_PX,
-} from "../../nonview/constants/APP.js";
-import LaypersonVisualQueryInput from "../moles/LaypersonVisualQueryInput.js";
+import useElementHeight from "../../nonview/base/useElementHeight.js";
+import useVisualQueryActions from "../../nonview/core/useVisualQueryActions.js";
+import { SHARE_LINK_FEEDBACK_DURATION_MS } from "../../nonview/constants/APP.js";
+import VisualQueryActions from "../moles/VisualQueryActions.js";
+import VisualQueryEditorDrawer from "../moles/VisualQueryEditorDrawer.js";
 import VisualQueryTextInput from "../moles/VisualQueryTextInput.js";
+import styles from "./VisualQueryForm.module.css";
 
 export default function VisualQueryForm({
   disabled = false,
@@ -30,145 +18,74 @@ export default function VisualQueryForm({
   loadedVisualQuery = null,
 }) {
   const [editorOpen, setEditorOpen] = useState(false);
-  const [shareFeedback, setShareFeedback] = useState(null);
+  const barRef = useRef(null);
+  const barHeight = useElementHeight(barRef);
+  const actions = useVisualQueryActions(queryOptions, onChange, onSubmit);
   const isEdited =
     loadedVisualQuery !== null && value.trim() !== loadedVisualQuery;
-  const isRefreshDisabled = loadedVisualQuery !== null && !isEdited;
-  const metadataKeyLists = queryOptions.metadataKeyLists.filter(
-    (metadataKeys) => metadataKeys.length > 0,
-  );
-
-  function submit(event) {
+  const refreshDisabled = loadedVisualQuery !== null && !isEdited;
+  const submit = (event) => {
     event?.preventDefault();
     onSubmit();
-  }
-
-  function submitExpertQuery(event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      submit();
-    }
-  }
-
-  async function copyShareLink() {
-    try {
-      await copyTextToClipboard(window.location.href);
-      setShareFeedback("Share link copied");
-    } catch {
-      setShareFeedback("Could not copy share link");
-    }
-  }
-
-  function selectRandomQuery() {
-    const sourceIndex = Math.floor(Math.random() * metadataKeyLists.length);
-    const metadataKeys = metadataKeyLists[sourceIndex];
-    const metadataKeyIndex = Math.floor(Math.random() * metadataKeys.length);
-    const randomQuery = `${metadataKeys[metadataKeyIndex]}/Table`;
-    onChange(randomQuery);
-    onSubmit(randomQuery);
-  }
-
-  const refreshButton = (
-    <Box sx={{ alignItems: "center", display: "flex", gap: 0.5 }}>
-      {isEdited && <Typography variant="caption">Edited</Typography>}
-      <Tooltip title="Update visualization">
-        <span>
-          <IconButton
-            aria-label="Update visualization"
-            color="primary"
-            disabled={isRefreshDisabled}
-            type="submit"
-          >
-            <RefreshIcon />
-          </IconButton>
-        </span>
-      </Tooltip>
-    </Box>
-  );
+    setEditorOpen(false);
+  };
 
   return (
-    <Box
-      component="form"
-      aria-label="Visual query form"
-      onSubmit={submit}
-      sx={{ mb: 2, maxWidth: VISUAL_QUERY_MAX_WIDTH_PX, mx: "auto" }}
-    >
-      <Box
-        component="fieldset"
-        disabled={disabled}
-        aria-busy={disabled}
-        sx={{ border: 0, m: 0, minWidth: 0, p: 0 }}
+    <>
+      <Box aria-hidden="true" sx={{ height: barHeight }} />
+      <Paper
+        ref={barRef}
+        component="section"
+        aria-label="Visual query bar"
+        elevation={0}
+        className={styles.bar}
       >
-        <VisualQueryTextInput
-          disabled={disabled}
-          onChange={onChange}
-          value={value}
-          onKeyDown={submitExpertQuery}
-        />
-        <Box
-          sx={{
-            alignItems: "center",
-            display: "flex",
-            justifyContent: "flex-end",
-            mt: 1,
-          }}
-        >
-          <Box sx={{ display: "flex" }}>
-            <Tooltip title="Choose a random query">
-              <span>
-                <IconButton
-                  aria-label="Choose a random query"
-                  disabled={metadataKeyLists.length === 0}
-                  onClick={selectRandomQuery}
-                  type="button"
-                >
-                  <CasinoIcon />
-                </IconButton>
-              </span>
-            </Tooltip>
-            <Tooltip title="Copy share link">
-              <IconButton
-                aria-label="Copy share link"
-                onClick={copyShareLink}
-                type="button"
-              >
-                <ContentCopyIcon />
-              </IconButton>
-            </Tooltip>
-            {!editorOpen && refreshButton}
+        <Box component="form" aria-label="Visual query form" onSubmit={submit}>
+          <Box
+            component="fieldset"
+            disabled={disabled}
+            aria-busy={disabled}
+            className={styles.fields}
+          >
+            <VisualQueryTextInput
+              compact
+              disabled={disabled}
+              onChange={onChange}
+              value={value}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") submit(event);
+              }}
+            />
+            <VisualQueryActions
+              disabled={disabled}
+              randomDisabled={actions.randomDisabled}
+              refreshDisabled={refreshDisabled}
+              isEdited={isEdited}
+              onRandom={actions.selectRandomQuery}
+              onCopy={actions.copyShareLink}
+              onOpenEditor={() => setEditorOpen(true)}
+            />
           </Box>
         </Box>
-        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={editorOpen}
-                onChange={(event) => setEditorOpen(event.target.checked)}
-              />
-            }
-            label="Editor"
-          />
-        </Box>
-        {editorOpen && (
-          <Paper elevation={1} sx={{ mt: 3, p: { xs: 1.5, sm: 2 } }}>
-            <LaypersonVisualQueryInput
-              value={value}
-              onChange={onChange}
-              onSubmit={submit}
-              queryOptions={queryOptions}
-            />
-            <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 1 }}>
-              {refreshButton}
-            </Box>
-          </Paper>
-        )}
-      </Box>
-      <Snackbar
-        open={shareFeedback !== null}
-        autoHideDuration={SHARE_LINK_FEEDBACK_DURATION_MS}
-        message={shareFeedback}
-        onClose={() => setShareFeedback(null)}
+      </Paper>
+      <VisualQueryEditorDrawer
+        barHeight={barHeight}
+        open={editorOpen}
+        onClose={() => setEditorOpen(false)}
+        disabled={disabled}
+        refreshDisabled={refreshDisabled}
+        value={value}
+        onChange={onChange}
+        onSubmit={submit}
+        queryOptions={queryOptions}
       />
-    </Box>
+      <Snackbar
+        open={actions.shareFeedback !== null}
+        autoHideDuration={SHARE_LINK_FEEDBACK_DURATION_MS}
+        message={actions.shareFeedback}
+        onClose={actions.dismissShareFeedback}
+        sx={{ bottom: `${barHeight}px !important` }}
+      />
+    </>
   );
 }

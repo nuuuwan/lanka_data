@@ -8,3 +8,8 @@ The visual title and light-grey Paper panel span 95% of the viewport width.
 Visuals shrink proportionally when needed so the entire visual, including its
 panel padding, fits within 95% of the viewport height. The fit updates when the
 viewport or visual content changes.
+
+The visual is shown first, with the query and its update, random-query, and share
+controls in a fixed bottom bar. Open **Editor** to edit facets and visual options
+in a bottom drawer above the compact grey query bar. Updating from the drawer
+closes it and displays the new visual.
