@@ -22,7 +22,7 @@ query logic, with source provenance included alongside the results.
 ## Explore visually
 
 Opening `/lanka_data` or `/lanka_data/` without a query shows the home page,
-with links to all six examples. Choose an example to open its visualization.
+with links to example queries. Choose an example to open its visualization.
 The AppBar and bottom query navigator remain visible on the home page. You can
 also enter a query or use Query Wizard there once the data options are ready.
 PNG download stays disabled until a visual is available.
@@ -35,6 +35,8 @@ Query URLs continue to open their visuals directly.
    query bar to apply your changes.
 
 Available visuals include bar, stacked bar, pie, Marimekko, TreeMap, and maps.
+Examples include presidential results on a HexMap, religious composition on a
+UnitSquareMap, and province populations and religious shares in a Marimekko chart.
 Use **Table** for tabular results; the Blocks visual has been retired.
 
 ### Query Wizard tips

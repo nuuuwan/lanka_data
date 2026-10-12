@@ -30,4 +30,21 @@ export const EXAMPLE_QUERIES = [
     description: "View party results by electoral district on a cartogram.",
     query: "Vote/ElectionType=presidential+Time=2005+ED+Party/Count/Cartogram",
   },
+  {
+    label: "2024 presidential hex map",
+    description: "Compare presidential party votes across electoral districts.",
+    query: "Vote/ElectionType=presidential+Time=2024+ED+Party/Count/HexMap",
+  },
+  {
+    label: "2024 religions on a unit square map",
+    description:
+      "Compare religious composition across provinces with equal-sized regions.",
+    query: "Person/Time=2024+Province+Religion/Count/UnitSquareMap",
+  },
+  {
+    label: "2024 religions by province in a Marimekko chart",
+    description:
+      "Compare province population sizes and religious shares in one chart.",
+    query: "Person/Time=2024+Province+Religion/Count/MarimekkoChart",
+  },
 ];
