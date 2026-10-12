@@ -211,6 +211,8 @@ for deployment. A failed fetch or generation fails the build.
 The deployment workflow transfers the build between jobs as a tar archive,
 then extracts it before publishing. This preserves query paths containing `<`
 without violating GitHub Actions artifact filename restrictions.
+Deploy jobs share a concurrency group so only one job pushes to `gh-pages`
+at a time; a running deployment is allowed to finish.
 
 ## Run locally
 
