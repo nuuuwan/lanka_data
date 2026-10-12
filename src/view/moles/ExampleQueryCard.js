@@ -1,21 +1,18 @@
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import { Card, CardActionArea, CardMedia } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 import { EXAMPLE_IMAGES_PATH } from "../../nonview/constants/APP.js";
+import getExampleQueryDetails from "../../nonview/core/getExampleQueryDetails.js";
 import styles from "./ExampleQueryCard.module.css";
 
-export default function ExampleQueryCard({ label, image, query }) {
+export default function ExampleQueryCard({ query }) {
+  const { label, image } = getExampleQueryDetails(query);
   return (
     <Card component="li" elevation={0} className={styles.card}>
       <CardActionArea
         component={RouterLink}
         to={`/${query}`}
+        aria-label={label}
         className={styles.action}
       >
         <CardMedia
@@ -25,11 +22,6 @@ export default function ExampleQueryCard({ label, image, query }) {
           loading="lazy"
           className={styles.image}
         />
-        <CardContent className={styles.content}>
-          <Typography component="h3" variant="h6">
-            {label}
-          </Typography>
-        </CardContent>
       </CardActionArea>
     </Card>
   );

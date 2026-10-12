@@ -24,11 +24,6 @@
   background-color: #ffffff;
 }
 
-.content.content {
-  flex-grow: 1;
-  padding: 1.25rem;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .card.card {
     transition: none;

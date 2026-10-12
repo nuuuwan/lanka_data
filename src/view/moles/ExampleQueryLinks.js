@@ -11,8 +11,8 @@ export default function ExampleQueryLinks() {
         Examples
       </Typography>
       <ul className={styles.list}>
-        {EXAMPLE_QUERIES.map((example) => (
-          <ExampleQueryCard key={example.query} {...example} />
+        {EXAMPLE_QUERIES.map((query) => (
+          <ExampleQueryCard key={query} query={query} />
         ))}
       </ul>
     </section>

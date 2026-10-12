@@ -23,12 +23,18 @@ query logic, with source provenance included alongside the results.
 
 Opening `/lanka_data` or `/lanka_data/` without a query shows the home page,
 with nine example cards in a 3-by-3 desktop gallery, adapting to smaller screens.
-Each card has a saved preview and
-a prominent title without a separate description; choose one to open its live visualization.
+Each card shows a saved screenshot containing the visual title, chart or map,
+and source footer, with no separate text beneath it;
+choose one to open its live visualization.
+The example list contains only query strings; accessible link labels and
+filesystem-safe preview filenames are derived from each query.
 The AppBar and bottom query navigator remain visible on the home page. You can
 also enter a query or use Query Wizard there once the data options are ready.
 PNG download stays disabled until a visual is available.
 Query URLs continue to open their visuals directly.
+On screens narrower than 600px, a dismissible warning explains that Lanka Data
+is optimized for desktop but also works on mobile. It appears once per browser
+tab session, including across query navigation and reloads.
 Click **Lanka Data** in the AppBar to return to the parameter-free home URL
 without clearing local storage.
 

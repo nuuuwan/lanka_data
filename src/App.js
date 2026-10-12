@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import VisualQueryPage from "./view/pages/VisualQueryPage";
 import HomePage from "./view/pages/HomePage.js";
+import DesktopOptimizationWarning from "./view/organisms/DesktopOptimizationWarning.js";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppTheme } from "./AppTheme";
 import DataProvider from "./nonview/core/data_context/DataProvider.js";
@@ -10,6 +11,7 @@ function App() {
   return (
     <ThemeProvider theme={AppTheme}>
       <BrowserRouter basename={APP_PATH}>
+        <DesktopOptimizationWarning />
         <DataProvider>
           <Routes>
             <Route index element={<HomePage />} />

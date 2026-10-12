@@ -11,7 +11,7 @@ export default async function downloadElementPNG(
     backgroundColor: "#ffffff",
     pixelRatio,
     skipFonts: true,
-    style: { transform: "none", left: "0" },
+    style: { position: "static", transform: "none", left: "0" },
   });
   if (!blob) throw new Error("Could not create the PNG image.");
   const url = URL.createObjectURL(blob);
