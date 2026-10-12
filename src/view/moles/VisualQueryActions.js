@@ -6,6 +6,7 @@ import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 export default function VisualQueryActions({
   disabled,
   refreshDisabled,
+  copyDisabled = false,
   isEdited,
   onCopy,
   onOpenEditor,
@@ -45,7 +46,7 @@ export default function VisualQueryActions({
         <span>
           <IconButton
             aria-label="Copy share link"
-            disabled={disabled}
+            disabled={disabled || copyDisabled}
             onClick={onCopy}
             type="button"
           >

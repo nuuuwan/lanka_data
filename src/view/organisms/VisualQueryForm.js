@@ -1,5 +1,6 @@
 import { Box, Paper, Snackbar } from "@mui/material";
 import { useRef, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import useElementHeight from "../../nonview/base/useElementHeight.js";
 import useVisualQueryActions from "../../nonview/core/useVisualQueryActions.js";
@@ -19,14 +20,16 @@ export default function VisualQueryForm({
   loadedVisualQuery = null,
   visualElement = null,
 }) {
+  const { "*": routeQuery } = useParams();
+  const currentQuery = routeQuery ?? loadedVisualQuery ?? "";
   const [editorOpen, setEditorOpen] = useState(false);
   const barDisabled = disabled || editorOpen;
   const barRef = useRef(null);
   const barHeight = useElementHeight(barRef);
   const actions = useVisualQueryActions();
-  const isEdited =
-    loadedVisualQuery !== null && value.trim() !== loadedVisualQuery;
-  const refreshDisabled = loadedVisualQuery !== null && !isEdited;
+  const query = value.trim();
+  const isEdited = query !== currentQuery;
+  const refreshDisabled = !query || !isEdited;
   const submit = (event) => {
     event?.preventDefault();
     onSubmit();
@@ -62,6 +65,7 @@ export default function VisualQueryForm({
             <VisualQueryActions
               disabled={barDisabled}
               refreshDisabled={refreshDisabled}
+              copyDisabled={!query}
               isEdited={isEdited}
               onCopy={actions.copyShareLink}
               onOpenEditor={() => setEditorOpen(true)}

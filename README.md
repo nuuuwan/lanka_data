@@ -54,6 +54,8 @@ Use **Table** for tabular results; the Blocks visual has been retired.
 ### Share, download, and refresh
 
 - **Copy share link** in the bottom bar shares the current query URL.
+  Copy is disabled when the query is empty or contains only whitespace.
+- **Update visualization** is disabled when the query is empty or unchanged.
 - **Share with QR** in the **...** menu opens a QR code for the current visual.
 - **Download visual as PNG** saves the title, all facets, and source footer,
   including content below the viewport. App/query bars are excluded; a rendered
