@@ -11,11 +11,12 @@ height. The fit updates when the
 viewport or visual content changes.
 
 The visual is shown first, with the query and its update, random-query, and share
-controls in a fixed bottom bar. Open **Editor** to edit facets and visual options
-in a bottom drawer above the compact grey query bar. Updating from the drawer
-closes it and displays the new visual.
-Info alerts in the drawer explain data selection, facet grouping and filtering,
-and how to apply or retain edits.
+controls in a fixed bottom bar. Open **Query Wizard** in a drawer above the compact
+grey query bar. Follow **Data → Facets → Visual → Review**, using **Back** and
+**Next** to navigate. Each step has an info alert with guidance. Enter advances
+from a text field; only **Update visualization** on the Review step applies the
+query and closes the wizard. Closing without updating retains edits in the query
+bar. Reopening starts at Data with those edits preserved.
 
 Version information is at the bottom of the **...** menu. Choose **Share with QR**
 in that menu to open a QR code for the current visual. The old footer QR is retired.

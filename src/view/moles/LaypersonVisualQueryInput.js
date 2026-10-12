@@ -1,4 +1,4 @@
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 
 import { VISUAL_QUERY_MAX_WIDTH_PX } from "../../nonview/constants/APP.js";
 import LaypersonDimensions from "./LaypersonDimensions.js";
@@ -14,6 +14,7 @@ export default function LaypersonVisualQueryInput({
   onChange,
   onSubmit,
   queryOptions,
+  step,
 }) {
   const parts = getVisualQueryParts(value);
   const dimensions = getDimensionParts(parts.dimensions);
@@ -42,7 +43,6 @@ export default function LaypersonVisualQueryInput({
       sx={{
         display: "grid",
         gap: 1.5,
-        gridTemplateColumns: { xs: "1fr", md: "repeat(2, minmax(0, 1fr))" },
         maxWidth: VISUAL_QUERY_MAX_WIDTH_PX,
         width: "100%",
       }}
@@ -51,46 +51,45 @@ export default function LaypersonVisualQueryInput({
         parts={parts}
         entityOptions={entities}
         onUpdate={updatePart}
+        step={step}
       />
-      <LaypersonDimensions
-        dimensions={dimensions}
-        dimensionOptions={dimensionOptions}
-        valueOptionsByField={valueOptionsByField}
-        onAdd={() => updatePart("dimensions", `${parts.dimensions}+`)}
-        onChange={(index, name, nextValue) =>
-          updateDimensions(
-            dimensions.map((dimension, position) =>
-              position === index
-                ? { ...dimension, [name]: nextValue }
-                : dimension,
-            ),
-          )
-        }
-        onKeyDown={submitOnEnter}
-        onRemove={(index) =>
-          updateDimensions(
-            dimensions.filter((_dimension, position) => position !== index),
-          )
-        }
-      />
-      <TextField
-        label="Calculate"
-        size="small"
-        value="Count"
-        helperText="Count is currently the only calculation"
-        slotProps={{
-          htmlInput: {
-            "aria-readonly": true,
-            readOnly: true,
-          },
-        }}
-      />
-      <Typography
-        variant="caption"
-        sx={{ color: "text.secondary", gridColumn: "1 / -1" }}
-      >
-        Press Enter in a text field to update the visualization.
-      </Typography>
+      {step === "Facets" && (
+        <LaypersonDimensions
+          dimensions={dimensions}
+          dimensionOptions={dimensionOptions}
+          valueOptionsByField={valueOptionsByField}
+          onAdd={() => updatePart("dimensions", `${parts.dimensions}+`)}
+          onChange={(index, name, nextValue) =>
+            updateDimensions(
+              dimensions.map((dimension, position) =>
+                position === index
+                  ? { ...dimension, [name]: nextValue }
+                  : dimension,
+              ),
+            )
+          }
+          onKeyDown={submitOnEnter}
+          onRemove={(index) =>
+            updateDimensions(
+              dimensions.filter((_dimension, position) => position !== index),
+            )
+          }
+        />
+      )}
+      {step === "Data" && (
+        <TextField
+          label="Calculate"
+          size="small"
+          value="Count"
+          helperText="Count is currently the only calculation"
+          slotProps={{
+            htmlInput: {
+              "aria-readonly": true,
+              readOnly: true,
+            },
+          }}
+        />
+      )}
     </Box>
   );
 }

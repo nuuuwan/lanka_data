@@ -12,19 +12,12 @@
   width: 100%;
 }
 
-.heading,
-.actions {
+.heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   margin-bottom: 16px;
-}
-
-.actions {
-  justify-content: flex-end;
-  margin-top: 16px;
-  margin-bottom: 0;
 }
 
 .fields {

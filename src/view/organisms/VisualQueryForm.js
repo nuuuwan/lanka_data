@@ -5,7 +5,7 @@ import useElementHeight from "../../nonview/base/useElementHeight.js";
 import useVisualQueryActions from "../../nonview/core/useVisualQueryActions.js";
 import { SHARE_LINK_FEEDBACK_DURATION_MS } from "../../nonview/constants/APP.js";
 import VisualQueryActions from "../moles/VisualQueryActions.js";
-import VisualQueryEditorDrawer from "../moles/VisualQueryEditorDrawer.js";
+import QueryWizardDrawer from "./QueryWizardDrawer.js";
 import VisualQueryTextInput from "../moles/VisualQueryTextInput.js";
 import styles from "./VisualQueryForm.module.css";
 
@@ -68,7 +68,7 @@ export default function VisualQueryForm({
           </Box>
         </Box>
       </Paper>
-      <VisualQueryEditorDrawer
+      <QueryWizardDrawer
         barHeight={barHeight}
         open={editorOpen}
         onClose={() => setEditorOpen(false)}
