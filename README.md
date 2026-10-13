@@ -128,11 +128,14 @@ Change a query's final visual segment to `JSON` for the browser view; append
 `/raw.json` for direct programmatic access where the endpoint is available.
 The response contains `datumList` and `provenance`.
 
+For an overview designed for AI agents and developers, see the **[API Guide](api.md)**
+and the machine-readable query snapshot catalog **[catalog.json](https://nuuuwan.github.io/lanka_data/catalog.json)**.
+
 ### Published API examples
 
 The published query below is available directly from GitHub Pages as
 `application/json`, without running the React app. All three examples request
-the same data and check for HTTP errors.
+the same data and check for HTTP errors. All published queries are indexed in [catalog.json](https://nuuuwan.github.io/lanka_data/catalog.json).
 
 #### Python
 
@@ -201,13 +204,16 @@ func main() {
 
 | Access | Supported queries | Data freshness |
 | --- | --- | --- |
-| GitHub Pages `/JSON/raw.json` | Queries listed in [RawJSON.js](src/nonview/constants/RawJSON.js) | Snapshot from the latest successful build |
+| GitHub Pages `/JSON/raw.json` | Queries listed in [catalog.json](https://nuuuwan.github.io/lanka_data/catalog.json) (defined in [RawJSON.js](src/nonview/constants/RawJSON.js)) | Snapshot from the latest successful build |
 | Browser `JSON` view and download | Queries supported by the app's data sources | Loaded from upstream sources, with local caching |
 | Local `/JSON/raw.json` endpoint | Queries supported by the app's data sources | Loaded from upstream sources |
 
 GitHub Pages is static-only: it does not run an API server for arbitrary queries.
+Only the published query snapshots in [catalog.json](https://nuuuwan.github.io/lanka_data/catalog.json)
+are served statically on GitHub Pages. Refer to the **[API Guide](api.md)** for details
+on catalog consumption, response formats, geographic identifiers, and units.
 `npm run build` fetches upstream data and generates the listed static JSON files
-for deployment. A failed fetch or generation fails the build.
+and `catalog.json` for deployment. A failed fetch or generation fails the build.
 The deployment workflow transfers the build between jobs as a tar archive,
 then extracts it before publishing. This preserves query paths containing `<`
 without violating GitHub Actions artifact filename restrictions.
