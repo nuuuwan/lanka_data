@@ -24,6 +24,7 @@ export default function VisualContent({
       header={
         <VisualHeader
           query={query}
+          VisualClass={VisualClass}
           datumCount={datumSet.datumList.length}
           loadTimeSeconds={loadTimeSeconds}
           titleRef={visualTitleRef}

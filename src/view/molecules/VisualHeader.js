@@ -6,6 +6,7 @@ import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 
 export default function VisualHeader({
   query,
+  VisualClass,
   datumCount,
   loadTimeSeconds,
   titleRef,
@@ -22,7 +23,7 @@ export default function VisualHeader({
       }}
     >
       <Typography component="h1" variant="h6" data-testid="query-finding">
-        {getQueryFinding(query)}
+        {getQueryFinding(query, VisualClass)}
       </Typography>
       <Typography
         data-testid="datums-count"
