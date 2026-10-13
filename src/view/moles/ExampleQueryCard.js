@@ -1,4 +1,4 @@
-import { CardActionArea, ImageListItem, ImageListItemBar } from "@mui/material";
+import { CardActionArea, ImageListItem } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 import { EXAMPLE_IMAGES_PATH } from "../../nonview/constants/APP.js";
@@ -17,11 +17,10 @@ export default function ExampleQueryCard({ query }) {
       >
         <img
           src={`${EXAMPLE_IMAGES_PATH}/${image}`}
-          alt=""
+          alt={label}
           loading="lazy"
           className={styles.image}
         />
-        <ImageListItemBar position="below" title={label} />
       </CardActionArea>
     </ImageListItem>
   );
