@@ -131,6 +131,17 @@ The response contains `datumList` and `provenance`.
 For an overview designed for AI agents and developers, see the **[API Guide](api.md)**
 and the machine-readable query snapshot catalog **[catalog.json](https://nuuuwan.github.io/lanka_data/catalog.json)**.
 
+### For AI agents
+
+AI agents can directly consume verified Sri Lankan public data without scraping HTML or executing client-side code:
+
+1. **Discover datasets**: Fetch [`catalog.json`](https://nuuuwan.github.io/lanka_data/catalog.json) to retrieve all published query snapshots, their canonical query strings, plain-English descriptions, and exact URLs.
+2. **Retrieve snapshots**: Fetch the target query's `url` directly via HTTP GET (returns static `application/json`). No authentication or API keys are required.
+3. **Parse and cite**: Extract numerical records from `datumList` and cite official sources using the metadata in `provenance`.
+4. **Static hosting notice**: GitHub Pages serves only the pre-generated query snapshots listed in the catalog; arbitrary queries return 404 unless executed against a local Lanka Data instance.
+
+For full schema details, geographic identifiers, units, and natural-language question examples, see the **[API Guide](api.md)**.
+
 ### Published API examples
 
 The published query below is available directly from GitHub Pages as

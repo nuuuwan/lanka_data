@@ -1,6 +1,6 @@
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
-import RefreshIcon from "@mui/icons-material/Refresh";
+import CheckIcon from "@mui/icons-material/Check";
 import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 
 export default function VisualQueryActions({
@@ -38,7 +38,7 @@ export default function VisualQueryActions({
             disabled={disabled || refreshDisabled}
             type="submit"
           >
-            <RefreshIcon />
+            <CheckIcon />
           </IconButton>
         </span>
       </Tooltip>

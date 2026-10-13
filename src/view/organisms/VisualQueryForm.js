@@ -86,6 +86,7 @@ export default function VisualQueryForm({
         onSubmit={submit}
         onReset={() => onChange(currentQuery)}
         resetDisabled={!isEdited}
+        isEdited={isEdited}
         disabled={disabled}
         value={value}
         onChange={onChange}
