@@ -75,7 +75,13 @@ export default class Query {
   }
 
   static async fromString(queryStr) {
-    const tokens = queryStr.split(Query.DELIM_TOKEN).filter(Boolean);
+    let decodedStr = queryStr;
+    try {
+      decodedStr = decodeURIComponent(queryStr);
+    } catch {
+      decodedStr = queryStr;
+    }
+    const tokens = decodedStr.split(Query.DELIM_TOKEN).filter(Boolean);
     const entityClassName = tokens[0];
     const entityClass = ThingFactory.fromKey(entityClassName);
 

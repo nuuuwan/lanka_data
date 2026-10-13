@@ -13,7 +13,13 @@ export default class VisualQuery {
   }
 
   static async fromString(visualQueryStr) {
-    const tokens = visualQueryStr.split(Query.DELIM_TOKEN).filter(Boolean);
+    let decodedStr = visualQueryStr;
+    try {
+      decodedStr = decodeURIComponent(visualQueryStr);
+    } catch {
+      decodedStr = visualQueryStr;
+    }
+    const tokens = decodedStr.split(Query.DELIM_TOKEN).filter(Boolean);
     if (tokens.length !== 4) {
       throw new Error(
         "Use the format Entity/Dimensions/Aggregate/Visualization. " +
@@ -24,6 +30,6 @@ export default class VisualQuery {
     const visualClass = VisualFactory.get(visualClassName);
     const queryStr = tokens.slice(0, tokens.length - 1).join(Query.DELIM_TOKEN);
     const query = await Query.fromString(queryStr);
-    return new VisualQuery(query, visualClass, visualQueryStr);
+    return new VisualQuery(query, visualClass, decodedStr);
   }
 }

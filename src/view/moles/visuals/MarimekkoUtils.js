@@ -3,30 +3,31 @@ export function getColorForDimension(id, data) {
   return data.find((row) => row[colorKey])?.[colorKey];
 }
 
-export function getDimensionKeys(row) {
-  return Object.keys(row).filter(
-    (key) => key !== "id" && key !== "_barWidth" && !key.endsWith("Color"),
+export function getDimensionKeys(data) {
+  const rows = Array.isArray(data) ? data : [data];
+  const totals = {};
+  for (const row of rows) {
+    if (!row) continue;
+    for (const key of Object.keys(row)) {
+      if (key !== "id" && key !== "_barWidth" && !key.endsWith("Color")) {
+        totals[key] = (totals[key] || 0) + (row[key] || 0);
+      }
+    }
+  }
+  return Object.keys(totals).sort(
+    (a, b) => totals[b] - totals[a] || a.localeCompare(b),
   );
 }
 
 export function getDimensions(data) {
-  return data.length
-    ? getDimensionKeys(data[0]).map((key) => ({ id: key, value: key }))
-    : [];
+  return getDimensionKeys(data).map((key) => ({ id: key, value: key }));
 }
 
 export function sortByDominantCategory(data) {
   if (!data.length) return data;
-  const keys = getDimensionKeys(data[0]);
-  const totals = Object.fromEntries(keys.map((key) => [key, 0]));
-  data.forEach((row) =>
-    keys.forEach((key) => {
-      totals[key] += row[key] || 0;
-    }),
-  );
-  const dominant = keys.reduce((best, key) =>
-    totals[key] > totals[best] ? key : best,
-  );
+  const keys = getDimensionKeys(data);
+  const dominant = keys[0];
+  if (!dominant) return data;
   const percentage = (row) => {
     const total = keys.reduce((sum, key) => sum + (row[key] || 0), 0);
     return total ? (row[dominant] || 0) / total : 0;

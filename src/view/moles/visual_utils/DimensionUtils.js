@@ -116,12 +116,15 @@ export default class DimensionUtils {
   }
 
   static sortDataByTime(data, datumList, dimIndex) {
-    if (!(datumList[0].query.dimThingList[dimIndex] instanceof Time)) {
-      return data;
+    if (datumList[0].query.dimThingList[dimIndex] instanceof Time) {
+      return [...data].sort((a, b) =>
+        String(a.id).localeCompare(String(b.id), undefined, { numeric: true }),
+      );
     }
-    return data.sort((a, b) =>
-      String(a.id).localeCompare(String(b.id), undefined, { numeric: true }),
-    );
+    if (data[0] && typeof data[0].value === "number") {
+      return [...data].sort((a, b) => (b.value ?? 0) - (a.value ?? 0));
+    }
+    return data;
   }
 
   static getDimName(datumList, dimIndex) {

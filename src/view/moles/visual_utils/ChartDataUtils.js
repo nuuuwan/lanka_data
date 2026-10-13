@@ -78,12 +78,10 @@ export default class ChartDataUtils {
         (facetRows.get(xLabel)._barWidth || 0) + getBarValue(datum);
     }
 
-    const allData = Array.from(groups.values()).flatMap((rows) =>
-      Array.from(rows.values()),
-    );
-    const largestStackKey = getLargestStackKey(allData);
     const facets = Array.from(groups.entries()).map(([facetKey, rows]) => {
-      const data = sortByStackValue(Array.from(rows.values()), largestStackKey);
+      const facetRows = Array.from(rows.values());
+      const largestStackKey = getLargestStackKey(facetRows);
+      const data = sortByStackValue(facetRows, largestStackKey);
       return {
         facetKey,
         data: DimensionUtils.sortDataByTime(data, datumList, xAxisDimIndex),

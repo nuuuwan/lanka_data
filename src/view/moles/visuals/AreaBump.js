@@ -8,11 +8,17 @@ import FormatUtils from "../visual_utils/FormatUtils.js";
 import { BAR_CHART_MIN_HEIGHT_PX } from "../visual_utils/ChartAxisUtils.js";
 
 function getSeriesKeys(data) {
-  if (data.length === 0) {
-    return [];
+  const totals = {};
+  for (const row of data) {
+    if (!row) continue;
+    for (const key of Object.keys(row)) {
+      if (key !== "id" && key !== "_barWidth" && !key.endsWith("Color")) {
+        totals[key] = (totals[key] || 0) + (row[key] || 0);
+      }
+    }
   }
-  return Object.keys(data[0]).filter(
-    (key) => key !== "id" && key !== "_barWidth" && !key.endsWith("Color"),
+  return Object.keys(totals).sort(
+    (a, b) => totals[b] - totals[a] || a.localeCompare(b),
   );
 }
 

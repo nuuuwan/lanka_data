@@ -5,8 +5,17 @@ export function getColorForKey(key, data) {
 }
 
 export function getStackKeys(data) {
-  return Object.keys(data[0] ?? {}).filter(
-    (key) => key !== "id" && key !== "_barWidth" && !key.endsWith("Color"),
+  const totals = {};
+  for (const row of data) {
+    if (!row) continue;
+    for (const key of Object.keys(row)) {
+      if (key !== "id" && key !== "_barWidth" && !key.endsWith("Color")) {
+        totals[key] = (totals[key] || 0) + (row[key] || 0);
+      }
+    }
+  }
+  return Object.keys(totals).sort(
+    (a, b) => totals[b] - totals[a] || a.localeCompare(b),
   );
 }
 

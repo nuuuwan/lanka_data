@@ -14,7 +14,13 @@ import useVisualQuery from "./useVisualQuery.js";
 
 export default function VisualQueryPage() {
   const { "*": routeQueryString } = useParams();
-  const queryString = routeQueryString || DEFAULT_VISUAL_QUERY_STR;
+  const rawQuery = routeQueryString || DEFAULT_VISUAL_QUERY_STR;
+  let queryString = rawQuery;
+  try {
+    queryString = decodeURIComponent(rawQuery);
+  } catch {
+    queryString = rawQuery;
+  }
   const navigate = useNavigate();
   const { isReady, queryOptions } = useDataContext();
   const [input, setInput] = useState(queryString);
