@@ -42,30 +42,6 @@ export default function QueryWizardDrawer({
           <Typography id="query-wizard-title" component="h2" variant="h6">
             Query Wizard
           </Typography>
-          <Box className={styles.actions}>
-            <Tooltip title="Reset to active query">
-              <span>
-                <IconButton
-                  aria-label="Reset to active query"
-                  disabled={disabled || resetDisabled}
-                  onClick={onReset}
-                  size="small"
-                >
-                  <RestartAltIcon />
-                </IconButton>
-              </span>
-            </Tooltip>
-            <Tooltip title="Close and update">
-              <IconButton
-                aria-label="Close and update"
-                color="primary"
-                disabled={disabled}
-                onClick={handleCloseAndUpdate}
-              >
-                <CheckIcon />
-              </IconButton>
-            </Tooltip>
-          </Box>
         </Box>
         <Box component="form" onSubmit={(event) => event.preventDefault()}>
           <Box
@@ -80,9 +56,30 @@ export default function QueryWizardDrawer({
             />
           </Box>
         </Box>
-        <Typography component="p" className={styles.tip}>
-          Click the check button to close and update the visualization.
-        </Typography>
+        <Box className={styles.actions}>
+          <Tooltip title="Reset to active query">
+            <span>
+              <IconButton
+                aria-label="Reset to active query"
+                disabled={disabled || resetDisabled}
+                onClick={onReset}
+                size="small"
+              >
+                <RestartAltIcon />
+              </IconButton>
+            </span>
+          </Tooltip>
+          <Tooltip title="Close and update">
+            <IconButton
+              aria-label="Close and update"
+              color="primary"
+              disabled={disabled}
+              onClick={handleCloseAndUpdate}
+            >
+              <CheckIcon />
+            </IconButton>
+          </Tooltip>
+        </Box>
       </Box>
     </Drawer>
   );

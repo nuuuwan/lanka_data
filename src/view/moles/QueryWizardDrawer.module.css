@@ -27,7 +27,9 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
 }
 
 .fields {

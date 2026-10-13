@@ -14,11 +14,14 @@ function getDisplayLabel(name, width, height) {
   if (bestFontSize >= MAP_LABEL_MIN_FONT_SIZE) {
     return { name: bestName, fontSize: bestFontSize };
   }
-  for (const candidate of candidates) {
+  for (const candidate of candidates.slice(1)) {
     const fontSize = getFittedLabelFontSize(candidate, width, height);
     if (fontSize > bestFontSize) {
       bestName = candidate;
       bestFontSize = fontSize;
+    }
+    if (fontSize >= MAP_LABEL_MIN_FONT_SIZE) {
+      break;
     }
   }
   return { name: bestName, fontSize: bestFontSize };

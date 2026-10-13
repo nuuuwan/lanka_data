@@ -1,15 +1,13 @@
 import { useLayoutEffect, useRef, useState } from "react";
 
-import {
-  VISUAL_LABEL_MIN_FONT_SIZE,
-  VISUAL_LABEL_MAX_FONT_SIZE,
-} from "../../nonview/constants/ChartLabels.js";
+import { VISUAL_LABEL_MAX_FONT_SIZE } from "../../nonview/constants/ChartLabels.js";
 import FormatUtils from "../moles/visual_utils/FormatUtils.js";
 import StringUtils from "../../nonview/base/String.js";
 import { getFittedLabelFontSize } from "../moles/visual_utils/GeoProjectionUtils.js";
 import {
   MAP_LABEL_DARK_COLOR,
   MAP_LABEL_LIGHT_COLOR,
+  MAP_LABEL_MIN_FONT_SIZE,
 } from "../_cons/MapCons.js";
 
 export default function MapLabels({ labels, testId }) {
@@ -33,7 +31,7 @@ export default function MapLabels({ labels, testId }) {
           let displayName = name;
           let fittedSize = fontSize;
           if (
-            fontSize * scale < VISUAL_LABEL_MIN_FONT_SIZE &&
+            fontSize * scale < MAP_LABEL_MIN_FONT_SIZE &&
             label.width &&
             label.height
           ) {
@@ -45,7 +43,7 @@ export default function MapLabels({ labels, testId }) {
             );
           }
           const size = Math.min(fittedSize, VISUAL_LABEL_MAX_FONT_SIZE / scale);
-          if (size * scale < VISUAL_LABEL_MIN_FONT_SIZE) return null;
+          if (!size || size <= 0 || !Number.isFinite(size)) return null;
           return (
             <text
               key={id}

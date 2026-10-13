@@ -46,6 +46,9 @@ function getDisplayLabel(feature, projection) {
     if (shortFit && shortFit.fontSize > best.fit.fontSize) {
       best = { fit: shortFit, name: shortName };
     }
+    if (shortFit && shortFit.fontSize >= MAP_LABEL_MIN_FONT_SIZE) {
+      break;
+    }
   }
   return best;
 }
