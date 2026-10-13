@@ -83,6 +83,9 @@ export default function VisualQueryForm({
         barHeight={barHeight}
         open={editorOpen}
         onClose={() => setEditorOpen(false)}
+        onSubmit={submit}
+        onReset={() => onChange(currentQuery)}
+        resetDisabled={!isEdited}
         disabled={disabled}
         value={value}
         onChange={onChange}

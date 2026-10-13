@@ -24,6 +24,12 @@
   margin-bottom: 16px;
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .fields {
   border: 0;
   margin: 0;
