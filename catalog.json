@@ -1,0 +1,26 @@
+{
+  "catalogVersion": "1.0",
+  "description": "Catalog of published static JSON queries for Lanka Data",
+  "generatedAt": "2026-10-13T05:56:24.270Z",
+  "count": 3,
+  "queries": [
+    {
+      "query": "Vote/ElectionType=presidential+Time=2024+PD<ED=colombo+Party/Count/JSON",
+      "description": "Votes for 2024 and PDs in Colombo Electoral District, where election type is presidential and by party",
+      "url": "https://nuuuwan.github.io/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/JSON/raw.json",
+      "generatedAt": "2026-10-13T05:56:24.270Z"
+    },
+    {
+      "query": "House/Time=2012,2024+District=kandy+CookingFuel/Count/JSON",
+      "description": "Households for 2012 and 2024 and in Kandy District and by cooking fuel",
+      "url": "https://nuuuwan.github.io/lanka_data/House/Time=2012,2024+District=kandy+CookingFuel/Count/JSON/raw.json",
+      "generatedAt": "2026-10-13T05:56:24.270Z"
+    },
+    {
+      "query": "Person/Time=2012+Province+Religion/Count/JSON",
+      "description": "Population for 2012 and by Provinces and by religion",
+      "url": "https://nuuuwan.github.io/lanka_data/Person/Time=2012+Province+Religion/Count/JSON/raw.json",
+      "generatedAt": "2026-10-13T05:56:24.270Z"
+    }
+  ]
+}

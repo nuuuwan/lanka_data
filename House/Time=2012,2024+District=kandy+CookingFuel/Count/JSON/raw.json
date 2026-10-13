@@ -1,0 +1,324 @@
+{
+  "datumList": [
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "fire_wood"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2024+District=kandy+CookingFuel=fire_wood/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "231787"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "kerosene"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2024+District=kandy+CookingFuel=kerosene/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1321"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "gas"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2024+District=kandy+CookingFuel=gas/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "160277"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "electricity"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2024+District=kandy+CookingFuel=electricity/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1447"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "sawdust_paddy_husk"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2024+District=kandy+CookingFuel=sawdust_paddy_husk/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "51"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "bio_gas"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2024+District=kandy+CookingFuel=bio_gas/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "24"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "other"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2024+District=kandy+CookingFuel=other/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "110"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "not_relevant"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2024+District=kandy+CookingFuel=not_relevant/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2609"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "fire_wood"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2012+District=kandy+CookingFuel=fire_wood/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "281035"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "kerosene"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2012+District=kandy+CookingFuel=kerosene/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3793"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "gas"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2012+District=kandy+CookingFuel=gas/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "61823"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "sawdust_paddy_husk"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2012+District=kandy+CookingFuel=sawdust_paddy_husk/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "120"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "other"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2012+District=kandy+CookingFuel=other/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "483"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "House/Time=2012+District=kandy+CookingFuel=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "765"
+      }
+    }
+  ],
+  "provenance": [
+    {
+      "source": "Department of Census and Statistics of Sri Lanka",
+      "title": "Census of Population and Housing 2024",
+      "url": "https://www.statistics.gov.lk"
+    },
+    {
+      "source": "Department of Census and Statistics of Sri Lanka",
+      "title": "Census of Population and Housing 2012",
+      "url": "https://www.statistics.gov.lk"
+    }
+  ]
+}

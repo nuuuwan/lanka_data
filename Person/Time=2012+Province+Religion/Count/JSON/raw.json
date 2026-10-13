@@ -1,0 +1,1199 @@
+{
+  "datumList": [
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "buddhist"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=western+Religion=buddhist/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "4293801"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "hindu"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=western+Religion=hindu/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "278817"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "islam"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=western+Religion=islam/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "501369"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "roman_catholic"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=western+Religion=roman_catholic/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "651432"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "other_christian"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=western+Religion=other_christian/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "121983"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=western+Religion=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3343"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "buddhist"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=central+Religion=buddhist/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1672625"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "hindu"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=central+Religion=hindu/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "540339"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "islam"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=central+Religion=islam/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "263874"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "roman_catholic"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=central+Religion=roman_catholic/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "63754"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "other_christian"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=central+Religion=other_christian/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "30648"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=central+Religion=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "317"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "buddhist"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=southern+Religion=buddhist/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2345314"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "hindu"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=southern+Religion=hindu/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "33227"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "islam"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=southern+Religion=islam/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "80085"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "roman_catholic"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=southern+Religion=roman_catholic/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "7986"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "other_christian"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=southern+Religion=other_christian/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "10215"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=southern+Religion=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "458"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "buddhist"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=northern+Religion=buddhist/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "30191"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "hindu"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=northern+Religion=hindu/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "789045"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "islam"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=northern+Religion=islam/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "33427"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "roman_catholic"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=northern+Religion=roman_catholic/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "164320"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "other_christian"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=northern+Religion=other_christian/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "43899"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=northern+Religion=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "333"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "buddhist"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=eastern+Religion=buddhist/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "357052"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "hindu"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=eastern+Religion=hindu/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "540153"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "islam"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=eastern+Religion=islam/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "575470"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "roman_catholic"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=eastern+Religion=roman_catholic/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "46535"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "other_christian"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=eastern+Religion=other_christian/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "36148"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=eastern+Religion=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "152"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "buddhist"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=north_western+Religion=buddhist/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1760663"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "hindu"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=north_western+Religion=hindu/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "43527"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "islam"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=north_western+Religion=islam/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "268214"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "roman_catholic"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=north_western+Religion=roman_catholic/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "283928"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "other_christian"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=north_western+Religion=other_christian/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "22019"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=north_western+Religion=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1332"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "buddhist"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=north_central+Religion=buddhist/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1139595"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "hindu"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=north_central+Religion=hindu/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "10117"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "islam"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=north_central+Religion=islam/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "101958"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "roman_catholic"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=north_central+Religion=roman_catholic/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "9939"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "other_christian"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=north_central+Religion=other_christian/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "4936"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=north_central+Religion=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "118"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "buddhist"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=uva+Religion=buddhist/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1018561"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "hindu"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=uva+Religion=hindu/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "169605"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "islam"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=uva+Religion=islam/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "57001"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "roman_catholic"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=uva+Religion=roman_catholic/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "13621"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "other_christian"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=uva+Religion=other_christian/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "7474"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=uva+Religion=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "201"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "buddhist"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=sabaragamuwa+Religion=buddhist/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1653381"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "hindu"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=sabaragamuwa+Religion=hindu/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "156312"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "islam"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=sabaragamuwa+Religion=islam/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "85610"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "roman_catholic"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=sabaragamuwa+Religion=roman_catholic/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "19621"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "other_christian"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=sabaragamuwa+Religion=other_christian/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "13598"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2012"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2012+Province=sabaragamuwa+Religion=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "133"
+      }
+    }
+  ],
+  "provenance": [
+    {
+      "source": "Department of Census and Statistics of Sri Lanka",
+      "title": "Census of Population and Housing 2012",
+      "url": "https://www.statistics.gov.lk"
+    }
+  ]
+}
