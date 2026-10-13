@@ -50,6 +50,7 @@ export default function LaypersonVisualQueryInput({
         parts={parts}
         entityOptions={entities}
         onUpdate={updatePart}
+        fields={["entity"]}
       />
       <Typography component="p" className={styles.examples}>
         Facets: {QUERY_WIZARD_EXAMPLES.facets}
@@ -74,6 +75,12 @@ export default function LaypersonVisualQueryInput({
             dimensions.filter((_dimension, position) => position !== index),
           )
         }
+      />
+      <LaypersonQueryFields
+        parts={parts}
+        entityOptions={entities}
+        onUpdate={updatePart}
+        fields={["visual"]}
       />
     </Box>
   );

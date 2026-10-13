@@ -9,3 +9,6 @@ export const EXAMPLE_QUERIES = [
   "House/Time=2012+PD<District=Galle+SourceOfDrinkingWater/Count/MarimekkoChart",
   "Person/Time=2024+Province+Ethnicity/Count/UnitHexMap",
 ];
+
+export const EXAMPLE_IMAGE_LIST_COLS = 3;
+export const EXAMPLE_IMAGE_LIST_GAP_PX = 20;

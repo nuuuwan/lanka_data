@@ -1,6 +1,10 @@
-import { Typography } from "@mui/material";
+import { ImageList, Typography } from "@mui/material";
 
-import { EXAMPLE_QUERIES } from "../../nonview/constants/ExampleQueries.js";
+import {
+  EXAMPLE_IMAGE_LIST_COLS,
+  EXAMPLE_IMAGE_LIST_GAP_PX,
+  EXAMPLE_QUERIES,
+} from "../../nonview/constants/ExampleQueries.js";
 import ExampleQueryCard from "./ExampleQueryCard.js";
 import styles from "./ExampleQueryLinks.module.css";
 
@@ -10,11 +14,23 @@ export default function ExampleQueryLinks() {
       <Typography component="h2" id="examples-heading" variant="h6">
         Examples
       </Typography>
-      <ul className={styles.list}>
+      <ImageList
+        className={styles.list}
+        cols={EXAMPLE_IMAGE_LIST_COLS}
+        gap={EXAMPLE_IMAGE_LIST_GAP_PX}
+        sx={{
+          gridTemplateColumns: {
+            xs: "repeat(1, 1fr) !important",
+            sm: "repeat(2, 1fr) !important",
+            md: "repeat(3, 1fr) !important",
+          },
+          overflow: "visible",
+        }}
+      >
         {EXAMPLE_QUERIES.map((query) => (
           <ExampleQueryCard key={query} query={query} />
         ))}
-      </ul>
+      </ImageList>
     </section>
   );
 }

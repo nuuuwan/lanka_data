@@ -16,14 +16,6 @@
   width: 100%;
 }
 
-.heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
 .actions {
   display: flex;
   align-items: center;

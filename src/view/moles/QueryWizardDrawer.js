@@ -1,6 +1,6 @@
 import CheckIcon from "@mui/icons-material/Check";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import { Box, Drawer, IconButton, Tooltip, Typography } from "@mui/material";
+import { Box, Drawer, IconButton, Tooltip } from "@mui/material";
 
 import LaypersonVisualQueryInput from "./LaypersonVisualQueryInput.js";
 import styles from "./QueryWizardDrawer.module.css";
@@ -33,16 +33,11 @@ export default function QueryWizardDrawer({
           style: { "--query-bar-height": `${barHeight}px` },
           role: "dialog",
           "aria-modal": true,
-          "aria-labelledby": "query-wizard-title",
+          "aria-label": "Query Wizard",
         },
       }}
     >
       <Box className={styles.content}>
-        <Box className={styles.heading}>
-          <Typography id="query-wizard-title" component="h2" variant="h6">
-            Query Wizard
-          </Typography>
-        </Box>
         <Box component="form" onSubmit={(event) => event.preventDefault()}>
           <Box
             component="fieldset"
