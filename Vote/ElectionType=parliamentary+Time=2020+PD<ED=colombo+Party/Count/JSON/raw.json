@@ -1,0 +1,1886 @@
+{
+  "datumList": [
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_north"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_north+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "16775"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_north"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_north+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "41059"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_north"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_north+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1230"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_north"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_north+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2676"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_north"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_north+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1523"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_central"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_central+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "16688"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_central"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_central+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "64692"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_central"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_central+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1912"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_central"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_central+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2978"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_central"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_central+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1873"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "borella"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=borella+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "17680"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "borella"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=borella+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "20450"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "borella"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=borella+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1931"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "borella"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=borella+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1500"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "borella"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=borella+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "774"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_east"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_east+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "18007"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_east"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_east+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "20538"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_east"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_east+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2595"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_east"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_east+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1869"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_east"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_east+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1083"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_west"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_west+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "6294"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_west"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_west+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "16521"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_west"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_west+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1074"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_west"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_west+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1143"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "colombo_west"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=colombo_west+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "457"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "dehiwala"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=dehiwala+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "18244"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "dehiwala"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=dehiwala+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "18611"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "dehiwala"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=dehiwala+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2094"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "dehiwala"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=dehiwala+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1706"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "dehiwala"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=dehiwala+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "779"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "ratmalana"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=ratmalana+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "25320"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "ratmalana"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=ratmalana+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "15646"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "ratmalana"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=ratmalana+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2901"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "ratmalana"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=ratmalana+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1440"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "ratmalana"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=ratmalana+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "994"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kolonnawa"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kolonnawa+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "49742"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kolonnawa"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kolonnawa+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "36718"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kolonnawa"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kolonnawa+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "4655"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kolonnawa"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kolonnawa+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2091"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kolonnawa"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kolonnawa+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2066"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kotte"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kotte+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "29436"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kotte"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kotte+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "14946"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kotte"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kotte+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3405"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kotte"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kotte+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1563"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kotte"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kotte+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "963"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kaduwela"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kaduwela+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "90489"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kaduwela"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kaduwela+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "23793"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kaduwela"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kaduwela+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "9594"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kaduwela"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kaduwela+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2679"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kaduwela"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kaduwela+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2215"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "avissawella"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=avissawella+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "58477"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "avissawella"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=avissawella+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "20308"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "avissawella"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=avissawella+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3761"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "avissawella"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=avissawella+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1712"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "avissawella"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=avissawella+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1823"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "homagama"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=homagama+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "95118"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "homagama"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=homagama+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "23184"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "homagama"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=homagama+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "8712"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "homagama"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=homagama+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2476"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "homagama"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=homagama+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2236"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "maharagama"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=maharagama+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "64309"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "maharagama"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=maharagama+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "17733"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "maharagama"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=maharagama+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "7371"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "maharagama"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=maharagama+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2128"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "maharagama"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=maharagama+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1776"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kesbewa"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kesbewa+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "89240"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kesbewa"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kesbewa+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "23687"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kesbewa"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kesbewa+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "9160"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kesbewa"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kesbewa+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2098"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "kesbewa"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=kesbewa+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1918"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "moratuwa"
+          },
+          {
+            "value": "SLPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=moratuwa+Party=SLPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "55000"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "moratuwa"
+          },
+          {
+            "value": "SJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=moratuwa+Party=SJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "23747"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "moratuwa"
+          },
+          {
+            "value": "JJB"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=moratuwa+Party=JJB/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "4404"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "moratuwa"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=moratuwa+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1754"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "parliamentary"
+          },
+          {
+            "value": "2020"
+          },
+          {
+            "value": "moratuwa"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=parliamentary+Time=2020+PD=moratuwa+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1655"
+      }
+    }
+  ],
+  "provenance": [
+    {
+      "source": "The Elections Commission of Sri Lanka",
+      "title": "Sri Lanka election results",
+      "url": "https://elections.gov.lk"
+    }
+  ]
+}

@@ -1,0 +1,1991 @@
+{
+  "datumList": [
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "sinhala"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=western+Ethnicity=sinhala/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "5115543"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "sri_lanka_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=western+Ethnicity=sri_lanka_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "379680"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "indian_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=western+Ethnicity=indian_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "26271"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "sri_lanka_muslim"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=western+Ethnicity=sri_lanka_muslim/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "542333"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "burgher"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=western+Ethnicity=burgher/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "15725"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "malay"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=western+Ethnicity=malay/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "16126"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "sri_lanka_chetty"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=western+Ethnicity=sri_lanka_chetty/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1753"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "bharatha"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=western+Ethnicity=bharatha/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "553"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "veddahs"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=western+Ethnicity=veddahs/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "western"
+          },
+          {
+            "value": "other"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=western+Ethnicity=other/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "19357"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "sinhala"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=central+Ethnicity=sinhala/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1783899"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "sri_lanka_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=central+Ethnicity=sri_lanka_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "222924"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "indian_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=central+Ethnicity=indian_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "406956"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "sri_lanka_muslim"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=central+Ethnicity=sri_lanka_muslim/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "289281"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "burgher"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=central+Ethnicity=burgher/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2395"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "malay"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=central+Ethnicity=malay/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "952"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "sri_lanka_chetty"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=central+Ethnicity=sri_lanka_chetty/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "bharatha"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=central+Ethnicity=bharatha/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "veddahs"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=central+Ethnicity=veddahs/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "central"
+          },
+          {
+            "value": "other"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=central+Ethnicity=other/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "7638"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "sinhala"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=southern+Ethnicity=sinhala/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2470423"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "sri_lanka_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=southern+Ethnicity=sri_lanka_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "27994"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "indian_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=southern+Ethnicity=indian_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "10187"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "sri_lanka_muslim"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=southern+Ethnicity=sri_lanka_muslim/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "88145"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "burgher"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=southern+Ethnicity=burgher/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "127"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "malay"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=southern+Ethnicity=malay/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3882"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "sri_lanka_chetty"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=southern+Ethnicity=sri_lanka_chetty/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "bharatha"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=southern+Ethnicity=bharatha/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "veddahs"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=southern+Ethnicity=veddahs/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "southern"
+          },
+          {
+            "value": "other"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=southern+Ethnicity=other/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "5921"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "sinhala"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_western+Ethnicity=sinhala/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2193622"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "sri_lanka_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_western+Ethnicity=sri_lanka_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "67272"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "indian_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_western+Ethnicity=indian_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1689"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "sri_lanka_muslim"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_western+Ethnicity=sri_lanka_muslim/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "314035"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "burgher"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_western+Ethnicity=burgher/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1519"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "malay"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_western+Ethnicity=malay/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "931"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "sri_lanka_chetty"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_western+Ethnicity=sri_lanka_chetty/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "bharatha"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_western+Ethnicity=bharatha/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "veddahs"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_western+Ethnicity=veddahs/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_western"
+          },
+          {
+            "value": "other"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_western+Ethnicity=other/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "7904"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "sinhala"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=sabaragamuwa+Ethnicity=sinhala/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1739900"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "sri_lanka_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=sabaragamuwa+Ethnicity=sri_lanka_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "130472"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "indian_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=sabaragamuwa+Ethnicity=indian_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "44395"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "sri_lanka_muslim"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=sabaragamuwa+Ethnicity=sri_lanka_muslim/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "96930"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "burgher"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=sabaragamuwa+Ethnicity=burgher/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "260"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "malay"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=sabaragamuwa+Ethnicity=malay/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "25"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "sri_lanka_chetty"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=sabaragamuwa+Ethnicity=sri_lanka_chetty/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "bharatha"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=sabaragamuwa+Ethnicity=bharatha/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "veddahs"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=sabaragamuwa+Ethnicity=veddahs/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "sabaragamuwa"
+          },
+          {
+            "value": "other"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=sabaragamuwa+Ethnicity=other/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3917"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "sinhala"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=eastern+Ethnicity=sinhala/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "390538"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "sri_lanka_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=eastern+Ethnicity=sri_lanka_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "677890"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "indian_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=eastern+Ethnicity=indian_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1221"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "sri_lanka_muslim"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=eastern+Ethnicity=sri_lanka_muslim/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "703155"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "burgher"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=eastern+Ethnicity=burgher/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "4503"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "malay"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=eastern+Ethnicity=malay/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "367"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "sri_lanka_chetty"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=eastern+Ethnicity=sri_lanka_chetty/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "bharatha"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=eastern+Ethnicity=bharatha/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "veddahs"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=eastern+Ethnicity=veddahs/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "898"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "eastern"
+          },
+          {
+            "value": "other"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=eastern+Ethnicity=other/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "4642"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "sinhala"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_central+Ethnicity=sinhala/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1272757"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "sri_lanka_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_central+Ethnicity=sri_lanka_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "11147"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "indian_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_central+Ethnicity=indian_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "173"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "sri_lanka_muslim"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_central+Ethnicity=sri_lanka_muslim/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "119657"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "burgher"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_central+Ethnicity=burgher/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "57"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "malay"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_central+Ethnicity=malay/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "56"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "sri_lanka_chetty"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_central+Ethnicity=sri_lanka_chetty/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "bharatha"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_central+Ethnicity=bharatha/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "veddahs"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_central+Ethnicity=veddahs/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "221"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "north_central"
+          },
+          {
+            "value": "other"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=north_central+Ethnicity=other/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3542"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "sinhala"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=uva+Ethnicity=sinhala/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1139983"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "sri_lanka_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=uva+Ethnicity=sri_lanka_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "95535"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "indian_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=uva+Ethnicity=indian_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "96469"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "sri_lanka_muslim"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=uva+Ethnicity=sri_lanka_muslim/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "63685"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "burgher"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=uva+Ethnicity=burgher/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "548"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "malay"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=uva+Ethnicity=malay/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "499"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "sri_lanka_chetty"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=uva+Ethnicity=sri_lanka_chetty/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "bharatha"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=uva+Ethnicity=bharatha/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "veddahs"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=uva+Ethnicity=veddahs/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "168"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "uva"
+          },
+          {
+            "value": "other"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=uva+Ethnicity=other/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3005"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "sinhala"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=northern+Ethnicity=sinhala/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "34023"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "sri_lanka_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=northern+Ethnicity=sri_lanka_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1052660"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "indian_tamil"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=northern+Ethnicity=indian_tamil/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2726"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "sri_lanka_muslim"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=northern+Ethnicity=sri_lanka_muslim/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "57151"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "burgher"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=northern+Ethnicity=burgher/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "25"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "malay"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=northern+Ethnicity=malay/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "sri_lanka_chetty"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=northern+Ethnicity=sri_lanka_chetty/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "bharatha"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=northern+Ethnicity=bharatha/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "veddahs"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=northern+Ethnicity=veddahs/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "0"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "2024"
+          },
+          {
+            "value": "northern"
+          },
+          {
+            "value": "other"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Person/Time=2024+Province=northern+Ethnicity=other/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3563"
+      }
+    }
+  ],
+  "provenance": [
+    {
+      "source": "Department of Census and Statistics of Sri Lanka",
+      "title": "Census of Population and Housing 2024",
+      "url": "https://www.statistics.gov.lk"
+    }
+  ]
+}

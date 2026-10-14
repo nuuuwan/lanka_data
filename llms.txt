@@ -1,0 +1,25 @@
+# Lanka Data
+
+> Sri Lankan census and election data, with interactive queries, published JSON snapshots, readable HTML tables and links to the full upstream data indexes. No authentication or API key.
+
+## Start here
+
+- [Data directory](https://nuuuwan.github.io/lanka_data/data/index.html): readable entry point; follow links to actual tables and their citations without JavaScript.
+- [Snapshot catalog](https://nuuuwan.github.io/lanka_data/catalog.json): published queries with descriptions, exact JSON `url`, readable `pageURL`, `visualURL`, row counts and build timestamps.
+- [Full upstream directory](https://nuuuwan.github.io/lanka_data/data/sources.html): all source files referenced by the app's upstream metadata, including topics outside the snapshot examples.
+- [Source directory JSON](https://nuuuwan.github.io/lanka_data/sources.json): metadata keys and exact upstream file URLs, grouped by source.
+- [API guide](https://nuuuwan.github.io/lanka_data/api.md): schemas, query syntax, Python retrieval, geographic identifiers, units and citations.
+
+## Retrieval procedure
+
+1. Match subject, year, geography and breakdown to a catalog entry. Fetch its exact `url`, or its `pageURL` if your browser handles HTML better than JSON. Read the observations before giving numbers.
+2. Parse snapshot `datumList[].query.queryStr` for named dimensions and `answerThing.value` for the stored value. Do not assume the request's dimension order matches each response row. `provenance` contains source citations.
+3. If no snapshot matches, inspect sources.json or the upstream directory. Match a metadata key's entity, dimension combination and aggregate. Fetch its listed files and verify the requested year and region in their contents. These upstream files use nested objects and typed leaves (for example `Int:3381781`), not datumList.
+4. Filter or aggregate only compatible, non-overlapping observations. State the observation year, unit and geographic level. Cite the exact snapshot or upstream data URL and the official source from provenance or the guide. Build time is not observation time.
+5. A missing row is not evidence of zero. Do not replace unavailable data with another year or region. If retrieval fails or no matching data exists, explain the gap and provide the relevant directory or interactive query link.
+
+## Limits
+
+GitHub Pages does not execute arbitrary API queries. Only cataloged raw.json paths are published. Other supported queries need the JavaScript app or a local instance; the upstream files are also directly retrievable. Metadata entries describe available dimension combinations, not every possible cross-tabulation. Source files can contain overlapping geographic levels and several years. Some metadata tables have aggregates other than Count; preserve their types and meanings.
+
+This file is a discovery aid. A ChatGPT session needs web access or another HTTP-capable tool to retrieve the data.

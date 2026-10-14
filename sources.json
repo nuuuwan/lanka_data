@@ -1,0 +1,1717 @@
+{
+  "catalogVersion": "1.0",
+  "generatedAt": "2026-10-14T02:57:32.233Z",
+  "description": "Upstream metadata indexed at build time. Linked source files remain live and use nested Lanka Data JSON, not datumList responses.",
+  "sources": [
+    {
+      "id": "Census2024",
+      "baseURL": "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main",
+      "metadataURL": "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/metadata/lanka_data.metadata.json",
+      "datasets": [
+        {
+          "metadataKey": "House/Time+Country+CookingFuel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-CookingFuel/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+CookingFuel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-CookingFuel/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+CookingFuel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-CookingFuel/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+CookingFuel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-CookingFuel/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+CookingFuel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-CookingFuel/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+CookingFuel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-CookingFuel/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+HouseholdStructure/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-HouseholdStructure/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+HouseholdStructure/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-HouseholdStructure/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+HouseholdStructure/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-HouseholdStructure/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+HouseholdStructure/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-HouseholdStructure/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+HouseholdStructure/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-HouseholdStructure/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+HouseholdStructure/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-HouseholdStructure/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+Lighting/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-Lighting/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+Lighting/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-Lighting/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+Lighting/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-Lighting/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+Lighting/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-Lighting/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+Lighting/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-Lighting/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+Lighting/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-Lighting/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Country+AgeGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-AgeGroup/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Province+AgeGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-AgeGroup/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+AgeGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-AgeGroup/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+DSD+AgeGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-AgeGroup/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+ED+AgeGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-AgeGroup/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+PD+AgeGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-AgeGroup/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-SourceOfDrinkingWater/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-SourceOfDrinkingWater/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-SourceOfDrinkingWater/lanka_data.json",
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-11/11.10-Percentage-Distribution-of-Households-by-Availability-of-Drinking-Water-Facility-by-Sector-and-District-/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-SourceOfDrinkingWater/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-SourceOfDrinkingWater/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-SourceOfDrinkingWater/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+RoofType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-RoofType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+RoofType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-RoofType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+RoofType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-RoofType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+RoofType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-RoofType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+RoofType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-RoofType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+RoofType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-RoofType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+WallType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-WallType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+WallType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-WallType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+WallType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-WallType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+WallType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-WallType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+WallType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-WallType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+WallType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-WallType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Country+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Sex/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Province+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Sex/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Sex/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+DSD+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Sex/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+ED+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Sex/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+PD+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Sex/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+FloorType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-FloorType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+FloorType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-FloorType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+FloorType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-FloorType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+FloorType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-FloorType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+FloorType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-FloorType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+FloorType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-FloorType/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Country+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Ethnicity/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Province+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Ethnicity/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Ethnicity/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+DSD+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Ethnicity/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+ED+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Ethnicity/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+PD+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Ethnicity/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-ToiletFacilities/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-ToiletFacilities/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-ToiletFacilities/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-ToiletFacilities/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-ToiletFacilities/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/House-ToiletFacilities/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Country+Religion/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Religion/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Province+Religion/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Religion/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+Religion/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Religion/lanka_data.json",
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.1.15-Distribution-of-Population-by-Religion-and-District-2024/lanka_data.json",
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.1.14-Distribution-of-Population-by-Religion-and-District-2012/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+DSD+Religion/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Religion/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+ED+Religion/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Religion/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+PD+Religion/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/Person-Religion/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+AgeGroup/PercentInPreschool",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-7/7.4-Percentage-of-Children-Receiving-Preschool-Education-by-Age-Group-and-District-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+LanguageLiteracy/CountLiterate",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-7/7.10-Language-Literacy-Rate-by-Language-and-District-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+AgeGroup+EducationActivity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-7/7.2-Percentage-Pistribution-of-Population-Aged-03-Years-and-Over-by-Educational-Activity-and-Age-Group-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+EducationActivity+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-7/7.1-Population-Aged-3-Years-and-Over-by-Sex-and-Educational-Activity-During-the-Census-Reference-Period-/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Sex/MedianAge",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-9/9.8-Mean-Age-at-Marriage-1953-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Sector+Sex/MeanAgeAtMarriage",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-9/9.9-Mean-Age-at-Marriage-by-Sector-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Sector+LiveBirths/FemalePopulationCount",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-9/9.12-Percentage-Distribution-of-Ever-Married-Women-Aged-15-Years-and-Over-by-the-Number-of-Live-Births-perWoman-and-Sector-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+AgeGroup/MarriedWomenCount",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-9/9.13-Number-and-Percentage-Distribution-of-Married-Women-Aged-15-49-Years-by-Age-Group-2012-and-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Sector+Time/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-11/11.1-Number-of-Occupied-Housing-Units-by-Sector-2012-and-2024/lanka_data.json",
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-3/3.5-Distribution-of-Population-by-Sector-2012-and-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+TypeOfUnit/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-11/11.7-of-Housing-Units-and-Status-of-Housing-Units-by-Sector-and-District-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Sector+LiquidWasteDisposal/Percent",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-11/11.18-Percentage-Distribution-of-Households-by-the-Main-Method-of-Disposing-Liquid-Waste-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-11/11.3-Number-of-Housing-Units-by-the-Year-of-Construction-2024/lanka_data.json",
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-3/3.1-Total-Population-Intercensal-Increase-and-Average-Annual-Growth-Rate-by-Census-Year-1871-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+SourceOfDrinkingWater+WaterSupplyAvailability/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-11/11.11-Distribution-of-Households-in-Sri-Lanka-s-ability-to-Obtain-Drinking-Water-Throughout-the-Year-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-11/11.15-Percentage-Distribution-of-Households-by-Type-of-Toilet-Facilities-2012-and-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Sector+Time/OwnedByMembersPercent",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-11/11.5-Percentage-of-Housing-Units-Owned-by-Household-Members-and-Sector-2012-and-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+OwnershipStatus/Percent",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-11/11.4-Tenure-of-Housing-Units-by-Sector-and-District-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-11/11.9-Distribution-of-Households-by-Main-Source-of-Drinking-Water-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Sector+HouseholdAppliances/Percent",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-11/11.19-Percentage-Distribution-of-Households-Using-Communication-Technology-Equipment-and-Vehicles-by-Sector-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Sector+OneRoomOrMore/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-11/11.8-in-Housing-Units-by-Sector-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+EmploymentStatus+Sex/EmployedCount",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-8/8.8-Employed-Population-by-Employment-Status-and-Sex-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+EconomicInactivityReason/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-8/8.11-Economically-Inactive-Population-by-Main-Reason-for-Inactivity-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Sex+IsEconomicallyActive/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-8/8.1-Economically-Active-and-Inactive-Population-by-Sex-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+HighestEducationLevel2+Sex/EmployedCount",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-8/8.7-Employed-Population-by-Highest-Educational-Attainment-and-Sex-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Sector+Sex/EconomicallyActive",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-8/8.6-Employed-Population-by-Sector-and-Sex-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Sector+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-8/8.2-Economically-Active-Population-by-Sector-and-Sex-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Sector+Sex/UnemployedCount",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-8/8.9-Unemployed-Population-by-Sector-and-Sex-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+IsEconomicallyActive/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-8/8.10-Employment-Rate-and-Unemployment-Rate-by-District-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+AgeGroup+Sex/CountEconomicallyActive",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-8/8.3-Economically-Active-Population-by-Sex-and-Age-Group-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+HighestEducationLevel3/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-10/10.9-Percentage-Distribution-of-Household-Heads-by-District-and-Highest-Educational-Qualification-Obtained-/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Sector+HighestEducationLevel3/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-10/10.8-Percentage-Distribution-of-Household-Heads-by-Highest-Educational-Qualification-Obtained-and-Sector-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+HouseholdType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-10/10.2-Percentage-Distribution-of-the-Number-and-of-Households-by-Sector-District-and-Household-Type-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Sector+HouseholdSize/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-10/10.1-Percentage-Distribution-of-Household-Size-by-Sector-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.1.8-Population-Distribution-by-Ethnic-Group-2024/lanka_data.json",
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.1.10-Population-by-Ethnic-Group-1911-2024-in/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+DisabilityTypes/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.2.6-Distribution-of-Persons-Aged-5-Years-and-Over-with-Disabilities-by-District-and-Domain-of-Disability-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+MaritalStatus+NonCommunicableDisease/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.3.9-Prevalence-Rates-of-Non-Communicable-Diseases-by-Marital-Status-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+AgeGroup/Percent",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.1.4-Percentage-Distribution-of-Population-by-Age-Group-1946-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+AgeGroup+SingleOrMultipleDisabilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.2.8-Distribution-of-Persons-with-a-Single-Disability-and-with-Multiple-Disabilities-by-Age-Group-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+AgeGroup+DisabilityTypes/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.2.7-Distribution-of-Persons-Aged-5-Years-and-Over-with-Disabilities-by-Age-Group-and-Domain-of-Disability-/lanka_data.json",
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.2.3-Distribution-of-Persons-Aged-5-Years-and-Over-with-Physical-and-Mental-Difficulties-by-Age-Group-andDifficulties-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Sector/SexRatio",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.1.2-Sex-Ratio-by-Sector-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+NonCommunicableDisease/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.3.4-Prevalence-Rates-of-Non-Communicable-Diseases-by-District-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+HighestEducationLevel+DisabilityTypes/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.2.12-Distribution-of-Persons-Aged-5-Years-and-Over-with-Disabilities-by-Highest-Educational-Qualification-andDomain-of-Disability-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+EmploymentStatus+NonCommunicableDisease/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.3.12-Prevalence-Rates-of-NCDs-by-Employment-Status-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+MaritalStatus+DisabilityTypes/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.2.11-Distribution-of-Persons-Aged-5-Years-and-Over-with-Disabilities-by-Marital-Status-and-Domain-of-Disability-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Province+Ethnicity/Percentage",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.1.9-Percentage-Distribution-of-the-Population-by-Ethnic-Group-and-Province-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Sector+NonCommunicableDisease/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.3.5-Prevalence-Rates-of-Self-Reported-Illnesses-by-Sector-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+HighestEducationLevel+NonCommunicableDisease/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.3.11-Prevalence-Rates-for-the-Population-Aged-25-and-Over-by-Highest-Educational-Qualification-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Census+Sex/MedianAge",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.1.7-Median-Age-of-the-Population-1946-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Ethnicity+NonCommunicableDisease/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-6/6.3.10-Prevalence-Rates-of-Non-Communicable-Diseases-by-Ethnic-Group-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+CensusOfficer/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-1/1.1.1-Officers-who-have-Assigned-for-Census-of-Population-and-Housing-2024-Activities/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Census/CensusTopic+Time/IsIn",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-1/1.1.2-The-Questions-and-Topics-Included-in-the-Censuses-of-Sri-Lanka-1871-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+Sector/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-3/3.6-Population-Distribution-by-District-and-Sector-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-3/3.3-Population-and-Average-Annual-Growth-Rate-by-District-Census-Years-1981-2024/lanka_data.json",
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-3/3.2-Distribution-of-Population-by-Province-and-District-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District/PopulationDensity",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-3/3.4-Population-Density-by-District-1981-2001-2012-and-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Sex+Time/WhippleIndex",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-12/12.4-Whipple-s-Index-by-Sex-1981-2001-2012-and-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Sex+Time/MyersIndex",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-12/12.1-Myer-s-Index-by-Sex-1981-2001-2012-and-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "District/District+Time/IsIn",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-2/2.1-Evolution-of-the-Number-of-Administrative-Districts-In-Sri-Lanka-from-1871-to-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "AdministrativeEntity/Time+District+AdministrativeEntity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-2/2.4-Administrative-Structure-by-District-2024/lanka_data.json",
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-2/2.2-Administrative-Structure-by-District-1981/lanka_data.json",
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-2/2.3-Administrative-Structure-by-District-2012/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+Sex/CountTemporarilyLivingAbroad",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-5/5.2.1-Population-Temporarily-Living-Abroad-by-District-and-Sex-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+MigrationDirection/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-5/5.1.5-In-migration-Out-migration-and-Net-Migration-by-District-/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+MigrationStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-5/5.1.1-Lifetime-Migrants-by-District-of-Dirth-and-District-of-Usual-Residence-/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+MigrationLifetimeDirection/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-5/5.1.2-In-Out-and-Net-Lifetime-Migrants-by-District-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+TimeDurationGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-5/5.1.6-In-migrants-by-District-of-Usual-Residence-and-Duration-of-Residence-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+AgeGroup+EmmigrationReason/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-5/5.2.4-Population-Temporarily-Living-Abroad-by-Main-Reason-for-Living-Abroad-and-Age-Group-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+EmmigrationReason/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-5/5.2.3-Population-Temporarily-Living-Abroad-by-District-and-Main-Reason-for-Living-in-Abroad-2024/lanka_data.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+ResidentRelativeToDistrict/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/data/final-report-tables/chapter-5/5.1.8-Distribution-of-the-Usually-Resident-Population-of-a-District-by-their-Permanent-Residence-2024/lanka_data.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GIG",
+      "baseURL": "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master",
+      "metadataURL": "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/metadata.json",
+      "datasets": [
+        {
+          "metadataKey": "Person/Time+ED+Religion/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-religion.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+PD+Religion/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-religion.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Country+Religion/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-religion.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Province+Religion/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-religion.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+Religion/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-religion.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+DSD+Religion/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-religion.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+ED+IsEconomicallyActive/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/economy-economic-activity.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+PD+IsEconomicallyActive/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/economy-economic-activity.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Country+IsEconomicallyActive/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/economy-economic-activity.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Province+IsEconomicallyActive/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/economy-economic-activity.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+IsEconomicallyActive/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/economy-economic-activity.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+DSD+IsEconomicallyActive/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/economy-economic-activity.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+ED+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-ethnicity.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+PD+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-ethnicity.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Country+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-ethnicity.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Province+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-ethnicity.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-ethnicity.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+DSD+Ethnicity/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-ethnicity.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+ED+HighestEducationLevel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/education-educational-attainment.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+PD+HighestEducationLevel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/education-educational-attainment.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Country+HighestEducationLevel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/education-educational-attainment.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Province+HighestEducationLevel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/education-educational-attainment.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+HighestEducationLevel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/education-educational-attainment.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+DSD+HighestEducationLevel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/education-educational-attainment.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+ED+AgeGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-age_group.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+PD+AgeGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-age_group.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Country+AgeGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-age_group.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Province+AgeGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-age_group.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+AgeGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-age_group.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+DSD+AgeGroup/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-age_group.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+ED+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-gender.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+PD+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-gender.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Country+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-gender.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Province+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-gender.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-gender.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+DSD+Sex/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-gender.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+ED+MaritalStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-marital_status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+PD+MaritalStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-marital_status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Country+MaritalStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-marital_status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+Province+MaritalStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-marital_status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+District+MaritalStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-marital_status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Person/Time+DSD+MaritalStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/population-marital_status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+CookingFuel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-cooking_fuel.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+CookingFuel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-cooking_fuel.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+CookingFuel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-cooking_fuel.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+CookingFuel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-cooking_fuel.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+CookingFuel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-cooking_fuel.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+CookingFuel/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-cooking_fuel.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+FloorType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-floor_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+FloorType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-floor_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+FloorType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-floor_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+FloorType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-floor_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+FloorType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-floor_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+FloorType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-floor_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+Lighting/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-lighting.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+Lighting/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-lighting.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+Lighting/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-lighting.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+Lighting/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-lighting.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+Lighting/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-lighting.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+Lighting/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-lighting.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+RoofType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-roof_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+RoofType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-roof_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+RoofType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-roof_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+RoofType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-roof_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+RoofType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-roof_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+RoofType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-roof_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-toilet_facilities.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-toilet_facilities.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-toilet_facilities.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-toilet_facilities.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-toilet_facilities.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+ToiletFacilities/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-toilet_facilities.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+WallType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-wall_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+WallType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-wall_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+WallType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-wall_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+WallType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-wall_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+WallType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-wall_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+WallType/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-wall_type.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+HouseholdStructure/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-structure.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+HouseholdStructure/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-structure.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+HouseholdStructure/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-structure.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+HouseholdStructure/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-structure.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+HouseholdStructure/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-structure.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+HouseholdStructure/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-structure.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+OccupationStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-occupation_status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+OccupationStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-occupation_status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+OccupationStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-occupation_status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+OccupationStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-occupation_status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+OccupationStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-occupation_status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+OccupationStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-occupation_status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+OwnershipStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-ownership-status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+OwnershipStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-ownership-status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+OwnershipStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-ownership-status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+OwnershipStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-ownership-status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+OwnershipStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-ownership-status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+OwnershipStatus/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-ownership-status.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+LivingQuarters/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-living_quarters.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+LivingQuarters/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-living_quarters.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+LivingQuarters/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-living_quarters.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+LivingQuarters/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-living_quarters.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+LivingQuarters/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-living_quarters.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+LivingQuarters/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-living_quarters.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-source_of_drinking_water.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-source_of_drinking_water.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-source_of_drinking_water.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-source_of_drinking_water.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-source_of_drinking_water.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+SourceOfDrinkingWater/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-source_of_drinking_water.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+SolidWasteDisposal/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-solid_waste_disposal.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+SolidWasteDisposal/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-solid_waste_disposal.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+SolidWasteDisposal/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-solid_waste_disposal.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+SolidWasteDisposal/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-solid_waste_disposal.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+SolidWasteDisposal/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-solid_waste_disposal.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+SolidWasteDisposal/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-solid_waste_disposal.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+ED+TypeOfUnit/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-type_of_unit.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+PD+TypeOfUnit/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-type_of_unit.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Country+TypeOfUnit/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-type_of_unit.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+Province+TypeOfUnit/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-type_of_unit.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+District+TypeOfUnit/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-type_of_unit.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "House/Time+DSD+TypeOfUnit/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/social-household-type_of_unit.regions.2012.json"
+          ]
+        },
+        {
+          "metadataKey": "Vote/ElectionType+Time+ED+Party/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.1989.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.1994.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2000.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2001.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2004.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2010.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2015.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2020.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2024.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1982.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1988.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1994.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1999.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2005.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2010.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2015.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2019.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2024.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-local-government.regions-ec.2025.json"
+          ]
+        },
+        {
+          "metadataKey": "Vote/ElectionType+Time+PD+Party/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.1989.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.1994.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2000.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2001.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2004.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2010.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2015.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2020.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2024.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1982.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1988.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1994.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1999.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2005.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2010.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2015.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2019.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2024.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-local-government.regions-ec.2025.json"
+          ]
+        },
+        {
+          "metadataKey": "Vote/ElectionType+Time+Country+Party/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.1989.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.1994.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2000.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2001.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2004.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2010.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2015.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2020.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2024.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1982.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1988.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1994.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1999.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2005.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2010.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2015.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2019.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2024.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-local-government.regions-ec.2025.json"
+          ]
+        },
+        {
+          "metadataKey": "Vote/ElectionType+Time+Province+Party/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.1989.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.1994.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2000.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2001.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2004.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2010.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2015.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2020.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2024.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1982.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1988.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1994.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1999.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2005.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2010.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2015.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2019.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2024.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-local-government.regions-ec.2025.json"
+          ]
+        },
+        {
+          "metadataKey": "Vote/ElectionType+Time+District+Party/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.1989.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.1994.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2000.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2001.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2004.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2010.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2015.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2020.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2024.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1982.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1988.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1994.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1999.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2005.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2010.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2015.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2019.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2024.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-local-government.regions-ec.2025.json"
+          ]
+        },
+        {
+          "metadataKey": "Vote/ElectionType+Time+DSD+Party/Count",
+          "urls": [
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.1989.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.1994.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2000.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2001.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2004.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2010.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2015.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2020.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-parliamentary.regions-ec.2024.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1982.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1988.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1994.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.1999.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2005.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2010.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2015.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2019.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-presidential.regions-ec.2024.json",
+            "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/data/government-elections-local-government.regions-ec.2025.json"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3861 @@
+{
+  "datumList": [
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "colombo"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=colombo+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "534431"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "colombo"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=colombo+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "569627"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "colombo"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=colombo+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2628"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "colombo"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=colombo+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2174"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "colombo"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=colombo+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "775"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "colombo"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=colombo+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "410"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "colombo"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=colombo+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "4205"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "gampaha"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=gampaha+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "596698"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "gampaha"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=gampaha+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "481764"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "gampaha"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=gampaha+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2790"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "gampaha"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=gampaha+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1983"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "gampaha"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=gampaha+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "856"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "gampaha"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=gampaha+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "343"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "gampaha"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=gampaha+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "4843"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kalutara"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kalutara+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "341693"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kalutara"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kalutara+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "266043"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kalutara"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kalutara+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2623"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kalutara"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kalutara+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "865"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kalutara"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kalutara+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "614"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kalutara"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kalutara+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "215"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kalutara"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kalutara+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3807"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kandy+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "315672"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kandy+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "387150"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kandy+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2775"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kandy+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1091"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kandy+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "717"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kandy+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "307"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kandy"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kandy+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "4908"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matale"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matale+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "120533"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matale"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matale+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "125937"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matale"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matale+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1212"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matale"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matale+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "342"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matale"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matale+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "356"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matale"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matale+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "95"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matale"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matale+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2145"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "nuwara_eliya"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=nuwara_eliya+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "99550"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "nuwara_eliya"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=nuwara_eliya+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "250428"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "nuwara_eliya"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=nuwara_eliya+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2622"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "nuwara_eliya"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=nuwara_eliya+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "376"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "nuwara_eliya"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=nuwara_eliya+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "287"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "nuwara_eliya"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=nuwara_eliya+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "146"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "nuwara_eliya"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=nuwara_eliya+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2466"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "galle"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=galle+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "347233"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "galle"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=galle+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "239320"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "galle"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=galle+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2244"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "galle"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=galle+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "873"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "galle"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=galle+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "524"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "galle"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=galle+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "221"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "galle"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=galle+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "4053"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matara"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matara+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "279411"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matara"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matara+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "165837"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matara"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matara+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1687"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matara"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matara+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "554"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matara"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matara+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "524"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matara"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matara+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "140"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "matara"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=matara+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3569"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "hambantota"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=hambantota+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "202918"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "hambantota"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=hambantota+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "112712"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "hambantota"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=hambantota+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1066"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "hambantota"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=hambantota+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "430"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "hambantota"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=hambantota+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "370"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "hambantota"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=hambantota+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "84"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "hambantota"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=hambantota+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2345"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "jaffna"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=jaffna+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1967"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "jaffna"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=jaffna+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "5523"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "jaffna"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=jaffna+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "72"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "jaffna"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=jaffna+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "120"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "jaffna"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=jaffna+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "24"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "jaffna"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=jaffna+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "29"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "jaffna"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=jaffna+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "133"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "vanni"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=vanni+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "17197"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "vanni"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=vanni+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "65798"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "vanni"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=vanni+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "520"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "vanni"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=vanni+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "115"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "vanni"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=vanni+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "133"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "vanni"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=vanni+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "69"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "vanni"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=vanni+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "644"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "batticaloa"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=batticaloa+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "28836"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "batticaloa"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=batticaloa+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "121514"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "batticaloa"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=batticaloa+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "892"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "batticaloa"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=batticaloa+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "225"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "batticaloa"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=batticaloa+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "149"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "batticaloa"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=batticaloa+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "104"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "batticaloa"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=batticaloa+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1117"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "digamadulla"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=digamadulla+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "122329"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "digamadulla"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=digamadulla+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "159198"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "digamadulla"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=digamadulla+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1091"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "digamadulla"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=digamadulla+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "331"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "digamadulla"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=digamadulla+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "188"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "digamadulla"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=digamadulla+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "82"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "digamadulla"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=digamadulla+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2048"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "trincomalee"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=trincomalee+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "55680"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "trincomalee"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=trincomalee+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "92197"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "trincomalee"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=trincomalee+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "792"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "trincomalee"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=trincomalee+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "276"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "trincomalee"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=trincomalee+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "157"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "trincomalee"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=trincomalee+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "67"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "trincomalee"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=trincomalee+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1165"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kurunegala"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kurunegala+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "468507"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kurunegala"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kurunegala+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "418809"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kurunegala"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kurunegala+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2357"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kurunegala"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kurunegala+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1142"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kurunegala"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kurunegala+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "695"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kurunegala"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kurunegala+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "255"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kurunegala"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kurunegala+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "4732"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "puttalam"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=puttalam+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "160686"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "puttalam"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=puttalam+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "169264"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "puttalam"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=puttalam+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1063"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "puttalam"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=puttalam+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "502"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "puttalam"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=puttalam+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "287"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "puttalam"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=puttalam+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "175"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "puttalam"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=puttalam+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1806"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "anuradhapura"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=anuradhapura+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "231040"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "anuradhapura"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=anuradhapura+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "182956"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "anuradhapura"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=anuradhapura+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1378"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "anuradhapura"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=anuradhapura+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "478"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "anuradhapura"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=anuradhapura+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "569"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "anuradhapura"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=anuradhapura+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "115"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "anuradhapura"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=anuradhapura+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2898"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "polonnaruwa"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=polonnaruwa+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "110499"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "polonnaruwa"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=polonnaruwa+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "97142"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "polonnaruwa"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=polonnaruwa+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "589"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "polonnaruwa"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=polonnaruwa+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "226"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "polonnaruwa"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=polonnaruwa+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "226"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "polonnaruwa"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=polonnaruwa+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "31"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "polonnaruwa"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=polonnaruwa+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1317"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "badulla"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=badulla+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "192734"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "badulla"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=badulla+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "226582"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "badulla"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=badulla+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2327"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "badulla"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=badulla+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "614"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "badulla"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=badulla+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "468"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "badulla"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=badulla+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "224"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "badulla"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=badulla+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3650"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "moneragala"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=moneragala+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "126094"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "moneragala"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=moneragala+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "92244"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "moneragala"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=moneragala+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "673"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "moneragala"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=moneragala+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "239"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "moneragala"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=moneragala+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "295"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "moneragala"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=moneragala+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "102"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "moneragala"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=moneragala+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1803"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "ratnapura"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=ratnapura+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "294260"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "ratnapura"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=ratnapura+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "252838"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "ratnapura"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=ratnapura+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "2220"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "ratnapura"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=ratnapura+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "795"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "ratnapura"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=ratnapura+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "645"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "ratnapura"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=ratnapura+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "134"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "ratnapura"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=ratnapura+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "4182"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kegalle"
+          },
+          {
+            "value": "UPFA"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kegalle+Party=UPFA/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "239184"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kegalle"
+          },
+          {
+            "value": "UNP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kegalle+Party=UNP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "223483"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kegalle"
+          },
+          {
+            "value": "USP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kegalle+Party=USP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "1804"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kegalle"
+          },
+          {
+            "value": "ULPP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kegalle+Party=ULPP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "707"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kegalle"
+          },
+          {
+            "value": "NLF"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kegalle+Party=NLF/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "437"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kegalle"
+          },
+          {
+            "value": "SEP"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kegalle+Party=SEP/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "152"
+      }
+    },
+    {
+      "query": {
+        "dimThingList": [
+          {
+            "value": "presidential"
+          },
+          {
+            "value": "2005"
+          },
+          {
+            "value": "kegalle"
+          },
+          {
+            "value": "excluded_small"
+          }
+        ],
+        "aggregate": "Count",
+        "queryStr": "Vote/ElectionType=presidential+Time=2005+ED=kegalle+Party=excluded_small/Count",
+        "subRegionDimThingList": null,
+        "parentRegionConstraintList": null
+      },
+      "answerThing": {
+        "value": "3006"
+      }
+    }
+  ],
+  "provenance": [
+    {
+      "source": "The Elections Commission of Sri Lanka",
+      "title": "Sri Lanka election results",
+      "url": "https://elections.gov.lk"
+    }
+  ]
+}
