@@ -15,6 +15,7 @@ jobs:
           node-version: 19.x
 
       - run: npm install
+      - run: npm run test:discovery
       - run: npm run build
 
       - name: Package production files

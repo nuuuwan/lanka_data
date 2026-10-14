@@ -16,12 +16,28 @@ const DataSourceFactory = jiti(
   "../src/nonview/core/data_source/DataSourceFactory.js",
 ).default;
 const packageJson = require("../package.json");
+const {
+  makeSourceCatalog,
+  renderSnapshot,
+  writeDiscovery,
+} = require("./buildDataDiscovery.cjs");
 
 async function buildRawJSON() {
   await loadRegionData();
   const timestamp = new Date().toISOString();
   const catalogEntries = [];
-  const baseURL = packageJson.homepage || "https://nuuuwan.github.io/lanka_data";
+  const baseURL =
+    packageJson.homepage || "https://nuuuwan.github.io/lanka_data";
+  const buildDir = path.join(__dirname, "../build");
+  const sourceDefinitions = await Promise.all(
+    DataSourceFactory.getDataSourceClasses().map(async (Source) => ({
+      id: Source.name,
+      baseURL: Source.getBaseURL(),
+      metadataURL: Source.getMetadataURL(),
+      metadata: await Source.getMetadata(),
+    })),
+  );
+  const sourceCatalog = makeSourceCatalog(sourceDefinitions, timestamp);
 
   for (const visualQuery of PUBLISHED_RAW_JSON_QUERIES) {
     const queryString = visualQuery.slice(0, -"/JSON".length);
@@ -40,33 +56,43 @@ async function buildRawJSON() {
 
     const description = getQueryFinding(query);
     const url = `${baseURL}/${encodeURI(visualQuery)}/${JSON_DOWNLOAD_FILE_NAME}`;
-    catalogEntries.push({
+    const entry = {
       query: visualQuery,
       description,
       url,
+      pageURL: `${baseURL}/data/queries/${encodeURI(visualQuery)}/index.html`,
+      visualURL: `${baseURL}/?/${encodeURI(visualQuery)}`,
+      rowCount: datumSet.datumList.length,
       generatedAt: timestamp,
-    });
+    };
+    const tableDirectory = path.join(buildDir, "data/queries", visualQuery);
+    await mkdir(tableDirectory, { recursive: true });
+    await writeFile(
+      path.join(tableDirectory, "index.html"),
+      renderSnapshot(entry, datumSet, baseURL),
+    );
+    catalogEntries.push(entry);
   }
 
   const catalog = {
-    catalogVersion: "1.0",
+    catalogVersion: "1.1",
     description: "Catalog of published static JSON queries for Lanka Data",
     generatedAt: timestamp,
     count: catalogEntries.length,
+    guideURL: `${baseURL}/data/index.html`,
+    sourcesURL: `${baseURL}/sources.json`,
     queries: catalogEntries,
   };
 
-  const buildDir = path.join(__dirname, "../build");
   await mkdir(buildDir, { recursive: true });
   await writeFile(
     path.join(buildDir, "catalog.json"),
     JSON.stringify(catalog, null, 2),
   );
-  await writeFile(
-    path.join(__dirname, "../public/catalog.json"),
-    JSON.stringify(catalog, null, 2),
+  await writeDiscovery({ buildDir, baseURL, catalog, sourceCatalog });
+  console.log(
+    "Published catalog.json, sources.json, API guide and readable data pages",
   );
-  console.log("Published catalog.json");
 }
 
 buildRawJSON().catch((error) => {

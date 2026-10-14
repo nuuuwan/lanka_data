@@ -133,14 +133,57 @@ and the machine-readable query snapshot catalog **[catalog.json](https://nuuuwan
 
 ### For AI agents
 
-AI agents can directly consume verified Sri Lankan public data without scraping HTML or executing client-side code:
+You can ask a web-enabled ChatGPT session, for example:
 
-1. **Discover datasets**: Fetch [`catalog.json`](https://nuuuwan.github.io/lanka_data/catalog.json) to retrieve all published query snapshots, their canonical query strings, plain-English descriptions, and exact URLs.
-2. **Retrieve snapshots**: Fetch the target query's `url` directly via HTTP GET (returns static `application/json`). No authentication or API keys are required.
-3. **Parse and cite**: Extract numerical records from `datumList` and cite official sources using the metadata in `provenance`.
-4. **Static hosting notice**: GitHub Pages serves only the pre-generated query snapshots listed in the catalog; arbitrary queries return 404 unless executed against a local Lanka Data instance.
+> Find the 2024 presidential votes by party for Colombo North from
+> https://nuuuwan.github.io/lanka_data/. Give the exact counts and cite the data.
 
-For full schema details, geographic identifiers, units, and natural-language question examples, see the **[API Guide](api.md)**.
+The homepage includes links readable without JavaScript. Start with the
+**[data directory](https://nuuuwan.github.io/lanka_data/data/index.html)** or
+**[llms.txt](https://nuuuwan.github.io/lanka_data/llms.txt)**. A session needs web
+access or an HTTP-capable tool; these files do not make data available to an
+offline model or guarantee that a search engine has indexed it.
+
+1. **Match the question precisely.** Identify the subject, year, place,
+   geographic level and breakdown. Census population, household characteristics
+   and election results have different units and coverage. Do not substitute an
+   administrative District for an electoral district (`ED`).
+2. **Find a published snapshot.** Read
+   [catalog.json](https://nuuuwan.github.io/lanka_data/catalog.json), which lists
+   the default query and every homepage example. Match its `query` and
+   `description`, then fetch its exact `url` for JSON or `pageURL` for a readable
+   HTML table. Both contain the same observations and source provenance; neither
+   requires JavaScript, authentication or an API key.
+3. **Go beyond the examples.** If no snapshot fits, use the
+   [complete upstream dataset directory](https://nuuuwan.github.io/lanka_data/data/sources.html)
+   or [sources.json](https://nuuuwan.github.io/lanka_data/sources.json). These index
+   all tables advertised by the app's two upstream metadata sources, including
+   additional census topics and historical elections. Follow the listed file
+   URLs and verify the requested year, region and dimension combination in their
+   contents. The [API guide](api.md#find-data-beyond-the-snapshots) explains their
+   nested JSON format and provides working retrieval code.
+4. **Read and calculate carefully.** Snapshot observations are in `datumList`.
+   Read named coordinates from each row's `query.queryStr` and the stored value
+   from `answerThing.value`; response dimension order can differ from the
+   request. Filter to the requested coordinates. Missing rows are not proof of
+   zero; do not sum overlapping geographic levels, years, total rows or duplicate
+   observations. `generatedAt` is build time, not observation time.
+5. **Answer with evidence.** State the observation year, geography and unit.
+   Link to the exact table or JSON file used and the official source in
+   `provenance`. Label derived totals or percentages and state their denominator.
+   If retrieval fails or the data is unavailable, explain that gap instead of
+   inventing a result.
+
+For example, the catalog includes Kandy cooking fuel in 2012 and 2024, province
+population by religion in 2012 and ethnicity in 2024, parliamentary results in
+1994 and 2020, presidential results in 2005 and 2024, and local government
+results in 2025. These are starting points, not the full upstream coverage.
+
+**GitHub Pages is static:** arbitrary `/JSON/raw.json` paths do not run queries.
+For queries outside the catalog, retrieve the upstream files, use the interactive
+browser JSON view, or run the local endpoint described below. Do not interpret
+an HTML 404 response as data. See the **[API guide](api.md)** for schemas, query
+syntax, geographic identifiers, units, citations and Python examples.
 
 ### Published API examples
 
@@ -224,7 +267,12 @@ Only the published query snapshots in [catalog.json](https://nuuuwan.github.io/l
 are served statically on GitHub Pages. Refer to the **[API Guide](api.md)** for details
 on catalog consumption, response formats, geographic identifiers, and units.
 `npm run build` fetches upstream data and generates the listed static JSON files
-and `catalog.json` for deployment. A failed fetch or generation fails the build.
+and `catalog.json` for deployment, together with readable HTML tables, the data
+directory, `sources.json`, and a hosted copy of `api.md`. The upstream directory
+is generated from the same metadata sources used by the app. Generated catalogs
+live only in `build/`; they are not stale checked-in copies in `public/`.
+The generated directory becomes available after building and deploying, rather
+than in a fresh development session. A failed fetch or generation fails the build.
 The deployment workflow transfers the build between jobs as a tar archive,
 then extracts it before publishing. This preserves query paths containing `<`
 without violating GitHub Actions artifact filename restrictions.

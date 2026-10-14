@@ -40,6 +40,7 @@
     "build:raw-json": "node scripts/buildRawJSON.cjs",
     "screenshots:examples": "node scripts/buildExampleImages.cjs",
     "test": "react-scripts test",
+    "test:discovery": "node --test scripts/buildDataDiscovery.test.cjs",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
