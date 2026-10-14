@@ -1,25 +1,30 @@
 # Lanka Data
 
-> Sri Lankan census and election data, with interactive queries, published JSON snapshots, readable HTML tables and links to the full upstream data indexes. No authentication or API key.
+> Sri Lankan census and election data. Infer available datasets from the live metadata used by the app, then fetch relevant upstream files. No login or API key.
 
-## Start here
+## Entry points
 
-- [Data directory](https://nuuuwan.github.io/lanka_data/data/index.html): readable entry point; follow links to actual tables and their citations without JavaScript.
-- [Snapshot catalog](https://nuuuwan.github.io/lanka_data/catalog.json): published queries with descriptions, exact JSON `url`, readable `pageURL`, `visualURL`, row counts and build timestamps.
-- [Full upstream directory](https://nuuuwan.github.io/lanka_data/data/sources.html): all source files referenced by the app's upstream metadata, including topics outside the snapshot examples.
-- [Source directory JSON](https://nuuuwan.github.io/lanka_data/sources.json): metadata keys and exact upstream file URLs, grouped by source.
-- [API guide](https://nuuuwan.github.io/lanka_data/api.md): schemas, query syntax, Python retrieval, geographic identifiers, units and citations.
+- [Discovery guide](https://nuuuwan.github.io/lanka_data/data/index.html): readable instructions and links to the app's live metadata indexes, without JavaScript.
+- [Source registry](https://nuuuwan.github.io/lanka_data/sources.json): metadataURL and baseURL for each data source, from the same configuration used by the app. Contains no cached metadata or observations.
+- [API guide](https://nuuuwan.github.io/lanka_data/api.md): metadata interpretation, nested JSON format, query syntax, geographic identifiers, units, citations and working Python retrieval.
+
+## Live metadata used by the app
+
+- [Census2024 metadata](https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/metadata/lanka_data.metadata.json): base URL https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main
+- [GIG metadata](https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/metadata.json): base URL https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master
 
 ## Retrieval procedure
 
-1. Match subject, year, geography and breakdown to a catalog entry. Fetch its exact `url`, or its `pageURL` if your browser handles HTML better than JSON. Read the observations before giving numbers.
-2. Parse snapshot `datumList[].query.queryStr` for named dimensions and `answerThing.value` for the stored value. Do not assume the request's dimension order matches each response row. `provenance` contains source citations.
-3. If no snapshot matches, inspect sources.json or the upstream directory. Match a metadata key's entity, dimension combination and aggregate. Fetch its listed files and verify the requested year and region in their contents. These upstream files use nested objects and typed leaves (for example `Int:3381781`), not datumList.
-4. Filter or aggregate only compatible, non-overlapping observations. State the observation year, unit and geographic level. Cite the exact snapshot or upstream data URL and the official source from provenance or the guide. Build time is not observation time.
-5. A missing row is not evidence of zero. Do not replace unavailable data with another year or region. If retrieval fails or no matching data exists, explain the gap and provide the relevant directory or interactive query link.
+1. Identify subject, year, geography and breakdown. Fetch the live metadata indexes; do not infer availability from gallery examples or a fixed query list.
+2. Metadata maps keys such as House/Time+District+CookingFuel/Count to relative file paths. Match entity, dimension-name set and aggregate. Dimension order can vary. A key establishes a dimension combination, not every possible year, region or category value.
+3. Form each relevant file URL by joining the source's baseURL, a slash, and the exact metadata path. Fetch and inspect the files to confirm the requested values. Avoid downloading unrelated files.
+4. Source files contain nested objects: entity → dimension:value → … → aggregate → typed value (for example Int:123). They do not have a datumList field. Filter to the requested coordinates, including a single geographic level, before calculating.
+5. Preserve scalar types and units. Missing rows are not evidence of zero. Check totals and duplicates before summing, and do not combine separate tables into unsupported cross-tabulations.
+6. State the observation year, unit and geography. Cite the exact upstream data URL and the official source: Department of Census and Statistics (https://www.statistics.gov.lk) for census data, Elections Commission (https://elections.gov.lk) for Vote data. Identify the intermediary repository and any calculations.
+7. If the metadata lacks the requested combination or retrieval fails, explain what is unavailable; do not substitute another year or region silently.
 
-## Limits
+## Hosting
 
-GitHub Pages does not execute arbitrary API queries. Only cataloged raw.json paths are published. Other supported queries need the JavaScript app or a local instance; the upstream files are also directly retrievable. Metadata entries describe available dimension combinations, not every possible cross-tabulation. Source files can contain overlapping geographic levels and several years. Some metadata tables have aggregates other than Count; preserve their types and meanings.
+The build does not fetch metadata, download raw data, execute queries, or generate data snapshots. GitHub Pages serves the app and discovery instructions, not a query API. Browser JSON downloads are created from client-fetched data. Local /JSON/raw.json endpoints execute supported queries on demand.
 
-This file is a discovery aid. A ChatGPT session needs web access or another HTTP-capable tool to retrieve the data.
+A ChatGPT session needs web access or an HTTP-capable tool to retrieve live metadata and data.

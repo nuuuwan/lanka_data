@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Sri Lankan census and election data. Browse population, households and election results, with downloadable JSON, readable tables and source citations."
+      content="Sri Lankan census and election data. Browse population, households and election results, with live metadata indexes, downloadable JSON and source citations."
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,8 +25,8 @@
     <link
       rel="alternate"
       type="application/json"
-      href="%PUBLIC_URL%/catalog.json"
-      title="Published data catalog"
+      href="%PUBLIC_URL%/sources.json"
+      title="Upstream metadata sources"
     />
     <link
       rel="alternate"
@@ -92,16 +92,15 @@
       </p>
       <p>
         <a href="%PUBLIC_URL%/data/index.html"
-          >Browse data, tables and sources — no JavaScript required</a
+          >Discover data from the app’s live metadata — no JavaScript
+          required</a
         >.
       </p>
       <p>
         For AI agents and developers: start with the
         <a href="%PUBLIC_URL%/llms.txt">retrieval guide</a>,
-        <a href="%PUBLIC_URL%/catalog.json">JSON snapshot catalog</a>, or
-        <a href="%PUBLIC_URL%/data/sources.html"
-          >complete upstream dataset directory</a
-        >.
+        <a href="%PUBLIC_URL%/sources.json">metadata source registry</a>, or
+        <a href="%PUBLIC_URL%/api.md">API guide</a>.
       </p>
     </div>
     <noscript

@@ -36,8 +36,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && npm run build:raw-json",
-    "build:raw-json": "node scripts/buildRawJSON.cjs",
+    "build": "react-scripts build && node scripts/buildDataDiscovery.cjs",
     "screenshots:examples": "node scripts/buildExampleImages.cjs",
     "test": "react-scripts test",
     "test:discovery": "node --test scripts/buildDataDiscovery.test.cjs",

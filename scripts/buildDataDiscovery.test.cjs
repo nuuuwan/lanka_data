@@ -1,125 +1,99 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { mkdtemp, readFile, rm } = require("node:fs/promises");
+const { mkdtemp, readFile, readdir, rm } = require("node:fs/promises");
 const os = require("node:os");
 const path = require("node:path");
+const { createJiti } = require("jiti");
 const {
-  makeSourceCatalog,
-  renderSnapshot,
-  renderSources,
+  getSourceRegistry,
+  renderDirectory,
   writeDiscovery,
 } = require("./buildDataDiscovery.cjs");
+const jiti = createJiti(__filename);
+const DataSourceFactory = jiti(
+  "../src/nonview/core/data_source/DataSourceFactory.js",
+).default;
+const { getJSONDownloadURL } = jiti("../src/nonview/core/raw_json/RawJSON.js");
 
-const baseURL = "https://example.org/lanka_data";
-const generatedAt = "2026-10-14T00:00:00.000Z";
-const entry = {
-  query: "Vote/Time=2024+PD<ED=colombo+Party/Count/JSON",
-  description: "Votes <by party>",
-  url: `${baseURL}/Vote/Time=2024+PD%3CED=colombo+Party/Count/JSON/raw.json`,
-  pageURL: `${baseURL}/data/queries/votes/index.html`,
-  visualURL: `${baseURL}/?/Vote/Time=2024+PD%3CED=colombo+Party/Count/JSON`,
-  rowCount: 2,
-  generatedAt,
-};
-const sourceCatalog = makeSourceCatalog(
-  [
-    {
-      id: "Source",
-      baseURL: "https://example.org/repo",
-      metadataURL: "https://example.org/repo/metadata.json",
-      metadata: {
-        "Person/Time+District/Count": ["population.json"],
-        "Person/Time+Province/Count": ["population.json", "older.json"],
-      },
-    },
-  ],
-  generatedAt,
-);
-
-test("source catalog preserves every metadata key and expands all source paths", () => {
-  assert.deepEqual(sourceCatalog.sources[0].datasets, [
-    {
-      metadataKey: "Person/Time+District/Count",
-      urls: ["https://example.org/repo/population.json"],
-    },
-    {
-      metadataKey: "Person/Time+Province/Count",
-      urls: [
-        "https://example.org/repo/population.json",
-        "https://example.org/repo/older.json",
-      ],
-    },
-  ]);
-  const html = renderSources(sourceCatalog, baseURL);
-  assert.equal(
-    html.match(/href="https:\/\/example.org\/repo\/population.json"/g).length,
-    1,
+test("discovery endpoints match every data source used by the app", () => {
+  const registry = getSourceRegistry();
+  const classes = DataSourceFactory.getDataSourceClasses();
+  assert.deepEqual(
+    registry.sources.map((s) => s.id).sort(),
+    classes.map((s) => s.name).sort(),
   );
-  for (const dataset of sourceCatalog.sources[0].datasets)
-    assert.ok(html.includes(dataset.metadataKey));
+  for (const Source of classes) {
+    const source = registry.sources.find((s) => s.id === Source.name);
+    assert.equal(source.baseURL, Source.getBaseURL());
+    assert.equal(source.metadataURL, Source.getMetadataURL());
+  }
 });
 
-test("HTML preserves exact row coordinates, zero values and provenance without executing markup", () => {
-  const datumSet = {
-    datumList: [
-      {
-        query: { queryStr: "Vote/Party=NPP+PD=colombo_north+Time=2024/Count" },
-        answerThing: { value: "17978" },
-      },
-      {
-        query: {
-          queryStr: "Vote/Party=<script>+PD=colombo_north+Time=2024/Count",
-        },
-        answerThing: { value: "0" },
-      },
-    ],
-    provenance: [
-      {
-        source: 'Agency & "name"',
-        title: "Election results",
-        url: "https://example.org/?a=1&b=2",
-      },
-    ],
-  };
-  const html = renderSnapshot(entry, datumSet, baseURL);
-  assert.ok(html.includes("Vote/Party=NPP+PD=colombo_north+Time=2024/Count"));
-  assert.ok(html.includes("<td>17978</td>"));
-  assert.ok(html.includes("<td>0</td>"));
-  assert.ok(html.includes("Party=&lt;script&gt;"));
-  assert.ok(!html.includes("<script>"));
-  assert.ok(html.includes("Agency &amp; &quot;name&quot;"));
-  assert.ok(html.includes('href="https://example.org/?a=1&amp;b=2"'));
-  assert.ok(html.includes(entry.url));
-});
-
-test("generated directory connects snapshots, upstream files and the deployed guide", async () => {
+test("discovery build performs no fetch and publishes only configuration and instructions", async () => {
   const buildDir = await mkdtemp(path.join(os.tmpdir(), "lanka-discovery-"));
+  const originalFetch = global.fetch;
+  global.fetch = () => {
+    throw new Error("Build must not fetch metadata or data");
+  };
   try {
-    await writeDiscovery({
-      buildDir,
-      baseURL,
-      catalog: { generatedAt, queries: [entry] },
-      sourceCatalog,
-    });
-    const html = await readFile(path.join(buildDir, "data/index.html"), "utf8");
-    for (const url of [
-      entry.url,
-      entry.pageURL,
-      entry.visualURL,
-      `${baseURL}/sources.json`,
-      `${baseURL}/data/sources.html`,
-      `${baseURL}/api.md`,
-    ])
-      assert.ok(html.includes(url));
-    assert.deepEqual(
-      JSON.parse(await readFile(path.join(buildDir, "sources.json"), "utf8")),
-      sourceCatalog,
+    await writeDiscovery(buildDir);
+    assert.deepEqual((await readdir(buildDir)).sort(), [
+      "api.md",
+      "data",
+      "sources.json",
+    ]);
+    assert.deepEqual(await readdir(path.join(buildDir, "data")), [
+      "index.html",
+    ]);
+    const registry = JSON.parse(
+      await readFile(path.join(buildDir, "sources.json"), "utf8"),
     );
+    assert.deepEqual(registry, getSourceRegistry());
+    const html = await readFile(path.join(buildDir, "data/index.html"), "utf8");
+    for (const source of registry.sources) {
+      assert.ok(html.includes(`href="${source.metadataURL}"`));
+      assert.ok(html.includes(source.baseURL));
+      assert.equal(source.datasets, undefined);
+    }
     assert.equal(
       await readFile(path.join(buildDir, "api.md"), "utf8"),
       await readFile(path.join(__dirname, "../api.md"), "utf8"),
     );
   } finally {
+    global.fetch = originalFetch;
     await rm(buildDir, { recursive: true });
   }
+});
+
+test("directory safely renders source metadata links and descriptions", () => {
+  const html = renderDirectory({
+    sources: [
+      {
+        id: "<script>",
+        description: "A & B",
+        metadataURL: 'https://example.org/?a=1&b="2"',
+        baseURL: "https://example.org",
+      },
+    ],
+  });
+  assert.ok(html.includes("&lt;script&gt;"));
+  assert.ok(html.includes("A &amp; B"));
+  assert.ok(html.includes("?a=1&amp;b=&quot;2&quot;"));
+});
+
+test("production downloads use fetched JSON; local downloads retain on-demand endpoints", () => {
+  const location = {
+    origin: "https://example.org",
+    pathname:
+      "/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/JSON/",
+  };
+  const json = '{"datumList":[],"provenance":[]}';
+  assert.equal(
+    getJSONDownloadURL(location, json, false),
+    `data:application/json;charset=utf-8,${encodeURIComponent(json)}`,
+  );
+  assert.equal(
+    getJSONDownloadURL(location, json, true),
+    `${location.origin}${location.pathname}raw.json`,
+  );
 });

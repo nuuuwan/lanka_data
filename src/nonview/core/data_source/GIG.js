@@ -1,3 +1,4 @@
+import DATA_SOURCES from "../../constants/DataSources.json";
 import AbstractDataSource from "./AbstractDataSource.js";
 import {
   CENSUS_2012_DATASET_TITLE,
@@ -20,13 +21,9 @@ export default class GIG extends AbstractDataSource {
   }
 
   static getBaseURL() {
-    return (
-      "https://raw.githubusercontent.com" +
-      "/nuuuwan/gig-data" +
-      "/refs/heads/master"
-    );
+    return DATA_SOURCES.GIG.baseURL;
   }
   static getMetadataURL() {
-    return this.getBaseURL() + "/lanka_data/metadata.json";
+    return this.getBaseURL() + "/" + DATA_SOURCES.GIG.metadataPath;
   }
 }

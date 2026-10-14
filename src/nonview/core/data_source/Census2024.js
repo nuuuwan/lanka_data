@@ -1,3 +1,4 @@
+import DATA_SOURCES from "../../constants/DataSources.json";
 import AbstractDataSource from "./AbstractDataSource.js";
 import {
   CENSUS_2024_DATASET_TITLE,
@@ -14,13 +15,9 @@ export default class Census2024 extends AbstractDataSource {
   }
 
   static getBaseURL() {
-    return (
-      "https://raw.githubusercontent.com" +
-      "/nuuuwan/lk_census_2024" +
-      "/refs/heads/main"
-    );
+    return DATA_SOURCES.Census2024.baseURL;
   }
   static getMetadataURL() {
-    return this.getBaseURL() + "/metadata/lanka_data.metadata.json";
+    return this.getBaseURL() + "/" + DATA_SOURCES.Census2024.metadataPath;
   }
 }

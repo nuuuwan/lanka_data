@@ -124,12 +124,14 @@ and chart data outlines remain visible.
 
 ## Use the same query from code
 
-Change a query's final visual segment to `JSON` for the browser view; append
-`/raw.json` for direct programmatic access where the endpoint is available.
-The response contains `datumList` and `provenance`.
+The interactive app and local endpoint share the same query logic. Change a
+query's final visual segment to `JSON` to inspect or download its result, which
+contains `datumList` and `provenance`. On a local instance, append `/raw.json`
+for an HTTP response. GitHub Pages does not serve query results as raw endpoints.
 
-For an overview designed for AI agents and developers, see the **[API Guide](api.md)**
-and the machine-readable query snapshot catalog **[catalog.json](https://nuuuwan.github.io/lanka_data/catalog.json)**.
+For direct access without running the app, discover upstream data from the
+**same live metadata indexes used by the app**. See the **[API guide](api.md)**
+for metadata matching, JSON traversal, units and citations.
 
 ### For AI agents
 
@@ -138,144 +140,72 @@ You can ask a web-enabled ChatGPT session, for example:
 > Find the 2024 presidential votes by party for Colombo North from
 > https://nuuuwan.github.io/lanka_data/. Give the exact counts and cite the data.
 
-The homepage includes links readable without JavaScript. Start with the
-**[data directory](https://nuuuwan.github.io/lanka_data/data/index.html)** or
-**[llms.txt](https://nuuuwan.github.io/lanka_data/llms.txt)**. A session needs web
-access or an HTTP-capable tool; these files do not make data available to an
-offline model or guarantee that a search engine has indexed it.
+The homepage links to a **[discovery guide](https://nuuuwan.github.io/lanka_data/data/index.html)**,
+**[llms.txt](https://nuuuwan.github.io/lanka_data/llms.txt)** and a
+**[source registry](https://nuuuwan.github.io/lanka_data/sources.json)**, readable
+without JavaScript. The registry contains metadata endpoints and base URLs from
+[the app's source configuration](src/nonview/constants/DataSources.json), not a
+cached dataset catalog or a list of preselected queries.
 
-1. **Match the question precisely.** Identify the subject, year, place,
-   geographic level and breakdown. Census population, household characteristics
-   and election results have different units and coverage. Do not substitute an
-   administrative District for an electoral district (`ED`).
-2. **Find a published snapshot.** Read
-   [catalog.json](https://nuuuwan.github.io/lanka_data/catalog.json), which lists
-   the default query and every homepage example. Match its `query` and
-   `description`, then fetch its exact `url` for JSON or `pageURL` for a readable
-   HTML table. Both contain the same observations and source provenance; neither
-   requires JavaScript, authentication or an API key.
-3. **Go beyond the examples.** If no snapshot fits, use the
-   [complete upstream dataset directory](https://nuuuwan.github.io/lanka_data/data/sources.html)
-   or [sources.json](https://nuuuwan.github.io/lanka_data/sources.json). These index
-   all tables advertised by the app's two upstream metadata sources, including
-   additional census topics and historical elections. Follow the listed file
-   URLs and verify the requested year, region and dimension combination in their
-   contents. The [API guide](api.md#find-data-beyond-the-snapshots) explains their
-   nested JSON format and provides working retrieval code.
-4. **Read and calculate carefully.** Snapshot observations are in `datumList`.
-   Read named coordinates from each row's `query.queryStr` and the stored value
-   from `answerThing.value`; response dimension order can differ from the
-   request. Filter to the requested coordinates. Missing rows are not proof of
-   zero; do not sum overlapping geographic levels, years, total rows or duplicate
-   observations. `generatedAt` is build time, not observation time.
+1. **Identify the question's coordinates.** Determine the subject, year, place,
+   geographic level and breakdown. Population, households and votes have
+   different units. An administrative `District` is not interchangeable with an
+   electoral district (`ED`).
+2. **Read the live metadata used by the app.** Fetch the registry's `metadataURL`
+   for each relevant source. The indexes map keys such as
+   `House/Time+District+CookingFuel/Count` to relative data-file paths. Match the
+   entity, set of dimension names and aggregate. Dimension order can vary; a
+   combination must actually exist in metadata, not merely as separate fields.
+3. **Retrieve the relevant upstream files.** Join the source's `baseURL`, `/`,
+   and each matching metadata path. Fetch those files and confirm the requested
+   year, region and categories in their contents. Metadata describes available
+   dimension combinations; filenames alone do not establish all available values.
+4. **Read and calculate carefully.** Upstream JSON nests entity, dimension:value
+   keys and aggregate, ending in a typed value such as `Int:123`. It does not use
+   the app's `datumList` response format. Select the requested coordinates and
+   geographic level before calculating. Preserve units and explicit zeros;
+   missing rows are not proof of zero. Check overlapping totals and duplicate
+   observations before summing.
 5. **Answer with evidence.** State the observation year, geography and unit.
-   Link to the exact table or JSON file used and the official source in
-   `provenance`. Label derived totals or percentages and state their denominator.
-   If retrieval fails or the data is unavailable, explain that gap instead of
-   inventing a result.
+   Cite the exact upstream file and the official agency, identifying the
+   intermediary repository. Label calculations and their denominator. Explain
+   unavailable combinations or retrieval failures instead of inventing a result.
 
-For example, the catalog includes Kandy cooking fuel in 2012 and 2024, province
-population by religion in 2012 and ethnicity in 2024, parliamentary results in
-1994 and 2020, presidential results in 2005 and 2024, and local government
-results in 2025. These are starting points, not the full upstream coverage.
+The two live indexes are:
 
-**GitHub Pages is static:** arbitrary `/JSON/raw.json` paths do not run queries.
-For queries outside the catalog, retrieve the upstream files, use the interactive
-browser JSON view, or run the local endpoint described below. Do not interpret
-an HTML 404 response as data. See the **[API guide](api.md)** for schemas, query
-syntax, geographic identifiers, units, citations and Python examples.
+| App source | Metadata | Base URL for the listed relative paths |
+| --- | --- | --- |
+| `Census2024` | [Census metadata](https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main/metadata/lanka_data.metadata.json) | `https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main` |
+| `GIG` | [Census and election metadata](https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master/lanka_data/metadata.json) | `https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master` |
 
-### Published API examples
+For example, infer household cooking fuel availability by looking for
+`House/Time+District+CookingFuel/Count`; infer party election results by looking
+for `Vote/ElectionType+Time+PD+Party/Count`. Then inspect the listed files to find
+Kandy in 2024 or Colombo North in the 2024 presidential election. The gallery is
+an illustration of queries, not a definition of available data.
 
-The published query below is available directly from GitHub Pages as
-`application/json`, without running the React app. All three examples request
-the same data and check for HTTP errors. All published queries are indexed in [catalog.json](https://nuuuwan.github.io/lanka_data/catalog.json).
-
-#### Python
-
-Requires the `requests` package.
-
-```python
-import requests
-
-url = "https://nuuuwan.github.io/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/JSON/raw.json"
-response = requests.get(url, timeout=60)
-response.raise_for_status()
-data = response.json()
-print(data)
-```
-
-#### JavaScript (Node.js 18+)
-
-Uses built-in `fetch`; save as an `.mjs` file to use top-level `await`.
-
-```javascript
-const url = "https://nuuuwan.github.io/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/JSON/raw.json";
-const response = await fetch(url, { signal: AbortSignal.timeout(60_000) });
-if (!response.ok) {
-  throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-}
-const data = await response.json();
-console.log(data);
-```
-
-#### Go
-
-Uses only the standard library.
-
-```go
-package main
-
-import (
-    "encoding/json"
-    "fmt"
-    "log"
-    "net/http"
-    "time"
-)
-
-func main() {
-    url := "https://nuuuwan.github.io/lanka_data/Vote/ElectionType=presidential+Time=2024+PD%3CED=colombo+Party/Count/JSON/raw.json"
-    client := &http.Client{Timeout: 60 * time.Second}
-    response, err := client.Get(url)
-    if err != nil {
-        log.Fatal(err)
-    }
-    defer response.Body.Close()
-    if response.StatusCode != http.StatusOK {
-        log.Fatalf("HTTP %s", response.Status)
-    }
-    var data map[string]json.RawMessage
-    if err := json.NewDecoder(response.Body).Decode(&data); err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(string(data["datumList"]))
-    fmt.Println(string(data["provenance"]))
-}
-```
+No login or API key is needed. ChatGPT needs web access or another HTTP-capable
+tool; these instructions cannot force a session to browse or a search engine to
+index the site. The **[API guide](api.md)** includes a complete Python example
+that reads live metadata, selects files, filters observations and cites sources.
 
 ### Hosted and local availability
 
-| Access | Supported queries | Data freshness |
-| --- | --- | --- |
-| GitHub Pages `/JSON/raw.json` | Queries listed in [catalog.json](https://nuuuwan.github.io/lanka_data/catalog.json) (defined in [RawJSON.js](src/nonview/constants/RawJSON.js)) | Snapshot from the latest successful build |
-| Browser `JSON` view and download | Queries supported by the app's data sources | Loaded from upstream sources, with local caching |
-| Local `/JSON/raw.json` endpoint | Queries supported by the app's data sources | Loaded from upstream sources |
+| Access | Behavior |
+| --- | --- |
+| Direct upstream files | Discover available data from live metadata, then fetch the listed URLs |
+| Browser `JSON` view and download | Executes supported queries against upstream sources, with local caching |
+| Local `/JSON/raw.json` endpoint | Executes supported queries against upstream sources on demand |
+| GitHub Pages `/JSON/raw.json` | Not supported; Pages does not run a query API or host query snapshots |
 
-GitHub Pages is static-only: it does not run an API server for arbitrary queries.
-Only the published query snapshots in [catalog.json](https://nuuuwan.github.io/lanka_data/catalog.json)
-are served statically on GitHub Pages. Refer to the **[API Guide](api.md)** for details
-on catalog consumption, response formats, geographic identifiers, and units.
-`npm run build` fetches upstream data and generates the listed static JSON files
-and `catalog.json` for deployment, together with readable HTML tables, the data
-directory, `sources.json`, and a hosted copy of `api.md`. The upstream directory
-is generated from the same metadata sources used by the app. Generated catalogs
-live only in `build/`; they are not stale checked-in copies in `public/`.
-The generated directory becomes available after building and deploying, rather
-than in a fresh development session. A failed fetch or generation fails the build.
-The deployment workflow transfers the build between jobs as a tar archive,
-then extracts it before publishing. This preserves query paths containing `<`
-without violating GitHub Actions artifact filename restrictions.
+`npm run build` compiles the app and publishes discovery instructions, a hosted
+copy of `api.md`, and `sources.json` from local configuration. **It does not fetch
+metadata, download raw data, execute queries or generate data snapshots.** Agents
+read the live metadata at retrieval time, just as the app does. The generated
+discovery page becomes available after building and deploying; direct metadata
+links also work independently of the deployment.
+
+The deployment workflow transfers the build between jobs as a tar archive.
 Deploy jobs share a concurrency group so only one job pushes to `gh-pages`
 at a time; a running deployment is allowed to finish.
 

@@ -1,0 +1,12 @@
+{
+  "Census2024": {
+    "description": "Census 2024 population and housing topics, with historical and administrative tables from the census report",
+    "baseURL": "https://raw.githubusercontent.com/nuuuwan/lk_census_2024/refs/heads/main",
+    "metadataPath": "metadata/lanka_data.metadata.json"
+  },
+  "GIG": {
+    "description": "Census 2012 population and household topics, and historical election results",
+    "baseURL": "https://raw.githubusercontent.com/nuuuwan/gig-data/refs/heads/master",
+    "metadataPath": "lanka_data/metadata.json"
+  }
+}
